@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flow on When Moore&#39;s Law ENDS</title>
-    <link>//localhost:1313/categories/flow/</link>
+    <link>/categories/flow/</link>
     <description>Recent content in Flow on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Apr 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/flow/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/flow/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Case Study: Clock Skew Control</title>
-      <link>//localhost:1313/blog/flow/2017-04-18-case-study-clock-skew-control/</link>
+      <link>/blog/flow/2017-04-18-case-study-clock-skew-control/</link>
       <pubDate>Tue, 18 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/flow/2017-04-18-case-study-clock-skew-control/</guid>
+      <guid>/blog/flow/2017-04-18-case-study-clock-skew-control/</guid>
       <description>Question: how to control the clock skew between a group of clocks to be minimum, say less than 30ps, instead of utilizing useful skew? This case happens to our hard macros.
 A: in Innovus, use skew group
 set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock/NLVP_CKB } create_ccopt_skew_group \ -name min_skew_group \ -sources path/to/clock/source/CKB \ -sinks $min_skew_group \ -target_insertion_delay 0.500 \ -rank 1 -target_skew 0.000 set_ccopt_property constraints -skew_group min_skew_group ccopt  </description>
@@ -24,19 +24,19 @@ set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock
     
     <item>
       <title></title>
-      <link>//localhost:1313/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</link>
+      <link>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</link>
       <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</guid>
+      <guid>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</guid>
       <description>As shown in the schematic, we have some clock divider that divide root clock by half. While in scan mode, these flip-flops will be bypassed and treated as normal flip-flop that need to be inserted into the scan chain along with leaf flip-flops. But due to the nature of clock tree, clock divider will be in the upper stream and will have a much smaller clock insertion delay. Then it will cause large hold time violation from clock generator flip-flops to normal leaf flip-flops, and these violations cannot be fixed easily.</description>
     </item>
     
     <item>
       <title>My experience with custom digital design</title>
-      <link>//localhost:1313/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</link>
+      <link>/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</link>
       <pubDate>Fri, 06 Jun 2014 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</guid>
+      <guid>/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</guid>
       <description>Background This is the summary of my experience from project LBRAM in Marvell in the year of 2014.
 The first thing: discuss timing/area/power SPEC&amp;rsquo;s in details Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC&amp;rsquo;s, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC&amp;rsquo;s even if they are not accurate.</description>
     </item>

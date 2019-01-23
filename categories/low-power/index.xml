@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Low Power on When Moore&#39;s Law ENDS</title>
-    <link>//localhost:1313/categories/low-power/</link>
+    <link>/categories/low-power/</link>
     <description>Recent content in Low Power on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Sep 2009 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/low-power/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/low-power/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Survey of Low Power Design</title>
-      <link>//localhost:1313/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</link>
+      <link>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</link>
       <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</guid>
+      <guid>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
 &lt;/blockquote&gt;

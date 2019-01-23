@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Life on When Moore&#39;s Law ENDS</title>
-    <link>//localhost:1313/categories/life/</link>
+    <link>/categories/life/</link>
     <description>Recent content in Life on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/life/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/life/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>OK镜使用和保养方法</title>
-      <link>//localhost:1313/blog/life/2018-10-30-ok-lens-tips/</link>
+      <link>/blog/life/2018-10-30-ok-lens-tips/</link>
       <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/2018-10-30-ok-lens-tips/</guid>
+      <guid>/blog/life/2018-10-30-ok-lens-tips/</guid>
       <description> 1. 晚上睡前戴眼镜片  在使用“阿托品”之后至少两小时，以保证药物被吸收。 洗手，并且用厨房纸（不掉纸屑）擦干。 滴眼药水，润湿眼球。 灰色眼镜片是右眼的，GRAY has an R for RIGHT；蓝色眼镜片是左眼的，BLUE has an L for LEFT。 将眼药水注满眼镜片内部；低头，拉开上下眼帘；将眼镜慢慢地水平地放入。 确认眼镜片在眼球正中，否则可以闭眼后，用手指在眼帘外轻推调整。 确认没有大的可见气泡，否则会影响治疗效果。如果有小气泡，可以仰头滴入数滴眼药水，并闭眼转动眼球，将气泡挤出。可重复几次。如果没有明显效果，用洗盘将眼镜片取出，并重新放置。 确认两个眼镜片都放置成功以后，再分别滴一滴眼药水。 如果眼睛痒，可以轻轻按压，但切忌按揉。 如果镜片掉落在桌上或者地上，可以用BLINK药水清洗，同时用手指轻轻搓揉。  2. 早上取眼镜片  各滴一滴眼药水。 用洗盘将镜片取出。注意尽量吸取镜片下边缘，而不要吸取镜片中心，因为镜片中心更薄，容易损坏。如果感觉洗盘吸力不够，可以用厨房纸吸干。 分离洗盘和镜片的时候不要垂直方向硬拉，而要轻轻滑出来。 取完之后滴一滴眼药水。 之后将眼镜片放入ONE-SHOT存储盒，注意分清左右。 将ONE-SHOT药水倒入存储盒，到划线处。放置至少6个小时。如果前一晚未使用，也需要更换ONE-SHOT药水，并放置至少6个小时。 ONE-SHOT药水需要反应6小时之后才会无害，否则会刺激眼睛。它的主要成分是双氧水。  </description>
     </item>
     
     <item>
       <title>FPGA Solution for LiDAR Project</title>
-      <link>//localhost:1313/blog/life/2018-10-23-fpga-solution-for-lidar-project/</link>
+      <link>/blog/life/2018-10-23-fpga-solution-for-lidar-project/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/2018-10-23-fpga-solution-for-lidar-project/</guid>
+      <guid>/blog/life/2018-10-23-fpga-solution-for-lidar-project/</guid>
       <description>1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (https://www.xilinx.com/products/boards-and-kits/zcu111.html)
  Features: XCZU28DR-2FFVG1517E: high-end RFSoC  12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)  Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product  FMC daughter board with high-speed ADC
  FMC163 (https://www.abaco.com/products/fmc163-fpga-mezzanine-card) 1x 12-bit ADC, 4.</description>
@@ -33,19 +33,19 @@
     
     <item>
       <title>《人类简史》读书笔记</title>
-      <link>//localhost:1313/blog/life/2016-12-31-brief-history-of-humankind-note/</link>
+      <link>/blog/life/2016-12-31-brief-history-of-humankind-note/</link>
       <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/2016-12-31-brief-history-of-humankind-note/</guid>
+      <guid>/blog/life/2016-12-31-brief-history-of-humankind-note/</guid>
       <description>&lt;p&gt;对本书的评价：从理性客观中立的工科生思维出发，阐述事实，以科学的语言解释人类发展历程中的众多抉择和现象的成因。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Exercise Log</title>
-      <link>//localhost:1313/blog/life/exercise-log/</link>
+      <link>/blog/life/exercise-log/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/exercise-log/</guid>
+      <guid>/blog/life/exercise-log/</guid>
       <description>2016-01-03 Sun 搬了新家。San Antonio附近有个不错的公园，开车过去很近，也很好停车。周五白天跑了一次，感觉很累。看了一篇知乎的帖子提到了“爱上跑步的十三周”这本书，也讲到了循序渐进的法子。其中有一个评论提到了“跑步控”这个APP，就下载到手机上，晚上去实践了一下。 因为基础较弱，所以以“9周跑5公里”为目标。 第一次训练从较长的热身开始，我以快步走的方式开始热身。五分钟。然后就是相隔一分钟的慢跑和一分钟的快走。有了耳机的提醒，节奏很好掌握。同时还能听自己想听的各种内容，不错。（这个MEE的运动挂耳式耳机的效果也相当不错。）开始很轻松，慢慢的也感觉到有些累了。最后是五分钟的结束调整。简单拉伸了一下，因为毕竟运动量不大，所以没有拉小腿。总时间30分钟，平均11分21秒的配速（呵呵了）。 晚上的公园人很少，或许因为天气比较冷而且飘着零星的小雨。Hoodie保暖效果很好。昏黄的灯光下独自绕圈跑步，和零星的几个散步者点头问好。总共耗时也不长，从出门到进门大概45分钟。开局不错，继续！ 按照计划，每周三次，所以周二、周五、周日。晚上7点吃晚饭（6点半从公司回家），8点半出门，9点半回到家。
 2016-01-05 Tue 这次的训练messed up因为软件的问题搞得没有心情了。当然也断断续续地跑和走了30分钟，出汗的不太多，身体也不是很热。这次的雨下的更大了一些。 发现“跑步控”软件和“爱上跑步的十三周”里面的训练计划不太一样，前者更简单一些而且每个训练的运动时间要短很多（大概一半）。打算先按照“跑步控”的计划来进行，基础打好，不过的确挑战不大。
 2016-01-10 Sun 重新开始！就是用“跑步控”APP，跑步的过程中不锁屏就可以了。效果挺好的。 今天是周日，多穿了一件T在最里面出门了。还是有点飘雨，公园里联系网球的那个哥们儿仍然在。这一次也不如以前更加累了。
@@ -58,28 +58,28 @@
     
     <item>
       <title>《爱上跑步的十三周》</title>
-      <link>//localhost:1313/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/</link>
+      <link>/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/</link>
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/</guid>
+      <guid>/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/</guid>
       <description> 为跑步做好准备  休息并不是避免运动那么简单，它是一个能够让你的身体从疲劳中恢复过来的合理周期。  13周跑步行走计划的技巧摘要  “拖着脚慢跑”：挺起胸，手臂摆动范围小一些，用小碎步跑，不要太高膝关节，尽量不要跳起。把重心放在脚掌的中前部。从步行到跑步要过渡的非常平稳。 每周进行三次训练。如果因为一些原因而不能完成当周的训练，最好在下一周重复这周的课程，然后再继续。 坚持记日志可以帮助你找到任何受伤的根源（1）记录每一次训练的感受，以及在哪里进行训练的（2）你生活中发生了什么事情（比如睡眠、工作繁忙）和其他任何想记录的事情（3）记住保持简单和诚实。 要在健康和没有受伤的状态下训练。保持足够的睡眠来保证健康。膳食平衡。随身携带水瓶，随时补充水。 在行走或慢跑的时候，要会使用你的手臂。有意识的控制手臂动作能够决定你的步伐。 用腹部呼吸。通过强迫呼气来改变呼吸方式。 通过锻炼来增强核心力量。 把大拇指和中指捏在一起来放松你的肩膀。通过把注意力集中到这一小块压力区域来释放上身的压力。  跑步心理学  早上是跑步的最好时段之一，不仅从统计上来看更不容易受伤，而且在一天中早一些计划要做的事情一般都能够完成。 即使最糟糕的事情发生了，你退出了然后不得不回到13周计划的最开始一切从头开始，那又如何呢？身体比以前更好了也更强健了。 利用热身来激励自己。如果经过一天的工作感觉很疲乏，热身可能会有你想象不到的效果。除了能让你的身体为锻炼做好准备并避免受伤以外，热身还可以从心理上让你动起来，给大脑输入更多的氧气，也可以刺激你以给你动力。如果你实在不想跑步，说服自己不管怎样都要做一下热身运动。当热身结束的时候，你可能会发现自己想要跑步了。 提醒自己，训练的进展越大，训练就会变得越容易一些。  成为一个更好的跑步者  交叉训练：参加不同的训练活动。跑步之外再参加一种其他的训练可以让某些肌肉组休息，也可以避免运动员无聊。不同种类的训练可以起到心理上的推动作用。 骑自行车是跑步者通常最喜欢的交叉训练之一。（1）骑自行车训练股四头肌，即大腿前侧肌肉；而跑步则训练绳肌，即大腿后侧肌肉（2）骑自行车还可以开地图。 要记住，游泳不是减肥的好方法，因为水可以使身体的大部分浮起来，所以不会像跑步那样需要燃烧那么多热量。  </description>
     </item>
     
     <item>
       <title>Ask Remote Teams to Create Daily Goals (HBR)</title>
-      <link>//localhost:1313/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</link>
+      <link>/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</link>
       <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</guid>
+      <guid>/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</guid>
       <description>More organizations are starting to adopt a remote work culture. But how do managers stay in sync with what their teams are doing when they can&amp;rsquo;t see them? While it&amp;rsquo;s important to define clear goals early on, you should let remote teams decide on the best paths to reach those goals. Rather than dictating each specific task, give them a vision to work on. Let them hold each other accountable, and ask them to assign themselves daily goals and provide weekly reports.</description>
     </item>
     
     <item>
       <title>《看见》读后感</title>
-      <link>//localhost:1313/blog/life/2015-01-20-kanjian/</link>
+      <link>/blog/life/2015-01-20-kanjian/</link>
       <pubDate>Tue, 20 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/2015-01-20-kanjian/</guid>
+      <guid>/blog/life/2015-01-20-kanjian/</guid>
       <description>再次证实了一个观点：一个人的成熟（见识的增长、能力的提高）是由他的经历决定的，而不是年龄。第一次看到这种观点是在黄铁鹰的《海底捞你学不会》。其中讲述了几位年纪轻轻就担任非常重要职位的海底捞的干部。他们学历不高，但是随着海底捞成长，并一路承担了大量的责任。同样的，柴静年纪轻轻，因为调查记者的身份而经历了大量不同案例，结合自身的思考和领悟，从而获得了不符合其年龄的思想深度。她的勇气，对社会事件的深入思考，对民主社会的深刻观点，都令我自愧不如。
 正所谓：时势造英雄！
 同时，从书中不同的章节也可以看到她的成长。从最开始报道非典的勇气，到后来周正龙拍虎事件对于新闻的思考，以及最后对于社会责任、民主法治和中国这种特殊情况下的新闻报道准则的积极和深入思考。甚至我们都能看到对新闻或者记者是否应该保持中立还是应该带入情感、提供立场这样的问题的理解的再三变化。从中我们能够隐约看到她积极思考和思想成熟的过程。
@@ -89,10 +89,10 @@
     
     <item>
       <title>Be Present - Book Note of *The Passionate Programmer*</title>
-      <link>//localhost:1313/blog/life/2014-08-20-be-present/</link>
+      <link>/blog/life/2014-08-20-be-present/</link>
       <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/life/2014-08-20-be-present/</guid>
+      <guid>/blog/life/2014-08-20-be-present/</guid>
       <description>This was my second time to read this book. You cannot imagine how shock I was when I first read this book on Kindle. So I again bought a hardcopy and want to read it again.
 The topic about &amp;ldquo;present&amp;rdquo; was the first chapter I read the second pass. It so fit to my current circumstance. In Marvell, I have 2 bosses. One is in BJ, while the other is in SC.</description>
     </item>

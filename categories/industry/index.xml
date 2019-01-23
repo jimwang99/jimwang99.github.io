@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Industry on When Moore&#39;s Law ENDS</title>
-    <link>//localhost:1313/categories/industry/</link>
+    <link>/categories/industry/</link>
     <description>Recent content in Industry on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 04 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/industry/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/industry/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RISC-V Summit 2018</title>
-      <link>//localhost:1313/blog/industry/2018-12-04-riscv-summit-2018/</link>
+      <link>/blog/industry/2018-12-04-riscv-summit-2018/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2018-12-04-riscv-summit-2018/</guid>
+      <guid>/blog/industry/2018-12-04-riscv-summit-2018/</guid>
       <description>My notes on RISC-V Summit 2018 at Santa Clara Conventional Center This year&amp;rsquo;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.
 SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chips back to the customer.</description>
     </item>
     
     <item>
       <title>SNUG Silicon Valley 2017 at Santa Clara Conventional Center</title>
-      <link>//localhost:1313/blog/industry/2017-04-30-snug-2017/</link>
+      <link>/blog/industry/2017-04-30-snug-2017/</link>
       <pubDate>Sun, 30 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2017-04-30-snug-2017/</guid>
+      <guid>/blog/industry/2017-04-30-snug-2017/</guid>
       <description>Day 1 Morning  Paper from microsoft Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&amp;rsquo;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity
  Panel: synthesis into the future
  The disruption in advanced nodes (10nm/7nm)
@@ -35,29 +35,29 @@ SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chi
     
     <item>
       <title>Deep learning and Siri by Alex Acero @ Apple</title>
-      <link>//localhost:1313/blog/industry/2017-03-23-deep-learning-in-siri/</link>
+      <link>/blog/industry/2017-03-23-deep-learning-in-siri/</link>
       <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2017-03-23-deep-learning-in-siri/</guid>
+      <guid>/blog/industry/2017-03-23-deep-learning-in-siri/</guid>
       <description>AI and ML Artificial intellegence vs human intellegence The imitation game, eugen Goosman passed the Turing Test, 2014 Alpha Go, deepmind 2015
 Introduction to deep learning Improve on task T with respect to performance metric P based on experience E Perceptron learning (one layer NN): a(i) = a(i-1) + n * {target - output} * A(i) 1974 multi-ayer perceptron with backpropagation training ​ deep learning is old tricks, more computing power, more data makes it possible and powerful Binary classification ​ TouchID, speaker verification, face verification, emal spam, motion detection, credit card fraud N-ary classifiction ​ MNIST (handwriting), speaker identification, word prediction (typing on iphone) Deep learning for speech (Deng, 2010)</description>
     </item>
     
     <item>
       <title>未来的AR应该是什么样子的？</title>
-      <link>//localhost:1313/blog/industry/2017-02-21-ar-future/</link>
+      <link>/blog/industry/2017-02-21-ar-future/</link>
       <pubDate>Tue, 21 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2017-02-21-ar-future/</guid>
+      <guid>/blog/industry/2017-02-21-ar-future/</guid>
       <description>今天去参加一个AI的meetup，碰到了一个连续创业者。他介绍了自己正在做的事情：“改变现有的输入方式，不应该是人给机器输入指令，而应该是机器预测人的需求并作出相应的动作。”，这才是机器的未来。同时他提到输出界面应该AR（增强现实）这种类型的，而不应该是一个显示屏幕。</description>
     </item>
     
     <item>
       <title>Note of &#34;Deep learning for image and video processing tutorial&#34;</title>
-      <link>//localhost:1313/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/</link>
+      <link>/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/</link>
       <pubDate>Sat, 21 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/</guid>
+      <guid>/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/</guid>
       <description>By Jon Shlens and George Toderici from Google Research @ 2017-01-20 Fri
   History
  Convolutional NN: old tech, why suddenly it works?
@@ -71,10 +71,10 @@ Introduction to deep learning Improve on task T with respect to performance metr
     
     <item>
       <title>智能用电的革命</title>
-      <link>//localhost:1313/blog/industry/2017-01-21-smart-grid-revolution/</link>
+      <link>/blog/industry/2017-01-21-smart-grid-revolution/</link>
       <pubDate>Sat, 21 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2017-01-21-smart-grid-revolution/</guid>
+      <guid>/blog/industry/2017-01-21-smart-grid-revolution/</guid>
       <description>一场涉及普通消费者的智能用电革命正在悄然发生。加州政府近年来努力推动这项能源节约革命，在近三年来取得了快速的进步，得到了能源公司和电器制造商的广泛支持。
 Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。但是近年来由于太阳能发电设备的推广力度不断加大，得到了大量消费者的欢迎和支持，催生了prosumer的概念，即producer + consumer。通过政府大力支持的贷款在自家屋顶安装太阳能板，并将发出的电力上网卖给电力公司，同时获得最低单价的用电费用。我的同事中就有不少安装了，或者正在考虑安装这样的设备，表明这样的project即使对于普通的三口或四口之家都是有利可图的。
 智能用电 电网消费有峰有谷，这样的波动由于各个小区域的消费习惯、天气变化等密切相关，而且往往变化迅速，即以分钟为单位反复变化。但是电网负载波动对于电网设备而言是有害的，所以电力公司有非常强烈的意愿通过某些技术手段来消弭这样的波动。这样就提出了“智能用电”的概念，也就是通过对普通的电器进行联网和远程自动控制，来调节小区域内部的用电波动。这样不仅能降低电网设备的负载，也能够有效利用能源，所以对于电力公司和政府决策者而言都是大有益处的。对于普通消费者而言，积极参与“智能用电”项目能够获得的利益来自于电力公司和政府政策补贴。
@@ -84,37 +84,37 @@ Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。�
     
     <item>
       <title>Observation of IC Industory: consolidation of future application</title>
-      <link>//localhost:1313/blog/industry/2016-08-06-observation-of-ic-industry/</link>
+      <link>/blog/industry/2016-08-06-observation-of-ic-industry/</link>
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2016-08-06-observation-of-ic-industry/</guid>
+      <guid>/blog/industry/2016-08-06-observation-of-ic-industry/</guid>
       <description>Recent consolidation progress is going so crazy, mostly because of the IC industry is becoming less and less profitable in every individual application fields. My perspective is that this is not just a consolidation of business itself, but a huge change of IC industry business model. There won&amp;rsquo;t be so many application fields that needs different IC chips, no matter it&amp;rsquo;s analog or digital. In analog world, more and more functionality will be replaced with digital as long as it can.</description>
     </item>
     
     <item>
       <title>IDF (Intel Developer Forum) 2015 San Francisco, Moscone Center</title>
-      <link>//localhost:1313/blog/industry/2015-07-01-idf-2015/</link>
+      <link>/blog/industry/2015-07-01-idf-2015/</link>
       <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2015-07-01-idf-2015/</guid>
+      <guid>/blog/industry/2015-07-01-idf-2015/</guid>
       <description>Intel IoT platform  Intel IoT Platform Sensors and things  Arduino  Gateway  transfer data between different types of networks some data processing as well moving quickly: different types of data flexibility is important for scalability PMA: protocol mapper and adapter (UPAL)  Security  not only data, but also physical security  data storage  physically distributed depend on the data types, and there are so many of them different users use the same data in many different ways provide different sets of APIs at business level  Real world IoT challenges 3 major areas  connected things and devices intelligence and the edge turn data in to insight  different applications  cities: e.</description>
     </item>
     
     <item>
       <title>DAC 2015</title>
-      <link>//localhost:1313/blog/industry/2015-06-19-dac-2015/</link>
+      <link>/blog/industry/2015-06-19-dac-2015/</link>
       <pubDate>Fri, 19 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2015-06-19-dac-2015/</guid>
+      <guid>/blog/industry/2015-06-19-dac-2015/</guid>
       <description> 汽车设计正在成为EDA公司的讨论热点。我个人觉得ANSYS应该算是其中翘楚，因为各种物理模拟器和散热模拟器是他们的传统强项。而诸如Synospsys和Mentor这样的软件厂商就更多的focus在电子系统上，硬件软件全部都有。 From Mindy: EDA厂商每年都要收购大量的小公司来保证自己的创造力。 ARM推出了专门针对Bluetooth 4.0的IP库和demo 有一家叫做flexlogic的公司，专门做FPGA阵列的IP，用于在普通的ASIC芯片上embed FPGA模块。但是这个模块的规模一般不会太大。跟他们现场的工程师聊天发现，他们和Marvell做SSD的Engling已经有合作了，用FPGA做在调试接口上，以少量的PIN来支持多种不同的调试协议。想法还是挺有创意的。  </description>
     </item>
     
     <item>
       <title>ISSCC 2015: evening session - Moore&#39;s Law challenges below 10nm</title>
-      <link>//localhost:1313/blog/industry/2015-02-23-isscc-2015-evening-session/</link>
+      <link>/blog/industry/2015-02-23-isscc-2015-evening-session/</link>
       <pubDate>Mon, 23 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/blog/industry/2015-02-23-isscc-2015-evening-session/</guid>
+      <guid>/blog/industry/2015-02-23-isscc-2015-evening-session/</guid>
       <description>Bohr: moore&amp;rsquo;s law for 50 years
  $mm^2$ is increasing since 130nm heterogeneous intergration: 3D chip is not a replacement of moore&amp;rsquo;s law (quite opposite with Sehat) refocus on general purpose design  Hill: 21 century computer architecture
  21stcentruryarchitecturewhitepaper.pdf - instruction set is not going to be untouchable anymore - energy first - parallelism - specialization - cross-layout design - cross-cutting: break current layers with new interfaces - BREAK LAYERS - software bloat - PHP is 50x slower than BLAC - 3D stack - how to address thermal problem?</description>

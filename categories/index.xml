@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on When Moore&#39;s Law ENDS</title>
-    <link>//localhost:1313/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 03 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Architecture</title>
-      <link>//localhost:1313/categories/architecture/</link>
+      <link>/categories/architecture/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/architecture/</guid>
+      <guid>/categories/architecture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Design</title>
-      <link>//localhost:1313/categories/design/</link>
+      <link>/categories/design/</link>
       <pubDate>Wed, 18 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/design/</guid>
+      <guid>/categories/design/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flow</title>
-      <link>//localhost:1313/categories/flow/</link>
+      <link>/categories/flow/</link>
       <pubDate>Tue, 18 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/flow/</guid>
+      <guid>/categories/flow/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Industry</title>
-      <link>//localhost:1313/categories/industry/</link>
+      <link>/categories/industry/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/industry/</guid>
+      <guid>/categories/industry/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>//localhost:1313/categories/life/</link>
+      <link>/categories/life/</link>
       <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/life/</guid>
+      <guid>/categories/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Low Power</title>
-      <link>//localhost:1313/categories/low-power/</link>
+      <link>/categories/low-power/</link>
       <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/low-power/</guid>
+      <guid>/categories/low-power/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>//localhost:1313/categories/machine-learning/</link>
+      <link>/categories/machine-learning/</link>
       <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/machine-learning/</guid>
+      <guid>/categories/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>My Project</title>
-      <link>//localhost:1313/categories/my-project/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      <link>/categories/my-project/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/my-project/</guid>
+      <guid>/categories/my-project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tool</title>
-      <link>//localhost:1313/categories/tool/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      <link>/categories/tool/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/tool/</guid>
+      <guid>/categories/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tutorial</title>
-      <link>//localhost:1313/categories/tutorial/</link>
+      <link>/categories/tutorial/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/categories/tutorial/</guid>
+      <guid>/categories/tutorial/</guid>
       <description></description>
     </item>
     
