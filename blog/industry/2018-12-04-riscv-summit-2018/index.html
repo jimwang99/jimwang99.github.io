@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RISC-V Summit 2018</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.53" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About Hugo</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">RISC-V Summit 2018</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-12-04T00:00:00">2018-12-04</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/industry" rel="category">industry</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#my-notes-on-risc-v-summit-2018-at-santa-clara-conventional-center">My notes on RISC-V Summit 2018 at Santa Clara Conventional Center</a>
+<ul>
+<li><a href="#sifive-s-biz-model">SiFive&rsquo;s biz model</a></li>
+<li><a href="#sifive-s-freedom-revolution-platform">SiFive&rsquo;s Freedom Revolution platform</a></li>
+<li><a href="#hwacha-v4">Hwacha v4</a></li>
+<li><a href="#platformio-org">platformIO.org</a></li>
+<li><a href="#renode">RENODE</a></li>
+<li><a href="#david-patterson-s-keynote-speech">David Patterson&rsquo;s keynote speech</a></li>
+<li><a href="#yunsup-lee-s-keynote-speech">Yunsup Lee&rsquo;s keynote speech</a></li>
+<li><a href="#rob-nxp-s-keynote-speech">Rob (NXP)&rsquo;s keynote speech</a></li>
+<li><a href="#antmicro-keynote-speech">AntMicro Keynote speech</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="my-notes-on-risc-v-summit-2018-at-santa-clara-conventional-center">My notes on RISC-V Summit 2018 at Santa Clara Conventional Center</h1>
+
+<p>This year&rsquo;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.</p>
+
+<h2 id="sifive-s-biz-model">SiFive&rsquo;s biz model</h2>
+
+<ul>
+<li>Help customer to tape-out prototypes, and sell chips back to the customer.
+
+<ul>
+<li>Fundamentally similar to old school design house</li>
+</ul></li>
+<li>Front-end is a highly configurable design generator, with which customers can easily change the configuration and get the SoC RTL. Then they can drop-in their proprietary IP with TileLink interface.</li>
+</ul>
+
+<h2 id="sifive-s-freedom-revolution-platform">SiFive&rsquo;s Freedom Revolution platform</h2>
+
+<ul>
+<li>SiFive acquired OpenSilicon, and it gets HBM2/Interlaken/&hellip; IPs, with their own 7-series CPU core (dual issue), they now can offer full SoC solution to custmers</li>
+<li>Interlaken: chip-to-chip connection, 1.2Tbps, proprietary (not open source)</li>
+</ul>
+
+<h2 id="hwacha-v4">Hwacha v4</h2>
+
+<ul>
+<li>Vector register file
+
+<ul>
+<li>Different from new RISC-V vector ISA, it merges storage of low precision registers</li>
+</ul></li>
+<li>Sequencer
+
+<ul>
+<li>Systolic bank unit</li>
+<li>Stall free, like TPU</li>
+</ul></li>
+<li>VRU: vector runahead unit
+
+<ul>
+<li>As I understand, it only prefetch the instruction, not the data. Actually the data part is more critical in prefetch</li>
+</ul></li>
+<li>Polymorphic extension
+
+<ul>
+<li>? What?</li>
+</ul></li>
+</ul>
+
+<h2 id="platformio-org">platformIO.org</h2>
+
+<ul>
+<li>Cloud, unified IDE for remote debug and CI</li>
+<li>Free and open-source</li>
+<li>Goes down to OpenOCD level, if we can make the hardware drives to support OpenOCD, then it can support it.</li>
+</ul>
+
+<h2 id="renode">RENODE</h2>
+
+<ul>
+<li>Simulator of RISC-V system</li>
+<li>PolarFire SoC</li>
+</ul>
+
+<h2 id="david-patterson-s-keynote-speech">David Patterson&rsquo;s keynote speech</h2>
+
+<ul>
+<li>Learn from the software side of progress</li>
+<li>When Moore&rsquo;s law stops, people catch up
+
+<ul>
+<li>Apple A12 is better than Intel&rsquo;s CPU in single thread performance</li>
+</ul></li>
+<li>Security challenge nowadays is more and more serious</li>
+<li>RISC-V committee: slower, but last longer</li>
+<li>Open ISA vs. open hardware</li>
+<li>TPU: software controlled memory (instead of cache)</li>
+<li>Serverless computing
+
+<ul>
+<li>Raise the level of abstraction</li>
+<li>Not x86 forever</li>
+</ul></li>
+</ul>
+
+<h2 id="yunsup-lee-s-keynote-speech">Yunsup Lee&rsquo;s keynote speech</h2>
+
+<ul>
+<li>From customer: &ldquo;we need more customization&rdquo;</li>
+<li>EDA on cloud: Cadence + MS Azure</li>
+</ul>
+
+<h2 id="rob-nxp-s-keynote-speech">Rob (NXP)&rsquo;s keynote speech</h2>
+
+<ul>
+<li>Fragmentation is a big concern</li>
+<li>VEGA board + PULP
+
+<ul>
+<li>2x PULP cores + 2x ARM cores</li>
+</ul></li>
+<li>Foundries.io
+
+<ul>
+<li>Software around RISC-V</li>
+</ul></li>
+</ul>
+
+<h2 id="antmicro-keynote-speech">AntMicro Keynote speech</h2>
+
+<ul>
+<li>Several things are going too slow
+
+<ul>
+<li>Linux-enabled cores</li>
+<li>Non-CPU IP is still hard</li>
+<li>Supply chain of making chips is painful</li>
+</ul></li>
+<li>Solution: FPGA</li>
+<li>LiteX: open platform for Linux and MicroSemi</li>
+</ul>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/architecture/2018-12-01-ariane-cpu/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Ariane (PULP series high-performance core)</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/tutorial/2018-12-07-systemc-tutorial/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SystemC Tutorial</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>

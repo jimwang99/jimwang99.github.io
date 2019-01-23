@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design on When Moore&#39;s Law ENDS</title>
+    <link>//localhost:1313/categories/design/</link>
+    <description>Recent content in Design on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 18 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/categories/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Register-based SRAM Read Circuit RTL Example using &#34;generate&#34;</title>
+      <link>//localhost:1313/blog/design/2017-01-18-generate-example/</link>
+      <pubDate>Wed, 18 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/design/2017-01-18-generate-example/</guid>
+      <description>Some parameterized example RTL code for register-based SRAM read circuit using &amp;ldquo;generate&amp;rdquo; feature
+parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &amp;quot;generate&amp;quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &amp;lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &amp;lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp;amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &amp;lt;= word_or; end  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on When Moore&#39;s Law ENDS</title>
+    <link>//localhost:1313/blog/</link>
+    <description>Recent content in Blogs on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test Hugo</title>
+      <link>//localhost:1313/blog/tool/test-hugo/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/test-hugo/</guid>
+      <description>Test Mathjax Inline math equation: $a_1 \times b_2 = c^2$
+Math equation:
+$$f(x,y)=z$$</description>
+    </item>
+    
+    <item>
+      <title>Static Site Generator</title>
+      <link>//localhost:1313/blog/tool/2019-01-19-static-site-generator/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2019-01-19-static-site-generator/</guid>
+      <description>Trying to find the perfect static site generator. Used to use Pelican, because it&amp;rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&amp;rsquo;s used by Github. Their common problems are
+ Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&amp;rsquo;t fit my understanding/requirement.  Now I&amp;rsquo;m trying Hugo, which is written in Go, and it&amp;rsquo;s really fast.</description>
+    </item>
+    
+    <item>
+      <title>Huwcha Accelerator architecture</title>
+      <link>//localhost:1313/blog/architecture/2019-01-03-hwacha-accelerator/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/architecture/2019-01-03-hwacha-accelerator/</guid>
+      <description>From the reading of this paper, &amp;ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&amp;rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
+ We don&amp;rsquo;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I\$, no D\$  Don&amp;rsquo;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth  Uncached TileLink between L1 I\$ (both scalar processor and vector processors) and L2\$ Cached TileLink between L1 D\$ (only in scalar processor)  L2\$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)  Operations of L2\$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests Read from DDR, don&amp;rsquo;t need to send back to the requester Atomic memory operations ALU inside L2 cache banks   Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions JW: why is that necessary?</description>
+    </item>
+    
+    <item>
+      <title>Note of RISC-V Vector ISA Spec v0.6</title>
+      <link>//localhost:1313/blog/architecture/2018-12-15-riscv-v-spec/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/architecture/2018-12-15-riscv-v-spec/</guid>
+      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions  Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit Following little-endian rule ELEN units are packed into VLEN register also Following little-endiam rule  Storage of longer vector  If operand longer than SEW is needed, then Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
+    </item>
+    
+    <item>
+      <title>SystemC Tutorial</title>
+      <link>//localhost:1313/blog/tutorial/2018-12-07-systemc-tutorial/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tutorial/2018-12-07-systemc-tutorial/</guid>
+      <description>// Some simple example #include &amp;lt;systemc.h&amp;gt; SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt; a; sc_in&amp;lt; sc_unit&amp;lt;8&amp;gt; &amp;gt; b; sc_out&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt; f; sc_in&amp;lt;bool&amp;gt; clk; void func() { f.write( a.read() &amp;amp; b.read() ); } SC_CTOR ( seq_and2 ) { SC_CTHREAD(func); sensitive &amp;lt;&amp;lt; clk.neg(); } }  Port &amp;amp; signal  Port  sc_in &amp;amp; sc_out .read() &amp;amp; .write() functions  Signal  sc_signal   Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list  SC_THREAD()  Not commonly used Behavior like initial in Verilog  SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle  sensitive keyword to define the sensitive list  Datatypes  Integers</description>
+    </item>
+    
+    <item>
+      <title>RISC-V Summit 2018</title>
+      <link>//localhost:1313/blog/industry/2018-12-04-riscv-summit-2018/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2018-12-04-riscv-summit-2018/</guid>
+      <description>My notes on RISC-V Summit 2018 at Santa Clara Conventional Center This year&amp;rsquo;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.
+SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chips back to the customer.</description>
+    </item>
+    
+    <item>
+      <title>Ariane (PULP series high-performance core)</title>
+      <link>//localhost:1313/blog/architecture/2018-12-01-ariane-cpu/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/architecture/2018-12-01-ariane-cpu/</guid>
+      <description>Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage  Its fetch stage doesn&amp;rsquo;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
+ There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
+    </item>
+    
+    <item>
+      <title>CPU Architecture Notes</title>
+      <link>//localhost:1313/blog/architecture/2018-11-01-cpu-architecture-notes/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/architecture/2018-11-01-cpu-architecture-notes/</guid>
+      <description>Register renaming To eliminate the false and output data dependency by adding extra physical registers more than architectural registers.
+ Read-after-write (RAW) is true data dependency Write-after-write (WAW) is output data dependency Write-after-read (WAR) is false data dependency  Superscalar Dynamically issue multiple instructions in each cycle to increase IPC.
+ Normally need multi-port register files and ALU to avoid structural hazard. Can be in-order or out-of-order  Re-order buffer For out-of-order execution CPU architecture, results are put into re-order buffer waiting for commit.</description>
+    </item>
+    
+    <item>
+      <title>Cache coherence</title>
+      <link>//localhost:1313/blog/architecture/2018-11-01-cache-coherence/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/architecture/2018-11-01-cache-coherence/</guid>
+      <description>Coherence mechanism Snooping Every cache maintain its own cache state. And when it needs to access a shared address space, it sends snooping messages to all the other caches to either update or invalidate them.
+ Write invalidate: write operation will invalidate all the other shared copies. Others will have to read again from the next level of cache to use it again. Write update: write operation will give the written data to the shared copies and update them accordingly.</description>
+    </item>
+    
+    <item>
+      <title>OK镜使用和保养方法</title>
+      <link>//localhost:1313/blog/life/2018-10-30-ok-lens-tips/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/2018-10-30-ok-lens-tips/</guid>
+      <description> 1. 晚上睡前戴眼镜片  在使用“阿托品”之后至少两小时，以保证药物被吸收。 洗手，并且用厨房纸（不掉纸屑）擦干。 滴眼药水，润湿眼球。 灰色眼镜片是右眼的，GRAY has an R for RIGHT；蓝色眼镜片是左眼的，BLUE has an L for LEFT。 将眼药水注满眼镜片内部；低头，拉开上下眼帘；将眼镜慢慢地水平地放入。 确认眼镜片在眼球正中，否则可以闭眼后，用手指在眼帘外轻推调整。 确认没有大的可见气泡，否则会影响治疗效果。如果有小气泡，可以仰头滴入数滴眼药水，并闭眼转动眼球，将气泡挤出。可重复几次。如果没有明显效果，用洗盘将眼镜片取出，并重新放置。 确认两个眼镜片都放置成功以后，再分别滴一滴眼药水。 如果眼睛痒，可以轻轻按压，但切忌按揉。 如果镜片掉落在桌上或者地上，可以用BLINK药水清洗，同时用手指轻轻搓揉。  2. 早上取眼镜片  各滴一滴眼药水。 用洗盘将镜片取出。注意尽量吸取镜片下边缘，而不要吸取镜片中心，因为镜片中心更薄，容易损坏。如果感觉洗盘吸力不够，可以用厨房纸吸干。 分离洗盘和镜片的时候不要垂直方向硬拉，而要轻轻滑出来。 取完之后滴一滴眼药水。 之后将眼镜片放入ONE-SHOT存储盒，注意分清左右。 将ONE-SHOT药水倒入存储盒，到划线处。放置至少6个小时。如果前一晚未使用，也需要更换ONE-SHOT药水，并放置至少6个小时。 ONE-SHOT药水需要反应6小时之后才会无害，否则会刺激眼睛。它的主要成分是双氧水。  </description>
+    </item>
+    
+    <item>
+      <title>FPGA Solution for LiDAR Project</title>
+      <link>//localhost:1313/blog/life/2018-10-23-fpga-solution-for-lidar-project/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/2018-10-23-fpga-solution-for-lidar-project/</guid>
+      <description>1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (https://www.xilinx.com/products/boards-and-kits/zcu111.html)
+ Features: XCZU28DR-2FFVG1517E: high-end RFSoC  12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)  Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product  FMC daughter board with high-speed ADC
+ FMC163 (https://www.abaco.com/products/fmc163-fpga-mezzanine-card) 1x 12-bit ADC, 4.</description>
+    </item>
+    
+    <item>
+      <title>GCP (Google Cloud Platform)</title>
+      <link>//localhost:1313/blog/tool/2018-10-21-google-cloud-platform-tips/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2018-10-21-google-cloud-platform-tips/</guid>
+      <description>Price of GCP Persistance Disk Can be used to put all the data/eda/os on it.
+    Price (per month) Price (per GB per month)     SSD 50GB $8.50 $0.17   SSD 1TB $174.08 $0.17   HDD 50GB $2.00 $0.04   HDD 200GB $8.00 $0.04   HDD 1TB $39.76 $0.04   Snapshot 50GB $1.30 $0.026    Always on instance (24x7) Can be used as working machine (support VNC) and NFS server</description>
+    </item>
+    
+    <item>
+      <title>Docker for EDA</title>
+      <link>//localhost:1313/blog/tool/2018-10-01-docker-tips/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2018-10-01-docker-tips/</guid>
+      <description>Dockerfile FROM ubuntu:16.04 COPY ./boot.sh /tmp COPY ./hello.sh /tmp RUN /bin/bash /tmp/boot.sh RUN /bin/bash /tmp/hello.sh  boot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wget cd /tmp wget https://www.veripool.org/ftp/verilator-4.004.tgz tar xf verilator*.tgz cd verilator* ./configure make # this step will take sometime make install  hello.sh cd /tmp/verilator* cd ./example/tracing_c make # it will print out some log, and after finish it will generate a directory in the same directory named &amp;quot;logs&amp;quot; who needs to be saved after container exit  Docker how-to notes create a docker image from Dockerfile docker build -t &amp;quot;$(name):$(tag)&amp;quot; .</description>
+    </item>
+    
+    <item>
+      <title>Course Note of *Python: Design Patterns*</title>
+      <link>//localhost:1313/blog/tutorial/2017-05-17-python-design-patterns-note/</link>
+      <pubDate>Wed, 17 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tutorial/2017-05-17-python-design-patterns-note/</guid>
+      <description>The course is on Coursera
+ understanding design patterns  what?  well-known solutions for recurring problems  why?  don&amp;rsquo;t reinvent wheels reuse best practices  characteristics  language neutral dynamic incomplete by design to promote customization  types  creational structual behavioral  OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp;amp; polymorphism  pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers  pattern language  name context problem solution related patterns   creational patterns factory  create and return object on the fly  flexibility of adding new classes  problem</description>
+    </item>
+    
+    <item>
+      <title>Scala First Look</title>
+      <link>//localhost:1313/blog/tutorial/2017-05-14-scala-first-look/</link>
+      <pubDate>Sun, 14 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tutorial/2017-05-14-scala-first-look/</guid>
+      <description>Scala introduction course on LinkedIn. Not very useful, if not using it in real project.
+ introduction  short for Scalable language object-oriented + functional programming  everything is object  including numbers and functions does not include primitive data types  can pass/assign function: functional programming  seamless compatible with Java  runs on JVM, compile to JVM reuse Java libraries and types can call any Java code  REPL interactive shell  read, eval, print, loop   syntax  define: var (variable) vs val (value)  var defines variables that can be changed  but cannot change from one data type to another, ex.</description>
+    </item>
+    
+    <item>
+      <title>GENUS Training Notes</title>
+      <link>//localhost:1313/blog/tutorial/2017-05-05-genus-training/</link>
+      <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tutorial/2017-05-05-genus-training/</guid>
+      <description>The following is my notes of GENUS training course on Cadence&amp;rsquo;s training module
+ Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option   explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&amp;rsquo;s hier instances instances_seq: current module&amp;rsquo;s sequential instances instances_cmb: current module&amp;rsquo;s combinational instancs   libraries hdl_libraries flows  use find to locate objects  ex.</description>
+    </item>
+    
+    <item>
+      <title>SNUG Silicon Valley 2017 at Santa Clara Conventional Center</title>
+      <link>//localhost:1313/blog/industry/2017-04-30-snug-2017/</link>
+      <pubDate>Sun, 30 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2017-04-30-snug-2017/</guid>
+      <description>Day 1 Morning  Paper from microsoft Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&amp;rsquo;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity
+ Panel: synthesis into the future
+ The disruption in advanced nodes (10nm/7nm)
+ Thermal: drives max freq; heating wires degreeds EM lifetime IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&amp;rsquo;s specific attributes, such as thermal/IR to avoid analog/digital interference.</description>
+    </item>
+    
+    <item>
+      <title>WSL (Windows Subsystem Linux) Tips</title>
+      <link>//localhost:1313/blog/tool/2018-11-01-wsl-tips/</link>
+      <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2018-11-01-wsl-tips/</guid>
+      <description>To start gnome-terminal on WSL (Windows Subsystem for Linux) After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.
+To reinstall WSL you should do:
+&amp;gt; lxrun /uninstall /full &amp;gt; lxrun /install  Then you will see
+&amp;gt; lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 16.04.2 LTS Release: 16.04 Codename: xenial  Some X11 apps like xclocks works fine with Xming, but &amp;ldquo;gnome-terminal&amp;rdquo; still have some problem.</description>
+    </item>
+    
+    <item>
+      <title>Install Python Offline</title>
+      <link>//localhost:1313/blog/tool/2017-04-24-install-python-offline/</link>
+      <pubDate>Mon, 24 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2017-04-24-install-python-offline/</guid>
+      <description>In general, things like Anaconda Server are designed to make this sort of workflow easier.
+Some suggested workarounds:
+ Reproduce your install on another machine with internet (save conda list &amp;ndash;export to a file and conda install &amp;ndash;file). Then use conda update on that machine to generate and download the packages. One tip that could be helpful is if you take several conda packages and tar them up into a flat tarball you can use conda to install that tarball and it will install all the packages.</description>
+    </item>
+    
+    <item>
+      <title>Case Study: Clock Skew Control</title>
+      <link>//localhost:1313/blog/flow/2017-04-18-case-study-clock-skew-control/</link>
+      <pubDate>Tue, 18 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/flow/2017-04-18-case-study-clock-skew-control/</guid>
+      <description>Question: how to control the clock skew between a group of clocks to be minimum, say less than 30ps, instead of utilizing useful skew? This case happens to our hard macros.
+A: in Innovus, use skew group
+set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock/NLVP_CKB } create_ccopt_skew_group \ -name min_skew_group \ -sources path/to/clock/source/CKB \ -sinks $min_skew_group \ -target_insertion_delay 0.500 \ -rank 1 -target_skew 0.000 set_ccopt_property constraints -skew_group min_skew_group ccopt  </description>
+    </item>
+    
+    <item>
+      <title>INNOVUS Training Notes</title>
+      <link>//localhost:1313/blog/tutorial/2017-04-01-innovus-training/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tutorial/2017-04-01-innovus-training/</guid>
+      <description>The following is my notes of INNOVUS training course on Cadence&amp;rsquo;s training module
+ Module 02: overview  &amp;ldquo;gift&amp;rdquo; directory contains lots of useful scripts to help productivity Independent &amp;ldquo;viewlog&amp;rdquo; utility or &amp;ldquo;Tools-&amp;gt;Log Viewer&amp;rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI   Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .</description>
+    </item>
+    
+    <item>
+      <title>Deep learning and Siri by Alex Acero @ Apple</title>
+      <link>//localhost:1313/blog/industry/2017-03-23-deep-learning-in-siri/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2017-03-23-deep-learning-in-siri/</guid>
+      <description>AI and ML Artificial intellegence vs human intellegence The imitation game, eugen Goosman passed the Turing Test, 2014 Alpha Go, deepmind 2015
+Introduction to deep learning Improve on task T with respect to performance metric P based on experience E Perceptron learning (one layer NN): a(i) = a(i-1) + n * {target - output} * A(i) 1974 multi-ayer perceptron with backpropagation training ​ deep learning is old tricks, more computing power, more data makes it possible and powerful Binary classification ​ TouchID, speaker verification, face verification, emal spam, motion detection, credit card fraud N-ary classifiction ​ MNIST (handwriting), speaker identification, word prediction (typing on iphone) Deep learning for speech (Deng, 2010)</description>
+    </item>
+    
+    <item>
+      <title>Deep learning with GPUs in production</title>
+      <link>//localhost:1313/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</guid>
+      <description>Start-up: python -&amp;gt; enterprise: C/Java/Scala, more engineers, faster Research: quick result and prototyping
+GPU? Data movement between GPU and CPU is important
+[ ] fast.ai: class (high school math)
+infrastructure: spark/flink scheduler problem distributed file system
+Problems to think about when running works on GPU clusters memory is relatively small throughput, jobs are more than matrix math resource provisioning: how many resource we need? GPU/CPU/RAM GPU allocation per job Python &amp;lt;-&amp;gt; Java overhead, defeats the points of GPUs</description>
+    </item>
+    
+    <item>
+      <title>未来的AR应该是什么样子的？</title>
+      <link>//localhost:1313/blog/industry/2017-02-21-ar-future/</link>
+      <pubDate>Tue, 21 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2017-02-21-ar-future/</guid>
+      <description>今天去参加一个AI的meetup，碰到了一个连续创业者。他介绍了自己正在做的事情：“改变现有的输入方式，不应该是人给机器输入指令，而应该是机器预测人的需求并作出相应的动作。”，这才是机器的未来。同时他提到输出界面应该AR（增强现实）这种类型的，而不应该是一个显示屏幕。</description>
+    </item>
+    
+    <item>
+      <title>Note of &#34;Deep learning for image and video processing tutorial&#34;</title>
+      <link>//localhost:1313/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/</link>
+      <pubDate>Sat, 21 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/</guid>
+      <description>By Jon Shlens and George Toderici from Google Research @ 2017-01-20 Fri
+  History
+ Convolutional NN: old tech, why suddenly it works?
+ Scale: 60M parameters
+  At least 60M +1 data point to fit these parameters
+ SIMD hardware (GPU)
+ Domain transfer
+ Use trained CNN (with large data set) on some other applications with limited data set
+  CNN (convolutional neuron network)</description>
+    </item>
+    
+    <item>
+      <title>智能用电的革命</title>
+      <link>//localhost:1313/blog/industry/2017-01-21-smart-grid-revolution/</link>
+      <pubDate>Sat, 21 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2017-01-21-smart-grid-revolution/</guid>
+      <description>一场涉及普通消费者的智能用电革命正在悄然发生。加州政府近年来努力推动这项能源节约革命，在近三年来取得了快速的进步，得到了能源公司和电器制造商的广泛支持。
+Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。但是近年来由于太阳能发电设备的推广力度不断加大，得到了大量消费者的欢迎和支持，催生了prosumer的概念，即producer + consumer。通过政府大力支持的贷款在自家屋顶安装太阳能板，并将发出的电力上网卖给电力公司，同时获得最低单价的用电费用。我的同事中就有不少安装了，或者正在考虑安装这样的设备，表明这样的project即使对于普通的三口或四口之家都是有利可图的。
+智能用电 电网消费有峰有谷，这样的波动由于各个小区域的消费习惯、天气变化等密切相关，而且往往变化迅速，即以分钟为单位反复变化。但是电网负载波动对于电网设备而言是有害的，所以电力公司有非常强烈的意愿通过某些技术手段来消弭这样的波动。这样就提出了“智能用电”的概念，也就是通过对普通的电器进行联网和远程自动控制，来调节小区域内部的用电波动。这样不仅能降低电网设备的负载，也能够有效利用能源，所以对于电力公司和政府决策者而言都是大有益处的。对于普通消费者而言，积极参与“智能用电”项目能够获得的利益来自于电力公司和政府政策补贴。
+举例说明，热水器和烘干机之类的设备是耗电量大户，但是往往对于时效性要求不是很高。如果能够加入特定的芯片进行联网控制其功率，取代恒定的大功率输出，就能够起到平衡电网负载波动的左右。代价可能仅仅是将原有的工作时间延长一些而已。再者就是目前越来越普及的电动车。对于普通使用者而言，充电时间远远大于使用时间。如果在足够的充电时间内自动选择电网负载最低的时段进行充电就能够获得最低的电价。
+另外的小事 加州一些城市的商业区或者大型shopping center开始自行安装一些电动车充电桩。这些充电桩在非高峰期（周末或者节假日）是免费的。这样就吸引一些开电动车的顾客来充电和消费。</description>
+    </item>
+    
+    <item>
+      <title>Register-based SRAM Read Circuit RTL Example using &#34;generate&#34;</title>
+      <link>//localhost:1313/blog/design/2017-01-18-generate-example/</link>
+      <pubDate>Wed, 18 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/design/2017-01-18-generate-example/</guid>
+      <description>Some parameterized example RTL code for register-based SRAM read circuit using &amp;ldquo;generate&amp;rdquo; feature
+parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &amp;quot;generate&amp;quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &amp;lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &amp;lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp;amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &amp;lt;= word_or; end  </description>
+    </item>
+    
+    <item>
+      <title>SystemVerilog for Design Note</title>
+      <link>//localhost:1313/blog/tutorial/2017-01-10-systemverilog-for-design-note/</link>
+      <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tutorial/2017-01-10-systemverilog-for-design-note/</guid>
+      <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;rdquo;. As a non-full-time RTL designer, it has opened my mind. But still, I&amp;rsquo;m sad about the antient tool that we are using to design hardware.
+ Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation   referencing  :: the scope resolution operator  package_name::package_member  use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically  import package_name::*  what is used will be imported   $unit declaration space  TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&amp;rsquo;s called  cannot use static variables, which are supposed to be shared by all instances   $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&amp;rsquo;s not global  if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module  each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky  TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function ~~~verilog // filename: def.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>//localhost:1313/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</link>
+      <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</guid>
+      <description>As shown in the schematic, we have some clock divider that divide root clock by half. While in scan mode, these flip-flops will be bypassed and treated as normal flip-flop that need to be inserted into the scan chain along with leaf flip-flops. But due to the nature of clock tree, clock divider will be in the upper stream and will have a much smaller clock insertion delay. Then it will cause large hold time violation from clock generator flip-flops to normal leaf flip-flops, and these violations cannot be fixed easily.</description>
+    </item>
+    
+    <item>
+      <title>《人类简史》读书笔记</title>
+      <link>//localhost:1313/blog/life/2016-12-31-brief-history-of-humankind-note/</link>
+      <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/2016-12-31-brief-history-of-humankind-note/</guid>
+      <description>&lt;p&gt;对本书的评价：从理性客观中立的工科生思维出发，阐述事实，以科学的语言解释人类发展历程中的众多抉择和现象的成因。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Observation of IC Industory: consolidation of future application</title>
+      <link>//localhost:1313/blog/industry/2016-08-06-observation-of-ic-industry/</link>
+      <pubDate>Sat, 06 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2016-08-06-observation-of-ic-industry/</guid>
+      <description>Recent consolidation progress is going so crazy, mostly because of the IC industry is becoming less and less profitable in every individual application fields. My perspective is that this is not just a consolidation of business itself, but a huge change of IC industry business model. There won&amp;rsquo;t be so many application fields that needs different IC chips, no matter it&amp;rsquo;s analog or digital. In analog world, more and more functionality will be replaced with digital as long as it can.</description>
+    </item>
+    
+    <item>
+      <title>Exercise Log</title>
+      <link>//localhost:1313/blog/life/exercise-log/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/exercise-log/</guid>
+      <description>2016-01-03 Sun 搬了新家。San Antonio附近有个不错的公园，开车过去很近，也很好停车。周五白天跑了一次，感觉很累。看了一篇知乎的帖子提到了“爱上跑步的十三周”这本书，也讲到了循序渐进的法子。其中有一个评论提到了“跑步控”这个APP，就下载到手机上，晚上去实践了一下。 因为基础较弱，所以以“9周跑5公里”为目标。 第一次训练从较长的热身开始，我以快步走的方式开始热身。五分钟。然后就是相隔一分钟的慢跑和一分钟的快走。有了耳机的提醒，节奏很好掌握。同时还能听自己想听的各种内容，不错。（这个MEE的运动挂耳式耳机的效果也相当不错。）开始很轻松，慢慢的也感觉到有些累了。最后是五分钟的结束调整。简单拉伸了一下，因为毕竟运动量不大，所以没有拉小腿。总时间30分钟，平均11分21秒的配速（呵呵了）。 晚上的公园人很少，或许因为天气比较冷而且飘着零星的小雨。Hoodie保暖效果很好。昏黄的灯光下独自绕圈跑步，和零星的几个散步者点头问好。总共耗时也不长，从出门到进门大概45分钟。开局不错，继续！ 按照计划，每周三次，所以周二、周五、周日。晚上7点吃晚饭（6点半从公司回家），8点半出门，9点半回到家。
+2016-01-05 Tue 这次的训练messed up因为软件的问题搞得没有心情了。当然也断断续续地跑和走了30分钟，出汗的不太多，身体也不是很热。这次的雨下的更大了一些。 发现“跑步控”软件和“爱上跑步的十三周”里面的训练计划不太一样，前者更简单一些而且每个训练的运动时间要短很多（大概一半）。打算先按照“跑步控”的计划来进行，基础打好，不过的确挑战不大。
+2016-01-10 Sun 重新开始！就是用“跑步控”APP，跑步的过程中不锁屏就可以了。效果挺好的。 今天是周日，多穿了一件T在最里面出门了。还是有点飘雨，公园里联系网球的那个哥们儿仍然在。这一次也不如以前更加累了。
+2016-01-12 Tue 重新开始之后的第二次训练。晚饭吃的有点晚有点多。8点半从家里出发的。温暖的小风刮着，公园里有好多人在打网球。APP又抽风了，设定了不锁屏之后好了。胃里面食物好像没有消化完的样子，有点顶着，跑步的震动搞得有点不太舒服。下次早点下班，早点吃饭，晚饭吃少一些。 由于APP抽风的关系，多跑了大概一半左右吧。不感觉累，但是晚上听了一半的课就睡了，而且据说呼噜震天。和白天工作比较累也有关系。
+2016-01-18 Mon 上次跑步没写，这次接上吧。周日下大雨，周一晚上继续。第二周的第一次训练。一分半慢跑+两分钟快走。前半段明显感觉要累一些，终于有了一点坚持下去的感觉。不过到了后半段，尤其是在最后一个interval的时候感觉意犹未尽。恩，很有意思。 由于周末下雨的缘故，空气中湿度挺大的，公园的小路上积水也很多，需要小心谨慎，而且有一小段积水挡住了去路，只能慢慢通过。除了我以外，打网球的很多，也还有一个哥们儿在绕着操场跑。
+2016-01-20 Wed 今天全家出动。葫芦和葫芦妈去游乐场，我去跑步。适应了新的节奏，跑的很顺利，也跑得比以前快了，因为已经上升到2.9公里了。呵呵……还是很少。 图书馆的人真的很多啊，真有不少人晚上去看书的。真的是一个学习型社会。
+2016-07-23 Sat 嗯，大半年没动了。重启吧。今天是第一周第三次。前两次是周一和周三。Memorial park in Cupertino的问题是路是水泥的，而且由于Pokemon Go的突然盛行，满坑满谷都是人。不过第一周跑下来情况很好，毕竟离家里近，即使晚上十点出发回来也就十一点而已，还能安稳的洗澡睡觉。貌似出去跑的意愿也强烈了一些。 本来的计划是周一周三周五三次的，但是周五实在心情不好，所以没去。其实我发现跑完之后心情能够得到缓解。以后还是要逼着自己出去跑步才行。
+2016-08-21 Sun 这一周葫芦开始上kindergarten了因为需要早起给她安排上学的活动,所以周二和周四早上跑了两次步</description>
+    </item>
+    
+    <item>
+      <title>《爱上跑步的十三周》</title>
+      <link>//localhost:1313/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/</guid>
+      <description> 为跑步做好准备  休息并不是避免运动那么简单，它是一个能够让你的身体从疲劳中恢复过来的合理周期。  13周跑步行走计划的技巧摘要  “拖着脚慢跑”：挺起胸，手臂摆动范围小一些，用小碎步跑，不要太高膝关节，尽量不要跳起。把重心放在脚掌的中前部。从步行到跑步要过渡的非常平稳。 每周进行三次训练。如果因为一些原因而不能完成当周的训练，最好在下一周重复这周的课程，然后再继续。 坚持记日志可以帮助你找到任何受伤的根源（1）记录每一次训练的感受，以及在哪里进行训练的（2）你生活中发生了什么事情（比如睡眠、工作繁忙）和其他任何想记录的事情（3）记住保持简单和诚实。 要在健康和没有受伤的状态下训练。保持足够的睡眠来保证健康。膳食平衡。随身携带水瓶，随时补充水。 在行走或慢跑的时候，要会使用你的手臂。有意识的控制手臂动作能够决定你的步伐。 用腹部呼吸。通过强迫呼气来改变呼吸方式。 通过锻炼来增强核心力量。 把大拇指和中指捏在一起来放松你的肩膀。通过把注意力集中到这一小块压力区域来释放上身的压力。  跑步心理学  早上是跑步的最好时段之一，不仅从统计上来看更不容易受伤，而且在一天中早一些计划要做的事情一般都能够完成。 即使最糟糕的事情发生了，你退出了然后不得不回到13周计划的最开始一切从头开始，那又如何呢？身体比以前更好了也更强健了。 利用热身来激励自己。如果经过一天的工作感觉很疲乏，热身可能会有你想象不到的效果。除了能让你的身体为锻炼做好准备并避免受伤以外，热身还可以从心理上让你动起来，给大脑输入更多的氧气，也可以刺激你以给你动力。如果你实在不想跑步，说服自己不管怎样都要做一下热身运动。当热身结束的时候，你可能会发现自己想要跑步了。 提醒自己，训练的进展越大，训练就会变得越容易一些。  成为一个更好的跑步者  交叉训练：参加不同的训练活动。跑步之外再参加一种其他的训练可以让某些肌肉组休息，也可以避免运动员无聊。不同种类的训练可以起到心理上的推动作用。 骑自行车是跑步者通常最喜欢的交叉训练之一。（1）骑自行车训练股四头肌，即大腿前侧肌肉；而跑步则训练绳肌，即大腿后侧肌肉（2）骑自行车还可以开地图。 要记住，游泳不是减肥的好方法，因为水可以使身体的大部分浮起来，所以不会像跑步那样需要燃烧那么多热量。  </description>
+    </item>
+    
+    <item>
+      <title>[Cousera Note] Machine Learning Foundations: A Case Study Approach</title>
+      <link>//localhost:1313/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</link>
+      <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</guid>
+      <description>1 Week1: Welcome  1.1 Introduction 1.1.1 real world case based  - regression: house price prediction - classificiation: sentiment analysis - clustering &amp;amp; retrieval: finding doc - maxtrix factorization &amp;amp; dimensionality reduction: recommending products  1.1.2 requirement  math: calculas &amp;amp; algebra python  1.1.3 capstone project 1.2 iPython Notebook Python command and its outputs Markdown for doc 1.3 SFrames 1.3.1 GraphLab Canvas  - any data structure *.</description>
+    </item>
+    
+    <item>
+      <title>Python and Freemind: ElementTree</title>
+      <link>//localhost:1313/blog/tool/2015-07-19-python-and-freemind-elementtree/</link>
+      <pubDate>Sun, 19 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2015-07-19-python-and-freemind-elementtree/</guid>
+      <description>我曾经自己用Python写过一个小工具来parse Freemind文件（XML格式）然后生成RestructureText和Latex格式。这个小工具的目的是为了实践我的“源文件唯一”的理念。因为我的简历（包括既往项目总结）需要保存为两种不同格式，一个为了放在个人网站上所以是HTML，另一个当然是PDF格式。
+今天瞎琢磨的时候发现，其实Python对于XML文件格式支持的极好。The ElementTree XML API这个模块将XML parse成一个Tree。
+Each element has a number of properties associated with it: a tag which is a string identifying what kind of data this element represents (the element type, in other words). a number of attributes, stored in a Python dictionary. a text string. an optional tail string. a number of child elements, stored in a Python sequence  Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。</description>
+    </item>
+    
+    <item>
+      <title>Ask Remote Teams to Create Daily Goals (HBR)</title>
+      <link>//localhost:1313/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</link>
+      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</guid>
+      <description>More organizations are starting to adopt a remote work culture. But how do managers stay in sync with what their teams are doing when they can&amp;rsquo;t see them? While it&amp;rsquo;s important to define clear goals early on, you should let remote teams decide on the best paths to reach those goals. Rather than dictating each specific task, give them a vision to work on. Let them hold each other accountable, and ask them to assign themselves daily goals and provide weekly reports.</description>
+    </item>
+    
+    <item>
+      <title>IDF (Intel Developer Forum) 2015 San Francisco, Moscone Center</title>
+      <link>//localhost:1313/blog/industry/2015-07-01-idf-2015/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2015-07-01-idf-2015/</guid>
+      <description>Intel IoT platform  Intel IoT Platform Sensors and things  Arduino  Gateway  transfer data between different types of networks some data processing as well moving quickly: different types of data flexibility is important for scalability PMA: protocol mapper and adapter (UPAL)  Security  not only data, but also physical security  data storage  physically distributed depend on the data types, and there are so many of them different users use the same data in many different ways provide different sets of APIs at business level  Real world IoT challenges 3 major areas  connected things and devices intelligence and the edge turn data in to insight  different applications  cities: e.</description>
+    </item>
+    
+    <item>
+      <title>DAC 2015</title>
+      <link>//localhost:1313/blog/industry/2015-06-19-dac-2015/</link>
+      <pubDate>Fri, 19 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2015-06-19-dac-2015/</guid>
+      <description> 汽车设计正在成为EDA公司的讨论热点。我个人觉得ANSYS应该算是其中翘楚，因为各种物理模拟器和散热模拟器是他们的传统强项。而诸如Synospsys和Mentor这样的软件厂商就更多的focus在电子系统上，硬件软件全部都有。 From Mindy: EDA厂商每年都要收购大量的小公司来保证自己的创造力。 ARM推出了专门针对Bluetooth 4.0的IP库和demo 有一家叫做flexlogic的公司，专门做FPGA阵列的IP，用于在普通的ASIC芯片上embed FPGA模块。但是这个模块的规模一般不会太大。跟他们现场的工程师聊天发现，他们和Marvell做SSD的Engling已经有合作了，用FPGA做在调试接口上，以少量的PIN来支持多种不同的调试协议。想法还是挺有创意的。  </description>
+    </item>
+    
+    <item>
+      <title>ISSCC 2015: evening session - Moore&#39;s Law challenges below 10nm</title>
+      <link>//localhost:1313/blog/industry/2015-02-23-isscc-2015-evening-session/</link>
+      <pubDate>Mon, 23 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/industry/2015-02-23-isscc-2015-evening-session/</guid>
+      <description>Bohr: moore&amp;rsquo;s law for 50 years
+ $mm^2$ is increasing since 130nm heterogeneous intergration: 3D chip is not a replacement of moore&amp;rsquo;s law (quite opposite with Sehat) refocus on general purpose design  Hill: 21 century computer architecture
+ 21stcentruryarchitecturewhitepaper.pdf - instruction set is not going to be untouchable anymore - energy first - parallelism - specialization - cross-layout design - cross-cutting: break current layers with new interfaces - BREAK LAYERS - software bloat - PHP is 50x slower than BLAC - 3D stack - how to address thermal problem?</description>
+    </item>
+    
+    <item>
+      <title>《看见》读后感</title>
+      <link>//localhost:1313/blog/life/2015-01-20-kanjian/</link>
+      <pubDate>Tue, 20 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/2015-01-20-kanjian/</guid>
+      <description>再次证实了一个观点：一个人的成熟（见识的增长、能力的提高）是由他的经历决定的，而不是年龄。第一次看到这种观点是在黄铁鹰的《海底捞你学不会》。其中讲述了几位年纪轻轻就担任非常重要职位的海底捞的干部。他们学历不高，但是随着海底捞成长，并一路承担了大量的责任。同样的，柴静年纪轻轻，因为调查记者的身份而经历了大量不同案例，结合自身的思考和领悟，从而获得了不符合其年龄的思想深度。她的勇气，对社会事件的深入思考，对民主社会的深刻观点，都令我自愧不如。
+正所谓：时势造英雄！
+同时，从书中不同的章节也可以看到她的成长。从最开始报道非典的勇气，到后来周正龙拍虎事件对于新闻的思考，以及最后对于社会责任、民主法治和中国这种特殊情况下的新闻报道准则的积极和深入思考。甚至我们都能看到对新闻或者记者是否应该保持中立还是应该带入情感、提供立场这样的问题的理解的再三变化。从中我们能够隐约看到她积极思考和思想成熟的过程。
+所以还应该再加一句：机会总是给有准备的人！
+这是一本值得再读一次的书。</description>
+    </item>
+    
+    <item>
+      <title>Be Present - Book Note of *The Passionate Programmer*</title>
+      <link>//localhost:1313/blog/life/2014-08-20-be-present/</link>
+      <pubDate>Wed, 20 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/life/2014-08-20-be-present/</guid>
+      <description>This was my second time to read this book. You cannot imagine how shock I was when I first read this book on Kindle. So I again bought a hardcopy and want to read it again.
+The topic about &amp;ldquo;present&amp;rdquo; was the first chapter I read the second pass. It so fit to my current circumstance. In Marvell, I have 2 bosses. One is in BJ, while the other is in SC.</description>
+    </item>
+    
+    <item>
+      <title>My experience with custom digital design</title>
+      <link>//localhost:1313/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</link>
+      <pubDate>Fri, 06 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</guid>
+      <description>Background This is the summary of my experience from project LBRAM in Marvell in the year of 2014.
+The first thing: discuss timing/area/power SPEC&amp;rsquo;s in details Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC&amp;rsquo;s, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC&amp;rsquo;s even if they are not accurate.</description>
+    </item>
+    
+    <item>
+      <title>Survey of Low Power Design</title>
+      <link>//localhost:1313/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</link>
+      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

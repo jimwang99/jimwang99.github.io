@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Note of &#34;Deep learning for image and video processing tutorial&#34;</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.53" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About Hugo</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Note of &#34;Deep learning for image and video processing tutorial&#34;</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-01-21T00:00:00">2017-01-21</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/industry" rel="category">industry</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<blockquote>
+<p>By Jon Shlens and George Toderici from Google Research @ 2017-01-20 Fri</p>
+</blockquote>
+
+<ul>
+<li><p>History</p>
+
+<ul>
+<li><p>Convolutional NN: old tech, why suddenly it works?</p></li>
+
+<li><p>Scale: 60M parameters</p></li>
+</ul></li>
+
+<li><p>At least 60M +1 data point to fit these parameters</p></li>
+
+<li><p>SIMD hardware (GPU)</p>
+
+<ul>
+<li><p>Domain transfer</p></li>
+
+<li><p>Use trained CNN (with large data set) on some other applications with limited data set</p></li>
+</ul></li>
+
+<li><p>CNN (convolutional neuron network)</p>
+
+<ul>
+<li><p>Toy model of a neuron</p></li>
+
+<li><p>Sum over weighted input + nonlinear activation function to output</p></li>
+
+<li><p>Very little relationship with real neuron</p></li>
+
+<li><p>Softmax classifier</p></li>
+
+<li><p>Learning: cross-entropy loss (cost function)</p></li>
+
+<li><p>Gradient descent with <strong>back-propagation</strong></p></li>
+
+<li><p>Optimization is HIGHLY non-convex, and works on O(1M) dimensions</p></li>
+
+<li><p>Baseline task: MIST</p></li>
+
+<li><p>Handwritten digits recoginition</p></li>
+
+<li><p>Problem: input image size could blow up with more pixel</p></li>
+
+<li><p>CNN arch fundamentals</p></li>
+
+<li><p>Pre-choice parameter</p></li>
+</ul></li>
+
+<li><p>Size of the filter</p></li>
+
+<li><p>Stride: overlapping while sliding</p></li>
+
+<li><p>Padding: what to do at the edge</p></li>
+
+<li><p>Input depth / output depth (&lt; 1024)</p>
+
+<ul>
+<li>Learned by system</li>
+</ul></li>
+
+<li><p>The parameter inside the filter</p></li>
+
+<li><p>Advances in network arch</p>
+
+<ul>
+<li><p>Types</p></li>
+
+<li><p>AlexNet</p></li>
+
+<li><p>Inception</p></li>
+
+<li><p>BN-Inception</p></li>
+
+<li><p>ResNet</p></li>
+
+<li><p>2 parts</p></li>
+
+<li><p>Convolutional</p></li>
+</ul></li>
+
+<li><p>Less parameters, more computational intense</p>
+
+<ul>
+<li><p>Fully connected</p></li>
+
+<li><p>Themes in inception</p></li>
+
+<li><p>Network-in-network</p></li>
+</ul></li>
+
+<li><p>Dimension reduction</p>
+
+<ul>
+<li><p>Multi-scale</p></li>
+
+<li><p>Covariate shifts</p></li>
+
+<li><p>Batch normalization (BN)</p></li>
+</ul></li>
+
+<li><p>Image embedding and captioning</p>
+
+<ul>
+<li><p>Embedding vs classification</p></li>
+
+<li><p>Embedding: out-of-box information</p></li>
+
+<li><p>Language model</p></li>
+
+<li><p>Not words, but a sequence of words</p></li>
+
+<li><p>RNN (recurrent neuron networks)</p></li>
+
+<li><p>State is a function of previous state and inputs</p></li>
+
+<li><p>Training</p></li>
+</ul></li>
+
+<li><p>Unrolling trick</p>
+
+<ul>
+<li>Long short term memory (LSTM)</li>
+</ul></li>
+
+<li><p>Popular RNN</p></li>
+
+<li><p>Predicting in Pixel Space</p>
+
+<ul>
+<li><p>Autoencoder: dimension reduction tool</p></li>
+
+<li><p>Convolution encoder and decoder</p></li>
+
+<li><p>Deconvolution: upconvolutions</p></li>
+</ul></li>
+
+<li><p>Video</p>
+
+<ul>
+<li><p>Hard</p></li>
+
+<li><p>Computantional intensive</p></li>
+
+<li><p>Dataset is hard</p></li>
+</ul></li>
+</ul>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/industry/2017-01-21-smart-grid-revolution/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">智能用电的革命</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/industry/2017-02-21-ar-future/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">未来的AR应该是什么样子的？</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>

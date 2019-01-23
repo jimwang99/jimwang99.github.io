@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tool on When Moore&#39;s Law ENDS</title>
+    <link>//localhost:1313/categories/tool/</link>
+    <description>Recent content in Tool on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/categories/tool/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test Hugo</title>
+      <link>//localhost:1313/blog/tool/test-hugo/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/test-hugo/</guid>
+      <description>Test Mathjax Inline math equation: $a_1 \times b_2 = c^2$
+Math equation:
+$$f(x,y)=z$$</description>
+    </item>
+    
+    <item>
+      <title>Static Site Generator</title>
+      <link>//localhost:1313/blog/tool/2019-01-19-static-site-generator/</link>
+      <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2019-01-19-static-site-generator/</guid>
+      <description>Trying to find the perfect static site generator. Used to use Pelican, because it&amp;rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&amp;rsquo;s used by Github. Their common problems are
+ Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&amp;rsquo;t fit my understanding/requirement.  Now I&amp;rsquo;m trying Hugo, which is written in Go, and it&amp;rsquo;s really fast.</description>
+    </item>
+    
+    <item>
+      <title>GCP (Google Cloud Platform)</title>
+      <link>//localhost:1313/blog/tool/2018-10-21-google-cloud-platform-tips/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2018-10-21-google-cloud-platform-tips/</guid>
+      <description>Price of GCP Persistance Disk Can be used to put all the data/eda/os on it.
+    Price (per month) Price (per GB per month)     SSD 50GB $8.50 $0.17   SSD 1TB $174.08 $0.17   HDD 50GB $2.00 $0.04   HDD 200GB $8.00 $0.04   HDD 1TB $39.76 $0.04   Snapshot 50GB $1.30 $0.026    Always on instance (24x7) Can be used as working machine (support VNC) and NFS server</description>
+    </item>
+    
+    <item>
+      <title>Docker for EDA</title>
+      <link>//localhost:1313/blog/tool/2018-10-01-docker-tips/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2018-10-01-docker-tips/</guid>
+      <description>Dockerfile FROM ubuntu:16.04 COPY ./boot.sh /tmp COPY ./hello.sh /tmp RUN /bin/bash /tmp/boot.sh RUN /bin/bash /tmp/hello.sh  boot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wget cd /tmp wget https://www.veripool.org/ftp/verilator-4.004.tgz tar xf verilator*.tgz cd verilator* ./configure make # this step will take sometime make install  hello.sh cd /tmp/verilator* cd ./example/tracing_c make # it will print out some log, and after finish it will generate a directory in the same directory named &amp;quot;logs&amp;quot; who needs to be saved after container exit  Docker how-to notes create a docker image from Dockerfile docker build -t &amp;quot;$(name):$(tag)&amp;quot; .</description>
+    </item>
+    
+    <item>
+      <title>WSL (Windows Subsystem Linux) Tips</title>
+      <link>//localhost:1313/blog/tool/2018-11-01-wsl-tips/</link>
+      <pubDate>Tue, 25 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2018-11-01-wsl-tips/</guid>
+      <description>To start gnome-terminal on WSL (Windows Subsystem for Linux) After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.
+To reinstall WSL you should do:
+&amp;gt; lxrun /uninstall /full &amp;gt; lxrun /install  Then you will see
+&amp;gt; lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 16.04.2 LTS Release: 16.04 Codename: xenial  Some X11 apps like xclocks works fine with Xming, but &amp;ldquo;gnome-terminal&amp;rdquo; still have some problem.</description>
+    </item>
+    
+    <item>
+      <title>Install Python Offline</title>
+      <link>//localhost:1313/blog/tool/2017-04-24-install-python-offline/</link>
+      <pubDate>Mon, 24 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2017-04-24-install-python-offline/</guid>
+      <description>In general, things like Anaconda Server are designed to make this sort of workflow easier.
+Some suggested workarounds:
+ Reproduce your install on another machine with internet (save conda list &amp;ndash;export to a file and conda install &amp;ndash;file). Then use conda update on that machine to generate and download the packages. One tip that could be helpful is if you take several conda packages and tar them up into a flat tarball you can use conda to install that tarball and it will install all the packages.</description>
+    </item>
+    
+    <item>
+      <title>Python and Freemind: ElementTree</title>
+      <link>//localhost:1313/blog/tool/2015-07-19-python-and-freemind-elementtree/</link>
+      <pubDate>Sun, 19 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/blog/tool/2015-07-19-python-and-freemind-elementtree/</guid>
+      <description>我曾经自己用Python写过一个小工具来parse Freemind文件（XML格式）然后生成RestructureText和Latex格式。这个小工具的目的是为了实践我的“源文件唯一”的理念。因为我的简历（包括既往项目总结）需要保存为两种不同格式，一个为了放在个人网站上所以是HTML，另一个当然是PDF格式。
+今天瞎琢磨的时候发现，其实Python对于XML文件格式支持的极好。The ElementTree XML API这个模块将XML parse成一个Tree。
+Each element has a number of properties associated with it: a tag which is a string identifying what kind of data this element represents (the element type, in other words). a number of attributes, stored in a Python dictionary. a text string. an optional tail string. a number of child elements, stored in a Python sequence  Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。</description>
+    </item>
+    
+  </channel>
+</rss>

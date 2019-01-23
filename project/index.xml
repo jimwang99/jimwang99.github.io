@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on When Moore&#39;s Law ENDS</title>
+    <link>//localhost:1313/project/</link>
+    <description>Recent content in Projects on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test MainRoad Theme</title>
+      <link>//localhost:1313/project/test-hugo/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/project/test-hugo/</guid>
+      <description>Test Mathjax Inline math equation: $a_1 \times b_2 = c^2$
+Math equation:
+$$f(x,y)=z$$</description>
+    </item>
+    
+    <item>
+      <title>Some of My Projects in Marvell</title>
+      <link>//localhost:1313/project/2017-08-01-my-marvell-projects/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/project/2017-08-01-my-marvell-projects/</guid>
+      <description>Latch-based RAM semi-custom macro design change This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we&amp;rsquo;d like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction.</description>
+    </item>
+    
+    <item>
+      <title>Some of My Projects in CEC Huada</title>
+      <link>//localhost:1313/project/2012-02-01-my-cec-huada-projects/</link>
+      <pubDate>Wed, 01 Feb 2012 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/project/2012-02-01-my-cec-huada-projects/</guid>
+      <description>Ultra-high-frequency RFID design and low power optimization Our team designed a UHF RFID product with TSMC 90nm process. My major responsibility was to reduce the power consumption to compete with world leading products. The whole RFID chip consumed about 10uW peak power.
+After ran power estimation and determined that the most energy consumed part was clock tree, due to input capacitance of flip-flops. I designed a new flip-flop with ultra-low input capacitance, which as only 4 clock transistors, using semi-dynamic technique.</description>
+    </item>
+    
+    <item>
+      <title>Some of My Ph.D. Projects in Loongson, ICT, CAS</title>
+      <link>//localhost:1313/project/2008-07-01-my-phd-projects/</link>
+      <pubDate>Tue, 01 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/project/2008-07-01-my-phd-projects/</guid>
+      <description>High-Speed full-custom register file design  From Mar. 2004 to Jan. 2006
+ This whole project&amp;rsquo;s purpose is to design high speed multi-synchronious read and write port register file to meet the ultra high frequency and bandwidth requirement of a 1GHz 4-issue 64-bit general purpose RISC CPU. We need to implement a SRAM with independent 8 read ports and 4 write ports with read latency less than 500ps. Our solution is to use 2 SRAM with identical data content.</description>
+    </item>
+    
+  </channel>
+</rss>

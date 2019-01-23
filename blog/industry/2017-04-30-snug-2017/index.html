@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SNUG Silicon Valley 2017 at Santa Clara Conventional Center</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.53" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About Hugo</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">SNUG Silicon Valley 2017 at Santa Clara Conventional Center</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-04-30T00:00:00">2017-04-30</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/industry" rel="category">industry</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#day-1-morning">Day 1 Morning</a></li>
+<li><a href="#day-1-afternoon">Day 1 Afternoon</a></li>
+<li><a href="#day-2-morning">Day 2 Morning</a></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="day-1-morning">Day 1 Morning</h1>
+
+<ol>
+<li>Paper from microsoft</li>
+<li>Microsoft has a IC design team? Apparently it does.</li>
+<li>Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&rsquo;s acceptable in some cases.</li>
+<li>Data bus bridge (DBB) for low data throughput</li>
+
+<li><p>Async FIFO: more area, more complexity</p></li>
+
+<li><p>Panel: synthesis into the future</p></li>
+
+<li><p>The disruption in advanced nodes (10nm/7nm)</p>
+
+<ul>
+<li>Thermal: drives max freq; heating wires degreeds EM lifetime</li>
+<li>IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&rsquo;s specific attributes, such as thermal/IR to avoid analog/digital interference. Ex: PLL cause high IR drop so it cannot be placed near some sensitive digital blocks)</li>
+<li>Power: low power is usually focused, but power density is more important. Thermal dissipasion is the key to successful product.</li>
+</ul></li>
+
+<li><p>Context includes 2 different aspect</p>
+
+<ul>
+<li>Chip-level placement and interface</li>
+<li>Thermal dissipation</li>
+</ul></li>
+
+<li><p>Accurate variation modeling is important for the digital</p></li>
+
+<li><p>Blind clock gating for big blocks is not very good for IR drop, because it will create large power/ground noise. Instead, use smaller cores to go continuously is a better choice other than using large powerful cores working on and off.</p></li>
+
+<li><p>My take-aways: future EDA will merge front-end and back-end. The flow will be unified, as well as the interface and engines. It will require engineers to know better for the whole flow. It fits my understanding of full stack engineer.</p></li>
+</ol>
+
+<h1 id="day-1-afternoon">Day 1 Afternoon</h1>
+
+<ol>
+<li>Paper from Broadcom about DSP ungrouping</li>
+<li>Not interesting as expected.</li>
+<li>Issue with auto ungrouping: design hierarchy change, or even port/logic change/moving
+
+<ul>
+<li>constraint need to change (it seems Broadcom use hand written constraint file for synthesis and timing analysis, instead of dump out SDC from Synthesis tool to use it in STA)</li>
+<li>script need to change</li>
+<li>porting script from one design to another is difficult</li>
+</ul></li>
+<li>Potential target to choose for ungrouping?
+
+<ol>
+<li>no ungroup at all vs. auto ungroup</li>
+<li>analyze both timing reports to find out critical paths that improved after ungrouping</li>
+<li>only ungroup the paths that improved</li>
+</ol></li>
+
+<li><p>One take-away: they dump out timing paths into text files and do post-processing using Python. Another one is from my question, they use unified constraint files for both synthesis and STA, instead of write out SDC from synthesis tool and use it in STA. That actually make sense because unified constraint files are more understandable.</p></li>
+
+<li><p>Configurable design using SystemVerilog</p></li>
+
+<li><p>Virtual classes, parameters, interfaces and etc to make RTL design more configurable. The author did some research abour work-arounds and what is synthesizable with current DC and VCS.</p></li>
+
+<li><p>Afterwards, I had a very interesting talk with the author and some other audiences. One important thing the others mentioned is that even 99% of the tools support one feature, and if the other 1% is not will kill the whole schedule. And they were beaten up a lot by other designers or front-back-end engineers because they use advanced coding techiques from SystemVerilog in their RTL. Some guy from Qualcomm mentioned that he was forbidden to use even parameters in his block. So it seems that there are not strong willing to switch from Verilog to SystemVerilog, especially from management level because nobody want to take risks in exchange of some configurability. That actually leads to my question to them that if anybody sees any performance improvements by using SystemVerilog. The author mentioned that using &ldquo;for&rdquo; loops instead of multiple &ldquo;assign&rdquo; will help the compiler to understand design intent and somehow improved the performance in one case.</p></li>
+</ol>
+
+<h1 id="day-2-morning">Day 2 Morning</h1>
+
+<ol>
+<li>Nanotime used in NVIDIA (Robert)</li>
+<li>The presentation is from its memory team. The author mainly focused on the POCV features in Nanotime, and how to embedded ocv_sigma tables in liberty file from extract_model. And they did some correlation between POCV in Nanotime against Monte Carlo in HSPICE. The correlation is not very good at present time with the characterization script (to generate OCV parameter for each kind of transistors) provide by Synopsys. He also mentioned that they are going back to close the loop by feedback the correlation result into characterization script, hoping to improve the accruacy.</li>
+<li>Transistor variation coefficient (characterization script from Synopsys)
+
+<ul>
+<li><code>set_variation_parameters</code></li>
+<li>for every individual types of transistors (different parameters)</li>
+<li>transistor variation in stack series is <strong>different</strong>: more stack less variation</li>
+</ul></li>
+<li>How to validate the path variation?
+
+<ul>
+<li>Use SPICE Monte Carlo simulation after write_spice from Nanotime.</li>
+</ul></li>
+<li>How to choose candidate for DDS?
+
+<ul>
+<li>Critical paths</li>
+</ul></li>
+
+<li><p>LVF tables (ocv_sigma) have delay/transition/setup/hold</p></li>
+
+<li><p>Nanotime flow in Wave Computing (Roger Carpenter)</p></li>
+
+<li><p>Product</p>
+
+<ul>
+<li>16K instances of DPU</li>
+<li>Entire core is custom design
+
+<ul>
+<li>Network-on-chip, PCIe, DDR, HMC (Hybrid Memory Cube)</li>
+</ul></li>
+<li>Global async local sync design</li>
+</ul></li>
+
+<li><p>Runtime issue? No.</p></li>
+
+<li><p>Coverage report to define the completion of constraint coverage</p></li>
+
+<li><p>Nanotime vs. write_spice</p>
+
+<ul>
+<li>TT 25c no SI: delta &lt; 8%</li>
+</ul></li>
+
+<li><p>This is very interesting for myself personally because they are using custom digital design approach to implement deep learning accelerators which can achieve 10GHZ (actually what I heard is 6.7GHz in 16nm). They used schematic and hand placment, used pulse latch + domino logic + global async local sync clocking scheme. They used to use spice to close timing on their DSP core (which has 16k instances overall) in 28nm but finally moved into Nanotime. It is a very interesting company. And amazing to hear that anybody is still using this &ldquo;lost art&rdquo; in real chip design.</p></li>
+
+<li><p>Afterwards, we have several people gathering around to talk about this. A guy from Intel also mentioned that Intel themselves have moved away from custom design.</p></li>
+</ol>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/tool/2018-11-01-wsl-tips/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">WSL (Windows Subsystem Linux) Tips</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/tutorial/2017-05-05-genus-training/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">GENUS Training Notes</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>

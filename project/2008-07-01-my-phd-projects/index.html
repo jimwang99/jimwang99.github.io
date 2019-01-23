@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Some of My Ph.D. Projects in Loongson, ICT, CAS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.53" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About Hugo</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Some of My Ph.D. Projects in Loongson, ICT, CAS</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2008-07-01T00:00:00">2008-07-01</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/my-project" rel="category">my-project</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#high-speed-full-custom-register-file-design">High-Speed full-custom register file design</a></li>
+<li><a href="#cpu-to-cpu-optical-interconnect-evaluation">CPU-to-CPU optical interconnect evaluation</a></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h1 id="high-speed-full-custom-register-file-design">High-Speed full-custom register file design</h1>
+
+<blockquote>
+<p>From Mar. 2004 to Jan. 2006</p>
+</blockquote>
+
+<p>This whole project&rsquo;s purpose is to design high speed multi-synchronious read and write port register file to meet the ultra high frequency and bandwidth requirement of a 1GHz 4-issue 64-bit general purpose RISC CPU. We need to implement a SRAM with independent 8 read ports and 4 write ports with read latency less than 500ps. Our solution is to use 2 SRAM with identical data content. Each of them have independent 4 read ports and 4 write ports. At RTL level, we write both of them with the same address and data. Also it&rsquo;s guarranteed that read address and write address will not be the same in one cycle.</p>
+
+<p>The hardest of the design is read latency. Normal SRAMs with differential sense amplifier will need 2 read bit lines for each read ports. It&rsquo;ll take too much area for 4 read ports and 4 write ports. Larger area means longer word lines and bit lines, which lead to larger read latency. And differential sense amplifier is not fast enough to meet 500 ps read latency. We have 2 choices. One is to use pre-charged style sense amplifer, the other is an analog sense amplifer based on current mirror. Because both of them are related to some patent, so details won&rsquo;t be disclosed here. The former one is simpler and more suitable to small SRAMs, but the later one is faster with much higher power consumption as well.</p>
+
+<p>My role in this project has been changing from chip to chip, since we have design several versions for several chips using different CMOS process. The reason that we hop among different fab and different technology node was management decision. They have been trying very hard to achieve 1GHz frequency target. I have to say these changes really added too much unnecessary work to the custom design team, although it actually help me a lot to focus on one single project, learn from elder engineers and finally took much more responsibility in the project.</p>
+
+<p>In the first chip, we used the 130nm IBM CMOS process. My role in this version was writing Tcl script to extract data from Nanosim simulation results and create Liberty file that descript the SRAM&rsquo;s timing and power character.</p>
+
+<p>In the second chip, we used 130nm Chartered CMOS process. In this version, I took more responsibility that includes: (1) improving and maintaining SPICE-level simulation environment to verify function verification and extract timing and power numbers; (2) doing pre-layout and post-layout simulations to verify function and timing; (3) drawing layout for read and write address decoder. The most important jobs were function and timing verification, but the most timing consuming job was drawing layout totally manually. (Actually it would be better to implement these digital decoders with synthesis, at least with some custom design routing tool. Altought this job improved my understanding with layout.)</p>
+
+<p>In the third chip, we used 90nm TSMC CMOS process. Because we have changed from 130nm to 90nm, we have to shrink the design and redo all the verification work all over again. One of the senior engineer left us before this version started, so I took his position and took most of the responsibility including: (1) shrink and verify design in pre-layout simulation; (2) plan and balance the clock; (3) improve read and write latency by sizing transistors; (4) floorplan; (5) draw the layout of sense amplifier; (6) verify function and timing with post-layout simulation; (7) extract timing and power numbers and create Liberty library database; (8) help to meet the project schedule.</p>
+
+<h1 id="cpu-to-cpu-optical-interconnect-evaluation">CPU-to-CPU optical interconnect evaluation</h1>
+
+<blockquote>
+<p>Oct. 2016</p>
+</blockquote>
+
+<p>This project started from a though of my professor that on-chip optical interconnection will change the chip design dramatically in the near future. He got this idea from a presentation of another assistant professor. So I was assigned to do some research in this area.</p>
+
+<p>After a lot of comunication with the assistant professor who had the original thought, and reading lots of papers, I made a conclustion that on-chip optical interconnection was far beyond the technology at that time, and it would take at least 5 years before the industry to adopt this technology. (It&rsquo;s been 7 years later, and still on-chip optical interconnection is the idea in the lab.) However the ultra long distance optical interconnection was very mutual, and even board-to-board optical interconnection was widely used.</p>
+
+<p>Optical interconnection was facing a difficulty that electrical signals have to be converted to optical signals and then backward. This will increase the cost a lot, so it&rsquo;s not cost efficient to do near distance interconnection with optical. Another difficulty for on-chip interconnection was CMOS technology is not a good candidate to implement optical laser (electrical to optical) and diode (optical to electrical).</p>
+
+<p>In this project, I didn&rsquo;t have much resource. Most of the time I worked alone and I didn&rsquo;t have a lot of budget. So my strategy in this project was to build some chip-to-chip optical interconnection prototype system, which aiming at low latency, large throughput CPU-to-CPU communication.</p>
+
+<ol>
+<li>Physical layer. Furtunately, some of my colleague in the same institute had already done a similar project with a Xilinx FPGA and a pair of optical transmitter. These optical transmitter was driven by on-FPGA high speed serial port, RocketIO. Altough I have done some work on implementing a prototype myself, I finally decided to use this board and focus on RTL design and followup reasearch.</li>
+<li>Protocol. Because we were designing this for CPU-to-CPU communication, so the protocal should be low latency. Therefore we could not use normal multi-layer protocol, and had to design our own with only one or two layers and they had to be very simple to achieve high frequency at the same time. This protocol include: (1) inter- and intra-byte alignment, because there was serialization; (2) 8B/10B encoding, because there was CDR (clock data recovery) at the reciever side; (3) error control scheme, because there was error rate on optical communication that cannot be ignored.</li>
+<li>BIST. For debug and test purpose, I designed a BIST module that emulates the CPUs&rsquo; behavior as both transmitter and receiver. The transmitter side includes a 64-bit PRBS (pesudo-random bit sequence) data generator as well as an error insertion module which is also based on PRBS and can pesudo-randomly insert single-bit errors into the data to test the error control scheme. The receiver side includes a data checker that can also output the error rate numbers to on-board LED lights.</li>
+</ol>
+
+<p>This paper, &ldquo;An Efficient Error Control Scheme for Chip-to-Chip Optical Interconnects&rdquo;, is focus on the error control scheme in the protocol. Normally in long distance interconnection, CRC check and re-send strategy is used. But in optical interconnect, there are 2 major differences in error rate: (1) the error rate is lower than electrical interconnect; (2) the error normally happens on randomly single bits, rather than continuous bits in electrical interconnect. Therefore, after some experiments and calculation, I proposed to use ECC instead of CRC as the error control scheme in optical interconnects, and it is much area, power and latency efficient.</p>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/project/2012-02-01-my-cec-huada-projects/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Some of My Projects in CEC Huada</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+</html>
