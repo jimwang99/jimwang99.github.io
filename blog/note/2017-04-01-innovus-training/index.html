@@ -1,0 +1,2765 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>INNOVUS Training Notes</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.53" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About Hugo</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">INNOVUS Training Notes</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-04-01T00:00:00">2017-04-01</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#module-02-overview">Module 02: overview</a></li>
+<li><a href="#module-03-import-design">Module 03: import design</a>
+<ul>
+<li><a href="#input">Input</a></li>
+<li><a href="#import-design">import design</a></li>
+<li><a href="#check-design">check design</a></li>
+<li><a href="#design-mode">design mode</a></li>
+</ul></li>
+<li><a href="#module-04-select-and-highligh-obj">Module 04: select and highligh obj</a>
+<ul>
+<li><a href="#select">select</a></li>
+<li><a href="#design-browser">design browser</a></li>
+<li><a href="#schematic-viewer">schematic viewer</a></li>
+<li><a href="#three-views">three views</a></li>
+</ul></li>
+<li><a href="#module-05-floorplan">Module 05: floorplan</a>
+<ul>
+<li><a href="#sites-and-rows">sites and rows</a></li>
+<li><a href="#what-is-floorplanning">what is floorplanning?</a></li>
+<li><a href="#specify-floorplan">specify floorplan</a></li>
+<li><a href="#assign-pads-and-pins">assign pads and pins</a></li>
+<li><a href="#automatic-floorplan">automatic floorplan</a></li>
+<li><a href="#floorplan-toolbox">floorplan toolbox</a></li>
+<li><a href="#create-row">create row</a></li>
+<li><a href="#rectilinear-blockage">rectilinear blockage</a></li>
+<li><a href="#module-constraint-types">module constraint types</a></li>
+<li><a href="#instance-placement-status">instance placement status</a></li>
+<li><a href="#placement-halo">placement halo</a></li>
+<li><a href="#routing-halo">routing halo</a></li>
+<li><a href="#instance-group">instance group</a></li>
+<li><a href="#auto-finish-floorplan">auto finish floorplan</a></li>
+<li><a href="#save-floorplan">save floorplan</a></li>
+<li><a href="#how-to-reduce-die-size">How to reduce die size</a></li>
+</ul></li>
+<li><a href="#module-06-power-plan">Module 06: power plan</a>
+<ul>
+<li><a href="#what-is-power-planning">What is power planning?</a></li>
+<li><a href="#commands">commands</a></li>
+<li><a href="#add-rings">add rings</a></li>
+<li><a href="#add-stripes">add stripes</a></li>
+<li><a href="#via-gen">via gen</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#power-and-rail-analysis">power and rail analysis</a></li>
+<li><a href="#early-rail-analysis">early rail analysis</a></li>
+</ul></li>
+<li><a href="#module-07-power-routing">Module 07: power routing</a>
+<ul>
+<li><a href="#what-is-power-routing">What is power routing?</a></li>
+<li><a href="#how-to">How to?</a></li>
+<li><a href="#power-pin-def-in-lef">power pin def in LEF</a></li>
+</ul></li>
+<li><a href="#module-08-place-opt">Module 08: place opt</a>
+<ul>
+<li><a href="#spare-cell">spare cell</a></li>
+<li><a href="#cell-padding">cell padding</a></li>
+<li><a href="#jtag">JTAG</a></li>
+<li><a href="#blockage-for-preroutes">blockage for preroutes</a></li>
+<li><a href="#magnetic-placement-to-place-target-inst-close-to-ref-inst">magnetic placement (to place target inst close to ref inst)</a></li>
+<li><a href="#placement-mode">placement mode</a></li>
+<li><a href="#early-clock-flow-during-place-opt-design">early clock flow during place_opt_design</a></li>
+<li><a href="#instace-place-group">instace place group</a></li>
+<li><a href="#gigaplace">GigaPlace</a></li>
+<li><a href="#command-place-opt-design">command: <code>place_opt_design</code></a></li>
+<li><a href="#placement-blockages">placement blockages</a></li>
+<li><a href="#place-physical-cells">place physical cells</a></li>
+<li><a href="#check-placement-quality">check placement quality</a></li>
+</ul></li>
+<li><a href="#module-09-scan-opt-and-reordering">Module 09: scan opt and reordering</a>
+<ul>
+<li><a href="#what-are-scan-chains">what are scan chains?</a></li>
+<li><a href="#load-scan-chain-info">load scan chain info</a></li>
+<li><a href="#create-scan-def">create scan DEF</a></li>
+<li><a href="#reorder-scan-chain">reorder scan chain</a></li>
+<li><a href="#cmds">cmds</a></li>
+</ul></li>
+<li><a href="#module-10-early-global-route">Module 10: early global route</a>
+<ul>
+<li><a href="#routers-in-innovus">routers in innovus</a></li>
+<li><a href="#features-of-early-globl-router">features of early globl router</a></li>
+<li><a href="#commands-1">commands</a></li>
+<li><a href="#congestion-map">congestion map</a></li>
+<li><a href="#statistics-based-on-gcells-size-can-be-redefined">statistics based on GCells (size can be redefined)</a></li>
+</ul></li>
+<li><a href="#module-11-mmmc-multi-mode-multi-corner-analysis">Module 11: MMMC (multi-mode multi-corner analysis)</a>
+<ul>
+<li><a href="#analysis-view-hierarchy">analysis view hierarchy</a></li>
+<li><a href="#library-set">library set</a></li>
+<li><a href="#rc-corner">rc corner</a></li>
+<li><a href="#delay-corner">delay corner</a></li>
+<li><a href="#constraint-mode">constraint mode</a></li>
+<li><a href="#analysis-view">analysis view</a></li>
+<li><a href="#perform-timing-analysis">perform timing analysis</a></li>
+</ul></li>
+<li><a href="#module-12-extract-parasitics-and-run-timing-analysis">Module 12: extract parasitics and run timing analysis</a>
+<ul>
+<li><a href="#timing-menu-item">&ldquo;timing&rdquo; menu item</a></li>
+<li><a href="#preroute-extraction-flow">preroute extraction flow</a></li>
+<li><a href="#postroute-extraction-flow">postroute extraction flow</a></li>
+<li><a href="#extract-rc-data">extract RC data</a></li>
+<li><a href="#cap-table-ascii">cap table (ascii)</a></li>
+<li><a href="#rc-correlation-important">RC correlation (important!)</a></li>
+<li><a href="#global-ocv">Global OCV</a></li>
+<li><a href="#aocv-advanced-ocv">AOCV (advanced OCV)</a></li>
+<li><a href="#socv-statistical-ocv">SOCV (statistical OCV)</a></li>
+<li><a href="#gen-sdf">gen SDF</a></li>
+<li><a href="#timing-analysis">timing analysis</a></li>
+<li><a href="#timing-debug">timing debug</a></li>
+</ul></li>
+<li><a href="#module-13-optimize-and-close-timing">Module 13: optimize and close timing</a>
+<ul>
+<li><a href="#what-is-opt">what is opt?</a></li>
+<li><a href="#opt-operations">opt operations</a></li>
+<li><a href="#how-to-use-opt">how to use opt?</a>
+<ul>
+<li><a href="#with-path-group">with path group</a></li>
+<li><a href="#track-opt-during-routing">track opt during routing</a></li>
+</ul></li>
+<li><a href="#interactive-eco">interactive ECO</a></li>
+<li><a href="#report-unfixed-hold-paths-in-details">report unfixed hold paths in details</a></li>
+<li><a href="#power-driven-opt">power driven opt</a></li>
+<li><a href="#signal-em-electromigration-opt">signal EM (electromigration) opt</a></li>
+<li><a href="#timing-closure-flow">timing closure flow</a></li>
+<li><a href="#targeted-post-route-opt">targeted post route opt</a></li>
+<li><a href="#tips-1">TIPS</a></li>
+</ul></li>
+<li><a href="#module-14-cts">Module 14: CTS</a>
+<ul>
+<li><a href="#traditional-balanced-clock-methodology">traditional balanced clock methodology</a></li>
+<li><a href="#ccopt-with-useful-skew">CCOpt with useful skew</a></li>
+<li><a href="#clock-tree-vs-skew-group">clock tree vs. skew group</a></li>
+<li><a href="#flow">flow</a></li>
+<li><a href="#clock-spec">clock spec</a></li>
+<li><a href="#useful-skew-controls">useful skew controls</a></li>
+<li><a href="#specify-ccopt-route-types">specify ccopt route types</a></li>
+<li><a href="#specify-halo-for-clock-cells">specify halo for clock cells</a></li>
+<li><a href="#define-ccopt-clock-network">define ccopt clock network</a></li>
+<li><a href="#early-clock-flow-during-placement">early clock flow during placement</a></li>
+<li><a href="#debug-clock-tree">debug clock tree</a></li>
+<li><a href="#postroute-fixing">postroute fixing</a></li>
+<li><a href="#flexible-h-tree">Flexible H-Tree</a></li>
+</ul></li>
+<li><a href="#module-15-detail-routing">Module 15: detail routing</a>
+<ul>
+<li><a href="#lef-library-exchange-format">LEF (library exchange format)</a></li>
+<li><a href="#optimal-routing-tracks-and-cell-size">optimal routing tracks and cell size</a></li>
+<li><a href="#gen-routing-tracks">gen routing tracks</a></li>
+<li><a href="#gen-via">gen via</a></li>
+<li><a href="#optimize-routing">optimize routing</a></li>
+<li><a href="#settings">settings</a></li>
+<li><a href="#detail-control">detail control</a></li>
+<li><a href="#nanoroute">NanoRoute</a></li>
+<li><a href="#fix-antenna">fix antenna</a></li>
+<li><a href="#si-driven-routing">SI driven routing</a></li>
+<li><a href="#opt-wire-for-yield">opt wire for yield</a></li>
+<li><a href="#opt-via-for-yield">opt via for yield</a></li>
+<li><a href="#report">report</a></li>
+<li><a href="#ndr-non-default-rules-for-routing">NDR (non-default rules) for routing</a></li>
+<li><a href="#add-shielding">add shielding</a></li>
+<li><a href="#macro-obs">macro OBS</a></li>
+<li><a href="#routing-effort">routing effort</a></li>
+<li><a href="#sign-off-drc-fixing">sign-off DRC fixing</a></li>
+<li><a href="#post-route-timing-opt">post-route timing opt</a></li>
+</ul></li>
+<li><a href="#module-16-debug-routing">Module 16: debug routing</a>
+<ul>
+<li><a href="#flow-1">flow</a></li>
+<li><a href="#global-routing">global routing</a></li>
+<li><a href="#detail-ruting">detail ruting</a></li>
+<li><a href="#iteration-of-routing">iteration of routing</a></li>
+<li><a href="#congestion-analysis-table">congestion analysis table</a></li>
+<li><a href="#report-1">report</a></li>
+<li><a href="#patch-wire">patch wire</a></li>
+<li><a href="#wire-editing">wire editing</a></li>
+<li><a href="#prevent-crosstalk">prevent crosstalk</a></li>
+<li><a href="#fix-si-post-route">fix SI post-route</a></li>
+<li><a href="#report-2">report</a></li>
+<li><a href="#metal-fill">metal fill</a></li>
+<li><a href="#how-to-1">how-to</a></li>
+<li><a href="#trim-metal-fill-after-eco-routing">trim metal fill after ECO routing</a></li>
+<li><a href="#via-fill">via fill</a></li>
+<li><a href="#flow-2">flow</a></li>
+<li><a href="#drc-checks">DRC checks</a></li>
+<li><a href="#verify-connectivity">verify connectivity</a></li>
+<li><a href="#verify-metal-density">verify metal density</a></li>
+<li><a href="#verify-geometry">verify geometry</a></li>
+<li><a href="#process-antenna">process antenna</a></li>
+<li><a href="#verify-tap-cells">verify tap cells</a></li>
+<li><a href="#verify-em">verify EM</a></li>
+<li><a href="#verify-power-wires-in-power-planning-stage">verify power wires in power planning stage</a></li>
+<li><a href="#view-violation">view violation</a></li>
+<li><a href="#what-is-eco">what is ECO?</a></li>
+<li><a href="#settings-1">settings</a></li>
+<li><a href="#how-to-2">how-to?</a></li>
+<li><a href="#innvous-tempus-signoff-eco">Innvous + Tempus: signoff ECO</a></li>
+</ul></li>
+<li><a href="#set-mmmc-views">set MMMC views</a></li>
+<li><a href="#set-signoff-constraints">set signoff constraints</a>
+<ul>
+<li><a href="#gds">GDS</a></li>
+<li><a href="#verilog-nelist">verilog nelist</a></li>
+<li><a href="#lef">LEF</a></li>
+<li><a href="#def">DEF</a></li>
+<li><a href="#sdf">SDF</a></li>
+<li><a href="#spef">SPEF</a></li>
+<li><a href="#save-innvous-oa-database">save innvous/OA database</a></li>
+<li><a href="#double-patterning-technology-dpt-or-even-mpt">Double patterning technology (DPT) or even MPT</a></li>
+<li><a href="#rc-diff-between-layers">RC diff between layers</a></li>
+<li><a href="#cell-design">cell design</a></li>
+<li><a href="#same-length-ploy-rules">same length ploy rules</a></li>
+<li><a href="#implant-layer-rules-swap-vt-cells">implant layer rules: swap Vt cells</a></li>
+<li><a href="#boundary-cell-insertion">boundary cell insertion</a></li>
+<li><a href="#tap-cell">tap cell</a></li>
+<li><a href="#dummy-typical-critical-dimension-dtcd-cells-in-10nm">dummy typical critical dimension (DTCD) cells in 10nm</a></li>
+<li><a href="#filler-insertion-rules">filler insertion rules</a></li>
+<li><a href="#trim-poly-layer-tpo">trim poly layer (TPO)</a></li>
+<li><a href="#10nm-em-prevention">10nm EM prevention</a></li>
+<li><a href="#dbget">dbGet</a></li>
+<li><a href="#dbschema">dbSchema</a></li>
+<li><a href="#dbset">dbSet</a></li>
+<li><a href="#dbtransform">dbTransform</a></li>
+<li><a href="#dbshape">dbShape</a></li>
+<li><a href="#gift">gift</a></li>
+<li><a href="#pre-route-vs-post-route-timing-correlation">pre-route vs post-route timing correlation</a></li>
+<li><a href="#sdc">SDC</a></li>
+<li><a href="#openaccess-interface">OpenAccess interface</a></li>
+<li><a href="#pipeline-register-placement">pipeline register placement</a></li>
+<li><a href="#post-exam">post exam</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<blockquote>
+<p>The following is my notes of INNOVUS training course on Cadence&rsquo;s training module</p>
+</blockquote>
+
+<h1 id="module-02-overview">Module 02: overview</h1>
+
+<ul>
+<li>&ldquo;gift&rdquo; directory contains lots of useful scripts to help productivity</li>
+<li>Independent &ldquo;viewlog&rdquo; utility or &ldquo;Tools-&gt;Log Viewer&rdquo; will start a GUI to help understand log files better.</li>
+<li>Batch mode: <code>innovus -no_gui -init batch.tcl</code>
+
+<ul>
+<li><code>win</code> / <code>win off</code> to show/hide GUI</li>
+</ul></li>
+</ul>
+
+<h1 id="module-03-import-design">Module 03: import design</h1>
+
+<h2 id="input">Input</h2>
+
+<ul>
+<li>Netlist in Verilog</li>
+<li>Floorplan in DEF</li>
+<li>Clock tree spec auto gen from SDC</li>
+<li>Scan info in Tcl or DEF</li>
+<li>I/O info (pads or pins)</li>
+<li>GDS layer map (if want to dump GDS)</li>
+<li>Timing constraint in SDC</li>
+<li>Timing library in .lib</li>
+<li>LEF library of cells</li>
+<li>Tech file for extraction (cap table or qrc)</li>
+</ul>
+
+<h2 id="import-design">import design</h2>
+
+<ul>
+<li>Save all the input file paths and parameters in a .globals file, then next time just use <code>source design.globals; init_design</code>.</li>
+<li>Q: what if there is errors, such as mismatch between netlist and libraries?
+
+<ul>
+<li>A: in early stage, mismatch is OK. For example, importing a new Verilog netlist but along with an old DEF containing floorplan. But in late stage, the mismatch is serious.</li>
+</ul></li>
+<li>Tips: save and load a workspace (window layout) use menu &ldquo;Windows -&gt; Save Workspace&rdquo;.</li>
+<li>Tips: menu could be customized using terminal commands &ldquo;ui&rdquo;</li>
+</ul>
+
+<h2 id="check-design">check design</h2>
+
+<ul>
+<li><code>checkDesign</code> to detect missing/inconsistency
+
+<ul>
+<li>ex: checkDesign -floorplan -outfile checkDesign.floorplan.rpt</li>
+<li>ex: checkDesign -timingLibrary</li>
+</ul></li>
+</ul>
+
+<h2 id="design-mode">design mode</h2>
+
+<ul>
+<li><code>setDesignMode -process 16 -flowEffort {express|standard|extreme}</code></li>
+</ul>
+
+<h1 id="module-04-select-and-highligh-obj">Module 04: select and highligh obj</h1>
+
+<h2 id="select">select</h2>
+
+<ul>
+<li><code>selectObjByProp &lt;objType&gt; &lt;expression&gt;</code></li>
+<li>F12: dim the background</li>
+<li>&ldquo;instance (right click) -&gt; highlight instance nets&rdquo;</li>
+</ul>
+
+<h2 id="design-browser">design browser</h2>
+
+<ul>
+<li>&ldquo;tools -&gt; design brower&rdquo;</li>
+<li>All design stuff in a tree; can use it to select obj and do placement</li>
+<li>Color the modules: right click on &ldquo;modules&rdquo;</li>
+</ul>
+
+<h2 id="schematic-viewer">schematic viewer</h2>
+
+<ul>
+<li>&ldquo;tools -&gt; schematic viewer&rdquo;</li>
+<li>To explore design changes</li>
+<li>Can cross-probe to physical window</li>
+</ul>
+
+<h2 id="three-views">three views</h2>
+
+<ul>
+<li>floorplan view</li>
+<li>amoeba view : display outline of modules/sub-modules after placement to check locality of the module</li>
+<li>physical view: detailed placments and routing</li>
+</ul>
+
+<h1 id="module-05-floorplan">Module 05: floorplan</h1>
+
+<h2 id="sites-and-rows">sites and rows</h2>
+
+<ul>
+<li>site: basic horizontal unit</li>
+<li>row: core rows / IO rows</li>
+</ul>
+
+<h2 id="what-is-floorplanning">what is floorplanning?</h2>
+
+<ul>
+<li>define die size</li>
+<li>place IO</li>
+<li>create soft blocks</li>
+<li>power planning</li>
+<li>macro placement</li>
+<li>early routing congestion/utilization check</li>
+</ul>
+
+<h2 id="specify-floorplan">specify floorplan</h2>
+
+<ul>
+<li>&ldquo;floorplan -&gt; specify floorplan&rdquo; = <code>floorPlan</code></li>
+<li>Leave space between core and IO to place power rings</li>
+<li>Tips: evaluate routing resource (number of layers, routing tracks) to decide if the core should be high &amp; thin or short &amp; wide
+
+<ul>
+<li>core utilization = standard cell + macros / area</li>
+<li>cell utilization = standard cell / area</li>
+</ul></li>
+<li>orientation
+
+<ul>
+<li>R0: no rotation</li>
+<li>R90: counter-clockwise 90 degree rotation</li>
+<li>MX: mirror through X axis</li>
+<li>MY: mirror through Y axis</li>
+</ul></li>
+</ul>
+
+<h2 id="assign-pads-and-pins">assign pads and pins</h2>
+
+<ul>
+<li>either read in DEF file or Innovus IO file format; or randomly create one then dump out and modify</li>
+<li>&ldquo;edge 0&rdquo; is the left-most edge at Y=0 which is the staring point for IO assignment</li>
+<li>&ldquo;User Guide -&gt; infrastructure -&gt; data preparation -&gt; generating the IO assignment file&rdquo;</li>
+</ul>
+
+<h2 id="automatic-floorplan">automatic floorplan</h2>
+
+<ul>
+<li>Seed: design blocks definition used to guide the auto floorplan (not a seed for randomization)</li>
+<li>Use <code>setPlanDesignMode</code> to control some advanced placement options</li>
+<li>use <code>planDesign</code> create init floorplan</li>
+<li>NOTE: most of the time, not useful at all</li>
+</ul>
+
+<h2 id="floorplan-toolbox">floorplan toolbox</h2>
+
+<ul>
+<li>placement blockage type
+
+<ul>
+<li>hard: restricted no</li>
+<li>soft: can be used during place opt, CTS, ECO, legalization</li>
+<li>partial: percentage of unavailability</li>
+</ul></li>
+<li>routing blockage: layer / type specific</li>
+<li>rectilinear object use scissor tool</li>
+<li>rectilinear floorplan
+
+<ul>
+<li>view -&gt; preference -&gt; enable rectlinear design</li>
+</ul></li>
+<li>&ldquo;floorplan -&gt; resize&rdquo; = <code>setResizeFPlanMode</code> / <code>resizeFloorplan</code></li>
+<li>stairway style floorplan edge</li>
+<li>relative floorplan: move in a group
+
+<ul>
+<li><code>create_relative_floorplan -horizontal_edge_separate {target_edge distance ref_edge} -vertical_edge_separate ...</code></li>
+<li><code>delete_relative_floorplan</code></li>
+</ul></li>
+<li>&ldquo;floorplan -&gt; edit floorplan&rdquo; has the same tools with the toolbox to do the job</li>
+</ul>
+
+<h2 id="create-row">create row</h2>
+
+<ul>
+<li>&ldquo;floorplan -&gt; row -&gt; create core row&rdquo; = <code>createRow</code>
+
+<ul>
+<li>need to choose the site</li>
+</ul></li>
+<li>rows can be stretched using &ldquo;floorplan -&gt; row -&gt; stretch core row&rdquo;</li>
+<li>sometimes can create rows outside of core into the pad area</li>
+</ul>
+
+<h2 id="rectilinear-blockage">rectilinear blockage</h2>
+
+<ul>
+<li>also use the &ldquo;cut rectilinear&rdquo; tool</li>
+</ul>
+
+<h2 id="module-constraint-types">module constraint types</h2>
+
+<ul>
+<li>5 different levels of module constraint types
+
+<ol>
+<li>None</li>
+<li>soft guide (SoftGuide): weakly grouping instances under the same soft guide, but actually they can be placed through out the whole core area</li>
+<li>guide (Guide): preplacement guide for the module in the core design area</li>
+<li>region (Region): force instances in the regsion, but allow other modules in as well</li>
+<li>Fence (Fence): like region but don&rsquo;t allow other modules. A module becomes a fence when the module is specified as partition. Usually used for hierarchical (bottom-up) design.</li>
+</ol></li>
+<li>Tips: when first imported design, all std cell instances will be under the same top module, you have to ungroup it to break it down into pieces.</li>
+<li>Tips: TU = target utilization (std cell + macro); EU = effective utilization (std cell + macro + blockage)</li>
+</ul>
+
+<h2 id="instance-placement-status">instance placement status</h2>
+
+<ul>
+<li>change from &ldquo;placed&rdquo; to &ldquo;fixed&rdquo; after floorplan for macros</li>
+<li>softfixed: cannot be moved by global placement, but can be moved by legalization and upsize by optimization</li>
+</ul>
+
+<h2 id="placement-halo">placement halo</h2>
+
+<ul>
+<li>diff from blockage, halo move along with the target block</li>
+<li>&ldquo;floorplan -&gt; edit floorplan -&gt; edit halo&rdquo; = <code>addHaloToBlock</code> / <code>deleteHaloFromBlock</code></li>
+</ul>
+
+<h2 id="routing-halo">routing halo</h2>
+
+<ul>
+<li>prevent signal integrity issues around macros
+
+<ul>
+<li>direct connection is ok</li>
+<li>no long wires</li>
+<li>no jogging</li>
+</ul></li>
+<li>&ldquo;addRoutingHalo&rdquo; / &ldquo;deleteRoutingHalo&rdquo;</li>
+<li>Tips: snap objects (region/guide/macro/blockage to instance grid or routing track)</li>
+<li>Tips: &ldquo;floorplan -&gt; clear floorplan&rdquo; = &ldquo;deleteAllFPObjects&rdquo; / &ldquo;deleteSelectedFromFPlan&rdquo;</li>
+</ul>
+
+<h2 id="instance-group">instance group</h2>
+
+<ul>
+<li>create instance group to group instances without changing the logic hierarchy for physical implementation</li>
+<li><code>createInstGroup</code> / <code>addInstToInstGroup</code></li>
+<li>OR <code>createLogicHierarchy</code> to change the netlist if preferred</li>
+</ul>
+
+<h2 id="auto-finish-floorplan">auto finish floorplan</h2>
+
+<ul>
+<li>&ldquo;floorplan -&gt; automatic floorplan -&gt; finish floorplan&rdquo;</li>
+</ul>
+
+<h2 id="save-floorplan">save floorplan</h2>
+
+<ul>
+<li><code>writeFPlanScript</code></li>
+</ul>
+
+<h2 id="how-to-reduce-die-size">How to reduce die size</h2>
+
+<ul>
+<li>shape is important, considering routing layers are diff in horizontal and vertical directions</li>
+
+<li><p>start from 70% utilization, then iteratively evaluate the timing/congestion results</p>
+
+<h1 id="module-06-power-plan">Module 06: power plan</h1></li>
+</ul>
+
+<h2 id="what-is-power-planning">What is power planning?</h2>
+
+<ul>
+<li>create rings/strips</li>
+<li>define global power/ground nets, as well as power structures</li>
+</ul>
+
+<h2 id="commands">commands</h2>
+
+<ul>
+<li>&ldquo;power -&gt; power plannning -&gt; &hellip;&rdquo; or <code>addRing/addStripe/editPowerVia</code>
+
+<ul>
+<li>Full Geometry Checker (FGC) is enabled under 20nm process</li>
+</ul></li>
+<li>&ldquo;power -&gt; connect global nets&rdquo; or <code>globalNetConnect</code> to connect PG nets logically
+
+<ul>
+<li><code>globalNetConnect VDD -type pgpin -pin VDD -all</code></li>
+<li><code>globalNetConnect VSS -type tielow</code></li>
+<li>?shouldn&rsquo;t this be a part of UPF&rsquo;s function?</li>
+</ul></li>
+</ul>
+
+<h2 id="add-rings">add rings</h2>
+
+<ul>
+<li>for whole core or blocks or IO</li>
+<li>advanced tab
+
+<ul>
+<li>extend to re-use core ring for block rings</li>
+<li>add ring around cluster of selected blocks
+
+<ul>
+<li><code>addRing -type block_rings -around cluster/shared_cluster</code></li>
+</ul></li>
+<li>use wire groups, to avoid max width DRC</li>
+</ul></li>
+</ul>
+
+<h2 id="add-stripes">add stripes</h2>
+
+<ul>
+<li>the concept of &ldquo;set&rdquo;
+
+<ul>
+<li>ex. physically the power/ground wires are (VDD&ndash;VSS&mdash;&mdash;VDD&ndash;VSS), then the set distance is from first VDD to next VDD</li>
+</ul></li>
+<li>also have the option to connect to wire groups of the ring</li>
+<li>advanced tab
+
+<ul>
+<li>break strips at block ring: &ldquo;omit stripes inside block rings&rdquo;</li>
+<li>&ldquo;merge with ring&rdquo; to save resource by defining a threshold</li>
+<li><code>setAddStipeMode -orthogonal offset</code> to control strips go beyond or within the edge of the block</li>
+<li><code>setAddStripMode -break_at blocks_without_same_net</code> to disjoint stripes in different power domain</li>
+</ul></li>
+</ul>
+
+<h2 id="via-gen">via gen</h2>
+
+<ul>
+<li>for overlap area of strip/ring</li>
+<li>shrink size of via to allow more routing resources for signal</li>
+<li>&ldquo;target penetration&rdquo;: how long the target wire goes into the fat wire</li>
+</ul>
+
+<h2 id="tips">Tips</h2>
+
+<ul>
+<li>ignore DRC during early stage, to save run-time
+~~~verilog
+setAddRingMode -ignore_DRC true
+setAddStripeMode -ignore_DRC true
+setViaGenMode -ignore_DRC true
+~~~</li>
+<li>optimize for routing track saving: shift the power stripe a little bit to save routing tracks
+
+<ul>
+<li><code>setAddStripMode -optimize_stripe_for_routing_track shift</code></li>
+</ul></li>
+<li>change VIA enclosure metal style to avoid spacing DRC to save tracks
+
+<ul>
+<li><code>setViaGenMode -optimize_via_on_routing_track true</code></li>
+</ul></li>
+<li>add vias -&gt; &ldquo;verify_drc&rdquo; -&gt; &ldquo;fixVia&rdquo; to fix violations caused by inserting via</li>
+</ul>
+
+<h2 id="power-and-rail-analysis">power and rail analysis</h2>
+
+<ul>
+<li>the same setup and interface with voltus</li>
+</ul>
+
+<h2 id="early-rail-analysis">early rail analysis</h2>
+
+<ol>
+<li>initial floorplan</li>
+<li>build power grid</li>
+<li>static IR/EM analysis
+
+<ul>
+<li>?with what power numbers?</li>
+</ul></li>
+
+<li><p>refine floorplan and power rail and redo step 3</p>
+
+<h1 id="module-07-power-routing">Module 07: power routing</h1></li>
+</ol>
+
+<h2 id="what-is-power-routing">What is power routing?</h2>
+
+<ul>
+<li>use SRoute to connect power pins of std cells/blocks/IOs
+
+<ul>
+<li>the power pin routing for std cells are called &ldquo;follow pin&rdquo; in Innovus</li>
+</ul></li>
+</ul>
+
+<h2 id="how-to">How to?</h2>
+
+<ul>
+<li>area-based incremental routing: limit the routing inside certain box
+
+<ul>
+<li>be careful of the outcome of selecting &ldquo;connect to target inside the area only&rdquo;, it does exact as stated</li>
+</ul></li>
+<li>extend power ring to connect nearby target (mostly used for memories)</li>
+</ul>
+
+<h2 id="power-pin-def-in-lef">power pin def in LEF</h2>
+
+<ul>
+<li>&ldquo;CLASS BLOCK&rdquo; the same with signal pins, that connect directly</li>
+
+<li><p>&ldquo;CLASS RING&rdquo; will connect any overlap power stripes</p>
+
+<h1 id="module-08-place-opt">Module 08: place opt</h1></li>
+</ul>
+
+<h2 id="spare-cell">spare cell</h2>
+
+<ul>
+<li>&ldquo;place -&gt; place spare cells&rdquo;</li>
+<li>module aware spare cell placement: within the bound of the hierarchy, otherwise spare cells are spread out within the placement area</li>
+<li>create spare cells
+
+<ul>
+<li><code>createSpareModule</code></li>
+<li><code>placeSpareModule</code></li>
+</ul></li>
+<li><code>reset_spare_inst</code> will revert spare cells&rsquo; placement</li>
+</ul>
+
+<h2 id="cell-padding">cell padding</h2>
+
+<ul>
+<li>placement clearance: used to reserve space for placement or routing or IR drop</li>
+<li><code>specifyCellPad $master_cell_name</code>
+
+<ul>
+<li><code>-top -bottom</code>: # of rows</li>
+<li><code>-left -right</code>: # of sites</li>
+</ul></li>
+</ul>
+
+<h2 id="jtag">JTAG</h2>
+
+<ul>
+<li>along the periphery at the chip boundary</li>
+<li><code>specifyJtag</code> / <code>traceJtag</code></li>
+<li>&ldquo;place -&gt; place jtag&rdquo;</li>
+</ul>
+
+<h2 id="blockage-for-preroutes">blockage for preroutes</h2>
+
+<ul>
+<li>under preroutes with &ldquo;SHAPE&rdquo; attr = &ldquo;STRIPE&rdquo;</li>
+<li>&ldquo;place -&gt; specify -&gt; placement blockage&rdquo; = <code>setPlaceMode -prerouteAsObs</code></li>
+</ul>
+
+<h2 id="magnetic-placement-to-place-target-inst-close-to-ref-inst">magnetic placement (to place target inst close to ref inst)</h2>
+
+<ul>
+<li>use <code>place_connected</code> (before place_opt_design)</li>
+</ul>
+
+<h2 id="placement-mode">placement mode</h2>
+
+<ul>
+<li>&ldquo;tools -&gt; set mode -&gt; mode setup -&gt; placement&rdquo; = <code>setPlaceMode</code>
+
+<ul>
+<li>&ldquo;ignore spare cell connection&rdquo; will distribute spare cells evenly</li>
+<li>&ldquo;speicify maximum routing layer&rdquo; to control fewer than max routing layers to be used</li>
+<li><code>-quickCTS</code>: create zero skew clock tree</li>
+<li><code>-clock_power_driven</code> to place leaf flops closer to clock gates</li>
+<li><code>-enableFGC</code> to check geometry DRC</li>
+<li><code>-maxDensity</code> to achieve better timing in low utilization designs</li>
+</ul></li>
+</ul>
+
+<h2 id="early-clock-flow-during-place-opt-design">early clock flow during place_opt_design</h2>
+
+<ul>
+<li>fast clock clustering during placement</li>
+<li>more accurate estimate of skewing impact</li>
+<li><code>setDesignMode</code>
+
+<ul>
+<li><code>-earlyClockFlow</code>: enable/disable clock clustering in place_opt_design</li>
+<li><code>-usefulSkewPreCTS</code>: enable/disable ideal mode useful skew, default is true</li>
+</ul></li>
+</ul>
+
+<h2 id="instace-place-group">instace place group</h2>
+
+<ul>
+<li>ex. a group of identified regsiters have to spaced apart by a certain value, and cannot share the same well to guarantee functional safety (?why?)</li>
+<li><code>create_inst_space_group</code></li>
+<li><code>checkPlace</code> will report distance violation if defined</li>
+</ul>
+
+<h2 id="gigaplace">GigaPlace</h2>
+
+<ul>
+<li>becomes slack-driven by gate delay, false/multi-cycle paths, layer assignment, congestion timing effects, correlates with GigaOpt, instead of timing-driven which is lightly integrated</li>
+<li>interleaves placement and optimization intead of sequential</li>
+</ul>
+
+<h2 id="command-place-opt-design">command: <code>place_opt_design</code></h2>
+
+<ul>
+<li>use <code>-incremental</code> to start with an existing placement</li>
+<li><code>-place_opt_post_place_tcl</code> to insert tcl script between placement and optimization interleaves</li>
+</ul>
+
+<h2 id="placement-blockages">placement blockages</h2>
+
+<ul>
+<li>3 different types: hard, partial, soft
+
+<ul>
+<li>hard block: 100% restricted rule</li>
+<li>for soft blockage, <code>setPlaceMode -selectiveBlockage true</code> + <code>specifySeletiveBlkgGate</code> can specify cells/instances that are allowed to be placed inside soft blockages</li>
+<li>partial blockage can specify how much of the area can be used for global placement
+
+<ul>
+<li>use it to fix localized congestion</li>
+</ul></li>
+</ul></li>
+<li>TIPS
+
+<ul>
+<li>first run place_opt_design with defaults</li>
+<li>if the design is congested, try <code>setPlaceMode -congEffort high</code>
+
+<ul>
+<li>high congestion effort will use aggressive cell padding</li>
+<li>cells with lots of IO will be padded</li>
+</ul></li>
+<li>if have local congestion hotspots
+
+<ul>
+<li>use <code>setPlaceMode -modulePadding</code> for logic module based padding</li>
+<li>or use partial placement blockages for physical location based padding</li>
+</ul></li>
+<li>use &ldquo;place -&gt; display -&gt; density map&rdquo; = <code>reportDensityMap</code> to check for densities</li>
+</ul></li>
+</ul>
+
+<h2 id="place-physical-cells">place physical cells</h2>
+
+<ul>
+<li>tie cells: <code>setTieHiLoMode</code> &amp; <code>addTieHiLo</code></li>
+<li>decap cells: <code>addDeCap</code></li>
+<li>well taps: <code>addWellTap</code></li>
+<li>end cap: <code>addEndCap</code> (to handle end-of-row well tie-off requirements)</li>
+<li>filler cells: <code>setFillerMode</code> &amp; <code>addFiller</code></li>
+</ul>
+
+<h2 id="check-placement-quality">check placement quality</h2>
+
+<ul>
+<li>Amoeba view: how placement of modules are clustered together</li>
+<li>density map</li>
+<li>after trial route, check congestion</li>
+<li>&ldquo;place -&gt; check placement&rdquo; = <code>checkPlace</code></li>
+<li>&ldquo;tools -&gt; violation brower&rdquo; to see the violations for previous <code>checkPlace</code> command</li>
+<li>&ldquo;place -&gt; refine placement&rdquo; = <code>refinePlace</code>: check DRC and pin access for routing</li>
+<li>&ldquo;place -&gt; query density -&gt; query place density&rdquo; = <code>checkFPlan -reportUtil</code></li>
+
+<li><p>&ldquo;place -&gt; query desity -&gt; query pin density&rdquo; = <code>queryPinDensity</code></p>
+
+<h1 id="module-09-scan-opt-and-reordering">Module 09: scan opt and reordering</h1></li>
+</ul>
+
+<h2 id="what-are-scan-chains">what are scan chains?</h2>
+
+<ul>
+<li>make flops controllable and observable</li>
+<li>reordering: use less routing resource</li>
+</ul>
+
+<h2 id="load-scan-chain-info">load scan chain info</h2>
+
+<ul>
+<li>why? to ignore scan chain while placement, to reduce routing congestion and wire lengths</li>
+<li><code>specifyScanCell</code> to define scan cells</li>
+<li><code>specifyScanChain</code> or use scan DEF to specify scan chain</li>
+<li>NOTE: if no scan def, placement and routing will have big differences to what we really want</li>
+</ul>
+
+<h2 id="create-scan-def">create scan DEF</h2>
+
+<ul>
+<li><code>defOutBySection -noNets -noComps -scanChain scan.def</code></li>
+<li>scan DEF keywords
+
+<ul>
+<li>&ldquo;SCANCHAINS&rdquo;</li>
+<li>&ldquo;START PIN&rdquo; &amp; &ldquo;STOP PIN&rdquo;</li>
+</ul></li>
+</ul>
+
+<h2 id="reorder-scan-chain">reorder scan chain</h2>
+
+<ul>
+<li><code>setScanReorderMode</code></li>
+<li><code>scanTrace</code> to trace for lockup latches</li>
+<li>by default, <code>place_opt_design</code> will reorder scan chains, but it also can be done separately with <code>scanReorder</code> cmd</li>
+</ul>
+
+<h2 id="cmds">cmds</h2>
+
+<ul>
+<li>&ldquo;place -&gt; display -&gt; scan chain&rdquo; = <code>displayScanChain</code></li>
+
+<li><p>&ldquo;place -&gt; scan chain -&gt; delete&rdquo; = <code>deleteScanChain</code></p>
+
+<h1 id="module-10-early-global-route">Module 10: early global route</h1></li>
+
+<li><p>to analyze routing feasibility</p></li>
+</ul>
+
+<h2 id="routers-in-innovus">routers in innovus</h2>
+
+<ul>
+<li>SRoute for power routing</li>
+<li>early global route for congestion analysis (not DRC or LVS clean), needed for preliminary extraction/STA, not for SI analysis</li>
+<li>NanoRoute: detail routing (sign-off quality)</li>
+<li>fcroute (flip chip router) to route power/signal to bumps</li>
+<li>high frequency router: for mixed signal design</li>
+</ul>
+
+<h2 id="features-of-early-globl-router">features of early globl router</h2>
+
+<ul>
+<li>create actual wires</li>
+<li>produce congestion map</li>
+<li>fast w/o fixing DRC/LVS</li>
+<li>not for SI analysis</li>
+</ul>
+
+<h2 id="commands-1">commands</h2>
+
+<ol>
+<li><code>setAttribute</code> for special net NDR
+
+<ul>
+<li>width, spacing, preferred routing layers, shielding</li>
+</ul></li>
+<li><code>setRouteMode</code>
+
+<ul>
+<li>routing layer, routing direction, congestion result tuning</li>
+<li>should use the same routing constraints as NanoRoute for consistency and better correlation</li>
+</ul></li>
+<li><code>earlyGlobalRoute</code></li>
+</ol>
+
+<h2 id="congestion-map">congestion map</h2>
+
+<ul>
+<li>red diamond symbol represents overflow of routes</li>
+<li>todo: adjust block placement and/or orientations</li>
+<li>todo: use partial placement blockage to lower congestion</li>
+<li>tune congestion value for tials (what-if)</li>
+</ul>
+
+<h2 id="statistics-based-on-gcells-size-can-be-redefined">statistics based on GCells (size can be redefined)</h2>
+
+<ul>
+<li>GR compatible: # of GCells that overflow, don&rsquo;t distinguish the level of overflow, that means overflow of 1 and overflow of 3 is the same</li>
+<li>non GR compatible: consider the overflow levels that means overflow of 1 and overflow of 3 are different, so the number of percentages are higher than the first one</li>
+
+<li><p>both ignore fully blocked Gcells</p>
+
+<h1 id="module-11-mmmc-multi-mode-multi-corner-analysis">Module 11: MMMC (multi-mode multi-corner analysis)</h1></li>
+</ul>
+
+<h2 id="analysis-view-hierarchy">analysis view hierarchy</h2>
+
+<ul>
+<li><code>create_analysis_view</code>
+
+<ul>
+<li><code>create_constraint_mode</code></li>
+<li><code>create_delay_corner</code></li>
+<li><code>update_delay_corner</code> (power domain definition)</li>
+<li><code>create_rc_corner</code></li>
+<li><code>create_op_cond</code></li>
+<li><code>create_library_set</code></li>
+</ul></li>
+</ul>
+
+<h2 id="library-set">library set</h2>
+
+<ul>
+<li>a group of library files from different process corners, operating voltages (for MSMV power domain)</li>
+<li>can include both timing .libs and signal integrity .cdb</li>
+</ul>
+
+<h2 id="rc-corner">rc corner</h2>
+
+<ul>
+<li>cap table</li>
+<li>qrc file</li>
+<li>temperature</li>
+</ul>
+
+<h2 id="delay-corner">delay corner</h2>
+
+<ul>
+<li>aggregate of library set and rc corner</li>
+</ul>
+
+<h2 id="constraint-mode">constraint mode</h2>
+
+<ul>
+<li>a set of .sdc file to define clock, condition, IO timing, path exception, etc.</li>
+</ul>
+
+<h2 id="analysis-view">analysis view</h2>
+
+<ul>
+<li>aggregate of delay corner and constraint mode</li>
+<li>DON&rsquo;T forget to activate analysis views
+
+<ul>
+<li><code>set_analysis_view -setup ... -hold ...</code></li>
+</ul></li>
+<li>don&rsquo;t need to use all of the defined analysis views in early design stages</li>
+<li><code>report_analysis_view</code> / <code>all_analysis_view</code> / <code>all_setup_analysis_view</code> / <code>all_hold_analysis_view</code> / <code>get_analysis_view</code></li>
+<li>save it as Tcl in a view definition file</li>
+<li>&ldquo;timing -&gt; MMMC brower&rdquo; to setup or view MMMC views</li>
+</ul>
+
+<h2 id="perform-timing-analysis">perform timing analysis</h2>
+
+<ul>
+<li><p><code>timeDesign -expandedViews</code></p>
+
+<h1 id="module-12-extract-parasitics-and-run-timing-analysis">Module 12: extract parasitics and run timing analysis</h1></li>
+
+<li><p>timing analysis should be done every steps through the entire flow. if any step hasn&rsquo;t met timing requirements, or timing is too bad to be fixed afterwards, we should go back and find out the reason.</p></li>
+
+<li><p>every steps in innovus use the same timing engine (but with different extraction accuracy)</p></li>
+</ul>
+
+<h2 id="timing-menu-item">&ldquo;timing&rdquo; menu item</h2>
+
+<ul>
+<li>cmd: <code>extractRC</code> + <code>timeDesign</code></li>
+</ul>
+
+<h2 id="preroute-extraction-flow">preroute extraction flow</h2>
+
+<ul>
+<li>after global preroute</li>
+<li>&ldquo;tools -&gt; set mode -&gt; preroute&rdquo;</li>
+<li>cmd
+
+<ul>
+<li>load viewDefinition.tcl with QRC file (don&rsquo;t use cap table under 32nm)</li>
+<li><code>setDesignMode -process xx</code></li>
+<li><code>setExtractRCMode -engine preRoute</code></li>
+<li><code>extractRC</code></li>
+</ul></li>
+</ul>
+
+<h2 id="postroute-extraction-flow">postroute extraction flow</h2>
+
+<ul>
+<li>&ldquo;tools -&gt; set mode -&gt; postroute&rdquo;
+
+<ul>
+<li>can choose different effort level</li>
+</ul></li>
+<li>cmd: similar to preroute extraction, just use <code>-engine postRoute</code> instead
+
+<ul>
+<li><code>-effortLevel high</code> will use integrated Quantus extraction engine</li>
+<li><code>-effortLevel signoff</code> will use standalone Quantus engine</li>
+<li>NOTE: from Michael&rsquo;s comparison, effort high and signoff has less than 5% differences in RC number</li>
+</ul></li>
+</ul>
+
+<h2 id="extract-rc-data">extract RC data</h2>
+
+<ul>
+<li>&ldquo;tools -&gt; extractRC&rdquo; = <code>extractRC</code>
+
+<ul>
+<li>to delete extracted parasitics but maintain the RC extraction modes, use <code>reset_parasitics</code></li>
+</ul></li>
+</ul>
+
+<h2 id="cap-table-ascii">cap table (ascii)</h2>
+
+<ul>
+<li>can be used in hand calculation</li>
+<li><code>generateCapTbl</code></li>
+</ul>
+
+<h2 id="rc-correlation-important">RC correlation (important!)</h2>
+
+<ul>
+<li>correlate build-in extractor and sign-off extractor use &ldquo;Ostrich&rdquo; utility
+
+<ul>
+<li>cmd is <code>ostrich</code></li>
+<li>it can generate a histogram of how 2 SPEF files correlate</li>
+<li>OR <code>generateRCFactor</code></li>
+</ul></li>
+<li>super important!
+
+<ul>
+<li>don&rsquo;t miss any critical path in early stage</li>
+</ul></li>
+</ul>
+
+<h2 id="global-ocv">Global OCV</h2>
+
+<ul>
+<li><code>set_timing_derate -delay_corner_name xxx -early x.x -late x.x</code></li>
+<li>use <code>setAnalysisMode -cppr both</code> too remove clock path pssimism for common clock path</li>
+<li>in both worst and best caes conditions (setup and hold), they has both early and late path</li>
+</ul>
+
+<h2 id="aocv-advanced-ocv">AOCV (advanced OCV)</h2>
+
+<ul>
+<li>to reduce process pssimism</li>
+<li>cmd: <code>setAnalysisMode -aocv true -analysisType onChipVariation -cppr both</code></li>
+<li>require info from AOCV library
+
+<ul>
+<li><code>create_library_set -aocv xxx.aocv</code></li>
+</ul></li>
+<li>basically, decrease OCV factor based on the path depth. more cells on th path, less OCV (closer to 1.0)</li>
+<li>GBA (graph-based analysis)
+
+<ul>
+<li>stage counting start from CPPR common point</li>
+</ul></li>
+</ul>
+
+<h2 id="socv-statistical-ocv">SOCV (statistical OCV)</h2>
+
+<ul>
+<li>models a statistical representation of <strong>delays</strong> for different input slew and ouput load, for both early and late path</li>
+<li>captured in LVF table (liberty variance format) in timing lib as something like &ldquo;ocv_sigma_cell_rise&rdquo;</li>
+<li>&ldquo;tools -&gt; set mode -&gt; speicfy analysis mode&rdquo; = <code>setAnalysisMode -socv true</code></li>
+<li>if using PrimeTime, need to use the following cmd to take differences of default settings into consideration
+
+<ul>
+<li><code>setDesingMode -thirdPartyCompatible true</code></li>
+</ul></li>
+</ul>
+
+<h2 id="gen-sdf">gen SDF</h2>
+
+<ul>
+<li>&ldquo;timing -&gt; write SDF&rdquo; = <code>write_sdf -target_application verilog -setuphold merge_when_paired -view xxx xxx.sdf.gz</code></li>
+</ul>
+
+<h2 id="timing-analysis">timing analysis</h2>
+
+<ul>
+<li>use pre-place option in timing analysis to check constraints (no RC numbers at this stage at all)</li>
+<li><code>timeDesign</code></li>
+<li><code>report_timing</code>
+
+<ul>
+<li><code>-format</code> to customize report fields</li>
+<li><code>-path_group</code> to narrow down
+
+<ul>
+<li><code>group_path</code></li>
+<li><code>createBasicPathGroups -reset</code> to create reg2reg, in2reg, reg2out, in2out, clkgate path groups</li>
+<li><code>get_path_groups</code></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="timing-debug">timing debug</h2>
+
+<ul>
+<li>&ldquo;timing -&gt; debug timing&rdquo; GUI
+
+<ul>
+<li>global path histogram</li>
+<li>SDC cross-probing</li>
+<li>highlight path in their physical location</li>
+</ul></li>
+<li>start timing path analyzer by double-click the path
+
+<ul>
+<li>path SDC shows all the SDC constraints of current path to debug constraint issues</li>
+<li>NOTE: similar GUI with mSTA</li>
+</ul></li>
+<li>TIPS: make sure to close most of timing problems pre-CTS, because later in the design stage fewer methods could be used</li>
+<li>TIPS: narrow down the debug, from several thousands of violation paths to a small subset of failing path (summarize the similar cause)</li>
+<li>TIPS: check for unexpected numbers in timing report
+
+<ul>
+<li>clock latency/skew/uncertainty</li>
+<li>unexpected large/small delay of certain instances and nets</li>
+<li>path depth (too large? too small?)</li>
+<li>cells in the path (a chain of back-to-back buffers)</li>
+<li>net load/slew/fanout</li>
+<li>derating (expected?)</li>
+</ul></li>
+<li>TIPS: physical domain related failing paths
+
+<ul>
+<li>congested place area</li>
+<li>congested routing area</li>
+<li>placement widely spread</li>
+<li>instance correctly spread from start point to end point?</li>
+<li>detour of path (usually around power domains or hard macros)</li>
+<li>channel sized correctly?</li>
+<li>power domain shaped optimally?</li>
+</ul></li>
+<li>TIPS: check the log file for more hints</li>
+<li>TIPS: even if overall timing looks good, still need to investigate some of the worst timing paths</li>
+<li>TIPS: fix issues as early as possible</li>
+<li>TIPS: if all violations are concentrated in one clock domain, check SDC first, CTS second</li>
+<li>TIPS: for narrow channels between SRAM&rsquo;s, congestion will be problem and cause timing issues. use partial blockage or soft blockage in the channel to reduce congestion</li>
+<li>TIPS: problem caused by floorplan may need several iterations to find a really useful solution</li>
+
+<li><p>root cause of timing issues</p>
+
+<ul>
+<li>design issue</li>
+<li>placement/floorplan issue</li>
+<li>timing constraint issue</li>
+<li>database problem</li>
+<li>user error</li>
+
+<li><p>script/flow/methodology issue</p>
+
+<h1 id="module-13-optimize-and-close-timing">Module 13: optimize and close timing</h1></li>
+</ul></li>
+</ul>
+
+<h2 id="what-is-opt">what is opt?</h2>
+
+<ul>
+<li>4 objectives: timing, SI, power, area</li>
+</ul>
+
+<h2 id="opt-operations">opt operations</h2>
+
+<ul>
+<li>add/delete buffer</li>
+<li>resize gate</li>
+<li>restructure netlist</li>
+<li>remap logic</li>
+<li>swap pin</li>
+<li>move inst</li>
+<li>apply useful skew</li>
+<li>layer opt</li>
+<li>track opt</li>
+</ul>
+
+<h2 id="how-to-use-opt">how to use opt?</h2>
+
+<ul>
+<li>&ldquo;tools -&gt; set mode -&gt; mode setup&rdquo; = <code>setOptMode</code>
+
+<ul>
+<li>timing effort: to opt power only, change this to &ldquo;None&rdquo;</li>
+<li>simplify netlist
+
+<ul>
+<li>remove dangling output instances</li>
+<li>propagate constants</li>
+<li>remap useless logic</li>
+</ul></li>
+</ul></li>
+<li>&ldquo;ECO -&gt; optimize design&rdquo; = <code>optDesign</code>
+
+<ul>
+<li><code>-preCTS</code></li>
+<li><code>-postCTS</code></li>
+<li><code>-postRoute</code></li>
+</ul></li>
+<li>debug info in .logv file: <code>setOptMode -verbose</code></li>
+<li>during placement, <code>place_opt_design</code> includes setup opt</li>
+<li>during CTS, <code>ccopt_design</code> includes setup opt
+
+<ul>
+<li>use <code>ccopt_design -cts</code> to create <strong>zero skew</strong> clock tree, and then use <code>optDesign -postCTS</code> to opt setup, use <code>optDesign -postCTS -hold</code> to opt hold</li>
+</ul></li>
+<li>after routing, use <code>optDesign -postroute -setup -hold</code> to opt setup and hold</li>
+</ul>
+
+<h3 id="with-path-group">with path group</h3>
+
+<ul>
+<li><code>group_path</code> + <code>setPathGroupOption $name -efforLevel</code> to specify different effort level for different path groups</li>
+<li>2 automatically created high-effort path groups: reg2reg &amp; reg2clkgate</li>
+<li>create custom path groups to over optimize some paths, but only recommended to use <code>optDesign -incr</code> for these path groups for better TAT</li>
+</ul>
+
+<h3 id="track-opt-during-routing">track opt during routing</h3>
+
+<ul>
+<li><code>routeDesign -trackOpt</code> auto involve &ldquo;tQuantus&rdquo; after global route and track assignment to opt global route and track assigment. &ldquo;tQuantus&rdquo; is not sign-off accurate, but much faster</li>
+<li>cmd
+~~~tcl
+setExtractRCMode -engine postRoute -effortLevel medium
+setDelayCalMode -SIAware true
+setAnalysisMode -analysisType onChipVariation -cppr both</li>
+</ul>
+
+<p>routeDesign -trackOpt</p>
+
+<pre><code>- TIPS: generate scale factors before running tQuantus
+
+### NDR (non-default routes)
+- `setOptMode -ndrAwareOpt $ls_ndr` before use `optDesign` to improve timing
+- how to define NDR
+    - LEF file
+    - `add_ndr`
+- TIPS: don't use too many NDRs, cos runtime. one NDR (2W,2S) is optimum
+
+### route-driven opt (layer aware opt)
+- advanced nodes (&lt;20nm), higher layer has smaller RC than lower layer, so they are optimum for long/critical routing
+- `setOptMode -layerAwareOpt` (which is activated automatically)
+
+### stop reclamation during power/area opt
+- opt engine will auto opt power/area for all the path with positive slack, and most of the time we want to keep some margin
+- `setOptMode -setupTargetSlackForReclaim $slack`
+    - use positive $slack
+
+### total negative slack opt
+- by default, opt only worst negative slack paths
+- to run opt for all negative slack paths, use `setOptMode -allEndPoints true`
+    - auto activated during high-effort timing closure flow
+
+## view pruning
+- by default, innovus will auto determin dominant views out of all user active views, and only work on dominant views to opt TAT
+- timing reports operate on these presistent dominant views not all user active views
+
+## layer-aware buffering
+- layer-aware opt is part of timing opt, but for buffer trees it's more important, so it's enabled by default
+- it will be down in pre-CTS opt and post-CTS opt
+
+## max wire length rule
+- use `setOptMode -maxLength $um` to limit the wire length by inserting repeaters
+    - the same with other DRV rules, such as max_cap, max_tran, max_fanout
+
+## correlate with PT
+- `read_sdf -view $view1` + `optDesign -postRoute -useSDF`, then opt engine will fix violations based on timing analysis using the SDF delays from PT
+
+## correlate with StarRCXT or CalibreXT
+~~~tcl
+read_parasitics -rc_corner
+timeDesign -reportOnly
+setSIMode -acceptableWNS
+read_sdf -view
+optDesign -postRoute -useSDF
+</code></pre>
+
+<h2 id="interactive-eco">interactive ECO</h2>
+
+<ul>
+<li>&ldquo;ECO -&gt; interactive ECO&rdquo;
+
+<ul>
+<li>add/delete buffer/inst</li>
+<li>change cell</li>
+</ul></li>
+<li>support experiment with &ldquo;eval&rdquo; button</li>
+</ul>
+
+<h2 id="report-unfixed-hold-paths-in-details">report unfixed hold paths in details</h2>
+
+<ul>
+<li><code>setOptMode -reportHoldPathLimit $n</code> + <code>optDesign -holdVioData $fname</code>
+
+<ul>
+<li>path, slack, and the reason why it cannot be fixed</li>
+</ul></li>
+</ul>
+
+<h2 id="power-driven-opt">power driven opt</h2>
+
+<ul>
+<li><code>setDesignMode -powerEffort none|low|high</code></li>
+<li>leakage to dynamic power ratio
+
+<ul>
+<li><code>setOptMode -leakageToDynamicRatio $x</code> while x is from 0 to 1</li>
+<li>by default, x=1.0 means focus on leakage power reduction</li>
+<li>x=0.0 means focus on dynamic power reduction</li>
+<li>x=0.5 means balance</li>
+</ul></li>
+<li>then use <code>optPower</code> at diff stages to opt power</li>
+</ul>
+
+<h2 id="signal-em-electromigration-opt">signal EM (electromigration) opt</h2>
+
+<ul>
+<li>opt methods
+
+<ul>
+<li>wider wire</li>
+<li>smaller driver</li>
+<li>more buffer</li>
+</ul></li>
+<li>flow
+~~~tcl
+verify_drc; # (optional) in Innovus
+verifyACLimit -report $rpt_fpath; # in Innovus or Voltus
+fixACLimitViolation -useReportFile $rpt_fpath -maxIter $n; # in Innovus
+~~~
+
+<ul>
+<li>num of iterations for <code>fixACLimitViolation</code> is from 1 to 3. Use 1 only will widen wire; use 2 will downsize buffer; use 3 will add buffer. So both 2 and 3 need ECO route.</li>
+<li>activity file is important</li>
+</ul></li>
+<li>use net-based NDR to fix EM
+
+<ul>
+<li><code>add_ndr -name $rule -width</code></li>
+<li><code>setAttribute -net $net -em_ndr_rule $rule</code></li>
+</ul></li>
+</ul>
+
+<h2 id="timing-closure-flow">timing closure flow</h2>
+
+<ul>
+<li><code>setDesignMode -flowEffort standard|extreme|express</code>
+
+<ul>
+<li>express: to prototype</li>
+<li>standard: default, good for majority of designs</li>
+<li>extreme: 10% to 30% better QoR at the expense of TAT, need extra license</li>
+</ul></li>
+<li>TIPS: power optimization needs to be run explicitly anyhow by using <code>setDesignMode -powerEffort</code> and <code>optPower</code></li>
+<li>TIPS: disable useful skew needs <code>setOptMode -usefulSkewPreCTS false</code> + <code>setOptMode -usefulSkewCCopt None</code> + <code>setOptMode -usefulskewPostRoute false</code></li>
+<li>TIPS: track opt is not turned on by default in standard flow
+
+<ul>
+<li>use <code>routeDesign -trackOpt</code> to turn it on in standard flow</li>
+</ul></li>
+<li>TIPS: postroute area reclaim is not turned on by default in standard flow
+
+<ul>
+<li><code>setOptMode -postRouteAreaReclaim setupArea/holdAndSetupArea</code></li>
+</ul></li>
+</ul>
+
+<h2 id="targeted-post-route-opt">targeted post route opt</h2>
+
+<ul>
+<li>target on select timing-critical nodes, either let tool auto select or provide it some file and choose the type of opt to run</li>
+<li><code>setOptMode -targetBasedOptFile $fname</code>
+
+<ul>
+<li><code>-targetBasedOptFileOnly</code></li>
+</ul></li>
+<li><code>optDesign -postRoute -targeted</code></li>
+<li>report with a summary table that has the num of nodes, transforms committed</li>
+<li>use &ldquo;global timing debug&rdquo; to generate target file interactively</li>
+</ul>
+
+<h2 id="tips-1">TIPS</h2>
+
+<ul>
+<li>verify timing constraints
+
+<ul>
+<li><code>timeDesign -prePlace</code>: if timing is not met after synthesis, it most likely is not met during implementation</li>
+<li>use same constraint for implementation and sign-off</li>
+</ul></li>
+<li>check congestion</li>
+<li>leave 5~7% margin of utilization for opt</li>
+<li>after opt, exam remaining violation paths
+
+<ul>
+<li>check congestion issue</li>
+</ul></li>
+
+<li><p>fix hold time</p>
+
+<ul>
+<li>make sure hold timing uncertainty is realistic</li>
+<li><em>allow delay cells</em></li>
+<li>add cell padding during placement, then remove them before postCTS opt, to reserve space for hold fixing</li>
+
+<li><p>check clock skew</p>
+
+<h1 id="module-14-cts">Module 14: CTS</h1>
+
+<h2 id="traditional-balanced-clock-methodology">traditional balanced clock methodology</h2></li>
+</ul></li>
+
+<li><p>there is no <strong>fundamental</strong> timing requirements that clocks need to be balanced</p></li>
+
+<li><p>more buffer to balance clock, or other expensive options: mesh or spine</p></li>
+
+<li><p>IR drop is severe cos everything trigger at the same time</p></li>
+
+<li><p>no useful skew to help critical path, so more TAT/area/leakage</p></li>
+</ul>
+
+<h2 id="ccopt-with-useful-skew">CCOpt with useful skew</h2>
+
+<ul>
+<li>concurrent useful-skew and datapath opt</li>
+<li>critical chain instead of critical path
+
+<ul>
+<li>a chain has larger delay/stage, even don&rsquo;t have critical path</li>
+</ul></li>
+</ul>
+
+<h2 id="clock-tree-vs-skew-group">clock tree vs. skew group</h2>
+
+<ul>
+<li><code>create_ccopt_clock_tree</code> to specify subset of circuit which CTS can operate on
+
+<ul>
+<li>with physical constraints of max trans/cap/wire length, NDR, repeater cell sets</li>
+</ul></li>
+<li><code>create_ccopt_skew_group</code> to create a group of pins in clock tree
+
+<ul>
+<li>balance constraints of skew/insertion delay</li>
+</ul></li>
+</ul>
+
+<h2 id="flow">flow</h2>
+
+<pre><code class="language-tcl"># place
+place_opt_design
+
+# load post-CTS timing constraints, and avoid set_propagated_clock
+
+# settings
+setOptMode
+
+# set NDR for clock routing
+create_route_type -name xxx
+set_ccopt_property route_type -net_type {leaf, trunk, top} -clock_tree $name
+
+# specify CTS cells to use
+set_ccopt_property cts_buffer_cells
+set_ccopt_property cts_inverter_cells
+set_ccopt_property cts_gating_cells
+
+# specify DRC rules
+set_ccopt_property target_max_trans
+set_ccopt_property target_skew
+
+# gen clock tree spec
+create_ccopt_clock_tree spec
+
+# run ccopt
+ccopt_design -ckSpec
+
+# post-CTS opt for hold (which is not included in ccopt_design)
+ccopt_design -postCTS -hold
+
+# routing
+routeDesign
+
+# post-route opt, includes DRV and skew fixing
+optDesign -postRoute -setup
+optDesign -postRoute -hold
+</code></pre>
+
+<h2 id="clock-spec">clock spec</h2>
+
+<ul>
+<li>analyze multi-mode timing graph</li>
+<li>create clock trees and skew groups and property setting</li>
+<li>can be written out as a TCL file</li>
+</ul>
+
+<h2 id="useful-skew-controls">useful skew controls</h2>
+
+<ul>
+<li>can be controlled for every stage of the flow</li>
+<li>diff of effort levels: <code>setOptMode -usefulSkewCCopt</code> + <code>ccopt_design</code>
+
+<ul>
+<li>none: skew balanced</li>
+<li>standard: skew balanced CTS + useful skew in post-CTS</li>
+<li>medium: useful skew in CTS + useful skew opt in post-CTS</li>
+<li>extreme: medium + hold aware</li>
+</ul></li>
+<li>the <code>setDesignMode -flowEffort</code> will have impact on ccopt</li>
+</ul>
+
+<h2 id="specify-ccopt-route-types">specify ccopt route types</h2>
+
+<ul>
+<li>cos at the end of ccopt, clock signals will be routed with NanoRoute (detail route), so we have to prepare
+
+<ul>
+<li>clock NDR</li>
+<li>layer range</li>
+<li>shielding</li>
+<li>length based tables</li>
+</ul></li>
+<li>leaf/trunk/top
+
+<ul>
+<li>leaf: nets connected to leaf cells</li>
+<li>top: user defined as net that connected to &gt; N fanouts</li>
+<li>trunk: all other nets</li>
+</ul></li>
+<li>cmd
+
+<ul>
+<li><code>create_route_type</code></li>
+<li><code>set_ccopt_property route_type -net_type {trunk leaf top}</code></li>
+<li><code>set_ccopt_property -name buffer_cells</code></li>
+<li>to use inverters only <code>set_ccopt_property use_inverters true</code></li>
+</ul></li>
+</ul>
+
+<h2 id="specify-halo-for-clock-cells">specify halo for clock cells</h2>
+
+<ul>
+<li><code>set_ccopt_property cell_halo_x/y -cell $name $um</code></li>
+<li><code>report_ccopt_cell_halo_violations</code></li>
+</ul>
+
+<h2 id="define-ccopt-clock-network">define ccopt clock network</h2>
+
+<ul>
+<li><code>create_ccopt_clock_tree</code></li>
+<li><code>delete_ccopt_skew_group</code></li>
+<li><code>delete_ccopt_clock_tree</code></li>
+</ul>
+
+<h2 id="early-clock-flow-during-placement">early clock flow during placement</h2>
+
+<ul>
+<li>move CTS config before <code>place_opt_design</code> to get more accurate estimate of skew impact during placement opt</li>
+<li>don&rsquo;t use <code>set_propagated_clock</code></li>
+<li><code>setDesignMode -earlyClockFlow true</code></li>
+</ul>
+
+<h2 id="debug-clock-tree">debug clock tree</h2>
+
+<ul>
+<li><code>set_ccopt_mode -cts_opt_type {cluster|trial|full}</code></li>
+<li><code>ccopt_internal_messages -on</code></li>
+<li><code>ccopt_check_prerequisites</code></li>
+<li><code>get_ccopt_property -help *</code></li>
+<li><code>report_ccopt_clock_tree_structure</code></li>
+<li>clock tree debugger
+
+<ul>
+<li>dotted line connects same cell in diff trees</li>
+</ul></li>
+</ul>
+
+<h2 id="postroute-fixing">postroute fixing</h2>
+
+<ul>
+<li><code>ccopt_pro</code> is included automatically in <code>optDesign -postRoute</code> for clock DRV and clock skew
+
+<ul>
+<li>it only do sizing cell, not inserting buffers</li>
+</ul></li>
+</ul>
+
+<h2 id="flexible-h-tree">Flexible H-Tree</h2>
+
+<ul>
+<li>vs. clock mesh and traditional CTS tree
+
+<ul>
+<li>less power than mesh</li>
+<li>better OCV than trad CTS</li>
+<li>don&rsquo;t need rectangle floorplan</li>
+</ul></li>
+<li>interesting points
+
+<ul>
+<li>use dummy buffers to keep tree topo balanced</li>
+<li>multi-corner aware balancing, scaling better in every corners</li>
+<li>detour around blockage</li>
+</ul></li>
+<li>limitations
+
+<ul>
+<li>no logic or clock gating</li>
+</ul></li>
+
+<li><p>CMD</p>
+
+<ul>
+<li><code>create_ccopt_flexible_htree</code></li>
+<li><code>synthesize_ccopt_flexible_htrees</code></li>
+
+<li><p><code>ccopt_design</code></p>
+
+<h1 id="module-15-detail-routing">Module 15: detail routing</h1></li>
+</ul></li>
+</ul>
+
+<h2 id="lef-library-exchange-format">LEF (library exchange format)</h2>
+
+<ul>
+<li>2 parts
+
+<ul>
+<li>tech section
+
+<ul>
+<li>layer definition: metal/via</li>
+</ul></li>
+<li>cell/macro sections
+
+<ul>
+<li>pin locations</li>
+<li>OBS (obstruction, don&rsquo;t route)</li>
+</ul></li>
+</ul></li>
+<li>gen LEF file
+
+<ul>
+<li><code>set_abstract_mode</code></li>
+<li><code>run_abstract</code></li>
+</ul></li>
+<li><strong>line-to-via pitch</strong>
+
+<ul>
+<li>line width * 0.5 + via enclosure * 0.5 + spacing</li>
+<li>use line-to-via pitch as minimum pitch for metal, instead of line-to-line pitch, cos via intends to have larger width and spacing requirements</li>
+</ul></li>
+</ul>
+
+<h2 id="optimal-routing-tracks-and-cell-size">optimal routing tracks and cell size</h2>
+
+<ul>
+<li>std cell height and width should be multiple of horizontal routing grid and vertical routing grid</li>
+<li>align routing tracks in the same preferred direction</li>
+</ul>
+
+<h2 id="gen-routing-tracks">gen routing tracks</h2>
+
+<ul>
+<li>normally use defaul values from foundry</li>
+<li><code>add_tracks</code> to override
+
+<ul>
+<li><code>report_tracks</code> to report
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="gen-via">gen via</h2>
+
+<ul>
+<li>the detail routing tool &ldquo;NanoRoute&rdquo; will gen via automatically.</li>
+<li>bar via: multicut or single cut?
+
+<ul>
+<li>if large enough, considered as multicut</li>
+<li>look at the <code>CUTCLASS</code> keyword
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="optimize-routing">optimize routing</h2>
+
+<ul>
+<li>off-grid pins and not aligned routing tracks will impact the routing performance and runtime</li>
+</ul>
+
+<h2 id="settings">settings</h2>
+
+<ul>
+<li>tools -&gt; set mode -&gt; mode setup
+
+<ul>
+<li>CMD <code>setNanoRouteMode</code></li>
+</ul></li>
+<li>types
+
+<ul>
+<li>route selected nets only</li>
+<li>full route</li>
+<li>initial route</li>
+<li>search and repair</li>
+<li>ECO route</li>
+</ul></li>
+<li>DFM (tools -&gt; set mode -&gt; mode setup -&gt; DFM)
+
+<ul>
+<li>prefer to use multicut via</li>
+<li>either concurrent or post-route opt</li>
+</ul></li>
+<li>antenna repare (tools -&gt; set mode -&gt; mode setup -&gt; antenna)</li>
+</ul>
+
+<h2 id="detail-control">detail control</h2>
+
+<ul>
+<li>route -&gt; NanoRoute -&gt; Specify Attribute
+
+<ul>
+<li>CMD <code>setAttribute routeDesign</code></li>
+<li>to apply for different net types or specific nets</li>
+<li>to set weight, skip antenna, SI prevention, fix SI post route, etc.</li>
+</ul></li>
+</ul>
+
+<h2 id="nanoroute">NanoRoute</h2>
+
+<ul>
+<li>Route -&gt; NanoRoute -&gt; Route
+
+<ul>
+<li>CMD <code>routeDesign</code></li>
+<li>timing driven or SI driven or together
+
+<ul>
+<li><code>setNanorouteMOde -routeWithTimingDriven true -routeWithSIDriven true</code></li>
+</ul></li>
+<li>avoid litho problem, or repair litho problem post-route</li>
+</ul></li>
+<li>or do global and detail routing separately
+
+<ul>
+<li><code>routeDesign -global</code></li>
+<li><code>routeDesign -detail</code></li>
+</ul></li>
+</ul>
+
+<h2 id="fix-antenna">fix antenna</h2>
+
+<ul>
+<li>layer hopping (most common)</li>
+<li>insert diode
+
+<ul>
+<li>need to specify diode in LEF</li>
+</ul></li>
+<li>in-cell diode (rare)</li>
+<li>CMD <code>setNanoRouteMode -drouteFixAntenna true</code></li>
+</ul>
+
+<h2 id="si-driven-routing">SI driven routing</h2>
+
+<ul>
+<li>spread wires apart</li>
+<li>re-order nets</li>
+<li>change metal layers</li>
+</ul>
+
+<h2 id="opt-wire-for-yield">opt wire for yield</h2>
+
+<ul>
+<li>spread wire: prevent shorts (more space)
+
+<ul>
+<li><code>setNanoRouteMode -droutePostRouteSpreadWire</code></li>
+</ul></li>
+<li>widen wire: use NDR
+
+<ul>
+<li><code>setNanoRouteMode -droutePostRouteWidenWire widen</code></li>
+<li><code>setNanoRouteMode -droutePostRouteWidenWireRule</code></li>
+</ul></li>
+<li>use <code>setNanoRouteMode -drouteMinSlackForWireOptimization</code> to select the candidates for wire opt</li>
+<li>run <code>routeDesign -wireOpt</code></li>
+</ul>
+
+<h2 id="opt-via-for-yield">opt via for yield</h2>
+
+<ul>
+<li>swap with multicut via, either concurrent in detail routing or postroute
+
+<ul>
+<li>for 40nm and lower, use post-route opt is better, while reserve space in detail routing stage</li>
+</ul></li>
+<li>CMD
+
+<ul>
+<li><code>setNanoRouteMode -dbViaWeight</code></li>
+<li><code>setNanoRouteMode -droutePostRouteSwapVia multicut</code></li>
+<li><code>routeDesign -viaOpt</code></li>
+</ul></li>
+<li>options
+
+<ul>
+<li>critical nets first or non-critical net only</li>
+</ul></li>
+</ul>
+
+<h2 id="report">report</h2>
+
+<ul>
+<li><code>reportWire</code></li>
+<li><code>reportSpecialRoute</code></li>
+<li><code>reportRoute -ndr</code></li>
+</ul>
+
+<h2 id="ndr-non-default-rules-for-routing">NDR (non-default rules) for routing</h2>
+
+<ul>
+<li>can be set to hard rules instead of soft rules by default</li>
+<li>usually for special signal nets, such as clock nets, to have larger width/spacing</li>
+</ul>
+
+<h2 id="add-shielding">add shielding</h2>
+
+<ul>
+<li><code>createShield</code> or <code>setAttribute -net xxx -shield xxx</code> to concurrent add shield during detail routing</li>
+<li>shield might be dropped for sgements because of congestion</li>
+<li>incremental routing: shield will be removed, and recreated at the end of routing</li>
+</ul>
+
+<h2 id="macro-obs">macro OBS</h2>
+
+<ul>
+<li><code>setNanoRouteMode -envMacroObsAsRoutingBlockage</code></li>
+</ul>
+
+<h2 id="routing-effort">routing effort</h2>
+
+<ul>
+<li><code>setNanoRouteMode -drouteSignOffEffor</code>
+
+<ul>
+<li>high | medium | low | auto | n
+
+<ul>
+<li>n is the number iterations</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="sign-off-drc-fixing">sign-off DRC fixing</h2>
+
+<ul>
+<li><code>loadViolationReport</code> and <code>route_fix_signoff_drc</code></li>
+</ul>
+
+<h2 id="post-route-timing-opt">post-route timing opt</h2>
+
+<ul>
+<li><code>optDesign -postRoute -setup -hold</code>
+
+<ul>
+<li>if hold time vio remains, use high effor to fix hold <code>setOptMode -holdFixingEffort high</code></li>
+</ul></li>
+</ul>
+
+<h1 id="module-16-debug-routing">Module 16: debug routing</h1>
+
+<h2 id="flow-1">flow</h2>
+
+<ol>
+<li>data prepare</li>
+<li>customize and mode setup</li>
+<li>global routing and track assignment</li>
+<li>detail routing</li>
+<li>several iterations of search and repair</li>
+</ol>
+
+<h2 id="global-routing">global routing</h2>
+
+<ul>
+<li>GCell</li>
+<li>available tracks?
+
+<ul>
+<li>even if partially occupied, it&rsquo;s not available</li>
+</ul></li>
+<li>capacity vs demand
+
+<ul>
+<li>with color coding: red/magenta/white is high congestion</li>
+<li>different with early global routing congestion map</li>
+</ul></li>
+<li>high metal1 or metal2 congestions indicates that maybe there is pin access problem or cell overlapping problem</li>
+</ul>
+
+<h2 id="detail-ruting">detail ruting</h2>
+
+<ul>
+<li>complete the route based on global routing result</li>
+<li>apply full geometry rules</li>
+<li>prioritize critical nets</li>
+</ul>
+
+<h2 id="iteration-of-routing">iteration of routing</h2>
+
+<ul>
+<li>global routing first</li>
+<li>detail routing iteration from 0 to 20
+
+<ul>
+<li>20th iteration: search and repair try to fix all the violation, most run-time costly, most powerful. be sure that data is correct before use it
+
+<ul>
+<li>search and repair: surgial fix for individual vias and wires, deletion and reroute may be required</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="congestion-analysis-table">congestion analysis table</h2>
+
+<ul>
+<li>overcon for every metal layer: (demand - supply) per GCell</li>
+<li>TIPS: no magic numbers of congestion to indicates routability
+
+<ul>
+<li>&lt; 2%: easy to rout</li>
+<li>2% &gt; x &gt; 6%: difficult to route</li>
+<li>&gt; 6%: high number of DRC violations</li>
+</ul></li>
+<li>TIPS: check floorplan
+
+<ul>
+<li>if buffers are placed on the wrong side of a macro</li>
+<li>if macro has pin inside, instead of on the boundary</li>
+<li>placement of macros are important, usually corners near blocks or channels are more congested</li>
+</ul></li>
+</ul>
+
+<h2 id="report-1">report</h2>
+
+<ul>
+<li><code>reportRoute</code># Module 17: edit wire</li>
+</ul>
+
+<h2 id="patch-wire">patch wire</h2>
+
+<ul>
+<li>&ldquo;RECT&rdquo; section in the DEF 5.8 file</li>
+<li>to fix min-area violations</li>
+</ul>
+
+<h2 id="wire-editing">wire editing</h2>
+
+<ul>
+<li>edit -&gt; write -&gt; edit
+
+<ul>
+<li>&ldquo;create special wire&rdquo; to specify width and spacing</li>
+<li>advanced tab: can snap to track or pin center</li>
+</ul></li>
+<li>change via
+
+<ul>
+<li>select via -&gt; &ldquo;shift-n&rdquo;
+
+<ul>
+<li>use &ldquo;n&rdquo; or &ldquo;p&rdquo; to select the correct via from multiple vias in the same location</li>
+</ul></li>
+</ul></li>
+<li><code>editCutWire</code></li>
+<li><code>editChangeWidth</code></li>
+<li>use delete icon or &ldquo;d&rdquo; -&gt; select/delete form</li>
+<li>create via array
+
+<ul>
+<li>add via icon -&gt; &ldquo;F3&rdquo; -&gt; edit via form# Module 18: prevent and fix SI problems</li>
+</ul></li>
+</ul>
+
+<h2 id="prevent-crosstalk">prevent crosstalk</h2>
+
+<ul>
+<li>increase space</li>
+<li>reorder net: long parallel nets are separated</li>
+<li>wire topology control</li>
+<li>change layer: avoid coupling or reduce resistance</li>
+<li>minimize parallel long wires</li>
+<li>shielding</li>
+<li>insert buffer</li>
+</ul>
+
+<h2 id="fix-si-post-route">fix SI post-route</h2>
+
+<ul>
+<li>ECO -&gt; optimize design
+
+<ul>
+<li>post-route, include SI</li>
+</ul></li>
+<li>require 1 of the 3 libraries: cdb, ECSM-N or CCS-N</li>
+<li>to override default settings
+
+<ul>
+<li><code>setSIMode -enable_glitch_propogating true -receiver_peak_limit 0.30</code></li>
+</ul></li>
+</ul>
+
+<h2 id="report-2">report</h2>
+
+<ul>
+<li><code>report_noise</code></li>
+<li><code>check_noise</code>
+
+<ul>
+<li>check consistency and completeness of noise models# Module 19: metal fill</li>
+</ul></li>
+</ul>
+
+<h2 id="metal-fill">metal fill</h2>
+
+<ul>
+<li>to satisfy min metal density DRC rule</li>
+<li>usually floating, can be tied to VDD or VSS</li>
+</ul>
+
+<h2 id="how-to-1">how-to</h2>
+
+<ul>
+<li>route -&gt; metal fill -&gt; setup
+
+<ul>
+<li><code>setMetalFill</code></li>
+</ul></li>
+<li>route -&gt; metal fill -&gt; add
+
+<ul>
+<li><code>addMetalFill</code></li>
+</ul></li>
+</ul>
+
+<h2 id="trim-metal-fill-after-eco-routing">trim metal fill after ECO routing</h2>
+
+<ul>
+<li>to minimize timing violations caused by metal fill</li>
+<li><code>trimMetalFill</code></li>
+</ul>
+
+<h2 id="via-fill">via fill</h2>
+
+<ul>
+<li>to satisfy min cut density</li>
+<li>similar metal fill setup
+
+<ul>
+<li><code>setViaFill</code> + <code>addViaFill</code></li>
+</ul></li>
+</ul>
+
+<h2 id="flow-2">flow</h2>
+
+<ul>
+<li><code>setViaFill</code></li>
+<li><code>setMetalFill</code></li>
+<li><code>addViaFill</code></li>
+<li><code>addMetalFill</code># Module 20: verification</li>
+</ul>
+
+<h2 id="drc-checks">DRC checks</h2>
+
+<ul>
+<li>use LEF instead of detail layout (GDS)
+
+<ul>
+<li>fast TAT</li>
+<li>not completed</li>
+<li>connection to pins could have violations</li>
+</ul></li>
+</ul>
+
+<h2 id="verify-connectivity">verify connectivity</h2>
+
+<ul>
+<li>verify -&gt; verify connectivity
+
+<ul>
+<li><code>verifyConnectivity</code></li>
+</ul></li>
+</ul>
+
+<h2 id="verify-metal-density">verify metal density</h2>
+
+<ul>
+<li>verify -&gt; verify metal density
+
+<ul>
+<li><code>verifyMetalDensity</code></li>
+</ul></li>
+</ul>
+
+<h2 id="verify-geometry">verify geometry</h2>
+
+<ul>
+<li>for 20nm and below, use <code>set_verify_drc_mode</code> and <code>verify_drc</code>
+
+<ul>
+<li>can check diffusion and implant layers</li>
+<li>can check halo</li>
+<li>use <code>set_verify_drc_mode -disable_rules</code> to disable specific rules</li>
+<li>can check violations within a cell, like M1 violations</li>
+<li>can ignore cell blockage DRC</li>
+</ul></li>
+</ul>
+
+<h2 id="process-antenna">process antenna</h2>
+
+<ul>
+<li>verify -&gt; verify process antenna
+
+<ul>
+<li><code>verifyProcessAntenna</code></li>
+</ul></li>
+</ul>
+
+<h2 id="verify-tap-cells">verify tap cells</h2>
+
+<ul>
+<li><code>verifyWellTap</code>
+
+<ul>
+<li>give a list of well tap cells, or get &ldquo;WELLTAP&rdquo; from LEF</li>
+</ul></li>
+</ul>
+
+<h2 id="verify-em">verify EM</h2>
+
+<ul>
+<li>verify -&gt; verify AC limit
+
+<ul>
+<li><code>verifyACLimit</code></li>
+<li>calculate I_RMS (root mean square current) and compare to the ACCURRENTDENSITY tables in LEF</li>
+</ul></li>
+</ul>
+
+<h2 id="verify-power-wires-in-power-planning-stage">verify power wires in power planning stage</h2>
+
+<ul>
+<li>check for unexpected breaks in certain area for certain layers</li>
+<li><code>verifyWireGap -wireToWire</code> to check if gap is smaller than the given number then fails.</li>
+</ul>
+
+<h2 id="view-violation">view violation</h2>
+
+<ul>
+<li>tools -&gt; violation browser
+
+<ul>
+<li>use &ldquo;X&rdquo; to mark violations as false# Module 21: ECO (engineering change orders)</li>
+</ul></li>
+</ul>
+
+<h2 id="what-is-eco">what is ECO?</h2>
+
+<ul>
+<li>postmask ECO
+
+<ul>
+<li>after base layers have been taped out</li>
+<li>only metal layers can be changed</li>
+<li>have to use spare cells</li>
+</ul></li>
+<li>premask ECO
+
+<ul>
+<li>before tape out</li>
+</ul></li>
+</ul>
+
+<h2 id="settings-1">settings</h2>
+
+<ul>
+<li><code>setEcoMode</code>
+
+<ul>
+<li><code>-LEQCheck</code></li>
+<li><code>-spreadInverter</code></li>
+<li><code>-updateTiming</code></li>
+</ul></li>
+</ul>
+
+<h2 id="how-to-2">how-to?</h2>
+
+<ul>
+<li>master CMD <code>ecoDesign</code>
+
+<ul>
+<li>inputs: old design database + new verilog netlist</li>
+<li>can specify if it&rsquo;s postmask or or not
+
+<ul>
+<li>only modify certain metal layers</li>
+<li>have to give a list of spare cells</li>
+</ul></li>
+</ul></li>
+<li>interactive ECO
+
+<ul>
+<li>ECO -&gt; interactive ECO</li>
+<li>add/delete repeater, swap cell</li>
+<li><code>ecoAddRepeater</code> or <code>ecoDeleteRepeater</code>
+
+<ul>
+<li>TIPS: disable refine place every step to speed up run time, by <code>setEcoMode -refinePlace false</code></li>
+</ul></li>
+<li><code>ecoChangeCell</code></li>
+<li>use <code>-evaluateOnly</code> to evaluate user-specify cell&rsquo;s impact on timing, or use <code>-evaluateAll</code> to evaluate all possible cells, without committing the changes</li>
+<li><code>loadECO</code> to load a file with all the ECO commands</li>
+<li>then use <code>ecoPlace</code> and <code>ecoRoute</code> to do the placement and routing
+
+<ul>
+<li><code>ecoPlace</code> distinguish premask and postmask flow</li>
+<li><code>ecoRoute</code> doesn&rsquo;t support routing of <code>FIXED</code> wires, must be changed to <code>ROUTED</code> beforehand.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2 id="innvous-tempus-signoff-eco">Innvous + Tempus: signoff ECO</h2>
+
+<ol>
+<li>Tempus: <code>signoffTimeDesign</code></li>
+<li>Innovus: <code>setSignoffOptMode</code> + <code>signoffOptDesign</code>
+
+<ul>
+<li>can turn off <code>-noEcoRoute</code> for each step, then run <code>ecoRoute</code> all together to save runtime</li>
+</ul></li>
+<li>Tempus: <code>signoffTimeDesign</code></li>
+</ol>
+
+<p>~~~tcl
+source postroute.inn</p>
+
+<h1 id="set-mmmc-views">set MMMC views</h1>
+
+<h1 id="set-signoff-constraints">set signoff constraints</h1>
+
+<p>extractRC</p>
+
+<p>setSignoffOptMode -preStaTcl pre_sta.tcl
+setSignoffOptMode -saveEcoOptDb ECO-DB
+signoffTimeDesign -reportOnly -outDir before.rpt
+setSignoffOptMode -loadEcoOptDb ECO-DB</p>
+
+<p>signoffOptDesign -noEcoRoute -drv
+signoffOptDesign -noEcoRoute -setup
+signoffOptDesign -noEcoRoute -hold
+ecoRoute
+extractRC
+signoffTimeDesign -reportOnly -outDir after.rpt -noEcoDB
+~~~# Module 22: write out</p>
+
+<h2 id="gds">GDS</h2>
+
+<ul>
+<li>need gds mapping file</li>
+<li>file -&gt; save: gds</li>
+</ul>
+
+<h2 id="verilog-nelist">verilog nelist</h2>
+
+<ul>
+<li><code>saveNetlist</code>
+
+<ul>
+<li><code>-phys</code> to generate netlist for LVS</li>
+</ul></li>
+</ul>
+
+<h2 id="lef">LEF</h2>
+
+<ul>
+<li><code>write_lef_abstract</code> or <code>lefOut</code>
+
+<ul>
+<li>create obstructions in blockages for signal pins, power and ground pins, vias and PG stripes</li>
+</ul></li>
+</ul>
+
+<h2 id="def">DEF</h2>
+
+<ul>
+<li><code>defOut</code>
+
+<ul>
+<li>scan def: <code>defOutBySection -scanChains -noNets -noComps</code></li>
+</ul></li>
+</ul>
+
+<h2 id="sdf">SDF</h2>
+
+<ul>
+<li><code>write_sdf</code></li>
+</ul>
+
+<h2 id="spef">SPEF</h2>
+
+<ul>
+<li><code>rcOut -spef</code></li>
+</ul>
+
+<h2 id="save-innvous-oa-database">save innvous/OA database</h2>
+
+<ul>
+<li>file -&gt; save design# Module 23: challenges of advanced nodes</li>
+</ul>
+
+<h2 id="double-patterning-technology-dpt-or-even-mpt">Double patterning technology (DPT) or even MPT</h2>
+
+<ul>
+<li>lithography distortion</li>
+<li>common coloring engine (CCE)
+
+<ul>
+<li><code>colorizeGeometry</code></li>
+<li>can show violations in DPT</li>
+</ul></li>
+<li>&ldquo;MASK&rdquo; keyword in LEF</li>
+<li>additional parameters for mask in GDS also</li>
+<li>color-aware placement and routing
+
+<ul>
+<li>impact in all physical aspects</li>
+</ul></li>
+<li>more restriction at 10nm</li>
+</ul>
+
+<h2 id="rc-diff-between-layers">RC diff between layers</h2>
+
+<ul>
+<li>much larger diff in 16n/10nm</li>
+<li>higher, wider, faster</li>
+</ul>
+
+<h2 id="cell-design">cell design</h2>
+
+<ul>
+<li>much simpler pin geometry
+
+<ul>
+<li>only BAR shape on M1</li>
+<li>colored by cell designer, INVS cannot change</li>
+</ul></li>
+<li><code>checkDesign</code> to check std cell and macro</li>
+<li>for hard macros
+
+<ul>
+<li>thin pin (only 1 track) need to match routing track color</li>
+<li>fat pin (more than 1 track) need to be opposite with center routing track to maximize routing resources</li>
+<li><code>snapFPlan -macroPin</code> to snap macro&rsquo;s pin to right color routing track. Then use <code>checkFPlan</code> to check pin snapping</li>
+</ul></li>
+<li>for large multi-row cells
+
+<ul>
+<li>internal connections are modelled as CELL OBS geometries</li>
+<li>need to align with correct colored tracks while placement</li>
+</ul></li>
+</ul>
+
+<h2 id="same-length-ploy-rules">same length ploy rules</h2>
+
+<ul>
+<li>continuous ploy stripes with the same length must &gt;= N</li>
+</ul>
+
+<h2 id="implant-layer-rules-swap-vt-cells">implant layer rules: swap Vt cells</h2>
+
+<ul>
+<li><code>setPlaceMode</code>
+
+<ul>
+<li><code>-checkImplantWidth</code></li>
+<li><code>-checkImplantMinArea</code></li>
+<li><code>-honorImplantJog</code></li>
+<li><code>-honorImplantSpacing</code></li>
+</ul></li>
+</ul>
+
+<h2 id="boundary-cell-insertion">boundary cell insertion</h2>
+
+<ul>
+<li>even/odd poly tracks
+
+<ul>
+<li>total poly tracks must be even</li>
+<li>choose different (even/odd) end caps</li>
+<li><code>setEndCapMode</code> + <code>addEndCap</code>
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="tap-cell">tap cell</h2>
+
+<ul>
+<li>avoid abutment and overlap
+
+<ul>
+<li><code>addWellTap -avoidAbutment</code></li>
+</ul></li>
+<li>swap tap cell due to OD spacing violations
+
+<ul>
+<li><code>swap_well_taps</code></li>
+</ul></li>
+</ul>
+
+<h2 id="dummy-typical-critical-dimension-dtcd-cells-in-10nm">dummy typical critical dimension (DTCD) cells in 10nm</h2>
+
+<ul>
+<li><code>fpinsert_physical_cell</code></li>
+</ul>
+
+<h2 id="filler-insertion-rules">filler insertion rules</h2>
+
+<ul>
+<li>avoid abutment of certain types of fillers
+
+<ul>
+<li><code>setFillerMode -avoid_abutment_patterns</code>
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="trim-poly-layer-tpo">trim poly layer (TPO)</h2>
+
+<ul>
+<li>marker layer of different channel length cells</li>
+<li>TPO and Vt rules are independent of each other</li>
+<li><code>setPlaceMode -honorTPORules true</code> + <code>verify_drc</code></li>
+</ul>
+
+<h2 id="10nm-em-prevention">10nm EM prevention</h2>
+
+<ul>
+<li>only widen the driver side wires to avoid EM violations</li>
+<li>report max capacitance violations
+
+<ul>
+<li><code>set_default_switching_activity</code> + <code>propagate_activity</code></li>
+<li><code>write_tcf</code></li>
+<li><code>read_activity_file</code></li>
+<li><code>set_global timing_report_drv_per_frequency_per_input_slew true</code></li>
+<li><code>report_constraint -all -drv_violation_type max_capacitance</code># Module 24: access database</li>
+</ul></li>
+</ul>
+
+<h2 id="dbget">dbGet</h2>
+
+<ul>
+<li><code>dbGet selected</code>: objects
+
+<ul>
+<li><code>dbGet selected.?</code>: attributes</li>
+<li><code>dbGet selected.?</code>: attributes and values</li>
+</ul></li>
+<li><code>dbGet [dbGet -p top.nets.isClock 1].name</code>
+
+<ul>
+<li>get all the clock nets</li>
+</ul></li>
+</ul>
+
+<h2 id="dbschema">dbSchema</h2>
+
+<ul>
+<li>all of the available objects and attributes for the specified database object, and description</li>
+<li><code>dbSchema inst</code></li>
+</ul>
+
+<h2 id="dbset">dbSet</h2>
+
+<h2 id="dbtransform">dbTransform</h2>
+
+<ul>
+<li>takes local coordinates of a cell and return them in context with the global design space</li>
+</ul>
+
+<h2 id="dbshape">dbShape</h2>
+
+<ul>
+<li>logical operations of list of shapes</li>
+</ul>
+
+<h2 id="gift">gift</h2>
+
+<ul>
+<li><your installation>/<OS>/share/fe/gift/scripts/tcl# Appendix</li>
+</ul>
+
+<h2 id="pre-route-vs-post-route-timing-correlation">pre-route vs post-route timing correlation</h2>
+
+<ul>
+<li>due to via usage
+
+<ul>
+<li>detail router use more vias than early global route</li>
+<li><code>setExtractRCMode -extraViasLengthFactor 10</code>
+
+<ul>
+<li>insert a via every 10x std cell height</li>
+</ul></li>
+</ul></li>
+<li>due to layer choice
+
+<ul>
+<li>global route prefer to use higher layer by default</li>
+</ul></li>
+<li>due to SI
+
+<ul>
+<li>spread wire to reduce SI impact</li>
+<li>large diff from pre-route to post-route is caused by SI on clock tree
+
+<ul>
+<li>shield the trunk net of clock tree</li>
+<li>NDR (larger space, larger width)</li>
+<li>gradually reduce clock uncertainty through the flow</li>
+</ul></li>
+</ul></li>
+<li>due to routing topology
+
+<ul>
+<li>avoid large fanout net
+
+<ul>
+<li><code>setOptMode -fixFanoutLoad true</code></li>
+<li><code>set_max_fanout N [current_design]</code></li>
+</ul></li>
+</ul></li>
+<li>due to RC extraction engine
+
+<ul>
+<li>Ostrich: correlate RC extraction better</li>
+</ul></li>
+<li>due to congestion
+
+<ul>
+<li>detouring</li>
+<li>CTS: model clock wiring in pre-CTS stage
+
+<ul>
+<li><code>setRouteMode -earlyGlobalNumTracksPerClockWire</code></li>
+<li><code>setAttribute -net xxx -non_default_rule xxx -shield_net xxx</code></li>
+<li>define CCOPT settings before place_opt_design</li>
+<li>new feature: <code>setDesignMode -earlyClockFlow true</code></li>
+</ul></li>
+</ul></li>
+<li>due to setup issue
+
+<ul>
+<li>SI impacts setup timing</li>
+<li>not completed analysis views
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="sdc">SDC</h2>
+
+<h2 id="openaccess-interface">OpenAccess interface</h2>
+
+<ul>
+<li>interoperability between Innovus and Virtuoso
+
+<ul>
+<li>common database</li>
+<li>unified tech</li>
+<li>back and forth</li>
+</ul></li>
+<li>top level integrator vs IP designer
+
+<ul>
+<li>design intent =&gt; interoperable constraints
+
+<ul>
+<li>differential pair</li>
+<li>shielding</li>
+<li>matched pair</li>
+<li>NDR</li>
+<li>blockage</li>
+<li>&hellip;</li>
+</ul></li>
+</ul></li>
+<li>analog to utilize NanoRoute</li>
+</ul>
+
+<h2 id="pipeline-register-placement">pipeline register placement</h2>
+
+<ul>
+<li>long net: timing cannot be solved by buffer insertion, need to pipeline it</li>
+<li>flow
+
+<ul>
+<li>floorplan</li>
+<li>determine if any long nets/groups that need pipeline</li>
+<li>modify RTL and re-synthesis</li>
+</ul></li>
+<li>CMD
+
+<ul>
+<li><code>createPipelineNetGroup</code></li>
+<li><code>modifyPipelineNetGroup</code></li>
+<li><code>placePipeline</code></li>
+<li><code>reportPipeline</code>
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="post-exam">post exam</h2>
+
+<ol>
+<li>Q: Chemical and Mechanical polishing is mitigated by the addition of ____? A: Metal fill (not wire widening or multi-cut via)</li>
+<li>Q: Glitch noise has an impact on ____? A: Functionality (not delay or reliability)</li>
+<li>Q: The specifyJtag command can only be applied to JTAG cells. Right or wrong? A: Wrong</li>
+</ol>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/industry/2017-03-23-deep-learning-in-siri/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Deep learning and Siri by Alex Acero @ Apple</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/flow/2017-04-18-case-study-clock-skew-control/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Case Study: Clock Skew Control</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

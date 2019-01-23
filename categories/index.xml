@@ -57,24 +57,6 @@
     </item>
     
     <item>
-      <title>Low Power</title>
-      <link>/categories/low-power/</link>
-      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/low-power/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine Learning</title>
-      <link>/categories/machine-learning/</link>
-      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>My Project</title>
       <link>/categories/my-project/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
@@ -84,20 +66,20 @@
     </item>
     
     <item>
+      <title>Note</title>
+      <link>/categories/note/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tool</title>
       <link>/categories/tool/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/tool/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
-      <link>/categories/tutorial/</link>
-      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/tutorial/</guid>
       <description></description>
     </item>
     

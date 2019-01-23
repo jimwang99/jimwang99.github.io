@@ -123,6 +123,32 @@ Introduction to deep learning Improve on task T with respect to performance metr
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/industry/2017-03-21-deep-learning-with-gpu-in-production/" rel="bookmark">
+			Deep learning with GPUs in production
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-03-21T00:00:00">2017-03-21</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/industry" rel="category">industry</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Start-up: python -&gt; enterprise: C/Java/Scala, more engineers, faster Research: quick result and prototyping
+GPU? Data movement between GPU and CPU is important
+[ ] fast.ai: class (high school math)
+infrastructure: spark/flink scheduler problem distributed file system
+Problems to think about when running works on GPU clusters memory is relatively small throughput, jobs are more than matrix math resource provisioning: how many resource we need? GPU/CPU/RAM GPU allocation per job Python &lt;-&gt; Java overhead, defeats the points of GPUs
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/industry/2017-02-21-ar-future/" rel="bookmark">
 			未来的AR应该是什么样子的？
 			</a>
@@ -264,32 +290,13 @@ Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。�
 	<div class="content list__excerpt post__content clearfix">
 		 汽车设计正在成为EDA公司的讨论热点。我个人觉得ANSYS应该算是其中翘楚，因为各种物理模拟器和散热模拟器是他们的传统强项。而诸如Synospsys和Mentor这样的软件厂商就更多的focus在电子系统上，硬件软件全部都有。 From Mindy: EDA厂商每年都要收购大量的小公司来保证自己的创造力。 ARM推出了专门针对Bluetooth 4.0的IP库和demo 有一家叫做flexlogic的公司，专门做FPGA阵列的IP，用于在普通的ASIC芯片上embed FPGA模块。但是这个模块的规模一般不会太大。跟他们现场的工程师聊天发现，他们和Marvell做SSD的Engling已经有合作了，用FPGA做在调试接口上，以少量的PIN来支持多种不同的调试协议。想法还是挺有创意的。  
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/industry/2015-02-23-isscc-2015-evening-session/" rel="bookmark">
-			ISSCC 2015: evening session - Moore&#39;s Law challenges below 10nm
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2015-02-23T00:00:00">2015-02-23</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/industry" rel="category">industry</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Bohr: moore&rsquo;s law for 50 years
- $mm^2$ is increasing since 130nm heterogeneous intergration: 3D chip is not a replacement of moore&rsquo;s law (quite opposite with Sehat) refocus on general purpose design  Hill: 21 century computer architecture
- 21stcentruryarchitecturewhitepaper.pdf - instruction set is not going to be untouchable anymore - energy first - parallelism - specialization - cross-layout design - cross-cutting: break current layers with new interfaces - BREAK LAYERS - software bloat - PHP is 50x slower than BLAC - 3D stack - how to address thermal problem?
-	</div>
 </article>
 </main>
+
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/2</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/industry/page/2/">»</a>
+</div>
 
 
 			</div>
@@ -308,9 +315,9 @@ Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。�
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-01-19-static-site-generator/">Static Site Generator</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/architecture/2019-01-03-hwacha-accelerator/">Huwcha Accelerator architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/architecture/2018-12-15-riscv-v-spec/">Note of RISC-V Vector ISA Spec v0.6</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/tutorial/2018-12-07-systemc-tutorial/">SystemC Tutorial</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-03-hwacha-accelerator/">Huwcha Accelerator architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2018-12-15-riscv-v-spec/">Note of RISC-V Vector ISA Spec v0.6</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2018-12-07-systemc-tutorial/">SystemC Tutorial</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/industry/2018-12-04-riscv-summit-2018/">RISC-V Summit 2018</a></li>
 		</ul>
 	</div>
@@ -324,11 +331,9 @@ Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。�
 			<li class="widget__item"><a class="widget__link" href="/categories/flow">Flow</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/industry">Industry</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/life">Life</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/low-power">Low power</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/machine-learning">Machine learning</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/my-project">My project</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/note">Note</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/tool">Tool</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/tutorial">Tutorial</a></li>
 		</ul>
 	</div>
 </div>

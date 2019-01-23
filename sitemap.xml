@@ -8,17 +8,17 @@
   </url>
   
   <url>
-    <loc>/blog/architecture/2019-01-03-hwacha-accelerator/</loc>
+    <loc>/blog/arch/2019-01-03-hwacha-accelerator/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/architecture/2018-12-15-riscv-v-spec/</loc>
+    <loc>/blog/arch/2018-12-15-riscv-v-spec/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/tutorial/2018-12-07-systemc-tutorial/</loc>
+    <loc>/blog/note/2018-12-07-systemc-tutorial/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -28,17 +28,17 @@
   </url>
   
   <url>
-    <loc>/blog/architecture/2018-12-01-ariane-cpu/</loc>
+    <loc>/blog/arch/2018-12-01-ariane-cpu/</loc>
     <lastmod>2018-12-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/architecture/2018-11-01-cpu-architecture-notes/</loc>
+    <loc>/blog/arch/2018-11-01-cpu-architecture-notes/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/architecture/2018-11-01-cache-coherence/</loc>
+    <loc>/blog/arch/2018-11-01-cache-coherence/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -68,17 +68,17 @@
   </url>
   
   <url>
-    <loc>/blog/tutorial/2017-05-17-python-design-patterns-note/</loc>
+    <loc>/blog/note/2017-05-17-python-design-patterns-note/</loc>
     <lastmod>2017-05-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/tutorial/2017-05-14-scala-first-look/</loc>
+    <loc>/blog/note/2017-05-14-scala-first-look/</loc>
     <lastmod>2017-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/tutorial/2017-05-05-genus-training/</loc>
+    <loc>/blog/note/2017-05-05-genus-training/</loc>
     <lastmod>2017-05-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -103,7 +103,7 @@
   </url>
   
   <url>
-    <loc>/blog/tutorial/2017-04-01-innovus-training/</loc>
+    <loc>/blog/note/2017-04-01-innovus-training/</loc>
     <lastmod>2017-04-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -113,7 +113,7 @@
   </url>
   
   <url>
-    <loc>/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</loc>
+    <loc>/blog/industry/2017-03-21-deep-learning-with-gpu-in-production/</loc>
     <lastmod>2017-03-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -138,7 +138,7 @@
   </url>
   
   <url>
-    <loc>/blog/tutorial/2017-01-10-systemverilog-for-design-note/</loc>
+    <loc>/blog/note/2017-01-10-systemverilog-for-design-note/</loc>
     <lastmod>2017-01-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -168,7 +168,7 @@
   </url>
   
   <url>
-    <loc>/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</loc>
+    <loc>/blog/note/2015-10-20-machine-learning-foundations-coursera/</loc>
     <lastmod>2015-10-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -223,13 +223,17 @@
   </url>
   
   <url>
-    <loc>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</loc>
+    <loc>/blog/design/2009-09-07-survey-of-low-power-design-chinese/</loc>
     <lastmod>2009-09-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/project/2008-07-01-my-phd-projects/</loc>
     <lastmod>2008-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/life/untitled/</loc>
   </url>
   
   <url>
@@ -275,20 +279,14 @@
   </url>
   
   <url>
-    <loc>/categories/low-power/</loc>
-    <lastmod>2009-09-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/machine-learning/</loc>
-    <lastmod>2017-03-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/categories/my-project/</loc>
     <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/note/</loc>
+    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -306,12 +304,6 @@
   <url>
     <loc>/categories/tool/</loc>
     <lastmod>2019-01-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/tutorial/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

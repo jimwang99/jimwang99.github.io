@@ -21,5 +21,18 @@
 parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &amp;quot;generate&amp;quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &amp;lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &amp;lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp;amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &amp;lt;= word_or; end  </description>
     </item>
     
+    <item>
+      <title>Survey of Low Power Design</title>
+      <link>/blog/design/2009-09-07-survey-of-low-power-design-chinese/</link>
+      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/design/2009-09-07-survey-of-low-power-design-chinese/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

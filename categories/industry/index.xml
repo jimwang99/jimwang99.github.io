@@ -44,6 +44,19 @@ Introduction to deep learning Improve on task T with respect to performance metr
     </item>
     
     <item>
+      <title>Deep learning with GPUs in production</title>
+      <link>/blog/industry/2017-03-21-deep-learning-with-gpu-in-production/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/industry/2017-03-21-deep-learning-with-gpu-in-production/</guid>
+      <description>Start-up: python -&amp;gt; enterprise: C/Java/Scala, more engineers, faster Research: quick result and prototyping
+GPU? Data movement between GPU and CPU is important
+[ ] fast.ai: class (high school math)
+infrastructure: spark/flink scheduler problem distributed file system
+Problems to think about when running works on GPU clusters memory is relatively small throughput, jobs are more than matrix math resource provisioning: how many resource we need? GPU/CPU/RAM GPU allocation per job Python &amp;lt;-&amp;gt; Java overhead, defeats the points of GPUs</description>
+    </item>
+    
+    <item>
       <title>未来的AR应该是什么样子的？</title>
       <link>/blog/industry/2017-02-21-ar-future/</link>
       <pubDate>Tue, 21 Feb 2017 00:00:00 +0000</pubDate>
