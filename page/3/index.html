@@ -36,7 +36,10 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Hugo</a>
+			<a class="menu__link" href="/about/">About Me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">My Projects</a>
 		</li>
 	</ul>
 </nav>
@@ -47,6 +50,29 @@
 			<div class="primary">
 			
 <main class="main list" role="main"><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/note/2017-04-01-innovus-training/" rel="bookmark">
+			INNOVUS Training Notes
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-04-01T00:00:00">2017-04-01</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		The following is my notes of INNOVUS training course on Cadence&rsquo;s training module
+ Module 02: overview  &ldquo;gift&rdquo; directory contains lots of useful scripts to help productivity Independent &ldquo;viewlog&rdquo; utility or &ldquo;Tools-&gt;Log Viewer&rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI   Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .
+	</div>
+</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/blog/industry/2017-03-23-deep-learning-in-siri/" rel="bookmark">
@@ -263,28 +289,6 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 	<div class="content list__excerpt post__content clearfix">
 		<p>对本书的评价：从理性客观中立的工科生思维出发，阐述事实，以科学的语言解释人类发展历程中的众多抉择和现象的成因。</p>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/industry/2016-08-06-observation-of-ic-industry/" rel="bookmark">
-			Observation of IC Industory: consolidation of future application
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2016-08-06T00:00:00">2016-08-06</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/industry" rel="category">industry</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Recent consolidation progress is going so crazy, mostly because of the IC industry is becoming less and less profitable in every individual application fields. My perspective is that this is not just a consolidation of business itself, but a huge change of IC industry business model. There won&rsquo;t be so many application fields that needs different IC chips, no matter it&rsquo;s analog or digital. In analog world, more and more functionality will be replaced with digital as long as it can.
-	</div>
 </article>
 </main>
 
@@ -314,7 +318,6 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 			<li class="widget__item"><a class="widget__link" href="/categories/flow">Flow</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/industry">Industry</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/life">Life</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/my-project">My project</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/note">Note</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/tool">Tool</a></li>
 		</ul>
@@ -324,11 +327,11 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/life/2019-01-13-tech-company-in-china/">中国科技公司见闻一例</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-01-19-static-site-generator/">Static Site Generator</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-03-hwacha-accelerator/">Huwcha Accelerator architecture</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2018-12-15-riscv-v-spec/">Note of RISC-V Vector ISA Spec v0.6</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/note/2018-12-07-systemc-tutorial/">SystemC Tutorial</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/industry/2018-12-04-riscv-summit-2018/">RISC-V Summit 2018</a></li>
 		</ul>
 	</div>
 </div>
