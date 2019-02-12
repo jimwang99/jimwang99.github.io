@@ -6,10 +6,29 @@
     <description>Recent content in Architecture on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/architecture/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ARM&#39;s big.LITTLE Architecture</title>
+      <link>/blog/arch/2019-01-30-arm-big-little/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-01-30-arm-big-little/</guid>
+      <description>https://developer.arm.com/technologies/big-little
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&amp;rsquo;s a particular adaption to mobile devices usage.</description>
+    </item>
+    
+    <item>
+      <title>Re-discover Hardware Security in Modern SoC</title>
+      <link>/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/</guid>
+      <description>There is a big difference between how I used to understand hardware security and state-of-the-art security supported by hardware software co-design, after I watched some video talking about SEP (Security Enclave Processor) by Apple. It’s a key component in current iPhone to protect user data and password from being observed in any kind of hacking, including traditional side channel attack such as DPA (Dynamic Power Attack), debug channel attack, normal network attack, and etc.</description>
+    </item>
     
     <item>
       <title>Huwcha Accelerator architecture</title>
@@ -41,6 +60,15 @@
     </item>
     
     <item>
+      <title>Network-on-Chip Notes</title>
+      <link>/blog/arch/2018-12-01-network-on-chip/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-12-01-network-on-chip/</guid>
+      <description>NoC  Clustering coefficient: the most intuitive explanation is the number of hops between two random nodes in the network. Layers  Physical layer Link layer  Transaction protocol: such as AXI Seperated channels like AXI, to avoid dead-lock caused by depency problem  Transport layer  Packet: header &amp;amp; payload   Flow control  On link-level or end-to-end level  Link-level: every hop there is a notification, just like valid-ready protocol End-to-end level: every transaction of data from sender to receiver has to have some kind of notification that the receiver notify the sender it has received the data successfully.</description>
+    </item>
+    
+    <item>
       <title>CPU Architecture Notes</title>
       <link>/blog/arch/2018-11-01-cpu-architecture-notes/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
@@ -52,7 +80,7 @@
     </item>
     
     <item>
-      <title>Cache coherence</title>
+      <title>Cache Coherence Notes</title>
       <link>/blog/arch/2018-11-01-cache-coherence/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       

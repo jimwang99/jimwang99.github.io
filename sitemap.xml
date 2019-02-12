@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/tool/2019-02-11-shortcut-dot-py/</loc>
+    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-01-30-arm-big-little/</loc>
+    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/</loc>
+    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/life/2019-01-29-on-time-is-professional/</loc>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/life/2019-01-28-hbr-managing-oneself-note/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
   </url>
@@ -48,6 +73,16 @@
   </url>
   
   <url>
+    <loc>/blog/arch/2018-12-01-network-on-chip/</loc>
+    <lastmod>2018-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/life/2018-11-10-family-trip-to-legoland/</loc>
+    <lastmod>2018-11-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/arch/2018-11-01-cpu-architecture-notes/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
   </url>
@@ -63,6 +98,11 @@
   </url>
   
   <url>
+    <loc>/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/</loc>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/life/2018-10-23-fpga-solution-for-lidar-project/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
@@ -75,6 +115,11 @@
   <url>
     <loc>/blog/tool/2018-10-01-docker-tips/</loc>
     <lastmod>2018-10-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/design/2018-03-31-case-study-glitch-free-clock-mux/</loc>
+    <lastmod>2018-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -168,6 +213,16 @@
   </url>
   
   <url>
+    <loc>/blog/life/2016-10-20-chinese-school-abc-growing-pains/</loc>
+    <lastmod>2016-10-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/industry/2016-09-27-ces-meetup-bluetooth-hub/</loc>
+    <lastmod>2016-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/industry/2016-08-06-observation-of-ic-industry/</loc>
     <lastmod>2016-08-06T00:00:00+00:00</lastmod>
   </url>
@@ -185,6 +240,11 @@
   <url>
     <loc>/blog/note/2015-10-20-machine-learning-foundations-coursera/</loc>
     <lastmod>2015-10-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/industry/untitled/</loc>
+    <lastmod>2015-08-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -248,25 +308,25 @@
   
   <url>
     <loc>/categories/architecture/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2019-01-23T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/design/</loc>
-    <lastmod>2017-01-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -284,7 +344,7 @@
   
   <url>
     <loc>/categories/life/</loc>
-    <lastmod>2018-10-30T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -301,13 +361,13 @@
   
   <url>
     <loc>/categories/tool/</loc>
-    <lastmod>2019-01-19T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,60 @@
     <description>Recent content in Blogs on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>shortcut.py: A Command Line Script to Provide Macro</title>
+      <link>/blog/tool/2019-02-11-shortcut-dot-py/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tool/2019-02-11-shortcut-dot-py/</guid>
+      <description>Typical usage go to some directory use short alias &amp;gt; pwd /home/jw &amp;gt; go prj0 cd /work/projects/design/master-branch/ &amp;gt; pwd /work/projects/design/master-branch/  run a serial of commands use short alias &amp;gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name  Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
+&amp;gt; go prj0 &amp;gt; go p. prj0 &amp;gt; run vnc  Auto-correction shortcut.</description>
+    </item>
+    
+    <item>
+      <title>ARM&#39;s big.LITTLE Architecture</title>
+      <link>/blog/arch/2019-01-30-arm-big-little/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-01-30-arm-big-little/</guid>
+      <description>https://developer.arm.com/technologies/big-little
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&amp;rsquo;s a particular adaption to mobile devices usage.</description>
+    </item>
+    
+    <item>
+      <title>Re-discover Hardware Security in Modern SoC</title>
+      <link>/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/</guid>
+      <description>There is a big difference between how I used to understand hardware security and state-of-the-art security supported by hardware software co-design, after I watched some video talking about SEP (Security Enclave Processor) by Apple. It’s a key component in current iPhone to protect user data and password from being observed in any kind of hacking, including traditional side channel attack such as DPA (Dynamic Power Attack), debug channel attack, normal network attack, and etc.</description>
+    </item>
+    
+    <item>
+      <title>On Time Is Professional</title>
+      <link>/blog/life/2019-01-29-on-time-is-professional/</link>
+      <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/life/2019-01-29-on-time-is-professional/</guid>
+      <description>Because I was job hunting recently, I&amp;rsquo;ve got lots of appointments, either phone call or face-to-face. There are two HR&amp;rsquo;s who gave me particularly deep impression, and they are on totally opposite end of professionalism.
+ A good example  Wheneven she wanted to arrange a phone call with me, she sent me emails in ahead to confirm time. Never call me directly without appointment. At the exact time of the appointment, ex.</description>
+    </item>
+    
+    <item>
+      <title>HBR&#39;s 10 Must Read &#34;Managing Oneself&#34; Note</title>
+      <link>/blog/life/2019-01-28-hbr-managing-oneself-note/</link>
+      <pubDate>Mon, 28 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/life/2019-01-28-hbr-managing-oneself-note/</guid>
+      <description>What Are My Strengths? Feedback analysis The only way to discover your strengths is through feedback analysis. Whenever you make a key decision or take a key action, write down what you expect will happen. 9 or 12 months later, compare the actual results with your expectations.
+Follow-up actions Find out what are your strength and weakness, using feedback analysis. So that you can
+ Concentrate on your strengths. Put yourself where your strengths can produce results Work on improving your strengths.</description>
+    </item>
     
     <item>
       <title>中国科技公司见闻一例</title>
@@ -86,6 +136,29 @@ SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chi
     </item>
     
     <item>
+      <title>Network-on-Chip Notes</title>
+      <link>/blog/arch/2018-12-01-network-on-chip/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-12-01-network-on-chip/</guid>
+      <description>NoC  Clustering coefficient: the most intuitive explanation is the number of hops between two random nodes in the network. Layers  Physical layer Link layer  Transaction protocol: such as AXI Seperated channels like AXI, to avoid dead-lock caused by depency problem  Transport layer  Packet: header &amp;amp; payload   Flow control  On link-level or end-to-end level  Link-level: every hop there is a notification, just like valid-ready protocol End-to-end level: every transaction of data from sender to receiver has to have some kind of notification that the receiver notify the sender it has received the data successfully.</description>
+    </item>
+    
+    <item>
+      <title>Family trip to LEGOLAND</title>
+      <link>/blog/life/2018-11-10-family-trip-to-legoland/</link>
+      <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/life/2018-11-10-family-trip-to-legoland/</guid>
+      <description>A piece of very precious memory
+ Home &amp;ndash;&amp;gt; LEGOLAND  264 miles, 4 hours non-stop (with stop, 7:00AM to 12:00AM)
+ Lunch at Wendy’s: 5821 Dennis McCarthy Dr, Lebec, CA 93243
+ Wendy&amp;rsquo;s is just another burger place. We ended up with Panda Express at the same rest area.  174 miles, 3 hours non-stop (with stop, 1:30PM to 4:30PM)
+  LEGOLAND Castle Hotel
+1 Legoland Dr, Carlsbad, CA 92008</description>
+    </item>
+    
+    <item>
       <title>CPU Architecture Notes</title>
       <link>/blog/arch/2018-11-01-cpu-architecture-notes/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
@@ -97,7 +170,7 @@ SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chi
     </item>
     
     <item>
-      <title>Cache coherence</title>
+      <title>Cache Coherence Notes</title>
       <link>/blog/arch/2018-11-01-cache-coherence/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       
@@ -113,6 +186,17 @@ SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chi
       
       <guid>/blog/life/2018-10-30-ok-lens-tips/</guid>
       <description> 1. 晚上睡前戴眼镜片  在使用“阿托品”之后至少两小时，以保证药物被吸收。 洗手，并且用厨房纸（不掉纸屑）擦干。 滴眼药水，润湿眼球。 灰色眼镜片是右眼的，GRAY has an R for RIGHT；蓝色眼镜片是左眼的，BLUE has an L for LEFT。 将眼药水注满眼镜片内部；低头，拉开上下眼帘；将眼镜慢慢地水平地放入。 确认眼镜片在眼球正中，否则可以闭眼后，用手指在眼帘外轻推调整。 确认没有大的可见气泡，否则会影响治疗效果。如果有小气泡，可以仰头滴入数滴眼药水，并闭眼转动眼球，将气泡挤出。可重复几次。如果没有明显效果，用洗盘将眼镜片取出，并重新放置。 确认两个眼镜片都放置成功以后，再分别滴一滴眼药水。 如果眼睛痒，可以轻轻按压，但切忌按揉。 如果镜片掉落在桌上或者地上，可以用BLINK药水清洗，同时用手指轻轻搓揉。  2. 早上取眼镜片  各滴一滴眼药水。 用洗盘将镜片取出。注意尽量吸取镜片下边缘，而不要吸取镜片中心，因为镜片中心更薄，容易损坏。如果感觉洗盘吸力不够，可以用厨房纸吸干。 分离洗盘和镜片的时候不要垂直方向硬拉，而要轻轻滑出来。 取完之后滴一滴眼药水。 之后将眼镜片放入ONE-SHOT存储盒，注意分清左右。 将ONE-SHOT药水倒入存储盒，到划线处。放置至少6个小时。如果前一晚未使用，也需要更换ONE-SHOT药水，并放置至少6个小时。 ONE-SHOT药水需要反应6小时之后才会无害，否则会刺激眼睛。它的主要成分是双氧水。  </description>
+    </item>
+    
+    <item>
+      <title>Case Study: Clock Divider with Synchronous Reset</title>
+      <link>/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/</guid>
+      <description>When using a counter to divide a clock, don’t reset the counter, especially when you are using synchronous reset. It will make the clock quiet while reset. And if it’s used along with sync reset, then those flip-flop won’t be reset at all.
+But if without reset, the counter will be &amp;ldquo;X&amp;rdquo; in simulation.
+logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif always_ff @ (posedge clk) begin cntr &amp;lt;= cntr + 1; end  </description>
     </item>
     
     <item>
@@ -143,6 +227,17 @@ SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chi
       
       <guid>/blog/tool/2018-10-01-docker-tips/</guid>
       <description>Dockerfile FROM ubuntu:16.04 COPY ./boot.sh /tmp COPY ./hello.sh /tmp RUN /bin/bash /tmp/boot.sh RUN /bin/bash /tmp/hello.sh  boot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wget cd /tmp wget https://www.veripool.org/ftp/verilator-4.004.tgz tar xf verilator*.tgz cd verilator* ./configure make # this step will take sometime make install  hello.sh cd /tmp/verilator* cd ./example/tracing_c make # it will print out some log, and after finish it will generate a directory in the same directory named &amp;quot;logs&amp;quot; who needs to be saved after container exit  Docker how-to notes create a docker image from Dockerfile docker build -t &amp;quot;$(name):$(tag)&amp;quot; .</description>
+    </item>
+    
+    <item>
+      <title>Case Study: Glitch Free Clock Mux</title>
+      <link>/blog/design/2018-03-31-case-study-glitch-free-clock-mux/</link>
+      <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/design/2018-03-31-case-study-glitch-free-clock-mux/</guid>
+      <description>If your design needs to switch from one clock source to another, there is high possibility of harmful clock glitches while switching. Normally you need to stop this clock during the switching process, but what if you design relies on non-stop clock? Here is the circuit proven to work on silicon.
+Techniques to make clock switching glitch free
+We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPICE.</description>
     </item>
     
     <item>
@@ -332,6 +427,32 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
     </item>
     
     <item>
+      <title>“中文学校：ABC成长的烦恼”</title>
+      <link>/blog/life/2016-10-20-chinese-school-abc-growing-pains/</link>
+      <pubDate>Thu, 20 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/life/2016-10-20-chinese-school-abc-growing-pains/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;很有意思的一篇文章。转载自纽约时报中文网&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://cn.nytimes.com/education/20161103/chinese-class-usa/&#34;&gt;中文学校：ABC成长的烦恼&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;我大学第一堂中文课，老师问了一个让我念念不忘的问题：“告诉我，华裔在美国受歧视吗？”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我在加州大学伯克利分校(University of California, Berkeley)上一个专门给华裔设计的班，学生都是ABC（即美国出生的华人）。我们八点钟来上课，还在半梦半醒状态中。有的学生在啃面包，有的趴在课桌上，但我们差不多都摇头表示否认。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Bluetooth hub from Cassia Networks</title>
+      <link>/blog/industry/2016-09-27-ces-meetup-bluetooth-hub/</link>
+      <pubDate>Tue, 27 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/industry/2016-09-27-ces-meetup-bluetooth-hub/</guid>
+      <description>&lt;p&gt;今天的CES meetup是一个清华85级的学长来宣传他们自己公司的bluetooth hub，Cassia Networks。如果简单从名字上来看并没有什么高端的感觉，毕竟bluetooth和hub两个东西都不是什么稀奇的东西。但是它获得了2016年CES大会最佳产品奖项，可不是浪得虚名。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Observation of IC Industory: consolidation of future application</title>
       <link>/blog/industry/2016-08-06-observation-of-ic-industry/</link>
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0000</pubDate>
@@ -367,6 +488,15 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       
       <guid>/blog/note/2015-10-20-machine-learning-foundations-coursera/</guid>
       <description>1 Week1: Welcome  1.1 Introduction 1.1.1 real world case based  - regression: house price prediction - classificiation: sentiment analysis - clustering &amp;amp; retrieval: finding doc - maxtrix factorization &amp;amp; dimensionality reduction: recommending products  1.1.2 requirement  math: calculas &amp;amp; algebra python  1.1.3 capstone project 1.2 iPython Notebook Python command and its outputs Markdown for doc 1.3 SFrames 1.3.1 GraphLab Canvas  - any data structure *.</description>
+    </item>
+    
+    <item>
+      <title>Optical Interconnection in Google Data Centers</title>
+      <link>/blog/industry/untitled/</link>
+      <pubDate>Tue, 11 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/industry/untitled/</guid>
+      <description>&lt;p&gt;今天的Meetup主要讲的是Google的Data Center中optical interconnection的应用。&lt;/p&gt;</description>
     </item>
     
     <item>

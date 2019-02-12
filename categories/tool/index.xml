@@ -6,10 +6,20 @@
     <description>Recent content in Tool on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/tool/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>shortcut.py: A Command Line Script to Provide Macro</title>
+      <link>/blog/tool/2019-02-11-shortcut-dot-py/</link>
+      <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tool/2019-02-11-shortcut-dot-py/</guid>
+      <description>Typical usage go to some directory use short alias &amp;gt; pwd /home/jw &amp;gt; go prj0 cd /work/projects/design/master-branch/ &amp;gt; pwd /work/projects/design/master-branch/  run a serial of commands use short alias &amp;gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name  Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
+&amp;gt; go prj0 &amp;gt; go p. prj0 &amp;gt; run vnc  Auto-correction shortcut.</description>
+    </item>
     
     <item>
       <title>Static Site Generator</title>

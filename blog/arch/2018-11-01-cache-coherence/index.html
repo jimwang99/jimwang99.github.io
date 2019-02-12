@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Cache coherence</title>
+	<title>Cache Coherence Notes</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 	<meta name="generator" content="Hugo 0.53" />
@@ -51,7 +51,7 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Cache coherence</h1>
+			<h1 class="post__title">Cache Coherence Notes</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
@@ -77,8 +77,13 @@
 <li><a href="#directory-based">Directory-based</a></li>
 </ul></li>
 <li><a href="#coherence-protocol">Coherence protocol</a></li>
+<li><a href="#software-cache-coherence-vs-hardware-cache-coherence">Software cache coherence vs. hardware cache coherence</a></li>
+<li><a href="#interesting-articles">Interesting articles</a>
+<ul>
+<li><a href="#extended-system-coherency-https-community-arm-com-processors-b-blog-posts-extended-system-coherency-part-1-cache-coherency-fundamentals"><a href="https://community.arm.com/processors/b/blog/posts/extended-system-coherency---part-1---cache-coherency-fundamentals">Extended System Coherency</a></a></li>
+<li><a href="#exploring-how-cache-coherency-accelerates-heterogeneous-compute-https-community-arm-com-processors-b-blog-posts-exploring-how-cache-coherency-accelerates-heterogeneous-compute"><a href="https://community.arm.com/processors/b/blog/posts/exploring-how-cache-coherency-accelerates-heterogeneous-compute">Exploring How Cache Coherency Accelerates Heterogeneous Compute</a></a></li>
 </ul></li>
-<li><a href="#noc">NoC</a></li>
+</ul></li>
 </ul>
 </nav>
 	</div>
@@ -107,44 +112,73 @@
 
 <p>On top of basic write-invalidate and write-update, each cache block should has its own status, which also determines the protocol. Basic MSI (modified/shared/invalid), or MESI (add exclusive) different choices.</p>
 
-<h1 id="noc">NoC</h1>
+<h2 id="software-cache-coherence-vs-hardware-cache-coherence">Software cache coherence vs. hardware cache coherence</h2>
+
+<p>Software cache coherence use special instructions to flush/invalidate cache entries to maintain coherence between different cores. Hardware use snooping or directory to maintain coherence. Modern SoC system uses both of them to reach a hybrid cache coherence system.</p>
 
 <ul>
-<li><p>Clustering coefficient: the most intuitive explanation is the number of hops between two random nodes in the network.</p></li>
+<li>Software coherency is hard to program and debug.</li>
+</ul>
 
-<li><p>Layers</p>
+<h2 id="interesting-articles">Interesting articles</h2>
+
+<h3 id="extended-system-coherency-https-community-arm-com-processors-b-blog-posts-extended-system-coherency-part-1-cache-coherency-fundamentals"><a href="https://community.arm.com/processors/b/blog/posts/extended-system-coherency---part-1---cache-coherency-fundamentals">Extended System Coherency</a></h3>
 
 <ul>
-<li>Physical layer</li>
-<li>Link layer
+<li>3 mechanisms to maintain coherency
 
 <ul>
-<li>Transaction protocol: such as AXI</li>
-<li>Seperated channels like AXI, to avoid dead-lock caused by depency problem</li>
+<li>Disable cache for shared data/address space</li>
+<li>Software managed coherency</li>
+<li>Clean or flush dirty data, and invalidate old data</li>
+<li>Challenges
+
+<ul>
+<li>Software complexity: hard to debug, cache learning and invalidation must be done at the right time, and coordinates between multiple masters</li>
+<li>Performance and power: how to work out which data needs to be maintained? And if it has more dirty data, software coherency takes longer to clearn and invalidate than hardware coherency</li>
 </ul></li>
-<li>Transport layer
+<li>Hardware managed coherency</li>
+<li>Snoop
 
 <ul>
-<li>Packet: header &amp; payload</li>
-</ul></li>
-</ul></li>
-
-<li><p>Flow control</p>
+<li>Snoop filter
 
 <ul>
-<li><p>On link-level or end-to-end level</p>
+<li>Centralized, and built in the interconnect
 
 <ul>
-<li>Link-level: every hop there is a notification, just like valid-ready protocol</li>
-<li>End-to-end level: every transaction of data from sender to receiver has to have some kind of notification that the receiver notify the sender it has received the data successfully.</li>
+<li>Save power: just look up once instead of multiple times; the processor clusters can stay in low power sleep mode</li>
+<li>Higher performance: avoid CDC in multi-clock-domain system like mobile SoC.</li>
 </ul></li>
 </ul></li>
+</ul></li>
+</ul></li>
+<li>DVM (Distributed Virtual Memory)</li>
+</ul>
 
-<li><p>Advantages:</p>
+<h3 id="exploring-how-cache-coherency-accelerates-heterogeneous-compute-https-community-arm-com-processors-b-blog-posts-exploring-how-cache-coherency-accelerates-heterogeneous-compute"><a href="https://community.arm.com/processors/b/blog/posts/exploring-how-cache-coherency-accelerates-heterogeneous-compute">Exploring How Cache Coherency Accelerates Heterogeneous Compute</a></h3>
 
 <ul>
-<li>Multiple transactions can complete in parallel in the network to utilize the routing resource.</li>
-<li>Layered structure makes it more clear, and each layer can be implemented independently.</li>
+<li>SVM (Shared Virtual Memory)
+
+<ul>
+<li>To avoid coping shared data between processors (ex. CPU and GPU), virtual memory pages on different processors can point to the same physical memory location.</li>
+</ul></li>
+<li>ACE (AXI Coherency Extensions) by ARM
+
+<ul>
+<li>ACP is a sub-protocol of ACE</li>
+<li><a href="https://developer.arm.com/products/system-ip/corelink-interconnect/corelink-cache-coherent-interconnect-family/corelink-cci-400">CoreLink CCI-400 Cache Coherent Interconnect</a>
+
+<ul>
+<li>JW: now they have CCI-500</li>
+</ul></li>
+</ul></li>
+<li>HSA (Heterogeneous System Architecture)
+
+<ul>
+<li>Foundation by ARM</li>
+<li>Open standards</li>
 </ul></li>
 </ul>
 

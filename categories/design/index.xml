@@ -6,10 +6,21 @@
     <description>Recent content in Design on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/design/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Case Study: Clock Divider with Synchronous Reset</title>
+      <link>/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/</guid>
+      <description>When using a counter to divide a clock, don’t reset the counter, especially when you are using synchronous reset. It will make the clock quiet while reset. And if it’s used along with sync reset, then those flip-flop won’t be reset at all.
+But if without reset, the counter will be &amp;ldquo;X&amp;rdquo; in simulation.
+logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif always_ff @ (posedge clk) begin cntr &amp;lt;= cntr + 1; end  </description>
+    </item>
     
     <item>
       <title>Register-based SRAM Read Circuit RTL Example using &#34;generate&#34;</title>
