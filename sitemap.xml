@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/note/2019-03-18-cortex-processor-behaviors/</loc>
+    <lastmod>2019-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/note/2019-03-18-armv8-architecture/</loc>
+    <lastmod>2019-03-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-03-11-interrupt-and-arm-gic/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/tool/2019-02-11-shortcut-dot-py/</loc>
     <lastmod>2019-02-11T00:00:00+00:00</lastmod>
   </url>
@@ -243,7 +258,7 @@
   </url>
   
   <url>
-    <loc>/blog/industry/untitled/</loc>
+    <loc>/blog/industry/2015-08-11-optical-interconnect-in-google-data-center/</loc>
     <lastmod>2015-08-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -308,19 +323,19 @@
   
   <url>
     <loc>/categories/architecture/</loc>
-    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-01-30T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -350,7 +365,7 @@
   
   <url>
     <loc>/categories/note/</loc>
-    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -367,7 +382,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

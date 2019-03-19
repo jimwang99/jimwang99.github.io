@@ -52,6 +52,74 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/note/2019-03-18-cortex-processor-behaviors/" rel="bookmark">
+			ARM Training: Cortex Processor Behaviors
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-03-18T00:00:00">2019-03-18</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Simple Sequential Execution Model After optimization, the result should be exactly the same with &ldquo;simple sequential execution model&rdquo;.
+Optimization: Instruction Fetching  Fetch multiple instructions from memory Branch  Predictive fetch and execution Branch caches Return stack  The &ldquo;link register&rdquo; value is pushed into the stack, and used/popped when return E.g. 4 entries of return stack, but my call stack is 5, then miss will happend. Then what to do?
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/note/2019-03-18-armv8-architecture/" rel="bookmark">
+			ARMv8 Architecture
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-03-18T00:00:00">2019-03-18</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		 Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/arch/2019-03-11-interrupt-and-arm-gic/" rel="bookmark">
+			Interrupts and ARM GIC Architecture
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-03-11T00:00:00">2019-03-11</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/architecture" rel="category">architecture</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Reference - Interrupt
+Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.  IPI: inter-processor interrupt  Software: caused by exception or special instructions that used to implement system calls  Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE   Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)   Triggering methods  Physical interrupt  Level-triggered vs.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/tool/2019-02-11-shortcut-dot-py/" rel="bookmark">
 			shortcut.py: A Command Line Script to Provide Macro
 			</a>
@@ -211,73 +279,6 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
 		Trying to find the perfect static site generator. Used to use Pelican, because it&rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&rsquo;s used by Github. Their common problems are
  Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&rsquo;t fit my understanding/requirement.  Now I&rsquo;m trying Hugo, which is written in Go, and it&rsquo;s really fast.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-01-03-hwacha-accelerator/" rel="bookmark">
-			Huwcha Accelerator architecture
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-03T00:00:00">2019-01-03</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/architecture" rel="category">architecture</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		From the reading of this paper, &ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
- We don&rsquo;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I\$, no D\$  Don&rsquo;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth  Uncached TileLink between L1 I\$ (both scalar processor and vector processors) and L2\$ Cached TileLink between L1 D\$ (only in scalar processor)  L2\$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)  Operations of L2\$, supported by TileLink protocol (&ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&rdquo;)  Sub-cache-block accesses Data prefetch requests Read from DDR, don&rsquo;t need to send back to the requester Atomic memory operations ALU inside L2 cache banks   Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions JW: why is that necessary?
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2018-12-15-riscv-v-spec/" rel="bookmark">
-			Note of RISC-V Vector ISA Spec v0.6
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-12-15T00:00:00">2018-12-15</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/architecture" rel="category">architecture</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions  Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit Following little-endian rule ELEN units are packed into VLEN register also Following little-endiam rule  Storage of longer vector  If operand longer than SEW is needed, then Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/note/2018-12-07-systemc-tutorial/" rel="bookmark">
-			SystemC Tutorial
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-12-07T00:00:00">2018-12-07</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		// Some simple example #include &lt;systemc.h&gt; SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&lt; sc_uint&lt;8&gt; &gt; a; sc_in&lt; sc_unit&lt;8&gt; &gt; b; sc_out&lt; sc_uint&lt;8&gt; &gt; f; sc_in&lt;bool&gt; clk; void func() { f.write( a.read() &amp; b.read() ); } SC_CTOR ( seq_and2 ) { SC_CTHREAD(func); sensitive &lt;&lt; clk.neg(); } }  Port &amp; signal  Port  sc_in &amp; sc_out .read() &amp; .write() functions  Signal  sc_signal   Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list  SC_THREAD()  Not commonly used Behavior like initial in Verilog  SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle  sensitive keyword to define the sensitive list  Datatypes  Integers
-	</div>
 </article>
 </main>
 
@@ -315,11 +316,11 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-armv8-architecture/">ARMv8 Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/">Re-discover Hardware Security in Modern SoC</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/life/2019-01-29-on-time-is-professional/">On Time Is Professional</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/life/2019-01-28-hbr-managing-oneself-note/">HBR&#39;s 10 Must Read &#34;Managing Oneself&#34; Note</a></li>
 		</ul>
 	</div>
 </div>

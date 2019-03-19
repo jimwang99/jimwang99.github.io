@@ -6,10 +6,29 @@
     <description>Recent content in Note on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/note/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ARM Training: Cortex Processor Behaviors</title>
+      <link>/blog/note/2019-03-18-cortex-processor-behaviors/</link>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/note/2019-03-18-cortex-processor-behaviors/</guid>
+      <description>Simple Sequential Execution Model After optimization, the result should be exactly the same with &amp;ldquo;simple sequential execution model&amp;rdquo;.
+Optimization: Instruction Fetching  Fetch multiple instructions from memory Branch  Predictive fetch and execution Branch caches Return stack  The &amp;ldquo;link register&amp;rdquo; value is pushed into the stack, and used/popped when return E.g. 4 entries of return stack, but my call stack is 5, then miss will happend. Then what to do?</description>
+    </item>
+    
+    <item>
+      <title>ARMv8 Architecture</title>
+      <link>/blog/note/2019-03-18-armv8-architecture/</link>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/note/2019-03-18-armv8-architecture/</guid>
+      <description> Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    </description>
+    </item>
     
     <item>
       <title>SystemC Tutorial</title>

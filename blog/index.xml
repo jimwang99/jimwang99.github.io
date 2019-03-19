@@ -6,10 +6,39 @@
     <description>Recent content in Blogs on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ARM Training: Cortex Processor Behaviors</title>
+      <link>/blog/note/2019-03-18-cortex-processor-behaviors/</link>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/note/2019-03-18-cortex-processor-behaviors/</guid>
+      <description>Simple Sequential Execution Model After optimization, the result should be exactly the same with &amp;ldquo;simple sequential execution model&amp;rdquo;.
+Optimization: Instruction Fetching  Fetch multiple instructions from memory Branch  Predictive fetch and execution Branch caches Return stack  The &amp;ldquo;link register&amp;rdquo; value is pushed into the stack, and used/popped when return E.g. 4 entries of return stack, but my call stack is 5, then miss will happend. Then what to do?</description>
+    </item>
+    
+    <item>
+      <title>ARMv8 Architecture</title>
+      <link>/blog/note/2019-03-18-armv8-architecture/</link>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/note/2019-03-18-armv8-architecture/</guid>
+      <description> Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    </description>
+    </item>
+    
+    <item>
+      <title>Interrupts and ARM GIC Architecture</title>
+      <link>/blog/arch/2019-03-11-interrupt-and-arm-gic/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-03-11-interrupt-and-arm-gic/</guid>
+      <description>Reference - Interrupt
+Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.  IPI: inter-processor interrupt  Software: caused by exception or special instructions that used to implement system calls  Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE   Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)   Triggering methods  Physical interrupt  Level-triggered vs.</description>
+    </item>
     
     <item>
       <title>shortcut.py: A Command Line Script to Provide Macro</title>
@@ -131,7 +160,8 @@ SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chi
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/arch/2018-12-01-ariane-cpu/</guid>
-      <description>Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage  Its fetch stage doesn&amp;rsquo;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
+      <description>Ariane Document
+Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage  Its fetch stage doesn&amp;rsquo;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
  There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
     </item>
     
@@ -492,10 +522,10 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
     
     <item>
       <title>Optical Interconnection in Google Data Centers</title>
-      <link>/blog/industry/untitled/</link>
+      <link>/blog/industry/2015-08-11-optical-interconnect-in-google-data-center/</link>
       <pubDate>Tue, 11 Aug 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/industry/untitled/</guid>
+      <guid>/blog/industry/2015-08-11-optical-interconnect-in-google-data-center/</guid>
       <description>&lt;p&gt;今天的Meetup主要讲的是Google的Data Center中optical interconnection的应用。&lt;/p&gt;</description>
     </item>
     

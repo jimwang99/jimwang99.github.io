@@ -55,6 +55,77 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/" rel="bookmark">
+			Case Study: Clock Divider with Synchronous Reset
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-10-25T00:00:00">2018-10-25</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/design" rel="category">design</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		When using a counter to divide a clock, don’t reset the counter, especially when you are using synchronous reset. It will make the clock quiet while reset. And if it’s used along with sync reset, then those flip-flop won’t be reset at all.
+But if without reset, the counter will be &ldquo;X&rdquo; in simulation.
+logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2'b00; end `endif always_ff @ (posedge clk) begin cntr &lt;= cntr + 1; end  
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/life/2018-10-23-fpga-solution-for-lidar-project/" rel="bookmark">
+			FPGA Solution for LiDAR Project
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-10-23T00:00:00">2018-10-23</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/life" rel="category">life</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (https://www.xilinx.com/products/boards-and-kits/zcu111.html)
+ Features: XCZU28DR-2FFVG1517E: high-end RFSoC  12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)  Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product  FMC daughter board with high-speed ADC
+ FMC163 (https://www.abaco.com/products/fmc163-fpga-mezzanine-card) 1x 12-bit ADC, 4.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/tool/2018-10-21-google-cloud-platform-tips/" rel="bookmark">
+			GCP (Google Cloud Platform)
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-10-21T00:00:00">2018-10-21</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/tool" rel="category">tool</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Price of GCP Persistance Disk Can be used to put all the data/eda/os on it.
+    Price (per month) Price (per GB per month)     SSD 50GB $8.50 $0.17   SSD 1TB $174.08 $0.17   HDD 50GB $2.00 $0.04   HDD 200GB $8.00 $0.04   HDD 1TB $39.76 $0.04   Snapshot 50GB $1.30 $0.026    Always on instance (24x7) Can be used as working machine (support VNC) and NFS server
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/tool/2018-10-01-docker-tips/" rel="bookmark">
 			Docker for EDA
 			</a>
@@ -212,77 +283,6 @@ To reinstall WSL you should do:
 &gt; lxrun /uninstall /full &gt; lxrun /install  Then you will see
 &gt; lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 16.04.2 LTS Release: 16.04 Codename: xenial  Some X11 apps like xclocks works fine with Xming, but &ldquo;gnome-terminal&rdquo; still have some problem.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/tool/2017-04-24-install-python-offline/" rel="bookmark">
-			Install Python Offline
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-04-24T00:00:00">2017-04-24</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tool" rel="category">tool</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		In general, things like Anaconda Server are designed to make this sort of workflow easier.
-Some suggested workarounds:
- Reproduce your install on another machine with internet (save conda list &ndash;export to a file and conda install &ndash;file). Then use conda update on that machine to generate and download the packages. One tip that could be helpful is if you take several conda packages and tar them up into a flat tarball you can use conda to install that tarball and it will install all the packages.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/flow/2017-04-18-case-study-clock-skew-control/" rel="bookmark">
-			Case Study: Clock Skew Control
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-04-18T00:00:00">2017-04-18</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/flow" rel="category">flow</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Question: how to control the clock skew between a group of clocks to be minimum, say less than 30ps, instead of utilizing useful skew? This case happens to our hard macros.
-A: in Innovus, use skew group
-set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock/NLVP_CKB } create_ccopt_skew_group \ -name min_skew_group \ -sources path/to/clock/source/CKB \ -sinks $min_skew_group \ -target_insertion_delay 0.500 \ -rank 1 -target_skew 0.000 set_ccopt_property constraints -skew_group min_skew_group ccopt  
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/note/2017-04-01-innovus-training/" rel="bookmark">
-			INNOVUS Training Notes
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-04-01T00:00:00">2017-04-01</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		The following is my notes of INNOVUS training course on Cadence&rsquo;s training module
- Module 02: overview  &ldquo;gift&rdquo; directory contains lots of useful scripts to help productivity Independent &ldquo;viewlog&rdquo; utility or &ldquo;Tools-&gt;Log Viewer&rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI   Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .
-	</div>
 </article>
 </main>
 
@@ -322,11 +322,11 @@ set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-armv8-architecture/">ARMv8 Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/">Re-discover Hardware Security in Modern SoC</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/life/2019-01-29-on-time-is-professional/">On Time Is Professional</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/life/2019-01-28-hbr-managing-oneself-note/">HBR&#39;s 10 Must Read &#34;Managing Oneself&#34; Note</a></li>
 		</ul>
 	</div>
 </div>
