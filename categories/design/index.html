@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Design</title>
+	<title>design</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -26,7 +26,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -36,10 +36,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -51,7 +54,7 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Design</h1>
+		<h1 class="main__title">design</h1>
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
@@ -74,7 +77,7 @@
 	<div class="content list__excerpt post__content clearfix">
 		When using a counter to divide a clock, don’t reset the counter, especially when you are using synchronous reset. It will make the clock quiet while reset. And if it’s used along with sync reset, then those flip-flop won’t be reset at all.
 But if without reset, the counter will be &ldquo;X&rdquo; in simulation.
-logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2'b00; end `endif always_ff @ (posedge clk) begin cntr &lt;= cntr + 1; end  
+logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif always_ff @ (posedge clk) begin cntr &lt;= cntr + 1; end 
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -97,7 +100,7 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2'b00; end `endif alway
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Some parameterized example RTL code for register-based SRAM read circuit using &ldquo;generate&rdquo; feature
-parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &quot;generate&quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &lt;= word_or; end  
+parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &quot;generate&quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &lt;= word_or; end 
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -122,7 +125,6 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 		<blockquote>
 <p>从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。</p>
 </blockquote>
-
 <p>低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。</p>
 	</div>
 </article>
@@ -140,6 +142,18 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 		<input type="hidden" name="sitesearch" value="" />
 	</form>
 </div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/">Re-discover Hardware Security in Modern SoC</a></li>
+		</ul>
+	</div>
+</div>
 <div class="widget-categories widget">
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
@@ -149,20 +163,11 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 			<li class="widget__item"><a class="widget__link" href="/categories/flow">Flow</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/industry">Industry</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/low-power">Low power</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/machine-learning">Machine learning</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/note">Note</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/tool">Tool</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-armv8-architecture/">ARMv8 Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/tutorial">Tutorial</a></li>
 		</ul>
 	</div>
 </div>

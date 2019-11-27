@@ -7,7 +7,7 @@
 	<title>ARM&#39;s big.LITTLE Architecture</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -67,32 +70,28 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<p><a href="https://developer.arm.com/technologies/big-little">https://developer.arm.com/technologies/big-little</a></p>
-
-<p>big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve <strong>high peak performance within thermal bounds of the system</strong> when intense computational power is needed, as well as <strong>maximum energy efficiency</strong> when the device is in light usage mode most of the time. It&rsquo;s a particular adaption to mobile devices usage.</p>
-
+<p>big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve <strong>high peak performance within thermal bounds of the system</strong> when intense computational power is needed, as well as <strong>maximum energy efficiency</strong> when the device is in light usage mode most of the time. It's a particular adaption to mobile devices usage.</p>
 <p>Highlights:</p>
-
 <ul>
 <li>The CPU subsystem, including both types of CPU and GPU, is fully cache coherent.</li>
 <li>Both types of CPU cores are fully architecturally identical.
-
 <ul>
 <li>Same instruction with same extension support, ex. virtualization, large physical addressing, and etc.</li>
-</ul></li>
+</ul>
+</li>
 <li>Open source software to automatically handles the allocation of tasks
-
 <ul>
 <li>GTS (Global Task Scheduling)</li>
-</ul></li>
+</ul>
+</li>
 <li>End-to-end suite of IDE (ARM DS-5 dev studio), as well as performance analyzer for software</li>
 </ul>
-
-<p><img src="bigLITTLESystemDiagram.png" alt="big.LITTLE System Diagram" /></p>
+<p><img src="bigLITTLESystemDiagram.png" alt="big.LITTLE System Diagram"></p>
 
 		</div>
 		
@@ -107,7 +106,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

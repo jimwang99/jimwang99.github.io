@@ -7,7 +7,7 @@
 	<title>RISC-V Summit 2018</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,143 +71,122 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li><a href="#my-notes-on-risc-v-summit-2018-at-santa-clara-conventional-center">My notes on RISC-V Summit 2018 at Santa Clara Conventional Center</a>
-<ul>
-<li><a href="#sifive-s-biz-model">SiFive&rsquo;s biz model</a></li>
-<li><a href="#sifive-s-freedom-revolution-platform">SiFive&rsquo;s Freedom Revolution platform</a></li>
-<li><a href="#hwacha-v4">Hwacha v4</a></li>
-<li><a href="#platformio-org">platformIO.org</a></li>
-<li><a href="#renode">RENODE</a></li>
-<li><a href="#david-patterson-s-keynote-speech">David Patterson&rsquo;s keynote speech</a></li>
-<li><a href="#yunsup-lee-s-keynote-speech">Yunsup Lee&rsquo;s keynote speech</a></li>
-<li><a href="#rob-nxp-s-keynote-speech">Rob (NXP)&rsquo;s keynote speech</a></li>
-<li><a href="#antmicro-keynote-speech">AntMicro Keynote speech</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#sifives-biz-model">SiFive's biz model</a></li>
+    <li><a href="#sifives-freedom-revolution-platform">SiFive's Freedom Revolution platform</a></li>
+    <li><a href="#hwacha-v4">Hwacha v4</a></li>
+    <li><a href="#platformioorg">platformIO.org</a></li>
+    <li><a href="#renode">RENODE</a></li>
+    <li><a href="#david-pattersons-keynote-speech">David Patterson's keynote speech</a></li>
+    <li><a href="#yunsup-lees-keynote-speech">Yunsup Lee's keynote speech</a></li>
+    <li><a href="#rob-nxps-keynote-speech">Rob (NXP)s keynote speech</a></li>
+    <li><a href="#antmicro-keynote-speech">AntMicro Keynote speech</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h1 id="my-notes-on-risc-v-summit-2018-at-santa-clara-conventional-center">My notes on RISC-V Summit 2018 at Santa Clara Conventional Center</h1>
-
-<p>This year&rsquo;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.</p>
-
-<h2 id="sifive-s-biz-model">SiFive&rsquo;s biz model</h2>
-
+			<h1 id="my-notes-on-riscv-summit-2018-at-santa-clara-conventional-center">My notes on RISC-V Summit 2018 at Santa Clara Conventional Center</h1>
+<p>This year's summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.</p>
+<h2 id="sifives-biz-model">SiFive's biz model</h2>
 <ul>
 <li>Help customer to tape-out prototypes, and sell chips back to the customer.
-
 <ul>
 <li>Fundamentally similar to old school design house</li>
-</ul></li>
+</ul>
+</li>
 <li>Front-end is a highly configurable design generator, with which customers can easily change the configuration and get the SoC RTL. Then they can drop-in their proprietary IP with TileLink interface.</li>
 </ul>
-
-<h2 id="sifive-s-freedom-revolution-platform">SiFive&rsquo;s Freedom Revolution platform</h2>
-
+<h2 id="sifives-freedom-revolution-platform">SiFive's Freedom Revolution platform</h2>
 <ul>
 <li>SiFive acquired OpenSilicon, and it gets HBM2/Interlaken/&hellip; IPs, with their own 7-series CPU core (dual issue), they now can offer full SoC solution to custmers</li>
 <li>Interlaken: chip-to-chip connection, 1.2Tbps, proprietary (not open source)</li>
 </ul>
-
 <h2 id="hwacha-v4">Hwacha v4</h2>
-
 <ul>
 <li>Vector register file
-
 <ul>
 <li>Different from new RISC-V vector ISA, it merges storage of low precision registers</li>
-</ul></li>
+</ul>
+</li>
 <li>Sequencer
-
 <ul>
-<li>Systolic bank unit</li>
+<li>Systolic bank unit
+<ul>
 <li>Stall free, like TPU</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>VRU: vector runahead unit
-
 <ul>
 <li>As I understand, it only prefetch the instruction, not the data. Actually the data part is more critical in prefetch</li>
-</ul></li>
+</ul>
+</li>
 <li>Polymorphic extension
-
 <ul>
 <li>? What?</li>
-</ul></li>
 </ul>
-
-<h2 id="platformio-org">platformIO.org</h2>
-
+</li>
+</ul>
+<h2 id="platformioorg">platformIO.org</h2>
 <ul>
 <li>Cloud, unified IDE for remote debug and CI</li>
 <li>Free and open-source</li>
 <li>Goes down to OpenOCD level, if we can make the hardware drives to support OpenOCD, then it can support it.</li>
 </ul>
-
 <h2 id="renode">RENODE</h2>
-
 <ul>
 <li>Simulator of RISC-V system</li>
 <li>PolarFire SoC</li>
 </ul>
-
-<h2 id="david-patterson-s-keynote-speech">David Patterson&rsquo;s keynote speech</h2>
-
+<h2 id="david-pattersons-keynote-speech">David Patterson's keynote speech</h2>
 <ul>
 <li>Learn from the software side of progress</li>
-<li>When Moore&rsquo;s law stops, people catch up
-
+<li>When Moore's law stops, people catch up
 <ul>
-<li>Apple A12 is better than Intel&rsquo;s CPU in single thread performance</li>
-</ul></li>
+<li>Apple A12 is better than Intel's CPU in single thread performance</li>
+</ul>
+</li>
 <li>Security challenge nowadays is more and more serious</li>
 <li>RISC-V committee: slower, but last longer</li>
 <li>Open ISA vs. open hardware</li>
 <li>TPU: software controlled memory (instead of cache)</li>
 <li>Serverless computing
-
 <ul>
 <li>Raise the level of abstraction</li>
 <li>Not x86 forever</li>
-</ul></li>
 </ul>
-
-<h2 id="yunsup-lee-s-keynote-speech">Yunsup Lee&rsquo;s keynote speech</h2>
-
+</li>
+</ul>
+<h2 id="yunsup-lees-keynote-speech">Yunsup Lee's keynote speech</h2>
 <ul>
 <li>From customer: &ldquo;we need more customization&rdquo;</li>
 <li>EDA on cloud: Cadence + MS Azure</li>
 </ul>
-
-<h2 id="rob-nxp-s-keynote-speech">Rob (NXP)&rsquo;s keynote speech</h2>
-
+<h2 id="rob-nxps-keynote-speech">Rob (NXP)&lsquo;s keynote speech</h2>
 <ul>
 <li>Fragmentation is a big concern</li>
 <li>VEGA board + PULP
-
 <ul>
 <li>2x PULP cores + 2x ARM cores</li>
-</ul></li>
+</ul>
+</li>
 <li>Foundries.io
-
 <ul>
 <li>Software around RISC-V</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="antmicro-keynote-speech">AntMicro Keynote speech</h2>
-
 <ul>
 <li>Several things are going too slow
-
 <ul>
 <li>Linux-enabled cores</li>
 <li>Non-CPU IP is still hard</li>
 <li>Supply chain of making chips is painful</li>
-</ul></li>
+</ul>
+</li>
 <li>Solution: FPGA</li>
 <li>LiteX: open platform for Linux and MicroSemi</li>
 </ul>
@@ -222,7 +204,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 
@@ -231,7 +213,7 @@
 		<a class="post-nav__link" href="/blog/arch/2018-12-01-ariane-cpu/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Ariane (PULP series high-performance core)</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/note/2018-12-07-systemc-tutorial/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SystemC Tutorial</p></a>
+		<a class="post-nav__link" href="/blog/tutorial/2018-12-07-systemc-tutorial/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SystemC Tutorial</p></a>
 	</div>
 </nav>
 

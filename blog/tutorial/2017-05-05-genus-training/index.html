@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>GENUS Training Notes</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.60.0" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">About Me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">GENUS Training Notes</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-05-05T00:00:00">2017-05-05</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/tutorial" rel="category">tutorial</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#common-ui-vs-legacy-mode">common UI vs legacy mode</a></li>
+    <li><a href="#explore-design-hier-in-legacy-ui">explore design hier in legacy UI</a></li>
+    <li><a href="#attributes">attributes</a></li>
+    <li><a href="#input-and-output">input and output</a></li>
+    <li><a href="#template-script">template script</a></li>
+    <li><a href="#flow">flow</a></li>
+    <li><a href="#command-help">command help</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#datapath-info-in-virtual-file-system">datapath info in virtual file system</a></li>
+    <li><a href="#datapath-operation">datapath operation</a></li>
+    <li><a href="#datapath-directives">datapath directives</a></li>
+    <li><a href="#opt-in-syngeneric">opt in syn_generic</a></li>
+    <li><a href="#report">report</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#problem-with-sdc">problem with sdc</a></li>
+    <li><a href="#path-grouping">path grouping</a></li>
+    <li><a href="#tightenrelax-constraint">tighten/relax constraint</a></li>
+    <li><a href="#bottomup-design-flow">bottom-up design flow</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#why">why?</a></li>
+    <li><a href="#how">how?</a></li>
+    <li><a href="#spatial-flow">spatial flow</a></li>
+    <li><a href="#pam-physicalaware-mapping--pas-physicalaware-structuring">PAM (physical-aware mapping) & PAS (physical-aware structuring)</a></li>
+    <li><a href="#useful-attributes">useful attributes</a></li>
+    <li><a href="#correlation-between-genusphys-and-invs">correlation between genus-phys and invs</a></li>
+    <li><a href="#early-stage-physical-analysis">early stage physical analysis</a></li>
+    <li><a href="#check-placement-legality">check placement legality</a></li>
+    <li><a href="#edit-floorplan-in-genus-gui">edit floorplan in Genus GUI</a></li>
+    <li><a href="#report1">report</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#debug-with-common-ui">debug with common ui</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#flow1">flow</a></li>
+    <li><a href="#multivth-lib">multi-Vth lib</a></li>
+    <li><a href="#clock-gating">clock gating</a></li>
+    <li><a href="#backannotate-switching-activity">backannotate switching activity</a></li>
+    <li><a href="#joules-rtl-power-estimation">Joules: RTL power estimation</a></li>
+    <li><a href="#effort">effort</a></li>
+    <li><a href="#report2">report</a></li>
+    <li><a href="#useful-attr">useful attr</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#flow2">flow</a></li>
+    <li><a href="#dft-in-virtual-file-structure">DFT in virtual file structure</a></li>
+    <li><a href="#dft-constraint">DFT constraint</a></li>
+    <li><a href="#dft-rule-check">DFT rule check</a></li>
+    <li><a href="#add-dft-logic">add DFT logic</a></li>
+    <li><a href="#connect-scan-chains">connect scan chains</a></li>
+    <li><a href="#report-and-output">report and output</a></li>
+    <li><a href="#bottomup-scan-flow">bottom-up scan flow</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#guidance-to-address-formal-verification-challenge">guidance to address formal verification challenge</a></li>
+    <li><a href="#recommended-2step-verification">recommended 2-step verification</a></li>
+    <li><a href="#cmd">cmd</a></li>
+    <li><a href="#attr-affects-formal-verification">attr affects formal verification</a></li>
+    <li><a href="#in-lec">in LEC</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#netlist">netlist</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#retiming">retiming</a></li>
+    <li><a href="#advanced-lowpower-flow">advanced low-power flow</a></li>
+    <li><a href="#common-ui">common ui</a></li>
+    <li><a href="#clipper-flow">clipper flow</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#heading"></a></li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<blockquote>
+<p>The following is my notes of GENUS training course on Cadence's training module</p>
+</blockquote>
+<h1 id="module-03-genus-fundamentals">Module 03: genus fundamentals</h1>
+<h2 id="common-ui-vs-legacy-mode">common UI vs legacy mode</h2>
+<ul>
+<li>unified commands with Tempus</li>
+<li>common us: <code>set_db</code> &amp; <code>get_db</code></li>
+<li>legacy mode: <code>set_attribute</code> &amp; <code>get_attribute</code>
+<ul>
+<li><code>.synth_init</code> file: setup info, auto load when start legacy UI, can be skipped with <code>-no_custom</code> command line option</li>
+</ul>
+</li>
+</ul>
+<h2 id="explore-design-hier-in-legacy-ui">explore design hier in legacy UI</h2>
+<ul>
+<li>virtual directory structure
+<ul>
+<li><code>/</code>: root dir
+<ul>
+<li>designs
+<ul>
+<li>top_module
+<ul>
+<li>instances_hier: current module's hier instances</li>
+<li>instances_seq: current module's sequential instances</li>
+<li>instances_cmb: current module's combinational instancs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>libraries</li>
+<li>hdl_libraries</li>
+<li>flows</li>
+</ul>
+</li>
+<li>use <code>find</code> to locate objects
+<ul>
+<li>ex. find all the pins <code>find /designs/* -pin *</code></li>
+</ul>
+</li>
+<li>use <code>ls</code> + <code>cd</code> to navigate through this virtual directory structure
+<ul>
+<li>even <code>rm</code>, <code>mv</code>, <code>pushd</code>, <code>popd</code></li>
+<li>report all related attributes associated for all the pins: <code>ls -la [find /designs/* -pin *]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>navigate UNIX disk
+<ul>
+<li><code>lpwd</code>, <code>lcd</code>, <code>lls</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="attributes">attributes</h2>
+<ul>
+<li><code>set_attribute &lt;attr_name&gt; &lt;value&gt; &lt;object&gt;</code></li>
+<li><code>get_attribute &lt;attr_name&gt; &lt;object&gt;</code>
+<ul>
+<li>works on single object only</li>
+</ul>
+</li>
+<li>get help
+<ul>
+<li><code>get_attribute -h &lt;attr_name&gt; [&lt;object_type&gt;]</code>
+<ul>
+<li>get help on attribute</li>
+<li><code>&lt;attr_name&gt;</code> can include wildcards</li>
+</ul>
+</li>
+<li><code>set_attribute -h</code>: reports writable attr</li>
+</ul>
+</li>
+<li>attr are dependent on the stage of synthesis flow</li>
+</ul>
+<h2 id="input-and-output">input and output</h2>
+<ul>
+<li>input: RTL + constraint + library + power intent + physical</li>
+<li>output: netlist + LEC dofile + ATPG, scanDEF + constraints + physical design input files</li>
+</ul>
+<h2 id="template-script">template script</h2>
+<ul>
+<li><code>write_template</code></li>
+</ul>
+<h2 id="flow">flow</h2>
+<ol>
+<li>setup libraries</li>
+</ol>
+<ul>
+<li><code>set_attribute init_lib_search_path &lt;path&gt; /</code></li>
+<li><code>set_attribute library $ls_lib</code></li>
+<li>library domain for low-power design (if not included in CPF)
+<ul>
+<li><code>create_library_domain {lib_domain1 lib_domain2}</code></li>
+<li><code>set_attribute library $ls_lib1 lib_domain1 power_domain1</code></li>
+</ul>
+</li>
+<li>dont use
+<ul>
+<li><code>set_attribute avoid &lt;1/0&gt; &lt;cell_names&gt;</code></li>
+<li>or use <code>set_dont_use &lt;cell_names&gt;</code></li>
+</ul>
+</li>
+<li>(optional) setup physical layout estimation (PLE)
+<ul>
+<li>dynamically calculates wire delays for different logic structures</li>
+<li>vs Genus-Physical
+<ul>
+<li>floorplan DEF is optional</li>
+</ul>
+</li>
+<li><code>set_attribute lef_library &lt;lef_header&gt;</code></li>
+<li><code>set_attribute qrc_tech_file &lt;qrc_tech_file_path&gt;</code></li>
+<li><code>set_attribute interconnect_mode ple</code></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>read HDL</li>
+</ol>
+<ul>
+<li><code>set_attr init_hdl_search_path &lt;path&gt; /</code></li>
+<li><code>read_hdl</code></li>
+</ul>
+<ol start="3">
+<li>elaborate</li>
+</ol>
+<ul>
+<li>what
+<ul>
+<li>build data structure, infer registers</li>
+<li>high-level HDL opt, remove dead code</li>
+<li>identify clock gating candidates</li>
+<li>overwrite parameters for diff modules</li>
+</ul>
+</li>
+<li><code>elaborate</code>
+<ul>
+<li>after elaboration, the <code>/designs</code> is populated</li>
+</ul>
+</li>
+<li><code>check_design -all</code>
+<ul>
+<li>must: unresolved references</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>read constraints</li>
+</ol>
+<ul>
+<li><code>read_sdc</code> (preferred)</li>
+<li><code>echo $::dc::sdc_failed_commands &gt; failed.sdc</code></li>
+<li><code>check_timing_intent -verbose</code>
+<ul>
+<li>check failed commands and errors</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>opt directives</li>
+</ol>
+<ul>
+<li>preserve instances and subdesign (dont touch)
+<ul>
+<li><code>set_attr preserve &lt;option&gt;</code> (more options than <code>set_dont_touch</code>)
+<ul>
+<li>false/true</li>
+<li>delete_ok</li>
+<li>const_prop_delete_ok</li>
+<li>const_prop_size_delete_ok</li>
+<li>size_ok</li>
+<li>map_size_ok</li>
+<li>size_delete_ok</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>grouping/ungrouping hierarchy
+<ul>
+<li><code>group -group_name &lt;name&gt; &lt;ls_inst&gt;</code></li>
+<li><code>ungroup &lt;hier&gt;</code></li>
+<li>disable ungrouping by <code>set_attr ungroup_ok false &lt;inst&gt;</code></li>
+</ul>
+</li>
+<li>boundary opt (default performed)
+<ul>
+<li>disable by <code>set_attr boundary_opto false &lt;sub_design&gt;</code></li>
+<li>use dynamic hierarchical check to verify boundary opt in conformal LEC</li>
+</ul>
+</li>
+<li>opt sequential logic (default performed)
+<ul>
+<li>remove unused flops that is not driving an output port</li>
+<li>disable by
+<ul>
+<li><code>set_attr hdl_preserve_unused_register true /</code></li>
+<li><code>set_attr delete_unloaded_seqs false /</code></li>
+<li><code>set_attr optimize_constant_0_flops false /</code></li>
+<li><code>set_attr optimize_constant_1_flops false /</code></li>
+</ul>
+</li>
+<li>same thing to combinational logic that drives unloaded hier pins
+<ul>
+<li>disable by <code>set_attr prune_unused_logic false &lt;pins&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>merge sequential logic (default performed)
+<ul>
+<li>combine flops and latches that are equivalent in the same hierarchy</li>
+<li>disable by
+<ul>
+<li><code>set_attr optimize_merge_flops false /</code></li>
+<li><code>set_attr optimize_merge_latches false /</code></li>
+<li><code>set_attr optimize_merge_seq false &lt;inst&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>multibit cell inference (MBCI)
+<ul>
+<li>flops/tri-state cell/MUX/inverters/&hellip;</li>
+<li>share clock to reduce power/improve reliability</li>
+<li>LEC support</li>
+<li>can control naming style (for verification)</li>
+<li><code>set_attr use_multibit_cells true</code></li>
+</ul>
+</li>
+<li>other opt
+<ul>
+<li>opt async reset logic
+<ul>
+<li><code>set_attr time_recovery_arcs true /</code></li>
+</ul>
+</li>
+<li>auto ungrouping
+<ul>
+<li><code>set_attr auto_ungroup {none | both}</code></li>
+</ul>
+</li>
+<li>keep the synchronous feedback logic immediately in front of the sequential elements (?)
+<ul>
+<li><code>set_attr hdl_ff_keep_feedback</code></li>
+<li>affect how enable logic of a flop is implemented</li>
+</ul>
+</li>
+<li>opt TNS other than WNS
+<ul>
+<li><code>set_attr tns_opto true /</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li>synthesis</li>
+</ol>
+<ul>
+<li>1st level: <code>syn_generic &lt;-physical&gt;</code>
+<ul>
+<li>tech independent RTL opt
+<ul>
+<li>can skip for netlist-to-netlist synthesis</li>
+</ul>
+</li>
+<li><code>set_attr syn_generic_effort</code>
+<ul>
+<li>medium by default</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2nd level: <code>syn_map &lt;-physical&gt;</code>
+<ul>
+<li>mapping to lib, and logic opt
+<ul>
+<li>initial structuring
+<ul>
+<li>constant propagation, clock gating</li>
+<li>structuring for best delay</li>
+</ul>
+</li>
+<li>target info
+<ul>
+<li>estimate timing</li>
+</ul>
+</li>
+<li>global mapping
+<ul>
+<li>mapping to meet target</li>
+</ul>
+</li>
+<li>global incremental
+<ul>
+<li>net/drive opt</li>
+<li>timing tuning</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>set_attr syn_map_effort</code>
+<ul>
+<li>high by default</li>
+</ul>
+</li>
+<li>check the slack, if too negative, check the constraint/design</li>
+</ul>
+</li>
+<li>3rd level: <code>syn_opt &lt;-physical&gt; &lt;-spatial&gt; &lt;-incr&gt;</code>
+<ul>
+<li>opt gates
+<ul>
+<li>fix drc, cleanup area, cleanup timing</li>
+</ul>
+</li>
+<li><code>set_attr syn_opt_effort</code>
+<ul>
+<li>high by default</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>global effort
+<ul>
+<li><code>set_attr syn_global_effort</code></li>
+<li>set to express while explore flow
+<ul>
+<li>accept not clean design</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>analyze and report</li>
+</ol>
+<ul>
+<li>after elaboration
+<ul>
+<li><code>check_design unresolved</code></li>
+</ul>
+</li>
+<li>constraint
+<ul>
+<li><code>check_timing_intent</code></li>
+<li>use Conformal Constraint Designer (CCD) tool to validate timing constraint
+<ul>
+<li><code>write_to_ccd validate -sdc &gt; dofile</code> generate dofile used in CCD</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>check <code>preserve</code> attributes, remove those that are not needed</li>
+<li>ungrouping small blocks can improve timing/area</li>
+<li>reports
+<ul>
+<li>report_area</li>
+<li>report_dp (datapath)</li>
+<li>report_design_rules (drc)</li>
+<li>report_messages</li>
+<li>report_power</li>
+<li>report_qor</li>
+<li>report_timing</li>
+<li>report_summary</li>
+</ul>
+</li>
+<li>from GUI
+<ul>
+<li>timing -&gt; timing lint: gives a thorough</li>
+</ul>
+</li>
+</ul>
+<ol start="8">
+<li>gen outputs</li>
+</ol>
+<ul>
+<li><code>write_hdl &gt; filename</code></li>
+<li><code>write_sdc &gt; filename</code></li>
+<li><code>write_design -innovus</code></li>
+</ul>
+<h2 id="command-help">command help</h2>
+<ul>
+<li><code>setenv MANPATH $CDN_SYNTH_ROOT/share/synth/man</code> to view man pages from UNIX shell</li>
+</ul>
+<h1 id="module-04-datapath">Module 04: datapath</h1>
+<h2 id="datapath-info-in-virtual-file-system">datapath info in virtual file system</h2>
+<ul>
+<li>/hdl_libraries/
+<ul>
+<li>/hdl_libraries/CW (chipware)</li>
+<li>/hdl_libraries/DW (designware)</li>
+</ul>
+</li>
+</ul>
+<h2 id="datapath-operation">datapath operation</h2>
+<ul>
+<li>architecture selection</li>
+<li>sharing and speculation (unsharing)</li>
+<li>carry-save arithmetic (CSA)</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="datapath-directives">datapath directives</h2>
+<ul>
+<li>CSA
+<ul>
+<li><code>set_attr dp_csa {inherited|basic|none} &lt;design&gt;</code></li>
+</ul>
+</li>
+<li>sharing and speculation
+<ul>
+<li>sharing: improve area</li>
+<li><code>set_attr dp_sharing</code></li>
+<li><code>set_attr dp_speculation</code></li>
+</ul>
+</li>
+<li>arch selection
+<ul>
+<li>manually control datapath arch selection (not recommended)
+<ul>
+<li><code>set_attr user_speed_grade [find /designs* -subdesign &lt;name&gt;]</code> while speed can be ver_fast|fast|medium|slow|very_slow</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>reordering (reorder input to opt critical path)</li>
+<li>ChipWare (CW)
+<ul>
+<li>also maps DesignWare components in RTL to CW</li>
+</ul>
+</li>
+</ul>
+<h2 id="opt-in-syngeneric">opt in syn_generic</h2>
+<ul>
+<li>constant propagation</li>
+<li>resource sharing</li>
+<li>logic speculation</li>
+<li>MUX opt</li>
+<li>CSA opt</li>
+<li>datapath rewriting
+<ul>
+<li>QoR driven RTL code rewrite</li>
+<li>by default during <code>syn_generic</code> with high effort level</li>
+<li>no LEC impact</li>
+<li>ex.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">assign</span> p <span style="color:#f92672">=</span> a <span style="color:#f92672">-</span> b;
+<span style="color:#66d9ef">assign</span> q <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> b;
+<span style="color:#66d9ef">assign</span> y <span style="color:#f92672">=</span> s <span style="color:#f92672">?</span> p <span style="color:#f92672">:</span> q;
+
+# better timing, smaller area
+<span style="color:#66d9ef">assign</span> t <span style="color:#f92672">=</span> {<span style="color:#ae81ff">16</span>{s}} <span style="color:#f92672">^</span> b;
+<span style="color:#66d9ef">assign</span> y <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> t <span style="color:#f92672">+</span> s;
+</code></pre></div><h2 id="report">report</h2>
+<ul>
+<li><code>set_attr hdl_track_filename_row_col true /</code> before <code>read_hdl</code></li>
+<li><code>report_dp</code> after every stages: elaboration/syn_gen/syn_map/syn_opt to track datapath components changes</li>
+</ul>
+<h1 id="module-05-debug-design-scenarios">Module 05: debug design scenarios</h1>
+<h2 id="problem-with-sdc">problem with sdc</h2>
+<ul>
+<li>check the log file for errors and warnings</li>
+<li>check constraint consistency by <code>check_timing_intent -verbose</code> before synthesis</li>
+</ul>
+<h2 id="path-grouping">path grouping</h2>
+<ul>
+<li>cost group: opt cost groups simultaneously according to their weight, to minimize their WNS for each group</li>
+<li>path group -&gt; cost group</li>
+</ul>
+<h2 id="tightenrelax-constraint">tighten/relax constraint</h2>
+<ul>
+<li>emphasize some paths in opt without impacting output SDC</li>
+<li><code>path_adjust -from &lt;obj&gt; -to &lt;obj&gt; -delay &lt;delta_slack_ps&gt;</code>
+<ul>
+<li>if delta_slack_ps &lt; 0, tighten the path</li>
+<li>if delta_slack_ps &gt; 0, loosen the path</li>
+</ul>
+</li>
+<li>use <code>rm [find /des* -exceptions pa_*]</code> before report timing to get normal timing reports
+<ul>
+<li>the adjustment will be in the timing report if not removed</li>
+</ul>
+</li>
+</ul>
+<h2 id="bottomup-design-flow">bottom-up design flow</h2>
+<ul>
+<li>promote submodule
+<ul>
+<li><code>create_derived_design</code> promote submodule to top-level module</li>
+</ul>
+</li>
+</ul>
+<h1 id="module-06-physical-synthesis">Module 06: physical synthesis</h1>
+<h2 id="why">why?</h2>
+<ul>
+<li>for synthesis: all wires of fanout=n are the same</li>
+<li>for physical: each wire is unique
+<ul>
+<li>80% to 90% of wires are local, the rest are big problems</li>
+</ul>
+</li>
+<li>old tricks don't work: over-constraint</li>
+</ul>
+<h2 id="how">how?</h2>
+<ul>
+<li>incremental congestion prevetion</li>
+<li>structural datapath</li>
+<li>physical aware clock gating/logic structuring/mapping</li>
+<li>use floorplan as bridge to close pre and post layout gap
+<ul>
+<li>def file: must define die size; macro locations, fences/guides/regions are better to have (impact timing)</li>
+</ul>
+</li>
+<li>genus vs innovus: 5% timing &amp; wirelength diff</li>
+</ul>
+<h2 id="spatial-flow">spatial flow</h2>
+<ul>
+<li>if backend is going to run full place_opt, instead of <code>place_opt -incr</code> with genus-physical outputs as inputs, then no need to waste time on the final syn_opt stage</li>
+<li>use <code>syn_opt -spatial</code> instead of <code>syn_opt -physical</code></li>
+</ul>
+<h2 id="pam-physicalaware-mapping--pas-physicalaware-structuring">PAM (physical-aware mapping) &amp; PAS (physical-aware structuring)</h2>
+<ul>
+<li>automatically turned on with <code>-physical</code></li>
+</ul>
+<h2 id="useful-attributes">useful attributes</h2>
+<ul>
+<li><code>invs_enable_useful_skew</code></li>
+<li><code>phys_ignore_nets</code></li>
+<li><code>pqos_ignore_msv</code>
+<ul>
+<li>whether to pass lib or power domain info to INVS</li>
+</ul>
+</li>
+<li><code>invs_user_constraint_file</code>
+<ul>
+<li>sourced during INVS session</li>
+<li><code>invs_preload_script</code> &amp; <code>invs_postload_script</code> &amp; <code>invs_preexport_script</code></li>
+</ul>
+</li>
+<li><code>number_of_routing_layers</code>
+<ul>
+<li>important to have</li>
+</ul>
+</li>
+<li><code>invs_pre_place_opt</code></li>
+<li><code>pqos_placement_effort</code>
+<ul>
+<li>congestion effort</li>
+</ul>
+</li>
+<li><code>invs_gzip_interface_file</code></li>
+<li><code>invs_temp_dir</code></li>
+</ul>
+<h2 id="correlation-between-genusphys-and-invs">correlation between genus-phys and invs</h2>
+<ul>
+<li>ensure NDR and layer-promotion info is passed to innvous</li>
+<li>assure wirelength has good correlation</li>
+</ul>
+<h2 id="early-stage-physical-analysis">early stage physical analysis</h2>
+<ul>
+<li>at generic physical synthesis stage</li>
+<li>why?
+<ul>
+<li>analyze hier</li>
+<li>hard macro locations</li>
+<li>floor plan constraints</li>
+<li>timing debug with gui</li>
+</ul>
+</li>
+</ul>
+<h2 id="check-placement-legality">check placement legality</h2>
+<ul>
+<li><code>check_placement</code></li>
+</ul>
+<h2 id="edit-floorplan-in-genus-gui">edit floorplan in Genus GUI</h2>
+<ul>
+<li>go into edit mode</li>
+</ul>
+<h2 id="report1">report</h2>
+<ul>
+<li><code>write_report</code>
+<ul>
+<li>wrote QoS statistics</li>
+</ul>
+</li>
+<li><code>report_summary</code>
+<ul>
+<li>write summary table</li>
+</ul>
+</li>
+<li><code>write_snapshot</code>
+<ul>
+<li>design database and reports</li>
+</ul>
+</li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<ul>
+<li>recommended flow
+<ul>
+<li>after synthesis with physical, <code>write_design -innovus</code></li>
+<li>then in innovus load the output data, and <code>place_opt_design -incr</code></li>
+</ul>
+</li>
+<li>what is under the hood of <code>syn_opt -phy</code>?
+<ul>
+<li>it calls <code>place_opt -phy_syn</code> in INVS, and load back the result and do low effort TNS/WNS opt</li>
+<li>so the engine is the same between genus-phy and invs</li>
+</ul>
+</li>
+<li>is it possible to do CTS in genus?
+<ul>
+<li>No. but simple CTS will be enabled in coming versions</li>
+</ul>
+</li>
+</ul>
+<h2 id="debug-with-common-ui">debug with common ui</h2>
+<ul>
+<li>timing debug
+<ul>
+<li>timing -&gt; debug timing</li>
+<li>diff path groups histogram</li>
+<li>highlight violating path</li>
+</ul>
+</li>
+</ul>
+<h1 id="module-07-low-power-opt">Module 07: low power opt</h1>
+<ul>
+<li>low power opt impacts timing a lot
+<ul>
+<li>trade-off</li>
+</ul>
+</li>
+</ul>
+<h2 id="flow1">flow</h2>
+<ul>
+<li>enable clock gating</li>
+<li>annotate switching activities with TCF/SAIF/VCD</li>
+<li>apply clock-gating directives</li>
+<li>apply leakage/dynamic power constraints</li>
+<li>synthesis with clock gating insertion/power opt</li>
+<li>analyze</li>
+</ul>
+<h2 id="multivth-lib">multi-Vth lib</h2>
+<ul>
+<li>low VT on timing critical path, high VT on non-critical path</li>
+</ul>
+<h2 id="clock-gating">clock gating</h2>
+<ul>
+<li><code>set attr lp_insert_clock_taing true /</code></li>
+<li>specify clock gating cell
+<ul>
+<li>customied: <code>lp_clock_gating_module</code> attr</li>
+<li>select from library: <code>lp_clock_gating_cell</code> attr</li>
+</ul>
+</li>
+<li>disable clock gating: <code>lp_clock_gating_exclude</code></li>
+<li>control fanout of CGC: <code>lp_clock_gating_*_flops</code></li>
+<li>common enable: <code>lp_clock_gating_extract_common_enable</code></li>
+<li>clock gating for sync reset</li>
+</ul>
+<h2 id="backannotate-switching-activity">backannotate switching activity</h2>
+<ul>
+<li><code>read_tcf</code> (toggle count format)</li>
+<li><code>read_saif</code> (converted to TCF internally)</li>
+<li><code>read_vcd</code></li>
+<li>manipulate activity with <code>lp_toggle_*</code> attr</li>
+</ul>
+<h2 id="joules-rtl-power-estimation">Joules: RTL power estimation</h2>
+<h2 id="effort">effort</h2>
+<ul>
+<li><code>leakage_power_effort</code> attr
+<ul>
+<li>{none | low | high}</li>
+</ul>
+</li>
+<li>disable leakage power opt
+<ul>
+<li><code>max_leakage_power</code> must not be set while <code>leakge_power_effort</code> set to none</li>
+</ul>
+</li>
+<li>dynamic vs leakage
+<ul>
+<li><code>lp_power_optimization_weight</code> attr: power = weight * leakage + (1 - weight) * dynamic
+<ul>
+<li>normally, weight is close to 1</li>
+</ul>
+</li>
+<li>POPT-501</li>
+</ul>
+</li>
+</ul>
+<h2 id="report2">report</h2>
+<ul>
+<li><code>report_clock_gating</code></li>
+<li><code>report_power</code></li>
+<li>get power-related info
+<ul>
+<li><code>lp_internal/leakage/net_power</code></li>
+<li><code>lp_default_toggle_rate</code></li>
+<li><code>lp_default_probability</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="useful-attr">useful attr</h2>
+<ul>
+<li><code>lp_clock_gating_exceptions_aware</code></li>
+<li><code>declone/share/split/merge_clock_gate</code></li>
+</ul>
+<h1 id="module-08-design-for-test">Module 08: design for test</h1>
+<h2 id="flow2">flow</h2>
+<ul>
+<li>setup DFT rule, and check
+<ul>
+<li>shift enable</li>
+<li>test mode</li>
+<li>prevent scan mapping of flops</li>
+<li>internal clock as test clock</li>
+<li>DFT controllable constraints</li>
+<li>abstract scan segment</li>
+</ul>
+</li>
+<li>add test logic
+<ul>
+<li>insert test point</li>
+<li>insert shadow logic</li>
+</ul>
+</li>
+<li>synthesis</li>
+<li>setup DFT config, and preview scan chains
+<ul>
+<li>scan chain: number, length</li>
+<li>control data lockup elements</li>
+</ul>
+</li>
+<li>connect scan chains</li>
+<li>incremental opt</li>
+</ul>
+<h2 id="dft-in-virtual-file-structure">DFT in virtual file structure</h2>
+<ul>
+<li>/designs/dft</li>
+</ul>
+<h2 id="dft-constraint">DFT constraint</h2>
+<ul>
+<li>2 scan styles: controlled by <code>dft_scan_style</code> attr</li>
+</ul>
+<ol>
+<li>muxed style (muxed_scan) (most commonly used)</li>
+<li>clocked LSSD (clocked_lssd_scan) (1 system clock, and 2 scan clocks)</li>
+</ol>
+<ul>
+<li>define shift enable signal
+<ul>
+<li>for muxed style: <code>define_shift_enable</code>
+<ul>
+<li>default one for common usage, or each chain has its own enable signal</li>
+</ul>
+</li>
+<li>for LSSD style: <code>define_lssd_scan_clock_a/b</code></li>
+</ul>
+</li>
+<li>define test mode signal: <code>define_test_mode</code>
+<ul>
+<li>put circuit in test mode so that gated clocks are all activated</li>
+</ul>
+</li>
+<li>define test clock domains: <code>define_test_clock -name &lt;name&gt; -domain &lt;domain&gt; &lt;pin_name&gt;</code>
+<ul>
+<li>due to unbalanced clock tree, create separate test clock domains to prevent timing issues</li>
+<li>lock-up latches (auto added) for crossing test clocks in the same domain, if more than 1 test clocks are defined in one domain</li>
+<li>by default, in the same test clock domain use the same clock edge (controlled by <code>dft_mix_clock_edges_in_scan_chain</code> attr)</li>
+</ul>
+</li>
+<li>define scan segment
+<ul>
+<li><code>define_scan_abstract/fixed/floating/preserved_segment</code></li>
+<li><code>define_scan_shift_register_segment</code></li>
+<li><code>define_jtag_boundary_scan_segment</code></li>
+</ul>
+</li>
+<li>preserve nonscan flops
+<ul>
+<li>set <code>dft_scan_map_mode</code> attr to preserve</li>
+<li>set <code>dft_dont_scan</code> attr to true</li>
+</ul>
+</li>
+<li>control the length and number
+<ul>
+<li>by default, no max length for scan chain</li>
+<li><code>dft_min_number_of_scan_chains</code></li>
+<li><code>dft_max_length_of_scan_chains</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="dft-rule-check">DFT rule check</h2>
+<ul>
+<li>uncontrollable clock nets</li>
+<li>uncontrollable async set/reset nets</li>
+<li>conflicting clock and async set/reset net</li>
+<li>shift register rules</li>
+<li>abstract segment rules</li>
+<li><code>check_dft_rules</code></li>
+<li><code>fix_dft_violations</code> (only for muxed style)</li>
+<li><code>check_atpg_rules</code>
+<ul>
+<li>only generate script for Modus ATPG rule checker</li>
+</ul>
+</li>
+<li><code>check_design</code></li>
+<li><code>analyze_atpg_testability</code>
+<ul>
+<li>run Modus</li>
+</ul>
+</li>
+</ul>
+<h2 id="add-dft-logic">add DFT logic</h2>
+<ul>
+<li><code>insert_dft *</code></li>
+<li>identify shift register to save area (auto done)
+<ul>
+<li>cmd = <code>identify_shift_register_scan_segments</code></li>
+</ul>
+</li>
+<li>mapping to scan in a already mapped netlist
+<ul>
+<li><code>set_scan_equivalent</code>: one-to-one correspondence between non-scan and scan flop lib cells</li>
+<li><code>replace_scan</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="connect-scan-chains">connect scan chains</h2>
+<ul>
+<li><code>connect_scan_chains</code></li>
+</ul>
+<h2 id="report-and-output">report and output</h2>
+<ul>
+<li><code>report_scan_chains</code></li>
+<li><code>report_scan_setup</code></li>
+<li><code>write_scandef</code></li>
+<li><code>write_dft_atpg*</code>: interface to ATPG tool</li>
+<li><code>write_dft_abstract_model</code></li>
+</ul>
+<h2 id="bottomup-scan-flow">bottom-up scan flow</h2>
+<ul>
+<li>block level
+<ul>
+<li>create block level chains</li>
+<li><code>write_hdl -abstract</code></li>
+<li><code>write_dft_abstract_model</code></li>
+</ul>
+</li>
+<li>top level
+<ul>
+<li><code>read_dft_abstract_model</code></li>
+<li><code>connect_scan_chains</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="module-09-lec">Module 09: LEC</h1>
+<h2 id="guidance-to-address-formal-verification-challenge">guidance to address formal verification challenge</h2>
+<ul>
+<li>challenges
+<ul>
+<li>datapath arch</li>
+<li>ungrouping: no manual random ungrouping</li>
+<li>boundary opt</li>
+<li>phase inversion</li>
+</ul>
+</li>
+<li>long run-time, werid mismatch</li>
+</ul>
+<h2 id="recommended-2step-verification">recommended 2-step verification</h2>
+<ul>
+<li>1st-step: synthesis with preserved datapath modules/hier, restrict certain opt, min ungrouping, and output intermediate gate netlist</li>
+<li>2nd-step: incremental synthesis with additional opt and ungrouping, and output final gate netlist</li>
+<li>compare: RTL vs intermediate netlist, then intermediate netlist vs final netlist</li>
+</ul>
+<h2 id="cmd">cmd</h2>
+<ul>
+<li><code>write_lec_script -revised_design inter.v</code></li>
+<li><code>write_lec_script -revised_design final.v -golden_design inter.v</code></li>
+</ul>
+<h2 id="attr-affects-formal-verification">attr affects formal verification</h2>
+<ul>
+<li>datapath: <code>dp_*</code></li>
+<li>boundary opt</li>
+<li>ungrouping</li>
+<li>retime</li>
+<li><code>wlec_*</code></li>
+</ul>
+<h2 id="in-lec">in LEC</h2>
+<ul>
+<li><code>analyze datapath</code>: to analyze datapath modules</li>
+<li><code>analyze abort -compare -thread 4</code>: multithreading abort resolving</li>
+<li>module-level datapath analysis (MDP)
+<ul>
+<li>improve quality</li>
+<li><code>analyze datapath -module xxx</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="module-10-interface">Module 10: interface</h1>
+<h2 id="netlist">netlist</h2>
+<ul>
+<li>possible modifications
+<ul>
+<li>bit blasted port/constants
+<ul>
+<li><code>set_attr write_vlog_bit_blast_mapped_ports true /</code> and <code>set_attr bit_blasted_port_style %s_%d /</code></li>
+</ul>
+</li>
+<li>name changing: <code>update_names</code> cmd</li>
+<li>loop breaker: break comb feedback loops</li>
+<li>remove assign statement (not needed in INVS)
+<ul>
+<li><code>set_attr remove_assigns true /</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="appendix">Appendix</h1>
+<h2 id="retiming">retiming</h2>
+<ul>
+<li><code>set_attr retime true [find / -subd xxx]</code></li>
+<li><code>retime -prepare -min_delay -effort high [find / -subd xxx]</code> before <code>syn_gen</code></li>
+</ul>
+<h2 id="advanced-lowpower-flow">advanced low-power flow</h2>
+<ul>
+<li>CPF</li>
+<li>MSMV</li>
+</ul>
+<h2 id="common-ui">common ui</h2>
+<ul>
+<li>attr
+<ul>
+<li>set attr: <code>set_db &lt;attr_name&gt; &lt;value&gt; &lt;object&gt;</code></li>
+<li>query attr: <code>get_db &lt;attr_name&gt; &lt;object&gt;</code></li>
+<li><code>help *clock* -attribute</code></li>
+</ul>
+</li>
+<li>virtual directory structure
+<ul>
+<li><code>vcd</code></li>
+<li><code>vls</code></li>
+<li><code>rename_obj</code></li>
+<li><code>vpopd</code></li>
+<li><code>vpushd</code></li>
+<li><code>delete_obj</code></li>
+<li><code>vfind</code></li>
+</ul>
+</li>
+<li>examples
+<ul>
+<li>find all designs: <code>get_db .designs</code></li>
+<li>find all comb leaf inst under current directory: <code>get_db . .insts -if .is_comb</code></li>
+<li>find all inst of a certain cell type: <code>get_db insts -if {.base_cell.name == DFFX1}</code></li>
+<li>calc leakage power of a hier: <code>expr [join [get_db hinst:CORE/ALU .insts.leakage_power] +]</code></li>
+<li>fanout histogram</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl"><span style="color:#66d9ef">set</span> tot <span style="color:#66d9ef">[</span>llength <span style="color:#66d9ef">[</span>get_db nets<span style="color:#66d9ef">]</span><span style="color:#66d9ef">]</span>
+for <span style="color:#66d9ef">{</span><span style="color:#66d9ef">set</span> i <span style="color:#ae81ff">0</span><span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>$i <span style="color:#f92672">&lt;=</span> 100<span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>incr i <span style="color:#ae81ff">5</span><span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>
+    <span style="color:#66d9ef">set</span> n <span style="color:#66d9ef">[</span>llength <span style="color:#66d9ef">[</span>get_db nets <span style="color:#f92672">-</span>if <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">.</span><span style="color:#e6db74">n</span><span style="color:#e6db74">u</span><span style="color:#e6db74">m</span><span style="color:#e6db74">_</span><span style="color:#e6db74">l</span><span style="color:#e6db74">o</span><span style="color:#e6db74">a</span><span style="color:#e6db74">d</span><span style="color:#e6db74">s</span><span style="color:#e6db74">&gt;</span><span style="color:#e6db74">$</span><span style="color:#e6db74">i</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&amp;</span><span style="color:#e6db74">&amp;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">.</span><span style="color:#e6db74">n</span><span style="color:#e6db74">u</span><span style="color:#e6db74">m</span><span style="color:#e6db74">_</span><span style="color:#e6db74">l</span><span style="color:#e6db74">o</span><span style="color:#e6db74">a</span><span style="color:#e6db74">d</span><span style="color:#e6db74">s</span><span style="color:#e6db74">&lt;</span><span style="color:#e6db74">[</span><span style="color:#e6db74">e</span><span style="color:#e6db74">x</span><span style="color:#e6db74">p</span><span style="color:#e6db74">r</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">$</span><span style="color:#e6db74">i</span><span style="color:#e6db74">+</span><span style="color:#e6db74">5</span><span style="color:#e6db74">}</span><span style="color:#e6db74">]</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">]</span><span style="color:#66d9ef">]</span>
+    puts <span style="color:#66d9ef">[</span>string report <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">[</span><span style="color:#66d9ef">expr</span> $n <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> $tot<span style="color:#66d9ef">]</span><span style="color:#66d9ef">]</span>
+<span style="color:#66d9ef">}</span>
+</code></pre></div><pre><code>- find all pins: `vls -la [vfind /designs/* -pin *]`
+</code></pre>
+<ul>
+<li>MMMC setup flow
+<ul>
+<li><code>read_mmmc</code></li>
+<li><code>read_physical -lef</code></li>
+<li><code>read_hdl</code></li>
+<li><code>elab</code></li>
+<li><code>read_def</code></li>
+<li><code>read_power_intent</code></li>
+<li><code>init_design -skip_sdc_read</code></li>
+<li><code>syn_gen/map/opt</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="clipper-flow">clipper flow</h2>
+<ul>
+<li>block level physical synthesis &lt;-&gt; unit level physical synthesis
+<ul>
+<li>unit level cannot understand block level's congestion and physical context issues</li>
+<li>so pass timing/physical context DEF and constraint from block level to unit level</li>
+</ul>
+</li>
+<li>CMD
+<ul>
+<li><code>create_clip</code> at higher level
+<ul>
+<li>block boundary must be preserved (remember, genus is very aggressive about optimizing)</li>
+</ul>
+</li>
+<li><code>read_clip</code> at lower level</li>
+</ul>
+</li>
+</ul>
+<h1 id="advanced-synthesis">Advanced Synthesis</h1>
+<h2 id="heading"></h2>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/industry/2017-04-30-snug-2017/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">SNUG Silicon Valley 2017 at Santa Clara Conventional Center</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/note/2017-05-05-genus-training/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">GENUS Training Notes</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

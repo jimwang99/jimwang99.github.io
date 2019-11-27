@@ -7,7 +7,7 @@
 	<title>Huwcha Accelerator architecture</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,138 +71,133 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#system-architecture">System architecture</a></li>
-<li><a href="#decoupling">Decoupling</a></li>
-<li><a href="#vector-command-queue-vcmdq">Vector Command Queue (VCMDQ)</a></li>
-<li><a href="#vector-execution-unit-vxu">Vector Execution Unit (VXU)</a></li>
-<li><a href="#vector-memory-unit-vmu">Vector Memory Unit (VMU)</a></li>
-<li><a href="#vector-runahead-unit-vru">Vector Runahead Unit (VRU)</a></li>
-<li><a href="#multilane">Multilane</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#system-architecture">System architecture</a></li>
+    <li><a href="#decoupling">Decoupling</a></li>
+    <li><a href="#vector-command-queue-vcmdq">Vector Command Queue (VCMDQ)</a></li>
+    <li><a href="#vector-execution-unit-vxu">Vector Execution Unit (VXU)</a></li>
+    <li><a href="#vector-memory-unit-vmu">Vector Memory Unit (VMU)</a></li>
+    <li><a href="#vector-runahead-unit-vru">Vector Runahead Unit (VRU)</a></li>
+    <li><a href="#multilane">Multilane</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<p>From the reading of this paper, &ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.</p>
-
+			<p>From the reading of this paper, &ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.</p>
 <ul>
-<li>We don&rsquo;t have cache coherency, because we operate on unified physical memory space</li>
+<li>We don't have cache coherency, because we operate on unified physical memory space</li>
 <li>The vector execution unit is not as fancy, just useless multithreading, no systolic</li>
 <li>The prefetch is supposed to be done by DMA engine that is manually controlled by software</li>
 </ul>
-
 <h2 id="system-architecture">System architecture</h2>
-
 <ul>
-<li>The vector accelerator only has L1 I\$, no D\$
-
+<li>The vector accelerator only has L1 I$, no D$
 <ul>
-<li>Don&rsquo;t need to maintain cache coherency</li>
+<li>Don't need to maintain cache coherency</li>
 <li>Lots of vector registers, 512 in total, each is 64x2x4=512-bit</li>
 <li>Wide bus connection to L2$, to provide higher bandwidth</li>
-</ul></li>
-<li>Uncached TileLink between L1 I\$ (both scalar processor and vector processors) and L2\$</li>
-<li>Cached TileLink between L1 D\$ (only in scalar processor)
-
+</ul>
+</li>
+<li>Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$</li>
+<li>Cached TileLink between L1 D$ (only in scalar processor)
 <ul>
-<li>L2\$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)</li>
-</ul></li>
-<li>Operations of L2\$, supported by TileLink protocol (&ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&rdquo;)
-
+<li>L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)</li>
+</ul>
+</li>
+<li>Operations of L2$, supported by TileLink protocol (&ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&rdquo;)
 <ul>
 <li>Sub-cache-block accesses</li>
-<li>Data prefetch requests</li>
-<li>Read from DDR, don&rsquo;t need to send back to the requester</li>
-<li>Atomic memory operations</li>
-<li>ALU inside L2 cache banks</li>
-</ul></li>
+<li>Data prefetch requests
+<ul>
+<li>Read from DDR, don't need to send back to the requester</li>
 </ul>
-
+</li>
+<li>Atomic memory operations
+<ul>
+<li>ALU inside L2 cache banks</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="decoupling">Decoupling</h2>
-
 <ul>
 <li>Access/execute decoupling</li>
 <li>Decoupled vector arch</li>
 <li>Cache refill/access decoupling</li>
 </ul>
-
 <h2 id="vector-command-queue-vcmdq">Vector Command Queue (VCMDQ)</h2>
-
 <ul>
 <li>Instruction fetch is handled by scalar processor, and then sent to VCMDQ
-
 <ul>
-<li>There is explicity defined start <code>vf</code> and stop <code>vstop</code> instructions that flags the begin and end of vector instructions</li>
+<li>There is explicity defined start <code>vf</code> and stop <code>vstop</code> instructions that flags the begin and end of vector instructions
+<ul>
 <li>JW: why is that necessary?</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="vector-execution-unit-vxu">Vector Execution Unit (VXU)</h2>
-
 <ul>
 <li>In a <strong>systolic</strong> style
-
 <ul>
 <li>4 banks in total, each bank has 256-entry 2x64-bit vector register file, as well as ALUs</li>
-<li>from the block diagram, these ALUs are only add/subtration/shift operations. Multi-cycle integer multiplier/divider, and floating point operations are outside of each bank and shared by all 4 banks via a crossbar.</li>
-<li>JW: I don&rsquo;t think this is good for ML applications. They are trying to make it more generic, so to improve on this, we could take the same micro-architecture but simplify it as well as putting more ML (basically MAC) into it.</li>
-<li>As operation flows through the banks, natually chain different operations together.</li>
-<li>JW: the chaining is useful because we have limited shared function unit, such as IMUL/IDIV. For function units that are exclusive to bank, I don&rsquo;t see the benifit.</li>
-</ul></li>
+<li>from the block diagram, these ALUs are only add/subtration/shift operations. Multi-cycle integer multiplier/divider, and floating point operations are outside of each bank and shared by all 4 banks via a crossbar.
+<ul>
+<li>JW: I don't think this is good for ML applications. They are trying to make it more generic, so to improve on this, we could take the same micro-architecture but simplify it as well as putting more ML (basically MAC) into it.</li>
+</ul>
+</li>
+<li>As operation flows through the banks, natually chain different operations together.
+<ul>
+<li>JW: the chaining is useful because we have limited shared function unit, such as IMUL/IDIV. For function units that are exclusive to bank, I don't see the benifit.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Predicate is used for simple branch and etc.</li>
 </ul>
-
 <h2 id="vector-memory-unit-vmu">Vector Memory Unit (VMU)</h2>
-
 <ul>
-<li>It&rsquo;s based TileLink protocol</li>
+<li>It's based TileLink protocol</li>
 <li>Vector Load Unit (VLU)
-
 <ul>
 <li>Opportunistic writeback mechanism: return as soon as the data is back, no re-order buffer.</li>
 <li>Simultaneously manage multiple operations to avoid artificial throttling of successive loads: too many requests will drive performance down</li>
-</ul></li>
+</ul>
+</li>
 <li>Vector Store Unit (VSU)
-
 <ul>
 <li>Vector Store Data Queue (VSDQ)</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="vector-runahead-unit-vru">Vector Runahead Unit (VRU)</h2>
-
 <ul>
 <li>This block process all the vector load/store instructions in the prefetch queue from the scalar processor, generate address and send prefetch requests to L2$.
-
 <ul>
-<li>Prefetch request doesn&rsquo;t return data to requester.</li>
+<li>Prefetch request doesn't return data to requester.</li>
 <li>In ideal world, it will hide the memory access latency.</li>
-</ul></li>
-<li>When from a cold start, it skips the first few load/store to run ahead of the VMU, until it reaches too far ahead, determined by the number of load/store operations that hasn&rsquo;t been processed by VMU yet, it pauses.
-
+</ul>
+</li>
+<li>When from a cold start, it skips the first few load/store to run ahead of the VMU, until it reaches too far ahead, determined by the number of load/store operations that hasn't been processed by VMU yet, it pauses.
 <ul>
 <li>Cannot run too close, otherwise the memory access latency cannot be hide.</li>
-<li>Cannot run too further ahead, otherwise newly loaded data will force evict the data that&rsquo;s been currently using by the VXU and cause even worse performance panity.</li>
-</ul></li>
-<li>Also to limit using too much of the L2$ bandwidth, prefetch in L2$ only uses up <sup>1</sup>&frasl;<sub>3</sub> of available outstanding access (JW: I think it more likely the MSHR entries which handles any cache miss).</li>
+<li>Cannot run too further ahead, otherwise newly loaded data will force evict the data that's been currently using by the VXU and cause even worse performance panity.</li>
 </ul>
-
+</li>
+<li>Also to limit using too much of the L2$ bandwidth, prefetch in L2$ only uses up 1/3 of available outstanding access (JW: I think it more likely the MSHR entries which handles any cache miss).</li>
+</ul>
 <h2 id="multilane">Multilane</h2>
-
 <ul>
 <li>Hwacha support paramerized number of identical lanes, and these lanes work entirely decoupled from one another.</li>
 <li>If the memory needed by each lane aligns to the cache line size, it will be the best, otherwise, there will be some waste of bandwidth to load unnecessary data to the lane.</li>
 <li>JW: curious, how do they manage multilane?
-
 <ul>
 <li>There is a <strong>master sequencer</strong> who knows the number of lanes out there as well as the vector length. It will dispatch the job to these lanes evenly.</li>
-</ul></li>
+</ul>
+</li>
 <li>JW: as it discussed in the paper, the lanes work on strip size, which is a unit-stride fasion. If there is any non-unit stride, not only it will waste the bandwidth, but also it will waste the computation resource. <em>So I think it would be a simple dispatch based on unit-stride, the master sequencer will have to consider the stride as well.</em></li>
 </ul>
 
@@ -216,13 +214,13 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2018-12-15-riscv-v-spec/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Note of RISC-V Vector ISA Spec v0.6</p></a>
+		<a class="post-nav__link" href="/blog/architecture/2019-01-03-hwacha-accelerator/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Huwcha Accelerator architecture</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
 		<a class="post-nav__link" href="/blog/tool/2019-01-19-static-site-generator/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Static Site Generator</p></a>

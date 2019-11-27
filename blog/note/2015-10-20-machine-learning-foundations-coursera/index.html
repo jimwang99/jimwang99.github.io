@@ -7,7 +7,7 @@
 	<title>[Cousera Note] Machine Learning Foundations: A Case Study Approach</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -67,403 +70,537 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<ul>
 <li>1 Week1: Welcome
-
 <ul>
-<li>1.1 Introduction</li>
+<li>1.1 Introduction
+<ul>
 <li>1.1.1 real world case based
-
 <ul>
 <li>- regression: house price prediction</li>
 <li>- classificiation: sentiment analysis</li>
 <li>- clustering &amp; retrieval: finding doc</li>
 <li>- maxtrix factorization &amp; dimensionality reduction: recommending products</li>
-</ul></li>
+</ul>
+</li>
 <li>1.1.2 requirement
-
 <ul>
 <li>math: calculas &amp; algebra</li>
 <li>python</li>
-</ul></li>
+</ul>
+</li>
 <li>1.1.3 capstone project</li>
-<li>1.2 iPython Notebook</li>
+</ul>
+</li>
+<li>1.2 iPython Notebook
+<ul>
 <li>Python command and its outputs</li>
 <li>Markdown for doc</li>
-<li>1.3 SFrames</li>
+</ul>
+</li>
+<li>1.3 SFrames
+<ul>
 <li>1.3.1 GraphLab Canvas
-
 <ul>
-<li>- any data structure *.show() &gt;&gt; data visualization web page. make it inline of iPython Notebook:</li>
+<li>- any data structure *.show() &raquo; data visualization web page. make it inline of iPython Notebook:
+<ul>
 <li>graphlab.canvas.set_target(&lsquo;ipynb&rsquo;)</li>
-<li>- create new column</li>
-<li>sf[&lsquo;Full Name&rsquo;] = sf[&lsquo;First Name&rsquo;] + &lsquo; &rsquo; + sf[&lsquo;Last Name&rsquo;]</li>
-<li>- apply function</li>
-<li>sf[&lsquo;Country&rsquo;] = sf[&lsquo;Country&rsquo;].apply(transform_country)</li>
-</ul></li>
-</ul></li>
-<li>2 Week2: Regression case: predicting house prices
-
+</ul>
+</li>
+<li>- create new column
 <ul>
-<li>2.1 Linear regression modeling</li>
+<li>sf[&lsquo;Full Name&rsquo;] = sf[&lsquo;First Name&rsquo;] + ' ' + sf[&lsquo;Last Name&rsquo;]</li>
+</ul>
+</li>
+<li>- apply function
+<ul>
+<li>sf[&lsquo;Country&rsquo;] = sf[&lsquo;Country&rsquo;].apply(transform_country)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2 Week2: Regression case: predicting house prices
+<ul>
+<li>2.1 Linear regression modeling
+<ul>
 <li>2.1.1 recent sales in nearby neighbourhood
-
 <ul>
 <li>x = sqft, feature / covariate / predictor / indepentent varaible</li>
 <li>y = price, observation / response</li>
-</ul></li>
+</ul>
+</li>
 <li>2.1.2 look at average price in range
-
 <ul>
 <li>limited hits</li>
-<li>throwing out other information: it&rsquo;s bad</li>
-</ul></li>
+<li>throwing out other information: it's bad</li>
+</ul>
+</li>
 <li>2.1.3 linear regression
-
 <ul>
-<li>fw(x) = w0 + w1*x</li>
+<li>fw(x) = w0 + w1*x
+<ul>
 <li>- w0 = intercept</li>
 <li>- w1 = slope</li>
 <li>- w0/w1 are parameters of our model, w = (w0,w1); also called regression coefficients</li>
+</ul>
+</li>
 <li>different parameter set w; choose w is important</li>
-<li>** RSS = residual sum of squares **</li>
+<li>** RSS = residual sum of squares **
+<ul>
 <li>- delta = Y of observation - Y from prediction</li>
 <li>- RSS = sum(all possible delta^2)</li>
 <li>- minimize RSS(w0,w1) and solve it, get you w&rsquo;</li>
 <li>- then y&rsquo; = w0&rsquo; + w1&rsquo; * x of my house</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>2.1.4 adding higher order effects
-
 <ul>
-<li>straight line is good enough?</li>
+<li>straight line is good enough?
+<ul>
 <li>maybe not a linear relationship, rather a quadratic function</li>
-<li>quadratic</li>
-<li>fw(x) = w0 + w1*x + w2*x^2
-
+</ul>
+</li>
+<li>quadratic
+<ul>
+<li>fw(x) = w0 + w1<em>x + w2</em>x^2
 <ul>
 <li>still linear regression, x^2 is just another feature</li>
-</ul></li>
-<li>higher order polynomial? 13th order polynomial to minimize RSS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>higher order polynomial? 13th order polynomial to minimize RSS
+<ul>
 <li>this function just looks crazy</li>
 <li>overfitting</li>
-</ul></li>
-<li>2.2 Evaluating regression models</li>
-<li>evaluating overfitting via training/test split
-
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.2 Evaluating regression models
 <ul>
-<li>min RSS &gt;&gt; bad prediction</li>
-<li>how to choos model order/complexity?</li>
+<li>evaluating overfitting via training/test split
+<ul>
+<li>min RSS &raquo; bad prediction</li>
+<li>how to choos model order/complexity?
+<ul>
 <li>goal: good predictions</li>
 <li>simulate predictions
-
 <ul>
 <li>step 1. remove some data points</li>
 <li>step 2. fit model on remaining</li>
-<li>step 3. predict heldout houses</li>
+<li>step 3. predict heldout houses
+<ul>
 <li>use model to predict those removed data points (in step 1), and see how accurate they are</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>need extra test data</li>
-<li>terminology</li>
+</ul>
+</li>
+<li>terminology
+<ul>
 <li>training set / test set</li>
 <li>training error = RSS of all training data points, minimize it to find w&rsquo;</li>
 <li>test error = RSS of all test data points with w&rsquo;</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>training/test curves: model complexity vs. error
-
 <ul>
 <li>training curves: the higher model complexity is, smaller the error gets</li>
 <li>test curves: probably will look like a U, which has optimized lowest value</li>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/w2_training_test_curves.png">w2_training_test_curves.png</a></li>
-</ul></li>
+</ul>
+</li>
 <li>add other features
-
 <ul>
-<li>for houses as an example, # of bedrooms as x2</li>
+<li>for houses as an example, # of bedrooms as x2
+<ul>
 <li>fitting an 3D surface</li>
+</ul>
+</li>
 <li>how many features to use? unlimited! hold there and more info in the &ldquo;regression&rdquo; course</li>
 <li>always more feature the better to capture underlying process? NO</li>
-</ul></li>
+</ul>
+</li>
 <li>other regression examples
-
 <ul>
-<li>stock prediction</li>
+<li>stock prediction
+<ul>
 <li>recent history</li>
 <li>news events</li>
 <li>related commodities</li>
-<li>temp of smart house</li>
+</ul>
+</li>
+<li>temp of smart house
+<ul>
 <li>spatial function</li>
 <li>thermostat setting/ blinds / window / vents / temp outside / time of day</li>
-</ul></li>
-<li>2.3 Summary</li>
-<li>regression ML block diagran ML pipepline: data &gt;&gt; ML method &gt;&gt; intelligence
-
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.3 Summary
+<ul>
+<li>regression ML block diagran ML pipepline: data &raquo; ML method &raquo; intelligence
 <ul>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/w2_regression_ML_model.png">w2_regression_ML_model.png</a></li>
-</ul></li>
-<li>2.4 Predict house prices (iPython Notebook example)</li>
-<li>Loading &amp; exploring house sale data
-
+</ul>
+</li>
+</ul>
+</li>
+<li>2.4 Predict house prices (iPython Notebook example)
 <ul>
-<li>graphlab.SFrame(&lsquo;xxx.gl.zip&rsquo;)</li>
+<li>Loading &amp; exploring house sale data
+<ul>
+<li>graphlab.SFrame(&lsquo;xxx.gl.zip&rsquo;)
+<ul>
 <li>- SFrame: table data structure in graphlab</li>
 <li>- here xxx.gl.zip is some presist data dumped out by graphlab</li>
-<li>SFrame.show(view=&ldquo;Scatter_plit&rdquo;, x=&ldquo;column1&rdquo;, y=&ldquo;column2&rdquo;)</li>
-</ul></li>
+</ul>
+</li>
+<li>SFrame.show(view=&quot;Scatter_plit&rdquo;, x=&quot;column1&rdquo;, y=&quot;column2&rdquo;)</li>
+</ul>
+</li>
 <li>Split data into training and test data sets
-
 <ul>
-<li>SFrame.random_split(float,seed=int) &gt;&gt; (training_data, test_data)</li>
-</ul></li>
+<li>SFrame.random_split(float,seed=int) &raquo; (training_data, test_data)</li>
+</ul>
+</li>
 <li>Build regression model
-
 <ul>
-<li>model = graphlab.linear_regression.create(traning_data, target=&lsquo;column1&rsquo;, features=list(&lsquo;column2&rsquo;, &lsquo;column3&rsquo;))</li>
+<li>model = graphlab.linear_regression.create(traning_data, target='column1&rsquo;, features=list(&lsquo;column2&rsquo;, &lsquo;column3&rsquo;))
+<ul>
 <li>- target: variable you try to predict</li>
 <li>- features</li>
 <li>- algorithm chosed automatically</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Evaluating error
-
 <ul>
-<li>model.evaluate(test_data)</li>
+<li>model.evaluate(test_data)
+<ul>
 <li>a simple model gives high error and high RMSE (root mean square error)</li>
-<li>RMSE = (RSS / 2)^(<sup>1</sup>&frasl;<sub>2</sub>)</li>
-</ul></li>
+<li>RMSE = (RSS / 2)^(1/2)</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Visualizing with Matplotlib
-
 <ul>
-<li>matplotlib.pyplot.plot(list_of_x, list_of_y1, &lsquo;.&rsquo;, list_of_x, list_of_y2, &lsquo;-&rsquo;)</li>
+<li>matplotlib.pyplot.plot(list_of_x, list_of_y1, &lsquo;.', list_of_x, list_of_y2, &lsquo;-')</li>
 <li>model.predict(test_data)</li>
-</ul></li>
+</ul>
+</li>
 <li>Inspect coefficients
-
 <ul>
-<li>model.get(&lsquo;coeffcients&rsquo;)</li>
+<li>model.get(&lsquo;coeffcients&rsquo;)
+<ul>
 <li>intercept is w0</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Explore other features
-
 <ul>
 <li>use multiple features, other than only sqft</li>
-<li>SFrame.Show(view=&lsquo;BoxW Plot&rsquo;, x=, y=)</li>
+<li>SFrame.Show(view='BoxW Plot&rsquo;, x=, y=)</li>
 <li>6 features give you less max error and less RMSE</li>
-</ul></li>
+</ul>
+</li>
 <li>Apply models to particular data points
-
 <ul>
-<li>sales[sales[&lsquo;id&rsquo;]==&lsquo;53xxx&rsquo;]</li>
+<li>sales[sales[&lsquo;id&rsquo;]=='53xxx&rsquo;]</li>
 <li>for multiple feature model, even on average we have better RMSE, but on some particular data points it could have larger error number.</li>
-<li>add image in iPython Notebook</li>
-<li><img src="abc.jpg" alt="img" /></li>
-</ul></li>
-<li>2.5 Homework</li>
+<li>add image in iPython Notebook
+<ul>
+<li><img src="abc.jpg" alt="img"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.5 Homework
+<ul>
 <li>SArray
-
 <ul>
 <li>- immutable array object</li>
 <li>- each column in an SFrame is an SArray</li>
-</ul></li>
+</ul>
+</li>
 <li>Filter
-
 <ul>
 <li>- logical filter</li>
 <li>- .apply()</li>
-<li>- a selection in SFrame takes a list consists of 0 and 1. And the length equals to the length of SFrame&rsquo;s num of rows. When it comes to 0, row is ignored; otherwise it&rsquo;s taken.</li>
-</ul></li>
-</ul></li>
+<li>- a selection in SFrame takes a list consists of 0 and 1. And the length equals to the length of SFrame's num of rows. When it comes to 0, row is ignored; otherwise it's taken.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>3 Week3: Classification: Analyzing Sentiment
-
 <ul>
-<li>3.1 Classification modeling</li>
+<li>3.1 Classification modeling
+<ul>
 <li>3.1.1 intelligent restaurant review
-
 <ul>
 <li>break review into sentences</li>
 <li>sentence sentiment classifier</li>
-</ul></li>
+</ul>
+</li>
 <li>3.1.2 classifier
-
 <ul>
-<li>input = x &gt;&gt; output = y</li>
+<li>input = x &raquo; output = y</li>
 <li>input can have multi information</li>
 <li>output can be multi categories, called multicalss classification</li>
-<li>example</li>
+<li>example
+<ul>
 <li>review sentiment</li>
 <li>webpage category: output tech, sport, news, &hellip;</li>
 <li>spam filtering: input has multi information</li>
 <li>image classification</li>
 <li>personalized medical diagnosis: input DNA and life style</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>3.1.3 linear classifier
-
 <ul>
-<li>simple threshold classifier</li>
+<li>simple threshold classifier
+<ul>
 <li>count pos/neg words in sentence</li>
 <li>problems
-
 <ul>
 <li>how to get list of pos/neg word</li>
 <li>word degree of sentiment</li>
 <li>single words not enough</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>give weight for each word</li>
-<li>score = sum of input words&rsquo; weight, so it&rsquo;s linear</li>
+<li>score = sum of input words&rsquo; weight, so it's linear</li>
 <li>if score &gt; 0, output = pos, else output = neg</li>
-</ul></li>
+</ul>
+</li>
 <li>3.1.4 decision boundaries
-
 <ul>
 <li>decision boundary separates pos/neg predictions</li>
-</ul></li>
-<li>3.2 Evaluating classification models</li>
-<li>3.2.1 training and eval a classifier
-
+</ul>
+</li>
+</ul>
+</li>
+<li>3.2 Evaluating classification models
 <ul>
-<li>traing set for learn classifer &gt;&gt; to get the weight of words</li>
+<li>3.2.1 training and eval a classifier
+<ul>
+<li>traing set for learn classifer &raquo; to get the weight of words</li>
 <li>test set to eval the weight of words. hide the label, feed sentence to classifier, compare prediction with real label.</li>
-<li>classification error</li>
+<li>classification error
+<ul>
 <li>error = (# of mistakes) / (total # of sentences)</li>
 <li>accuracy = (# of corrects) / (total # of sentences)</li>
 <li>error = 1.0 - accuracy</li>
-</ul></li>
-<li>3.2.2 what&rsquo;s a good accuracy?
-
+</ul>
+</li>
+</ul>
+</li>
+<li>3.2.2 what's a good accuracy?
 <ul>
 <li>accuracy should beat random guess, larger than 1/K (K is the number of classes)</li>
-<li>class imbalance will give you good performance. accuracy should beat majority class baseline, in which we simple guess everything is from the majority class. Eg. 80% of the reviews are pos, so it&rsquo;s baseline of majority class is 80% since everytime we guess a review is pos anyway.</li>
+<li>class imbalance will give you good performance. accuracy should beat majority class baseline, in which we simple guess everything is from the majority class. Eg. 80% of the reviews are pos, so it's baseline of majority class is 80% since everytime we guess a review is pos anyway.</li>
 <li>most importantly: how accurate the application need? what accuracy will make the user happy?</li>
-</ul></li>
+</ul>
+</li>
 <li>3.2.3 confusion matrices
-
 <ul>
 <li>correct: true pos / true neg; mistake: false neg / false pos</li>
 <li>false neg and false pos can have different impact in some application. eg email spam filter, medical diagnosis</li>
-</ul></li>
+</ul>
+</li>
 <li>3.2.4 learning curves
-
 <ul>
-<li>how much data does a model need to learn?</li>
+<li>how much data does a model need to learn?
+<ul>
 <li>the more the better, but data quality is most important factor</li>
-<li>learning curve</li>
+</ul>
+</li>
+<li>learning curve
+<ul>
 <li>x = amount of training data</li>
 <li>y = test error</li>
 <li>limit? yes, for most models</li>
 <li>bias = even with infinite data, test error will not got to zero</li>
+</ul>
+</li>
 <li>complex models tend to have less bias, but need more data to learn</li>
 <li>bias is not possible to eliminate</li>
-</ul></li>
+</ul>
+</li>
 <li>3.2.5 class probabilities
-
 <ul>
 <li>class probablity = how confident is your prediction (soft ouptut!)</li>
 <li>many classifier provide a confidence level</li>
-</ul></li>
-<li>3.3 Summary</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3.3 Summary
+<ul>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/w3_summary.png">w3_summary.png</a></li>
-<li>3.4 Analyzing sentiment with iPython Notebook</li>
+</ul>
+</li>
+<li>3.4 Analyzing sentiment with iPython Notebook
+<ul>
 <li>graphlab.text_analytics.count_words(SFrame)
-
 <ul>
 <li>count_bigrams</li>
 <li>count_trgrams</li>
-</ul></li>
-<li>SFrame.show(view=&lsquo;Categorical&rsquo;)</li>
+</ul>
+</li>
+<li>SFrame.show(view='Categorical&rsquo;)</li>
 <li>data engineering: define pos/neg sentiment by throught 3-star reviews out</li>
-<li>graphlab.logistic_classifier.create(train_data, target=&lsquo;sentiment&rsquo;, features=[&lsquo;word_count&rsquo;], validation_set=test_data)</li>
+<li>graphlab.logistic_classifier.create(train_data, target='sentiment&rsquo;, features=[&lsquo;word_count&rsquo;], validation_set=test_data)</li>
 <li>model.evaluate(test_data, metric = &lsquo;roc_curve&rsquo;)
-
 <ul>
 <li>roc_curve help to explore confusion matrics</li>
 <li>change the threshold to get different rate of true pos vs false pos, help you to choose different strategy for different application requirements</li>
 <li>it looks like the result is very good <strong>JUST</strong> according to the word count! The word count is not the number of words in the review, but a count of different words in the review.</li>
-</ul></li>
-<li>model.predict(SFram, output_type=&lsquo;propability&rsquo;)</li>
+</ul>
+</li>
+<li>model.predict(SFram, output_type='propability&rsquo;)</li>
 <li>SFrame.sort(&lsquo;predicted_sentiment&rsquo;, ascending=False)</li>
 <li>.apply() is very limited because its function only takes 1 argument, itself</li>
 <li>model[&lsquo;coefficients&rsquo;]</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>4 Week4: Clustering and Similarity: Retrieving Documents
-
 <ul>
-<li>4.1 Algorigthms for retrieval and measuring similarity of documents</li>
+<li>4.1 Algorigthms for retrieval and measuring similarity of documents
+<ul>
 <li>4.1.1 problem definition
-
 <ul>
 <li>how to measure similarity?</li>
 <li>how to search through ariticle?</li>
-</ul></li>
+</ul>
+</li>
 <li>4.1.2 word count representation for measuring similarity
-
 <ul>
-<li>bag of words model</li>
+<li>bag of words model
+<ul>
 <li>- ignore order</li>
 <li>- count number of words in vocabulary</li>
+</ul>
+</li>
 <li>measure similarity: sum(x_i * y_i), where i is the word index in vacabulary</li>
-<li>issue with word counts: doc length matters! doesn&rsquo;t make sense, because prefer longer article</li>
-<li>solution = normalize: x&rsquo;_i = x_i / (sum(x_i^2)^(<sup>1</sup>&frasl;<sub>2</sub>)</li>
-</ul></li>
+<li>issue with word counts: doc length matters! doesn't make sense, because prefer longer article</li>
+<li>solution = normalize: x&rsquo;_i = x_i / (sum(x_i^2)^(1/2)</li>
+</ul>
+</li>
 <li>4.1.3 word importance priority with tf-idf
-
 <ul>
 <li>common words vs rare words: emphasize important words even they are rare.</li>
-<li>important word</li>
+<li>important word
+<ul>
 <li>- common locally</li>
 <li>- rare globally</li>
 <li>- trade off between these 2</li>
+</ul>
+</li>
 <li>TF-IDF: term frequency - inverse document frequency</li>
 <li>term freq = word counts</li>
-<li>inverse doc freq, look at all the doc in our corpus = log [# docs / (1 + # docs using this word)]</li>
+<li>inverse doc freq, look at all the doc in our corpus = log [# docs / (1 + # docs using this word)]
+<ul>
 <li>- common word, idf-&gt;0</li>
 <li>- rare word, idf is large</li>
-<li>tf * idf</li>
+</ul>
+</li>
+<li>tf * idf
+<ul>
 <li>- down weight common words</li>
 <li>- up weight rare words</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>4.1.4 nearest neighbor search to retrieve similar document
-
 <ul>
-<li>distance metric</li>
+<li>distance metric
+<ul>
 <li>- search each article in corpus</li>
 <li>- compute similarity</li>
 <li>- return largest 1 or N similarity article(s)</li>
-</ul></li>
-<li>4.2 Clusterinng models and algorithms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4.2 Clusterinng models and algorithms
+<ul>
 <li>4.2.1 overview
-
 <ul>
 <li>discover groups (clusters) of related articles</li>
 <li>training set: labeled docs</li>
 <li>multiclass classification problem</li>
-</ul></li>
+</ul>
+</li>
 <li>4.2.2 clustering documents without supervise
-
 <ul>
-<li>unsupervised learning</li>
+<li>unsupervised learning
+<ul>
 <li>- no labels provided</li>
 <li>- want to uncover cluster structure</li>
 <li>- input: docs as vectors. This will put each article as a dot in a vector space. In the class, we assume a 2-D space with X=# of word_1, Y=# of word_2</li>
 <li>- output: label (cluster)</li>
-<li>what defines a cluster?</li>
+</ul>
+</li>
+<li>what defines a cluster?
+<ul>
 <li>- center</li>
 <li>- shape/spread</li>
 <li>- assign observation (doc) to cluster (topic label). (1) score (2) distance to cluster center</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>4.2.3 k-means algorithm
-
 <ul>
 <li>similarity = distance to cluster centers</li>
-<li>algorithm</li>
+<li>algorithm
+<ul>
 <li>- initialize cluster centers by &ldquo;randomly&rdquo;</li>
 <li>- assign observations to closest cluster center by &ldquo;voronoi tessellation&rdquo;</li>
 <li>- revise cluster centers as mean of assigned observations</li>
 <li>- repeat step (2)+(3) until convergence</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>4.2.4 other examples
-
 <ul>
 <li>- clustering images</li>
 <li>- grouping patients by medical condition</li>
@@ -471,339 +608,472 @@
 <li>- discovering groups of users on Amazon</li>
 <li>- structuring web research results. multiple meanings of one word</li>
 <li>- discovering similar neighborhoods: house price prediction (not enough sales data) / forecase violent crimes</li>
-</ul></li>
-<li>4.3 Summary</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4.3 Summary
+<ul>
 <li>iteratively update our cluster centers (parameters of clustering)</li>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/w4_summary.png">w4_summary.png</a></li>
 <li>My questions
-
 <ul>
 <li>How about the thesaurus? We need to take them into consideration.</li>
-</ul></li>
-<li>4.4 Doument retrieval in python</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4.4 Doument retrieval in python
+<ul>
 <li>graphlab.text_analytics.count_words(); # uni-gram counting</li>
-<li>SFrame.stack($column_name, new_column_name=list) &gt;&gt; a new stack SFrame table (expand the value of given column, and copy the other columns)
-
+<li>SFrame.stack($column_name, new_column_name=list) &raquo; a new stack SFrame table (expand the value of given column, and copy the other columns)
 <ul>
 <li><a href="https://dato.com/products/create/docs/generated/graphlab.SFrame.stack.html">https://dato.com/products/create/docs/generated/graphlab.SFrame.stack.html</a></li>
-</ul></li>
+</ul>
+</li>
 <li>4.4.1 TF-IDF
-
 <ul>
 <li>tf_idf = graphlab.text_analytics.tf_idf(people[&lsquo;word_count&rsquo;])</li>
-</ul></li>
+</ul>
+</li>
 <li>4.4.2 distance matric
-
 <ul>
 <li>graphlab.distances.*; # lots of options to choose from to calculate distance metric graphlab.distances.cosine; # smaller the closer</li>
-</ul></li>
+</ul>
+</li>
 <li>4.4.3 nearest neighbor model
-
 <ul>
-<li>knn_model = graphlab.nearest_neighbors.create(people, features=[&lsquo;tf_idf&rsquo;], lable=&lsquo;name&rsquo;)</li>
+<li>knn_model = graphlab.nearest_neighbors.create(people, features=[&lsquo;tf_idf&rsquo;], lable='name&rsquo;)</li>
 <li>knn_model.query(obama); # return the nearest entry, obama here is SArray for SFrame &lsquo;people&rsquo;</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>5 Week5: Recommending Products
-
 <ul>
-<li>5.1 Recommender system</li>
+<li>5.1 Recommender system
+<ul>
 <li>5.1.1 overview
-
 <ul>
-<li>use past history and other user&rsquo;s history in prediction</li>
-<li>recommender system in action</li>
+<li>use past history and other user's history in prediction</li>
+<li>recommender system in action
+<ul>
 <li>- personalization: what do I care about? because of information overload; connect users and items</li>
 <li>- movie recommendations: what want to watch?</li>
 <li>- product recommendations: global and session interests</li>
 <li>- music recommendations: coherent and diverse sequence</li>
 <li>- friend recommendations: users and &ldquo;items&rdquo; are of the same &ldquo;type&rdquo;</li>
 <li>- drug-target interactions: what drug should we &ldquo;repurpose&rdquo; for some disease? asprin from headache to blood thinner in heart condition</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>5.1.2 recommender system via classification
-
 <ul>
-<li>solution 0: popularity</li>
+<li>solution 0: popularity
+<ul>
 <li>- rank by global popularity; no personalization</li>
-<li>solution 1: classification model</li>
+</ul>
+</li>
+<li>solution 1: classification model
+<ul>
 <li>- use features of items and users</li>
 <li>- input :  user info + purchase history + production info + other info</li>
 <li>- pros: personalized; features can capture context (time of the day, what I just saw), even handles limited user history</li>
 <li>- cons: features may not be available; collaborative filtering cannot work</li>
+</ul>
+</li>
 <li>solution 2: collaborative filter</li>
-</ul></li>
-<li>5.2 Co-occurrence matrices for collaborative filtering</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5.2 Co-occurrence matrices for collaborative filtering
+<ul>
 <li>5.2.1 collaborative filtering
-
 <ul>
 <li>people who bought this also bought &hellip;</li>
-<li>Matrix C: store # users who bought both items i &amp; j</li>
+<li>Matrix C: store # users who bought both items i &amp; j
+<ul>
 <li>- x = y = # items</li>
 <li>- symmetric: C_ij = C_ji</li>
-<li>How to use Matrix C?</li>
+</ul>
+</li>
+<li>How to use Matrix C?
+<ul>
 <li>- look at row i, which user just bought</li>
 <li>- recommend other items in the row with <strong>largest</strong> counts</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>5.2.2 effect of popular items
-
 <ul>
 <li>no matter what I just purchased, most popular item will be recommended, will drowns out other effects</li>
-</ul></li>
+</ul>
+</li>
 <li>5.2.3 normalizing co-occurrence matrices and leveraging purchase history
-
 <ul>
-<li>Jaccard similarity: normalizes by popularity</li>
+<li>Jaccard similarity: normalizes by popularity
+<ul>
 <li>- both i and j / i or j = C_ij / (C_i + C_j - C_ij) = S_ij</li>
 <li>- limitations: no history; what if purchased many items</li>
-<li>Weighted average of purchased items</li>
+</ul>
+</li>
+<li>Weighted average of purchased items
+<ul>
 <li>- purchased item j and k</li>
 <li>- S(i) = avg(S_ij + S_ik)</li>
 <li>- chose highest S</li>
 <li>limitations: no context; no user features; no product features; new user/product (cold start problem)</li>
-</ul></li>
-<li>5.3 Matrix factorization</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5.3 Matrix factorization
+<ul>
 <li>5.3.1 matrix completion task
-
 <ul>
 <li>solution 3: discovering hidden structure by matrix factorization</li>
 <li>use movie recommendation as example</li>
-<li>matrix of rating</li>
+<li>matrix of rating
+<ul>
 <li>- x = movies</li>
 <li>- y = user</li>
 <li>- value = rating of movie x by user y</li>
-<li>- if user y hasn&rsquo;t watched movie x, then use ? (white square)</li>
+<li>- if user y hasn't watched movie x, then use ? (white square)</li>
 <li>- goal: filling white squares, how much user y will like movie x&rsquo; (not watched yet)</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>5.3.2 user/item features
-
 <ul>
 <li>movie topics Rv for movie v</li>
 <li>user prefer topics Lu for user u</li>
 <li>rating(u,v) = Rv * Lu =  (element vise product)</li>
-<li>recommendation: sort rating(u,v)</li>
+<li>recommendation: sort rating(u,v)
+<ul>
 <li>- rating will be out of a certain range</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>5.3.3 predictions in matrix form
-
 <ul>
 <li>rating matrix takes all the users and all the movies, every element is a rating(u,v)</li>
-</ul></li>
+</ul>
+</li>
 <li>5.3.4 discovering hidden structure by matrix factorization model
-
 <ul>
-<li>HOWEVER we don&rsquo;t have the features of users and movies, we have to discover topics from data</li>
-<li>use observed value to estimate Lu and Rv: regression</li>
+<li>HOWEVER we don't have the features of users and movies, we have to discover topics from data</li>
+<li>use observed value to estimate Lu and Rv: regression
+<ul>
 <li>- RSS(L,R) = sum(rating(u,v), )^2, where Lu and Rv are estimated from model parameters R &amp; L, and sum are for all the black squares (with data)</li>
 <li>- RSS(L,R) gives L and R from regression</li>
 <li>- then use L and R to predict rating(u,v) for white squares</li>
 <li>- many efficient algorithms for factorization</li>
-<li>limitation of matrix factorization</li>
-<li>cold-start problem</li>
-</ul></li>
-<li>5.3.5 all together: featurized matrix factorization
-
+</ul>
+</li>
+<li>limitation of matrix factorization
 <ul>
-<li>blending model</li>
+<li>cold-start problem</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5.3.5 all together: featurized matrix factorization
+<ul>
+<li>blending model
+<ul>
 <li>feature: context</li>
 <li>matrix factorization: groups of users</li>
 <li>combine: feature for new users; as more info discovered, use matrix factorization topics</li>
 <li>Netflix Prize 1M dollars: winning team blended over 100 models</li>
-</ul></li>
-<li>5.4 Performance metrics for recommender systems</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5.4 Performance metrics for recommender systems
+<ul>
 <li>5.4.1 performance metric
-
 <ul>
 <li>classification accuracy</li>
 <li>interested in what user like, but not &ldquo;user does not like&rdquo;</li>
 <li>fast vs. full list</li>
 <li>recall = # liked and shown / # liked</li>
-<li>precision = # liked and shown / # shown</li>
-<li>- how much &ldquo;garbage&rdquo; (things i&rsquo;m not interested in) i need to look at</li>
-</ul></li>
+<li>precision = # liked and shown / # shown
+<ul>
+<li>- how much &ldquo;garbage&rdquo; (things i'm not interested in) i need to look at</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>5.4.2 optimal recommenders
-
 <ul>
 <li>maximize recall? recommend everything, but will give very small precision</li>
 <li>optimal: recommend things I like, and only the things I like</li>
-</ul></li>
+</ul>
+</li>
 <li>5.4.3 precision-recall curves
-
 <ul>
 <li>input = specific recommender system</li>
 <li>output = algorithm-specific precision-recall curve</li>
 <li>x = # items recommended</li>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/precision-recall_curves.png">precision-recall_curves.png</a></li>
-<li>which algorithm is best?</li>
+<li>which algorithm is best?
+<ul>
 <li>- given precision, better recall</li>
 <li>- given recall, better precision</li>
 <li>- metric 1: largest area under the curve (AUC)</li>
 <li>- metric 2: precision at a specific # recommended items</li>
-</ul></li>
-<li>5.5 Summary</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5.5 Summary
+<ul>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/w5_summary.png">w5_summary.png</a></li>
-<li>5.6 Song recommender with Python</li>
+</ul>
+</li>
+<li>5.6 Song recommender with Python
+<ul>
 <li>users = song_data[&lsquo;user_id&rsquo;].unique() len(users)</li>
 <li>5.6.1 simple popularity-based recommender
-
 <ul>
-<li>popularity_model = graphlab.popularity_recommender.create(training_data, user_id=&lsquo;user_id&rsquo;, item_id=&lsquo;song&rsquo;) popularity_mode.recommend(users=[users[0]]) popularity_mode.recommend(users=[users[1]])</li>
+<li>popularity_model = graphlab.popularity_recommender.create(training_data, user_id='user_id&rsquo;, item_id='song&rsquo;) popularity_mode.recommend(users=[users[0]]) popularity_mode.recommend(users=[users[1]])</li>
 <li>everyone get the exact same thing</li>
-</ul></li>
+</ul>
+</li>
 <li>5.6.2 personalization recommender
-
 <ul>
-<li>personalized_model = graphlab.item_similarity_recommender.create(training_data, user_id=&lsquo;user_id&rsquo;, item_id=&lsquo;song&rsquo;) personalized_model.recommend(users=[users[0]]) personalized_model.recommend(users=[users[1]])</li>
+<li>personalized_model = graphlab.item_similarity_recommender.create(training_data, user_id='user_id&rsquo;, item_id='song&rsquo;) personalized_model.recommend(users=[users[0]]) personalized_model.recommend(users=[users[1]])</li>
 <li># similar songs personalized_model.get_similar_items([&lsquo;song name here&rsquo;])</li>
 <li># similar users personalized_model.get_similar_users([&lsquo;user id here&rsquo;])</li>
-</ul></li>
+</ul>
+</li>
 <li>5.6.3 Qunatitative comparison between the models
-
 <ul>
 <li>model_performance = graphlab.recommender.util.compare_models(test_data, [popularity_model, personalized_model], user_sample=0.05)</li>
-</ul></li>
-<li>5.7 Assignment</li>
-<li>artist_popularity = song_data.groupby(key_columns=&lsquo;artist&rsquo;, operations={&lsquo;total_count&rsquo;: graphlab.aggregate.SUM(&lsquo;listen_count&rsquo;)})</li>
-</ul></li>
-<li>6 Week6: Deep Learning: Searching for Images
-
+</ul>
+</li>
+</ul>
+</li>
+<li>5.7 Assignment
 <ul>
-<li>6.1 Neural networks: Learning very non-linear features</li>
+<li>artist_popularity = song_data.groupby(key_columns='artist&rsquo;, operations={&lsquo;total_count&rsquo;: graphlab.aggregate.SUM(&lsquo;listen_count&rsquo;)})</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>6 Week6: Deep Learning: Searching for Images
+<ul>
+<li>6.1 Neural networks: Learning very non-linear features
+<ul>
 <li>6.1.1 search for images</li>
 <li>6.1.2 what is a visual product recommender?
-
 <ul>
-<li>keyword search? don&rsquo;t know what keyword to search</li>
+<li>keyword search? don't know what keyword to search</li>
 <li>use image similarity to search for product</li>
-</ul></li>
+</ul>
+</li>
 <li>6.1.3 learning very non-linear features with neural networks
-
 <ul>
 <li>features (of images) are very important to neural networks.</li>
 <li>layers and layers of linear models and non-linear transformations</li>
 <li>in 90s disfavor</li>
-<li>big resurgence recent 10 years</li>
+<li>big resurgence recent 10 years
+<ul>
 <li>- lots of data to train</li>
 <li>- computing resource like GPUs</li>
-</ul></li>
-<li>6.2 Deep learning &amp; deep features</li>
-<li>6.2.1 application for deep learning to computer vision
-
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>6.2 Deep learning &amp; deep features
 <ul>
-<li>image features</li>
+<li>6.2.1 application for deep learning to computer vision
+<ul>
+<li>image features
+<ul>
 <li>- local detectors combined to make prediction</li>
 <li>- image features of &ldquo;interesting points&rdquo;</li>
 <li>- before we used to hand crafted features</li>
-<li>standard image classification approach</li>
+</ul>
+</li>
+<li>standard image classification approach
+<ul>
 <li>- input</li>
 <li>- extract features (hand created)</li>
 <li>- use simple classifier</li>
-<li>deep learning: implicitly learns features</li>
+</ul>
+</li>
+<li>deep learning: implicitly learns features
+<ul>
 <li>- different layers detect different types of features</li>
 <li>- automatically!</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>6.2.2 deep learning performance
-
 <ul>
 <li>ImageNet 2012 competition: 1.2M training images, 1000 categories</li>
 <li>SuperVision use deeplearning neural network has a big gain against 2nd place</li>
-</ul></li>
+</ul>
+</li>
 <li>6.2.3 demo on ImageNet data</li>
 <li>6.2.4 challenges
-
 <ul>
-<li>pros</li>
+<li>pros
+<ul>
 <li>- learning automatically rather than hand tuning</li>
 <li>- performance gain</li>
 <li>- potential</li>
-<li>cons</li>
+</ul>
+</li>
+<li>cons
+<ul>
 <li>- lots of labeled data (human annotation)</li>
 <li>- computationally expensive</li>
 <li>- many tricks to tune</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>6.2.5 deep features
-
 <ul>
-<li>can we learn features from data, even when we don&rsquo;t have the data or time? deep learning + transfer learning: use data from one task to help learn on another</li>
-<li>what&rsquo;s learned in a neural net?</li>
+<li>can we learn features from data, even when we don't have the data or time? deep learning + transfer learning: use data from one task to help learn on another</li>
+<li>what's learned in a neural net?
+<ul>
 <li>- very speicific to task 1 for the latest layers</li>
 <li>- more generic for earlier layers, can be reuse</li>
-<li>transfer learning</li>
+</ul>
+</li>
+<li>transfer learning
+<ul>
 <li>- keep first few layers</li>
 <li>- use simple classifier to replace last several layers that is too specific</li>
-<li>deep features workflow</li>
+</ul>
+</li>
+<li>deep features workflow
+<ul>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/deep_features_workflow.png">deep_features_workflow.png</a></li>
-</ul></li>
-<li>6.3 Summary</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>6.3 Summary
+<ul>
 <li><a href="Reading/cousera-note-machine-learning-foundations-a-case-study-approach/w6_summary.png">w6_summary.png</a></li>
-<li>6.4 Deep features for image classification</li>
-<li>deep_learning_model = graphlab.load_model(&lsquo;imagenet_model&rsquo;); # this is a pre-trained deep learning model using ImageNet&rsquo;s 1.5M images</li>
+</ul>
+</li>
+<li>6.4 Deep features for image classification
+<ul>
+<li>deep_learning_model = graphlab.load_model(&lsquo;imagenet_model&rsquo;); # this is a pre-trained deep learning model using ImageNet's 1.5M images</li>
 <li>image_train[&lsquo;deep_features&rsquo;] = deep_learning_model.extract_features(image_train); # extract deep feature using pre-trained model</li>
-<li>deep_features_model = graphlab.logistic_classifier.create(image_train, features=[&lsquo;deep_features&rsquo;], target=&lsquo;labl&rsquo;); # use simple classifier on extracted deep features</li>
-<li>6.5 Deep features for image retrieval</li>
-<li>knn_model = graphlab.nearest_neighbors.create(image_train, features=[&lsquo;deep_features&rsquo;], label=&lsquo;id&rsquo;)</li>
+<li>deep_features_model = graphlab.logistic_classifier.create(image_train, features=[&lsquo;deep_features&rsquo;], target='labl&rsquo;); # use simple classifier on extracted deep features</li>
+</ul>
+</li>
+<li>6.5 Deep features for image retrieval
+<ul>
+<li>knn_model = graphlab.nearest_neighbors.create(image_train, features=[&lsquo;deep_features&rsquo;], label='id&rsquo;)</li>
 <li>​       cat = image_train[18]
-knn_model.query(cat); # gives neighbors of given &ldquo;cat&rdquo; item<br /></li>
-<li>6.6 Assignment</li>
+knn_model.query(cat); # gives neighbors of given &ldquo;cat&rdquo; item</li>
+</ul>
+</li>
+<li>6.6 Assignment
+<ul>
 <li>use sketch_summary to get summary statitics of the data, only for SArray (not as assignment said for both SFrame and SArray)
-
 <ul>
 <li>image_train[&lsquo;label&rsquo;].sketch_summary()</li>
-</ul></li>
-<li>6.7 Deploying machine learning as a service</li>
-<li>6.7.1 what&rsquo;s production? life cycle
-
+</ul>
+</li>
+</ul>
+</li>
+<li>6.7 Deploying machine learning as a service
+<ul>
+<li>6.7.1 what's production? life cycle
 <ul>
 <li>- deployment: serving</li>
 <li>- evaluation: measuring quality of deployed models</li>
 <li>- management: choosing between deployed models</li>
 <li>- monitoring: tracking model quality and operations</li>
-</ul></li>
+</ul>
+</li>
 <li>6.7.2 deployment
-
 <ul>
 <li>traning with historical data</li>
 <li>real-time predictions with live data</li>
 <li>feedback and improve</li>
-</ul></li>
+</ul>
+</li>
 <li>6.7.3 3 other pieces
-
 <ul>
 <li>learning new, alternative models</li>
 <li>how to choose between models</li>
 <li>evaluating a recommender: user engagement and user experience</li>
 <li>offline evaluation: when to update model</li>
 <li>online evaluation: choosing between models</li>
-</ul></li>
+</ul>
+</li>
 <li>6.7.4 A/B testing: choosing between ML models
-
 <ul>
 <li>group A use model 1 and group B use model 2</li>
 <li>other issues: versioning, provenace, dashboards, reports, &hellip;</li>
-</ul></li>
-<li>6.8 Machine learning challenges and future directions</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>6.8 Machine learning challenges and future directions
+<ul>
 <li>6.8.1 model selection</li>
 <li>6.8.2 feature engineering/representation</li>
 <li>6.8.3 scaling
-
 <ul>
-<li>data is getting bigger and bigger</li>
+<li>data is getting bigger and bigger
+<ul>
 <li>- social website</li>
 <li>- products on amazon</li>
 <li>- devices of IoT</li>
 <li>- medical record</li>
+</ul>
+</li>
 <li>models are getting bigger and bigger</li>
-<li>CPUs stopped getting faster</li>
+<li>CPUs stopped getting faster
+<ul>
 <li>- GPUs</li>
 <li>- multicores</li>
 <li>- clusters</li>
 <li>- clouds</li>
 <li>- supercomputers</li>
-<li>parallel architecture</li>
+</ul>
+</li>
+<li>parallel architecture
+<ul>
 <li>- programmability</li>
 <li>- data distribution</li>
 <li>- failures</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 		</div>
@@ -819,7 +1089,7 @@ knn_model.query(cat); # gives neighbors of given &ldquo;cat&rdquo; item<br /></l
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 
@@ -828,7 +1098,7 @@ knn_model.query(cat); # gives neighbors of given &ldquo;cat&rdquo; item<br /></l
 		<a class="post-nav__link" href="/blog/industry/2015-08-11-optical-interconnect-in-google-data-center/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Optical Interconnection in Google Data Centers</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">《爱上跑步的十三周》读书笔记</p></a>
+		<a class="post-nav__link" href="/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[Cousera Note] Machine Learning Foundations: A Case Study Approach</p></a>
 	</div>
 </nav>
 

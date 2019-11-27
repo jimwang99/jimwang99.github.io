@@ -7,7 +7,7 @@
 	<title>Python and Freemind: ElementTree</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -67,23 +70,19 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<p>我曾经自己用Python写过一个小工具来parse Freemind文件（XML格式）然后生成RestructureText和Latex格式。这个小工具的目的是为了实践我的“源文件唯一”的理念。因为我的简历（包括既往项目总结）需要保存为两种不同格式，一个为了放在个人网站上所以是HTML，另一个当然是PDF格式。</p>
-
 <p>今天瞎琢磨的时候发现，其实Python对于XML文件格式支持的极好。<a href="https://docs.python.org/2/library/xml.etree.elementtree.html#module-xml.etree.ElementTree">The ElementTree XML API</a>这个模块将XML parse成一个Tree。</p>
-
 <pre><code>Each element has a number of properties associated with it:
   a tag which is a string identifying what kind of data this element represents (the element type, in other words).
   a number of attributes, stored in a Python dictionary.
   a text string.
   an optional tail string.
   a number of child elements, stored in a Python sequence
-</code></pre>
-
-<p>Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。</p>
+</code></pre><p>Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。</p>
 
 		</div>
 		
@@ -98,7 +97,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

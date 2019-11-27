@@ -7,7 +7,7 @@
 	<title>FPGA Solution for LiDAR Project</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -67,52 +70,65 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<ul>
-<li><p>1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (<a href="https://www.xilinx.com/products/boards-and-kits/zcu111.html">https://www.xilinx.com/products/boards-and-kits/zcu111.html</a>)</p>
-
+<li>
+<p>1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (<a href="https://www.xilinx.com/products/boards-and-kits/zcu111.html">https://www.xilinx.com/products/boards-and-kits/zcu111.html</a>)</p>
 <ul>
-<li>Features:</li>
-<li>XCZU28DR-2FFVG1517E: high-end RFSoC
-
+<li>Features:
 <ul>
+<li>XCZU28DR-2FFVG1517E: high-end RFSoC</li>
 <li>12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)</li>
-</ul></li>
+</ul>
+</li>
 <li>Pros: 1-stop with everything we need for bench-top demo</li>
 <li>Cons: expensive $9K, need secondary solution for backup; overkill for second step product</li>
-</ul></li>
-
-<li><p>FMC daughter board with high-speed ADC</p>
-
+</ul>
+</li>
+<li>
+<p>FMC daughter board with high-speed ADC</p>
 <ul>
-<li>FMC163 (<a href="https://www.abaco.com/products/fmc163-fpga-mezzanine-card">https://www.abaco.com/products/fmc163-fpga-mezzanine-card</a>)</li>
-<li>1x 12-bit ADC, 4.0 GSPS at single channel, or 2GSPS at dual channel, LVDS (TI&rsquo;s ADC12D2000RF)</li>
-<li>1x 14-bit DAC, 5.7 GSPS, LVDS (ADI&rsquo;s AD9129)</li>
+<li>FMC163 (<a href="https://www.abaco.com/products/fmc163-fpga-mezzanine-card">https://www.abaco.com/products/fmc163-fpga-mezzanine-card</a>)
+<ul>
+<li>1x 12-bit ADC, 4.0 GSPS at single channel, or 2GSPS at dual channel, LVDS (TI's ADC12D2000RF)</li>
+<li>1x 14-bit DAC, 5.7 GSPS, LVDS (ADI's AD9129)</li>
 <li>Question: will it work with our backup dev boards?</li>
-<li>AD-FMCDAQ2-EBZ (<a href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad-fmcdaq2-ebz.html">https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad-fmcdaq2-ebz.html</a>)</li>
-<li>2x 14-bit ADC, 1.0 GSPS, JESD204B (ADI&rsquo;s AD9680)</li>
-<li>4x 16-bit DAC, 2.8 GSPS, JESD204B (ADI&rsquo;s AD9144)</li>
-<li>$1495, buy directly from ADI</li>
-<li>EVAL-FMCDAQ3-EBZ (<a href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-fmcdaq3-ebz.html">https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-fmcdaq3-ebz.html</a>)</li>
-<li>2x 14-bit ADC, 1.25 GSPS, JESD204B (ADI&rsquo;s AD9680)
-
+</ul>
+</li>
+<li>AD-FMCDAQ2-EBZ (<a href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad-fmcdaq2-ebz.html">https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad-fmcdaq2-ebz.html</a>)
 <ul>
-<li>Question: why the same device, here is 1.25G but it&rsquo;s 1.0G previously</li>
-</ul></li>
-<li>2x 16-bit DAC, 2.5 GSPS, JESD204B (ADI&rsquo;s AD9152)</li>
+<li>2x 14-bit ADC, 1.0 GSPS, JESD204B (ADI's AD9680)</li>
+<li>4x 16-bit DAC, 2.8 GSPS, JESD204B (ADI's AD9144)</li>
+<li>$1495, buy directly from ADI</li>
+</ul>
+</li>
+<li>EVAL-FMCDAQ3-EBZ (<a href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-fmcdaq3-ebz.html">https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-fmcdaq3-ebz.html</a>)
+<ul>
+<li>2x 14-bit ADC, 1.25 GSPS, JESD204B (ADI's AD9680)
+<ul>
+<li>Question: why the same device, here is 1.25G but it's 1.0G previously</li>
+</ul>
+</li>
+<li>2x 16-bit DAC, 2.5 GSPS, JESD204B (ADI's AD9152)</li>
 <li>$1495, buy directly from ADI
-
 <ul>
 <li>ADI provides the whole package, including RTL for FPGA, dev board schematic and etc.</li>
-</ul></li>
-<li>ADC12D1800RF Reference board (<a href="http://www.ti.com/tool/ADC12D1800RFRB?keyMatch=adc12d1800rfrb">http://www.ti.com/tool/ADC12D1800RFRB?keyMatch=adc12d1800rfrb</a>)</li>
-<li>12-bit, dual 1.8 GSPS or single 3.6 GSPS, LVDS (TI&rsquo;s ADC12D1800RF)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ADC12D1800RF Reference board (<a href="http://www.ti.com/tool/ADC12D1800RFRB?keyMatch=adc12d1800rfrb">http://www.ti.com/tool/ADC12D1800RFRB?keyMatch=adc12d1800rfrb</a>)
+<ul>
+<li>12-bit, dual 1.8 GSPS or single 3.6 GSPS, LVDS (TI's ADC12D1800RF)</li>
 <li>$2999, buy directly from TI</li>
 <li>It has a Xilinx Virtex-? on board, but I doubt it can be programmed</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 		</div>
@@ -128,7 +144,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Tool</title>
+	<title>tool</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -26,7 +26,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -36,10 +36,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -51,7 +54,7 @@
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">Tool</h1>
+		<h1 class="main__title">tool</h1>
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
@@ -72,8 +75,8 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Typical usage go to some directory use short alias &gt; pwd /home/jw &gt; go prj0 cd /work/projects/design/master-branch/ &gt; pwd /work/projects/design/master-branch/  run a serial of commands use short alias &gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name  Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
-&gt; go prj0 &gt; go p. prj0 &gt; run vnc  Auto-correction shortcut.
+		Typical usage go to some directory use short alias &gt; pwd /home/jw &gt; go prj0 cd /work/projects/design/master-branch/ &gt; pwd /work/projects/design/master-branch/ run a serial of commands use short alias &gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
+&gt; go prj0 &gt; go p. prj0 &gt; run vnc Auto-correction shortcut.py uses difflib.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -95,8 +98,8 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Trying to find the perfect static site generator. Used to use Pelican, because it&rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&rsquo;s used by Github. Their common problems are
- Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&rsquo;t fit my understanding/requirement.  Now I&rsquo;m trying Hugo, which is written in Go, and it&rsquo;s really fast.
+		Trying to find the perfect static site generator. Used to use Pelican, because it's written in Python. Also tried with Jekyll, the most popular candidate, because it's used by Github. Their common problems are
+ Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn't fit my understanding/requirement.  Now I'm trying Hugo, which is written in Go, and it's really fast.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -141,7 +144,7 @@
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Dockerfile FROM ubuntu:16.04 COPY ./boot.sh /tmp COPY ./hello.sh /tmp RUN /bin/bash /tmp/boot.sh RUN /bin/bash /tmp/hello.sh  boot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wget cd /tmp wget https://www.veripool.org/ftp/verilator-4.004.tgz tar xf verilator*.tgz cd verilator* ./configure make # this step will take sometime make install  hello.sh cd /tmp/verilator* cd ./example/tracing_c make # it will print out some log, and after finish it will generate a directory in the same directory named &quot;logs&quot; who needs to be saved after container exit  Docker how-to notes create a docker image from Dockerfile docker build -t &quot;$(name):$(tag)&quot; .
+		Dockerfile FROMubuntu:16.04COPY ./boot.sh /tmpCOPY ./hello.sh /tmpRUN /bin/bash /tmp/boot.shRUN /bin/bash /tmp/hello.shboot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wgetcd /tmpwget https://www.veripool.org/ftp/verilator-4.004.tgztar xf verilator*.tgzcd verilator*./configuremake # this step will take sometimemake installhello.sh cd /tmp/verilator*cd ./example/tracing_cmake# it will print out some log, and after finish it will generate a directory in the same directory named &#34;logs&#34; who needs to be saved after container exitDocker how-to notes create a docker image from Dockerfile docker build -t &#34;$(name):$(tag)&#34; .
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -165,8 +168,8 @@
 	<div class="content list__excerpt post__content clearfix">
 		To start gnome-terminal on WSL (Windows Subsystem for Linux) After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.
 To reinstall WSL you should do:
-&gt; lxrun /uninstall /full &gt; lxrun /install  Then you will see
-&gt; lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 16.04.2 LTS Release: 16.04 Codename: xenial  Some X11 apps like xclocks works fine with Xming, but &ldquo;gnome-terminal&rdquo; still have some problem.
+&gt; lxrun /uninstall /full&gt; lxrun /installThen you will see
+&gt; lsb_release -aNo LSB modules are available.Distributor ID: UbuntuDescription: Ubuntu 16.04.2 LTSRelease: 16.04Codename: xenialSome X11 apps like xclocks works fine with Xming, but &ldquo;gnome-terminal&rdquo; still have some problem.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -214,7 +217,7 @@ Some suggested workarounds:
 	<div class="content list__excerpt post__content clearfix">
 		我曾经自己用Python写过一个小工具来parse Freemind文件（XML格式）然后生成RestructureText和Latex格式。这个小工具的目的是为了实践我的“源文件唯一”的理念。因为我的简历（包括既往项目总结）需要保存为两种不同格式，一个为了放在个人网站上所以是HTML，另一个当然是PDF格式。
 今天瞎琢磨的时候发现，其实Python对于XML文件格式支持的极好。The ElementTree XML API这个模块将XML parse成一个Tree。
-Each element has a number of properties associated with it: a tag which is a string identifying what kind of data this element represents (the element type, in other words). a number of attributes, stored in a Python dictionary. a text string. an optional tail string. a number of child elements, stored in a Python sequence  Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。
+Each element has a number of properties associated with it: a tag which is a string identifying what kind of data this element represents (the element type, in other words). a number of attributes, stored in a Python dictionary. a text string. an optional tail string. a number of child elements, stored in a Python sequence Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。
 	</div>
 </article>
 </main>
@@ -231,6 +234,18 @@ Each element has a number of properties associated with it: a tag which is a str
 		<input type="hidden" name="sitesearch" value="" />
 	</form>
 </div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/">Re-discover Hardware Security in Modern SoC</a></li>
+		</ul>
+	</div>
+</div>
 <div class="widget-categories widget">
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
@@ -240,20 +255,11 @@ Each element has a number of properties associated with it: a tag which is a str
 			<li class="widget__item"><a class="widget__link" href="/categories/flow">Flow</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/industry">Industry</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/low-power">Low power</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/machine-learning">Machine learning</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/note">Note</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/tool">Tool</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-armv8-architecture/">ARMv8 Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/tutorial">Tutorial</a></li>
 		</ul>
 	</div>
 </div>

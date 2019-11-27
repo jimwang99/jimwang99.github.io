@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>When Moore&#39;s Law ENDS</title>
+	<title>About</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="chip design; IC design; CPU architecture; SoC architecture; machine learning and acceleration; Python; Tcl; book note; life in the South Bay">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="description" content="Jim Wang&#39;s eersonal blog about chip design, python, and everything else">
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -26,7 +26,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,11 +35,14 @@
 		<span class="menu__btn-title" tabindex="-1">Menu</span>
 	</button>
 	<ul class="menu__list">
-		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -49,243 +52,67 @@
 		<div class="wrapper flex">
 			<div class="primary">
 			
-<main class="main list" role="main"><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/note/2019-03-18-cortex-processor-behaviors/" rel="bookmark">
-			ARM Training: Cortex Processor Behaviors
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-18T00:00:00">2019-03-18</time>
-</div>
+<main class="main list" role="main">
+	<div class="content main__content clearfix">
+		<p>I'm a chip designer working on the digital side. I've got experience with</p>
+<ul>
+<li>CPU/SoC architecture and design, especially RISC-V open ISA</li>
+<li>RTL design/simulation with Verilog/SystemVerilog/SystemC</li>
+<li>Low power design and optimization</li>
+<li>ASIC design flow, including front-end, back-end and power sign-off</li>
+<li>Semi-custom design flow, including transistor timing analysis and SPICE simulation</li>
+</ul>
+<p>Currently my interests are</p>
+<ul>
+<li>Machine learning accelerator</li>
+<li>Harware and software co-design</li>
+<li>Hardware security</li>
+</ul>
+<p><strong>If you share the same interest and want a discussion, please send me a message on <a href="https://www.linkedin.com/in/wangjun99/">LinkedIn</a></strong></p>
+<h2 id="work-expereince">Work expereince</h2>
+<ul>
+<li><a href="https://tech.fb.com/ar-vr/">Facebook AR/VR</a>
+<ul>
+<li>As SoC Lead</li>
+<li>From Feb. 2019 to Present</li>
+</ul>
+</li>
+<li><a href="http://www.ours-tech.com">OURS Technology Inc.</a>
+<ul>
+<li>As Founding Engineer</li>
+<li>From Aug. 2017 to Feb. 2019</li>
+</ul>
+</li>
+<li><a href="http://www.marvell.com">Marvell Semiconductor Inc.</a>
+<ul>
+<li>As Staff Engineer and Design Manager</li>
+<li>From Feb. 2012 to Aug. 2017</li>
+</ul>
+</li>
+<li>&hellip;</li>
+</ul>
+<hr>
 
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Simple Sequential Execution Model After optimization, the result should be exactly the same with &ldquo;simple sequential execution model&rdquo;.
-Optimization: Instruction Fetching  Fetch multiple instructions from memory Branch  Predictive fetch and execution Branch caches Return stack  The &ldquo;link register&rdquo; value is pushed into the stack, and used/popped when return E.g. 4 entries of return stack, but my call stack is 5, then miss will happend. Then what to do?
-	</div>
-</article><article class="list__item post">
+	</div><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/blog/note/2019-03-18-armv8-architecture/" rel="bookmark">
-			ARMv8 Architecture
+			<a href="/blog/" rel="bookmark">
+			Blogs
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-18T00:00:00">2019-03-18</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
+	<time class="meta__text" datetime="1982-10-19T00:00:00">1982-10-19</time>
 </div>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		 Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-03-11-interrupt-and-arm-gic/" rel="bookmark">
-			Interrupts and ARM GIC Architecture
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-11T00:00:00">2019-03-11</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/architecture" rel="category">architecture</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Reference - Interrupt
-Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.  IPI: inter-processor interrupt  Software: caused by exception or special instructions that used to implement system calls  Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE   Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)   Triggering methods  Physical interrupt  Level-triggered vs.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/tool/2019-02-11-shortcut-dot-py/" rel="bookmark">
-			shortcut.py: A Command Line Script to Provide Macro
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-02-11T00:00:00">2019-02-11</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tool" rel="category">tool</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Typical usage go to some directory use short alias &gt; pwd /home/jw &gt; go prj0 cd /work/projects/design/master-branch/ &gt; pwd /work/projects/design/master-branch/  run a serial of commands use short alias &gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name  Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
-&gt; go prj0 &gt; go p. prj0 &gt; run vnc  Auto-correction shortcut.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-01-30-arm-big-little/" rel="bookmark">
-			ARM&#39;s big.LITTLE Architecture
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-30T00:00:00">2019-01-30</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/architecture" rel="category">architecture</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		https://developer.arm.com/technologies/big-little
-big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&rsquo;s a particular adaption to mobile devices usage.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/" rel="bookmark">
-			Re-discover Hardware Security in Modern SoC
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-30T00:00:00">2019-01-30</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/architecture" rel="category">architecture</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		There is a big difference between how I used to understand hardware security and state-of-the-art security supported by hardware software co-design, after I watched some video talking about SEP (Security Enclave Processor) by Apple. It’s a key component in current iPhone to protect user data and password from being observed in any kind of hacking, including traditional side channel attack such as DPA (Dynamic Power Attack), debug channel attack, normal network attack, and etc.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2019-01-29-on-time-is-professional/" rel="bookmark">
-			On Time Is Professional
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-29T00:00:00">2019-01-29</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/life" rel="category">life</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Because I was job hunting recently, I&rsquo;ve got lots of appointments, either phone call or face-to-face. There are two HR&rsquo;s who gave me particularly deep impression, and they are on totally opposite end of professionalism.
- A good example  Wheneven she wanted to arrange a phone call with me, she sent me emails in ahead to confirm time. Never call me directly without appointment. At the exact time of the appointment, ex.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2019-01-28-hbr-managing-oneself-note/" rel="bookmark">
-			HBR&#39;s 10 Must Read &#34;Managing Oneself&#34; Note
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-28T00:00:00">2019-01-28</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/life" rel="category">life</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		What Are My Strengths? Feedback analysis The only way to discover your strengths is through feedback analysis. Whenever you make a key decision or take a key action, write down what you expect will happen. 9 or 12 months later, compare the actual results with your expectations.
-Follow-up actions Find out what are your strength and weakness, using feedback analysis. So that you can
- Concentrate on your strengths. Put yourself where your strengths can produce results Work on improving your strengths.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2019-01-13-tech-company-in-china/" rel="bookmark">
-			中国科技公司见闻一例
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-23T00:00:00">2019-01-23</time>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在创业公司的缘故，所以即使作为工程师也需要跟客户直接交流。去年夏天，“有幸”在最炎热的日子去中国南方某城市拜访某“重要”客户。同行的是我们中国分公司当时的唯一员工老牛同志。
-就这个拜访而言，整个过程还算比较成功，虽然后期合作项目因为种种原因失败了。但这个无关这篇“见闻”。这个见闻很短，事情前后不过一分钟而已，却让我印象很深。
-老牛跟我从北京乘飞机于上午抵达，然后坐出租车赶往客户公司。客户老总因为是校友的情面邀请我们一起吃午饭。出租车停下了，我先下车，因为老牛同志要负责付车钱。我见对方老总亲自出来迎接我们，很自然的热情的上前欲握手。但是他完全没有看着我，越过我径直上前跟老牛同志握手。让我伸出的手停在半空，表情很尴尬。
-之后我才知道，客户老总默认了因为老牛同志不是做技术的，必然是我的领导，所以即使把我晾在半空也毫不介意。且不说老牛与我本无上下级关系，因为创业公司嘛，本来就是扁平化管理。而且我在美国公司，他在中国公司，本就不搭架的。
-见闻叙述完毕。
-过去小半年了，今天突然想到这件事情，缘起于今天看到的一片知乎文章。它讲的是德国的年迈工程师如何“站着把钱挣了“的事情，从合作项目中的多个细节和点滴事例中管中窥豹。回想起这件事情让我感同身受。进而感慨，即使这样一个由工程师创建的、以高科技为主导的、全体员工大部分是工程师的高科技公司的老板竟是如此。工程师在中国大陆的地位可见一斑。
-因为没有匹配的经济回报和社会地位，稍微有经验一点的工程师就必须要转型为管理者才能维持尊严。而成为管理者之后，更多的时间花费在务虚的事情上了，自然很难有精力来钻研技术，甚至很难跟上技术发展的步伐。所以才会有那么多”外行管理内行“的抱怨。如此以往，何谈技术积累？
-如果真的要战略转型到高科技产业，就必须要把尊重工程师这件事情落到实处。但是，经济手段容易从上而下的贯彻，人们内心中多年以来的偏见又怎么纠正呢？那就只有”矫枉过正“了。将经济手段发挥到极致，让工程师的收入真正普遍达到高收入阶层水平。假以时日，社会地位的提升自然而然、顺理成章。这样才能吸引住更多有水平的工程师继续钻研技术、积累技术、培养新人。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/tool/2019-01-19-static-site-generator/" rel="bookmark">
-			Static Site Generator
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-19T00:00:00">2019-01-19</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tool" rel="category">tool</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Trying to find the perfect static site generator. Used to use Pelican, because it&rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&rsquo;s used by Github. Their common problems are
- Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&rsquo;t fit my understanding/requirement.  Now I&rsquo;m trying Hugo, which is written in Go, and it&rsquo;s really fast.
+		 Here are my blog posts
+ 
 	</div>
 </article>
 </main>
-
-<div class="pagination">
-	<span class="pagination__item pagination__item--current">1/6</span>
-	<a class="pagination__item pagination__item--next btn" href="/page/2/">»</a>
-</div>
 
 
 			</div>
@@ -298,6 +125,18 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
 		<input type="hidden" name="sitesearch" value="" />
 	</form>
 </div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/">Re-discover Hardware Security in Modern SoC</a></li>
+		</ul>
+	</div>
+</div>
 <div class="widget-categories widget">
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
@@ -307,20 +146,11 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
 			<li class="widget__item"><a class="widget__link" href="/categories/flow">Flow</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/industry">Industry</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/low-power">Low power</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/machine-learning">Machine learning</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/note">Note</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/tool">Tool</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-armv8-architecture/">ARMv8 Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/tutorial">Tutorial</a></li>
 		</ul>
 	</div>
 </div>

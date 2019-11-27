@@ -7,7 +7,7 @@
 	<title>Bluetooth hub from Cassia Networks</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -67,20 +70,20 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<p>今天的CES meetup是一个清华85级的学长来宣传他们自己公司的bluetooth hub，Cassia Networks。如果简单从名字上来看并没有什么高端的感觉，毕竟bluetooth和hub两个东西都不是什么稀奇的东西。但是它获得了2016年CES大会最佳产品奖项，可不是浪得虚名。</p>
-
 <p>它解决了bluetooth的痛点，而且是用现有的商业化芯片，在系统集成和固件上下功夫，通过对协议的深刻理解，得到了超出世人的性能：不需要对master和slave有任何的额外要求就能达到300+米的传输距离（相对于普通的10+米极限），能够穿过三堵墙，可以连接多个master和slave，并转发数据（虽然现有的Bluetooth标准并不支持路由功能）。而且，他们还在此基础上开发了开放的SDK，能够对接其他的软硬件厂商，并由此展现出在多个应用场景下的广泛应用前景。这款产品的厉害之处就在于它极大的拓展了Bluetooth在IoT领域的应用范围，甚至给予了Bluetooth这个标准更大的想象空间。</p>
-
 <p>个人的思考：</p>
-
 <ol>
-<li><p>坚持在一个领域深入挖掘，即使是已经有非常成熟的标准、广泛应用的技术和芯片产品，也能够厚积薄发取得突破甚至带来该领域的应用革新。</p></li>
-
-<li><p>坚持使用商业化芯片，因为已有的芯片功能其实能够在大部分时间充分满足应用需要，不必动辄开发一款ASIC来解决“+10%”的问题。</p></li>
+<li>
+<p>坚持在一个领域深入挖掘，即使是已经有非常成熟的标准、广泛应用的技术和芯片产品，也能够厚积薄发取得突破甚至带来该领域的应用革新。</p>
+</li>
+<li>
+<p>坚持使用商业化芯片，因为已有的芯片功能其实能够在大部分时间充分满足应用需要，不必动辄开发一款ASIC来解决“+10%”的问题。</p>
+</li>
 </ol>
 		</div>
 		
@@ -95,7 +98,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

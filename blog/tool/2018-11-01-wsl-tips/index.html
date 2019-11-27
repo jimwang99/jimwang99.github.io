@@ -7,7 +7,7 @@
 	<title>WSL (Windows Subsystem Linux) Tips</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,80 +71,51 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li><a href="#to-start-gnome-terminal-on-wsl-windows-subsystem-for-linux">To start gnome-terminal on WSL (Windows Subsystem for Linux)</a>
-<ul>
-<li><a href="#wsl-terminal">WSL terminal</a></li>
-<li><a href="#copy-to-windows-clipboard">Copy to Windows clipboard</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#wsl-terminal">WSL terminal</a></li>
+    <li><a href="#copy-to-windows-clipboard">Copy to Windows clipboard</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h1 id="to-start-gnome-terminal-on-wsl-windows-subsystem-for-linux">To start gnome-terminal on WSL (Windows Subsystem for Linux)</h1>
-
+			<h1 id="to-start-gnometerminal-on-wsl-windows-subsystem-for-linux">To start gnome-terminal on WSL (Windows Subsystem for Linux)</h1>
 <p>After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.</p>
-
 <p>To reinstall WSL you should do:</p>
-
 <pre><code>&gt; lxrun /uninstall /full
 &gt; lxrun /install
-</code></pre>
-
-<p>Then you will see</p>
-
+</code></pre><p>Then you will see</p>
 <pre><code>&gt; lsb_release -a
 No LSB modules are available.
 Distributor ID: Ubuntu
 Description:    Ubuntu 16.04.2 LTS
 Release:        16.04
 Codename:       xenial
-</code></pre>
-
-<p>Some X11 apps like xclocks works fine with Xming, but &ldquo;gnome-terminal&rdquo; still have some problem.</p>
-
+</code></pre><p>Some X11 apps like xclocks works fine with Xming, but &ldquo;gnome-terminal&rdquo; still have some problem.</p>
 <pre><code>gnome-terminal
 process 5260: D-Bus library appears to be incorrectly set up; failed to read machine uuid: UUID file '/etc/machine-id' should contain a hex string of length 32, not length 0, with no other text
 See the manual page for dbus-uuidgen to correct this issue.
 Error constructing proxy for org.gnome.Terminal:/org/gnome/Terminal/Factory0: Error spawning command line 'dbus-launch --autolaunch= --binary-syntax --close-stderr': Child process exited with code 1
-</code></pre>
-
-<p>I found that the <code>/etc/machine-id</code> file is empty, and it can be fixed by <code>sudo systemd-machine-id-setup</code></p>
-
-<p>I was using OSX on my 2015 MBP for almost 2 years and it works fine. After spending some time to tune the iTerm2&rsquo;s color and hotkey settings, the environment works fine with SSH, TMUX, ZSH and VIM. It did took me quite some time to compile Verilator (an open source Verilog simulator) on OSX. Other than that the biggest problem would be external 1080p monitor and HDMI connection. It always looks blurry after trying out all the solutions I can find on Google. The ultimate solution was change the monitor from 1080p to real 4K. Apparently, OSX is not for poor people.</p>
-
-<p>But after 2 years of enduring the overheating and fast battery drainage, I&rsquo;ll have to move on to better hardware. Macbook won&rsquo;t be an option at all because I cannot get used to this new keyboard. It&rsquo;s without travelling distance at all, and typing with it is just like typing on a piece of wood. So Windows.</p>
-
-<p>Nowadays, Windows comes with WSL (Windows subsystem Linux). It gives you the ability to run native Linux program within a virtual machine liked environment on Windows machine. Although Microsoft claims that it&rsquo;s not for X programs, some hackers indeed made X work for WSL. But with integration with native Windows filesystem, X is not that critical anymore, because anyway I cannot run real EDA tools on WSL. So it&rsquo;s only for development which means VIM and Python would be enough.</p>
-
+</code></pre><p>I found that the <code>/etc/machine-id</code> file is empty, and it can be fixed by <code>sudo systemd-machine-id-setup</code></p>
+<p>I was using OSX on my 2015 MBP for almost 2 years and it works fine. After spending some time to tune the iTerm2's color and hotkey settings, the environment works fine with SSH, TMUX, ZSH and VIM. It did took me quite some time to compile Verilator (an open source Verilog simulator) on OSX. Other than that the biggest problem would be external 1080p monitor and HDMI connection. It always looks blurry after trying out all the solutions I can find on Google. The ultimate solution was change the monitor from 1080p to real 4K. Apparently, OSX is not for poor people.</p>
+<p>But after 2 years of enduring the overheating and fast battery drainage, I'll have to move on to better hardware. Macbook won't be an option at all because I cannot get used to this new keyboard. It's without travelling distance at all, and typing with it is just like typing on a piece of wood. So Windows.</p>
+<p>Nowadays, Windows comes with WSL (Windows subsystem Linux). It gives you the ability to run native Linux program within a virtual machine liked environment on Windows machine. Although Microsoft claims that it's not for X programs, some hackers indeed made X work for WSL. But with integration with native Windows filesystem, X is not that critical anymore, because anyway I cannot run real EDA tools on WSL. So it's only for development which means VIM and Python would be enough.</p>
 <h2 id="wsl-terminal">WSL terminal</h2>
-
 <p><a href="https://github.com/goreliu/wsl-terminal">WSL terminal</a> is a very useful tool for using WSL. It comes with a mintty and one very useful setting: add &ldquo;open wsl terminal here&rdquo; to your right click menu. However the native color themes are not good. What I chose is to match all my other tools&rsquo; ]&ldquo;Dracula&rdquo; theme](<a href="https://draculatheme.com/">https://draculatheme.com/</a>)</p>
-
 <p>Another problem that worth mentioning is the directory color of Windows filesystem. Because of the default permission, every directories in /mnt/c or /mnt/d are 777. So they are displayed as <strong>green background plus gray foreground</strong> font, which is very hard to recognize. The way to fix it is to put <code>export LS_COLORS='ow=01;36;40</code> in the <code>.zshrc</code> to change the color output of <code>ls</code> command. One drawback is this cannot change the color for zsh auto-completion.</p>
-
 <h2 id="copy-to-windows-clipboard">Copy to Windows clipboard</h2>
-
-<pre><code class="language-shell">cat $FILE | clip.exe
-</code></pre>
-
-<p>Here <code>clip.exe</code> is a native windows program at <code>/mnt/c/Windows/System32/clip.exe</code></p>
-
-<p>It&rsquo;s a little bit tricky to copy from VIM to Windows clipboard though. But some smart guy on stackoverflow thought of a <a href="https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows">work-around</a> using clip.exe</p>
-
-<pre><code class="language-VIM">func! GetSelectedText()
-    normal gv&quot;xy
-    let result = getreg(&quot;x&quot;)
-    return result
-endfunc
-if !has(&quot;clipboard&quot;) &amp;&amp; executable(&quot;clip.exe&quot;)
-    noremap &lt;C-C&gt; :call system('clip.exe', GetSelectedText())&lt;CR&gt;
-endif
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat $FILE | clip.exe
+</code></pre></div><p>Here <code>clip.exe</code> is a native windows program at <code>/mnt/c/Windows/System32/clip.exe</code></p>
+<p>It's a little bit tricky to copy from VIM to Windows clipboard though. But some smart guy on stackoverflow thought of a <a href="https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows">work-around</a> using clip.exe</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VIM" data-lang="VIM"><span style="color:#a6e22e">func</span>! <span style="color:#a6e22e">GetSelectedText</span>()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">normal</span> <span style="color:#a6e22e">gv</span>&#34;<span style="color:#a6e22e">xy</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> = <span style="color:#a6e22e">getreg</span>(<span style="color:#e6db74">&#34;x&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">return</span> <span style="color:#a6e22e">result</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">endfunc</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#34;clipboard&#34;</span>) &amp;&amp; <span style="color:#a6e22e">executable</span>(<span style="color:#e6db74">&#34;clip.exe&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">noremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">C</span>&gt; :<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#39;clip.exe&#39;</span>, <span style="color:#a6e22e">GetSelectedText</span>())&lt;<span style="color:#a6e22e">CR</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div>
 		</div>
 		
 	</article>
@@ -155,7 +129,7 @@ endif
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

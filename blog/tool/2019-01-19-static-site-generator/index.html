@@ -7,7 +7,7 @@
 	<title>Static Site Generator</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,68 +71,53 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#support-mathjax">Support MathJax</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#support-mathjax">Support MathJax</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<p>Trying to find the perfect static site generator. Used to use Pelican, because it&rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&rsquo;s used by Github. Their common problems are</p>
-
+			<p>Trying to find the perfect static site generator. Used to use Pelican, because it's written in Python. Also tried with Jekyll, the most popular candidate, because it's used by Github. Their common problems are</p>
 <ul>
 <li>Not intuitive enough. Seems like something programmer created for programmer.</li>
-<li>There are very restricted requirements of directory structure of the content. And they doesn&rsquo;t fit my understanding/requirement.</li>
+<li>There are very restricted requirements of directory structure of the content. And they doesn't fit my understanding/requirement.</li>
 </ul>
-
-<p>Now I&rsquo;m trying Hugo, which is written in Go, and it&rsquo;s really fast. The best feature I like about it is <strong>page bundles</strong>. It allows you to put articles in the same/separated directory with their own resources.</p>
-
+<p>Now I'm trying Hugo, which is written in Go, and it's really fast. The best feature I like about it is <strong>page bundles</strong>. It allows you to put articles in the same/separated directory with their own resources.</p>
 <h2 id="support-mathjax">Support MathJax</h2>
-
 <p>Use method 2 in <a href="https://divadnojnarg.github.io/blog/mathjax/">https://divadnojnarg.github.io/blog/mathjax/</a></p>
-
 <p>Put he following content in <code>/layout/partials/mathjax_support.html</code></p>
-
-<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; async
-  src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: &quot;AMS&quot; },
-         extensions: [&quot;AMSmath.js&quot;, &quot;AMSsymbols.js&quot;] }
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span> <span style="color:#a6e22e">async</span>
+  <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span>&gt;
+  <span style="color:#a6e22e">MathJax</span>.<span style="color:#a6e22e">Hub</span>.<span style="color:#a6e22e">Config</span>({
+  <span style="color:#a6e22e">tex2jax</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">inlineMath</span><span style="color:#f92672">:</span> [[<span style="color:#e6db74">&#39;$&#39;</span>,<span style="color:#e6db74">&#39;$&#39;</span>], [<span style="color:#e6db74">&#39;\\(&#39;</span>,<span style="color:#e6db74">&#39;\\)&#39;</span>]],
+    <span style="color:#a6e22e">displayMath</span><span style="color:#f92672">:</span> [[<span style="color:#e6db74">&#39;$$&#39;</span>,<span style="color:#e6db74">&#39;$$&#39;</span>]],
+    <span style="color:#a6e22e">processEscapes</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+    <span style="color:#a6e22e">processEnvironments</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+    <span style="color:#a6e22e">skipTags</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;script&#39;</span>, <span style="color:#e6db74">&#39;noscript&#39;</span>, <span style="color:#e6db74">&#39;style&#39;</span>, <span style="color:#e6db74">&#39;textarea&#39;</span>, <span style="color:#e6db74">&#39;pre&#39;</span>],
+    <span style="color:#a6e22e">TeX</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">equationNumbers</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">autoNumber</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;AMS&#34;</span> },
+         <span style="color:#a6e22e">extensions</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;AMSmath.js&#34;</span>, <span style="color:#e6db74">&#34;AMSsymbols.js&#34;</span>] }
   }
   });
-  MathJax.Hub.Queue(function() {
-    // Fix &lt;code&gt; tags after MathJax finishes running. This is a
-    // hack to overcome a shortcoming of Markdown. Discussion at
-    // https://github.com/mojombo/jekyll/issues/199
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i &lt; all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
+  <span style="color:#a6e22e">MathJax</span>.<span style="color:#a6e22e">Hub</span>.<span style="color:#a6e22e">Queue</span>(<span style="color:#66d9ef">function</span>() {
+    <span style="color:#75715e">// Fix &lt;code&gt; tags after MathJax finishes running. This is a
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// hack to overcome a shortcoming of Markdown. Discussion at
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// https://github.com/mojombo/jekyll/issues/199
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">all</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MathJax</span>.<span style="color:#a6e22e">Hub</span>.<span style="color:#a6e22e">getAllJax</span>(), <span style="color:#a6e22e">i</span>;
+    <span style="color:#66d9ef">for</span>(<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">all</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>) {
+        <span style="color:#a6e22e">all</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">SourceElement</span>().<span style="color:#a6e22e">parentNode</span>.<span style="color:#a6e22e">className</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39; has-jax&#39;</span>;
     }
   });
 
-  MathJax.Hub.Config({
-  // Autonumbering by mathjax
-  TeX: { equationNumbers: { autoNumber: &quot;AMS&quot; } }
+  <span style="color:#a6e22e">MathJax</span>.<span style="color:#a6e22e">Hub</span>.<span style="color:#a6e22e">Config</span>({
+  <span style="color:#75715e">// Autonumbering by mathjax
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">TeX</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">equationNumbers</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">autoNumber</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;AMS&#34;</span> } }
   });
-&lt;/script&gt;
-</code></pre>
-
-<p>And add the following into header.html between <code>&lt;head&gt;</code> and <code>&lt;\head&gt;</code></p>
-
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><p>And add the following into header.html between <code>&lt;head&gt;</code> and <code>&lt;\head&gt;</code></p>
 <pre><code>{{ partial &quot;mathjax_support.html&quot; . }}
 </code></pre>
-
 		</div>
 		
 	</article>
@@ -143,7 +131,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

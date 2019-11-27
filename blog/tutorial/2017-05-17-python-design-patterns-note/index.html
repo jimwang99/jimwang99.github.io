@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Course Note of *Python: Design Patterns*</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.60.0" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">About Me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Course Note of *Python: Design Patterns*</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-05-17T00:00:00">2017-05-17</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/tutorial" rel="category">tutorial</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#understanding-design-patterns">understanding design patterns</a></li>
+    <li><a href="#creational-patterns">creational patterns</a>
+      <ul>
+        <li><a href="#factory">factory</a></li>
+        <li><a href="#abstract-facotry">abstract facotry</a></li>
+        <li><a href="#singleton">singleton</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<blockquote>
+<p>The course is on Coursera</p>
+</blockquote>
+<h2 id="understanding-design-patterns">understanding design patterns</h2>
+<ul>
+<li>what?
+<ul>
+<li>well-known solutions for recurring problems</li>
+</ul>
+</li>
+<li>why?
+<ul>
+<li>don't reinvent wheels</li>
+<li>reuse best practices</li>
+</ul>
+</li>
+<li>characteristics
+<ul>
+<li>language neutral</li>
+<li>dynamic</li>
+<li>incomplete by design to promote customization</li>
+</ul>
+</li>
+<li>types
+<ul>
+<li>creational</li>
+<li>structual</li>
+<li>behavioral</li>
+</ul>
+</li>
+<li>OOP (object-oriented programming)
+<ul>
+<li>design pattern relies on OOP</li>
+<li>attributes + methods</li>
+<li>inheritence &amp; polymorphism</li>
+</ul>
+</li>
+<li>pattern context
+<ul>
+<li>participants and their rols</li>
+<li>quality attributes: nonfunctional requirements</li>
+<li>forces: various factors or trade-offs to consider</li>
+<li>consequences: side effects by decision makers</li>
+</ul>
+</li>
+<li>pattern language
+<ul>
+<li>name</li>
+<li>context</li>
+<li>problem</li>
+<li>solution</li>
+<li>related patterns</li>
+</ul>
+</li>
+</ul>
+<h2 id="creational-patterns">creational patterns</h2>
+<h3 id="factory">factory</h3>
+<ul>
+<li>create and return object on the fly
+<ul>
+<li>flexibility of adding new classes</li>
+</ul>
+</li>
+<li>problem
+<ul>
+<li>uncertainties in types of objects</li>
+<li>runtime decision of types of objects</li>
+</ul>
+</li>
+</ul>
+<h3 id="abstract-facotry">abstract facotry</h3>
+<ul>
+<li>a factory dynamically uses different factories to create objects on the fly</li>
+<li>problem
+<ul>
+<li>create a family of related objects at runtime</li>
+</ul>
+</li>
+<li>concepts
+<ul>
+<li>abstract factory</li>
+<li>concrete factory (the real factory used at runtime)</li>
+</ul>
+</li>
+</ul>
+<h3 id="singleton">singleton</h3>
+<ul>
+<li>only one object from a class</li>
+<li>problem
+<ul>
+<li>cache information shared by multiple objects</li>
+</ul>
+</li>
+</ul>
+
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/note/2017-05-14-scala-first-look/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Scala First Look</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/note/2017-05-17-python-design-patterns-note/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Course Note of *Python: Design Patterns*</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

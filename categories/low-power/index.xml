@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>low-power on When Moore&#39;s Law ENDS</title>
+    <link>/categories/low-power/</link>
+    <description>Recent content in low-power on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Sep 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/low-power/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Survey of Low Power Design</title>
+      <link>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</link>
+      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

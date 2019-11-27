@@ -7,7 +7,7 @@
 	<title>GCP (Google Cloud Platform)</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,29 +71,22 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#price-of-gcp">Price of GCP</a>
-<ul>
-<li><a href="#persistance-disk">Persistance Disk</a></li>
-<li><a href="#always-on-instance-24x7">Always on instance (24x7)</a></li>
-<li><a href="#instance-for-eda-10-hours-per-week-43-452-hours-per-month">Instance for EDA (10 hours per week, 43.452 hours per month)</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#price-of-gcp">Price of GCP</a>
+      <ul>
+        <li><a href="#persistance-disk">Persistance Disk</a></li>
+        <li><a href="#always-on-instance-24x7">Always on instance (24x7)</a></li>
+        <li><a href="#instance-for-eda-10-hours-per-week-43452-hours-per-month">Instance for EDA (10 hours per week, 43.452 hours per month)</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h2 id="price-of-gcp">Price of GCP</h2>
-
+			<h2 id="price-of-gcp">Price of GCP</h2>
 <h3 id="persistance-disk">Persistance Disk</h3>
-
 <p>Can be used to put all the data/eda/os on it.</p>
-
 <table>
 <thead>
 <tr>
@@ -99,38 +95,32 @@
 <th>Price (per GB per month)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>SSD 50GB</td>
 <td>$8.50</td>
 <td>$0.17</td>
 </tr>
-
 <tr>
 <td>SSD 1TB</td>
 <td>$174.08</td>
 <td>$0.17</td>
 </tr>
-
 <tr>
 <td>HDD 50GB</td>
 <td>$2.00</td>
 <td>$0.04</td>
 </tr>
-
 <tr>
 <td>HDD 200GB</td>
 <td>$8.00</td>
 <td>$0.04</td>
 </tr>
-
 <tr>
 <td>HDD 1TB</td>
 <td>$39.76</td>
 <td>$0.04</td>
 </tr>
-
 <tr>
 <td>Snapshot 50GB</td>
 <td>$1.30</td>
@@ -138,11 +128,8 @@
 </tr>
 </tbody>
 </table>
-
 <h3 id="always-on-instance-24x7">Always on instance (24x7)</h3>
-
 <p>Can be used as working machine (support VNC) and NFS server</p>
-
 <table>
 <thead>
 <tr>
@@ -152,7 +139,6 @@
 <th>Price (per month)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>f1-micro</td>
@@ -160,21 +146,18 @@
 <td>0.60</td>
 <td>Free</td>
 </tr>
-
 <tr>
 <td>g1-small</td>
 <td>Shared</td>
 <td>1.70</td>
 <td>$13.80</td>
 </tr>
-
 <tr>
 <td><strong>n1-std-1</strong></td>
 <td>1</td>
 <td>3.75</td>
 <td>$24.27</td>
 </tr>
-
 <tr>
 <td>n1-std-2</td>
 <td>2</td>
@@ -183,9 +166,7 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="instance-for-eda-10-hours-per-week-43-452-hours-per-month">Instance for EDA (10 hours per week, 43.452 hours per month)</h3>
-
+<h3 id="instance-for-eda-10-hours-per-week-43452-hours-per-month">Instance for EDA (10 hours per week, 43.452 hours per month)</h3>
 <table>
 <thead>
 <tr>
@@ -196,7 +177,6 @@
 <th>Price (per hour)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>n1-cpu-8</td>
@@ -205,7 +185,6 @@
 <td>$12.32</td>
 <td>$0.2835</td>
 </tr>
-
 <tr>
 <td>n1-std-8</td>
 <td>8</td>
@@ -213,7 +192,6 @@
 <td>$16.51</td>
 <td></td>
 </tr>
-
 <tr>
 <td>n1-mem-8</td>
 <td>8</td>
@@ -221,7 +199,6 @@
 <td>$20.58</td>
 <td></td>
 </tr>
-
 <tr>
 <td>n1-cpu-16</td>
 <td>16</td>
@@ -229,7 +206,6 @@
 <td>$24.65</td>
 <td>$0.5673</td>
 </tr>
-
 <tr>
 <td>n1-std-16</td>
 <td>16</td>
@@ -237,7 +213,6 @@
 <td>$33.02</td>
 <td>$0.7599</td>
 </tr>
-
 <tr>
 <td>n1-cpu-32</td>
 <td>32</td>
@@ -247,8 +222,7 @@
 </tr>
 </tbody>
 </table>
-
-<p>At the meantime, secondhand server on unixsurplus is &ldquo;E5-2620 V3 10-CORE 2.4GHz&rdquo; with &ldquo;64GB DDR4&rdquo; and &ldquo;300GB HDD&rdquo; is $1,989. It&rsquo;s n1-std-16 for 2617 hours, 261.7 weeks if 10 hours per week.</p>
+<p>At the meantime, secondhand server on unixsurplus is &ldquo;E5-2620 V3 10-CORE 2.4GHz&rdquo; with &ldquo;64GB DDR4&rdquo; and &ldquo;300GB HDD&rdquo; is $1,989. It's n1-std-16 for 2617 hours, 261.7 weeks if 10 hours per week.</p>
 
 		</div>
 		
@@ -263,7 +237,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

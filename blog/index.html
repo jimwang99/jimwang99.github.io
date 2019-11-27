@@ -7,7 +7,7 @@
 	<title>Blogs</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -26,7 +26,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -36,10 +36,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -52,7 +55,13 @@
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">Blogs</h1>
-	</header><article class="list__item post">
+	</header>
+	<div class="content main__content clearfix">
+		<blockquote>
+<p>Here are my blog posts</p>
+</blockquote>
+
+	</div><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/blog/note/2019-03-18-cortex-processor-behaviors/" rel="bookmark">
@@ -78,28 +87,6 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/blog/note/2019-03-18-armv8-architecture/" rel="bookmark">
-			ARMv8 Architecture
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-18T00:00:00">2019-03-18</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note" rel="category">note</a></span>
-</div>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		 Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
 			<a href="/blog/arch/2019-03-11-interrupt-and-arm-gic/" rel="bookmark">
 			Interrupts and ARM GIC Architecture
 			</a>
@@ -117,8 +104,8 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Reference - Interrupt
-Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.  IPI: inter-processor interrupt  Software: caused by exception or special instructions that used to implement system calls  Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE   Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)   Triggering methods  Physical interrupt  Level-triggered vs.
+		Reference
+ Interrupt  Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt  For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.     IPI: inter-processor interrupt   Software: caused by exception or special instructions that used to implement system calls   Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE     Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)     Triggering methods  Physical interrupt  Level-triggered vs.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -140,8 +127,8 @@ Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Typical usage go to some directory use short alias &gt; pwd /home/jw &gt; go prj0 cd /work/projects/design/master-branch/ &gt; pwd /work/projects/design/master-branch/  run a serial of commands use short alias &gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name  Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
-&gt; go prj0 &gt; go p. prj0 &gt; run vnc  Auto-correction shortcut.
+		Typical usage go to some directory use short alias &gt; pwd /home/jw &gt; go prj0 cd /work/projects/design/master-branch/ &gt; pwd /work/projects/design/master-branch/ run a serial of commands use short alias &gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
+&gt; go prj0 &gt; go p. prj0 &gt; run vnc Auto-correction shortcut.py uses difflib.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -164,7 +151,7 @@ Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		https://developer.arm.com/technologies/big-little
-big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&rsquo;s a particular adaption to mobile devices usage.
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It's a particular adaption to mobile devices usage.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -208,7 +195,7 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Because I was job hunting recently, I&rsquo;ve got lots of appointments, either phone call or face-to-face. There are two HR&rsquo;s who gave me particularly deep impression, and they are on totally opposite end of professionalism.
+		Because I was job hunting recently, I've got lots of appointments, either phone call or face-to-face. There are two HR's who gave me particularly deep impression, and they are on totally opposite end of professionalism.
  A good example  Wheneven she wanted to arrange a phone call with me, she sent me emails in ahead to confirm time. Never call me directly without appointment. At the exact time of the appointment, ex.
 	</div>
 </article><article class="list__item post">
@@ -279,14 +266,37 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Trying to find the perfect static site generator. Used to use Pelican, because it&rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&rsquo;s used by Github. Their common problems are
- Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&rsquo;t fit my understanding/requirement.  Now I&rsquo;m trying Hugo, which is written in Go, and it&rsquo;s really fast.
+		Trying to find the perfect static site generator. Used to use Pelican, because it's written in Python. Also tried with Jekyll, the most popular candidate, because it's used by Github. Their common problems are
+ Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn't fit my understanding/requirement.  Now I'm trying Hugo, which is written in Go, and it's really fast.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/arch/2019-01-03-hwacha-accelerator/" rel="bookmark">
+			Huwcha Accelerator architecture
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-01-03T00:00:00">2019-01-03</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/architecture" rel="category">architecture</a></span>
+</div>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		From the reading of this paper, &ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
+ We don't have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don't need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don't need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?
 	</div>
 </article>
 </main>
 
 <div class="pagination">
-	<span class="pagination__item pagination__item--current">1/6</span>
+	<span class="pagination__item pagination__item--current">1/8</span>
 	<a class="pagination__item pagination__item--next btn" href="/blog/page/2/">»</a>
 </div>
 
@@ -302,6 +312,18 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
 		<input type="hidden" name="sitesearch" value="" />
 	</form>
 </div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/">Re-discover Hardware Security in Modern SoC</a></li>
+		</ul>
+	</div>
+</div>
 <div class="widget-categories widget">
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
@@ -311,20 +333,11 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
 			<li class="widget__item"><a class="widget__link" href="/categories/flow">Flow</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/industry">Industry</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/low-power">Low power</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/machine-learning">Machine learning</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/note">Note</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/tool">Tool</a></li>
-		</ul>
-	</div>
-</div>
-<div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-armv8-architecture/">ARMv8 Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/">Interrupts and ARM GIC Architecture</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/tool/2019-02-11-shortcut-dot-py/">shortcut.py: A Command Line Script to Provide Macro</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-01-30-arm-big-little/">ARM&#39;s big.LITTLE Architecture</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/tutorial">Tutorial</a></li>
 		</ul>
 	</div>
 </div>

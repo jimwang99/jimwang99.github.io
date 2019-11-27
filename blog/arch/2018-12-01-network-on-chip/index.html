@@ -7,7 +7,7 @@
 	<title>Network-on-Chip Notes</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,54 +71,48 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#noc">NoC</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#noc">NoC</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h2 id="noc">NoC</h2>
-
+			<h2 id="noc">NoC</h2>
 <ul>
 <li>Clustering coefficient: the most intuitive explanation is the number of hops between two random nodes in the network.</li>
 <li>Layers
-
 <ul>
 <li>Physical layer</li>
 <li>Link layer
-
 <ul>
 <li>Transaction protocol: such as AXI</li>
 <li>Seperated channels like AXI, to avoid dead-lock caused by depency problem</li>
-</ul></li>
+</ul>
+</li>
 <li>Transport layer
-
 <ul>
 <li>Packet: header &amp; payload</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Flow control
-
 <ul>
 <li>On link-level or end-to-end level
-
 <ul>
 <li>Link-level: every hop there is a notification, just like valid-ready protocol</li>
 <li>End-to-end level: every transaction of data from sender to receiver has to have some kind of notification that the receiver notify the sender it has received the data successfully.</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Advantages:
-
 <ul>
 <li>Multiple transactions can complete in parallel in the network to utilize the routing resource.</li>
 <li>Layered structure makes it more clear, and each layer can be implemented independently.</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
 		</div>
@@ -131,7 +128,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 
@@ -140,7 +137,7 @@
 		<a class="post-nav__link" href="/blog/life/2018-11-10-family-trip-to-legoland/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Family trip to LEGOLAND</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2018-12-01-ariane-cpu/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Ariane (PULP series high-performance core)</p></a>
+		<a class="post-nav__link" href="/blog/architecture/2018-12-01-ariane-cpu/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Ariane (PULP series high-performance core)</p></a>
 	</div>
 </nav>
 

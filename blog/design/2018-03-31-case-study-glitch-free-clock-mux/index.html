@@ -7,7 +7,7 @@
 	<title>Case Study: Glitch Free Clock Mux</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -62,36 +65,29 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<p>If your design needs to switch from one clock source to another, there is high possibility of harmful clock glitches while switching. Normally you need to stop this clock during the switching process, but what if you design relies on non-stop clock? Here is the circuit proven to work on silicon.</p>
-
 <p><a href="https://www.eetimes.com/document.asp?doc_id=1202359">Techniques to make clock switching glitch free</a></p>
-
-<p><img src="mahmud3.jpg" alt="img" /></p>
-
+<p><img src="mahmud3.jpg" alt="img"></p>
 <p>We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPICE. If possible, make it a hard macro. But if you cannot do that, ask the back-end engineers to</p>
-
 <ol>
 <li>Hand place them in a isolated area with lots of decap cells surrounding.</li>
 <li>Hand route the signals with shielding</li>
 </ol>
-
 <p>For timing analysis</p>
-
-<pre><code class="language-tcl">set_case_analysis 1 CORE/CLK_SEL/sel; # selecting clk1 for this scenario
-set_case_analysis 0 CORE/CLK_SEL/DF_SEL_CLK0_D2/Q; # constant after sync
-set_case_analysis 1 CORE/CLK_SEL/DF_SEL_CLK0_D2/QN; # constant after sync
-set_case_analysis 1 CORE/CLK_SEL/DF_SEL_CLK1_D2/Q; # constant after sync
-set_case_analysis 0 CORE/CLK_SEL/DF_SEL_CLK1_D2/QN; # constant after sync
-
-
-set_dont_touch [get_cells CORE/CLK_SEL]
-set_dont_touch [get_nets -of [get_cells CORE/CLK_SEL/*] -segments]
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl">set_case_analysis <span style="color:#ae81ff">1</span> CORE<span style="color:#f92672">/</span>CLK_SEL<span style="color:#f92672">/</span>sel<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> selecting clk1 for this scenario
+</span><span style="color:#75715e"></span>set_case_analysis <span style="color:#ae81ff">0</span> CORE<span style="color:#f92672">/</span>CLK_SEL<span style="color:#f92672">/</span>DF_SEL_CLK0_D2<span style="color:#f92672">/</span>Q<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> constant after sync
+</span><span style="color:#75715e"></span>set_case_analysis <span style="color:#ae81ff">1</span> CORE<span style="color:#f92672">/</span>CLK_SEL<span style="color:#f92672">/</span>DF_SEL_CLK0_D2<span style="color:#f92672">/</span>QN<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> constant after sync
+</span><span style="color:#75715e"></span>set_case_analysis <span style="color:#ae81ff">1</span> CORE<span style="color:#f92672">/</span>CLK_SEL<span style="color:#f92672">/</span>DF_SEL_CLK1_D2<span style="color:#f92672">/</span>Q<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> constant after sync
+</span><span style="color:#75715e"></span>set_case_analysis <span style="color:#ae81ff">0</span> CORE<span style="color:#f92672">/</span>CLK_SEL<span style="color:#f92672">/</span>DF_SEL_CLK1_D2<span style="color:#f92672">/</span>QN<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> constant after sync
+</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+set_dont_touch <span style="color:#66d9ef">[</span>get_cells CORE<span style="color:#f92672">/</span>CLK_SEL<span style="color:#66d9ef">]</span>
+set_dont_touch <span style="color:#66d9ef">[</span>get_nets <span style="color:#f92672">-</span>of <span style="color:#66d9ef">[</span>get_cells CORE<span style="color:#f92672">/</span>CLK_SEL<span style="color:#f92672">/</span><span style="color:#f92672">*</span><span style="color:#66d9ef">]</span> <span style="color:#f92672">-</span>segments<span style="color:#66d9ef">]</span>
+</code></pre></div>
 		</div>
 		
 	</article>
@@ -105,7 +101,7 @@ set_dont_touch [get_nets -of [get_cells CORE/CLK_SEL/*] -segments]
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

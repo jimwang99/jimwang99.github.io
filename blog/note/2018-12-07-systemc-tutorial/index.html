@@ -7,7 +7,7 @@
 	<title>SystemC Tutorial</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,132 +71,114 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#port-signal">Port &amp; signal</a></li>
-<li><a href="#threads">Threads</a></li>
-<li><a href="#datatypes">Datatypes</a></li>
-<li><a href="#reset">Reset</a></li>
-<li><a href="#simulation">Simulation</a></li>
-<li><a href="#some-advanced-topics">Some advanced topics</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#port--signal">Port & signal</a></li>
+    <li><a href="#threads">Threads</a></li>
+    <li><a href="#datatypes">Datatypes</a></li>
+    <li><a href="#reset">Reset</a></li>
+    <li><a href="#simulation">Simulation</a></li>
+    <li><a href="#some-advanced-topics">Some advanced topics</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<pre><code class="language-cpp">// Some simple example
-
-#include &lt;systemc.h&gt;
-
-SC_MODULE (seq_and2 ) { // sequential AND2
-    sc_in&lt; sc_uint&lt;8&gt; &gt;     a;
-    sc_in&lt; sc_unit&lt;8&gt; &gt;     b;
-    sc_out&lt; sc_uint&lt;8&gt; &gt;    f;
-    sc_in&lt;bool&gt;             clk;
+			<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Some simple example
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;systemc.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+SC_MODULE (seq_and2 ) { <span style="color:#75715e">// sequential AND2
+</span><span style="color:#75715e"></span>    sc_in<span style="color:#f92672">&lt;</span> sc_uint<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span>		a;
+    sc_in<span style="color:#f92672">&lt;</span> sc_unit<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span>		b;
+    sc_out<span style="color:#f92672">&lt;</span> sc_uint<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span>	f;
+    sc_in<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span>				clk;
     
-    void func() {
-        f.write( a.read() &amp; b.read() );
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>() {
+        f.write( a.read() <span style="color:#f92672">&amp;</span> b.read() );
     }
     
     SC_CTOR ( seq_and2 ) {
         SC_CTHREAD(func);
-        sensitive &lt;&lt; clk.neg();
+        sensitive <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> clk.neg();
     }
 }
-</code></pre>
-
-<h2 id="port-signal">Port &amp; signal</h2>
-
+</code></pre></div><h2 id="port--signal">Port &amp; signal</h2>
 <ul>
 <li>Port
-
 <ul>
 <li><code>sc_in</code> &amp; <code>sc_out</code></li>
 <li><code>.read()</code> &amp; <code>.write()</code> functions</li>
-</ul></li>
+</ul>
+</li>
 <li>Signal
-
 <ul>
 <li><code>sc_signal</code></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="threads">Threads</h2>
-
 <ul>
 <li><code>SC_METHOD()</code>
-
 <ul>
 <li>Just like <code>always_comb</code> in Verilog, but you have to list the sensitive list</li>
-</ul></li>
+</ul>
+</li>
 <li><code>SC_THREAD()</code>
-
 <ul>
 <li>Not commonly used</li>
 <li>Behavior like <code>initial</code> in Verilog</li>
-</ul></li>
+</ul>
+</li>
 <li><code>SC_CTHREAD(function name, clock sensitive)</code>
-
 <ul>
 <li>Most commonly used</li>
 <li>Only sensitive to clock edge, just like <code>always_ff</code> in Verilog</li>
 <li>Not limited to one cycle</li>
-</ul></li>
+</ul>
+</li>
 <li><code>sensitive</code> keyword to define the sensitive list</li>
 </ul>
-
 <h2 id="datatypes">Datatypes</h2>
-
 <ul>
-<li><p>Integers</p>
-
+<li>
+<p>Integers</p>
 <ul>
 <li><code>sc_uint&lt;N&gt;</code> &amp; <code>sc_int&lt;N&gt;</code></li>
-</ul></li>
-
-<li><p><code>.to_int()</code> convert internal datatypes to integer for print</p></li>
 </ul>
-
+</li>
+<li>
+<p><code>.to_int()</code> convert internal datatypes to integer for print</p>
+</li>
+</ul>
 <h2 id="reset">Reset</h2>
-
 <ul>
 <li><code>reset_signal_is(rst signal name, true or false for high or low active reset);</code> right after the <code>SC_CTHREAD()</code> definition</li>
 </ul>
-
 <h2 id="simulation">Simulation</h2>
-
 <ul>
 <li>Start simulation in <code>sc_main</code> (the same with <code>main</code> in normal CPP program) with <code>sc_start()</code>
-
 <ul>
 <li>With argument, <code>sc_start(N)</code> runs till time N</li>
-</ul></li>
-<li>Stop simulation in <code>sc_stop</code> anywhere you like, normally in testbench</li>
-<li>Time stamps
-<code>cpp
-sc_time ts_start_time;
-ts_start_time = sc_time_stamp();
-</code></li>
-<li>Clock period
-<code>cpp
-sc_clock *clk_p = DCAST&lt;sc_clock*&gt;(clk.get_interface()); // clk is the clock signal
-sc_time clock_period;
-clock_period = clk_p-&gt;period();
-</code></li>
 </ul>
-
-<h2 id="some-advanced-topics">Some advanced topics</h2>
-
+</li>
+<li>Stop simulation in <code>sc_stop</code> anywhere you like, normally in testbench</li>
+<li>Time stamps</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">sc_time ts_start_time;
+ts_start_time <span style="color:#f92672">=</span> sc_time_stamp();
+</code></pre></div><ul>
+<li>Clock period</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">sc_clock <span style="color:#f92672">*</span>clk_p <span style="color:#f92672">=</span> DCAST<span style="color:#f92672">&lt;</span>sc_clock<span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span>(clk.get_interface()); <span style="color:#75715e">// clk is the clock signal
+</span><span style="color:#75715e"></span>sc_time clock_period;
+clock_period <span style="color:#f92672">=</span> clk_p<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>period();
+</code></pre></div><h2 id="some-advanced-topics">Some advanced topics</h2>
 <ul>
 <li><a href="https://stackoverflow.com/questions/37597409/how-can-i-use-an-struct-as-a-signal-type-in-systemc">Use struct as signal type in SystemC</a>
-
 <ul>
-<li>The example code is good, including overriding &ldquo;==&rdquo; and &ldquo;&lt;&lt;&rdquo; operators</li>
-</ul></li>
+<li>The example code is good, including overriding &ldquo;==&rdquo; and &ldquo;&laquo;&rdquo; operators</li>
+</ul>
+</li>
 </ul>
 
 		</div>
@@ -209,16 +194,16 @@ clock_period = clk_p-&gt;period();
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/industry/2018-12-04-riscv-summit-2018/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">RISC-V Summit 2018</p></a>
+		<a class="post-nav__link" href="/blog/tutorial/2018-12-07-systemc-tutorial/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">SystemC Tutorial</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2018-12-15-riscv-v-spec/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Note of RISC-V Vector ISA Spec v0.6</p></a>
+		<a class="post-nav__link" href="/blog/architecture/2018-12-15-riscv-v-spec/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Note of RISC-V Vector ISA Spec v0.6</p></a>
 	</div>
 </nav>
 

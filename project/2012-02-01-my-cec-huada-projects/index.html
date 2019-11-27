@@ -7,7 +7,7 @@
 	<title>Some of My Projects in CEC Huada</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -62,24 +65,14 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		<nav id="TableOfContents">
-<ul>
-<li><a href="#ultra-high-frequency-rfid-design-and-low-power-optimization">Ultra-high-frequency RFID design and low power optimization</a></li>
-</ul>
-</nav>
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h1 id="ultra-high-frequency-rfid-design-and-low-power-optimization">Ultra-high-frequency RFID design and low power optimization</h1>
-
+			<h1 id="ultrahighfrequency-rfid-design-and-low-power-optimization">Ultra-high-frequency RFID design and low power optimization</h1>
 <p>Our team designed a UHF RFID product with TSMC 90nm process. My major responsibility was to reduce the power consumption to compete with world leading products. The whole RFID chip consumed about 10uW peak power.</p>
-
 <p>After ran power estimation and determined that the most energy consumed part was clock tree, due to input capacitance of flip-flops. I designed a new flip-flop with ultra-low input capacitance, which as only 4 clock transistors, using semi-dynamic technique. From post-layout simulation, the peak power is reduced by 10% to 15%, approximating the leading product on market. And this solution can be easily transferred to other chips and projects.</p>
-
 <p>To adapt this new DFF into design flow, I designed a set of Python scripts to (1) generate stimulus and netlist for HSPICE simulation; (2) gather data from HSPICE results, calculate and create Liberty timing file, because of lacking of automation tool.</p>
-
 <p>I also designed a BIST block for DFF function and delay test. And the DFF is verified by tape-out.</p>
 
 		</div>
@@ -95,7 +88,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

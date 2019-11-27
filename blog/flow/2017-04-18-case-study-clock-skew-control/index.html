@@ -7,7 +7,7 @@
 	<title>Case Study: Clock Skew Control</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -67,31 +70,28 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<p>Question: how to control the clock skew between a group of clocks to be minimum, say less than 30ps, instead of utilizing useful skew? This case happens to our hard macros.</p>
-
 <p>A: in Innovus, use skew group</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl"><span style="color:#66d9ef">set</span> min_skew_group <span style="color:#66d9ef">{</span>
+    path<span style="color:#f92672">/</span>to<span style="color:#f92672">/</span>clock<span style="color:#f92672">/</span>NLVB_CKB
+    path<span style="color:#f92672">/</span>to<span style="color:#f92672">/</span>clock<span style="color:#f92672">/</span>NLVA_CKB
+    path<span style="color:#f92672">/</span>to<span style="color:#f92672">/</span>clock<span style="color:#f92672">/</span>NLVP_CKB
+<span style="color:#66d9ef">}</span>
 
-<pre><code class="language-tcl">set min_skew_group {
-    path/to/clock/NLVB_CKB
-    path/to/clock/NLVA_CKB
-    path/to/clock/NLVP_CKB
-}
+create_ccopt_skew_group <span style="color:#960050;background-color:#1e0010">\</span>
+    -name                       min_skew_group <span style="color:#960050;background-color:#1e0010">\</span>
+    -sources                    path<span style="color:#f92672">/</span>to<span style="color:#f92672">/</span>clock<span style="color:#f92672">/</span>source<span style="color:#f92672">/</span>CKB <span style="color:#960050;background-color:#1e0010">\</span>
+    -sinks                      $min_skew_group <span style="color:#960050;background-color:#1e0010">\</span>
+    -target_insertion_delay     <span style="color:#ae81ff">0.500</span> <span style="color:#960050;background-color:#1e0010">\</span>
+    -rank                       <span style="color:#ae81ff">1</span>
+    -target_skew                <span style="color:#ae81ff">0.000</span>
 
-create_ccopt_skew_group \
-    -name                       min_skew_group \
-    -sources                    path/to/clock/source/CKB \
-    -sinks                      $min_skew_group \
-    -target_insertion_delay     0.500 \
-    -rank                       1
-    -target_skew                0.000
-
-set_ccopt_property constraints -skew_group min_skew_group ccopt
-</code></pre>
-
+set_ccopt_property constraints <span style="color:#f92672">-</span>skew_group min_skew_group ccopt
+</code></pre></div>
 		</div>
 		
 	</article>
@@ -105,7 +105,7 @@ set_ccopt_property constraints -skew_group min_skew_group ccopt
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

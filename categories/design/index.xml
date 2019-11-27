@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Design on When Moore&#39;s Law ENDS</title>
+    <title>design on When Moore&#39;s Law ENDS</title>
     <link>/categories/design/</link>
-    <description>Recent content in Design on When Moore&#39;s Law ENDS</description>
+    <description>Recent content in design on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
@@ -19,7 +19,7 @@
       <guid>/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/</guid>
       <description>When using a counter to divide a clock, don’t reset the counter, especially when you are using synchronous reset. It will make the clock quiet while reset. And if it’s used along with sync reset, then those flip-flop won’t be reset at all.
 But if without reset, the counter will be &amp;ldquo;X&amp;rdquo; in simulation.
-logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif always_ff @ (posedge clk) begin cntr &amp;lt;= cntr + 1; end  </description>
+logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&amp;#39;b00; end `endif always_ff @ (posedge clk) begin cntr &amp;lt;= cntr + 1; end </description>
     </item>
     
     <item>
@@ -29,7 +29,7 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif a
       
       <guid>/blog/design/2017-01-18-generate-example/</guid>
       <description>Some parameterized example RTL code for register-based SRAM read circuit using &amp;ldquo;generate&amp;rdquo; feature
-parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &amp;quot;generate&amp;quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &amp;lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &amp;lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp;amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &amp;lt;= word_or; end  </description>
+parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &amp;quot;generate&amp;quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &amp;lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &amp;lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp;amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &amp;lt;= word_or; end </description>
     </item>
     
     <item>
@@ -41,7 +41,6 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <description>&lt;blockquote&gt;
 &lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
     </item>
     

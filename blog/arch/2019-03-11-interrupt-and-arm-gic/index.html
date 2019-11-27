@@ -7,7 +7,7 @@
 	<title>Interrupts and ARM GIC Architecture</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,116 +71,107 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li><a href="#categorization">Categorization</a></li>
-<li><a href="#msi-message-signaled-interrupts">MSI (Message Signaled Interrupts)</a></li>
-<li><a href="#performance-issue">Performance issue</a></li>
-<li><a href="#arm-gic">ARM GIC</a>
-<ul>
-<li><a href="#categories">Categories</a></li>
-<li><a href="#interrupt-handling">Interrupt handling</a></li>
-<li><a href="#interrupt-signals-and-data-structure">Interrupt signals and data structure</a></li>
-<li><a href="#hardware-components">Hardware components</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#interrupt-handling">Interrupt handling</a></li>
+    <li><a href="#interrupt-signals-and-data-structure">Interrupt signals and data structure</a></li>
+    <li><a href="#hardware-components">Hardware components</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<p>Reference
-- <a href="https://en.m.wikipedia.org/w/index.php?title=Interrupt">Interrupt</a></p>
-
+			<p>Reference</p>
+<ul>
+<li><a href="https://en.m.wikipedia.org/w/index.php?title=Interrupt">Interrupt</a></li>
+</ul>
 <h1 id="categorization">Categorization</h1>
-
 <ul>
 <li>Hardware vs. Software
-
 <ul>
 <li>Hardware: usually caused by peripheral or other processors
-
 <ul>
 <li>IRQ: maskable interrupt</li>
-<li>NMI: non-maskable interrupt</li>
+<li>NMI: non-maskable interrupt
+<ul>
 <li>For highest priority tasks, like times, especially wathdog timers
-
 <ul>
 <li><strong><a href="https://en.m.wikipedia.org/wiki/Watchdog_timer">Wathdog timer</a></strong>: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>IPI: inter-processor interrupt</li>
-</ul></li>
+</ul>
+</li>
 <li>Software: caused by exception or special instructions that used to implement system calls</li>
-</ul></li>
+</ul>
+</li>
 <li>Interrupt vs inter-process communication signal
-
 <ul>
 <li>Interrupt: mediated by the processor (hardware); handled by the kernel</li>
 <li>Signal: mediated by the kernel (through systeam call); handled by processes
-
 <ul>
 <li>Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Precise vs imprecise interrupt
-
 <ul>
 <li>Precise interrupts has
-
 <ul>
 <li>PC and other architecture states are saved, so after interrupt handler is done the current process can resume</li>
 <li>All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Triggering methods
-
 <ul>
 <li>Physical interrupt
-
 <ul>
 <li>Level-triggered vs. Edge-triggered</li>
-</ul></li>
-<li>Message-signaled interrupts (or message-based interrupt as in ARM&rsquo;s term)
-
+</ul>
+</li>
+<li>Message-signaled interrupts (or message-based interrupt as in ARM's term)
 <ul>
 <li>Supported by PCI 2.2 and PCI-Express</li>
-</ul></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
+</li>
+</ul>
 <h1 id="msi-message-signaled-interrupts">MSI (Message Signaled Interrupts)</h1>
-
 <ul>
 <li>Triggerred by write to a memory address</li>
 <li>Can be converted from/to physical interrupt</li>
 <li>In-band vs. out-of-band
-
 <ul>
 <li>Dedicated interrupts wires are considered out-of-band, while MSI is in-band.</li>
 <li>Need hardware to convert MSI to physical interupts</li>
-</ul></li>
+</ul>
+</li>
 <li>Although use in-band network to transmit interrupt info, but it can only be used to descript the interrupt (such as source, priority) while cannot be used to carry data.</li>
 <li>Pros &amp; cons
-
 <ul>
-<li>More scalable</li>
+<li>More scalable
+<ul>
 <li>Multi-sources to multi-processors</li>
+</ul>
+</li>
 <li>Simpler, cheaper, more reliable (no interference noises)</li>
 <li>Not compatible with devices that need physical interrupts</li>
 <li>Need software support</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h1 id="performance-issue">Performance issue</h1>
-
 <ul>
 <li>Livelocks</li>
 </ul>
-
 <h1 id="arm-gic">ARM GIC</h1>
-
 <h2 id="categories">Categories</h2>
-
 <table>
 <thead>
 <tr>
@@ -187,7 +181,6 @@
 <th>SGI (software generated interrupt)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>From peripheral to local PE (processing element)</td>
@@ -195,21 +188,18 @@
 <td>From peripheral to distributor, then to PE that can accept this type of interrupt</td>
 <td>From PE to PE, typically used for inter-processor communication</td>
 </tr>
-
 <tr>
 <td>Edge-triggered behavior, message-based (???)</td>
 <td>Edge-/level-triggered, need explicit deactivation</td>
 <td>edge-/level-triggered, need explicit deactivation</td>
 <td>Edge-triggered, need explicit deactivation</td>
 </tr>
-
 <tr>
 <td>Can be routed with ITS</td>
 <td>Cannot be routed with ITS</td>
 <td>Cannot be routed with ITS</td>
 <td>Cannot be routed with ITS</td>
 </tr>
-
 <tr>
 <td>Non-secure</td>
 <td>Secure or non-secure</td>
@@ -218,107 +208,99 @@
 </tr>
 </tbody>
 </table>
-
 <p><strong>Q: if need deactivation, then there has to be some ackknowledge mechanisms. what are they???</strong></p>
-
 <h2 id="interrupt-handling">Interrupt handling</h2>
-
 <ul>
 <li>States
-
 <ul>
 <li>LPI: inactive &ndash;&gt; pending -(recognized)-&gt; inactive</li>
 <li>PPI/SPI/SGI: inactive -(assert)-&gt; pending -(recognized)-&gt; active/active-and-pending -(deassert)-&gt; inactive</li>
-</ul></li>
+</ul>
+</li>
 <li>Models of interrupt handler
-
 <ul>
 <li>Targeted distribution model
-
 <ul>
 <li>Software specify the target PE to handle this interrupt</li>
-</ul></li>
+</ul>
+</li>
 <li>Targeted list model (for SGI only)
-
 <ul>
 <li>Multi-PE receive/handle the interrupt independently</li>
-</ul></li>
+</ul>
+</li>
 <li>1 of N model (for SPI only)
-
 <ul>
 <li>Targeting multi-PE, but handled by only one of them</li>
 <li>Depends on implementation</li>
-</ul></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="interrupt-signals-and-data-structure">Interrupt signals and data structure</h2>
-
 <ul>
 <li>INTID (interrupt identifier)
-
 <ul>
 <li>If no LPI, 10-bit (compatible with earlier version GIC architecture)</li>
 <li>If with LPI, INTID can be 14-bit to 24-bit</li>
-</ul></li>
+</ul>
+</li>
 <li>Exception levels
-
 <ul>
-<li>???</li>
-</ul></li>
 <li>???</li>
 </ul>
-
+</li>
+<li>???</li>
+</ul>
 <h2 id="hardware-components">Hardware components</h2>
-
-<p><img src="block-diagram-of-gic-600.png" alt="block-diagram-of-gic-600" /></p>
-
+<p><img src="block-diagram-of-gic-600.png" alt="block-diagram-of-gic-600"></p>
 <ul>
 <li>Distributer
-
 <ul>
 <li>Handles interrupt priority, and distribute to redistributor</li>
 <li>Provides programming interface for controlling SPI, throught <code>GICD_</code> registers</li>
 <li><em>Q: the distributer can be hierarchical or not?</em>
-
 <ul>
-<li>Don&rsquo;t need to, because they can be connected using <em>free-flowing interconnect</em> or <em>system interconnect</em>, refer to GIC-600 TRM 1-14.</li>
-</ul></li>
+<li>Don't need to, because they can be connected using <em>free-flowing interconnect</em> or <em>system interconnect</em>, refer to GIC-600 TRM 1-14.</li>
+</ul>
+</li>
 <li><em>Q: why distributer needs ACE-lite port instead of AXI only? Does interrupt involves with cache coherency problem?</em>
-
 <ul>
 <li>For ACE-Lite slave port, cache coherency related ports are used to identify a cache maintanance operation; for ACE-Lite master port, they are used to issue shared-read if configured so. Refer to GIC-600 TRM 2-25</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>ITS (interrupt translation service)
-
 <ul>
 <li>Translate MSI (message-signaled interrupts) from PICe RC (root complex)</li>
 <li>Routes LPIs to target redistributor
-
 <ul>
 <li>Routing table is configured by software
-
 <ul>
 <li>EventID &ndash;&gt; INTID</li>
-</ul></li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Redistributor
-
 <ul>
 <li>One per PE</li>
 <li>Handles interrupt priority, control and LPI</li>
 <li>Provides programming interface for all sort of control, masking, priority settings, throught <code>GICR_</code> registers</li>
-</ul></li>
+</ul>
+</li>
 <li>CPU interface
-
 <ul>
 <li>One per PE</li>
 <li>Translation from physical interrupts to message-based interrupt</li>
 <li>Provide register interface for general control, priority, ack, and etc.</li>
 <li>Interrupt wbypass for legacy interrupt signal</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
 		</div>
@@ -334,7 +316,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 
@@ -343,7 +325,7 @@
 		<a class="post-nav__link" href="/blog/tool/2019-02-11-shortcut-dot-py/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">shortcut.py: A Command Line Script to Provide Macro</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/note/2019-03-18-armv8-architecture/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">ARMv8 Architecture</p></a>
+		<a class="post-nav__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">ARM Training: Cortex Processor Behaviors</p></a>
 	</div>
 </nav>
 

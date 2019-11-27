@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SystemVerilog for Design Note</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<meta name="generator" content="Hugo 0.60.0" />
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">About Me</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">SystemVerilog for Design Note</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-01-10T00:00:00">2017-01-10</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/tutorial" rel="category">tutorial</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#package">Package</a></li>
+    <li><a href="#unit-compilationunit-declarations">$unit: compilation-unit declarations</a></li>
+    <li><a href="#namedunnamed-statement-blocks">Named/unnamed statement blocks</a></li>
+    <li><a href="#timing-units-and-precision">Timing units and precision</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#literal-value-enhancement">Literal value enhancement</a></li>
+    <li><a href="#define-enhancement">DEFINE enhancement</a></li>
+    <li><a href="#variables">Variables</a></li>
+    <li><a href="#constants">Constants</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#typedef-keyword">typedef keyword</a></li>
+    <li><a href="#enumerated-types">Enumerated types</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#struct">Struct</a></li>
+    <li><a href="#union">Union</a></li>
+    <li><a href="#array">Array</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#new-opeators">New opeators</a></li>
+    <li><a href="#operand-enhancement">Operand enhancement</a>
+      <ul>
+        <li><a href="#enhanced-for-loops">Enhanced for loops</a></li>
+        <li><a href="#do--while-loops">do … while loops</a></li>
+        <li><a href="#foreach-loops">foreach loops</a></li>
+        <li><a href="#break-continue-return">break, continue, return</a></li>
+        <li><a href="#enhanced-block-names">Enhanced block names</a></li>
+        <li><a href="#statement-lables">Statement lables</a></li>
+        <li><a href="#enhanced-case">Enhanced case</a></li>
+        <li><a href="#enhanced-if--else">Enhanced if ... else</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#modeling-fsm-with-enum">Modeling FSM with enum</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#module-prototypes-extern">Module prototypes: extern</a></li>
+    <li><a href="#named-ending-statements">Named ending statements</a></li>
+    <li><a href="#nested-module">Nested module</a></li>
+    <li><a href="#simplify-module-instance">Simplify module instance</a></li>
+    <li><a href="#net-aliasing">Net aliasing</a></li>
+    <li><a href="#passing-values-through-module-ports">Passing values through module ports</a></li>
+    <li><a href="#reference-ports-ref">Reference ports ref</a></li>
+    <li><a href="#enhanced-port-declaration">Enhanced port declaration</a></li>
+    <li><a href="#parameterized-types">Parameterized types</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#concepts">Concepts</a></li>
+    <li><a href="#modport">Modport</a></li>
+    <li><a href="#taskfunction-in-interface">Task/function in interface</a></li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<blockquote>
+<p>This is my reading note of book &ldquo;SystemVerilog for Design (2nd edition)&quot;. As a non-full-time RTL designer, it has opened my mind. But still, I'm sad about the antient tool that we are using to design hardware.</p>
+</blockquote>
+<h1 id="chapter-2-systemverilog-declaration-spaces">Chapter 2: SystemVerilog Declaration Spaces</h1>
+<h2 id="package">Package</h2>
+<ul>
+<li>Verilog shortage: no global declaration</li>
+<li><code>package ... endpackage</code>
+<ul>
+<li>share user-defined type definitions across multiple modules</li>
+<li>independent of modules</li>
+<li>parameters cannot be redefined
+<ul>
+<li>in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>referencing
+<ul>
+<li><code>::</code> the scope resolution operator
+<ul>
+<li><code>package_name::package_member</code></li>
+</ul>
+</li>
+<li>use <code>import</code> to import package into current space
+<ul>
+<li><code>import package_name::package_member</code>
+<ul>
+<li>TIPS: importing an enumerated type definition will not import the labels automatically</li>
+</ul>
+</li>
+<li><code>import package_name::*</code>
+<ul>
+<li>what is used will be imported</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>$unit</code> declaration space</li>
+</ul>
+</li>
+<li>TIPS: synthesis guide
+<ul>
+<li>tasks and functions must be <code>automatic</code>
+<ul>
+<li>storage for automatic task/function is allocated each time it's called</li>
+</ul>
+</li>
+<li>cannot use <code>static</code> variables, which are supposed to be shared by all instances</li>
+</ul>
+</li>
+</ul>
+<h2 id="unit-compilationunit-declarations">$unit: compilation-unit declarations</h2>
+<ul>
+<li>declaration space <strong>outside</strong> of package/module/interface/program
+<ul>
+<li>BUT it's <strong>not</strong> global</li>
+</ul>
+</li>
+<li>if put variables and nets in $unit
+<ul>
+<li>source code order can affect the usage of a declaration external to the module</li>
+</ul>
+</li>
+<li>each <strong>compilation</strong> has one $unit
+<ul>
+<li>single-file compilation</li>
+<li>multiple-file compilation: source order is tricky</li>
+</ul>
+</li>
+<li>TIPS: coding guide
+<ul>
+<li>DONOT make any declarations in $unit space, only import packages into $unit</li>
+<li>ILLEGAL to import the same package more than once into the same $unit</li>
+<li>NOTE: donot work for global variables, static task/function</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// filename: def.pkg
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`ifdef</span> DEF_PKG
+<span style="color:#75715e">`define</span><span style="color:#75715e"> DEF_PKG</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#f92672">package</span> def;
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">endpackage</span>
+<span style="color:#66d9ef">`endif</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// in every design or testbench file that need package &#34;def&#34;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`include</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">def.pkg</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><ul>
+<li>identifier search rules</li>
+</ul>
+<ol>
+<li>local</li>
+<li>package
+<ul>
+<li>named first</li>
+<li><code>*</code> wildcard second</li>
+</ul>
+</li>
+<li><code>$unit</code></li>
+<li>design hierarchy</li>
+</ol>
+<ul>
+<li>TIPS: synthesis guide
+<ul>
+<li>use packages instead of $unit</li>
+<li>external task/function must be automatic</li>
+</ul>
+</li>
+</ul>
+<h2 id="namedunnamed-statement-blocks">Named/unnamed statement blocks</h2>
+<ul>
+<li>local variables in named blocks can be accessed hierarchically</li>
+<li>local variables in unnamed blocks (added in SV) has no hierarchical path
+<ul>
+<li>protecting from external, cross-module referencing</li>
+</ul>
+</li>
+</ul>
+<h2 id="timing-units-and-precision">Timing units and precision</h2>
+<ul>
+<li>problem with Verilog's timescale directive: file order dependent</li>
+<li>SystemVerilog improvements
+<ul>
+<li>time value with time units: 5ns, 3.2ps
+<ul>
+<li>NOTE: there is no space between number and unit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>scope-level time units and precision: timeunit &amp; timeprecision keywords
+<ul>
+<li>must be immediately after module/interface/program declaration</li>
+</ul>
+</li>
+<li>search order</li>
+</ul>
+<ol>
+<li>local</li>
+<li>parent module/interface</li>
+<li><code>timescale</code> in effect while compilation</li>
+<li>defined in $unit</li>
+<li>simulator default</li>
+</ol>
+<h1 id="chapter-3-systemverilog-literal-values-and-builtin-data-types">Chapter 3: SystemVerilog Literal Values and Built-in Data Types</h1>
+<h2 id="literal-value-enhancement">Literal value enhancement</h2>
+<ul>
+<li>Verilog tricks to fill vector with all ones
+<ul>
+<li><code>data = ~0;  // one's complement</code></li>
+<li><code>data = -1;  // two's complement</code></li>
+</ul>
+</li>
+<li>SystemVerilog: apostrophe(tick) ( ' ) (Note: not back-tick ( ` ))
+<ul>
+<li><code>data = '1;  // all 1's</code></li>
+<li><code>data = 'z;  // all z's</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="define-enhancement">DEFINE enhancement</h2>
+<ul>
+<li>String</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// Verilog
+</span><span style="color:#75715e"></span><span style="color:#75715e">`define</span><span style="color:#75715e"> print(v) $display(&#34;variable v = %h&#34;, v)</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`print</span>(data); <span style="color:#75715e">// = $display(&#34;variable v = %h&#34;, data);
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// SystemVerilog
+</span><span style="color:#75715e"></span><span style="color:#75715e">`define</span><span style="color:#75715e"> print(v) $display(`&#34;varaible v = %h`&#34;, v)</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`print</span>(data);  <span style="color:#75715e">// = $display(&#34;variable data = %h&#34;, data);
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// SystemVerilog: escape with double `
+</span><span style="color:#75715e"></span><span style="color:#75715e">`define</span><span style="color:#75715e"> print(v) $display(`&#34;varaible `\`&#34;v`\`&#34; = %h`&#34;, v)</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`print</span>(data);  <span style="color:#75715e">// = $display(&#34;varaible \&#34;data\&#34; = %h&#34;, data);
+</span></code></pre></div><ul>
+<li>Construct identifier names: double back-tick w/o space will separate names that will allow 2 or more names to be replaced and form a new name.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">`define</span><span style="color:#75715e"> MY_NET(index) bit my_net``index``_bit;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`MY_NET</span>(<span style="color:#ae81ff">00</span>)  <span style="color:#75715e">// = bit my_net00_bit;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`MY_NET</span>(<span style="color:#ae81ff">15</span>)  <span style="color:#75715e">// = bit my_net15_bit;
+</span></code></pre></div><h2 id="variables">Variables</h2>
+<ul>
+<li>Type
+<ul>
+<li>Net: &ldquo;wire&rdquo; keyword, only 4-state</li>
+<li>Variable: &ldquo;var&rdquo; keyword, most of the time it can be omitted</li>
+</ul>
+</li>
+<li>Data type: value system
+<ul>
+<li>2-state: &ldquo;bit&rdquo; keyword</li>
+<li>4-state: &ldquo;logic&rdquo; keyword (to replace &ldquo;reg&rdquo; keyword)</li>
+</ul>
+</li>
+<li>Explicit &amp; implicit (shit-hole of SystemVerilog)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// 4-state 8-bit varaible
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] busA;
+<span style="color:#75715e">// to be explicitly
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] busA;
+
+<span style="color:#75715e">// 2-state 32-bit variable
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">bit</span> [<span style="color:#ae81ff">31</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] busB;
+<span style="color:#75715e">// to be explicitly
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#66d9ef">bit</span>[<span style="color:#ae81ff">31</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] busB;
+
+<span style="color:#75715e">// 4-state 8-bit net
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">wire</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] busC;
+<span style="color:#75715e">// to be explicitly
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">wire</span> <span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] busC;
+
+<span style="color:#66d9ef">wire</span> <span style="color:#66d9ef">reg</span> [<span style="color:#ae81ff">31</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] busD; <span style="color:#75715e">// ILLEGAL
+</span></code></pre></div><ul>
+<li>Signed vs. Unsigned
+<ul>
+<li>Concatenation automatic create <code>unsigned</code> result</li>
+<li><code>logic</code> are unsigned by default</li>
+<li><code>int</code> are signed by default</li>
+<li>syntax: <code>&lt;type&gt; &lt;signed/unsigned&gt; &lt;bit width&gt; &lt;name&gt;;</code></li>
+</ul>
+</li>
+<li>TIPS: synthesis guide
+<ul>
+<li>Because 2-state data types begins simulation with default 0 instead of X, if they are used in RTL may cause RTL behavior mismatch gate-level netlist. So they are mostly used in verification</li>
+<li>Converting from 4-state to 2-state, X and Z are mapped to 0</li>
+</ul>
+</li>
+<li>High level data type:
+<ul>
+<li>2-state data type: used for abstract model or DPI (Direct Programming Interface) to work with C/C++ model
+<ul>
+<li><code>byte</code>: 8-bit</li>
+<li><code>shortint</code>: 16-bit</li>
+<li><code>int</code>: 32-bit</li>
+<li><code>longint</code>: 64-bit</li>
+</ul>
+</li>
+<li><code>void</code>: no storage</li>
+<li><code>shortreal</code>: 32-bit single-precision = float in C, while <code>real</code> = double in C</li>
+<li><code>classes</code>: not covered in this book</li>
+</ul>
+</li>
+<li>NOTE: Most signals can be declared as <code>logic</code> in RTL
+<ul>
+<li><code>logic</code> for single-driver</li>
+<li><code>wire</code> for multi-driver logic (wand/wor)</li>
+</ul>
+</li>
+<li>Value drivers
+<ul>
+<li>Any number of <code>initial</code> or <code>always</code> blocks
+<ul>
+<li>NOTE: it's only for back-compatable with Verilog which is not really circuit behavior</li>
+</ul>
+</li>
+<li>Single <code>always_comb/always_ff/always_latch</code> block</li>
+<li>Single <code>assign</code> statement</li>
+<li>Single <code>module/primitive output/inout</code></li>
+</ul>
+</li>
+<li>Type casting
+<ul>
+<li>Static casting (synthesizable)
+<ul>
+<li>Size casting: <code>&lt;size&gt;'(&lt;expression&gt;)</code>
+<ul>
+<li>ex. <code>16'(2) // 16-bit wide</code></li>
+</ul>
+</li>
+<li>Sign casting: <code>&lt;sign&gt;'(&lt;expression&gt;)</code>
+<ul>
+<li>ex. <code>signed'({a, b}) // unsigned concatenation result to signed</code></li>
+</ul>
+</li>
+<li>Dynamic casting (has error check)
+<ul>
+<li>ex. <code>cast(dest_var, source_exp);</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Varaible initialization
+<ul>
+<li>SystemVerilog in-line initialization is before time zero and does not cause a simulation event</li>
+<li>Testbench should initialize varaibles to their inactive state</li>
+</ul>
+</li>
+<li>Static and automatic variables
+<ul>
+<li><code>static</code> vs <code>automatic</code>
+<ul>
+<li>Storage</li>
+<li>Automatic variables can be used for re-entrant tasks and recursive functions.</li>
+</ul>
+</li>
+<li>Module level, all varaibles are static</li>
+<li><code>begin … end</code> and <code>fork … join</code> blocks, tasks and functions, all storage defaults to static</li>
+<li>Automatic tasks and functions have all automatic storages</li>
+<li>Initialization
+<ul>
+<li>Static variables are only initialized once</li>
+<li>Automatic variables are initialized each call</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="constants">Constants</h2>
+<ul>
+<li>Verilog
+<ul>
+<li><code>parameter</code>: can be redefined when instantiation</li>
+<li><code>specparam</code>: can be redefined from SDF</li>
+<li><code>localparam</code>: elaboration-time constant, cannot be directly redefined</li>
+</ul>
+</li>
+<li>SystemVerilog: C-like const keyword
+<ul>
+<li><code>const int N = 5;</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-4-systemverilog-userdefined-and-enumerated">Chapter 4: SystemVerilog User-Defined and Enumerated</h1>
+<h2 id="typedef-keyword"><code>typedef</code> keyword</h2>
+<p>Ex. <code>typedef int unsigned uint;</code></p>
+<ul>
+<li>Local &amp; shared
+<ul>
+<li>Local: within a       module/interface, scope is limited locally</li>
+<li>Shared: use package and       import; or import to $unit</li>
+</ul>
+</li>
+<li>Naming convention
+<ul>
+<li>End with <code>_t</code>, the same as C</li>
+</ul>
+</li>
+</ul>
+<h2 id="enumerated-types">Enumerated types</h2>
+<ul>
+<li>Verilog vs SystemVerilog
+<ul>
+<li>Verilog: use constants       to represent enumerated types
+<ul>
+<li>But nothing would        limit the value of enum varaibles, will cause error</li>
+<li>Need <code>fullcase</code> directive</li>
+</ul>
+</li>
+<li>SystemVerilog: enum
+<ul>
+<li>Self-doc, easier to        debug</li>
+<li>Value check</li>
+<li>All tools deal with        enum the same way</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>import package_name::*</code>
+<ul>
+<li>Import the enum type       will not automatically import labels</li>
+</ul>
+</li>
+<li>Define list of labels</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">enum</span> {RESET, WAIT[<span style="color:#ae81ff">2</span>], WORK[<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>], CLEAN[<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>]} state;
+<span style="color:#75715e">// RESET, WAIT0, WAIT1, WAIT2, WORK3, WORK4, WORK5, CLEAN3, CLEAN2, CLEAN1, CLEAN0 (&#34;[&#34; and &#34;]&#34; are discarded)  
+</span></code></pre></div><ul>
+<li>Label
+<ul>
+<li>Must be unique in naming scope, so it's required to add prefix to the label</li>
+</ul>
+</li>
+<li>Values
+<ul>
+<li>Default to be       &ldquo;int&rdquo; and start from 0</li>
+<li>Can be specified       explicitly</li>
+<li>
+<ul>
+<li>One-hot, one-code,        Johnson-count, Gray-code, etc.</li>
+</ul>
+</li>
+<li>Must be unique</li>
+</ul>
+</li>
+<li>Types
+<ul>
+<li>Default to be <code>int</code></li>
+<li>Can be specified explicitly
+<ul>
+<li><code>Bit, logic</code></li>
+<li>Ex. <code>enum logic [2:0] {WAIT = 3'b001, LOAD = 3'b010, READY = 3'b100} state;</code></li>
+</ul>
+</li>
+<li>4-state could be Z or X
+<ul>
+<li>But the next lable        after Z or X should be given value explicitly (otherwise tools don't know how to increase value automatically)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Typed enumerated type vs. anonymous enumerated type
+<ul>
+<li><code>typedef enum {WAIT, LOAD, READY} state_t;</code></li>
+</ul>
+</li>
+<li>Type check
+<ul>
+<li>Most variables are loosely typed
+<ul>
+<li>Any value can be assigned to a variable, just has to be cast implicitly</li>
+</ul>
+</li>
+<li>Enum is strongly typed</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">enum</span> {  
+    WAIT, LOAD, READY  
+} state_t;  
+state_t state, next_state; <span style="color:#75715e">// actually is stored as int  
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> foo;
+state <span style="color:#f92672">=</span> next_state;  
+foo <span style="color:#f92672">=</span> state <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;  
+state <span style="color:#f92672">=</span> foo <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// ILLEGAL  
+</span><span style="color:#75715e"></span>state <span style="color:#f92672">=</span> state <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// ILLEGAL  
+</span><span style="color:#75715e"></span>state<span style="color:#f92672">+</span><span style="color:#f92672">+</span>; <span style="color:#75715e">// ILLEGAL  
+</span><span style="color:#75715e"></span>next_state <span style="color:#f92672">+</span><span style="color:#f92672">=</span> state; <span style="color:#75715e">// ILLEGAL  
+</span></code></pre></div><ul>
+<li>Casting
+<ul>
+<li><code>next_state = state_t'(state++); // legal: synthesizable, no value check, maybe out-of-range</code></li>
+<li><code>$case(next_state, state+ 1); // legal: not synthesizable, with value check, slower in simulation</code></li>
+</ul>
+</li>
+<li>System methods (similar to C++ syntax)
+<ul>
+<li><code>${enum_varaible_name}.first/last/next(&lt;N&gt;)/prev(&lt;N&gt;)/num/name</code>
+<ul>
+<li><code>*.name</code> return a string</li>
+<li>If current value is not a valid value defined, next/prev return the first element</li>
+<li><code>*.next/prev</code> will wrap around</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-5-systemverilog-arrays-structures-and-unions">Chapter 5: SystemVerilog Arrays, Structures and Unions</h1>
+<h2 id="struct">Struct</h2>
+<ul>
+<li>Struct vs. array
+<ul>
+<li>Array: collection of elements with the same type and size; reference by index</li>
+<li>Struct: collection of varaibles/constants can be diff types and sizes; reference by name</li>
+</ul>
+</li>
+<li>Struct vs. interface
+<ul>
+<li>Struct usually for variables, can be defined inside of interface</li>
+<li>Inferface are net type, cannot be defined inside of struct</li>
+</ul>
+</li>
+<li>Use <code>typedef</code> to give a name to <code>struct</code> and reuse it</li>
+<li>Assigning value to structures
+<ul>
+<li>New &ldquo;<code>{ }</code> token
+<ul>
+<li><code>IW = '{100, 5, 8'hFF, 0};</code></li>
+</ul>
+</li>
+<li>By name
+<ul>
+<li><code>IW.a = 100; IW.b = 5;</code></li>
+</ul>
+</li>
+<li>Combine these two
+<ul>
+<li><code>IW = '{address:0, opcode:8'hFF, a:100, b:5}</code></li>
+</ul>
+</li>
+<li>Default value
+<ul>
+<li><code>IW = '{default:0}; // all members by default is 0</code></li>
+<li><code>IW = '{default:0, a:100}; // all members is 0 by default, except a is 100</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Packed vs. unpacked
+<ul>
+<li>By default, it's upacked</li>
+<li>Use <code>packed</code> keyword to defined packed structure
+<ul>
+<li>All members are stored as contiguous bits</li>
+<li>Then members can be reference as vector with bit/range position.</li>
+<li>Can only contain integral values (not real or shortreal)</li>
+<li><code>signed</code> or <code>unsigned</code></li>
+<li>
+<ul>
+<li>Treat the <strong>whole vector</strong> of packed structure as singed/unsinged</li>
+<li>Each member can still be signed/unsigned independently</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Passing struct through module/interface ports and task/function argument
+<ul>
+<li>NOTE: when passing <strong>unpacked</strong> struct, both sides should have exactly the same type, while anonymous struct declared in 2 diff modules, even if with the same names/members, are not the same type of struct</li>
+</ul>
+</li>
+<li>Synthesis guide
+<ul>
+<li>Both unpacked and packed struct are synthesizable</li>
+</ul>
+</li>
+</ul>
+<h2 id="union">Union</h2>
+<ul>
+<li>Union is a single storage element that can have multiple representation
+<ul>
+<li>Ex. One 8-bit data can either be signed or unsigned with diff configuration</li>
+</ul>
+</li>
+<li>The same with struct, use <code>typedef</code> to reuse</li>
+<li>Unpacked union
+<ul>
+<li>NOT synthesizable</li>
+</ul>
+</li>
+<li>Tagged union
+<ul>
+<li><code>tagged</code> keyword</li>
+<li>Check whether the union is used in a consistent way
+<ul>
+<li>Write to one member, then read from another is dangerous</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Packed union
+<ul>
+<li>Synthesizable</li>
+<li>All memebers have the same size
+<ul>
+<li>Allow write to one format then read from another</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// example: represent packed struct in array of bytes  
+</span><span style="color:#75715e"></span>Union <span style="color:#66d9ef">packed</span> {  
+    data_package_t packet; <span style="color:#75715e">// packed structure  
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">logic</span>[<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span><span style="color:#f92672">*</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">*</span><span style="color:#f92672">*</span>; <span style="color:#75715e">// packed array  
+</span><span style="color:#75715e"></span>} datareg;  
+</code></pre></div><h2 id="array">Array</h2>
+<ul>
+<li>Unpacked arrays
+<ul>
+<li>Verilog limitation: restrict access to arrays to just one element of the array at at time
+<ul>
+<li>SystemVerilog refer Verilog style array as unpacked arrays</li>
+<li>Elements are stored independently, just grouped under the same array name</li>
+</ul>
+</li>
+<li>SystemVerilog improvement: reference the entire/slice of an array</li>
+<li>
+<ul>
+<li>A slice is one or more contiguously numbered elements within one dimension of an array</li>
+<li>Assignment of this type: left-hand &amp; right-hand should have identical layout and types</li>
+</ul>
+</li>
+<li>Simplified declarations
+<ul>
+<li><code>logic [31:0] data [1024]; // logic [31:0] data [0:1023]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Packed arrays
+<ul>
+<li>Vector = packed arrays
+<ul>
+<li>Any vector operation can be performed on packed arrays</li>
+</ul>
+</li>
+<li>Only bit-wise types can be packed arrays
+<ul>
+<li>Bit/logic/reg or net types</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Unpacked vs packed arrays
+<ul>
+<li>Unpacked: model memories &amp; abstract types</li>
+<li>Packed: vectors with sub-fields</li>
+</ul>
+</li>
+<li>Assignment
+<ul>
+<li>Packed array is assigned the same as vector
+<ul>
+<li>Concatenated operator, repicate operation</li>
+</ul>
+</li>
+<li>Unpacked array
+<ul>
+<li><code>{ }</code> and <code>{n{ }}</code> keyword</li>
+</ul>
+</li>
+<li>Default value
+<ul>
+<li><code>int a [0:7][0:1023] = '{default: 8'h55};</code></li>
+</ul>
+</li>
+<li>Copy
+<ul>
+<li>Unpacked array copy only can between the same array with the same number of dimensions and element size, and are of the same types</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Indexing</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog">    <span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] mixed_array [<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">7</span>][<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">7</span>][<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span><span style="color:#ae81ff">7</span>];
+<span style="color:#75715e">//  ______|-4-||-5-|_____________|-1-||-2-||-3-| &lt;- order
+</span></code></pre></div><ul>
+<li>Typedef with array</li>
+<li>Array of struct and union</li>
+<li>Array in struct and union</li>
+<li>Passing
+<ul>
+<li>Any number of       dimensions can be passed through ports or task/function arguments</li>
+</ul>
+</li>
+<li><code>foreach</code> keyword to iterate array elements</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">int</span> sum[<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>][<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>];
+foreach(sum[i, j])
+  sum[i][j] <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> j;
+</code></pre></div><ul>
+<li>Array query system function
+<ul>
+<li><code>$dimensions(array_name)</code>
+<ul>
+<li>Number of dimension</li>
+</ul>
+</li>
+<li><code>$left/right/low/high(array_name, dimension)</code>
+<ul>
+<li>Boundary of dimension</li>
+</ul>
+</li>
+<li><code>$size(array_name, dimension)</code>
+<ul>
+<li>Size of dimension</li>
+</ul>
+</li>
+<li><code>$increment(array_name, dimension)</code>
+<ul>
+<li>1 or -1</li>
+</ul>
+</li>
+<li><code>$bits(expression)</code>
+<ul>
+<li>Size-of &ldquo;expression&rdquo;, expression could be any type of data or slices</li>
+</ul>
+</li>
+<li>All these system functions are synthesizable</li>
+</ul>
+</li>
+<li>Dynamic types are covered in verification that's NOT synthesizable
+<ul>
+<li>Dynamic arrays</li>
+<li>Associative arrays</li>
+<li>Sparse arrays</li>
+<li>Strings (character arrays)</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-6-systemverilog-procedural-blocks-tasks-and-functions">Chapter 6: SystemVerilog Procedural Blocks, Tasks and Functions</h1>
+<h1 id="always-procedual-block"><code>always</code> procedual block</h1>
+<ul>
+<li>Verilog limitation
+<ul>
+<li><code>always</code> could be combinational or latched or sequential</li>
+<li>EDA tool must infer design intent from cotent, which might differ from the real intent</li>
+</ul>
+</li>
+<li>SystemVerilog improvement
+<ul>
+<li>New keywords: <code>always_comb</code> &amp; <code>always_latch</code> &amp; <code>always_ff</code></li>
+</ul>
+</li>
+<li><code>always_comb</code> (adv. vs. <code>always @ *</code>)
+<ul>
+<li>NO need to specify sensitivity list, auto infer
+<ul>
+<li>Eliminate the risk of incorrect sensitivity list</li>
+<li>Includes the signals read within any functions called from the block
+<ul>
+<li>Some functions may not list all the signals their read as argument</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Assignment only happens in current block, to avoid multi-driven problem (which is legal in Verilog syntax)</li>
+<li>Clear design intent
+<ul>
+<li>Tool will issue warning if content doesn’t represent combinational logic</li>
+</ul>
+</li>
+<li>Automatic evaluation at time zero, after initial/always activation
+<ul>
+<li>Important for some special case to get correct init value, instead of default value. The book here gave a very interesting corner case of a state machine, at page 145.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Extra good practice tip about break-down code into managable pieces: multi always block vs. functions
+<ul>
+<li>Multi-always: many signals propagate through several procedural blocks</li>
+<li>Function is better (maybe even better if use unit test)</li>
+</ul>
+</li>
+<li><code>always_latch</code>
+<ul>
+<li>Same sensitivity list inferring with <code>always_comb</code></li>
+</ul>
+</li>
+<li><code>always_ff</code>
+<ul>
+<li>Tool will verify if content represent sequential logic (synthesize requirement)
+<ul>
+<li>Every signal in the sensitivity list must be qualified with <code>posedge</code> or <code>negedge</code></li>
+<li>Event control must be from sensitivity list</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="taskfunction"><code>task`/</code>function`</h1>
+<ul>
+<li>Inferred <code>begin … end</code></li>
+<li><code>return</code>
+<ul>
+<li>Return variable explicitly, instead of using function name variable</li>
+<li>End function before going through to the end of code</li>
+</ul>
+</li>
+<li><code>void</code> type function (C-style)
+<ul>
+<li>No return function</li>
+<li>But can have <code>output</code></li>
+</ul>
+</li>
+<li>For synthesis, use <code>function void</code> instead of <code>task</code></li>
+<li>Argument
+<ul>
+<li>Named argument when using
+<ul>
+<li>Ex. divide(.denominator(b), numerator(a));</li>
+</ul>
+</li>
+<li><code>input/output/inout</code> argument
+<ul>
+<li>By default, <code>input</code></li>
+</ul>
+</li>
+<li>No argument
+<ul>
+<li>To break-down code into managable pieces</li>
+</ul>
+</li>
+<li>Default value
+<ul>
+<li>Missing argument when using</li>
+</ul>
+</li>
+<li>Arrays, structures and unions as argument
+<ul>
+<li>Use <code>typedef</code></li>
+</ul>
+</li>
+<li><strong>Reference</strong> instead of copy
+<ul>
+<li>Normally, inputs are copied when called, outputs are also copied when finished</li>
+<li>Verilog still can use <code>reference</code> with hardcoded hierarchical name of signals. But it’s very poor in reusablility.</li>
+<li>New <code>ref</code> keyword (instead of input/output/inout)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Only automatic task/function can have <code>ref</code> arguments
+<ul>
+<li>New <code>const ref</code> keyword to define read-only reference arguments</li>
+<li>(used in task) Allows sensitivity to changes</li>
+</ul>
+</li>
+<li>Can be used to trigger event</li>
+<li>Can be used to read/write value in real-time (if have event/timing control)
+<ul>
+<li>Restriction with <code>output/inout/ref</code> argument
+<ul>
+<li>Not from an event expression</li>
+<li>Not from a continuous assignment</li>
+<li>Not from outside procedural statement</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Named task/function: better readability
+<ul>
+<li><code>endtask : &lt;task_name&gt;</code></li>
+<li><code>endfunction : &lt;function_name&gt;</code></li>
+</ul>
+</li>
+<li>Empty task/function as place holder</li>
+</ul>
+<h1 id="chapter-7-systemverilog-procedural-statements">Chapter 7 SystemVerilog Procedural Statements</h1>
+<h2 id="new-opeators">New opeators</h2>
+<ul>
+<li><code>++</code> &amp; <code>--</code> operators
+<ul>
+<li><code>i++</code> is post-increment, while <code>++i</code> is pre-increment
+<ul>
+<li>i = 10; j = i++; // j = 10, i = 11</li>
+<li>i = 10; j = ++i; // j = 11, i = 11</li>
+</ul>
+</li>
+<li>Behave as blocking assignments, so avoid using them where non-blocking is required</li>
+</ul>
+</li>
+<li>Combination of operation with assignment
+<ul>
+<li><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>&amp;=</code>, <code>|=</code>, <code>^=</code>, <code>&lt;&lt;=</code>, <code>&gt;&gt;=</code>, <code>&lt;&lt;&lt;=</code>, <code>&gt;&gt;&gt;=</code>
+<ul>
+<li>Where <code>&lt;&lt;&lt;</code> and <code>&gt;&gt;&gt;</code> are arithmetic shifting while treating target as signed number, and do sign expansion when needed</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Wildcard equality operator <code>==?</code> and <code>!=?</code>
+<ul>
+<li>Allow don’t care bits: X, Z or ?</li>
+<li>While original <code>==</code> and <code>!=</code> will return unknown (bit x) if either operand is X or Z</li>
+<li>Notice: expand vector to same size before comparison. This can be dangerous.</li>
+<li>Synthesizable: right hand operand must be constant expressions</li>
+</ul>
+</li>
+<li>Membership operator: <code>inside</code>
+<ul>
+<li><code>if ( a inside {3'b001, 3'b010, 3'b100} )</code> = <code>if ( (a==3'b001) || (a==3'b010) || (a==3'b100) )</code></li>
+<li>Right-hand value could be array</li>
+<li>Use X or Z to represent don’t care</li>
+<li>Can be used in case statement</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">case</span> (instruction) inside
+<span style="color:#ae81ff">4</span><span style="color:#ae81ff">&#39;b0</span><span style="color:#f92672">?</span><span style="color:#f92672">?</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span> ...
+<span style="color:#ae81ff">4</span><span style="color:#ae81ff">&#39;b1000</span>, <span style="color:#ae81ff">4</span><span style="color:#ae81ff">&#39;b1100</span><span style="color:#f92672">:</span> ...
+<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> ...
+<span style="color:#66d9ef">endcase</span>
+</code></pre></div><ul>
+<li>Synthesizable: right hand operand must be constant expressions</li>
+</ul>
+<h2 id="operand-enhancement">Operand enhancement</h2>
+<ul>
+<li>Type casting
+<ul>
+<li>In Verilog, there is no explicit type casting method</li>
+<li><code>type'(expression)</code></li>
+</ul>
+</li>
+<li>Size casting
+<ul>
+<li><code>size'(expression)</code></li>
+</ul>
+</li>
+<li>Sign casting
+<ul>
+<li><code>signed'(expression)</code></li>
+<li><code>unsinged'(expression)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="enhanced-for-loops">Enhanced <code>for</code> loops</h3>
+<ul>
+<li>Local variables within <code>for</code> loop
+<ul>
+<li>Ex. <code>for (int i=0; I &lt;=15; i++)</code></li>
+<li>Prevent interference between for loops</li>
+<li>They are automatic type</li>
+<li>Doesn't exist outside <code>for</code> loop
+<ul>
+<li>If want to be used after for loop, must be declared outside</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Multi <code>for</code> loop
+<ul>
+<li>Ex. <code>for (int i=1, byte j=0; i*j &lt; 128; i++, j+=3)</code></li>
+</ul>
+</li>
+<li>Named procedual blocks, to access local variables
+<ul>
+<li>But variable within <code>for</code> loop cannot be accessed hierarchically, must be declared outside <code>for</code> loop inside named procedual block</li>
+</ul>
+</li>
+</ul>
+<h3 id="do--while-loops"><code>do … while</code> loops</h3>
+<ul>
+<li>A while loop might not execute at all</li>
+<li>Synthesizable: statically determine how many times a loop will execute</li>
+</ul>
+<h3 id="foreach-loops"><code>foreach</code> loops</h3>
+<ul>
+<li>To interate elements of single- and multi-dimentional arrays</li>
+</ul>
+<h3 id="break-continue-return"><code>break</code>, <code>continue</code>, <code>return</code></h3>
+<ul>
+<li>C-style jump statements, to replace old <code>disable</code> statement</li>
+<li>More intuitive and concise</li>
+</ul>
+<h3 id="enhanced-block-names">Enhanced block names</h3>
+<ul>
+<li>Named <code>end</code> to paire with named <code>begin</code></li>
+<li>For readability</li>
+</ul>
+<h3 id="statement-lables">Statement lables</h3>
+<ul>
+<li>For readability</li>
+<li><!-- raw HTML omitted --> : <!-- raw HTML omitted --></li>
+<li>Illegal to have both label and name</li>
+</ul>
+<h3 id="enhanced-case">Enhanced <code>case</code></h3>
+<ul>
+<li><code>unique case</code>
+<ul>
+<li>= parallel case + full case</li>
+<li>Runtime check
+<ul>
+<li>Pros:  actual value will be checked, no false alarm</li>
+<li>Cons: dependent on the thoroughneess of the verification tests</li>
+</ul>
+</li>
+<li>Clear design intent</li>
+</ul>
+</li>
+<li><code>priority case</code>
+<ul>
+<li>= full case</li>
+<li>Runtime check</li>
+<li>Notice: if it's not full case, latches can be inferred</li>
+</ul>
+</li>
+</ul>
+<h3 id="enhanced-if--else">Enhanced <code>if ... else</code></h3>
+<ul>
+<li><code>unique if ... else</code>
+<ul>
+<li>The order of the decisions is not important</li>
+<li>Cannot have overlapping conditions (similar to parallel case)</li>
+</ul>
+</li>
+<li><code>priority if ... else</code>
+<ul>
+<li>Clearly defined design intent</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-8-modeling-finite-state-machines-with-systemverilog">Chapter 8: Modeling Finite State Machines with SystemVerilog</h1>
+<p>This chapter gives some simple example of FSM code featuring SystemVerilog new keywords, such as <code>enum</code>, <code>always_comb</code>, <code>always_ff</code>, <code>unique case</code>.</p>
+<h2 id="modeling-fsm-with-enum">Modeling FSM with <code>enum</code></h2>
+<ul>
+<li>3 blocks to model an FSM
+<ul>
+<li>Incrementing state</li>
+<li>Determine the next state</li>
+<li>Set output</li>
+</ul>
+</li>
+<li>Using <code>enum</code> without explicitly specified value
+<ul>
+<li>Cause mismatch in value between RTL and gate-level netlist</li>
+<li>Cause difficulty with assertion to work for both RTL and gate-level netlist</li>
+<li>So, DO specify value for <code>enum</code>
+<ul>
+<li>Can use <code>one-hot</code>, <code>one-cold</code>, <code>Gray code</code>, etc.</li>
+</ul>
+</li>
+<li>Synthesis compiler may try to optimize these explicitly defined values</li>
+</ul>
+</li>
+<li>Reversed case statement
+<ul>
+<li>The following example is seemly complicated (overkill), but actually have 2 advantages
+<ul>
+<li>Eliminate the possibility to define wrong one-hot/cold state value</li>
+<li>Easier for future extension</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Unique and parallel case (refer to Chapter 7)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">module</span> traffic_light (
+<span style="color:#66d9ef">output</span> <span style="color:#66d9ef">logic</span>    green_light,
+                yellow_light,
+                red_light,
+<span style="color:#66d9ef">input</span>           sensor,
+<span style="color:#66d9ef">input</span> [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]    green_downcnt,
+                yellow_downcnt,
+<span style="color:#66d9ef">input</span>           clk, rstb
+);
+
+<span style="color:#75715e">// index of RED/GREEN/YELLOW bit in the state register
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> {  R_BIT <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>,
+        G_BIT <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
+        Y_BIT <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+} state_bit;
+
+<span style="color:#75715e">// state register
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] {  RED     <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> R_BIT,
+                    GREEN   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> G_BIT,
+                    YELLOW  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> Y_BIT
+} state, next_state;
+
+<span style="color:#66d9ef">always_ff</span> @ (<span style="color:#66d9ef">posedge</span> clk, <span style="color:#66d9ef">negedge</span> rstb) <span style="color:#66d9ef">begin</span> <span style="color:#f92672">:</span> step_forward
+<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>rstb) <span style="color:#66d9ef">begin</span>
+    state <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> RED;
+<span style="color:#66d9ef">end</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">begin</span>
+    state <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> next_state;
+<span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span> <span style="color:#f92672">:</span> step_forward
+
+<span style="color:#66d9ef">always_comb</span> <span style="color:#66d9ef">begin</span> <span style="color:#f92672">:</span> set_next_state
+unique <span style="color:#66d9ef">case</span> (<span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b1</span>)      <span style="color:#75715e">// reversed case statement
+</span><span style="color:#75715e"></span>state[R_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
+    <span style="color:#66d9ef">if</span> (sensor) <span style="color:#66d9ef">begin</span>
+        next_state <span style="color:#f92672">=</span> GREEN;
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+state[G_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
+    <span style="color:#66d9ef">if</span> (green_downcnt <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
+        next_state <span style="color:#f92672">=</span> YELLOW;
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+state[Y_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
+    <span style="color:#66d9ef">if</span> (yellow_downcnt <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
+        next_state <span style="color:#f92672">=</span> RED;
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">endcase</span>
+<span style="color:#66d9ef">end</span> <span style="color:#f92672">:</span> set_next_state
+
+<span style="color:#66d9ef">always_comb</span> <span style="color:#66d9ef">begin</span> <span style="color:#f92672">:</span> set_output
+unique <span style="color:#66d9ef">case</span> (<span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b1</span>)
+state[R_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
+    red_light       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b1</span>;
+    green_light     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b0</span>;
+    yellow_light    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b0</span>;
+<span style="color:#66d9ef">end</span>
+state[G_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
+    red_light       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b0</span>;
+    green_light     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b1</span>;
+    yellow_light    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b0</span>;
+<span style="color:#66d9ef">end</span>
+state[Y_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
+    red_light       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b0</span>;
+    green_light     <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b0</span>;
+    yellow_light    <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#ae81ff">&#39;b1</span>;
+<span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">endcase</span>
+<span style="color:#66d9ef">end</span> <span style="color:#f92672">:</span> set_output
+
+<span style="color:#66d9ef">endmodule</span>
+</code></pre></div><ul>
+<li>Specify unused state values
+<ul>
+<li>In Verilog, we used to have <code>default: next_state = 3’bxxx;</code> to tell synthesis compiler that the default case is an unused value.</li>
+<li>In SystemVerilog, we can use either <code>unique case</code> or <code>parallel case</code> to state that this is a full case statement.
+<ul>
+<li>Better, because of runtime check</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Always assign enumerated type variable with a label from its enumerated list, instead of a value or an expression, although sometimes they are legal after type casting.
+2-state type in FSM</li>
+<li>The idea is dangerous, because 2-state type variables initialize to logic 0 instead of logic X before applying reset. So it’s not how real circuit behave.</li>
+</ul>
+<h1 id="chapter-9-systemverilog-design-hierarchy">Chapter 9: SystemVerilog Design Hierarchy</h1>
+<h2 id="module-prototypes-extern">Module prototypes: extern</h2>
+<ul>
+<li>Similar to C-Style *.h head file
+<ul>
+<li>More convenient: no duplicate port definition needed</li>
+<li>Can be defined in one file, then ``include` to other files</li>
+</ul>
+</li>
+<li>No necessarily</li>
+</ul>
+<h2 id="named-ending-statements">Named ending statements</h2>
+<ul>
+<li><code>endmodule : &lt;module_name&gt;</code></li>
+<li>Also apply for others
+<ul>
+<li><code>package … endpackage</code></li>
+<li><code>interface … endinterface</code></li>
+<li><code>task … endtask</code></li>
+<li><code>function … endfunction</code></li>
+<li><code>begin … end</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="nested-module">Nested module</h2>
+<ul>
+<li>Verilog limitations
+<ul>
+<li>Module names are global
+<ul>
+<li>No restriction to be accessed</li>
+<li>Cause name conflicts</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SystemVerilog improvements: nested module
+<ul>
+<li>Modules that are declared within modules</li>
+<li>Not visible outside the scope
+<ul>
+<li>Can be instantianted by the parent module and the modules below</li>
+</ul>
+</li>
+<li>Can also access variable/constant/task/function in $unit</li>
+</ul>
+</li>
+<li>However, controversy with common moduel style that every module has it's own file
+<ul>
+<li>This kind of style is good for large designs; and good for utilizing VCS</li>
+<li>Use ``include` to keep the same style</li>
+</ul>
+</li>
+</ul>
+<h2 id="simplify-module-instance">Simplify module instance</h2>
+<ul>
+<li>Named port connection is good for documenting the design intent, but too verbose</li>
+<li><code>.name</code> connection
+<ul>
+<li><code>.port_name(net_name)</code> -&gt; <code>.port_name</code> if port_name equals to net_name</li>
+</ul>
+</li>
+<li><code>.*</code> connection
+<ul>
+<li>Matches all cases that port_name equals to net_name</li>
+</ul>
+</li>
+<li>These simplification also apply to function/task</li>
+</ul>
+<h2 id="net-aliasing">Net aliasing</h2>
+<ul>
+<li><code>alias</code> statement
+<ul>
+<li><code>alias clk = clock = ck; //  can be multiple aliases together</code></li>
+<li>Only applies for net types, with the same type, and the same size
+<ul>
+<li><code>wire [31:0] n1; wire [3:0][7:0] n2; alias n2 = n1;</code></li>
+</ul>
+</li>
+<li>By default, infer <code>wire</code> if left-hand side names are not defined explicitly</li>
+<li>Alias vs. assign
+<ul>
+<li>Assign is copied from right to left whenever right is changing</li>
+<li>Alias is copied to all whenever either one is changing</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Alias with <code>.name</code> and <code>.*</code> is powerful
+<ul>
+<li>On top-level module, even if the local net_name is different from the port_name of its instances, we can still use <code>alias</code> to make them the same and use <code>.*</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="passing-values-through-module-ports">Passing values through module ports</h2>
+<ul>
+<li>SystemVerilog removes most port restrictions, except the following two
+<ul>
+<li>Varaible can have only one single source</li>
+<li>Unpacked types must be identical
+<ul>
+<li>Declared using the same <code>typedef</code> definition</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="reference-ports-ref">Reference ports <code>ref</code></h2>
+<ul>
+<li>Reference the hierarchical source directly
+<ul>
+<li>Warning: one variable can be written from multiple source</li>
+</ul>
+</li>
+<li>NOT synthesizable</li>
+</ul>
+<h2 id="enhanced-port-declaration">Enhanced port declaration</h2>
+<ul>
+<li>Verilog-2001
+<ul>
+<li>Port list = <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --></li>
+<li>By default, type is wire</li>
+</ul>
+</li>
+<li>SystemVerilog
+<ul>
+<li>The first port's direction could be optional, by default is <code>inout</code></li>
+<li>Later on, direction could be optional, by default is the same with previous one</li>
+</ul>
+</li>
+</ul>
+<h2 id="parameterized-types">Parameterized types</h2>
+<ul>
+<li>Net, variable of a module could be parameterized</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">module</span> adder #(<span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">type</span> DATA_TYPE <span style="color:#f92672">=</span> <span style="color:#66d9ef">shortint</span>) (
+<span style="color:#66d9ef">input</span>   DATA_TYPE   a, b,   <span style="color:#75715e">// redefinable
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">output</span>  DATA_TYPE   sum,    <span style="color:#75715e">// redefinable
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">logic</span>       carry   <span style="color:#75715e">// direction is `output`, the same with sum
+</span><span style="color:#75715e"></span>);
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">endmodule</span> <span style="color:#f92672">:</span> adder
+
+<span style="color:#66d9ef">module</span> top ();
+
+adder #(.DATA_TYPE(<span style="color:#66d9ef">int</span>)) int_adder( <span style="color:#75715e">/* ... */</span> );
+adder #(.DATA_TYPE(<span style="color:#66d9ef">int</span> <span style="color:#66d9ef">unsigned</span>)) uint_adder( <span style="color:#75715e">/* ... */</span> );
+
+<span style="color:#66d9ef">endmodule</span> <span style="color:#f92672">:</span> top
+</code></pre></div><h1 id="chapter-10-systemverilog-interfaces">Chapter 10: SystemVerilog Interfaces</h1>
+<h2 id="concepts">Concepts</h2>
+<ul>
+<li>How Verilog models connects between blocks
+<ul>
+<li>Directly on physical connections in actual hardware level</li>
+<li>Disadvantage
+<ul>
+<li>Port connection must be duplicated in several modules</li>
+<li>Communication protocols must be duplicated also</li>
+<li>Duplication leads to mistakes that is hard to debug</li>
+<li>Changes in spec involves lots of modification</li>
+<li>Details of connection must be defined in early design cycle (not good for top-down design paradigm)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>interface</code> keyword
+<ul>
+<li>Several signals grouped together to represent as a single port</li>
+<li>And modules use interface as a single port</li>
+</ul>
+</li>
+<li>Interface contents
+<ul>
+<li>Discrete signals and port</li>
+<li>Communication protocol, defined as task/function</li>
+<li>Protocol checker and verification routines</li>
+</ul>
+</li>
+<li>Interface vs. module
+<ul>
+<li>Interface doesn't have hierarchy</li>
+<li>Interface can be used as module port</li>
+<li>Interface can contain <code>modport</code> which can represent different usage env.
+How to declare an interface?</li>
+</ul>
+</li>
+<li>Similar to module, with <code>interface … endinterface</code> keyword
+<ul>
+<li>Can have ports: external signals to interface</li>
+<li>Can use <code>.name</code> and <code>.*</code> for connection abbreviation</li>
+</ul>
+</li>
+<li>Declaration order
+<ul>
+<li>Just as module, no order needed</li>
+</ul>
+</li>
+<li>Global vs. local
+<ul>
+<li>Just as module, global definition can be used anywhere, local definition can be used in certain scope (for IP)
+How to use interface?</li>
+</ul>
+</li>
+<li>As module ports</li>
+<li>Explicitly named vs. generic
+<ul>
+<li>Explicitly named interface port can only connect to an interface with the same name</li>
+</ul>
+</li>
+<li><code>module &lt;module_name&gt; ( &lt;interface_name&gt; &lt;port_name);</code>
+<ul>
+<li>Generic interface can connec to any interface port</li>
+</ul>
+</li>
+<li><code>module &lt;module_name&gt; ( interface  &lt;port_name);</code>
+<ul>
+<li>Both are synthesizable</li>
+</ul>
+</li>
+<li>Instantiate and connect interface
+<ul>
+<li>ILLEGAL leave an interface port unconnected</li>
+<li><code>.name</code> and <code>.*</code> can be used to connect interface</li>
+</ul>
+</li>
+<li>Referencing interface's signals
+<ul>
+<li>Use dot: &lt;port_name&gt;.&lt;internal_signal_name&gt;</li>
+</ul>
+</li>
+</ul>
+<h2 id="modport">Modport</h2>
+<ul>
+<li>Differnet views of interface
+<ul>
+<li>Ex. a interrupt sub-signal could be input to CPU, but output to peripheral modules</li>
+</ul>
+</li>
+<li><code>modport</code> means module port
+<ul>
+<li>Contains only direction and signal names, not vector size or types</li>
+</ul>
+</li>
+<li>Selecting which modport to use
+<ul>
+<li>In module instance
+<ul>
+<li><code>&lt;module_name&gt; &lt;instance_name&gt; ( .&lt;port_name&gt;(&lt;interface_instance_name&gt;.&lt;modport_name&gt;) );</code></li>
+</ul>
+</li>
+<li>In module delcaration (better because of consistency)
+<ul>
+<li><code>module &lt;module_name&gt; ( &lt;interface_name&gt;.&lt;modport_name&gt; &lt;port_name&gt; );</code></li>
+</ul>
+</li>
+<li>NOT use both methods above</li>
+<li>If no modport is specified
+<ul>
+<li>all nets have <code>inout</code> direction, by default</li>
+<li>all variables have <code>ref</code> type, by default</li>
+</ul>
+</li>
+<li>Synthesizable for both
+<ul>
+<li>Some synthesis tool will convert (expand) interface modport to normal ports automatically</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>To define different sets of connections
+<ul>
+<li>Hide certain signals in different modport: incompleleted signal list while defining one modport</li>
+<li>Internal signals that are not accessable from any modport
+<ul>
+<li>Might be used for protocol checkers or other functionality</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog">interface cpu_bus (<span style="color:#66d9ef">input</span> <span style="color:#66d9ef">logic</span> clk, rstb, test_en);
+<span style="color:#66d9ef">wire</span>    [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]  data;
+<span style="color:#66d9ef">wire</span>    [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]  addr;
+<span style="color:#66d9ef">logic</span>   [ <span style="color:#ae81ff">7</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]  slave_cmd;
+<span style="color:#66d9ef">logic</span>           slave_req;
+<span style="color:#66d9ef">logic</span>           bus_grant;
+<span style="color:#66d9ef">logic</span>           bus_req;
+<span style="color:#66d9ef">logic</span>           slave_ready;
+<span style="color:#66d9ef">logic</span>           data_ready;
+<span style="color:#66d9ef">logic</span>           mem_ren;
+<span style="color:#66d9ef">logic</span>           mem_wen;
+
+modport master (
+    <span style="color:#66d9ef">inout</span>   data,
+    <span style="color:#66d9ef">output</span>  addr,
+    <span style="color:#66d9ef">output</span>  slave_cmd,
+    <span style="color:#66d9ef">output</span>  slave_req,
+    <span style="color:#66d9ef">output</span>  bus_grant,
+    <span style="color:#66d9ef">output</span>  mem_ren,
+    <span style="color:#66d9ef">output</span>  mem_wen,
+    <span style="color:#66d9ef">input</span>   bus_req,
+    <span style="color:#66d9ef">input</span>   slave_ready,
+    <span style="color:#66d9ef">input</span>   data_ready,
+    <span style="color:#66d9ef">input</span>   clk,
+    <span style="color:#66d9ef">input</span>   rstb,
+    <span style="color:#66d9ef">input</span>   test_en
+);
+    
+modport slave (
+    <span style="color:#66d9ef">inout</span>   data,
+    <span style="color:#66d9ef">inout</span>   addr,
+    <span style="color:#66d9ef">output</span>  mem_ren,
+    <span style="color:#66d9ef">output</span>  mem_wen,
+    <span style="color:#66d9ef">output</span>  bus_req,
+    <span style="color:#66d9ef">output</span>  slave_ready,
+    <span style="color:#66d9ef">input</span>   slave_cmd,
+    <span style="color:#66d9ef">input</span>   slave_req,
+    <span style="color:#66d9ef">input</span>   bus_grant,
+    <span style="color:#66d9ef">input</span>   data_ready,
+    <span style="color:#66d9ef">input</span>   clk,
+    <span style="color:#66d9ef">input</span>   rstb,
+    <span style="color:#66d9ef">input</span>   test_en
+);
+
+modport mem (
+    <span style="color:#66d9ef">inout</span>   data,
+    <span style="color:#66d9ef">output</span>  data_ready,
+    <span style="color:#66d9ef">input</span>   addr,
+    <span style="color:#66d9ef">input</span>   mem_ren,
+    <span style="color:#66d9ef">inout</span>   mem_wen
+);
+
+endinterface
+
+<span style="color:#66d9ef">module</span> top ();
+
+<span style="color:#75715e">// instance of an interface
+</span><span style="color:#75715e"></span>cpu_bus     bus ( .<span style="color:#f92672">*</span> );
+
+processor   proc1 ( .bus(bus.master), .<span style="color:#f92672">*</span> );
+slave1      slave1 ( .bus(bus.slave), .<span style="color:#f92672">*</span> );
+slave2      slave2 ( .bus(bus.slave), .<span style="color:#f92672">*</span> );
+dual_port_ram mem ( .bus(bus.mem), .data_b(next_instruction), .<span style="color:#f92672">*</span> );
+
+<span style="color:#75715e">// test generator need to access everything in inside `bus`
+</span><span style="color:#75715e"></span>test_generator test_gen ( .bus(bus), .<span style="color:#f92672">*</span> );
+
+<span style="color:#66d9ef">endmodule</span>
+</code></pre></div><h2 id="taskfunction-in-interface">Task/function in interface</h2>
+<ul>
+<li>Implement the details of communication protocol
+<ul>
+<li>Written once, shared by all modules connected using the same interface</li>
+</ul>
+</li>
+<li>Values are passed to interface methods as input argument</li>
+<li><code>import</code> when defining <code>modport</code>
+<ul>
+<li>Either use the name only, or the full prototype
+<ul>
+<li>Latter is useful when task is defined somewhere else</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Access using &lt;interface_port_name&gt;.&lt;method_name&gt;</li>
+<li>Task/function must be automatic to be synthesizable</li>
+<li>Exporting task/function are not synthesizable
+<ul>
+<li>Define task/function in module, then export it to interface, and use it in other modules</li>
+<li>Export from module's all instances
+<ul>
+<li><code>extern forkjoin</code></li>
+<li>Useful when you want to broadcast signals, such ask counting one module's instances
+Procedural blocks in interface</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Used for verfication and protocol checker</li>
+<li>NOT synthesizable
+Reconfigurable interface</li>
+<li>Parameterized interface
+<ul>
+<li>The same as modules</li>
+</ul>
+</li>
+<li>Generate statement
+<ul>
+<li>The same as modules</li>
+</ul>
+</li>
+</ul>
+<h1 id="chapter-11-a-complete-design-modeled-with-systemverilog">Chapter 11: A Complete Design Modeled with SystemVerilog</h1>
+<p>Interesting part: how to implement a latch-based LUT with SystemVerilog interface</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// implement LUT (basically an SRAM/Register File with interface in SV)
+</span><span style="color:#75715e"></span>interface if_look_up_table;
+
+<span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">int</span> ADDR_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
+<span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">int</span> ADDR_RANGE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> ADDR_SIZE;
+<span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">type</span> DATA_TYPE <span style="color:#f92672">=</span> <span style="color:#66d9ef">logic</span>;  <span style="color:#75715e">// the bit-cell&#39;s type could be reconfigurable
+</span><span style="color:#75715e"></span>
+DATA_TYPE mem [<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>ADDR_RANGE<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+
+<span style="color:#75715e">// function to perform write operation
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#66d9ef">void</span> write (
+    <span style="color:#66d9ef">input</span> [ADDR_SIZE<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]   addr,
+    <span style="color:#66d9ef">input</span> DATA_TYPE                 data
+);
+    mem[addr] <span style="color:#f92672">=</span> data;
+<span style="color:#66d9ef">endfunction</span> <span style="color:#f92672">:</span> write
+
+<span style="color:#75715e">// function to perform read operation
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#66d9ef">void</span> read (
+    <span style="color:#66d9ef">input</span> [ADDR_SIZE<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>]   addr
+);
+    <span style="color:#66d9ef">return</span> (mem[addr]);
+<span style="color:#66d9ef">endfunction</span>
+
+endinterface
+
+
+<span style="color:#75715e">// Then in circuit where instantiate this LUT
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">packed</span> {
+    <span style="color:#66d9ef">logic</span> [<span style="color:#66d9ef">`NUM_TX_PORT</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] FWD;
+    <span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">11</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] VPI;
+} cell_cfg_t;
+
+if_look_up_table #(.ADDR_SIZE(<span style="color:#ae81ff">8</span>), .DATA_TYPE(cell_cfg_t)) lut();
+
+<span style="color:#66d9ef">always_latch</span> <span style="color:#66d9ef">begin</span>
+    <span style="color:#66d9ef">if</span> (lut_wen) <span style="color:#66d9ef">begin</span>
+        lut.write(lut_waddr, lut_wdata);
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#66d9ef">always_comb</span> <span style="color:#66d9ef">begin</span>
+    <span style="color:#66d9ef">if</span> (lut_ren) <span style="color:#66d9ef">begin</span>
+        lut_rdata <span style="color:#f92672">=</span> lut.read(lut_raddr);
+    <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">begin</span>
+        lut_rdata <span style="color:#f92672">=</span> &#39;hz;
+    <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div>
+		</div>
+		
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title"></p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/note/2017-01-10-systemverilog-for-design-note/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SystemVerilog for Design Note</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 	<title>My experience with custom digital design</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -68,49 +71,33 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#background">Background</a>
-<ul>
-<li><a href="#the-first-thing-discuss-timing-area-power-spec-s-in-details">The first thing: discuss timing/area/power SPEC&rsquo;s in details</a></li>
-<li><a href="#the-second-thing-do-floorplan-carefully-in-as-much-details-as-you-can">The second thing: do floorplan carefully in as much details as you can.</a></li>
-<li><a href="#don-t-touch-base-layers-in-28nm">Don&rsquo;t touch base layers in 28nm.</a></li>
-<li><a href="#use-scripts-other-than-manual-work">Use scripts other than manual work.</a></li>
-<li><a href="#use-demo-designs-to-test-timing-of-critical-paths">Use demo designs to test timing of critical paths.</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#background">Background</a>
+      <ul>
+        <li><a href="#the-first-thing-discuss-timingareapower-specs-in-details">The first thing: discuss timing/area/power SPEC's in details</a></li>
+        <li><a href="#the-second-thing-do-floorplan-carefully-in-as-much-details-as-you-can">The second thing: do floorplan carefully in as much details as you can.</a></li>
+        <li><a href="#dont-touch-base-layers-in-28nm">Don't touch base layers in 28nm.</a></li>
+        <li><a href="#use-scripts-other-than-manual-work">Use scripts other than manual work.</a></li>
+        <li><a href="#use-demo-designs-to-test-timing-of-critical-paths">Use demo designs to test timing of critical paths.</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h2 id="background">Background</h2>
-
+			<h2 id="background">Background</h2>
 <p>This is the summary of my experience from project LBRAM in Marvell in the year of 2014.</p>
-
-<h3 id="the-first-thing-discuss-timing-area-power-spec-s-in-details">The first thing: discuss timing/area/power SPEC&rsquo;s in details</h3>
-
-<p>Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC&rsquo;s, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC&rsquo;s even if they are not accurate. And do remember to write them down in some documents, so if they want to change the SPEC&rsquo;s later, you can show them how absurd the idea is. ;-)</p>
-
+<h3 id="the-first-thing-discuss-timingareapower-specs-in-details">The first thing: discuss timing/area/power SPEC's in details</h3>
+<p>Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC's, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC's even if they are not accurate. And do remember to write them down in some documents, so if they want to change the SPEC's later, you can show them how absurd the idea is. ;-)</p>
 <h3 id="the-second-thing-do-floorplan-carefully-in-as-much-details-as-you-can">The second thing: do floorplan carefully in as much details as you can.</h3>
-
 <p>The placement of blocks; pin direction; power straps; power switch connections; routing of important signals; some local detail routing.</p>
-
-<h3 id="don-t-touch-base-layers-in-28nm">Don&rsquo;t touch base layers in 28nm.</h3>
-
-<p>I have been doing layout design since forever. I remembered to draw layout for IBM 180nm, TSMC 90nm, SMIC 130nm, Chartered 130nm, IBM 130nm, SMIC 90nm, TSMC 90nm, STM 90nm, TSMC 100nm. Now it&rsquo;s TSMC 28nm. The rules for base layers are far more complicated that metal layers, especially for 28nm. So if you don&rsquo;t want to keep your hands clean and don&rsquo;t want to waste a whole lot of your time with DRC, don&rsquo;t touch base layers. Please leave it to the specialists.</p>
-
+<h3 id="dont-touch-base-layers-in-28nm">Don't touch base layers in 28nm.</h3>
+<p>I have been doing layout design since forever. I remembered to draw layout for IBM 180nm, TSMC 90nm, SMIC 130nm, Chartered 130nm, IBM 130nm, SMIC 90nm, TSMC 90nm, STM 90nm, TSMC 100nm. Now it's TSMC 28nm. The rules for base layers are far more complicated that metal layers, especially for 28nm. So if you don't want to keep your hands clean and don't want to waste a whole lot of your time with DRC, don't touch base layers. Please leave it to the specialists.</p>
 <h3 id="use-scripts-other-than-manual-work">Use scripts other than manual work.</h3>
-
-<p>Laker support TCL scripts. Although it&rsquo;s not as powerful as ICC, it also can do lots of work. Such as place and route of cells/blocks/signals in pattern; import CDL; dump GDS; add/remove filler and lots of other work that may be repeatedly in the design iterations.</p>
-
+<p>Laker support TCL scripts. Although it's not as powerful as ICC, it also can do lots of work. Such as place and route of cells/blocks/signals in pattern; import CDL; dump GDS; add/remove filler and lots of other work that may be repeatedly in the design iterations.</p>
 <h3 id="use-demo-designs-to-test-timing-of-critical-paths">Use demo designs to test timing of critical paths.</h3>
-
-<p>Before you can finish the whole design, it&rsquo;s very hard to predict the timing of critical paths, because we are using semi-custom design approach. According to <sup>80</sup>&frasl;<sub>20</sub> law, lots of detail works lie in some less important/critical paths. So after you designed/implemented the critical path, try to design some demo top, and test it with SPICE. This wil give you more confidence in later stages.</p>
-
+<p>Before you can finish the whole design, it's very hard to predict the timing of critical paths, because we are using semi-custom design approach. According to 80/20 law, lots of detail works lie in some less important/critical paths. So after you designed/implemented the critical path, try to design some demo top, and test it with SPICE. This wil give you more confidence in later stages.</p>
 <p>Not like ASIC design, custom design always involves lots of manual work and it costs a plenty of time. So the TAT is huge. And there is no reasonable accurate tools to predict the timing. So use demo to run some timing test is essential to achieve timing closure in time.</p>
 
 		</div>
@@ -126,7 +113,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

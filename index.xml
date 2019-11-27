@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>When Moore&#39;s Law ENDS</title>
+    <title>About on When Moore&#39;s Law ENDS</title>
     <link>/</link>
-    <description>Recent content on When Moore&#39;s Law ENDS</description>
+    <description>Recent content in About on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Oct 1982 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,22 +22,13 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
     </item>
     
     <item>
-      <title>ARMv8 Architecture</title>
-      <link>/blog/note/2019-03-18-armv8-architecture/</link>
-      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/note/2019-03-18-armv8-architecture/</guid>
-      <description> Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    </description>
-    </item>
-    
-    <item>
       <title>Interrupts and ARM GIC Architecture</title>
       <link>/blog/arch/2019-03-11-interrupt-and-arm-gic/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/arch/2019-03-11-interrupt-and-arm-gic/</guid>
-      <description>Reference - Interrupt
-Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.  IPI: inter-processor interrupt  Software: caused by exception or special instructions that used to implement system calls  Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE   Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)   Triggering methods  Physical interrupt  Level-triggered vs.</description>
+      <description>Reference
+ Interrupt  Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt  For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.     IPI: inter-processor interrupt   Software: caused by exception or special instructions that used to implement system calls   Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE     Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)     Triggering methods  Physical interrupt  Level-triggered vs.</description>
     </item>
     
     <item>
@@ -46,8 +37,8 @@ Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or
       <pubDate>Mon, 11 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/tool/2019-02-11-shortcut-dot-py/</guid>
-      <description>Typical usage go to some directory use short alias &amp;gt; pwd /home/jw &amp;gt; go prj0 cd /work/projects/design/master-branch/ &amp;gt; pwd /work/projects/design/master-branch/  run a serial of commands use short alias &amp;gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name  Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
-&amp;gt; go prj0 &amp;gt; go p. prj0 &amp;gt; run vnc  Auto-correction shortcut.</description>
+      <description>Typical usage go to some directory use short alias &amp;gt; pwd /home/jw &amp;gt; go prj0 cd /work/projects/design/master-branch/ &amp;gt; pwd /work/projects/design/master-branch/ run a serial of commands use short alias &amp;gt; run vnc ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip vncviewer remote-internal-server-name Search available alias Here . dot is used to replace * star because zsh will try to expand * by default.
+&amp;gt; go prj0 &amp;gt; go p. prj0 &amp;gt; run vnc Auto-correction shortcut.py uses difflib.</description>
     </item>
     
     <item>
@@ -57,7 +48,7 @@ Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or
       
       <guid>/blog/arch/2019-01-30-arm-big-little/</guid>
       <description>https://developer.arm.com/technologies/big-little
-big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&amp;rsquo;s a particular adaption to mobile devices usage.</description>
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&#39;s a particular adaption to mobile devices usage.</description>
     </item>
     
     <item>
@@ -75,7 +66,7 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
       <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/life/2019-01-29-on-time-is-professional/</guid>
-      <description>Because I was job hunting recently, I&amp;rsquo;ve got lots of appointments, either phone call or face-to-face. There are two HR&amp;rsquo;s who gave me particularly deep impression, and they are on totally opposite end of professionalism.
+      <description>Because I was job hunting recently, I&#39;ve got lots of appointments, either phone call or face-to-face. There are two HR&#39;s who gave me particularly deep impression, and they are on totally opposite end of professionalism.
  A good example  Wheneven she wanted to arrange a phone call with me, she sent me emails in ahead to confirm time. Never call me directly without appointment. At the exact time of the appointment, ex.</description>
     </item>
     
@@ -88,17 +79,6 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
       <description>What Are My Strengths? Feedback analysis The only way to discover your strengths is through feedback analysis. Whenever you make a key decision or take a key action, write down what you expect will happen. 9 or 12 months later, compare the actual results with your expectations.
 Follow-up actions Find out what are your strength and weakness, using feedback analysis. So that you can
  Concentrate on your strengths. Put yourself where your strengths can produce results Work on improving your strengths.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>I&amp;rsquo;m a chip designer working on the digital side. I&amp;rsquo;ve got experience with
- CPU/SoC architecture and design, especially RISC-V open ISA RTL design/simulation with Verilog/SystemVerilog/SystemC Low power design and optimization ASIC design flow, including front-end, back-end and power sign-off Semi-custom design flow, including transistor timing analysis and SPICE simulation  Currently my interests are
- Machine learning accelerator Harware and software co-design Hardware security  If you share the same interest and want a discussion, please send me a message on LinkedIn</description>
     </item>
     
     <item>
@@ -123,8 +103,8 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/tool/2019-01-19-static-site-generator/</guid>
-      <description>Trying to find the perfect static site generator. Used to use Pelican, because it&amp;rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&amp;rsquo;s used by Github. Their common problems are
- Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&amp;rsquo;t fit my understanding/requirement.  Now I&amp;rsquo;m trying Hugo, which is written in Go, and it&amp;rsquo;s really fast.</description>
+      <description>Trying to find the perfect static site generator. Used to use Pelican, because it&#39;s written in Python. Also tried with Jekyll, the most popular candidate, because it&#39;s used by Github. Their common problems are
+ Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&#39;t fit my understanding/requirement.  Now I&#39;m trying Hugo, which is written in Go, and it&#39;s really fast.</description>
     </item>
     
     <item>
@@ -134,7 +114,17 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
       
       <guid>/blog/arch/2019-01-03-hwacha-accelerator/</guid>
       <description>From the reading of this paper, &amp;ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&amp;rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
- We don&amp;rsquo;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I\$, no D\$  Don&amp;rsquo;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth  Uncached TileLink between L1 I\$ (both scalar processor and vector processors) and L2\$ Cached TileLink between L1 D\$ (only in scalar processor)  L2\$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)  Operations of L2\$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests Read from DDR, don&amp;rsquo;t need to send back to the requester Atomic memory operations ALU inside L2 cache banks   Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions JW: why is that necessary?</description>
+ We don&#39;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&#39;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&#39;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
+    </item>
+    
+    <item>
+      <title>Huwcha Accelerator architecture</title>
+      <link>/blog/architecture/2019-01-03-hwacha-accelerator/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/architecture/2019-01-03-hwacha-accelerator/</guid>
+      <description>From the reading of this paper, &amp;ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&amp;rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
+ We don&#39;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&#39;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&#39;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
     </item>
     
     <item>
@@ -143,7 +133,16 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
       <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/arch/2018-12-15-riscv-v-spec/</guid>
-      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions  Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit Following little-endian rule ELEN units are packed into VLEN register also Following little-endiam rule  Storage of longer vector  If operand longer than SEW is needed, then Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
+      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
+    </item>
+    
+    <item>
+      <title>Note of RISC-V Vector ISA Spec v0.6</title>
+      <link>/blog/architecture/2018-12-15-riscv-v-spec/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/architecture/2018-12-15-riscv-v-spec/</guid>
+      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
     </item>
     
     <item>
@@ -152,7 +151,16 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2018-12-07-systemc-tutorial/</guid>
-      <description>// Some simple example #include &amp;lt;systemc.h&amp;gt; SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt; a; sc_in&amp;lt; sc_unit&amp;lt;8&amp;gt; &amp;gt; b; sc_out&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt; f; sc_in&amp;lt;bool&amp;gt; clk; void func() { f.write( a.read() &amp;amp; b.read() ); } SC_CTOR ( seq_and2 ) { SC_CTHREAD(func); sensitive &amp;lt;&amp;lt; clk.neg(); } }  Port &amp;amp; signal  Port  sc_in &amp;amp; sc_out .read() &amp;amp; .write() functions  Signal  sc_signal   Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list  SC_THREAD()  Not commonly used Behavior like initial in Verilog  SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle  sensitive keyword to define the sensitive list  Datatypes  Integers</description>
+      <description>// Some simple example#include &amp;lt;systemc.h&amp;gt;SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	a;sc_in&amp;lt; sc_unit&amp;lt;8&amp;gt; &amp;gt;	b;sc_out&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	f;sc_in&amp;lt;bool&amp;gt;	clk;void func() {f.write( a.read() &amp;amp; b.read() );}SC_CTOR ( seq_and2 ) {SC_CTHREAD(func);sensitive &amp;lt;&amp;lt; clk.neg();}}Port &amp;amp; signal  Port  sc_in &amp;amp; sc_out .read() &amp;amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers</description>
+    </item>
+    
+    <item>
+      <title>SystemC Tutorial</title>
+      <link>/blog/tutorial/2018-12-07-systemc-tutorial/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tutorial/2018-12-07-systemc-tutorial/</guid>
+      <description>// Some simple example#include &amp;lt;systemc.h&amp;gt;SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	a;sc_in&amp;lt; sc_unit&amp;lt;8&amp;gt; &amp;gt;	b;sc_out&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	f;sc_in&amp;lt;bool&amp;gt;	clk;void func() {f.write( a.read() &amp;amp; b.read() );}SC_CTOR ( seq_and2 ) {SC_CTHREAD(func);sensitive &amp;lt;&amp;lt; clk.neg();}}Port &amp;amp; signal  Port  sc_in &amp;amp; sc_out .read() &amp;amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers</description>
     </item>
     
     <item>
@@ -161,8 +169,8 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2018-12-04-riscv-summit-2018/</guid>
-      <description>My notes on RISC-V Summit 2018 at Santa Clara Conventional Center This year&amp;rsquo;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.
-SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chips back to the customer.</description>
+      <description>My notes on RISC-V Summit 2018 at Santa Clara Conventional Center This year&#39;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.
+SiFive&#39;s biz model  Help customer to tape-out prototypes, and sell chips back to the customer.</description>
     </item>
     
     <item>
@@ -172,8 +180,18 @@ SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chi
       
       <guid>/blog/arch/2018-12-01-ariane-cpu/</guid>
       <description>Ariane Document
-Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage  Its fetch stage doesn&amp;rsquo;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
- There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
+Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&#39;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
+  There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
+    </item>
+    
+    <item>
+      <title>Ariane (PULP series high-performance core)</title>
+      <link>/blog/architecture/2018-12-01-ariane-cpu/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/architecture/2018-12-01-ariane-cpu/</guid>
+      <description>Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&#39;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
+  There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
     </item>
     
     <item>
@@ -182,7 +200,7 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/arch/2018-12-01-network-on-chip/</guid>
-      <description>NoC  Clustering coefficient: the most intuitive explanation is the number of hops between two random nodes in the network. Layers  Physical layer Link layer  Transaction protocol: such as AXI Seperated channels like AXI, to avoid dead-lock caused by depency problem  Transport layer  Packet: header &amp;amp; payload   Flow control  On link-level or end-to-end level  Link-level: every hop there is a notification, just like valid-ready protocol End-to-end level: every transaction of data from sender to receiver has to have some kind of notification that the receiver notify the sender it has received the data successfully.</description>
+      <description>NoC  Clustering coefficient: the most intuitive explanation is the number of hops between two random nodes in the network. Layers  Physical layer Link layer  Transaction protocol: such as AXI Seperated channels like AXI, to avoid dead-lock caused by depency problem   Transport layer  Packet: header &amp;amp; payload     Flow control  On link-level or end-to-end level  Link-level: every hop there is a notification, just like valid-ready protocol End-to-end level: every transaction of data from sender to receiver has to have some kind of notification that the receiver notify the sender it has received the data successfully.</description>
     </item>
     
     <item>
@@ -192,11 +210,30 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
       
       <guid>/blog/life/2018-11-10-family-trip-to-legoland/</guid>
       <description>A piece of very precious memory
- Home &amp;ndash;&amp;gt; LEGOLAND  264 miles, 4 hours non-stop (with stop, 7:00AM to 12:00AM)
- Lunch at Wendy’s: 5821 Dennis McCarthy Dr, Lebec, CA 93243
- Wendy&amp;rsquo;s is just another burger place. We ended up with Panda Express at the same rest area.  174 miles, 3 hours non-stop (with stop, 1:30PM to 4:30PM)
-  LEGOLAND Castle Hotel
-1 Legoland Dr, Carlsbad, CA 92008</description>
+ Home &amp;ndash;&amp;gt; LEGOLAND   264 miles, 4 hours non-stop (with stop, 7:00AM to 12:00AM)
+  Lunch at Wendy’s: 5821 Dennis McCarthy Dr, Lebec, CA 93243
+ Wendy&#39;s is just another burger place. We ended up with Panda Express at the same rest area.    174 miles, 3 hours non-stop (with stop, 1:30PM to 4:30PM)
+  LEGOLAND Castle Hotel</description>
+    </item>
+    
+    <item>
+      <title>Cache coherence</title>
+      <link>/blog/architecture/2018-11-01-cache-coherence/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/architecture/2018-11-01-cache-coherence/</guid>
+      <description>Coherence mechanism Snooping Every cache maintain its own cache state. And when it needs to access a shared address space, it sends snooping messages to all the other caches to either update or invalidate them.
+ Write invalidate: write operation will invalidate all the other shared copies. Others will have to read again from the next level of cache to use it again. Write update: write operation will give the written data to the shared copies and update them accordingly.</description>
+    </item>
+    
+    <item>
+      <title>Cache Coherence Notes</title>
+      <link>/blog/arch/2018-11-01-cache-coherence/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-11-01-cache-coherence/</guid>
+      <description>Coherence mechanism Snooping Every cache maintain its own cache state. And when it needs to access a shared address space, it sends snooping messages to all the other caches to either update or invalidate them.
+ Write invalidate: write operation will invalidate all the other shared copies. Others will have to read again from the next level of cache to use it again. Write update: write operation will give the written data to the shared copies and update them accordingly.</description>
     </item>
     
     <item>
@@ -211,13 +248,14 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
     </item>
     
     <item>
-      <title>Cache Coherence Notes</title>
-      <link>/blog/arch/2018-11-01-cache-coherence/</link>
+      <title>CPU Architecture Notes</title>
+      <link>/blog/architecture/2018-11-01-cpu-architecture-notes/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2018-11-01-cache-coherence/</guid>
-      <description>Coherence mechanism Snooping Every cache maintain its own cache state. And when it needs to access a shared address space, it sends snooping messages to all the other caches to either update or invalidate them.
- Write invalidate: write operation will invalidate all the other shared copies. Others will have to read again from the next level of cache to use it again. Write update: write operation will give the written data to the shared copies and update them accordingly.</description>
+      <guid>/blog/architecture/2018-11-01-cpu-architecture-notes/</guid>
+      <description>Register renaming To eliminate the false and output data dependency by adding extra physical registers more than architectural registers.
+ Read-after-write (RAW) is true data dependency Write-after-write (WAW) is output data dependency Write-after-read (WAR) is false data dependency  Superscalar Dynamically issue multiple instructions in each cycle to increase IPC.
+ Normally need multi-port register files and ALU to avoid structural hazard. Can be in-order or out-of-order  Re-order buffer For out-of-order execution CPU architecture, results are put into re-order buffer waiting for commit.</description>
     </item>
     
     <item>
@@ -226,7 +264,7 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
       <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/life/2018-10-30-ok-lens-tips/</guid>
-      <description> 1. 晚上睡前戴眼镜片  在使用“阿托品”之后至少两小时，以保证药物被吸收。 洗手，并且用厨房纸（不掉纸屑）擦干。 滴眼药水，润湿眼球。 灰色眼镜片是右眼的，GRAY has an R for RIGHT；蓝色眼镜片是左眼的，BLUE has an L for LEFT。 将眼药水注满眼镜片内部；低头，拉开上下眼帘；将眼镜慢慢地水平地放入。 确认眼镜片在眼球正中，否则可以闭眼后，用手指在眼帘外轻推调整。 确认没有大的可见气泡，否则会影响治疗效果。如果有小气泡，可以仰头滴入数滴眼药水，并闭眼转动眼球，将气泡挤出。可重复几次。如果没有明显效果，用洗盘将眼镜片取出，并重新放置。 确认两个眼镜片都放置成功以后，再分别滴一滴眼药水。 如果眼睛痒，可以轻轻按压，但切忌按揉。 如果镜片掉落在桌上或者地上，可以用BLINK药水清洗，同时用手指轻轻搓揉。  2. 早上取眼镜片  各滴一滴眼药水。 用洗盘将镜片取出。注意尽量吸取镜片下边缘，而不要吸取镜片中心，因为镜片中心更薄，容易损坏。如果感觉洗盘吸力不够，可以用厨房纸吸干。 分离洗盘和镜片的时候不要垂直方向硬拉，而要轻轻滑出来。 取完之后滴一滴眼药水。 之后将眼镜片放入ONE-SHOT存储盒，注意分清左右。 将ONE-SHOT药水倒入存储盒，到划线处。放置至少6个小时。如果前一晚未使用，也需要更换ONE-SHOT药水，并放置至少6个小时。 ONE-SHOT药水需要反应6小时之后才会无害，否则会刺激眼睛。它的主要成分是双氧水。  </description>
+      <description>1. 晚上睡前戴眼镜片  在使用“阿托品”之后至少两小时，以保证药物被吸收。 洗手，并且用厨房纸（不掉纸屑）擦干。 滴眼药水，润湿眼球。 灰色眼镜片是右眼的，GRAY has an R for RIGHT；蓝色眼镜片是左眼的，BLUE has an L for LEFT。 将眼药水注满眼镜片内部；低头，拉开上下眼帘；将眼镜慢慢地水平地放入。 确认眼镜片在眼球正中，否则可以闭眼后，用手指在眼帘外轻推调整。 确认没有大的可见气泡，否则会影响治疗效果。如果有小气泡，可以仰头滴入数滴眼药水，并闭眼转动眼球，将气泡挤出。可重复几次。如果没有明显效果，用洗盘将眼镜片取出，并重新放置。 确认两个眼镜片都放置成功以后，再分别滴一滴眼药水。 如果眼睛痒，可以轻轻按压，但切忌按揉。 如果镜片掉落在桌上或者地上，可以用BLINK药水清洗，同时用手指轻轻搓揉。  2. 早上取眼镜片  各滴一滴眼药水。 用洗盘将镜片取出。注意尽量吸取镜片下边缘，而不要吸取镜片中心，因为镜片中心更薄，容易损坏。如果感觉洗盘吸力不够，可以用厨房纸吸干。 分离洗盘和镜片的时候不要垂直方向硬拉，而要轻轻滑出来。 取完之后滴一滴眼药水。 之后将眼镜片放入ONE-SHOT存储盒，注意分清左右。 将ONE-SHOT药水倒入存储盒，到划线处。放置至少6个小时。如果前一晚未使用，也需要更换ONE-SHOT药水，并放置至少6个小时。 ONE-SHOT药水需要反应6小时之后才会无害，否则会刺激眼睛。它的主要成分是双氧水。  </description>
     </item>
     
     <item>
@@ -237,7 +275,7 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
       <guid>/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/</guid>
       <description>When using a counter to divide a clock, don’t reset the counter, especially when you are using synchronous reset. It will make the clock quiet while reset. And if it’s used along with sync reset, then those flip-flop won’t be reset at all.
 But if without reset, the counter will be &amp;ldquo;X&amp;rdquo; in simulation.
-logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif always_ff @ (posedge clk) begin cntr &amp;lt;= cntr + 1; end  </description>
+logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&amp;#39;b00; end `endif always_ff @ (posedge clk) begin cntr &amp;lt;= cntr + 1; end </description>
     </item>
     
     <item>
@@ -247,8 +285,7 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif a
       
       <guid>/blog/life/2018-10-23-fpga-solution-for-lidar-project/</guid>
       <description>1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (https://www.xilinx.com/products/boards-and-kits/zcu111.html)
- Features: XCZU28DR-2FFVG1517E: high-end RFSoC  12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)  Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product  FMC daughter board with high-speed ADC
- FMC163 (https://www.abaco.com/products/fmc163-fpga-mezzanine-card) 1x 12-bit ADC, 4.</description>
+ Features:  XCZU28DR-2FFVG1517E: high-end RFSoC 12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)   Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product    FMC daughter board with high-speed ADC</description>
     </item>
     
     <item>
@@ -267,7 +304,7 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif a
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/tool/2018-10-01-docker-tips/</guid>
-      <description>Dockerfile FROM ubuntu:16.04 COPY ./boot.sh /tmp COPY ./hello.sh /tmp RUN /bin/bash /tmp/boot.sh RUN /bin/bash /tmp/hello.sh  boot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wget cd /tmp wget https://www.veripool.org/ftp/verilator-4.004.tgz tar xf verilator*.tgz cd verilator* ./configure make # this step will take sometime make install  hello.sh cd /tmp/verilator* cd ./example/tracing_c make # it will print out some log, and after finish it will generate a directory in the same directory named &amp;quot;logs&amp;quot; who needs to be saved after container exit  Docker how-to notes create a docker image from Dockerfile docker build -t &amp;quot;$(name):$(tag)&amp;quot; .</description>
+      <description>Dockerfile FROMubuntu:16.04COPY ./boot.sh /tmpCOPY ./hello.sh /tmpRUN /bin/bash /tmp/boot.shRUN /bin/bash /tmp/hello.shboot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wgetcd /tmpwget https://www.veripool.org/ftp/verilator-4.004.tgztar xf verilator*.tgzcd verilator*./configuremake # this step will take sometimemake installhello.sh cd /tmp/verilator*cd ./example/tracing_cmake# it will print out some log, and after finish it will generate a directory in the same directory named &amp;#34;logs&amp;#34; who needs to be saved after container exitDocker how-to notes create a docker image from Dockerfile docker build -t &amp;#34;$(name):$(tag)&amp;#34; .</description>
     </item>
     
     <item>
@@ -287,7 +324,7 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/project/2017-08-01-my-marvell-projects/</guid>
-      <description>Latch-based RAM semi-custom macro design change This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we&amp;rsquo;d like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction.</description>
+      <description>Latch-based RAM semi-custom macro design change This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we&#39;d like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction.</description>
     </item>
     
     <item>
@@ -296,8 +333,18 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       <pubDate>Wed, 17 May 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-05-17-python-design-patterns-note/</guid>
-      <description>The course is on Coursera
- understanding design patterns  what?  well-known solutions for recurring problems  why?  don&amp;rsquo;t reinvent wheels reuse best practices  characteristics  language neutral dynamic incomplete by design to promote customization  types  creational structual behavioral  OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp;amp; polymorphism  pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers  pattern language  name context problem solution related patterns   creational patterns factory  create and return object on the fly  flexibility of adding new classes  problem</description>
+      <description> The course is on Coursera
+ understanding design patterns  what?  well-known solutions for recurring problems   why?  don&#39;t reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp;amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    </description>
+    </item>
+    
+    <item>
+      <title>Course Note of *Python: Design Patterns*</title>
+      <link>/blog/tutorial/2017-05-17-python-design-patterns-note/</link>
+      <pubDate>Wed, 17 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tutorial/2017-05-17-python-design-patterns-note/</guid>
+      <description> The course is on Coursera
+ understanding design patterns  what?  well-known solutions for recurring problems   why?  don&#39;t reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp;amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    </description>
     </item>
     
     <item>
@@ -307,7 +354,17 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       
       <guid>/blog/note/2017-05-14-scala-first-look/</guid>
       <description>Scala introduction course on LinkedIn. Not very useful, if not using it in real project.
- introduction  short for Scalable language object-oriented + functional programming  everything is object  including numbers and functions does not include primitive data types  can pass/assign function: functional programming  seamless compatible with Java  runs on JVM, compile to JVM reuse Java libraries and types can call any Java code  REPL interactive shell  read, eval, print, loop   syntax  define: var (variable) vs val (value)  var defines variables that can be changed  but cannot change from one data type to another, ex.</description>
+ introduction  short for Scalable language object-oriented + functional programming  everything is object  including numbers and functions does not include primitive data types   can pass/assign function: functional programming   seamless compatible with Java  runs on JVM, compile to JVM reuse Java libraries and types can call any Java code   REPL interactive shell  read, eval, print, loop    syntax  define: var (variable) vs val (value)  var defines variables that can be changed  but cannot change from one data type to another, ex.</description>
+    </item>
+    
+    <item>
+      <title>Scala First Look</title>
+      <link>/blog/tutorial/2017-05-14-scala-first-look/</link>
+      <pubDate>Sun, 14 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tutorial/2017-05-14-scala-first-look/</guid>
+      <description>Scala introduction course on LinkedIn. Not very useful, if not using it in real project.
+ introduction  short for Scalable language object-oriented + functional programming  everything is object  including numbers and functions does not include primitive data types   can pass/assign function: functional programming   seamless compatible with Java  runs on JVM, compile to JVM reuse Java libraries and types can call any Java code   REPL interactive shell  read, eval, print, loop    syntax  define: var (variable) vs val (value)  var defines variables that can be changed  but cannot change from one data type to another, ex.</description>
     </item>
     
     <item>
@@ -316,8 +373,18 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-05-05-genus-training/</guid>
-      <description>The following is my notes of GENUS training course on Cadence&amp;rsquo;s training module
- Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option   explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&amp;rsquo;s hier instances instances_seq: current module&amp;rsquo;s sequential instances instances_cmb: current module&amp;rsquo;s combinational instancs   libraries hdl_libraries flows  use find to locate objects  ex.</description>
+      <description>The following is my notes of GENUS training course on Cadence&#39;s training module
+ Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&#39;s hier instances instances_seq: current module&#39;s sequential instances instances_cmb: current module&#39;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.</description>
+    </item>
+    
+    <item>
+      <title>GENUS Training Notes</title>
+      <link>/blog/tutorial/2017-05-05-genus-training/</link>
+      <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tutorial/2017-05-05-genus-training/</guid>
+      <description>The following is my notes of GENUS training course on Cadence&#39;s training module
+ Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&#39;s hier instances instances_seq: current module&#39;s sequential instances instances_cmb: current module&#39;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.</description>
     </item>
     
     <item>
@@ -326,10 +393,7 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       <pubDate>Sun, 30 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2017-04-30-snug-2017/</guid>
-      <description>Day 1 Morning  Paper from microsoft Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&amp;rsquo;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity
- Panel: synthesis into the future
- The disruption in advanced nodes (10nm/7nm)
- Thermal: drives max freq; heating wires degreeds EM lifetime IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&amp;rsquo;s specific attributes, such as thermal/IR to avoid analog/digital interference.</description>
+      <description>Day 1 Morning  Paper from microsoft   Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&#39;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity  Panel: synthesis into the future   The disruption in advanced nodes (10nm/7nm)  Thermal: drives max freq; heating wires degreeds EM lifetime IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&#39;s specific attributes, such as thermal/IR to avoid analog/digital interference.</description>
     </item>
     
     <item>
@@ -340,8 +404,8 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       <guid>/blog/tool/2018-11-01-wsl-tips/</guid>
       <description>To start gnome-terminal on WSL (Windows Subsystem for Linux) After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.
 To reinstall WSL you should do:
-&amp;gt; lxrun /uninstall /full &amp;gt; lxrun /install  Then you will see
-&amp;gt; lsb_release -a No LSB modules are available. Distributor ID: Ubuntu Description: Ubuntu 16.04.2 LTS Release: 16.04 Codename: xenial  Some X11 apps like xclocks works fine with Xming, but &amp;ldquo;gnome-terminal&amp;rdquo; still have some problem.</description>
+&amp;gt; lxrun /uninstall /full&amp;gt; lxrun /installThen you will see
+&amp;gt; lsb_release -aNo LSB modules are available.Distributor ID: UbuntuDescription: Ubuntu 16.04.2 LTSRelease: 16.04Codename: xenialSome X11 apps like xclocks works fine with Xming, but &amp;ldquo;gnome-terminal&amp;rdquo; still have some problem.</description>
     </item>
     
     <item>
@@ -363,7 +427,7 @@ Some suggested workarounds:
       <guid>/blog/flow/2017-04-18-case-study-clock-skew-control/</guid>
       <description>Question: how to control the clock skew between a group of clocks to be minimum, say less than 30ps, instead of utilizing useful skew? This case happens to our hard macros.
 A: in Innovus, use skew group
-set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock/NLVP_CKB } create_ccopt_skew_group \ -name min_skew_group \ -sources path/to/clock/source/CKB \ -sinks $min_skew_group \ -target_insertion_delay 0.500 \ -rank 1 -target_skew 0.000 set_ccopt_property constraints -skew_group min_skew_group ccopt  </description>
+set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock/NLVP_CKB } create_ccopt_skew_group \ -name min_skew_group \ -sources path/to/clock/source/CKB \ -sinks $min_skew_group \ -target_insertion_delay 0.500 \ -rank 1 -target_skew 0.000 set_ccopt_property constraints -skew_group min_skew_group ccopt </description>
     </item>
     
     <item>
@@ -372,8 +436,18 @@ set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-04-01-innovus-training/</guid>
-      <description>The following is my notes of INNOVUS training course on Cadence&amp;rsquo;s training module
- Module 02: overview  &amp;ldquo;gift&amp;rdquo; directory contains lots of useful scripts to help productivity Independent &amp;ldquo;viewlog&amp;rdquo; utility or &amp;ldquo;Tools-&amp;gt;Log Viewer&amp;rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI   Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .</description>
+      <description>The following is my notes of INNOVUS training course on Cadence&#39;s training module
+ Module 02: overview  &amp;ldquo;gift&amp;rdquo; directory contains lots of useful scripts to help productivity Independent &amp;ldquo;viewlog&amp;rdquo; utility or &amp;ldquo;Tools-&amp;gt;Log Viewer&amp;rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .</description>
+    </item>
+    
+    <item>
+      <title>INNOVUS Training Notes</title>
+      <link>/blog/tutorial/2017-04-01-innovus-training/</link>
+      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tutorial/2017-04-01-innovus-training/</guid>
+      <description>The following is my notes of INNOVUS training course on Cadence&#39;s training module
+ Module 02: overview  &amp;ldquo;gift&amp;rdquo; directory contains lots of useful scripts to help productivity Independent &amp;ldquo;viewlog&amp;rdquo; utility or &amp;ldquo;Tools-&amp;gt;Log Viewer&amp;rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .</description>
     </item>
     
     <item>
@@ -400,6 +474,19 @@ Problems to think about when running works on GPU clusters memory is relatively 
     </item>
     
     <item>
+      <title>Deep learning with GPUs in production</title>
+      <link>/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</guid>
+      <description>Start-up: python -&amp;gt; enterprise: C/Java/Scala, more engineers, faster Research: quick result and prototyping
+GPU? Data movement between GPU and CPU is important
+[ ] fast.ai: class (high school math)
+infrastructure: spark/flink scheduler problem distributed file system
+Problems to think about when running works on GPU clusters memory is relatively small throughput, jobs are more than matrix math resource provisioning: how many resource we need? GPU/CPU/RAM GPU allocation per job Python &amp;lt;-&amp;gt; Java overhead, defeats the points of GPUs</description>
+    </item>
+    
+    <item>
       <title>未来的AR应该是什么样子的？</title>
       <link>/blog/industry/2017-02-21-ar-future/</link>
       <pubDate>Tue, 21 Feb 2017 00:00:00 +0000</pubDate>
@@ -415,14 +502,12 @@ Problems to think about when running works on GPU clusters memory is relatively 
       
       <guid>/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/</guid>
       <description>By Jon Shlens and George Toderici from Google Research @ 2017-01-20 Fri
-  History
- Convolutional NN: old tech, why suddenly it works?
- Scale: 60M parameters
-  At least 60M +1 data point to fit these parameters
- SIMD hardware (GPU)
- Domain transfer
- Use trained CNN (with large data set) on some other applications with limited data set
-  CNN (convolutional neuron network)</description>
+   History
+  Convolutional NN: old tech, why suddenly it works?
+ Scale: 60M parameters      At least 60M +1 data point to fit these parameters
+  SIMD hardware (GPU)
+  Domain transfer
+ Use trained CNN (with large data set) on some other applications with limited data set      CNN (convolutional neuron network)</description>
     </item>
     
     <item>
@@ -445,7 +530,7 @@ Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。�
       
       <guid>/blog/design/2017-01-18-generate-example/</guid>
       <description>Some parameterized example RTL code for register-based SRAM read circuit using &amp;ldquo;generate&amp;rdquo; feature
-parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &amp;quot;generate&amp;quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &amp;lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &amp;lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp;amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &amp;lt;= word_or; end  </description>
+parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &amp;quot;generate&amp;quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &amp;lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &amp;lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp;amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &amp;lt;= word_or; end </description>
     </item>
     
     <item>
@@ -454,8 +539,27 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-01-10-systemverilog-for-design-note/</guid>
-      <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;rdquo;. As a non-full-time RTL designer, it has opened my mind. But still, I&amp;rsquo;m sad about the antient tool that we are using to design hardware.
- Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation   referencing  :: the scope resolution operator  package_name::package_member  use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically  import package_name::*  what is used will be imported   $unit declaration space  TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&amp;rsquo;s called  cannot use static variables, which are supposed to be shared by all instances   $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&amp;rsquo;s not global  if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module  each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky  TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function ~~~verilog // filename: def.</description>
+      <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&#39;m sad about the antient tool that we are using to design hardware.
+ Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&#39;s called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&#39;s not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.</description>
+    </item>
+    
+    <item>
+      <title>SystemVerilog for Design Note</title>
+      <link>/blog/tutorial/2017-01-10-systemverilog-for-design-note/</link>
+      <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tutorial/2017-01-10-systemverilog-for-design-note/</guid>
+      <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&#39;m sad about the antient tool that we are using to design hardware.
+ Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&#39;s called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&#39;s not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</link>
+      <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</guid>
+      <description>As shown in the schematic, we have some clock divider that divide root clock by half. While in scan mode, these flip-flops will be bypassed and treated as normal flip-flop that need to be inserted into the scan chain along with leaf flip-flops. But due to the nature of clock tree, clock divider will be in the upper stream and will have a much smaller clock insertion delay. Then it will cause large hold time violation from clock generator flip-flops to normal leaf flip-flops, and these violations cannot be fixed easily.</description>
     </item>
     
     <item>
@@ -485,11 +589,8 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <description>&lt;blockquote&gt;
 &lt;p&gt;很有意思的一篇文章。转载自纽约时报中文网&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://cn.nytimes.com/education/20161103/chinese-class-usa/&#34;&gt;中文学校：ABC成长的烦恼&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;strong&gt;我大学第一堂中文课，老师问了一个让我念念不忘的问题：“告诉我，华裔在美国受歧视吗？”&lt;/strong&gt;&lt;/p&gt;
-
 &lt;p&gt;我在加州大学伯克利分校(University of California, Berkeley)上一个专门给华裔设计的班，学生都是ABC（即美国出生的华人）。我们八点钟来上课，还在半梦半醒状态中。有的学生在啃面包，有的趴在课桌上，但我们差不多都摇头表示否认。&lt;/p&gt;</description>
     </item>
     
@@ -508,7 +609,7 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2016-08-06-observation-of-ic-industry/</guid>
-      <description>Recent consolidation progress is going so crazy, mostly because of the IC industry is becoming less and less profitable in every individual application fields. My perspective is that this is not just a consolidation of business itself, but a huge change of IC industry business model. There won&amp;rsquo;t be so many application fields that needs different IC chips, no matter it&amp;rsquo;s analog or digital. In analog world, more and more functionality will be replaced with digital as long as it can.</description>
+      <description>Recent consolidation progress is going so crazy, mostly because of the IC industry is becoming less and less profitable in every individual application fields. My perspective is that this is not just a consolidation of business itself, but a huge change of IC industry business model. There won&#39;t be so many application fields that needs different IC chips, no matter it&#39;s analog or digital. In analog world, more and more functionality will be replaced with digital as long as it can.</description>
     </item>
     
     <item>
@@ -528,7 +629,16 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>/blog/life/2016-01-03-falling-in-love-with-running-in-13-weeks/</guid>
-      <description> 为跑步做好准备  休息并不是避免运动那么简单，它是一个能够让你的身体从疲劳中恢复过来的合理周期。  13周跑步行走计划的技巧摘要  “拖着脚慢跑”：挺起胸，手臂摆动范围小一些，用小碎步跑，不要太高膝关节，尽量不要跳起。把重心放在脚掌的中前部。从步行到跑步要过渡的非常平稳。 每周进行三次训练。如果因为一些原因而不能完成当周的训练，最好在下一周重复这周的课程，然后再继续。 坚持记日志可以帮助你找到任何受伤的根源（1）记录每一次训练的感受，以及在哪里进行训练的（2）你生活中发生了什么事情（比如睡眠、工作繁忙）和其他任何想记录的事情（3）记住保持简单和诚实。 要在健康和没有受伤的状态下训练。保持足够的睡眠来保证健康。膳食平衡。随身携带水瓶，随时补充水。 在行走或慢跑的时候，要会使用你的手臂。有意识的控制手臂动作能够决定你的步伐。 用腹部呼吸。通过强迫呼气来改变呼吸方式。 通过锻炼来增强核心力量。 把大拇指和中指捏在一起来放松你的肩膀。通过把注意力集中到这一小块压力区域来释放上身的压力。  跑步心理学  早上是跑步的最好时段之一，不仅从统计上来看更不容易受伤，而且在一天中早一些计划要做的事情一般都能够完成。 即使最糟糕的事情发生了，你退出了然后不得不回到13周计划的最开始一切从头开始，那又如何呢？身体比以前更好了也更强健了。 利用热身来激励自己。如果经过一天的工作感觉很疲乏，热身可能会有你想象不到的效果。除了能让你的身体为锻炼做好准备并避免受伤以外，热身还可以从心理上让你动起来，给大脑输入更多的氧气，也可以刺激你以给你动力。如果你实在不想跑步，说服自己不管怎样都要做一下热身运动。当热身结束的时候，你可能会发现自己想要跑步了。 提醒自己，训练的进展越大，训练就会变得越容易一些。  成为一个更好的跑步者  交叉训练：参加不同的训练活动。跑步之外再参加一种其他的训练可以让某些肌肉组休息，也可以避免运动员无聊。不同种类的训练可以起到心理上的推动作用。 骑自行车是跑步者通常最喜欢的交叉训练之一。（1）骑自行车训练股四头肌，即大腿前侧肌肉；而跑步则训练绳肌，即大腿后侧肌肉（2）骑自行车还可以开地图。 要记住，游泳不是减肥的好方法，因为水可以使身体的大部分浮起来，所以不会像跑步那样需要燃烧那么多热量。  </description>
+      <description>为跑步做好准备  休息并不是避免运动那么简单，它是一个能够让你的身体从疲劳中恢复过来的合理周期。  13周跑步行走计划的技巧摘要  “拖着脚慢跑”：挺起胸，手臂摆动范围小一些，用小碎步跑，不要太高膝关节，尽量不要跳起。把重心放在脚掌的中前部。从步行到跑步要过渡的非常平稳。 每周进行三次训练。如果因为一些原因而不能完成当周的训练，最好在下一周重复这周的课程，然后再继续。 坚持记日志可以帮助你找到任何受伤的根源（1）记录每一次训练的感受，以及在哪里进行训练的（2）你生活中发生了什么事情（比如睡眠、工作繁忙）和其他任何想记录的事情（3）记住保持简单和诚实。 要在健康和没有受伤的状态下训练。保持足够的睡眠来保证健康。膳食平衡。随身携带水瓶，随时补充水。 在行走或慢跑的时候，要会使用你的手臂。有意识的控制手臂动作能够决定你的步伐。 用腹部呼吸。通过强迫呼气来改变呼吸方式。 通过锻炼来增强核心力量。 把大拇指和中指捏在一起来放松你的肩膀。通过把注意力集中到这一小块压力区域来释放上身的压力。  跑步心理学  早上是跑步的最好时段之一，不仅从统计上来看更不容易受伤，而且在一天中早一些计划要做的事情一般都能够完成。 即使最糟糕的事情发生了，你退出了然后不得不回到13周计划的最开始一切从头开始，那又如何呢？身体比以前更好了也更强健了。 利用热身来激励自己。如果经过一天的工作感觉很疲乏，热身可能会有你想象不到的效果。除了能让你的身体为锻炼做好准备并避免受伤以外，热身还可以从心理上让你动起来，给大脑输入更多的氧气，也可以刺激你以给你动力。如果你实在不想跑步，说服自己不管怎样都要做一下热身运动。当热身结束的时候，你可能会发现自己想要跑步了。 提醒自己，训练的进展越大，训练就会变得越容易一些。  成为一个更好的跑步者  交叉训练：参加不同的训练活动。跑步之外再参加一种其他的训练可以让某些肌肉组休息，也可以避免运动员无聊。不同种类的训练可以起到心理上的推动作用。 骑自行车是跑步者通常最喜欢的交叉训练之一。（1）骑自行车训练股四头肌，即大腿前侧肌肉；而跑步则训练绳肌，即大腿后侧肌肉（2）骑自行车还可以开地图。 要记住，游泳不是减肥的好方法，因为水可以使身体的大部分浮起来，所以不会像跑步那样需要燃烧那么多热量。  </description>
+    </item>
+    
+    <item>
+      <title>[Cousera Note] Machine Learning Foundations: A Case Study Approach</title>
+      <link>/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</link>
+      <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</guid>
+      <description>1 Week1: Welcome  1.1 Introduction  1.1.1 real world case based  - regression: house price prediction - classificiation: sentiment analysis - clustering &amp;amp; retrieval: finding doc - maxtrix factorization &amp;amp; dimensionality reduction: recommending products   1.1.2 requirement  math: calculas &amp;amp; algebra python   1.1.3 capstone project   1.2 iPython Notebook  Python command and its outputs Markdown for doc   1.3 SFrames  1.</description>
     </item>
     
     <item>
@@ -537,7 +647,7 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2015-10-20-machine-learning-foundations-coursera/</guid>
-      <description>1 Week1: Welcome  1.1 Introduction 1.1.1 real world case based  - regression: house price prediction - classificiation: sentiment analysis - clustering &amp;amp; retrieval: finding doc - maxtrix factorization &amp;amp; dimensionality reduction: recommending products  1.1.2 requirement  math: calculas &amp;amp; algebra python  1.1.3 capstone project 1.2 iPython Notebook Python command and its outputs Markdown for doc 1.3 SFrames 1.3.1 GraphLab Canvas  - any data structure *.</description>
+      <description>1 Week1: Welcome  1.1 Introduction  1.1.1 real world case based  - regression: house price prediction - classificiation: sentiment analysis - clustering &amp;amp; retrieval: finding doc - maxtrix factorization &amp;amp; dimensionality reduction: recommending products   1.1.2 requirement  math: calculas &amp;amp; algebra python   1.1.3 capstone project   1.2 iPython Notebook  Python command and its outputs Markdown for doc   1.3 SFrames  1.</description>
     </item>
     
     <item>
@@ -557,7 +667,7 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <guid>/blog/tool/2015-07-19-python-and-freemind-elementtree/</guid>
       <description>我曾经自己用Python写过一个小工具来parse Freemind文件（XML格式）然后生成RestructureText和Latex格式。这个小工具的目的是为了实践我的“源文件唯一”的理念。因为我的简历（包括既往项目总结）需要保存为两种不同格式，一个为了放在个人网站上所以是HTML，另一个当然是PDF格式。
 今天瞎琢磨的时候发现，其实Python对于XML文件格式支持的极好。The ElementTree XML API这个模块将XML parse成一个Tree。
-Each element has a number of properties associated with it: a tag which is a string identifying what kind of data this element represents (the element type, in other words). a number of attributes, stored in a Python dictionary. a text string. an optional tail string. a number of child elements, stored in a Python sequence  Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。</description>
+Each element has a number of properties associated with it: a tag which is a string identifying what kind of data this element represents (the element type, in other words). a number of attributes, stored in a Python dictionary. a text string. an optional tail string. a number of child elements, stored in a Python sequence Python的Markdown也能够utilize这个ElementTree模块。它能够将Markdown文件Parse成eTree（也能够在之前和之后加上其他的process，以callback的形式存在）。</description>
     </item>
     
     <item>
@@ -566,7 +676,7 @@ Each element has a number of properties associated with it: a tag which is a str
       <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</guid>
-      <description>More organizations are starting to adopt a remote work culture. But how do managers stay in sync with what their teams are doing when they can&amp;rsquo;t see them? While it&amp;rsquo;s important to define clear goals early on, you should let remote teams decide on the best paths to reach those goals. Rather than dictating each specific task, give them a vision to work on. Let them hold each other accountable, and ask them to assign themselves daily goals and provide weekly reports.</description>
+      <description>More organizations are starting to adopt a remote work culture. But how do managers stay in sync with what their teams are doing when they can&#39;t see them? While it&#39;s important to define clear goals early on, you should let remote teams decide on the best paths to reach those goals. Rather than dictating each specific task, give them a vision to work on. Let them hold each other accountable, and ask them to assign themselves daily goals and provide weekly reports.</description>
     </item>
     
     <item>
@@ -575,7 +685,7 @@ Each element has a number of properties associated with it: a tag which is a str
       <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2015-07-01-idf-2015/</guid>
-      <description>Intel IoT platform  Intel IoT Platform Sensors and things  Arduino  Gateway  transfer data between different types of networks some data processing as well moving quickly: different types of data flexibility is important for scalability PMA: protocol mapper and adapter (UPAL)  Security  not only data, but also physical security  data storage  physically distributed depend on the data types, and there are so many of them different users use the same data in many different ways provide different sets of APIs at business level  Real world IoT challenges 3 major areas  connected things and devices intelligence and the edge turn data in to insight  different applications  cities: e.</description>
+      <description>Intel IoT platform  Intel IoT Platform  Sensors and things  Arduino   Gateway  transfer data between different types of networks some data processing as well moving quickly: different types of data flexibility is important for scalability PMA: protocol mapper and adapter (UPAL)   Security  not only data, but also physical security   data storage  physically distributed depend on the data types, and there are so many of them different users use the same data in many different ways  provide different sets of APIs at business level       Real world IoT challenges  3 major areas  connected things and devices intelligence and the edge turn data in to insight   different applications  cities: e.</description>
     </item>
     
     <item>
@@ -593,8 +703,8 @@ Each element has a number of properties associated with it: a tag which is a str
       <pubDate>Mon, 23 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2015-02-23-isscc-2015-evening-session/</guid>
-      <description>Bohr: moore&amp;rsquo;s law for 50 years
- $mm^2$ is increasing since 130nm heterogeneous intergration: 3D chip is not a replacement of moore&amp;rsquo;s law (quite opposite with Sehat) refocus on general purpose design  Hill: 21 century computer architecture
+      <description>Bohr: moore&#39;s law for 50 years
+ $mm^2$ is increasing since 130nm heterogeneous intergration: 3D chip is not a replacement of moore&#39;s law (quite opposite with Sehat) refocus on general purpose design    Hill: 21 century computer architecture
  21stcentruryarchitecturewhitepaper.pdf - instruction set is not going to be untouchable anymore - energy first - parallelism - specialization - cross-layout design - cross-cutting: break current layers with new interfaces - BREAK LAYERS - software bloat - PHP is 50x slower than BLAC - 3D stack - how to address thermal problem?</description>
     </item>
     
@@ -628,7 +738,7 @@ The topic about &amp;ldquo;present&amp;rdquo; was the first chapter I read the s
       
       <guid>/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</guid>
       <description>Background This is the summary of my experience from project LBRAM in Marvell in the year of 2014.
-The first thing: discuss timing/area/power SPEC&amp;rsquo;s in details Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC&amp;rsquo;s, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC&amp;rsquo;s even if they are not accurate.</description>
+The first thing: discuss timing/area/power SPEC&#39;s in details Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC&#39;s, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC&#39;s even if they are not accurate.</description>
     </item>
     
     <item>
@@ -650,7 +760,18 @@ After ran power estimation and determined that the most energy consumed part was
       <description>&lt;blockquote&gt;
 &lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
 &lt;/blockquote&gt;
-
+&lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Survey of Low Power Design</title>
+      <link>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</link>
+      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
     </item>
     
@@ -661,7 +782,7 @@ After ran power estimation and determined that the most energy consumed part was
       
       <guid>/project/2008-07-01-my-phd-projects/</guid>
       <description>High-Speed full-custom register file design  From Mar. 2004 to Jan. 2006
- This whole project&amp;rsquo;s purpose is to design high speed multi-synchronious read and write port register file to meet the ultra high frequency and bandwidth requirement of a 1GHz 4-issue 64-bit general purpose RISC CPU. We need to implement a SRAM with independent 8 read ports and 4 write ports with read latency less than 500ps. Our solution is to use 2 SRAM with identical data content.</description>
+ This whole project&#39;s purpose is to design high speed multi-synchronious read and write port register file to meet the ultra high frequency and bandwidth requirement of a 1GHz 4-issue 64-bit general purpose RISC CPU. We need to implement a SRAM with independent 8 read ports and 4 write ports with read latency less than 500ps. Our solution is to use 2 SRAM with identical data content.</description>
     </item>
     
     <item>

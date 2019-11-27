@@ -7,7 +7,7 @@
 	<title>Note of &#34;Deep learning for image and video processing tutorial&#34;</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -67,158 +70,229 @@
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
-		
+		<nav id="TableOfContents"></nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<blockquote>
 <p>By Jon Shlens and George Toderici from Google Research @ 2017-01-20 Fri</p>
 </blockquote>
-
 <ul>
-<li><p>History</p>
-
+<li>
+<p>History</p>
 <ul>
-<li><p>Convolutional NN: old tech, why suddenly it works?</p></li>
-
-<li><p>Scale: 60M parameters</p></li>
-</ul></li>
-
-<li><p>At least 60M +1 data point to fit these parameters</p></li>
-
-<li><p>SIMD hardware (GPU)</p>
-
+<li>
+<p>Convolutional NN: old tech, why suddenly it works?</p>
 <ul>
-<li><p>Domain transfer</p></li>
-
-<li><p>Use trained CNN (with large data set) on some other applications with limited data set</p></li>
-</ul></li>
-
-<li><p>CNN (convolutional neuron network)</p>
-
+<li>Scale: 60M parameters</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>At least 60M +1 data point to fit these parameters</p>
+</li>
+<li>
+<p>SIMD hardware (GPU)</p>
 <ul>
-<li><p>Toy model of a neuron</p></li>
-
-<li><p>Sum over weighted input + nonlinear activation function to output</p></li>
-
-<li><p>Very little relationship with real neuron</p></li>
-
-<li><p>Softmax classifier</p></li>
-
-<li><p>Learning: cross-entropy loss (cost function)</p></li>
-
-<li><p>Gradient descent with <strong>back-propagation</strong></p></li>
-
-<li><p>Optimization is HIGHLY non-convex, and works on O(1M) dimensions</p></li>
-
-<li><p>Baseline task: MIST</p></li>
-
-<li><p>Handwritten digits recoginition</p></li>
-
-<li><p>Problem: input image size could blow up with more pixel</p></li>
-
-<li><p>CNN arch fundamentals</p></li>
-
-<li><p>Pre-choice parameter</p></li>
-</ul></li>
-
-<li><p>Size of the filter</p></li>
-
-<li><p>Stride: overlapping while sliding</p></li>
-
-<li><p>Padding: what to do at the edge</p></li>
-
-<li><p>Input depth / output depth (&lt; 1024)</p>
-
+<li>
+<p>Domain transfer</p>
+<ul>
+<li>Use trained CNN (with large data set) on some other applications with limited data set</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>CNN (convolutional neuron network)</p>
+<ul>
+<li>
+<p>Toy model of a neuron</p>
+<ul>
+<li>
+<p>Sum over weighted input + nonlinear activation function to output</p>
+</li>
+<li>
+<p>Very little relationship with real neuron</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Softmax classifier</p>
+</li>
+<li>
+<p>Learning: cross-entropy loss (cost function)</p>
+<ul>
+<li>
+<p>Gradient descent with <strong>back-propagation</strong></p>
+</li>
+<li>
+<p>Optimization is HIGHLY non-convex, and works on O(1M) dimensions</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Baseline task: MIST</p>
+<ul>
+<li>
+<p>Handwritten digits recoginition</p>
+</li>
+<li>
+<p>Problem: input image size could blow up with more pixel</p>
+</li>
+</ul>
+</li>
+<li>
+<p>CNN arch fundamentals</p>
+<ul>
+<li>Pre-choice parameter</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Size of the filter</p>
+</li>
+<li>
+<p>Stride: overlapping while sliding</p>
+</li>
+<li>
+<p>Padding: what to do at the edge</p>
+</li>
+<li>
+<p>Input depth / output depth (&lt; 1024)</p>
 <ul>
 <li>Learned by system</li>
-</ul></li>
-
-<li><p>The parameter inside the filter</p></li>
-
-<li><p>Advances in network arch</p>
-
+</ul>
+</li>
+<li>
+<p>The parameter inside the filter</p>
+</li>
+<li>
+<p>Advances in network arch</p>
 <ul>
-<li><p>Types</p></li>
-
-<li><p>AlexNet</p></li>
-
-<li><p>Inception</p></li>
-
-<li><p>BN-Inception</p></li>
-
-<li><p>ResNet</p></li>
-
-<li><p>2 parts</p></li>
-
-<li><p>Convolutional</p></li>
-</ul></li>
-
-<li><p>Less parameters, more computational intense</p>
-
+<li>
+<p>Types</p>
 <ul>
-<li><p>Fully connected</p></li>
-
-<li><p>Themes in inception</p></li>
-
-<li><p>Network-in-network</p></li>
-</ul></li>
-
-<li><p>Dimension reduction</p>
-
+<li>
+<p>AlexNet</p>
+</li>
+<li>
+<p>Inception</p>
+</li>
+<li>
+<p>BN-Inception</p>
+</li>
+<li>
+<p>ResNet</p>
+</li>
+</ul>
+</li>
+<li>
+<p>2 parts</p>
 <ul>
-<li><p>Multi-scale</p></li>
-
-<li><p>Covariate shifts</p></li>
-
-<li><p>Batch normalization (BN)</p></li>
-</ul></li>
-
-<li><p>Image embedding and captioning</p>
-
+<li>Convolutional</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Less parameters, more computational intense</p>
 <ul>
-<li><p>Embedding vs classification</p></li>
-
-<li><p>Embedding: out-of-box information</p></li>
-
-<li><p>Language model</p></li>
-
-<li><p>Not words, but a sequence of words</p></li>
-
-<li><p>RNN (recurrent neuron networks)</p></li>
-
-<li><p>State is a function of previous state and inputs</p></li>
-
-<li><p>Training</p></li>
-</ul></li>
-
-<li><p>Unrolling trick</p>
-
+<li>
+<p>Fully connected</p>
+</li>
+<li>
+<p>Themes in inception</p>
+<ul>
+<li>Network-in-network</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Dimension reduction</p>
+<ul>
+<li>
+<p>Multi-scale</p>
+</li>
+<li>
+<p>Covariate shifts</p>
+<ul>
+<li>Batch normalization (BN)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Image embedding and captioning</p>
+<ul>
+<li>
+<p>Embedding vs classification</p>
+<ul>
+<li>Embedding: out-of-box information</li>
+</ul>
+</li>
+<li>
+<p>Language model</p>
+<ul>
+<li>Not words, but a sequence of words</li>
+</ul>
+</li>
+<li>
+<p>RNN (recurrent neuron networks)</p>
+<ul>
+<li>
+<p>State is a function of previous state and inputs</p>
+</li>
+<li>
+<p>Training</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Unrolling trick</p>
 <ul>
 <li>Long short term memory (LSTM)</li>
-</ul></li>
-
-<li><p>Popular RNN</p></li>
-
-<li><p>Predicting in Pixel Space</p>
-
+</ul>
+</li>
+<li>
+<p>Popular RNN</p>
+</li>
+<li>
+<p>Predicting in Pixel Space</p>
 <ul>
-<li><p>Autoencoder: dimension reduction tool</p></li>
-
-<li><p>Convolution encoder and decoder</p></li>
-
-<li><p>Deconvolution: upconvolutions</p></li>
-</ul></li>
-
-<li><p>Video</p>
-
+<li>
+<p>Autoencoder: dimension reduction tool</p>
 <ul>
-<li><p>Hard</p></li>
-
-<li><p>Computantional intensive</p></li>
-
-<li><p>Dataset is hard</p></li>
-</ul></li>
+<li>
+<p>Convolution encoder and decoder</p>
+</li>
+<li>
+<p>Deconvolution: upconvolutions</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Video</p>
+<ul>
+<li>
+<p>Hard</p>
+<ul>
+<li>
+<p>Computantional intensive</p>
+</li>
+<li>
+<p>Dataset is hard</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 		</div>
@@ -234,7 +308,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 

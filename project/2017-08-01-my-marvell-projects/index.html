@@ -7,7 +7,7 @@
 	<title>Some of My Projects in Marvell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	<meta name="generator" content="Hugo 0.53" />
+	<meta name="generator" content="Hugo 0.60.0" />
 	
 	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -25,7 +25,7 @@
 		<div class="logo">
 			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
 				<div class="logo__title">When Moore&#39;s Law ENDS</div>
-				<div class="logo__tagline">A chip designer&#39;s personal blog about chip architecture and design, and everything else ...</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
 			</a>
 		</div>
 		
@@ -35,10 +35,13 @@
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">About Me</a>
+			<a class="menu__link" href="/">About Me</a>
 		</li>
 		<li class="menu__item">
 			<a class="menu__link" href="/project/">My Projects</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">Blog</a>
 		</li>
 	</ul>
 </nav>
@@ -63,39 +66,24 @@
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#latch-based-ram-semi-custom-macro-design-change">Latch-based RAM semi-custom macro design change</a></li>
-<li><a href="#power-structure-plan-and-voltage-drop-early-analysis">Power structure plan and voltage drop early analysis</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#latchbased-ram-semicustom-macro-design-change">Latch-based RAM semi-custom macro design change</a></li>
+    <li><a href="#power-structure-plan-and-voltage-drop-early-analysis">Power structure plan and voltage drop early analysis</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h2 id="latch-based-ram-semi-custom-macro-design-change">Latch-based RAM semi-custom macro design change</h2>
-
-<p>This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we&rsquo;d like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction. (1) we have more &ldquo;read word lines&rdquo; than normal SRAM; (2) we only have 4 metal layers to use; (3) the height of standard cell was fixed. To increase the height would significantly help with this routing chaos.</p>
-
+			<h2 id="latchbased-ram-semicustom-macro-design-change">Latch-based RAM semi-custom macro design change</h2>
+<p>This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we'd like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction. (1) we have more &ldquo;read word lines&rdquo; than normal SRAM; (2) we only have 4 metal layers to use; (3) the height of standard cell was fixed. To increase the height would significantly help with this routing chaos.</p>
 <p>However, to change the floorplan meant to change almost everything, including structure of bitcells and decoders, routing resource in both horizontal and vertial directions, clock tree, scan chains, and etc. We designed schematic with ECS, layout with Laker and Pyxis.</p>
-
-<p>Except for schematic and layout design for LP version, we still needed to run STA and power reliability analysis on both versions. But before, we didn&rsquo;t have mature flow with Nanotime (STA) and XA-RA (power reliability). So we had to setup and test both tools.</p>
-
+<p>Except for schematic and layout design for LP version, we still needed to run STA and power reliability analysis on both versions. But before, we didn't have mature flow with Nanotime (STA) and XA-RA (power reliability). So we had to setup and test both tools.</p>
 <p>My responsiblity in this project included: project management; floorplan design; schematic and layout design; voltage drop analysis</p>
-
 <h2 id="power-structure-plan-and-voltage-drop-early-analysis">Power structure plan and voltage drop early analysis</h2>
-
-<p>This project didn&rsquo;t take much of my bandwith, but it&rsquo;s on-and-off for several months because our target products have been delayed.</p>
-
-<p>It&rsquo;s not easy to predict the power consumption and geometry coordinates of blocks. I took data from previous project and did lots of communication with both front-end and back-end engineers about our new design&rsquo;s area and new floorplan. Thanks for the experience from previous project, it took much less time on this stage than expected.</p>
-
+<p>This project didn't take much of my bandwith, but it's on-and-off for several months because our target products have been delayed.</p>
+<p>It's not easy to predict the power consumption and geometry coordinates of blocks. I took data from previous project and did lots of communication with both front-end and back-end engineers about our new design's area and new floorplan. Thanks for the experience from previous project, it took much less time on this stage than expected.</p>
 <p>Although we have used Redhawk a lot for voltage drop analysis before, Excel2IR was a new tool for me. It took advantage of Redhawk and made the process of setup a rough design model faster and easier.</p>
-
-<p>Since it&rsquo;s not very easy and script-oriented to create power grids in Redhawk, I still used ICC to do the job. I wrote lots of proc of my own to help scripting, and the final design was all based on Tcl scripts.</p>
-
+<p>Since it's not very easy and script-oriented to create power grids in Redhawk, I still used ICC to do the job. I wrote lots of proc of my own to help scripting, and the final design was all based on Tcl scripts.</p>
 <p>Also I wrote a makefile to integrate ICC, Excel2IR and Redhawk together. It made the iteration faster.</p>
 
 		</div>
@@ -111,7 +99,7 @@
 		<span class="authorbox__name">About Jim Wang</span>
 	</div>
 	<div class="authorbox__description">
-		Chip designer interested in SoC and CPU architecture, hardware software co-design, machine learning accelerator, Python and Tcl scripting, and raising 2 kids in the bay area
+		Chip designer
 	</div>
 </div>
 
