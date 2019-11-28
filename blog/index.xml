@@ -155,15 +155,6 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
     </item>
     
     <item>
-      <title>SystemC Tutorial</title>
-      <link>/blog/tutorial/2018-12-07-systemc-tutorial/</link>
-      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/tutorial/2018-12-07-systemc-tutorial/</guid>
-      <description>// Some simple example#include &amp;lt;systemc.h&amp;gt;SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	a;sc_in&amp;lt; sc_unit&amp;lt;8&amp;gt; &amp;gt;	b;sc_out&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	f;sc_in&amp;lt;bool&amp;gt;	clk;void func() {f.write( a.read() &amp;amp; b.read() );}SC_CTOR ( seq_and2 ) {SC_CTHREAD(func);sensitive &amp;lt;&amp;lt; clk.neg();}}Port &amp;amp; signal  Port  sc_in &amp;amp; sc_out .read() &amp;amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers</description>
-    </item>
-    
-    <item>
       <title>RISC-V Summit 2018</title>
       <link>/blog/industry/2018-12-04-riscv-summit-2018/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
@@ -329,16 +320,6 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
     </item>
     
     <item>
-      <title>Course Note of *Python: Design Patterns*</title>
-      <link>/blog/tutorial/2017-05-17-python-design-patterns-note/</link>
-      <pubDate>Wed, 17 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/tutorial/2017-05-17-python-design-patterns-note/</guid>
-      <description> The course is on Coursera
- understanding design patterns  what?  well-known solutions for recurring problems   why?  don&#39;t reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp;amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    </description>
-    </item>
-    
-    <item>
       <title>Scala First Look</title>
       <link>/blog/note/2017-05-14-scala-first-look/</link>
       <pubDate>Sun, 14 May 2017 00:00:00 +0000</pubDate>
@@ -349,31 +330,11 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
     </item>
     
     <item>
-      <title>Scala First Look</title>
-      <link>/blog/tutorial/2017-05-14-scala-first-look/</link>
-      <pubDate>Sun, 14 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/tutorial/2017-05-14-scala-first-look/</guid>
-      <description>Scala introduction course on LinkedIn. Not very useful, if not using it in real project.
- introduction  short for Scalable language object-oriented + functional programming  everything is object  including numbers and functions does not include primitive data types   can pass/assign function: functional programming   seamless compatible with Java  runs on JVM, compile to JVM reuse Java libraries and types can call any Java code   REPL interactive shell  read, eval, print, loop    syntax  define: var (variable) vs val (value)  var defines variables that can be changed  but cannot change from one data type to another, ex.</description>
-    </item>
-    
-    <item>
       <title>GENUS Training Notes</title>
       <link>/blog/note/2017-05-05-genus-training/</link>
       <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-05-05-genus-training/</guid>
-      <description>The following is my notes of GENUS training course on Cadence&#39;s training module
- Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&#39;s hier instances instances_seq: current module&#39;s sequential instances instances_cmb: current module&#39;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.</description>
-    </item>
-    
-    <item>
-      <title>GENUS Training Notes</title>
-      <link>/blog/tutorial/2017-05-05-genus-training/</link>
-      <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/tutorial/2017-05-05-genus-training/</guid>
       <description>The following is my notes of GENUS training course on Cadence&#39;s training module
  Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&#39;s hier instances instances_seq: current module&#39;s sequential instances instances_cmb: current module&#39;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.</description>
     </item>
@@ -427,16 +388,6 @@ set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-04-01-innovus-training/</guid>
-      <description>The following is my notes of INNOVUS training course on Cadence&#39;s training module
- Module 02: overview  &amp;ldquo;gift&amp;rdquo; directory contains lots of useful scripts to help productivity Independent &amp;ldquo;viewlog&amp;rdquo; utility or &amp;ldquo;Tools-&amp;gt;Log Viewer&amp;rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .</description>
-    </item>
-    
-    <item>
-      <title>INNOVUS Training Notes</title>
-      <link>/blog/tutorial/2017-04-01-innovus-training/</link>
-      <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/tutorial/2017-04-01-innovus-training/</guid>
       <description>The following is my notes of INNOVUS training course on Cadence&#39;s training module
  Module 02: overview  &amp;ldquo;gift&amp;rdquo; directory contains lots of useful scripts to help productivity Independent &amp;ldquo;viewlog&amp;rdquo; utility or &amp;ldquo;Tools-&amp;gt;Log Viewer&amp;rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .</description>
     </item>
@@ -530,16 +481,6 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-01-10-systemverilog-for-design-note/</guid>
-      <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&#39;m sad about the antient tool that we are using to design hardware.
- Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&#39;s called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&#39;s not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.</description>
-    </item>
-    
-    <item>
-      <title>SystemVerilog for Design Note</title>
-      <link>/blog/tutorial/2017-01-10-systemverilog-for-design-note/</link>
-      <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/tutorial/2017-01-10-systemverilog-for-design-note/</guid>
       <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&#39;m sad about the antient tool that we are using to design hardware.
  Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&#39;s called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&#39;s not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.</description>
     </item>
