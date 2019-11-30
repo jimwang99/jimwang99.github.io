@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>arch on When Moore&#39;s Law ENDS</title>
+    <link>/categories/arch/</link>
+    <description>Recent content in arch on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/arch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Interrupts and ARM GIC Architecture</title>
+      <link>/blog/arch/2019-03-11-interrupt-and-arm-gic/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-03-11-interrupt-and-arm-gic/</guid>
+      <description>Reference
+ Interrupt  Categorization  Hardware vs. Software  Hardware: usually caused by peripheral or other processors  IRQ: maskable interrupt NMI: non-maskable interrupt  For highest priority tasks, like times, especially wathdog timers  Wathdog timer: a timer has to be reset by software on purpose periodically, otherwise it means the software has gone into some hanging situation and will trigger watchdog routine to recover or reboot.     IPI: inter-processor interrupt   Software: caused by exception or special instructions that used to implement system calls   Interrupt vs inter-process communication signal  Interrupt: mediated by the processor (hardware); handled by the kernel Signal: mediated by the kernel (through systeam call); handled by processes  Such as: SIGSEGV, SIGBUS, SIGILL, SIGFPE     Precise vs imprecise interrupt  Precise interrupts has  PC and other architecture states are saved, so after interrupt handler is done the current process can resume All instructions before the time point have fully executed, and no instructions beyond has been executed (or they are killed)     Triggering methods  Physical interrupt  Level-triggered vs.</description>
+    </item>
+    
+    <item>
+      <title>ARM&#39;s big.LITTLE Architecture</title>
+      <link>/blog/arch/2019-01-30-arm-big-little/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-01-30-arm-big-little/</guid>
+      <description>https://developer.arm.com/technologies/big-little
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&#39;s a particular adaption to mobile devices usage.</description>
+    </item>
+    
+    <item>
+      <title>Re-discover Hardware Security in Modern SoC</title>
+      <link>/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/</link>
+      <pubDate>Wed, 30 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/</guid>
+      <description>There is a big difference between how I used to understand hardware security and state-of-the-art security supported by hardware software co-design, after I watched some video talking about SEP (Security Enclave Processor) by Apple. It’s a key component in current iPhone to protect user data and password from being observed in any kind of hacking, including traditional side channel attack such as DPA (Dynamic Power Attack), debug channel attack, normal network attack, and etc.</description>
+    </item>
+    
+    <item>
+      <title>Huwcha Accelerator architecture</title>
+      <link>/blog/arch/2019-01-03-hwacha-accelerator/</link>
+      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-01-03-hwacha-accelerator/</guid>
+      <description>From the reading of this paper, &amp;ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&amp;rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
+ We don&#39;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&#39;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&#39;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
+    </item>
+    
+    <item>
+      <title>Note of RISC-V Vector ISA Spec v0.6</title>
+      <link>/blog/arch/2018-12-15-riscv-v-spec/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-12-15-riscv-v-spec/</guid>
+      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
+    </item>
+    
+    <item>
+      <title>Ariane (PULP series high-performance core)</title>
+      <link>/blog/arch/2018-12-01-ariane-cpu/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-12-01-ariane-cpu/</guid>
+      <description>Ariane Document
+Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&#39;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
+  There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
+    </item>
+    
+    <item>
+      <title>Network-on-Chip Notes</title>
+      <link>/blog/arch/2018-12-01-network-on-chip/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-12-01-network-on-chip/</guid>
+      <description>NoC  Clustering coefficient: the most intuitive explanation is the number of hops between two random nodes in the network. Layers  Physical layer Link layer  Transaction protocol: such as AXI Seperated channels like AXI, to avoid dead-lock caused by depency problem   Transport layer  Packet: header &amp;amp; payload     Flow control  On link-level or end-to-end level  Link-level: every hop there is a notification, just like valid-ready protocol End-to-end level: every transaction of data from sender to receiver has to have some kind of notification that the receiver notify the sender it has received the data successfully.</description>
+    </item>
+    
+    <item>
+      <title>Cache Coherence Notes</title>
+      <link>/blog/arch/2018-11-01-cache-coherence/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-11-01-cache-coherence/</guid>
+      <description>Coherence mechanism Snooping Every cache maintain its own cache state. And when it needs to access a shared address space, it sends snooping messages to all the other caches to either update or invalidate them.
+ Write invalidate: write operation will invalidate all the other shared copies. Others will have to read again from the next level of cache to use it again. Write update: write operation will give the written data to the shared copies and update them accordingly.</description>
+    </item>
+    
+    <item>
+      <title>CPU Architecture Notes</title>
+      <link>/blog/arch/2018-11-01-cpu-architecture-notes/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2018-11-01-cpu-architecture-notes/</guid>
+      <description>Register renaming To eliminate the false and output data dependency by adding extra physical registers more than architectural registers.
+ Read-after-write (RAW) is true data dependency Write-after-write (WAW) is output data dependency Write-after-read (WAR) is false data dependency  Superscalar Dynamically issue multiple instructions in each cycle to increase IPC.
+ Normally need multi-port register files and ALU to avoid structural hazard. Can be in-order or out-of-order  Re-order buffer For out-of-order execution CPU architecture, results are put into re-order buffer waiting for commit.</description>
+    </item>
+    
+  </channel>
+</rss>

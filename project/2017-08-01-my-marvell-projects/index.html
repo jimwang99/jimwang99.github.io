@@ -72,19 +72,7 @@
 	<time class="meta__text" datetime="2017-08-01T00:00:00">2017-08-01</time>
 </div>
 </div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">Page content</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents">
-  <ul>
-    <li><a href="#latchbased-ram-semicustom-macro-design-change">Latch-based RAM semi-custom macro design change</a></li>
-    <li><a href="#power-structure-plan-and-voltage-drop-early-analysis">Power structure plan and voltage drop early analysis</a></li>
-  </ul>
-</nav>
-	</div>
-</div>
-<div class="content post__content clearfix">
+		</header><div class="content post__content clearfix">
 			<h2 id="latchbased-ram-semicustom-macro-design-change">Latch-based RAM semi-custom macro design change</h2>
 <p>This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we'd like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction. (1) we have more &ldquo;read word lines&rdquo; than normal SRAM; (2) we only have 4 metal layers to use; (3) the height of standard cell was fixed. To increase the height would significantly help with this routing chaos.</p>
 <p>However, to change the floorplan meant to change almost everything, including structure of bitcells and decoders, routing resource in both horizontal and vertial directions, clock tree, scan chains, and etc. We designed schematic with ECS, layout with Laker and Pyxis.</p>

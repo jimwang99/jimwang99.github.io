@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ML on When Moore&#39;s Law ENDS</title>
+    <link>/categories/ml/</link>
+    <description>Recent content in ML on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/ml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deep learning with GPUs in production</title>
+      <link>/blog/ml/2017-03-21-deep-learning-with-gpu-in-production/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/ml/2017-03-21-deep-learning-with-gpu-in-production/</guid>
+      <description>Start-up: python -&amp;gt; enterprise: C/Java/Scala, more engineers, faster Research: quick result and prototyping
+GPU? Data movement between GPU and CPU is important
+[ ] fast.ai: class (high school math)
+infrastructure: spark/flink scheduler problem distributed file system
+Problems to think about when running works on GPU clusters memory is relatively small throughput, jobs are more than matrix math resource provisioning: how many resource we need? GPU/CPU/RAM GPU allocation per job Python &amp;lt;-&amp;gt; Java overhead, defeats the points of GPUs</description>
+    </item>
+    
+    <item>
+      <title>[Cousera Note] Machine Learning Foundations: A Case Study Approach</title>
+      <link>/blog/ml/2015-10-20-machine-learning-foundations-coursera/</link>
+      <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/ml/2015-10-20-machine-learning-foundations-coursera/</guid>
+      <description>1 Week1: Welcome  1.1 Introduction  1.1.1 real world case based  - regression: house price prediction - classificiation: sentiment analysis - clustering &amp;amp; retrieval: finding doc - maxtrix factorization &amp;amp; dimensionality reduction: recommending products   1.1.2 requirement  math: calculas &amp;amp; algebra python   1.1.3 capstone project   1.2 iPython Notebook  Python command and its outputs Markdown for doc   1.3 SFrames  1.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -32,15 +32,6 @@ set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock
     </item>
     
     <item>
-      <title></title>
-      <link>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</link>
-      <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</guid>
-      <description>As shown in the schematic, we have some clock divider that divide root clock by half. While in scan mode, these flip-flops will be bypassed and treated as normal flip-flop that need to be inserted into the scan chain along with leaf flip-flops. But due to the nature of clock tree, clock divider will be in the upper stream and will have a much smaller clock insertion delay. Then it will cause large hold time violation from clock generator flip-flops to normal leaf flip-flops, and these violations cannot be fixed easily.</description>
-    </item>
-    
-    <item>
       <title>My experience with custom digital design</title>
       <link>/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</link>
       <pubDate>Fri, 06 Jun 2014 00:00:00 +0000</pubDate>

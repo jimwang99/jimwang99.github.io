@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] Privileged Architecture - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] Privileged Architecture</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-11-27T00:00:00">2019-11-27</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="privileged-architecture">Privileged architecture</h2>
+<h3 id="purpose-of-privileged-architecture">Purpose of privileged architecture</h3>
+<ul>
+<li>
+<p>To manage and protect shared resources</p>
+<ul>
+<li>Memory, IO devices, even cores</li>
+</ul>
+</li>
+<li>
+<p>Also needs to decouple implementation details</p>
+<ul>
+<li>Handle unimplemented operations: software emulation</li>
+<li>Handle async events (interrupts): IO, timer, software</li>
+<li>Hypervisor support: 2-level address translation</li>
+</ul>
+</li>
+</ul>
+<h3 id="therefore-we-have">Therefore, we have</h3>
+<ul>
+<li>4 privilege modes: U, S, H, M</li>
+<li>PMP/PMA (physical memory protection/attributes)</li>
+<li>Virtual memory</li>
+<li>Interrupts and exceptions</li>
+<li>And a bunch of CSRs to serve these functionality</li>
+</ul>
+<h2 id="privileged-architecture--software-stack-layers">Privileged architecture / software stack layers</h2>
+<h3 id="4-different-kinds-of-platforms">4 different kinds of platforms</h3>
+<table>
+<thead>
+<tr>
+<th>Platforms</th>
+<th>Modes</th>
+<th>Trust</th>
+<th>Memory protection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Embedded w/o protection (most MCUs)</td>
+<td>M</td>
+<td>All</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Embedded w/ protection (RTOS scenario)</td>
+<td>M+U</td>
+<td>Application</td>
+<td>Physical memory protection</td>
+</tr>
+<tr>
+<td>OS capable (Linux, and etc.)</td>
+<td>M+S+U</td>
+<td>OS</td>
+<td>Virtual memory</td>
+</tr>
+<tr>
+<td>Cloud OS capable (multiple OS running on the same hardware)</td>
+<td>M+H+S+U</td>
+<td>Hypervisor</td>
+<td>2 level of virtual memory</td>
+</tr>
+</tbody>
+</table>
+<h2 id="privileged-architecture--software-stack-layers1">Privileged architecture / software stack layers</h2>
+<p><img src="../image/privileged-arch-layers.png" alt="pic"></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hardware</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bare-metal application</td>
+<td>AEE (application exe env)</td>
+<td>ABI (application binary i/f)</td>
+</tr>
+<tr>
+<td>Operation system</td>
+<td>SEE (supervisor exe env)</td>
+<td>SBI (system binary i/f)</td>
+</tr>
+<tr>
+<td>Hypervisor w/ mutliple OS</td>
+<td>HEE (hypervisor exe env)</td>
+<td>HBI (hypervisor binary i/f)</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="the-interface-is-ecall-instruction">The interface is <code>ECALL</code> instruction</h3>
+<p>Generates ECALL exception and traps into supporting execution enviroment</p>
+<h2 id="privilege-modes">Privilege modes</h2>
+<h3 id="4-privilege-modes-from-low-to-high">4 privilege modes (from low to high)</h3>
+<ul>
+<li>U: user mode for application</li>
+<li>S: supervisor mode for operating system</li>
+<li>H: hypervisor mode for virtualization</li>
+<li>M: machine mode</li>
+</ul>
+<p>Debug (non-functional mode) is slightly higher than machine model, but need physical debugger connected and enabled.</p>
+<ul>
+<li>Each privileged mode has its own CSRs and instructions
+<ul>
+<li>CSRs can only be accessed by higher/equal levels of modes</li>
+<li>Access permission violation will throw exception</li>
+</ul>
+</li>
+<li>Mode specific instructions
+<ul>
+<li><code>ECALL</code>: transition between software layer, and privilege modes</li>
+<li><code>xRET</code>: return to previous layer and mode
+<ul>
+<li><code>MRET</code>, <code>SRET</code></li>
+</ul>
+</li>
+<li><code>SFENCE.VMA</code>: supervisor mode only. Clear TLB after change the page table in memory</li>
+<li><code>WFI</code>: machine mode only. Stall current hart until an interrupt, super useful for low power application</li>
+</ul>
+</li>
+</ul>
+<h2 id="privilege-modes--m-machine">Privilege modes / M (machine)</h2>
+<ul>
+<li>The highest / only-mandatory privilege mode</li>
+<li>The level that has directly access hardware, right after reset</li>
+</ul>
+<h3 id="machine-mode-csrs">Machine mode CSRs</h3>
+<ul>
+<li><code>misa</code>: because RISC-V is a family of ISAs, every implementation has its own supported ISA subsets. <code>misa</code> contains the ISA subsets current hart supports</li>
+<li><code>mstatus</code>: an aggregation of operating states
+<ul>
+<li>Global interrupt enable, and interrupt stack. And others &hellip;</li>
+</ul>
+</li>
+<li>And a bunch of CSRs for trap handling
+<ul>
+<li><code>mtvec</code>, <code>medeleg</code> and <code>mideleg</code>, <code>mip</code> and <code>mie</code>, <code>mtime</code> and <code>mtimecmp</code>, <code>mscratch</code> and <code>mtval</code>, <code>mepc</code> and <code>mcause</code></li>
+<li>More details will be discussed in later section.</li>
+</ul>
+</li>
+</ul>
+<p>.footnote[Note: Other privilege modes have similar CSRs, some of them are just a shadow of M-mode CSRs which are read-only in lower privilege modes.]</p>
+<h2 id="virtual-memory">Virtual memory</h2>
+<h3 id="what">What?</h3>
+<ul>
+<li><strong>Abstraction</strong> of actual memory resource to create the <strong>illusion of owning</strong> a dedicated/large memory for each application/process.</li>
+</ul>
+<h3 id="why">Why?</h3>
+<ul>
+<li>Decouple: e.g. 2GiB physical memory shared by OS and hundreds of processes.</li>
+<li>Security: e.g. isolate memories from process to process</li>
+</ul>
+<p><img src="../image/virtual-memory.png" alt="pic"></p>
+<h3 id="how">How?</h3>
+<ul>
+<li>Address translation by MMU (memory management unit)
+<ul>
+<li>Obviously cannot do 1-to-1 translation, too many entries</li>
+</ul>
+</li>
+<li>Paged virtual memory
+<ul>
+<li>Divide virtual address space into pages, e.g. 4KiB</li>
+<li>Still cannot do 1-to-1 translation, too many entries (4GiB/4KiB = 1Mi)</li>
+</ul>
+</li>
+<li>Levels of page tables
+<ul>
+<li>Example of 3-level page tables</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/virtual-memory-page-table.png" alt="pic"></p>
+<h2 id="virtual-memory--riscv">Virtual memory / RISC-V</h2>
+<ul>
+<li>Finest granularity of page size if 4KiB
+<ul>
+<li>Last level of page table</li>
+</ul>
+</li>
+<li>PTE (page-table entry) contains
+<ul>
+<li>Physical address</li>
+<li>Permission bits</li>
+<li>Page status (accessed / dirty)</li>
+</ul>
+</li>
+<li>Hardware PTW (page-table walker)
+<ul>
+<li>PTW is mechanism to go through the page tables to find target virtual address's physical address</li>
+</ul>
+</li>
+<li>Software TLB (translation lookaside buffer) refill
+<ul>
+<li>TLB is a cache of PTE close to pipeline for faster translation
+<ul>
+<li>Otherwise, every memory access becomes at least 4 memory accesses</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/virtual-memory-page-table-walker.png" alt="pic"></p>
+<ul>
+<li>Support ASID (address space ID)
+<ul>
+<li>Reduce context switch cost when different processes running on the same hart</li>
+</ul>
+</li>
+<li>Multi-level page tables
+<ul>
+<li>2-level for SV32; 3-level for SV64</li>
+</ul>
+</li>
+<li>Super-page: stop before reaching to the last level leaf
+<ul>
+<li>Much larger size of page size</li>
+<li>Less missing rate in TLB</li>
+</ul>
+</li>
+</ul>
+<h3 id="tlb-flush-instruction-sfencevma">TLB flush instruction <code>SFENCE.VMA</code></h3>
+<ul>
+<li>When page tables are updated in memory, need to flush current TLB entries for update</li>
+<li>But only affects local hart, so if to sync with other hards, IPI (inter-process interrupt) is needed</li>
+</ul>
+<h2 id="virtual-memory--address-translation">Virtual memory / address translation</h2>
+<h3 id="look-up-tlb">Look up TLB</h3>
+<ul>
+<li>TLB is just like cache. Its miss will trigger page table walker
+<ul>
+<li>Small system use full-associated design with less entries</li>
+<li>Large system use way-associated design with more entries</li>
+</ul>
+</li>
+</ul>
+<h3 id="page-table-walker">Page table walker</h3>
+<ul>
+<li>Hardware PTW: simple FSM that reads memory</li>
+<li>Software PTW: more latency/power</li>
+<li>Page fault exception: page is in external storage, or not allocated</li>
+</ul>
+<h3 id="software-mmu">Software MMU</h3>
+<ul>
+<li>Allocate new page, or read in page from external storage</li>
+<li>Page replacement if physical memory is full (next slide)</li>
+</ul>
+<p><img src="../image/virtual-memory-address-translation.png" alt="pic"></p>
+<h2 id="virtual-memory--page-replacement">Virtual memory / page replacement</h2>
+<ul>
+<li>Physical memory is not unlimited, when it's full, old page needs to be swapped out to external storage</li>
+<li>In RISC-V page replacement is managed by software
+<ul>
+<li>When a page is used but its not currently in physical memory, raise &ldquo;page fault exception&rdquo; to involve software</li>
+<li>Hardware support is the <code>accessed</code> and <code>dirty</code> bits in each PTE (page table entry)</li>
+<li>Recently non-accessed pages will be freed</li>
+<li>Dirty pages will be written out to external storage</li>
+</ul>
+</li>
+</ul>
+<h2 id="virtual-memory--protection">Virtual memory / protection</h2>
+<ul>
+<li>Every PTE has 3 bits of permission field</li>
+</ul>
+<p><img src="../image/virtual-memory-permission.png" alt="pic"></p>
+<h2 id="virtual-memory--sv32">Virtual memory / SV32</h2>
+<p><img src="../image/virtual-memory-sv32.png" alt="pic"></p>
+<h2 id="virtual-memory--sv39">Virtual memory / SV39</h2>
+<p><img src="../image/virtual-memory-sv39.png" alt="pic"></p>
+<h2 id="virtual-memory--sv48">Virtual memory / SV48</h2>
+<p><img src="../image/virtual-memory-sv48.png" alt="pic"></p>
+<h2 id="pmp-physical-memory-protection">PMP (physical memory protection)</h2>
+<h3 id="why1">Why?</h3>
+<ul>
+<li>If without full featured OS, virtual memory is not efficient.</li>
+<li>Embedded systems, with RTOS (real-time OS), still need memory protection to isolate user application from accessing kernel space</li>
+</ul>
+<h3 id="pmp-add-rwx-permissions-to-pmp-regions">PMP: add R/W/X permissions to PMP regions</h3>
+<ul>
+<li>By default, S/U mode doesn't have permission</li>
+<li>Num of regions is up to 16, aligned to 2^N</li>
+<li>Higher priority than virtual memory protection
+<ul>
+<li>PMP checks happen after VMP (virtual memory protection) checks</li>
+<li>Useful for untrusted S-mode</li>
+</ul>
+</li>
+</ul>
+<h2 id="pma-physical-memory-attributes">PMA (physical memory attributes)</h2>
+<h3 id="attributes-of-physical-memory-regions">Attributes of physical memory regions</h3>
+<ul>
+<li><strong>Cacheable or non-cacheable</strong></li>
+<li>Ordering allowed</li>
+<li>Atomic access allowed</li>
+<li>Mode allowed</li>
+<li>Access widths allowed</li>
+<li>Alignment restriction</li>
+<li>&hellip;</li>
+</ul>
+<p>Attributes can be programmable</p>
+<p>.footnote[Note: RocketChip doesn't support PMA]</p>
+<h2 id="interrupt-and-exception">Interrupt and exception</h2>
+<h3 id="difference">Difference?</h3>
+<ul>
+<li><strong>Interrupt is async, exception is sync</strong>
+<ul>
+<li>Sync means tied to specific instruction execution</li>
+</ul>
+</li>
+</ul>
+<h3 id="interrupt-types">Interrupt types</h3>
+<ul>
+<li>Software
+<ul>
+<li>Initiator is another hart/processor</li>
+</ul>
+</li>
+<li>Timer
+<ul>
+<li>For timely scheduled tasks</li>
+</ul>
+</li>
+<li>External
+<ul>
+<li>Peripheral devices, e.g. DMA</li>
+</ul>
+</li>
+</ul>
+<h3 id="exception-types">Exception types</h3>
+<ul>
+<li>Instruction address misaligned</li>
+<li>Instruction access fault</li>
+<li>Illegal instruction</li>
+<li>Breakpoint</li>
+<li>Load address misaligned</li>
+<li>Load access fault</li>
+<li>Store/AMO address misaligned</li>
+<li>Store/AMO access fault</li>
+<li>Environment call from U/S/M-mode</li>
+<li>Instruction page fault</li>
+<li>Load page fault</li>
+<li>Store/AMO page fault</li>
+</ul>
+<h2 id="interrupt-and-exceptions--exception">Interrupt and exceptions / exception</h2>
+<h3 id="misalignment">Misalignment</h3>
+<ul>
+<li>Whether misaligned load/store will trigger exception depends on implemenation.</li>
+<li>Instruction misalignment</li>
+</ul>
+<h3 id="enviroment-call">Enviroment call</h3>
+<ul>
+<li><code>ECALL</code> triggers an exception to change privilege modes</li>
+</ul>
+<h2 id="interrupt-and-exceptions--related-csrs">Interrupt and exceptions / related CSRs</h2>
+<h3 id="where-to-trap">Where to trap</h3>
+<ul>
+<li><code>xTVEC</code>: entrance address of trap
+<ul>
+<li>2 modes: direct (BASE) or vectored (trap to BASE+4xcause)</li>
+</ul>
+</li>
+</ul>
+<h3 id="mode-to-trap-into">Mode to trap into</h3>
+<ul>
+<li><code>xI/EDELEG</code>: trap deligation registers
+<ul>
+<li>By default, trap into machine mode, but use deligation registers, other modes can be delegated for certain types of trap</li>
+</ul>
+</li>
+</ul>
+<h3 id="reason-to-trap">Reason to trap</h3>
+<ul>
+<li><code>xCAUSE</code>: the cause of trap</li>
+<li><code>xTVAL</code>: trap value written by hardware
+<ul>
+<li>Contain more information about the exception</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-return-from-trap">How to return from trap</h3>
+<ul>
+<li><code>xEPC</code>:PC before trap handler (in order to resume after trap handler)</li>
+<li><code>xSTATUS</code>: it holds the previous privilege mode <code>xPP</code> and global previous interrupt enable  <code>xPIE</code></li>
+</ul>
+<h3 id="interrupt-enable">Interrupt enable</h3>
+<ul>
+<li><code>xSTATUS</code>: global interrupt enable</li>
+<li><code>xIE</code>: interrupt enable for each modes and types</li>
+<li>Exception cannot be disabled</li>
+</ul>
+<h2 id="interrupt-and-exceptions--interrupt-controller">Interrupt and exceptions / interrupt controller</h2>
+<h3 id="plic-platform-level-interrupt-controller">PLIC (platform level interrupt controller)</h3>
+<ul>
+<li>External interrupt aggregator</li>
+</ul>
+<h3 id="clint-core-local-interruptor">CLINT (core local interruptor)</h3>
+<ul>
+<li>Provide timer and software interrupt memory-mapped CSRs</li>
+</ul>
+<p>Both PLIC and CLINT will be covered in later section</p>
+<p><img src="../image/plic-diagram.png" alt="pic"></p>
+<h2 id="summary">Summary</h2>
+<h3 id="purpose-of-privileged-arch">Purpose of privileged arch</h3>
+<ul>
+<li>Manage resource</li>
+<li>Decouple implementation details</li>
+</ul>
+<h3 id="4-privilege-modes">4 privilege modes</h3>
+<ul>
+<li>U, S, (H), M</li>
+</ul>
+<h3 id="memory">Memory</h3>
+<ul>
+<li>Virtual memory</li>
+<li>PMP &amp; PMA</li>
+</ul>
+<h3 id="exception">Exception</h3>
+<ul>
+<li>Precise exceptions</li>
+<li>Cause mode changing</li>
+</ul>
+<h3 id="interrupt">Interrupt</h3>
+<ul>
+<li>Non-precise interrupt</li>
+<li>3 types: external, timer, software</li>
+<li>PLIC (platform-level interrupt controller)</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[RISC-V Architecture Training] Schedule</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[RISC-V Architecture Training] Introduction of RISC-V Open ISA</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] Basics &amp; Unprivileged Specification - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-11-27T00:00:00">2019-11-27</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="riscv-spec">RISC-V SPEC</h2>
+<p><a href="https://riscv.org/specifications">https://riscv.org/specifications</a> (official version v1.10)</p>
+<p><a href="https://github.com/riscv/riscv-isa-manual">https://github.com/riscv/riscv-isa-manual</a> (source code)</p>
+<p> </p>
+<h3 id="userlevel-isa-unpriviledged">User-level ISA (unpriviledged)</h3>
+<ul>
+<li>All the basic instructions, and extensions</li>
+<li>Memory model</li>
+</ul>
+<h3 id="priviledged-isa">Priviledged ISA</h3>
+<ul>
+<li>Priviledge level: M (machine), H (hypervisor), S (supervisor), U (user)</li>
+<li>CSR (control status register)</li>
+<li>Virtual-memory system</li>
+</ul>
+<h3 id="debug--trace">Debug &amp; Trace</h3>
+<h2 id="first-impression-isa-subsets">First impression: ISA subsets</h2>
+<h3 id="riscv-is-a-family-of-isas">RISC-V is a family of ISAs</h3>
+<p>Divided into several subsets: I, M, A, F, D, C, &hellip;</p>
+<ul>
+<li>
+<p><em>Domain-specific architecture</em> (by David Patterson)</p>
+<ul>
+<li>The ending of Moore's Law =&gt; domain-specific architecture is the future of computing</li>
+<li>Too costy to be &ldquo;general purpose&rdquo; anymore
+<ul>
+<li>Too many new domains</li>
+<li>Not enough transistors or power to be general purpose</li>
+</ul>
+</li>
+<li>E.g. TPU-like xPU for AI computing</li>
+</ul>
+</li>
+<li>
+<p>RISC-V ISA's approach</p>
+<ul>
+<li>Different domain-specific implementations can select <strong>subsets suitable</strong> for its own domain</li>
+<li>Only I (base) is mandatory</li>
+<li>Can be extensible in the future</li>
+</ul>
+</li>
+</ul>
+<p>.footnote[Ref: <a href="https://cacm.acm.org/magazines/2018/9/230571-a-domain-specific-architecture-for-deep-neural-networks/fulltext">A Domain-Specific Architecture for Deep Neural Networks</a>]</p>
+<h2 id="first-impression-isa-subsets1">First impression: ISA subsets</h2>
+<p>My deepest impression of RISC-V ISA</p>
+<ul>
+<li>Extensible</li>
+<li>Hardware-friendly</li>
+</ul>
+<h2 id="why-riscv-isa-is-highly-extensible">Why RISC-V ISA is highly extensible?</h2>
+<p>Instruction space is divided into 3 disjoint categories</p>
+<ul>
+<li>Standard: defined with specification</li>
+<li>Reserved: for future extensions</li>
+<li>Custom: implementation can have its own custom instructions</li>
+</ul>
+<p>Standard subsets as of now</p>
+<ul>
+<li><code>I</code>: base integer computational instructions, integer load/store, control-flow</li>
+<li><code>M</code>: integer multiplication and division extension</li>
+<li><code>A</code>: atomic instruction extension, for inter-process synchronization</li>
+<li><code>F/D</code>: single/double-precision floating-point extension</li>
+<li><code>C</code>: 16-bit compressed instruction extension (higher code density)</li>
+</ul>
+<blockquote>
+<p><code>IMAFD</code> = <code>G</code>, so <code>RV64GC</code> = <code>RV64IMAFDC</code></p>
+</blockquote>
+<h2 id="riscvs-approach-of-extension">RISC-V's approach of extension</h2>
+<p> </p>
+<h3 id="extension">Extension</h3>
+<p>Keep the base the same, while add new extensions over time</p>
+<p> </p>
+<h3 id="reserved">Reserved</h3>
+<p>Add extension very carefully, sometimes seems too slow</p>
+<p> </p>
+<h3 id="custom">Custom</h3>
+<p>Keep custom instruction category open, and the software flow to add custom instruction easy</p>
+<p> </p>
+<h2 id="32bit-or-64bit">32-bit or 64-bit?</h2>
+<h3 id="exclusive-32bit-and-64bit-isa">Exclusive 32-bit and 64-bit ISA</h3>
+<ul>
+<li>Explicitly separate 32-bit and 64-bit ISA
+<ul>
+<li>Unlike ARMv8-A which has AArch32 and AArch64 both compatible</li>
+<li>For hardware simplicity
+<ul>
+<li>Optimize for its needs without requiring to support all the operations needed for other base ISA</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>But introduced some confusion
+<ul>
+<li>In 32-bit version, <code>ADD</code> means 32-bit add, but in 64-bit the same instruction means 64-bit add</li>
+<li>And 64-bit version has <code>ADDW</code> that support 32-bit operations</li>
+</ul>
+</li>
+</ul>
+<h3 id="instruction-length-is-orthogonal">Instruction length is orthogonal</h3>
+<ul>
+<li>32-bit for normal instructions</li>
+<li>16-bit for compressed extension</li>
+<li>48-bit or even longer reserved for future</li>
+</ul>
+<h2 id="riscv-terminology">RISC-V Terminology</h2>
+<h3 id="hart--hardware-thread">Hart = hardware thread</h3>
+<p>Hart is a very important concept in RISC-V</p>
+<ul>
+<li>One RISC-V core might contain multiple harts (hardware threads) to support multithreading</li>
+<li>All ISA concepts are based on hart
+<ul>
+<li>Each hart has its own PC, GPR, CSR, interrupt, exception, and etc.</li>
+<li>But they may share the same front-end (instruction fetch and decoding), or shared ALU, LSU or accelerators</li>
+</ul>
+</li>
+</ul>
+<h2 id="riscv-terminology1">RISC-V Terminology</h2>
+<h3 id="memory">Memory</h3>
+<ul>
+<li>
+<p>Size unit</p>
+<ul>
+<li>Word = 32-bit</li>
+<li>Halfword = 16-bit</li>
+<li>Doubleword = 64-bit</li>
+<li>Quadword = 128-bit</li>
+</ul>
+</li>
+<li>
+<p>Implicit and explicit access</p>
+<ul>
+<li>Implicit memory access = instruction fetch</li>
+<li>Explicit memory access = load/store</li>
+<li>Memory access ordering between implicit and explicit access: <code>FENCE.I</code>
+<ul>
+<li>E.g. self-modified code</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Weak Memory Ordering (RVWMO)</p>
+<ul>
+<li>This is the weakest model allowed</li>
+<li>Implementation can adopt stronger model of Total Store Ordering</li>
+</ul>
+</li>
+<li>
+<p>Little-endian</p>
+<ul>
+<li>Hardware-friendly</li>
+<li>Fixed, not configurable like MIPS</li>
+</ul>
+</li>
+</ul>
+<h2 id="riscv-terminology2">RISC-V Terminology</h2>
+<h3 id="exceptions-traps-and-interrupts">Exceptions, traps and interrupts</h3>
+<ul>
+<li>Exception: unusual conditions happened in current RISC-V hart
+<ul>
+<li>E.g. illegal instructions, divide by zero, page fault</li>
+<li>Precise exception
+<ul>
+<li>All instruction before the exception has to commit</li>
+<li>All instruction after the exception cannot commit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Interrupt: external asynchronous event asking for RISC-V hart's attention
+<ul>
+<li>E.g. DMA is done, keyboard input</li>
+<li>Interrupt doesn't need to be precise</li>
+</ul>
+</li>
+<li>Trap: the transfer of control to a trap handler caused by exception or interrupt
+<ul>
+<li>Contained trap: to higher privilege mode, e.g. <code>ECALL</code></li>
+<li>Requested trap: the same privilege mode, e.g. system call</li>
+<li>Invisible trap: transparent to software, e.g. page fault</li>
+<li>Fatal trap: fatal failure, and causes the execution terminate, e.g. watchdog timer timeout</li>
+</ul>
+</li>
+</ul>
+<h2 id="tips-how-to-download-and-compile-latest-isa-spec">[Tips] How to download and compile latest ISA SPEC</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/riscv/riscv-isa-manual.git
+cd riscv-isa-manual
+
+git tag -l
+git checkout draft-20190521-21c6a14 <span style="color:#75715e"># select the latest tag</span>
+make
+</code></pre></div><h3 id="prerequisition-install-latex-in-ubuntu">Pre-requisition: install LaTeX in Ubuntu</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt-get install texlive-full
+</code></pre></div><h2 id="rv32i-base-integer-instruction-set">RV32I: base integer instruction set</h2>
+<h3 id="lets-start-from-the-base-and-talk-about-extensions-later">Let's start from the <strong>base</strong>, and talk about extensions later.</h3>
+<h2 id="rv32i--gpr-general-purpose-registers">RV32I / GPR (general purpose registers)</h2>
+<ul>
+<li>32 GPR: x0 to x31</li>
+<li>X0 is hardwared to 0
+<ul>
+<li>Very useful
+<ul>
+<li><code>NOP</code> is implemented as <code>ADDI x0, x0, 0</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GPR + PC = architectural state</li>
+<li>Width: depends on 32-bit or 64-bit system
+<ul>
+<li><code>XLEN</code> represents data width
+<ul>
+<li>E.g. 32-bit system <code>XLEN=32</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>.footnote[Correspondingly, <code>ILEN</code> represents instruction width. Currently, only <code>ILEN=32</code> and <code>ILEN=16</code> are defined.]</p>
+<h2 id="rv32i--instruction-formats">RV32I / instruction formats</h2>
+<ul>
+<li><code>ILEN = 32</code> instruction width = 32-bit</li>
+<li>4 base formats + 2 immediate-encoding variants</li>
+<li>Very hardware friendly
+<ul>
+<li>Register specifier always in the same place</li>
+<li><code>opcode</code> are always in the same place
+<ul>
+<li>Also considered instruction frequency (more common, simpler opcode)</li>
+</ul>
+</li>
+<li><code>funct3`/</code>funct7` are in the same place</li>
+<li>Immediate is encoded considering hardware muxing overhead</li>
+</ul>
+</li>
+</ul>
+<p>.center[<img src="../image/instruction-formats.png" alt="pic">]</p>
+<h2 id="rv32i--arithmetic-and-logical-operations">RV32I / arithmetic and logical operations</h2>
+<ul>
+<li>Add, sub, and, or, shift, comparison</li>
+<li>No conditional operation, no implicit flag registers
+<ul>
+<li>Comparison always write to <code>rd</code>, next instruction check its value and decide what do next</li>
+<li>Worse code density, but much easier hardware design</li>
+</ul>
+</li>
+</ul>
+<p>.center[<img src="../image/riscv-rv32i-arithmetic-logic-instruction.png" alt="pic">]</p>
+<h2 id="rv32i--memory-access-instruction">RV32I / memory access instruction</h2>
+<ul>
+<li>
+<p>Load: <code>rd := @(rs1 + imm)</code></p>
+</li>
+<li>
+<p>Store: <code>@(rs1 + imm) := rs2</code></p>
+</li>
+<li>
+<p>Sign extension when load</p>
+<ul>
+<li>By default, extend sign bit to <code>XLEN</code></li>
+<li><code>U</code> (unsigned), so do zero-extend</li>
+</ul>
+</li>
+<li>
+<p>Byte selection</p>
+<ul>
+<li><code>B</code> = byte = 8-bit</li>
+<li><code>H</code> = halfword = 16-bit</li>
+<li><code>W</code> = word = 32-bit</li>
+<li><code>D</code> = double-word = 64-bit
+.center[<img src="../image/riscv-rv32i-load-store-instruction.png" alt="pic">]</li>
+</ul>
+</li>
+</ul>
+<h2 id="rv32i--memory-access-instruction1">RV32I / memory access instruction</h2>
+<h3 id="misalignment">Misalignment</h3>
+<ul>
+<li>E.g. if <code>LD</code> doesn't align to 64-bit boundary, it's a misalignment</li>
+<li>Whether misalignment will trigger an exception, it depends on the implementation
+<ul>
+<li>To simplify hardware design</li>
+<li>Also support special application, like SIMD</li>
+</ul>
+</li>
+</ul>
+<h2 id="rv32i--addressing">RV32I / addressing</h2>
+<ul>
+<li>Absolute address: <code>LUI</code> (load upper immediate)</li>
+</ul>
+<pre><code class="language-assembly" data-lang="assembly">lui     t0, 0x12345     # t0 = 0x12345000
+lw      t0, 0x678(t0)   # t0 = MEM_READ(0x12345678)
+</code></pre><ul>
+<li>PC-relative address: <code>AUIPC</code> (add upper immediate to PC)</li>
+</ul>
+<pre><code class="language-assembly" data-lang="assembly">auipc   t0, 0x12345     # t0 = PC + 0x12345000
+lw      t0, 0x678(t0)   # t0 = MEM_READ(0x12345678)
+</code></pre><p>.center[<img src="../image/riscv-rv32i-addressing-instruction.png" alt="pic">]</p>
+<blockquote>
+<p>Most of the time we use <code>AUIPC</code> because the program should be able to load to any address base, and addressing inside is relative to <code>PC</code>.</p>
+</blockquote>
+<h2 id="rv32i--jump-unconditional">RV32I / jump (unconditional)</h2>
+<ul>
+<li><code>JAL</code> (jump and link): use immediate number as jump offset (+/1 1MiB)
+<ul>
+<li><code>rd := PC + 4; PC := PC + imm</code></li>
+<li>Function call: <code>rd = x1 = ra</code></li>
+</ul>
+</li>
+<li><code>JALR</code> (jump and link register): use register and immediate number as jump target address
+<ul>
+<li><code>rd := PC + 4; PC := rs1 + imm</code></li>
+<li>Return from a function call: <code>rd = x0, rs1 = x1</code></li>
+<li>Indirect call: <code>rd = x1 = ra</code> to further away address</li>
+</ul>
+</li>
+</ul>
+<p>.center[<img src="../image/riscv-rv32i-jump-instruction.png" alt="pic">]</p>
+<h2 id="rv32i--branch-conditional">RV32I / branch (conditional)</h2>
+<ul>
+<li>Compare <code>rs1</code> and <code>rs2</code>
+<ul>
+<li>if true, <code>PC := PC + imm</code></li>
+<li>else <code>PC := PC + 4</code></li>
+</ul>
+</li>
+<li><code>EQ</code>: equal; <code>NE</code>: non-equal</li>
+<li><code>LT</code>: less than; <code>GE</code>: greater than</li>
+<li><code>U</code>: unsigned comparison</li>
+</ul>
+<p>.center[<img src="../image/riscv-rv32i-branch-instruction.png" alt="pic">]</p>
+<h2 id="rv32i--fence">RV32I / fence</h2>
+<ul>
+<li><code>FENCE</code>: for memory ordering
+<ul>
+<li>Guarantee all memory access before this instruction has already been committed to its destination.
+<ul>
+<li>E.g. write data structure to external DRAM, then notify PCI-Express DMA to send it out through its link</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>FENCE.I</code>: for self-modifying code
+<ul>
+<li>Force all memory write to commit first, then invalidate all the I-Cache entries, before resume instruction fetch.</li>
+</ul>
+</li>
+<li>Will be discussed in later session regarding to &ldquo;Memory Model&rdquo;</li>
+</ul>
+<p>.center[<img src="../image/riscv-rv32i-fence-instruction.png" alt="pic">]</p>
+<h2 id="rv32i--csr-access">RV32I / CSR access</h2>
+<ul>
+<li><code>CSRRW</code>: read/write CSR, exchange <code>rs1</code> and <code>rd</code></li>
+<li><code>CSRRS</code>: read then set bits, use <code>rs1</code> as bit mask, old value written into <code>rd</code></li>
+<li><code>CSRRC</code>: read then clear bits, use <code>rs1</code> as bit mask, old value written in to <code>rd</code></li>
+<li><code>CSRRWI/CSRRSI/CSRRCI</code>: meaning are the same, just use immediate as bit mask</li>
+<li><strong>Notice</strong>: all CSR access instruction is atomic instruction, which means it will happen in one cycle</li>
+</ul>
+<p>.center[<img src="../image/riscv-rv32i-csr-instruction.png" alt="pic">]</p>
+<h2 id="rv32i--system-call-and-breakpoints">RV32I / system call and breakpoints</h2>
+<ul>
+<li>
+<p><code>ECALL</code>: trap into system call in higher privilege mode, raise <em>environment call</em> exception</p>
+<ul>
+<li>Normally the arguments are passed with memory, pointer is saved in <code>mscratch</code> register</li>
+</ul>
+</li>
+<li>
+<p><code>EBREAKPOINT</code>: trap into debug mode, raise <em>breakpoint</em> exception</p>
+</li>
+<li>
+<p>More details in later session regarding to &ldquo;system call&rdquo; and &ldquo;debug mode&rdquo;</p>
+</li>
+</ul>
+<p>.center[<img src="../image/riscv-rv32i-system-instruction.png" alt="pic">]</p>
+<h2 id="thats-it">That's it!</h2>
+<h3 id="rv32i-is-a-complete-instruction-set">RV32I is a complete instruction set</h3>
+<h2 id="variants">Variants</h2>
+<h3 id="data-width-variants">Data width variants</h3>
+<ul>
+<li>RV64I: 64-bit data/address variant
+<ul>
+<li><code>XLEN = 64</code> general purpose registers</li>
+<li><code>D</code> (double-word) load/store
+<ul>
+<li>E.g. <code>LD a0, 0(sp)</code></li>
+</ul>
+</li>
+<li><code>W</code> (word) arithmetic instructions that works on lower 32-bit of the registers
+<ul>
+<li>E.g. <code>ADDIW a1, a0, 1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RV128I: 128-bit data/address variant</li>
+</ul>
+<blockquote>
+<p>Because they are exclusive instruction sets, need to change compiler</p>
+</blockquote>
+<h2 id="variants1">Variants</h2>
+<h3 id="instruction-length-variants-as-isa-extension">Instruction length variants (as ISA extension)</h3>
+<ul>
+<li>RV32C (compressed): 16-bit instruction extension</li>
+<li>Future: SIMD, …</li>
+</ul>
+<p>.center[<img src="../image/instruction-length-encoding.png" alt="pic">]</p>
+<h2 id="variants2">Variants</h2>
+<h3 id="isa-extensions">ISA extensions</h3>
+<ul>
+<li><code>M</code>: integer multiplication and division</li>
+<li><code>A</code>: atomic instruction</li>
+<li><code>F</code>: single-precision floating-point</li>
+<li><code>D</code>: double-precision floating-point</li>
+<li><code>C</code>: compressed instruction</li>
+</ul>
+<p>These are the most used ISA extensions. <code>IMAFD = G</code></p>
+<p>Other popular working-in-progress extensions</p>
+<ul>
+<li><code>N</code>: user-level interrupts</li>
+<li><code>V</code>: vector operations</li>
+<li><code>P</code>: packed-SIMD instructions</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="rv32m-multiply--divide">RV32M: multiply &amp; divide</h2>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mul</code></td>
+<td>Multiplication, store low 32-bit to <code>rd</code></td>
+</tr>
+<tr>
+<td><code>mulh</code></td>
+<td>Signed multiplication, store high 32-bit to <code>rd</code></td>
+</tr>
+<tr>
+<td><code>mulhu</code></td>
+<td>Unsigned multiplication, store high 32-bit to <code>rd</code></td>
+</tr>
+<tr>
+<td><code>mulhsu</code></td>
+<td>Signed x unsigned, store high 32-bit to <code>rd</code></td>
+</tr>
+<tr>
+<td><code>div</code> / <code>divu</code></td>
+<td><code>rd = rs1 / rs2</code></td>
+</tr>
+<tr>
+<td><code>rem</code> / <code>remu</code></td>
+<td><code>rd = rs1 % rs2</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Separate instruction to get higher and lower parts of multiplication result. But if do <code>mulh*</code> followed by <code>mul</code> directly, hardware does not need to redo the multiplication again.</li>
+<li>The same thing applies to division results also.</li>
+</ul>
+<h2 id="rv32a-atomic-memory-operation">RV32A: atomic memory operation</h2>
+<ul>
+<li>Atomic memory operation = read-modify-write</li>
+<li>In RISC-V, it support 2 types of atomic operation model
+<ul>
+<li>Read-modify-write instruction</li>
+<li>Load-reserve / store-conditional</li>
+</ul>
+</li>
+</ul>
+<h3 id="amo-readmodifywrite">AMO (read-modify-write)</h3>
+<ul>
+<li>Directly send <code>amo*</code> instructions down to the memory hierarchy
+<ul>
+<li>Easy and intuitive</li>
+<li>Needs both network fabric and target memory hierarchy support atomic memory operation</li>
+<li>Cannot do too complicated operations</li>
+</ul>
+</li>
+</ul>
+<h3 id="lrsc-loadreserve--storeconditional">LR/SC (load-reserve / store-conditional)</h3>
+<ul>
+<li>Split read-modify-write into 3 steps
+<ul>
+<li>Load data and acquire reservation on target address</li>
+<li>Compute new value</li>
+<li>Store new value, only if reservation still held</li>
+</ul>
+</li>
+<li>Store may fail, when reservation is not acquired or not kept, so it will need retry</li>
+<li>Example: use LR/SC to decrement a variable until it's zero</li>
+</ul>
+<pre><code class="language-assembly" data-lang="assembly">retry:
+  lr.w t0, (a0)
+  beqz t0, done
+  addi t0, t0, -1
+  sc.w t1, t0, (a0)
+  bnez t1, retry
+done:
+</code></pre><ul>
+<li>Pros: easy to implement, can support complicated operations; cons: low performance</li>
+</ul>
+<h2 id="rv32e-embedded-extension">RV32E: embedded extension</h2>
+<ul>
+<li>Reduce 32 GPRs to 16 GPRs
+<ul>
+<li>For a super small implementation, 32 GPRs can take up 25% area</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Rarely see any implementaions</p>
+</blockquote>
+<h2 id="floatingpoint-extensions">Floating-point extensions</h2>
+<ul>
+<li><code>F/D</code> extensions
+<ul>
+<li><code>F</code> = single-precision floating-point</li>
+<li><code>D</code> = double-precision floating-point</li>
+</ul>
+</li>
+<li>Floating-point specific registers: f0 - f15
+<ul>
+<li>If only support F, register width is 32-bit. <code>FLEN = 32</code></li>
+<li>If support both F &amp; D, all registers are 64-bit. <code>FLEN = 64</code></li>
+</ul>
+</li>
+<li>Floating-point CSR: <code>fcsr = {frm, fflags}</code>
+<ul>
+<li>Rounding mode register (dynamic)</li>
+<li>Aggregated exception flags</li>
+</ul>
+</li>
+</ul>
+<h2 id="floatingpoint--load--store-instructions">Floating-point / load &amp; store instructions</h2>
+<ul>
+<li>Same instruction format as integer load/store</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flw frd, imm(rs1)</code> &amp; <code>fld frd, imm(rs1)</code></td>
+<td>Load single/double-precision floating-point from address <code>imm(rs1)</code> into <code>frd</code></td>
+</tr>
+<tr>
+<td><code>fsw frs2, imm(rs1)</code> &amp; <code>fsd frs2, imm(rs1)</code></td>
+<td>Store single/double-precision floating-point from <code>frs2</code>to address <code>imm(rs1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>.footnote[<code>f*</code> = float-poing register, e.g. <code>frd</code> is floating-point destination register]</p>
+<h2 id="floatingpoint--conversion-instructions">Floating-point / conversion instructions</h2>
+<ul>
+<li>Rounding mode
+<ul>
+<li>Static rounding mode: defined in instruction <code>RM</code> field</li>
+<li>Dynamic rounding mode: instruction <code>RM</code> field is <code>DYN</code> then use <code>frm</code> (rounding mode register)</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/floating-point-rounding-mode.png" alt="pic"></p>
+<ul>
+<li>Instructions
+<ul>
+<li><code>FCVT.*.*</code> : convert between floating-point registers and GPR (as integer value)</li>
+<li><code>FMV.*.*</code>: directly move between floating-point registers and GPR</li>
+<li><code>FSGNJ</code>: sign-injection provides ABS and NEG operation on floating-point</li>
+</ul>
+</li>
+</ul>
+<h2 id="floatingpoint--arithmetic-instructions">Floating-point / arithmetic instructions</h2>
+<ul>
+<li>Floating-point exception
+<ul>
+<li>Will no generate trap on IEEE-754 exceptions. Need to read <code>fflags</code> fields in <code>fcsr</code></li>
+<li>No NaN-payload propagation (NaN = not a number)</li>
+<li>Exception flag in <code>fcsr</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/floating-point-exception-flag.png" alt="pic"></p>
+<h2 id="floatingpoint--arithmetic-instructions1">Floating-point / arithmetic instructions</h2>
+<ul>
+<li>Floating-point arithmetic operation examples</li>
+</ul>
+<p><img src="../image/floating-point-arithmetic-instructions.png" alt="pic"></p>
+<ul>
+<li>MAC: multiplication and accumulation (in GCC, it's called FMA, fused multiplication/addition)</li>
+</ul>
+<p><img src="../image/floating-point-mac-instructions.png" alt="pic"></p>
+<h2 id="floatingpoint--classification-instructions">Floating-point / classification instructions</h2>
+<ul>
+<li><code>FCLASS</code></li>
+</ul>
+<p><img src="../image/floating-point-fclass-result.png" alt="pic"></p>
+<h2 id="floatingpoint--implementations">Floating-point / implementations</h2>
+<h3 id="hardware-implementation-berkeley-hardfloat">Hardware implementation: Berkeley HardFloat</h3>
+<ul>
+<li>Written in Chisel</li>
+<li><a href="https://github.com/ucb-bar/berkeley-hardfloat">https://github.com/ucb-bar/berkeley-hardfloat</a></li>
+</ul>
+<h3 id="berkeley-softfloat">Berkeley SoftFloat</h3>
+<ul>
+<li>Conforms to IEEE standard</li>
+<li>Used in SPIKE simulator, and HardFloat's test suite as golden standard</li>
+<li><a href="http://www.jhauser.us/arithmetic/SoftFloat.html">http://www.jhauser.us/arithmetic/SoftFloat.html</a></li>
+</ul>
+<h2 id="r32c-compressed-instruction-extension">R32C: compressed instruction extension</h2>
+<h3 id="requirements-from-the-market-code-density">Requirements from the market: code density</h3>
+<ul>
+<li>Code density means less on-chip memory
+<ul>
+<li>Super important for embedded systems</li>
+</ul>
+</li>
+<li>Higher code density means lower I-Cache miss rate and lower instruction fetch power</li>
+</ul>
+<h3 id="16bit-instruction">16-bit instruction</h3>
+<p>32-bit instruction encoding is not very dense, so reduce it to 16-bit</p>
+<ul>
+<li>ARM has Thumb-2</li>
+<li>RISC-V has C-extension</li>
+</ul>
+<h2 id="rv32c--how">RV32C / how?</h2>
+<h3 id="observations">Observations</h3>
+<ul>
+<li>A handful of opcodes are very popular
+<ul>
+<li><code>addi</code> &amp; <code>lw</code> &amp; <code>sw</code> consist more than 50% of the instructions</li>
+</ul>
+</li>
+<li>GPR access locality: 2/3 of the time are referring to 1/4 of the registers</li>
+</ul>
+<h3 id="ideas">Ideas</h3>
+<ul>
+<li>Use 16-bit representation of most popular instructions</li>
+<li>Limit register access to only x8-x15 to reduce register index size</li>
+</ul>
+<h2 id="rv32c--one-big-issue">RV32C / one big issue</h2>
+<h3 id="comparing-to-thumb2">Comparing to Thumb-2</h3>
+<ul>
+<li>No <code>ldm</code> (load-multiple) / <code>stm</code> (store-multiple)
+<ul>
+<li>Use shared prologue/epilogue. More used, more code saved.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-assembly" data-lang="assembly">__riscv_save_1:		# shared prologue
+addi sp,sp,-16
+sw s0,8(sp)
+sw ra,12(sp)
+jr t0
+__riscv_restore_1: 	# shared epilogue
+lw s0,8(sp)
+lw ra,12(sp)
+addi sp,sp,16
+ret
+function:
+jal t0,__riscv_save_1
+# ...
+jal x0,__riscv_restore_1
+</code></pre><blockquote>
+<p>Personal experience: not very well supported by GCC compiler</p>
+</blockquote>
+<h2 id="rv32c--result">RV32C / result</h2>
+<h3 id="benchmark-spec-cpu2006">Benchmark: SPEC CPU2006</h3>
+<p><img src="../image/compressed-static-code-size-vs-thumb2.png" alt="pic"></p>
+<blockquote>
+<p>Personal experience: Thumb-2 (ADS) is currently 20% smaller than RV32C (GCC). In the compiler territory, RISC-V still have a long way to improve.</p>
+</blockquote>
+<p>.footnote[the benchmark should use CoreMark, which is specially design for embedded process use case]</p>
+<h2 id="other-popular-extension">Other popular extension</h2>
+<h3 id="v-vector-operations">&ldquo;V&rdquo;: vector operations</h3>
+<ul>
+<li>Popular because of AI applications</li>
+<li>Difficult because of compiler
+<ul>
+<li>How to vectorize for loops</li>
+<li>Current solution is LLVM</li>
+</ul>
+</li>
+<li>Current version 0.7</li>
+<li><a href="https://github.com/riscv/riscv-v-spec">https://github.com/riscv/riscv-v-spec</a></li>
+</ul>
+<h3 id="b-bit-manipulation">&ldquo;B&rdquo;: bit manipulation</h3>
+<ul>
+<li>Useful for specific domains such as communication that need to deal with packed data structures</li>
+<li>Current version 0.0</li>
+<li><a href="https://github.com/riscv/riscv-bitmanip">https://github.com/riscv/riscv-bitmanip</a></li>
+</ul>
+<h3 id="p-packedsimd-fixedpoint-operations">&ldquo;P&rdquo;: packed-SIMD fixed-point operations</h3>
+<ul>
+<li>Parallelize fixed-point operations</li>
+<li>Current version 0.2</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>.row[</p>
+<h3 id="extensible">Extensible</h3>
+<ul>
+<li>Base + extensions</li>
+<li>Custom instruction</li>
+<li>Domain-specific arch</li>
+<li>Still growing fast</li>
+</ul>
+<h3 id="hardwarefriendly">Hardware-friendly</h3>
+<ul>
+<li>Simple instruction set</li>
+<li>Designed to make hardware simple</li>
+<li>Micro-architecture freedom</li>
+<li>Compiler still have room to improve</li>
+</ul>
+<p>.row[</p>
+<h3 id="its-a-good-time-to-start-learning-about-riscv">It's a good time to start learning about RISC-V!</h3>
+<ul>
+<li>Still simple enough to start with</li>
+<li>More committment from big players</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/list/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[RISC-V Architecture Training] Dec. 2019 verion: Full List</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

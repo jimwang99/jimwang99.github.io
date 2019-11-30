@@ -12,6 +12,79 @@
     
     
     <item>
+      <title>[RISC-V Architecture Training] Dec. 2019 verion: Full List</title>
+      <link>/blog/arch/2019-11-28-riscv-architecture-training/list/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-11-28-riscv-architecture-training/list/</guid>
+      <description>List of training content title: &amp;ldquo;[RISC-V Architecture Training] Schedule&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Introduction of RISC-V Open ISA&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Basics &amp;amp; Unprivileged Specification&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Privileged Architecture&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Computer Architecture with RISC-V Examples&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Uncore&amp;rdquo; </description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</title>
+      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</guid>
+      <description>RISC-V SPEC https://riscv.org/specifications (official version v1.10)
+https://github.com/riscv/riscv-isa-manual (source code)
+ User-level ISA (unpriviledged)  All the basic instructions, and extensions Memory model  Priviledged ISA  Priviledge level: M (machine), H (hypervisor), S (supervisor), U (user) CSR (control status register) Virtual-memory system  Debug &amp;amp; Trace First impression: ISA subsets RISC-V is a family of ISAs Divided into several subsets: I, M, A, F, D, C, &amp;hellip;
+  Domain-specific architecture (by David Patterson)</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</title>
+      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</guid>
+      <description>Computer architecture basics  Pipeline / Parallelism / Cache Three ultimate mechanisms to imporve performance/power
+Computer architecture basics / pipeline IF = Instruction Fetch, ID = Instruction Decode, EX = Execute, MEM = Memory access, WB = Register write back).
+Computer architecture basics / pipeline @DEMO Pipeline simulator: https://github.com/mortbopet/Ripes
+Computer architecture basics / pipeline Motivation  Most of the work cannot be done at the same time. To use the logic more efficiently Less work per stage, higher clock frequency  Brings in problems: hazards  Data hazard  Dependency    mv	x1, x2 add	x4, x1, x3 sd	x4, 0(x5)  Control hazard  Jump and branch    addi	x1, x1, 1 subi	x2, x1, 100 bnez	x2, 0(x3) .</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] Introduction of RISC-V Open ISA</title>
+      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</guid>
+      <description>What is ISA? Contract between software and hardware. What is RISC? Reduced instruction set computer  Small set of simple/general instructions + load/store architecture  Optimize hardware to be simple and faster Software-centric design: rely on compiler + software       CISC RISC     Emphasis on hardware Emphasis on software   Includes multi-clock complex instructions Single-clock, reduced instruction only   Memory-to-memory: &amp;ldquo;LOAD&amp;rdquo; and &amp;ldquo;STORE&amp;rdquo; incorporated in instructions Register to register: &amp;ldquo;LOAD&amp;rdquo; and &amp;ldquo;STORE&amp;rdquo; are independent instructions   Small code sizes, high cycles per second Low cycles per second, large code sizes   Transistors used for storing complex instructions Spends more transistors on memory registers     E.</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] Privileged Architecture</title>
+      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</guid>
+      <description>Privileged architecture Purpose of privileged architecture   To manage and protect shared resources
+ Memory, IO devices, even cores    Also needs to decouple implementation details
+ Handle unimplemented operations: software emulation Handle async events (interrupts): IO, timer, software Hypervisor support: 2-level address translation    Therefore, we have  4 privilege modes: U, S, H, M PMP/PMA (physical memory protection/attributes) Virtual memory Interrupts and exceptions And a bunch of CSRs to serve these functionality  Privileged architecture / software stack layers 4 different kinds of platforms    Platforms Modes Trust Memory protection     Embedded w/o protection (most MCUs) M All Non   Embedded w/ protection (RTOS scenario) M+U Application Physical memory protection   OS capable (Linux, and etc.</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] Schedule</title>
+      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</guid>
+      <description>Momentum: 2018 RISC-V Summit Fun moment: anti-RISCV website by ARM Schedule 2-day x 8-hour Step-by-step Lecture + demo + DIY Schedule / Day 1 morning  Schedule and self-introduction Introduction of RISC-V open ISA  History and current status of ecosystem   RISC-V ISA: unprivileged spec  Basic RISC-V ISA: key concepts   DIY 0: setup course DIY env  Quick introduction of DIY env used in this course   Lunch break  Schedule / Day 1 afternnon   Demo 1: compile assembly code and simulate on SPIKE  GNU toolchain, assembly code example, compile &amp;amp; link, SPIKE simulator    DIY 1: compile assembly code and simulate on SPIKE  Code your own assembly code, compile &amp;amp; link, run simulation on SPIKE    Tea break</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] Uncore</title>
+      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</guid>
+      <description>&amp;ndash;
+Uncore CPU core is fun, but uncore is the real work. Uncore / components  Cache (already discussed) Interrupt controller Network Fabric Debug  Interrupt recap 3 types of interrupts
+ External: peripheral devices Software: inter-processor interrupt Timer: timely schedule tasks  PLIC (platform level interrupt controller)  For external interrupts Aggregation of multiple external interrupts  Provide enable/priority    CLINT (core level interruptor)  For software &amp;amp; timer interrupts Provide memory-mapped software/timer interrupt CSRs  PLIC (platform-level interrupt controller) MSI vs.</description>
+    </item>
+    
+    <item>
       <title>ARM Training: Cortex Processor Behaviors</title>
       <link>/blog/note/2019-03-18-cortex-processor-behaviors/</link>
       <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
@@ -108,6 +181,17 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
     </item>
     
     <item>
+      <title>Give notice to OURS</title>
+      <link>/blog/life/2019-01-12-at-the-time-leaving-ours/</link>
+      <pubDate>Sat, 12 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/life/2019-01-12-at-the-time-leaving-ours/</guid>
+      <description>递了notice之后，心中还是有点失落的。这种空落落的感觉更多的像是一种没有归属的感觉。自己已经不再认同自己是旧组织的成员，但是又尚未加入真正加入新的组织。这种两边不靠的状态让我感觉空落落的。
+是工作给人带来的异化？真的没有工作岗位或者组织就没法定义自己了？亦或者工作定义了一个人的社会属性，定义了他在这个社会中的角色？我在某个公司工作，那我就应该如何如何……我从事工程师的岗位，那我就应该如何行事如何穿着如何待人接物……就这样在一个框架中被定义了。其实每个人的背后的故事都很精彩很独特，怎么能够被几个框架定义呢？每个人都应该从这种独特中发现自己或者他人的精彩。
+没有从属的组织，离开了曾经朝夕相处的同事，就没有归属感？回归家庭吧！同事、工作、关系网能够定义一个人的大部分，但是只有家庭成员才不会计较你的这些与工作相关的社会属性，回归到丈夫、父亲、儿子。这些身份非常非常重要，因为它们才是伴随一生的角色。</description>
+    </item>
+    
+    <item>
       <title>Huwcha Accelerator architecture</title>
       <link>/blog/arch/2019-01-03-hwacha-accelerator/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
@@ -118,30 +202,11 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
     </item>
     
     <item>
-      <title>Huwcha Accelerator architecture</title>
-      <link>/blog/architecture/2019-01-03-hwacha-accelerator/</link>
-      <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/architecture/2019-01-03-hwacha-accelerator/</guid>
-      <description>From the reading of this paper, &amp;ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&amp;rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
- We don&#39;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&#39;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&#39;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
-    </item>
-    
-    <item>
       <title>Note of RISC-V Vector ISA Spec v0.6</title>
       <link>/blog/arch/2018-12-15-riscv-v-spec/</link>
       <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/arch/2018-12-15-riscv-v-spec/</guid>
-      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
-    </item>
-    
-    <item>
-      <title>Note of RISC-V Vector ISA Spec v0.6</title>
-      <link>/blog/architecture/2018-12-15-riscv-v-spec/</link>
-      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/architecture/2018-12-15-riscv-v-spec/</guid>
       <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
     </item>
     
@@ -176,16 +241,6 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
     </item>
     
     <item>
-      <title>Ariane (PULP series high-performance core)</title>
-      <link>/blog/architecture/2018-12-01-ariane-cpu/</link>
-      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/architecture/2018-12-01-ariane-cpu/</guid>
-      <description>Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&#39;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
-  There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
-    </item>
-    
-    <item>
       <title>Network-on-Chip Notes</title>
       <link>/blog/arch/2018-12-01-network-on-chip/</link>
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
@@ -208,16 +263,6 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
     </item>
     
     <item>
-      <title>Cache coherence</title>
-      <link>/blog/architecture/2018-11-01-cache-coherence/</link>
-      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/architecture/2018-11-01-cache-coherence/</guid>
-      <description>Coherence mechanism Snooping Every cache maintain its own cache state. And when it needs to access a shared address space, it sends snooping messages to all the other caches to either update or invalidate them.
- Write invalidate: write operation will invalidate all the other shared copies. Others will have to read again from the next level of cache to use it again. Write update: write operation will give the written data to the shared copies and update them accordingly.</description>
-    </item>
-    
-    <item>
       <title>Cache Coherence Notes</title>
       <link>/blog/arch/2018-11-01-cache-coherence/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
@@ -233,17 +278,6 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/arch/2018-11-01-cpu-architecture-notes/</guid>
-      <description>Register renaming To eliminate the false and output data dependency by adding extra physical registers more than architectural registers.
- Read-after-write (RAW) is true data dependency Write-after-write (WAW) is output data dependency Write-after-read (WAR) is false data dependency  Superscalar Dynamically issue multiple instructions in each cycle to increase IPC.
- Normally need multi-port register files and ALU to avoid structural hazard. Can be in-order or out-of-order  Re-order buffer For out-of-order execution CPU architecture, results are put into re-order buffer waiting for commit.</description>
-    </item>
-    
-    <item>
-      <title>CPU Architecture Notes</title>
-      <link>/blog/architecture/2018-11-01-cpu-architecture-notes/</link>
-      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/architecture/2018-11-01-cpu-architecture-notes/</guid>
       <description>Register renaming To eliminate the false and output data dependency by adding extra physical registers more than architectural registers.
  Read-after-write (RAW) is true data dependency Write-after-write (WAW) is output data dependency Write-after-read (WAR) is false data dependency  Superscalar Dynamically issue multiple instructions in each cycle to increase IPC.
  Normally need multi-port register files and ALU to avoid structural hazard. Can be in-order or out-of-order  Re-order buffer For out-of-order execution CPU architecture, results are put into re-order buffer waiting for commit.</description>
@@ -417,10 +451,10 @@ Problems to think about when running works on GPU clusters memory is relatively 
     
     <item>
       <title>Deep learning with GPUs in production</title>
-      <link>/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</link>
+      <link>/blog/ml/2017-03-21-deep-learning-with-gpu-in-production/</link>
       <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</guid>
+      <guid>/blog/ml/2017-03-21-deep-learning-with-gpu-in-production/</guid>
       <description>Start-up: python -&amp;gt; enterprise: C/Java/Scala, more engineers, faster Research: quick result and prototyping
 GPU? Data movement between GPU and CPU is important
 [ ] fast.ai: class (high school math)
@@ -495,15 +529,6 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
     </item>
     
     <item>
-      <title></title>
-      <link>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</link>
-      <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</guid>
-      <description>As shown in the schematic, we have some clock divider that divide root clock by half. While in scan mode, these flip-flops will be bypassed and treated as normal flip-flop that need to be inserted into the scan chain along with leaf flip-flops. But due to the nature of clock tree, clock divider will be in the upper stream and will have a much smaller clock insertion delay. Then it will cause large hold time violation from clock generator flip-flops to normal leaf flip-flops, and these violations cannot be fixed easily.</description>
-    </item>
-    
-    <item>
       <title>《人类简史》读书笔记</title>
       <link>/blog/life/2016-12-31-brief-history-of-humankind-note/</link>
       <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
@@ -566,10 +591,10 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
     
     <item>
       <title>[Cousera Note] Machine Learning Foundations: A Case Study Approach</title>
-      <link>/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</link>
+      <link>/blog/ml/2015-10-20-machine-learning-foundations-coursera/</link>
       <pubDate>Tue, 20 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</guid>
+      <guid>/blog/ml/2015-10-20-machine-learning-foundations-coursera/</guid>
       <description>1 Week1: Welcome  1.1 Introduction  1.1.1 real world case based  - regression: house price prediction - classificiation: sentiment analysis - clustering &amp;amp; retrieval: finding doc - maxtrix factorization &amp;amp; dimensionality reduction: recommending products   1.1.2 requirement  math: calculas &amp;amp; algebra python   1.1.3 capstone project   1.2 iPython Notebook  Python command and its outputs Markdown for doc   1.3 SFrames  1.</description>
     </item>
     
@@ -695,17 +720,6 @@ The first thing: discuss timing/area/power SPEC&#39;s in details Most of the tim
 &lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/blog/life/2019-01-12-at-the-time-leaving-ours/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/life/2019-01-12-at-the-time-leaving-ours/</guid>
-      <description>Jan. 12th: give notice 递了notice之后，心中还是有点失落的。这种空落落的感觉更多的像是一种没有归属的感觉。自己已经不再认同自己是旧组织的成员，但是又尚未加入真正加入新的组织。这种两边不靠的状态让我感觉空落落的。
-是工作给人带来的异化？真的没有工作岗位或者组织就没法定义自己了？亦或者工作定义了一个人的社会属性，定义了他在这个社会中的角色？我在某个公司工作，那我就应该如何如何……我从事工程师的岗位，那我就应该如何行事如何穿着如何待人接物……就这样在一个框架中被定义了。其实每个人的背后的故事都很精彩很独特，怎么能够被几个框架定义呢？每个人都应该从这种独特中发现自己或者他人的精彩。
-没有从属的组织，离开了曾经朝夕相处的同事，就没有归属感？回归家庭吧！同事、工作、关系网能够定义一个人的大部分，但是只有家庭成员才不会计较你的这些与工作相关的社会属性，回归到丈夫、父亲、儿子。这些身份非常非常重要，因为它们才是伴随一生的角色。</description>
     </item>
     
   </channel>

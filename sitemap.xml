@@ -3,12 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/note/2019-03-18-cortex-processor-behaviors/</loc>
-    <lastmod>2019-03-18T00:00:00+00:00</lastmod>
+    <loc>/blog/arch/2019-11-28-riscv-architecture-training/list/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/riscv/</loc>
+    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/note/2019-03-18-cortex-processor-behaviors/</loc>
     <lastmod>2019-03-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -18,7 +58,7 @@
   </url>
   
   <url>
-    <loc>/categories/architecture/</loc>
+    <loc>/categories/arch/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -78,22 +118,17 @@
   </url>
   
   <url>
+    <loc>/blog/life/2019-01-12-at-the-time-leaving-ours/</loc>
+    <lastmod>2019-01-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/arch/2019-01-03-hwacha-accelerator/</loc>
     <lastmod>2019-01-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/architecture/2019-01-03-hwacha-accelerator/</loc>
-    <lastmod>2019-01-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/arch/2018-12-15-riscv-v-spec/</loc>
-    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/architecture/2018-12-15-riscv-v-spec/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -118,11 +153,6 @@
   </url>
   
   <url>
-    <loc>/blog/architecture/2018-12-01-ariane-cpu/</loc>
-    <lastmod>2018-12-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/arch/2018-12-01-network-on-chip/</loc>
     <lastmod>2018-12-01T00:00:00+00:00</lastmod>
   </url>
@@ -133,22 +163,12 @@
   </url>
   
   <url>
-    <loc>/blog/architecture/2018-11-01-cache-coherence/</loc>
-    <lastmod>2018-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/blog/arch/2018-11-01-cache-coherence/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/blog/arch/2018-11-01-cpu-architecture-notes/</loc>
-    <lastmod>2018-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/architecture/2018-11-01-cpu-architecture-notes/</loc>
     <lastmod>2018-11-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -248,12 +268,12 @@
   </url>
   
   <url>
-    <loc>/blog/machine-learning/2017-03-21-deep-learning-with-gpu-in-production/</loc>
+    <loc>/blog/ml/2017-03-21-deep-learning-with-gpu-in-production/</loc>
     <lastmod>2017-03-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/machine-learning/</loc>
+    <loc>/categories/ml/</loc>
     <lastmod>2017-03-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -280,11 +300,6 @@
   <url>
     <loc>/blog/note/2017-01-10-systemverilog-for-design-note/</loc>
     <lastmod>2017-01-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/</loc>
-    <lastmod>2017-01-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -323,7 +338,7 @@
   </url>
   
   <url>
-    <loc>/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/</loc>
+    <loc>/blog/ml/2015-10-20-machine-learning-foundations-coursera/</loc>
     <lastmod>2015-10-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -410,11 +425,6 @@
   <url>
     <loc>/blog/</loc>
     <lastmod>1982-10-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/life/2019-01-12-at-the-time-leaving-ours/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
