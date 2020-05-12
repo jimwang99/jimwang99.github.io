@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>WSL (Windows Subsystem Linux) Tips - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,17 +66,11 @@
 			<h1 class="post__title">WSL (Windows Subsystem Linux) Tips</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-04-25T00:00:00">2017-04-25</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-25T00:00:00Z">2017-04-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
-			<h1 id="to-start-gnometerminal-on-wsl-windows-subsystem-for-linux">To start gnome-terminal on WSL (Windows Subsystem for Linux)</h1>
+			<h1 id="to-start-gnome-terminal-on-wsl-windows-subsystem-for-linux">To start gnome-terminal on WSL (Windows Subsystem for Linux)</h1>
 <p>After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.</p>
 <p>To reinstall WSL you should do:</p>
 <pre><code>&gt; lxrun /uninstall /full
@@ -96,24 +88,24 @@ process 5260: D-Bus library appears to be incorrectly set up; failed to read mac
 See the manual page for dbus-uuidgen to correct this issue.
 Error constructing proxy for org.gnome.Terminal:/org/gnome/Terminal/Factory0: Error spawning command line 'dbus-launch --autolaunch= --binary-syntax --close-stderr': Child process exited with code 1
 </code></pre><p>I found that the <code>/etc/machine-id</code> file is empty, and it can be fixed by <code>sudo systemd-machine-id-setup</code></p>
-<p>I was using OSX on my 2015 MBP for almost 2 years and it works fine. After spending some time to tune the iTerm2's color and hotkey settings, the environment works fine with SSH, TMUX, ZSH and VIM. It did took me quite some time to compile Verilator (an open source Verilog simulator) on OSX. Other than that the biggest problem would be external 1080p monitor and HDMI connection. It always looks blurry after trying out all the solutions I can find on Google. The ultimate solution was change the monitor from 1080p to real 4K. Apparently, OSX is not for poor people.</p>
-<p>But after 2 years of enduring the overheating and fast battery drainage, I'll have to move on to better hardware. Macbook won't be an option at all because I cannot get used to this new keyboard. It's without travelling distance at all, and typing with it is just like typing on a piece of wood. So Windows.</p>
-<p>Nowadays, Windows comes with WSL (Windows subsystem Linux). It gives you the ability to run native Linux program within a virtual machine liked environment on Windows machine. Although Microsoft claims that it's not for X programs, some hackers indeed made X work for WSL. But with integration with native Windows filesystem, X is not that critical anymore, because anyway I cannot run real EDA tools on WSL. So it's only for development which means VIM and Python would be enough.</p>
+<p>I was using OSX on my 2015 MBP for almost 2 years and it works fine. After spending some time to tune the iTerm2&rsquo;s color and hotkey settings, the environment works fine with SSH, TMUX, ZSH and VIM. It did took me quite some time to compile Verilator (an open source Verilog simulator) on OSX. Other than that the biggest problem would be external 1080p monitor and HDMI connection. It always looks blurry after trying out all the solutions I can find on Google. The ultimate solution was change the monitor from 1080p to real 4K. Apparently, OSX is not for poor people.</p>
+<p>But after 2 years of enduring the overheating and fast battery drainage, I&rsquo;ll have to move on to better hardware. Macbook won&rsquo;t be an option at all because I cannot get used to this new keyboard. It&rsquo;s without travelling distance at all, and typing with it is just like typing on a piece of wood. So Windows.</p>
+<p>Nowadays, Windows comes with WSL (Windows subsystem Linux). It gives you the ability to run native Linux program within a virtual machine liked environment on Windows machine. Although Microsoft claims that it&rsquo;s not for X programs, some hackers indeed made X work for WSL. But with integration with native Windows filesystem, X is not that critical anymore, because anyway I cannot run real EDA tools on WSL. So it&rsquo;s only for development which means VIM and Python would be enough.</p>
 <h2 id="wsl-terminal">WSL terminal</h2>
 <p><a href="https://github.com/goreliu/wsl-terminal">WSL terminal</a> is a very useful tool for using WSL. It comes with a mintty and one very useful setting: add &ldquo;open wsl terminal here&rdquo; to your right click menu. However the native color themes are not good. What I chose is to match all my other tools&rsquo; ]&ldquo;Dracula&rdquo; theme](<a href="https://draculatheme.com/">https://draculatheme.com/</a>)</p>
 <p>Another problem that worth mentioning is the directory color of Windows filesystem. Because of the default permission, every directories in /mnt/c or /mnt/d are 777. So they are displayed as <strong>green background plus gray foreground</strong> font, which is very hard to recognize. The way to fix it is to put <code>export LS_COLORS='ow=01;36;40</code> in the <code>.zshrc</code> to change the color output of <code>ls</code> command. One drawback is this cannot change the color for zsh auto-completion.</p>
 <h2 id="copy-to-windows-clipboard">Copy to Windows clipboard</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat $FILE | clip.exe
 </code></pre></div><p>Here <code>clip.exe</code> is a native windows program at <code>/mnt/c/Windows/System32/clip.exe</code></p>
-<p>It's a little bit tricky to copy from VIM to Windows clipboard though. But some smart guy on stackoverflow thought of a <a href="https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows">work-around</a> using clip.exe</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VIM" data-lang="VIM"><span style="color:#a6e22e">func</span>! <span style="color:#a6e22e">GetSelectedText</span>()<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">normal</span> <span style="color:#a6e22e">gv</span>&#34;<span style="color:#a6e22e">xy</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> = <span style="color:#a6e22e">getreg</span>(<span style="color:#e6db74">&#34;x&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">return</span> <span style="color:#a6e22e">result</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">endfunc</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#34;clipboard&#34;</span>) &amp;&amp; <span style="color:#a6e22e">executable</span>(<span style="color:#e6db74">&#34;clip.exe&#34;</span>)<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">noremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">C</span>&gt; :<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#39;clip.exe&#39;</span>, <span style="color:#a6e22e">GetSelectedText</span>())&lt;<span style="color:#a6e22e">CR</span>&gt;<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
+<p>It&rsquo;s a little bit tricky to copy from VIM to Windows clipboard though. But some smart guy on stackoverflow thought of a <a href="https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows">work-around</a> using clip.exe</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-VIM" data-lang="VIM"><span style="color:#a6e22e">func</span>! <span style="color:#a6e22e">GetSelectedText</span>()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">normal</span> <span style="color:#a6e22e">gv</span>&#34;<span style="color:#a6e22e">xy</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> = <span style="color:#a6e22e">getreg</span>(<span style="color:#e6db74">&#34;x&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">return</span> <span style="color:#a6e22e">result</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">endfunc</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">has</span>(<span style="color:#e6db74">&#34;clipboard&#34;</span>) &amp;&amp; <span style="color:#a6e22e">executable</span>(<span style="color:#e6db74">&#34;clip.exe&#34;</span>)<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">noremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">C</span>&gt; :<span style="color:#a6e22e">call</span> <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#39;clip.exe&#39;</span>, <span style="color:#a6e22e">GetSelectedText</span>())&lt;<span style="color:#a6e22e">CR</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div>
 		</div>
 	</article>
@@ -131,14 +123,7 @@ Error constructing proxy for org.gnome.Terminal:/org/gnome/Terminal/Factory0: Er
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/tool/2017-04-24-install-python-offline/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Install Python Offline</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/industry/2017-04-30-snug-2017/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">SNUG Silicon Valley 2017 at Santa Clara Conventional Center</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -148,7 +133,7 @@ Error constructing proxy for org.gnome.Terminal:/org/gnome/Terminal/Factory0: Er
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>ARM Training: Cortex Processor Behaviors - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">ARM Training: Cortex Processor Behaviors</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-18T00:00:00">2019-03-18</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-03-18T00:00:00Z">2019-03-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -95,9 +87,9 @@
 </li>
 <li>Conditional branch prediction
 <ul>
-<li>Shift register of branch execution history, taken is 1'b1 and non-taken is 1'b0</li>
+<li>Shift register of branch execution history, taken is 1&rsquo;b1 and non-taken is 1&rsquo;b0</li>
 <li>Use the pattern to predict the next branch</li>
-<li>Use branch monitor's result to update this prediction table</li>
+<li>Use branch monitor&rsquo;s result to update this prediction table</li>
 </ul>
 </li>
 <li>Misprediction
@@ -143,7 +135,7 @@
 <li>Cortex-R:
 <ul>
 <li>Cancel current outstanding instructions to handling interrupt more quickly</li>
-<li>Load/store to device memory won't be cancelled. So the access time to device memory has to be limited, because it gates the whole system's response time</li>
+<li>Load/store to device memory won&rsquo;t be cancelled. So the access time to device memory has to be limited, because it gates the whole system&rsquo;s response time</li>
 </ul>
 </li>
 <li>Cortex-M
@@ -194,7 +186,7 @@
 </li>
 </ul>
 <h2 id="summary">Summary</h2>
-<h3 id="cortexa">Cortex-A</h3>
+<h3 id="cortex-a">Cortex-A</h3>
 <ul>
 <li>Low power
 <ul>
@@ -207,7 +199,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="cortexr">Cortex-R</h3>
+<h3 id="cortex-r">Cortex-R</h3>
 <ul>
 <li>Hard real-time requirement
 <ul>
@@ -217,7 +209,7 @@
 </li>
 <li>Avoid over-engineering</li>
 </ul>
-<h3 id="cortexm">Cortex-M</h3>
+<h3 id="cortex-m">Cortex-M</h3>
 <p><img src="cortex-m-family.png" alt="Cortex-M family"></p>
 
 		</div>
@@ -236,14 +228,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Interrupts and ARM GIC Architecture</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[RISC-V Architecture Training] Uncore</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -253,7 +238,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

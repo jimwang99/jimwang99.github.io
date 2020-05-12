@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>[RISC-V Architecture Training] Computer Architecture with RISC-V Examples - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-11-27T00:00:00">2019-11-27</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -85,10 +77,10 @@
 <h2 id="computer-architecture-basics--pipeline">Computer architecture basics / pipeline</h2>
 <p><img src="../image/arch-pipeline.png" alt="pic"></p>
 <p>IF = Instruction Fetch, ID = Instruction Decode, EX = Execute, MEM = Memory access, WB = Register write back).</p>
-<h2 id="computer-architecture-basics--pipeline1">Computer architecture basics / pipeline</h2>
+<h2 id="computer-architecture-basics--pipeline-1">Computer architecture basics / pipeline</h2>
 <h3 id="demo">@DEMO</h3>
 <p>Pipeline simulator: <a href="https://github.com/mortbopet/Ripes">https://github.com/mortbopet/Ripes</a></p>
-<h2 id="computer-architecture-basics--pipeline2">Computer architecture basics / pipeline</h2>
+<h2 id="computer-architecture-basics--pipeline-2">Computer architecture basics / pipeline</h2>
 <h3 id="motivation">Motivation</h3>
 <ul>
 <li>Most of the work <strong>cannot</strong> be done at the same time.</li>
@@ -127,7 +119,7 @@ bnez	x2, 0(x3)
 <pre><code class="language-assembly" data-lang="assembly">mul		x1, x2, x3
 mul		x4, x5, x6
 mul		x7, x8, x9
-</code></pre><h2 id="computer-architecture-basics--pipeline3">Computer architecture basics / pipeline</h2>
+</code></pre><h2 id="computer-architecture-basics--pipeline-3">Computer architecture basics / pipeline</h2>
 <h3 id="other-considerations">Other considerations</h3>
 <ul>
 <li>Exception and interrupt
@@ -179,7 +171,7 @@ mul		x7, x8, x9
 </ul>
 <h2 id="computer-architecture-basics--parallelism">Computer architecture basics / parallelism</h2>
 <h3 id="parallelism">Parallelism</h3>
-<h4 id="ilp-instructionlevel-parallelism--tlp-threadlevel-parallelism">ILP (instruction-level parallelism) &amp; TLP (thread-level parallelism)</h4>
+<h4 id="ilp-instruction-level-parallelism--tlp-thread-level-parallelism">ILP (instruction-level parallelism) &amp; TLP (thread-level parallelism)</h4>
 <ul>
 <li>Multi-issue</li>
 <li>SMT (simultaneous multi-threading)</li>
@@ -188,8 +180,8 @@ mul		x7, x8, x9
 <li>Out-of-order</li>
 <li>&hellip;</li>
 </ul>
-<h2 id="computer-architecture-basics--parallelism1">Computer architecture basics / parallelism</h2>
-<h3 id="multiissue-aka-superscala">Multi-issue (a.k.a superscala)</h3>
+<h2 id="computer-architecture-basics--parallelism-1">Computer architecture basics / parallelism</h2>
+<h3 id="multi-issue-aka-superscala">Multi-issue (a.k.a superscala)</h3>
 <ul>
 <li>Issue multiple instructions parallelly to reuse <strong>CPU resource</strong>
 <ul>
@@ -198,14 +190,14 @@ mul		x7, x8, x9
 </li>
 </ul>
 <p><img src="../image/arch-superscala.png" alt="pic"></p>
-<h2 id="computer-architecture-basics--parallelism2">Computer Architecture Basics / parallelism</h2>
+<h2 id="computer-architecture-basics--parallelism-2">Computer Architecture Basics / parallelism</h2>
 <h3 id="vliw-very-long-instruction-word">VLIW (very long instruction word)</h3>
 <ul>
 <li>Compiler defined parallelism to reuse CPU resource</li>
 <li>Pack mutiple instructions into one long instruction</li>
 </ul>
 <p><img src="../image/arch-vliw.png" alt="pic"></p>
-<h2 id="computer-architecture-basics--parallelism3">Computer architecture basics / parallelism</h2>
+<h2 id="computer-architecture-basics--parallelism-3">Computer architecture basics / parallelism</h2>
 <h3 id="simd-single-instruction-multiple-data">SIMD (single instruction multiple data)</h3>
 <ul>
 <li>Vectorization
@@ -216,8 +208,8 @@ mul		x7, x8, x9
 <li>Large register file becomes bottleneck</li>
 </ul>
 <p><img src="../image/arch-simd.png" alt="pic"></p>
-<h2 id="computer-architecture-basics--parallelism4">Computer architecture basics / parallelism</h2>
-<h3 id="ooo-outoforder">OOO (out-of-order)</h3>
+<h2 id="computer-architecture-basics--parallelism-4">Computer architecture basics / parallelism</h2>
+<h3 id="ooo-out-of-order">OOO (out-of-order)</h3>
 <ul>
 <li>Issue instructions not following the program order to resolve dependencies</li>
 <li>Register renaming, reorder buffer, etc&hellip;</li>
@@ -230,10 +222,10 @@ add     x3, x3, 4
 ld      x4, 0(x3)       # if cache miss, will be slow
 mul     x5, x5, x6      # multi-cycle operations
 </code></pre><ul>
-<li>But these slow operations don't have dependency with each other</li>
+<li>But these slow operations don&rsquo;t have dependency with each other</li>
 </ul>
-<h2 id="computer-architecture-basics--parallelism5">Computer architecture basics / parallelism</h2>
-<h3 id="smt-simultaneous-multithreading">SMT (simultaneous multi-threading)</h3>
+<h2 id="computer-architecture-basics--parallelism-5">Computer architecture basics / parallelism</h2>
+<h3 id="smt-simultaneous-multi-threading">SMT (simultaneous multi-threading)</h3>
 <ul>
 <li>Different from <strong>temporal multi-threading (aka super-threading)</strong>.</li>
 <li>Different program/thread reuse CPU resource
@@ -242,17 +234,17 @@ mul     x5, x5, x6      # multi-cycle operations
 <li>RISC-V hart (hardware thread)</li>
 </ul>
 </li>
-<li>Need compiler/OS's help to explore thread-level parallelism</li>
+<li>Need compiler/OS&rsquo;s help to explore thread-level parallelism</li>
 </ul>
 <h2 id="computer-architecture-basics--cache">Computer architecture basics / cache</h2>
-<h3 id="main-memory-dram-dynamic-randomaccess-memory">Main memory: DRAM (dynamic random-access memory)</h3>
+<h3 id="main-memory-dram-dynamic-random-access-memory">Main memory: DRAM (dynamic random-access memory)</h3>
 <ul>
 <li>
 <p>Dynamic vs. static</p>
 <ul>
 <li>One-bit = one capacitor + one resistor
 <ul>
-<li>The capacitor needs periodical rewrites (refresh) to keep its data. So it's called <em>dynamic</em></li>
+<li>The capacitor needs periodical rewrites (refresh) to keep its data. So it&rsquo;s called <em>dynamic</em></li>
 <li>Much smaller in size; volatile (lose power lose data)</li>
 </ul>
 </li>
@@ -292,7 +284,7 @@ mul     x5, x5, x6      # multi-cycle operations
 </ul>
 <p> </p>
 <p>Hierarchical cache is created to improve the <strong>latency and throughput</strong> for memory access.</p>
-<h2 id="computer-architecture-basics--cache1">Computer architecture basics / cache</h2>
+<h2 id="computer-architecture-basics--cache-1">Computer architecture basics / cache</h2>
 <h3 id="what-is-cache">What is cache?</h3>
 <p><img src="../image/arch-cache-tag.png" alt="pic"></p>
 <ul>
@@ -302,7 +294,7 @@ mul     x5, x5, x6      # multi-cycle operations
 </ul>
 </li>
 </ul>
-<h2 id="computer-architecture-basics--cache2">Computer architecture basics / cache</h2>
+<h2 id="computer-architecture-basics--cache-2">Computer architecture basics / cache</h2>
 <h3 id="cache-types">Cache types</h3>
 <ul>
 <li>Direct mapped cache
@@ -322,7 +314,7 @@ mul     x5, x5, x6      # multi-cycle operations
 </li>
 </ul>
 <p><img src="../image/arch-cache-way.png" alt="pic"></p>
-<h2 id="computer-architecture-basics--cache3">Computer architecture basics / cache</h2>
+<h2 id="computer-architecture-basics--cache-3">Computer architecture basics / cache</h2>
 <h3 id="problems">Problems</h3>
 <ul>
 <li>Cache coherence
@@ -339,7 +331,7 @@ mul     x5, x5, x6      # multi-cycle operations
 </ul>
 <h2 id="rocketchip">RocketChip</h2>
 <h3 id="cpu-complex-generator-from-ucb">CPU complex generator from UCB</h3>
-<h3 id="the-very-first-riscv-cpu">The very first RISC-V CPU</h3>
+<h3 id="the-very-first-risc-v-cpu">The very first RISC-V CPU</h3>
 <h2 id="rocketchip--core">RocketChip / core</h2>
 <h3 id="open-source-written-in-chisel-highly-configurable">Open source. Written in Chisel. Highly configurable!</h3>
 <ul>
@@ -364,11 +356,11 @@ mul     x5, x5, x6      # multi-cycle operations
 <li>Configuration + automatic generation</li>
 </ul>
 <h3 id="based-on-rocket-chip-generator-sifive-builds-up-its-35-series-cpus">Based on Rocket Chip Generator, SiFive builds up its 3/5 series CPUs.</h3>
-<p>.footnote[!(The Rocket Chip Generator (techical report from UCB/EECS))[<a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-17.pdf">https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-17.pdf</a>]]</p>
+<p>.footnote[!(The Rocket Chip Generator (techical report from UCB/EECS))[https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-17.pdf]]</p>
 <h2 id="sifive-coredesigner">SiFive CoreDesigner</h2>
-<h3 id="demo1">@DEMO</h3>
+<h3 id="demo-1">@DEMO</h3>
 <p>Snapshots from SiFive</p>
-<h2 id="boom-berkeley-outofoder-machine">BOOM (Berkeley out-of-oder machine)</h2>
+<h2 id="boom-berkeley-out-of-oder-machine">BOOM (Berkeley out-of-oder machine)</h2>
 <p><img src="../image/boom-pipeline.png" alt="pic"></p>
 <h3 id="based-on-rochet-chip-generator">Based on Rochet Chip Generator</h3>
 <ul>
@@ -377,7 +369,7 @@ mul     x5, x5, x6      # multi-cycle operations
 <li>Superscalar: multi-issue and can be configured</li>
 </ul>
 <h2 id="boom--regfile-challenges">BOOM / regfile challenges</h2>
-<h3 id="multiissue-architectures-bottleneck-is-the-register-file">Multi-issue architecture's bottleneck is the register file</h3>
+<h3 id="multi-issue-architectures-bottleneck-is-the-register-file">Multi-issue architecture&rsquo;s bottleneck is the register file</h3>
 <ul>
 <li>Number of ports blows up the size
 <ul>
@@ -386,7 +378,7 @@ mul     x5, x5, x6      # multi-cycle operations
 </li>
 <li>Congestion in physical design</li>
 </ul>
-<p>.footnote[!(BOOM v2: an open-source out-of-order RISC-V core (techical report from UCB/EECS))[<a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2017/EECS-2017-157.pdf">https://www2.eecs.berkeley.edu/Pubs/TechRpts/2017/EECS-2017-157.pdf</a>]]</p>
+<p>.footnote[!(BOOM v2: an open-source out-of-order RISC-V core (techical report from UCB/EECS))[https://www2.eecs.berkeley.edu/Pubs/TechRpts/2017/EECS-2017-157.pdf]]</p>
 <h2 id="ariane-pulp-from-eth-zurich">Ariane (PULP from ETH Zurich)</h2>
 <p><img src="../image/ariane-diagram.png" alt="pic"></p>
 <h2 id="ariane">Ariane</h2>
@@ -417,7 +409,7 @@ mul     x5, x5, x6      # multi-cycle operations
 <li>Resolve branch</li>
 <li>Keep scoreboard</li>
 </ul>
-<h2 id="ariane1">Ariane</h2>
+<h2 id="ariane-1">Ariane</h2>
 <h3 id="execution-stage">Execution stage</h3>
 <ul>
 <li>Store buffer
@@ -438,7 +430,7 @@ mul     x5, x5, x6      # multi-cycle operations
 <h2 id="computer-architecture-advanced-topics">Computer architecture advanced topics</h2>
 <p> </p>
 <h3 id="cache-coherence">Cache coherence</h3>
-<h2 id="cache-coherence1">Cache coherence</h2>
+<h2 id="cache-coherence-1">Cache coherence</h2>
 <h3 id="software-vs-hardware">Software vs. hardware</h3>
 <ul>
 <li>Software managed coherency
@@ -470,7 +462,7 @@ mul     x5, x5, x6      # multi-cycle operations
 </ul>
 </li>
 </ul>
-<h2 id="cache-coherence2">Cache coherence</h2>
+<h2 id="cache-coherence-2">Cache coherence</h2>
 <h3 id="hardware-managed-coherency">Hardware managed coherency</h3>
 <ul>
 <li>Snooping
@@ -523,7 +515,7 @@ mul     x5, x5, x6      # multi-cycle operations
 <li>SMT</li>
 </ul>
 <h3 id="use-cache-to-improve-memory-access-latency-and-bandwidth">Use cache to improve memory access latency and bandwidth</h3>
-<h3 id="rocketchip1">RocketChip</h3>
+<h3 id="rocketchip-1">RocketChip</h3>
 <ul>
 <li>Text-book 5-stage pipeline</li>
 <li>SiFive CoreDesigner</li>
@@ -532,7 +524,7 @@ mul     x5, x5, x6      # multi-cycle operations
 <ul>
 <li>Berkeley out-of-order machine</li>
 </ul>
-<h3 id="ariane2">Ariane</h3>
+<h3 id="ariane-2">Ariane</h3>
 <ul>
 <li>Modern pipeline design</li>
 <li>SystemVerilog</li>
@@ -559,14 +551,7 @@ mul     x5, x5, x6      # multi-cycle operations
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[RISC-V Architecture Training] Introduction of RISC-V Open ISA</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -576,7 +561,7 @@ mul     x5, x5, x6      # multi-cycle operations
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

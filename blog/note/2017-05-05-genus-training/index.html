@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>GENUS Training Notes - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,18 +66,12 @@
 			<h1 class="post__title">GENUS Training Notes</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-05-05T00:00:00">2017-05-05</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T00:00:00Z">2017-05-05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
 			<blockquote>
-<p>The following is my notes of GENUS training course on Cadence's training module</p>
+<p>The following is my notes of GENUS training course on Cadence&rsquo;s training module</p>
 </blockquote>
 <h1 id="module-03-genus-fundamentals">Module 03: genus fundamentals</h1>
 <h2 id="common-ui-vs-legacy-mode">common UI vs legacy mode</h2>
@@ -102,9 +94,9 @@
 <ul>
 <li>top_module
 <ul>
-<li>instances_hier: current module's hier instances</li>
-<li>instances_seq: current module's sequential instances</li>
-<li>instances_cmb: current module's combinational instancs</li>
+<li>instances_hier: current module&rsquo;s hier instances</li>
+<li>instances_seq: current module&rsquo;s sequential instances</li>
+<li>instances_cmb: current module&rsquo;s combinational instancs</li>
 </ul>
 </li>
 </ul>
@@ -512,7 +504,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="opt-in-syngeneric">opt in syn_generic</h2>
+<h2 id="opt-in-syn_generic">opt in syn_generic</h2>
 <ul>
 <li>constant propagation</li>
 <li>resource sharing</li>
@@ -566,7 +558,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="bottomup-design-flow">bottom-up design flow</h2>
+<h2 id="bottom-up-design-flow">bottom-up design flow</h2>
 <ul>
 <li>promote submodule
 <ul>
@@ -583,7 +575,7 @@
 <li>80% to 90% of wires are local, the rest are big problems</li>
 </ul>
 </li>
-<li>old tricks don't work: over-constraint</li>
+<li>old tricks don&rsquo;t work: over-constraint</li>
 </ul>
 <h2 id="how">how?</h2>
 <ul>
@@ -602,7 +594,7 @@
 <li>if backend is going to run full place_opt, instead of <code>place_opt -incr</code> with genus-physical outputs as inputs, then no need to waste time on the final syn_opt stage</li>
 <li>use <code>syn_opt -spatial</code> instead of <code>syn_opt -physical</code></li>
 </ul>
-<h2 id="pam-physicalaware-mapping--pas-physicalaware-structuring">PAM (physical-aware mapping) &amp; PAS (physical-aware structuring)</h2>
+<h2 id="pam-physical-aware-mapping--pas-physical-aware-structuring">PAM (physical-aware mapping) &amp; PAS (physical-aware structuring)</h2>
 <ul>
 <li>automatically turned on with <code>-physical</code></li>
 </ul>
@@ -635,7 +627,7 @@
 <li><code>invs_gzip_interface_file</code></li>
 <li><code>invs_temp_dir</code></li>
 </ul>
-<h2 id="correlation-between-genusphys-and-invs">correlation between genus-phys and invs</h2>
+<h2 id="correlation-between-genus-phys-and-invs">correlation between genus-phys and invs</h2>
 <ul>
 <li>ensure NDR and layer-promotion info is passed to innvous</li>
 <li>assure wirelength has good correlation</li>
@@ -660,7 +652,7 @@
 <ul>
 <li>go into edit mode</li>
 </ul>
-<h2 id="report1">report</h2>
+<h2 id="report-1">report</h2>
 <ul>
 <li><code>write_report</code>
 <ul>
@@ -716,7 +708,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="flow1">flow</h2>
+<h2 id="flow-1">flow</h2>
 <ul>
 <li>enable clock gating</li>
 <li>annotate switching activities with TCF/SAIF/VCD</li>
@@ -725,7 +717,7 @@
 <li>synthesis with clock gating insertion/power opt</li>
 <li>analyze</li>
 </ul>
-<h2 id="multivth-lib">multi-Vth lib</h2>
+<h2 id="multi-vth-lib">multi-Vth lib</h2>
 <ul>
 <li>low VT on timing critical path, high VT on non-critical path</li>
 </ul>
@@ -774,7 +766,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="report2">report</h2>
+<h2 id="report-2">report</h2>
 <ul>
 <li><code>report_clock_gating</code></li>
 <li><code>report_power</code></li>
@@ -792,7 +784,7 @@
 <li><code>declone/share/split/merge_clock_gate</code></li>
 </ul>
 <h1 id="module-08-design-for-test">Module 08: design for test</h1>
-<h2 id="flow2">flow</h2>
+<h2 id="flow-2">flow</h2>
 <ul>
 <li>setup DFT rule, and check
 <ul>
@@ -924,7 +916,7 @@
 <li><code>write_dft_atpg*</code>: interface to ATPG tool</li>
 <li><code>write_dft_abstract_model</code></li>
 </ul>
-<h2 id="bottomup-scan-flow">bottom-up scan flow</h2>
+<h2 id="bottom-up-scan-flow">bottom-up scan flow</h2>
 <ul>
 <li>block level
 <ul>
@@ -953,7 +945,7 @@
 </li>
 <li>long run-time, werid mismatch</li>
 </ul>
-<h2 id="recommended-2step-verification">recommended 2-step verification</h2>
+<h2 id="recommended-2-step-verification">recommended 2-step verification</h2>
 <ul>
 <li>1st-step: synthesis with preserved datapath modules/hier, restrict certain opt, min ungrouping, and output intermediate gate netlist</li>
 <li>2nd-step: incremental synthesis with additional opt and ungrouping, and output final gate netlist</li>
@@ -1009,7 +1001,7 @@
 <li><code>set_attr retime true [find / -subd xxx]</code></li>
 <li><code>retime -prepare -min_delay -effort high [find / -subd xxx]</code> before <code>syn_gen</code></li>
 </ul>
-<h2 id="advanced-lowpower-flow">advanced low-power flow</h2>
+<h2 id="advanced-low-power-flow">advanced low-power flow</h2>
 <ul>
 <li>CPF</li>
 <li>MSMV</li>
@@ -1044,10 +1036,10 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl"><span style="color:#66d9ef">set</span> tot <span style="color:#66d9ef">[</span>llength <span style="color:#66d9ef">[</span>get_db nets<span style="color:#66d9ef">]</span><span style="color:#66d9ef">]</span>
-for <span style="color:#66d9ef">{</span><span style="color:#66d9ef">set</span> i <span style="color:#ae81ff">0</span><span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>$i <span style="color:#f92672">&lt;=</span> 100<span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>incr i <span style="color:#ae81ff">5</span><span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>
-    <span style="color:#66d9ef">set</span> n <span style="color:#66d9ef">[</span>llength <span style="color:#66d9ef">[</span>get_db nets <span style="color:#f92672">-</span>if <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">.</span><span style="color:#e6db74">n</span><span style="color:#e6db74">u</span><span style="color:#e6db74">m</span><span style="color:#e6db74">_</span><span style="color:#e6db74">l</span><span style="color:#e6db74">o</span><span style="color:#e6db74">a</span><span style="color:#e6db74">d</span><span style="color:#e6db74">s</span><span style="color:#e6db74">&gt;</span><span style="color:#e6db74">$</span><span style="color:#e6db74">i</span><span style="color:#e6db74"> </span><span style="color:#e6db74">&amp;</span><span style="color:#e6db74">&amp;</span><span style="color:#e6db74"> </span><span style="color:#e6db74">.</span><span style="color:#e6db74">n</span><span style="color:#e6db74">u</span><span style="color:#e6db74">m</span><span style="color:#e6db74">_</span><span style="color:#e6db74">l</span><span style="color:#e6db74">o</span><span style="color:#e6db74">a</span><span style="color:#e6db74">d</span><span style="color:#e6db74">s</span><span style="color:#e6db74">&lt;</span><span style="color:#e6db74">[</span><span style="color:#e6db74">e</span><span style="color:#e6db74">x</span><span style="color:#e6db74">p</span><span style="color:#e6db74">r</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span><span style="color:#e6db74">$</span><span style="color:#e6db74">i</span><span style="color:#e6db74">+</span><span style="color:#e6db74">5</span><span style="color:#e6db74">}</span><span style="color:#e6db74">]</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">]</span><span style="color:#66d9ef">]</span>
-    puts <span style="color:#66d9ef">[</span>string report <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">#</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">[</span><span style="color:#66d9ef">expr</span> $n <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> $tot<span style="color:#66d9ef">]</span><span style="color:#66d9ef">]</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl"><span style="color:#66d9ef">set</span> tot <span style="color:#66d9ef">[</span>llength <span style="color:#66d9ef">[</span>get_db nets<span style="color:#66d9ef">]]</span>
+<span style="color:#66d9ef">for</span> <span style="color:#66d9ef">{set</span> i <span style="color:#ae81ff">0</span><span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>$i <span style="color:#f92672">&lt;=</span> 100<span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>incr i <span style="color:#ae81ff">5</span><span style="color:#66d9ef">}</span> <span style="color:#66d9ef">{</span>
+    <span style="color:#66d9ef">set</span> n <span style="color:#66d9ef">[</span>llength <span style="color:#66d9ef">[</span>get_db nets <span style="color:#f92672">-</span>if <span style="color:#e6db74">&#34;.num_loads&gt;$i &amp;&amp; .num_loads&lt;[expr {$i+5}]&#34;</span><span style="color:#66d9ef">]]</span>
+    puts <span style="color:#66d9ef">[</span>string report <span style="color:#e6db74">&#34;#&#34;</span> <span style="color:#66d9ef">[expr</span> $n <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> $tot<span style="color:#66d9ef">]]</span>
 <span style="color:#66d9ef">}</span>
 </code></pre></div><pre><code>- find all pins: `vls -la [vfind /designs/* -pin *]`
 </code></pre>
@@ -1069,7 +1061,7 @@ for <span style="color:#66d9ef">{</span><span style="color:#66d9ef">set</span> i
 <ul>
 <li>block level physical synthesis &lt;-&gt; unit level physical synthesis
 <ul>
-<li>unit level cannot understand block level's congestion and physical context issues</li>
+<li>unit level cannot understand block level&rsquo;s congestion and physical context issues</li>
 <li>so pass timing/physical context DEF and constraint from block level to unit level</li>
 </ul>
 </li>
@@ -1103,14 +1095,7 @@ for <span style="color:#66d9ef">{</span><span style="color:#66d9ef">set</span> i
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/industry/2017-04-30-snug-2017/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">SNUG Silicon Valley 2017 at Santa Clara Conventional Center</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/note/2017-05-14-scala-first-look/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Scala First Look</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -1120,7 +1105,7 @@ for <span style="color:#66d9ef">{</span><span style="color:#66d9ef">set</span> i
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

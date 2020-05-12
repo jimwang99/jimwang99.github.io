@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>Huwcha Accelerator architecture - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,19 +66,13 @@
 			<h1 class="post__title">Huwcha Accelerator architecture</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-03T00:00:00">2019-01-03</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-01-03T00:00:00Z">2019-01-03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
 			<p>From the reading of this paper, &ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.</p>
 <ul>
-<li>We don't have cache coherency, because we operate on unified physical memory space</li>
+<li>We don&rsquo;t have cache coherency, because we operate on unified physical memory space</li>
 <li>The vector execution unit is not as fancy, just useless multithreading, no systolic</li>
 <li>The prefetch is supposed to be done by DMA engine that is manually controlled by software</li>
 </ul>
@@ -88,7 +80,7 @@
 <ul>
 <li>The vector accelerator only has L1 I$, no D$
 <ul>
-<li>Don't need to maintain cache coherency</li>
+<li>Don&rsquo;t need to maintain cache coherency</li>
 <li>Lots of vector registers, 512 in total, each is 64x2x4=512-bit</li>
 <li>Wide bus connection to L2$, to provide higher bandwidth</li>
 </ul>
@@ -104,7 +96,7 @@
 <li>Sub-cache-block accesses</li>
 <li>Data prefetch requests
 <ul>
-<li>Read from DDR, don't need to send back to the requester</li>
+<li>Read from DDR, don&rsquo;t need to send back to the requester</li>
 </ul>
 </li>
 <li>Atomic memory operations
@@ -140,12 +132,12 @@
 <li>4 banks in total, each bank has 256-entry 2x64-bit vector register file, as well as ALUs</li>
 <li>from the block diagram, these ALUs are only add/subtration/shift operations. Multi-cycle integer multiplier/divider, and floating point operations are outside of each bank and shared by all 4 banks via a crossbar.
 <ul>
-<li>JW: I don't think this is good for ML applications. They are trying to make it more generic, so to improve on this, we could take the same micro-architecture but simplify it as well as putting more ML (basically MAC) into it.</li>
+<li>JW: I don&rsquo;t think this is good for ML applications. They are trying to make it more generic, so to improve on this, we could take the same micro-architecture but simplify it as well as putting more ML (basically MAC) into it.</li>
 </ul>
 </li>
 <li>As operation flows through the banks, natually chain different operations together.
 <ul>
-<li>JW: the chaining is useful because we have limited shared function unit, such as IMUL/IDIV. For function units that are exclusive to bank, I don't see the benifit.</li>
+<li>JW: the chaining is useful because we have limited shared function unit, such as IMUL/IDIV. For function units that are exclusive to bank, I don&rsquo;t see the benifit.</li>
 </ul>
 </li>
 </ul>
@@ -154,7 +146,7 @@
 </ul>
 <h2 id="vector-memory-unit-vmu">Vector Memory Unit (VMU)</h2>
 <ul>
-<li>It's based TileLink protocol</li>
+<li>It&rsquo;s based TileLink protocol</li>
 <li>Vector Load Unit (VLU)
 <ul>
 <li>Opportunistic writeback mechanism: return as soon as the data is back, no re-order buffer.</li>
@@ -171,14 +163,14 @@
 <ul>
 <li>This block process all the vector load/store instructions in the prefetch queue from the scalar processor, generate address and send prefetch requests to L2$.
 <ul>
-<li>Prefetch request doesn't return data to requester.</li>
+<li>Prefetch request doesn&rsquo;t return data to requester.</li>
 <li>In ideal world, it will hide the memory access latency.</li>
 </ul>
 </li>
-<li>When from a cold start, it skips the first few load/store to run ahead of the VMU, until it reaches too far ahead, determined by the number of load/store operations that hasn't been processed by VMU yet, it pauses.
+<li>When from a cold start, it skips the first few load/store to run ahead of the VMU, until it reaches too far ahead, determined by the number of load/store operations that hasn&rsquo;t been processed by VMU yet, it pauses.
 <ul>
 <li>Cannot run too close, otherwise the memory access latency cannot be hide.</li>
-<li>Cannot run too further ahead, otherwise newly loaded data will force evict the data that's been currently using by the VXU and cause even worse performance panity.</li>
+<li>Cannot run too further ahead, otherwise newly loaded data will force evict the data that&rsquo;s been currently using by the VXU and cause even worse performance panity.</li>
 </ul>
 </li>
 <li>Also to limit using too much of the L2$ bandwidth, prefetch in L2$ only uses up 1/3 of available outstanding access (JW: I think it more likely the MSHR entries which handles any cache miss).</li>
@@ -211,14 +203,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2018-12-15-riscv-v-spec/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Note of RISC-V Vector ISA Spec v0.6</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/life/2019-01-12-at-the-time-leaving-ours/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Give notice to OURS</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -228,7 +213,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

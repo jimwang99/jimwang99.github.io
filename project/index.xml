@@ -17,7 +17,7 @@
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/project/2017-08-01-my-marvell-projects/</guid>
-      <description>Latch-based RAM semi-custom macro design change This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we&#39;d like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction.</description>
+      <description>Latch-based RAM semi-custom macro design change This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we&amp;rsquo;d like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction.</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ After ran power estimation and determined that the most energy consumed part was
       
       <guid>/project/2008-07-01-my-phd-projects/</guid>
       <description>High-Speed full-custom register file design  From Mar. 2004 to Jan. 2006
- This whole project&#39;s purpose is to design high speed multi-synchronious read and write port register file to meet the ultra high frequency and bandwidth requirement of a 1GHz 4-issue 64-bit general purpose RISC CPU. We need to implement a SRAM with independent 8 read ports and 4 write ports with read latency less than 500ps. Our solution is to use 2 SRAM with identical data content.</description>
+ This whole project&amp;rsquo;s purpose is to design high speed multi-synchronious read and write port register file to meet the ultra high frequency and bandwidth requirement of a 1GHz 4-issue 64-bit general purpose RISC CPU. We need to implement a SRAM with independent 8 read ports and 4 write ports with read latency less than 500ps. Our solution is to use 2 SRAM with identical data content.</description>
     </item>
     
   </channel>

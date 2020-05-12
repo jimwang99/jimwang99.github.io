@@ -6,10 +6,19 @@
     <description>Recent content in Categories on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>lead</title>
+      <link>/categories/lead/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/lead/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>riscv</title>
@@ -21,20 +30,20 @@
     </item>
     
     <item>
+      <title>arch</title>
+      <link>/categories/arch/</link>
+      <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/arch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>note</title>
       <link>/categories/note/</link>
       <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/note/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>arch</title>
-      <link>/categories/arch/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/arch/</guid>
       <description></description>
     </item>
     
@@ -57,9 +66,18 @@
     </item>
     
     <item>
+      <title>embedded</title>
+      <link>/categories/embedded/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>industry</title>
       <link>/categories/industry/</link>
-      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/industry/</guid>
       <description></description>
@@ -89,15 +107,6 @@
       <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>/categories/ml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>low-power</title>
-      <link>/categories/low-power/</link>
-      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/low-power/</guid>
       <description></description>
     </item>
     

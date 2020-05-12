@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>SystemC Tutorial - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,19 +66,13 @@
 			<h1 class="post__title">SystemC Tutorial</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-12-07T00:00:00">2018-12-07</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-12-07T00:00:00Z">2018-12-07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
 			<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Some simple example
 </span><span style="color:#75715e"></span>
-<span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;systemc.h&gt;</span><span style="color:#75715e">
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;systemc.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
 SC_MODULE (seq_and2 ) { <span style="color:#75715e">// sequential AND2
 </span><span style="color:#75715e"></span>    sc_in<span style="color:#f92672">&lt;</span> sc_uint<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">8</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span>		a;
@@ -94,7 +86,7 @@ SC_MODULE (seq_and2 ) { <span style="color:#75715e">// sequential AND2
     
     SC_CTOR ( seq_and2 ) {
         SC_CTHREAD(func);
-        sensitive <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> clk.neg();
+        sensitive <span style="color:#f92672">&lt;&lt;</span> clk.neg();
     }
 }
 </code></pre></div><h2 id="port--signal">Port &amp; signal</h2>
@@ -164,9 +156,9 @@ ts_start_time <span style="color:#f92672">=</span> sc_time_stamp();
 </code></pre></div><ul>
 <li>Clock period</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">sc_clock <span style="color:#f92672">*</span>clk_p <span style="color:#f92672">=</span> DCAST<span style="color:#f92672">&lt;</span>sc_clock<span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span>(clk.get_interface()); <span style="color:#75715e">// clk is the clock signal
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">sc_clock <span style="color:#f92672">*</span>clk_p <span style="color:#f92672">=</span> DCAST<span style="color:#f92672">&lt;</span>sc_clock<span style="color:#f92672">*&gt;</span>(clk.get_interface()); <span style="color:#75715e">// clk is the clock signal
 </span><span style="color:#75715e"></span>sc_time clock_period;
-clock_period <span style="color:#f92672">=</span> clk_p<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>period();
+clock_period <span style="color:#f92672">=</span> clk_p<span style="color:#f92672">-&gt;</span>period();
 </code></pre></div><h2 id="some-advanced-topics">Some advanced topics</h2>
 <ul>
 <li><a href="https://stackoverflow.com/questions/37597409/how-can-i-use-an-struct-as-a-signal-type-in-systemc">Use struct as signal type in SystemC</a>
@@ -192,14 +184,7 @@ clock_period <span style="color:#f92672">=</span> clk_p<span style="color:#f9267
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/industry/2018-12-04-riscv-summit-2018/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">RISC-V Summit 2018</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2018-12-15-riscv-v-spec/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Note of RISC-V Vector ISA Spec v0.6</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -209,7 +194,7 @@ clock_period <span style="color:#f92672">=</span> clk_p<span style="color:#f9267
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

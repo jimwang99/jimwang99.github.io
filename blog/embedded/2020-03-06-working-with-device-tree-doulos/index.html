@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Working with Device Tree (DOULOS) - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Working with Device Tree (DOULOS)</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-01-21T00:00:00Z">2019-01-21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/embedded/" rel="category">embedded</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h1 id="intro">Intro</h1>
+<ul>
+<li>Device tree: for non-discoverable hardware, included in BSP</li>
+<li>Source type
+<ul>
+<li>Old style: C code BSP, files compiled into the kernel</li>
+<li>New style: device-tree BSP -&gt; device tree blob (load by boot loader)</li>
+</ul>
+</li>
+</ul>
+<h1 id="compilation">Compilation</h1>
+<p>In-tree vs. out-of-tree</p>
+<p><code>dtc</code> command</p>
+<ul>
+<li>convert .dts to .dtb, and backwards</li>
+</ul>
+<h1 id="device-tree-syntax">Device tree syntax</h1>
+<ul>
+<li>
+<p>devicetree.org</p>
+</li>
+<li>
+<p>Nodes</p>
+</li>
+<li>
+<p>Properties</p>
+<ul>
+<li>Values</li>
+</ul>
+</li>
+<li>
+<p>Root node = <code>/</code></p>
+</li>
+<li>
+<p>Values format</p>
+<ul>
+<li>int, string, list of string, phandle (reference to other node)</li>
+</ul>
+</li>
+<li>
+<p>Standard properties</p>
+<ul>
+<li><code>compatible</code></li>
+<li><code>model = &quot;vendor,board&quot;</code></li>
+<li><code>status = &quot;okay&quot;</code></li>
+<li>For <code>root</code> node, memory map address must be specified
+<ul>
+<li><code>#address-cells = &lt;1&gt;</code>
+<ul>
+<li>define the address length</li>
+<li>1 = 32-bit, 2 = 64-bit</li>
+</ul>
+</li>
+<li><code>#size-cells = &lt;1&gt;</code>
+<ul>
+<li>define the size length</li>
+<li>1 = 32-bit, 2 = 64-bit</li>
+</ul>
+</li>
+<li><code>reg = &lt;${base},${size} </code>
+<ul>
+<li>address map</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mapping between device and CPU</li>
+</ul>
+</li>
+<li>
+<p>Must have <code>cpus</code> and <code>memory@0</code> as nodes as well</p>
+</li>
+<li>
+<p>Special node</p>
+<ul>
+<li><code>chosen</code></li>
+<li><code>aliases</code>
+<ul>
+<li>Alias to a full path of a device</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Interrupts</p>
+<ul>
+<li>
+<p><code>interrupt-controller</code> empty property</p>
+</li>
+<li>
+<p><code>#interrupt-cells</code>: # of intps</p>
+</li>
+<li>
+<p>Devices connect to the interrupt controller</p>
+<ul>
+<li><code>interrupt-parent</code></li>
+<li><code>interrupts</code></li>
+<li><code>interrupt-names</code> (optional)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="parsing-the-device-tree">Parsing the device tree</h1>
+<ul>
+<li><code>device_driver</code> defines <code>compatible</code></li>
+<li><strong>Unified device proerty interface</strong></li>
+</ul>
+<h1 id="device-tree-overlays">Device tree overlays</h1>
+<h1 id="other-description-language">Other description language</h1>
+<ul>
+<li>Kernel v5.0 support YAML as well</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

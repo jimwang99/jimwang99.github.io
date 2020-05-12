@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>[Cousera Note] Machine Learning Foundations: A Case Study Approach - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">[Cousera Note] Machine Learning Foundations: A Case Study Approach</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2015-10-20T00:00:00">2015-10-20</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-20T00:00:00Z">2015-10-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -144,7 +136,7 @@
 <li>2.1.2 look at average price in range
 <ul>
 <li>limited hits</li>
-<li>throwing out other information: it's bad</li>
+<li>throwing out other information: it&rsquo;s bad</li>
 </ul>
 </li>
 <li>2.1.3 linear regression
@@ -356,7 +348,7 @@
 <ul>
 <li>- logical filter</li>
 <li>- .apply()</li>
-<li>- a selection in SFrame takes a list consists of 0 and 1. And the length equals to the length of SFrame's num of rows. When it comes to 0, row is ignored; otherwise it's taken.</li>
+<li>- a selection in SFrame takes a list consists of 0 and 1. And the length equals to the length of SFrame&rsquo;s num of rows. When it comes to 0, row is ignored; otherwise it&rsquo;s taken.</li>
 </ul>
 </li>
 </ul>
@@ -404,7 +396,7 @@
 </ul>
 </li>
 <li>give weight for each word</li>
-<li>score = sum of input words&rsquo; weight, so it's linear</li>
+<li>score = sum of input words&rsquo; weight, so it&rsquo;s linear</li>
 <li>if score &gt; 0, output = pos, else output = neg</li>
 </ul>
 </li>
@@ -430,10 +422,10 @@
 </li>
 </ul>
 </li>
-<li>3.2.2 what's a good accuracy?
+<li>3.2.2 what&rsquo;s a good accuracy?
 <ul>
 <li>accuracy should beat random guess, larger than 1/K (K is the number of classes)</li>
-<li>class imbalance will give you good performance. accuracy should beat majority class baseline, in which we simple guess everything is from the majority class. Eg. 80% of the reviews are pos, so it's baseline of majority class is 80% since everytime we guess a review is pos anyway.</li>
+<li>class imbalance will give you good performance. accuracy should beat majority class baseline, in which we simple guess everything is from the majority class. Eg. 80% of the reviews are pos, so it&rsquo;s baseline of majority class is 80% since everytime we guess a review is pos anyway.</li>
 <li>most importantly: how accurate the application need? what accuracy will make the user happy?</li>
 </ul>
 </li>
@@ -520,7 +512,7 @@
 </ul>
 </li>
 <li>measure similarity: sum(x_i * y_i), where i is the word index in vacabulary</li>
-<li>issue with word counts: doc length matters! doesn't make sense, because prefer longer article</li>
+<li>issue with word counts: doc length matters! doesn&rsquo;t make sense, because prefer longer article</li>
 <li>solution = normalize: x&rsquo;_i = x_i / (sum(x_i^2)^(1/2)</li>
 </ul>
 </li>
@@ -661,7 +653,7 @@
 <ul>
 <li>5.1.1 overview
 <ul>
-<li>use past history and other user's history in prediction</li>
+<li>use past history and other user&rsquo;s history in prediction</li>
 <li>recommender system in action
 <ul>
 <li>- personalization: what do I care about? because of information overload; connect users and items</li>
@@ -749,7 +741,7 @@
 <li>- x = movies</li>
 <li>- y = user</li>
 <li>- value = rating of movie x by user y</li>
-<li>- if user y hasn't watched movie x, then use ? (white square)</li>
+<li>- if user y hasn&rsquo;t watched movie x, then use ? (white square)</li>
 <li>- goal: filling white squares, how much user y will like movie x&rsquo; (not watched yet)</li>
 </ul>
 </li>
@@ -774,7 +766,7 @@
 </li>
 <li>5.3.4 discovering hidden structure by matrix factorization model
 <ul>
-<li>HOWEVER we don't have the features of users and movies, we have to discover topics from data</li>
+<li>HOWEVER we don&rsquo;t have the features of users and movies, we have to discover topics from data</li>
 <li>use observed value to estimate Lu and Rv: regression
 <ul>
 <li>- RSS(L,R) = sum(rating(u,v), )^2, where Lu and Rv are estimated from model parameters R &amp; L, and sum are for all the black squares (with data)</li>
@@ -814,7 +806,7 @@
 <li>recall = # liked and shown / # liked</li>
 <li>precision = # liked and shown / # shown
 <ul>
-<li>- how much &ldquo;garbage&rdquo; (things i'm not interested in) i need to look at</li>
+<li>- how much &ldquo;garbage&rdquo; (things i&rsquo;m not interested in) i need to look at</li>
 </ul>
 </li>
 </ul>
@@ -885,7 +877,7 @@
 <li>6.1.1 search for images</li>
 <li>6.1.2 what is a visual product recommender?
 <ul>
-<li>keyword search? don't know what keyword to search</li>
+<li>keyword search? don&rsquo;t know what keyword to search</li>
 <li>use image similarity to search for product</li>
 </ul>
 </li>
@@ -957,8 +949,8 @@
 </li>
 <li>6.2.5 deep features
 <ul>
-<li>can we learn features from data, even when we don't have the data or time? deep learning + transfer learning: use data from one task to help learn on another</li>
-<li>what's learned in a neural net?
+<li>can we learn features from data, even when we don&rsquo;t have the data or time? deep learning + transfer learning: use data from one task to help learn on another</li>
+<li>what&rsquo;s learned in a neural net?
 <ul>
 <li>- very speicific to task 1 for the latest layers</li>
 <li>- more generic for earlier layers, can be reuse</li>
@@ -986,7 +978,7 @@
 </li>
 <li>6.4 Deep features for image classification
 <ul>
-<li>deep_learning_model = graphlab.load_model(&lsquo;imagenet_model&rsquo;); # this is a pre-trained deep learning model using ImageNet's 1.5M images</li>
+<li>deep_learning_model = graphlab.load_model(&lsquo;imagenet_model&rsquo;); # this is a pre-trained deep learning model using ImageNet&rsquo;s 1.5M images</li>
 <li>image_train[&lsquo;deep_features&rsquo;] = deep_learning_model.extract_features(image_train); # extract deep feature using pre-trained model</li>
 <li>deep_features_model = graphlab.logistic_classifier.create(image_train, features=[&lsquo;deep_features&rsquo;], target='labl&rsquo;); # use simple classifier on extracted deep features</li>
 </ul>
@@ -1009,7 +1001,7 @@ knn_model.query(cat); # gives neighbors of given &ldquo;cat&rdquo; item</li>
 </li>
 <li>6.7 Deploying machine learning as a service
 <ul>
-<li>6.7.1 what's production? life cycle
+<li>6.7.1 what&rsquo;s production? life cycle
 <ul>
 <li>- deployment: serving</li>
 <li>- evaluation: measuring quality of deployed models</li>
@@ -1096,14 +1088,7 @@ knn_model.query(cat); # gives neighbors of given &ldquo;cat&rdquo; item</li>
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/industry/2015-08-11-optical-interconnect-in-google-data-center/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Optical Interconnection in Google Data Centers</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/ml/2015-10-20-machine-learning-foundations-coursera/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[Cousera Note] Machine Learning Foundations: A Case Study Approach</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -1113,7 +1098,7 @@ knn_model.query(cat); # gives neighbors of given &ldquo;cat&rdquo; item</li>
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

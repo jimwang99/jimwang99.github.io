@@ -71,28 +71,25 @@ body {
 
 .flex {
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 }
 
 .primary {
-        /*
 	-webkit-flex: 1 0 65.83%;
+	-ms-flex: 1 0 65.83%;
 	flex: 1 0 65.83%;
-        */
-	-webkit-flex: 1 0 72%;
-	flex: 1 0 72%;
+	-ms-flex-order: 1;
 	-webkit-order: 1;
 	order: 1;
 	min-width: 0;
 }
 
 .sidebar {
-	/*
-        -webkit-flex: 1 0 31.66%;
+	-webkit-flex: 1 0 31.66%;
+	-ms-flex: 1 0 31.66%;
 	flex: 1 0 31.66%;
-        */
-	-webkit-flex: 1 0 25%;
-	flex: 1 0 25%;
+	-ms-flex-order: 2;
 	-webkit-order: 2;
 	order: 2;
 	min-width: 0;
@@ -101,6 +98,7 @@ body {
 
 .sidebar--left {
 	-webkit-order: 0;
+	-ms-flex-order: 0;
 	order: 0;
 	margin: 0 2.5% 0 0;
 }
@@ -137,7 +135,7 @@ textarea {
 	font-weight: 700;
 	color: #fff;
 	white-space: pre-line;
-	background: #2a2a2a;
+	background: #005;
 }
 
 .btn:hover {
@@ -275,6 +273,10 @@ code {
 code {
 	padding: 0 5px;
 	color: #c33;
+	white-space: nowrap;
+	white-space: -o-nowrap;
+	white-space: -moz-nowrap;
+	white-space: -webkit-nowrap;
 }
 
 pre {
@@ -283,8 +285,11 @@ pre {
 	padding: 1.25rem;
 	margin-bottom: 20px;
 	margin-bottom: 1.25rem;
-	overflow: auto;
 	color: #000;
+	white-space: pre-wrap;
+	white-space: -o-pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -webkit-pre-wrap;
 }
 
 pre code {
@@ -298,7 +303,7 @@ pre code {
 kbd {
 	padding: 2px 3px;
 	color: #fff;
-	background-color: #2a2a2a;
+	background-color: #005;
 }
 
 blockquote {
@@ -381,7 +386,6 @@ select {
 
 .warning__icon {
 	margin-bottom: 20px;
-	fill: #ddd;
 }
 
 /* Header */
@@ -436,7 +440,7 @@ select {
 	padding: 0;
 	font: inherit;
 	color: #fff;
-	background: #2a2a2a;
+	background: #005;
 	border: 0;
 	outline: 0;
 }
@@ -476,7 +480,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 
 .menu__list {
 	list-style: none;
-	background: #2a2a2a;
+	background: #005;
 }
 
 .menu__item:hover {
@@ -540,8 +544,10 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	.js .menu__list {
 		position: relative;
 		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
 		visibility: visible;
 		border: 0;
@@ -688,9 +694,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 }
 
 .content ul ul,
-.content ol ol,
-.content ol ul,
-.content ul ol {
+.content ol ol {
 	margin: 0 0 0 40px;
 }
 
@@ -698,12 +702,6 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	margin-bottom: 5px;
 }
 
-.post__footer {
-	margin-top: 20px;
-	margin-top: 1.25rem;
-}
-
-/* Post tags */
 .tags {
 	margin-bottom: 20px;
 	margin-bottom: 1.25rem;
@@ -722,7 +720,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	margin: 0 6px 6px 0;
 	margin: 0 .375rem .375rem 0;
 	text-transform: uppercase;
-	background: #2a2a2a;
+	background: #005;
 }
 
 .tags__item:hover {
@@ -735,7 +733,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	padding: 10px 15px;
 }
 
-.tags__badge {
+.icon-tag {
 	float: left;
 	width: 32px;
 	height: 32px;
@@ -768,7 +766,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	-ms-user-select: none;
 	-o-user-select: none;
 	user-select: none;
-	background: #2a2a2a;
+	background: #005;
 }
 
 .toc__menu ul {
@@ -887,6 +885,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 
 /* Post Navigation */
 .post-nav {
+	-ms-flex-pack: justify;
 	-webkit-justify-content: space-between;
 	justify-content: space-between;
 	padding-top: 25px;
@@ -912,6 +911,7 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 
 .post-nav__item {
 	-webkit-flex: 1 1 50%;
+	-ms-flex: 1 1 50%;
 	flex: 1 1 50%;
 	max-width: 48%;
 }
@@ -996,7 +996,7 @@ input[type=reset] {
 	color: #fff;
 	text-transform: uppercase;
 	cursor: pointer;
-	background: #2a2a2a;
+	background: #005;
 	border: 0;
 	transition: all .1s linear;
 	-webkit-appearance: none;
@@ -1094,7 +1094,6 @@ textarea {
 .widget-social__link-icon {
 	margin: 0 5px 0 0;
 	vertical-align: middle;
-	fill: #fff;
 }
 
 /* Tags Widget */
@@ -1105,38 +1104,27 @@ textarea {
 	text-transform: uppercase;
 }
 
-/* Languages Widget */
-.widget-languages__link {
-	display: block;
-}
-
-.widget-languages__link:hover .widget-languages__link-btn {
-	color: #fff;
-	background: #209cee;
-}
-
-.widget-languages__link-btn {
-	display: inline-block;
-}
-
 /* Footer */
 .footer {
 	padding: 10px 25px;
 	font-size: 12px;
 	font-size: .75rem;
 	color: #999;
-	background: #2a2a2a;
+	background: #005;
 	border-top: 3px solid #999;
 }
 
 .footer__container {
 	-webkit-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
+	-ms-flex-pack: justify;
 	-webkit-justify-content: space-between;
 	justify-content: space-between;
 }
 
 .footer__links {
+	-ms-flex-order: 1;
 	-webkit-order: 1;
 	order: 1;
 }
@@ -1253,9 +1241,7 @@ textarea {
 	}
 
 	.content ul ul,
-	.content ol ol,
-	.content ol ul,
-	.content ul ol {
+	.content ol ol {
 		margin: 0 0 0 20px;
 	}
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>INNOVUS Training Notes - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,18 +66,12 @@
 			<h1 class="post__title">INNOVUS Training Notes</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-04-01T00:00:00">2017-04-01</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-01T00:00:00Z">2017-04-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
 			<blockquote>
-<p>The following is my notes of INNOVUS training course on Cadence's training module</p>
+<p>The following is my notes of INNOVUS training course on Cadence&rsquo;s training module</p>
 </blockquote>
 <h1 id="module-02-overview">Module 02: overview</h1>
 <ul>
@@ -249,7 +241,7 @@
 <li>soft guide (SoftGuide): weakly grouping instances under the same soft guide, but actually they can be placed through out the whole core area</li>
 <li>guide (Guide): preplacement guide for the module in the core design area</li>
 <li>region (Region): force instances in the regsion, but allow other modules in as well</li>
-<li>Fence (Fence): like region but don't allow other modules. A module becomes a fence when the module is specified as partition. Usually used for hierarchical (bottom-up) design.</li>
+<li>Fence (Fence): like region but don&rsquo;t allow other modules. A module becomes a fence when the module is specified as partition. Usually used for hierarchical (bottom-up) design.</li>
 </ol>
 </li>
 <li>Tips: when first imported design, all std cell instances will be under the same top module, you have to ungroup it to break it down into pieces.</li>
@@ -314,7 +306,7 @@
 <ul>
 <li><code>globalNetConnect VDD -type pgpin -pin VDD -all</code></li>
 <li><code>globalNetConnect VSS -type tielow</code></li>
-<li>?shouldn't this be a part of UPF's function?</li>
+<li>?shouldn&rsquo;t this be a part of UPF&rsquo;s function?</li>
 </ul>
 </li>
 </ul>
@@ -464,7 +456,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 </ul>
 </li>
 </ul>
-<h2 id="early-clock-flow-during-placeoptdesign">early clock flow during place_opt_design</h2>
+<h2 id="early-clock-flow-during-place_opt_design">early clock flow during place_opt_design</h2>
 <ul>
 <li>fast clock clustering during placement</li>
 <li>more accurate estimate of skewing impact</li>
@@ -486,7 +478,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 <li>becomes slack-driven by gate delay, false/multi-cycle paths, layer assignment, congestion timing effects, correlates with GigaOpt, instead of timing-driven which is lightly integrated</li>
 <li>interleaves placement and optimization intead of sequential</li>
 </ul>
-<h2 id="command-placeoptdesign">command: <code>place_opt_design</code></h2>
+<h2 id="command-place_opt_design">command: <code>place_opt_design</code></h2>
 <ul>
 <li>use <code>-incremental</code> to start with an existing placement</li>
 <li><code>-place_opt_post_place_tcl</code> to insert tcl script between placement and optimization interleaves</li>
@@ -595,7 +587,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 <li>fast w/o fixing DRC/LVS</li>
 <li>not for SI analysis</li>
 </ul>
-<h2 id="commands1">commands</h2>
+<h2 id="commands-1">commands</h2>
 <ol>
 <li><code>setAttribute</code> for special net NDR
 <ul>
@@ -619,11 +611,11 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 </ul>
 <h2 id="statistics-based-on-gcells-size-can-be-redefined">statistics based on GCells (size can be redefined)</h2>
 <ul>
-<li>GR compatible: # of GCells that overflow, don't distinguish the level of overflow, that means overflow of 1 and overflow of 3 is the same</li>
+<li>GR compatible: # of GCells that overflow, don&rsquo;t distinguish the level of overflow, that means overflow of 1 and overflow of 3 is the same</li>
 <li>non GR compatible: consider the overflow levels that means overflow of 1 and overflow of 3 are different, so the number of percentages are higher than the first one</li>
 <li>both ignore fully blocked Gcells</li>
 </ul>
-<h1 id="module-11-mmmc-multimode-multicorner-analysis">Module 11: MMMC (multi-mode multi-corner analysis)</h1>
+<h1 id="module-11-mmmc-multi-mode-multi-corner-analysis">Module 11: MMMC (multi-mode multi-corner analysis)</h1>
 <h2 id="analysis-view-hierarchy">analysis view hierarchy</h2>
 <ul>
 <li><code>create_analysis_view</code>
@@ -659,12 +651,12 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 <h2 id="analysis-view">analysis view</h2>
 <ul>
 <li>aggregate of delay corner and constraint mode</li>
-<li>DON'T forget to activate analysis views
+<li>DON&rsquo;T forget to activate analysis views
 <ul>
 <li><code>set_analysis_view -setup ... -hold ...</code></li>
 </ul>
 </li>
-<li>don't need to use all of the defined analysis views in early design stages</li>
+<li>don&rsquo;t need to use all of the defined analysis views in early design stages</li>
 <li><code>report_analysis_view</code> / <code>all_analysis_view</code> / <code>all_setup_analysis_view</code> / <code>all_hold_analysis_view</code> / <code>get_analysis_view</code></li>
 <li>save it as Tcl in a view definition file</li>
 <li>&ldquo;timing -&gt; MMMC brower&rdquo; to setup or view MMMC views</li>
@@ -675,7 +667,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 </ul>
 <h1 id="module-12-extract-parasitics-and-run-timing-analysis">Module 12: extract parasitics and run timing analysis</h1>
 <ul>
-<li>timing analysis should be done every steps through the entire flow. if any step hasn't met timing requirements, or timing is too bad to be fixed afterwards, we should go back and find out the reason.</li>
+<li>timing analysis should be done every steps through the entire flow. if any step hasn&rsquo;t met timing requirements, or timing is too bad to be fixed afterwards, we should go back and find out the reason.</li>
 <li>every steps in innovus use the same timing engine (but with different extraction accuracy)</li>
 </ul>
 <h2 id="timing-menu-item">&ldquo;timing&rdquo; menu item</h2>
@@ -688,7 +680,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 <li>&ldquo;tools -&gt; set mode -&gt; preroute&rdquo;</li>
 <li>cmd
 <ul>
-<li>load viewDefinition.tcl with QRC file (don't use cap table under 32nm)</li>
+<li>load viewDefinition.tcl with QRC file (don&rsquo;t use cap table under 32nm)</li>
 <li><code>setDesignMode -process xx</code></li>
 <li><code>setExtractRCMode -engine preRoute</code></li>
 <li><code>extractRC</code></li>
@@ -706,7 +698,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 <ul>
 <li><code>-effortLevel high</code> will use integrated Quantus extraction engine</li>
 <li><code>-effortLevel signoff</code> will use standalone Quantus engine</li>
-<li>NOTE: from Michael's comparison, effort high and signoff has less than 5% differences in RC number</li>
+<li>NOTE: from Michael&rsquo;s comparison, effort high and signoff has less than 5% differences in RC number</li>
 </ul>
 </li>
 </ul>
@@ -734,7 +726,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 </li>
 <li>super important!
 <ul>
-<li>don't miss any critical path in early stage</li>
+<li>don&rsquo;t miss any critical path in early stage</li>
 </ul>
 </li>
 </ul>
@@ -834,7 +826,7 @@ setViaGenMode <span style="color:#f92672">-</span>ignore_DRC true
 <li>TIPS: even if overall timing looks good, still need to investigate some of the worst timing paths</li>
 <li>TIPS: fix issues as early as possible</li>
 <li>TIPS: if all violations are concentrated in one clock domain, check SDC first, CTS second</li>
-<li>TIPS: for narrow channels between SRAM's, congestion will be problem and cause timing issues. use partial blockage or soft blockage in the channel to reduce congestion</li>
+<li>TIPS: for narrow channels between SRAM&rsquo;s, congestion will be problem and cause timing issues. use partial blockage or soft blockage in the channel to reduce congestion</li>
 <li>TIPS: problem caused by floorplan may need several iterations to find a really useful solution</li>
 <li>root cause of timing issues
 <ul>
@@ -913,7 +905,7 @@ routeDesign <span style="color:#f92672">-</span>trackOpt
 </code></pre></div><ul>
 <li>TIPS: generate scale factors before running tQuantus</li>
 </ul>
-<h3 id="ndr-nondefault-routes">NDR (non-default routes)</h3>
+<h3 id="ndr-non-default-routes">NDR (non-default routes)</h3>
 <ul>
 <li><code>setOptMode -ndrAwareOpt $ls_ndr</code> before use <code>optDesign</code> to improve timing</li>
 <li>how to define NDR
@@ -922,9 +914,9 @@ routeDesign <span style="color:#f92672">-</span>trackOpt
 <li><code>add_ndr</code></li>
 </ul>
 </li>
-<li>TIPS: don't use too many NDRs, cos runtime. one NDR (2W,2S) is optimum</li>
+<li>TIPS: don&rsquo;t use too many NDRs, cos runtime. one NDR (2W,2S) is optimum</li>
 </ul>
-<h3 id="routedriven-opt-layer-aware-opt">route-driven opt (layer aware opt)</h3>
+<h3 id="route-driven-opt-layer-aware-opt">route-driven opt (layer aware opt)</h3>
 <ul>
 <li>advanced nodes (&lt;20nm), higher layer has smaller RC than lower layer, so they are optimum for long/critical routing</li>
 <li><code>setOptMode -layerAwareOpt</code> (which is activated automatically)</li>
@@ -952,9 +944,9 @@ routeDesign <span style="color:#f92672">-</span>trackOpt
 <li>by default, innovus will auto determin dominant views out of all user active views, and only work on dominant views to opt TAT</li>
 <li>timing reports operate on these presistent dominant views not all user active views</li>
 </ul>
-<h2 id="layeraware-buffering">layer-aware buffering</h2>
+<h2 id="layer-aware-buffering">layer-aware buffering</h2>
 <ul>
-<li>layer-aware opt is part of timing opt, but for buffer trees it's more important, so it's enabled by default</li>
+<li>layer-aware opt is part of timing opt, but for buffer trees it&rsquo;s more important, so it&rsquo;s enabled by default</li>
 <li>it will be down in pre-CTS opt and post-CTS opt</li>
 </ul>
 <h2 id="max-wire-length-rule">max wire length rule</h2>
@@ -1017,9 +1009,9 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </li>
 <li>flow</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl">verify_drc<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> (optional) in Innovus
-</span><span style="color:#75715e"></span>verifyACLimit <span style="color:#f92672">-</span>report $rpt_fpath<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> in Innovus or Voltus
-</span><span style="color:#75715e"></span>fixACLimitViolation <span style="color:#f92672">-</span>useReportFile $rpt_fpath <span style="color:#f92672">-</span>maxIter $n<span style="color:#66d9ef">;</span> <span style="color:#75715e">#</span><span style="color:#75715e"> in Innovus
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl">verify_drc<span style="color:#66d9ef">;</span> <span style="color:#75715e"># (optional) in Innovus
+</span><span style="color:#75715e"></span>verifyACLimit <span style="color:#f92672">-</span>report $rpt_fpath<span style="color:#66d9ef">;</span> <span style="color:#75715e"># in Innovus or Voltus
+</span><span style="color:#75715e"></span>fixACLimitViolation <span style="color:#f92672">-</span>useReportFile $rpt_fpath <span style="color:#f92672">-</span>maxIter $n<span style="color:#66d9ef">;</span> <span style="color:#75715e"># in Innovus
 </span></code></pre></div><pre><code>- num of iterations for `fixACLimitViolation` is from 1 to 3. Use 1 only will widen wire; use 2 will downsize buffer; use 3 will add buffer. So both 2 and 3 need ECO route.
 - activity file is important
 </code></pre>
@@ -1065,7 +1057,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li>report with a summary table that has the num of nodes, transforms committed</li>
 <li>use &ldquo;global timing debug&rdquo; to generate target file interactively</li>
 </ul>
-<h2 id="tips1">TIPS</h2>
+<h2 id="tips-1">TIPS</h2>
 <ul>
 <li>verify timing constraints
 <ul>
@@ -1102,7 +1094,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li>concurrent useful-skew and datapath opt</li>
 <li>critical chain instead of critical path
 <ul>
-<li>a chain has larger delay/stage, even don't have critical path</li>
+<li>a chain has larger delay/stage, even don&rsquo;t have critical path</li>
 </ul>
 </li>
 </ul>
@@ -1120,41 +1112,41 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </li>
 </ul>
 <h2 id="flow">flow</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl"><span style="color:#75715e">#</span><span style="color:#75715e"> place
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl"><span style="color:#75715e"># place
 </span><span style="color:#75715e"></span>place_opt_design
 
-<span style="color:#960050;background-color:#1e0010">#</span> load post-CTS timing constraints<span style="color:#960050;background-color:#1e0010">,</span> and avoid set_propagated_clock
+<span style="color:#75715e"># load post-CTS timing constraints, and avoid set_propagated_clock
+</span><span style="color:#75715e">
+</span><span style="color:#75715e"># settings
+</span><span style="color:#75715e"></span>setOptMode
 
-<span style="color:#960050;background-color:#1e0010">#</span> settings
-setOptMode
-
-<span style="color:#960050;background-color:#1e0010">#</span> set NDR for clock routing
-create_route_type <span style="color:#f92672">-</span>name xxx
+<span style="color:#75715e"># set NDR for clock routing
+</span><span style="color:#75715e"></span>create_route_type <span style="color:#f92672">-</span>name xxx
 set_ccopt_property route_type <span style="color:#f92672">-</span>net_type <span style="color:#66d9ef">{</span>leaf<span style="color:#960050;background-color:#1e0010">,</span> trunk<span style="color:#960050;background-color:#1e0010">,</span> top<span style="color:#66d9ef">}</span> <span style="color:#f92672">-</span>clock_tree $name
 
-<span style="color:#960050;background-color:#1e0010">#</span> specify CTS cells to use
-set_ccopt_property cts_buffer_cells
+<span style="color:#75715e"># specify CTS cells to use
+</span><span style="color:#75715e"></span>set_ccopt_property cts_buffer_cells
 set_ccopt_property cts_inverter_cells
 set_ccopt_property cts_gating_cells
 
-<span style="color:#960050;background-color:#1e0010">#</span> specify DRC rules
-set_ccopt_property target_max_trans
+<span style="color:#75715e"># specify DRC rules
+</span><span style="color:#75715e"></span>set_ccopt_property target_max_trans
 set_ccopt_property target_skew
 
-<span style="color:#960050;background-color:#1e0010">#</span> gen clock tree spec
-create_ccopt_clock_tree spec
+<span style="color:#75715e"># gen clock tree spec
+</span><span style="color:#75715e"></span>create_ccopt_clock_tree spec
 
-<span style="color:#960050;background-color:#1e0010">#</span> run ccopt
-ccopt_design <span style="color:#f92672">-</span>ckSpec
+<span style="color:#75715e"># run ccopt
+</span><span style="color:#75715e"></span>ccopt_design <span style="color:#f92672">-</span>ckSpec
 
-<span style="color:#960050;background-color:#1e0010">#</span> post-CTS opt for hold <span style="color:#66d9ef">(</span>which is not included <span style="color:#f92672">in</span> ccopt_design<span style="color:#66d9ef">)</span>
-ccopt_design <span style="color:#f92672">-</span>postCTS <span style="color:#f92672">-</span>hold
+<span style="color:#75715e"># post-CTS opt for hold (which is not included in ccopt_design)
+</span><span style="color:#75715e"></span>ccopt_design <span style="color:#f92672">-</span>postCTS <span style="color:#f92672">-</span>hold
 
-<span style="color:#960050;background-color:#1e0010">#</span> routing
-routeDesign
+<span style="color:#75715e"># routing
+</span><span style="color:#75715e"></span>routeDesign
 
-<span style="color:#960050;background-color:#1e0010">#</span> post-route opt<span style="color:#960050;background-color:#1e0010">,</span> includes DRV and skew fixing
-optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f92672">-</span>setup
+<span style="color:#75715e"># post-route opt, includes DRV and skew fixing
+</span><span style="color:#75715e"></span>optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f92672">-</span>setup
 optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f92672">-</span>hold
 </code></pre></div><h2 id="clock-spec">clock spec</h2>
 <ul>
@@ -1215,7 +1207,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <h2 id="early-clock-flow-during-placement">early clock flow during placement</h2>
 <ul>
 <li>move CTS config before <code>place_opt_design</code> to get more accurate estimate of skew impact during placement opt</li>
-<li>don't use <code>set_propagated_clock</code></li>
+<li>don&rsquo;t use <code>set_propagated_clock</code></li>
 <li><code>setDesignMode -earlyClockFlow true</code></li>
 </ul>
 <h2 id="debug-clock-tree">debug clock tree</h2>
@@ -1239,13 +1231,13 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 </ul>
-<h2 id="flexible-htree">Flexible H-Tree</h2>
+<h2 id="flexible-h-tree">Flexible H-Tree</h2>
 <ul>
 <li>vs. clock mesh and traditional CTS tree
 <ul>
 <li>less power than mesh</li>
 <li>better OCV than trad CTS</li>
-<li>don't need rectangle floorplan</li>
+<li>don&rsquo;t need rectangle floorplan</li>
 </ul>
 </li>
 <li>interesting points
@@ -1281,7 +1273,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li>cell/macro sections
 <ul>
 <li>pin locations</li>
-<li>OBS (obstruction, don't route)</li>
+<li>OBS (obstruction, don&rsquo;t route)</li>
 </ul>
 </li>
 </ul>
@@ -1440,7 +1432,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li><code>reportSpecialRoute</code></li>
 <li><code>reportRoute -ndr</code></li>
 </ul>
-<h2 id="ndr-nondefault-rules-for-routing">NDR (non-default rules) for routing</h2>
+<h2 id="ndr-non-default-rules-for-routing">NDR (non-default rules) for routing</h2>
 <ul>
 <li>can be set to hard rules instead of soft rules by default</li>
 <li>usually for special signal nets, such as clock nets, to have larger width/spacing</li>
@@ -1467,11 +1459,11 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 </ul>
-<h2 id="signoff-drc-fixing">sign-off DRC fixing</h2>
+<h2 id="sign-off-drc-fixing">sign-off DRC fixing</h2>
 <ul>
 <li><code>loadViolationReport</code> and <code>route_fix_signoff_drc</code></li>
 </ul>
-<h2 id="postroute-timing-opt">post-route timing opt</h2>
+<h2 id="post-route-timing-opt">post-route timing opt</h2>
 <ul>
 <li><code>optDesign -postRoute -setup -hold</code>
 <ul>
@@ -1480,7 +1472,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </li>
 </ul>
 <h1 id="module-16-debug-routing">Module 16: debug routing</h1>
-<h2 id="flow1">flow</h2>
+<h2 id="flow-1">flow</h2>
 <ol>
 <li>data prepare</li>
 <li>customize and mode setup</li>
@@ -1493,7 +1485,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li>GCell</li>
 <li>available tracks?
 <ul>
-<li>even if partially occupied, it's not available</li>
+<li>even if partially occupied, it&rsquo;s not available</li>
 </ul>
 </li>
 <li>capacity vs demand
@@ -1545,7 +1537,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 </ul>
-<h2 id="report1">report</h2>
+<h2 id="report-1">report</h2>
 <ul>
 <li><code>reportRoute</code># Module 17: edit wire</li>
 </ul>
@@ -1590,7 +1582,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li>shielding</li>
 <li>insert buffer</li>
 </ul>
-<h2 id="fix-si-postroute">fix SI post-route</h2>
+<h2 id="fix-si-post-route">fix SI post-route</h2>
 <ul>
 <li>ECO -&gt; optimize design
 <ul>
@@ -1604,7 +1596,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 </ul>
-<h2 id="report2">report</h2>
+<h2 id="report-2">report</h2>
 <ul>
 <li><code>report_noise</code></li>
 <li><code>check_noise</code>
@@ -1618,7 +1610,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li>to satisfy min metal density DRC rule</li>
 <li>usually floating, can be tied to VDD or VSS</li>
 </ul>
-<h2 id="howto">how-to</h2>
+<h2 id="how-to-1">how-to</h2>
 <ul>
 <li>route -&gt; metal fill -&gt; setup
 <ul>
@@ -1645,7 +1637,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 </ul>
-<h2 id="flow2">flow</h2>
+<h2 id="flow-2">flow</h2>
 <ul>
 <li><code>setViaFill</code></li>
 <li><code>setMetalFill</code></li>
@@ -1743,7 +1735,7 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 </ul>
-<h2 id="settings1">settings</h2>
+<h2 id="settings-1">settings</h2>
 <ul>
 <li><code>setEcoMode</code>
 <ul>
@@ -1753,12 +1745,12 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 </ul>
-<h2 id="howto1">how-to?</h2>
+<h2 id="how-to-2">how-to?</h2>
 <ul>
 <li>master CMD <code>ecoDesign</code>
 <ul>
 <li>inputs: old design database + new verilog netlist</li>
-<li>can specify if it's postmask or or not
+<li>can specify if it&rsquo;s postmask or or not
 <ul>
 <li>only modify certain metal layers</li>
 <li>have to give a list of spare cells</li>
@@ -1776,12 +1768,12 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 </ul>
 </li>
 <li><code>ecoChangeCell</code></li>
-<li>use <code>-evaluateOnly</code> to evaluate user-specify cell's impact on timing, or use <code>-evaluateAll</code> to evaluate all possible cells, without committing the changes</li>
+<li>use <code>-evaluateOnly</code> to evaluate user-specify cell&rsquo;s impact on timing, or use <code>-evaluateAll</code> to evaluate all possible cells, without committing the changes</li>
 <li><code>loadECO</code> to load a file with all the ECO commands</li>
 <li>then use <code>ecoPlace</code> and <code>ecoRoute</code> to do the placement and routing
 <ul>
 <li><code>ecoPlace</code> distinguish premask and postmask flow</li>
-<li><code>ecoRoute</code> doesn't support routing of <code>FIXED</code> wires, must be changed to <code>ROUTED</code> beforehand.</li>
+<li><code>ecoRoute</code> doesn&rsquo;t support routing of <code>FIXED</code> wires, must be changed to <code>ROUTED</code> beforehand.</li>
 </ul>
 </li>
 </ul>
@@ -1798,10 +1790,10 @@ optDesign <span style="color:#f92672">-</span>postRoute <span style="color:#f926
 <li>Tempus: <code>signoffTimeDesign</code></li>
 </ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tcl" data-lang="tcl">source postroute.inn
-<span style="color:#960050;background-color:#1e0010">#</span> set MMMC views
-<span style="color:#960050;background-color:#1e0010">#</span> set signoff constraints
-
-extractRC
+<span style="color:#75715e"># set MMMC views
+</span><span style="color:#75715e"># set signoff constraints
+</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>extractRC
 
 setSignoffOptMode <span style="color:#f92672">-</span>preStaTcl pre_sta.tcl
 setSignoffOptMode <span style="color:#f92672">-</span>saveEcoOptDb ECO-DB
@@ -1814,189 +1806,189 @@ signoffOptDesign <span style="color:#f92672">-</span>noEcoRoute <span style="col
 ecoRoute
 extractRC
 signoffTimeDesign <span style="color:#f92672">-</span>reportOnly <span style="color:#f92672">-</span>outDir after.rpt <span style="color:#f92672">-</span>noEcoDB
-<span style="color:#f92672">~</span><span style="color:#f92672">~</span><span style="color:#f92672">~</span><span style="color:#960050;background-color:#1e0010">#</span> Module <span style="color:#ae81ff">22</span><span style="color:#f92672">:</span> write out
+<span style="color:#f92672">~~~</span><span style="color:#75715e"># Module 22: write out
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">## GDS
+</span><span style="color:#75715e"></span>- need gds mapping file
+- file <span style="color:#f92672">-&gt;</span> save: gds
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> GDS
-<span style="color:#f92672">-</span> need gds mapping file
-<span style="color:#f92672">-</span> file <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> save: gds
+<span style="color:#75715e">## verilog nelist
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>saveNetlist<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>phys<span style="color:#960050;background-color:#1e0010">`</span> to generate netlist for LVS
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> verilog nelist
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>saveNetlist<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>phys<span style="color:#960050;background-color:#1e0010">`</span> to generate netlist for LVS
+<span style="color:#75715e">## LEF
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>write_lef_abstract<span style="color:#960050;background-color:#1e0010">`</span> or <span style="color:#960050;background-color:#1e0010">`</span>lefOut<span style="color:#960050;background-color:#1e0010">`</span>
+    - create obstructions <span style="color:#f92672">in</span> blockages for signal pins<span style="color:#960050;background-color:#1e0010">,</span> power and ground pins<span style="color:#960050;background-color:#1e0010">,</span> vias and PG stripes
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> LEF
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>write_lef_abstract<span style="color:#960050;background-color:#1e0010">`</span> or <span style="color:#960050;background-color:#1e0010">`</span>lefOut<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> create obstructions <span style="color:#f92672">in</span> blockages for signal pins<span style="color:#960050;background-color:#1e0010">,</span> power and ground pins<span style="color:#960050;background-color:#1e0010">,</span> vias and PG stripes
+<span style="color:#75715e">## DEF
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>defOut<span style="color:#960050;background-color:#1e0010">`</span>
+    - scan def: <span style="color:#960050;background-color:#1e0010">`</span>defOutBySection <span style="color:#f92672">-</span>scanChains <span style="color:#f92672">-</span>noNets <span style="color:#f92672">-</span>noComps<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> DEF
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>defOut<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> scan def: <span style="color:#960050;background-color:#1e0010">`</span>defOutBySection <span style="color:#f92672">-</span>scanChains <span style="color:#f92672">-</span>noNets <span style="color:#f92672">-</span>noComps<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## SDF
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>write_sdf<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> SDF
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>write_sdf<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## SPEF
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>rcOut <span style="color:#f92672">-</span>spef<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> SPEF
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>rcOut <span style="color:#f92672">-</span>spef<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## save innvous/OA database
+</span><span style="color:#75715e"></span>- file <span style="color:#f92672">-&gt;</span> save design<span style="color:#960050;background-color:#1e0010">#</span> Module <span style="color:#ae81ff">23</span><span style="color:#f92672">:</span> challenges of advanced nodes
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> save innvous<span style="color:#f92672">/</span>OA database
-<span style="color:#f92672">-</span> file <span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span> save design<span style="color:#960050;background-color:#1e0010">#</span> Module <span style="color:#ae81ff">23</span><span style="color:#f92672">:</span> challenges of advanced nodes
+<span style="color:#75715e">## Double patterning technology (DPT) or even MPT
+</span><span style="color:#75715e"></span>- lithography distortion
+- common coloring engine <span style="color:#66d9ef">(</span>CCE<span style="color:#66d9ef">)</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>colorizeGeometry<span style="color:#960050;background-color:#1e0010">`</span>
+    - can show violations <span style="color:#f92672">in</span> DPT
+- <span style="color:#e6db74">&#34;MASK&#34;</span> keyword <span style="color:#f92672">in</span> LEF
+- additional parameters for mask <span style="color:#f92672">in</span> GDS also
+- color-aware placement and routing
+    - impact <span style="color:#f92672">in</span> all physical aspects
+- more restriction at <span style="color:#ae81ff">10</span>nm
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> Double patterning technology <span style="color:#66d9ef">(</span>DPT<span style="color:#66d9ef">)</span> or even MPT
-<span style="color:#f92672">-</span> lithography distortion
-<span style="color:#f92672">-</span> common coloring engine <span style="color:#66d9ef">(</span>CCE<span style="color:#66d9ef">)</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>colorizeGeometry<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> can show violations <span style="color:#f92672">in</span> DPT
-<span style="color:#f92672">-</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">M</span><span style="color:#e6db74">A</span><span style="color:#e6db74">S</span><span style="color:#e6db74">K</span><span style="color:#e6db74">&#34;</span> keyword <span style="color:#f92672">in</span> LEF
-<span style="color:#f92672">-</span> additional parameters for mask <span style="color:#f92672">in</span> GDS also
-<span style="color:#f92672">-</span> color-aware placement and routing
-    <span style="color:#f92672">-</span> impact <span style="color:#f92672">in</span> all physical aspects
-<span style="color:#f92672">-</span> more restriction at <span style="color:#ae81ff">10</span>nm
+<span style="color:#75715e">## RC diff between layers
+</span><span style="color:#75715e"></span>- much larger diff <span style="color:#f92672">in</span> <span style="color:#ae81ff">16</span>n<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>nm
+- higher<span style="color:#960050;background-color:#1e0010">,</span> wider<span style="color:#960050;background-color:#1e0010">,</span> faster
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> RC diff between layers
-<span style="color:#f92672">-</span> much larger diff <span style="color:#f92672">in</span> <span style="color:#ae81ff">16</span>n<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span>nm
-<span style="color:#f92672">-</span> higher<span style="color:#960050;background-color:#1e0010">,</span> wider<span style="color:#960050;background-color:#1e0010">,</span> faster
+<span style="color:#75715e">## cell design
+</span><span style="color:#75715e"></span>- much simpler pin geometry
+    - only BAR shape on M1
+    - colored by cell designer<span style="color:#960050;background-color:#1e0010">,</span> INVS cannot change
+- <span style="color:#960050;background-color:#1e0010">`</span>checkDesign<span style="color:#960050;background-color:#1e0010">`</span> to check std cell and macro
+- for hard macros
+    - thin pin <span style="color:#66d9ef">(</span>only <span style="color:#ae81ff">1</span> track<span style="color:#66d9ef">)</span> need to match routing track color
+    - fat pin <span style="color:#66d9ef">(</span>more than <span style="color:#ae81ff">1</span> track<span style="color:#66d9ef">)</span> need to be opposite with center routing track to maximize routing resources
+    - <span style="color:#960050;background-color:#1e0010">`</span>snapFPlan <span style="color:#f92672">-</span>macroPin<span style="color:#960050;background-color:#1e0010">`</span> to snap macro<span style="color:#960050;background-color:#1e0010">&#39;</span>s pin to right color routing track. Then use <span style="color:#960050;background-color:#1e0010">`</span>checkFPlan<span style="color:#960050;background-color:#1e0010">`</span> to check pin snapping
+- for large multi-row cells
+    - internal connections are modelled as CELL OBS geometries
+    - need to align with correct colored tracks while placement
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> cell design
-<span style="color:#f92672">-</span> much simpler pin geometry
-    <span style="color:#f92672">-</span> only BAR shape on M1
-    <span style="color:#f92672">-</span> colored by cell designer<span style="color:#960050;background-color:#1e0010">,</span> INVS cannot change
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>checkDesign<span style="color:#960050;background-color:#1e0010">`</span> to check std cell and macro
-<span style="color:#f92672">-</span> for hard macros
-    <span style="color:#f92672">-</span> thin pin <span style="color:#66d9ef">(</span>only <span style="color:#ae81ff">1</span> track<span style="color:#66d9ef">)</span> need to match routing track color
-    <span style="color:#f92672">-</span> fat pin <span style="color:#66d9ef">(</span>more than <span style="color:#ae81ff">1</span> track<span style="color:#66d9ef">)</span> need to be opposite with center routing track to maximize routing resources
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>snapFPlan <span style="color:#f92672">-</span>macroPin<span style="color:#960050;background-color:#1e0010">`</span> to snap macro<span style="color:#960050;background-color:#1e0010">&#39;</span>s pin to right color routing track. Then use <span style="color:#960050;background-color:#1e0010">`</span>checkFPlan<span style="color:#960050;background-color:#1e0010">`</span> to check pin snapping
-<span style="color:#f92672">-</span> for large multi-row cells
-    <span style="color:#f92672">-</span> internal connections are modelled as CELL OBS geometries
-    <span style="color:#f92672">-</span> need to align with correct colored tracks while placement
+<span style="color:#75715e">## same length ploy rules
+</span><span style="color:#75715e"></span>- continuous ploy stripes with the same length must <span style="color:#f92672">&gt;=</span> N
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> same length ploy rules
-<span style="color:#f92672">-</span> continuous ploy stripes with the same length must <span style="color:#f92672">&gt;=</span> N
+<span style="color:#75715e">## implant layer rules: swap Vt cells
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>setPlaceMode<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>checkImplantWidth<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>checkImplantMinArea<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>honorImplantJog<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>honorImplantSpacing<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> implant layer rules: swap Vt cells
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setPlaceMode<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>checkImplantWidth<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>checkImplantMinArea<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>honorImplantJog<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">-</span>honorImplantSpacing<span style="color:#960050;background-color:#1e0010">`</span>
-
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> boundary cell insertion
-<span style="color:#f92672">-</span> even<span style="color:#f92672">/</span>odd poly tracks
-    <span style="color:#f92672">-</span> total poly tracks must be even
-    <span style="color:#f92672">-</span> choose different <span style="color:#66d9ef">(</span>even<span style="color:#f92672">/</span>odd<span style="color:#66d9ef">)</span> end caps
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setEndCapMode<span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">+</span> <span style="color:#960050;background-color:#1e0010">`</span>addEndCap<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## boundary cell insertion
+</span><span style="color:#75715e"></span>- even<span style="color:#f92672">/</span>odd poly tracks
+    - total poly tracks must be even
+    - choose different <span style="color:#66d9ef">(</span>even<span style="color:#f92672">/</span>odd<span style="color:#66d9ef">)</span> end caps
+    - <span style="color:#960050;background-color:#1e0010">`</span>setEndCapMode<span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">+</span> <span style="color:#960050;background-color:#1e0010">`</span>addEndCap<span style="color:#960050;background-color:#1e0010">`</span>
     
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> tap cell
-<span style="color:#f92672">-</span> avoid abutment and overlap
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>addWellTap <span style="color:#f92672">-</span>avoidAbutment<span style="color:#960050;background-color:#1e0010">`</span>
-<span style="color:#f92672">-</span> swap tap cell due to OD spacing violations
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>swap_well_taps<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## tap cell
+</span><span style="color:#75715e"></span>- avoid abutment and overlap
+    - <span style="color:#960050;background-color:#1e0010">`</span>addWellTap <span style="color:#f92672">-</span>avoidAbutment<span style="color:#960050;background-color:#1e0010">`</span>
+- swap tap cell due to OD spacing violations
+    - <span style="color:#960050;background-color:#1e0010">`</span>swap_well_taps<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> dummy typical critical dimension <span style="color:#66d9ef">(</span>DTCD<span style="color:#66d9ef">)</span> cells <span style="color:#f92672">in</span> <span style="color:#ae81ff">10</span>nm
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>fpinsert_physical_cell<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## dummy typical critical dimension (DTCD) cells in 10nm
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>fpinsert_physical_cell<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> filler insertion rules
-<span style="color:#f92672">-</span> avoid abutment of certain types of fillers
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setFillerMode <span style="color:#f92672">-</span>avoid_abutment_patterns<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## filler insertion rules
+</span><span style="color:#75715e"></span>- avoid abutment of certain types of fillers
+    - <span style="color:#960050;background-color:#1e0010">`</span>setFillerMode <span style="color:#f92672">-</span>avoid_abutment_patterns<span style="color:#960050;background-color:#1e0010">`</span>
     
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> trim poly layer <span style="color:#66d9ef">(</span>TPO<span style="color:#66d9ef">)</span>
-<span style="color:#f92672">-</span> marker layer of different channel length cells
-<span style="color:#f92672">-</span> TPO and Vt rules are independent of each other
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setPlaceMode <span style="color:#f92672">-</span>honorTPORules true<span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">+</span> <span style="color:#960050;background-color:#1e0010">`</span>verify_drc<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## trim poly layer (TPO)
+</span><span style="color:#75715e"></span>- marker layer of different channel length cells
+- TPO and Vt rules are independent of each other
+- <span style="color:#960050;background-color:#1e0010">`</span>setPlaceMode <span style="color:#f92672">-</span>honorTPORules true<span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">+</span> <span style="color:#960050;background-color:#1e0010">`</span>verify_drc<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#ae81ff">10</span>nm EM prevention
-<span style="color:#f92672">-</span> only widen the driver side wires to avoid EM violations
-<span style="color:#f92672">-</span> report max capacitance violations
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>set_default_switching_activity<span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">+</span> <span style="color:#960050;background-color:#1e0010">`</span>propagate_activity<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>write_tcf<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>read_activity_file<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>set_global timing_report_drv_per_frequency_per_input_slew true<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>report_constraint <span style="color:#f92672">-</span>all <span style="color:#f92672">-</span>drv_violation_type max_capacitance<span style="color:#960050;background-color:#1e0010">`</span><span style="color:#960050;background-color:#1e0010">#</span> Module <span style="color:#ae81ff">24</span><span style="color:#f92672">:</span> access database
+<span style="color:#75715e">## 10nm EM prevention
+</span><span style="color:#75715e"></span>- only widen the driver side wires to avoid EM violations
+- report max capacitance violations
+    - <span style="color:#960050;background-color:#1e0010">`</span>set_default_switching_activity<span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">+</span> <span style="color:#960050;background-color:#1e0010">`</span>propagate_activity<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>write_tcf<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>read_activity_file<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>set_global timing_report_drv_per_frequency_per_input_slew true<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>report_constraint <span style="color:#f92672">-</span>all <span style="color:#f92672">-</span>drv_violation_type max_capacitance<span style="color:#960050;background-color:#1e0010">`#</span> Module <span style="color:#ae81ff">24</span><span style="color:#f92672">:</span> access database
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> dbGet
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>dbGet selected<span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">:</span> objects
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>dbGet selected.<span style="color:#f92672">?</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">:</span> attributes
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>dbGet selected.<span style="color:#f92672">?</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">:</span> attributes and values
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>dbGet <span style="color:#66d9ef">[</span>dbGet <span style="color:#f92672">-</span>p top.nets.isClock <span style="color:#ae81ff">1</span><span style="color:#66d9ef">]</span>.name<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> get all the clock nets
+<span style="color:#75715e">## dbGet
+</span><span style="color:#75715e"></span>- <span style="color:#960050;background-color:#1e0010">`</span>dbGet selected<span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">:</span> objects
+    - <span style="color:#960050;background-color:#1e0010">`</span>dbGet selected.<span style="color:#f92672">?</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">:</span> attributes
+    - <span style="color:#960050;background-color:#1e0010">`</span>dbGet selected.<span style="color:#f92672">?</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">:</span> attributes and values
+- <span style="color:#960050;background-color:#1e0010">`</span>dbGet <span style="color:#66d9ef">[</span>dbGet <span style="color:#f92672">-</span>p top.nets.isClock <span style="color:#ae81ff">1</span><span style="color:#66d9ef">]</span>.name<span style="color:#960050;background-color:#1e0010">`</span>
+    - get all the clock nets
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> dbSchema
-<span style="color:#f92672">-</span> all of the available objects and attributes for the specified database object<span style="color:#960050;background-color:#1e0010">,</span> and description
-<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>dbSchema inst<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## dbSchema
+</span><span style="color:#75715e"></span>- all of the available objects and attributes for the specified database object<span style="color:#960050;background-color:#1e0010">,</span> and description
+- <span style="color:#960050;background-color:#1e0010">`</span>dbSchema inst<span style="color:#960050;background-color:#1e0010">`</span>
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> dbSet
+<span style="color:#75715e">## dbSet
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">## dbTransform
+</span><span style="color:#75715e"></span>- takes local coordinates of a cell and return them <span style="color:#f92672">in</span> context with the global design space
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> dbTransform
-<span style="color:#f92672">-</span> takes local coordinates of a cell and return them <span style="color:#f92672">in</span> context with the global design space
+<span style="color:#75715e">## dbShape
+</span><span style="color:#75715e"></span>- logical operations of list of shapes
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> dbShape
-<span style="color:#f92672">-</span> logical operations of list of shapes
+<span style="color:#75715e">## gift
+</span><span style="color:#75715e"></span>- <span style="color:#f92672">&lt;</span>your installation<span style="color:#f92672">&gt;/&lt;</span>OS<span style="color:#f92672">&gt;/</span>share<span style="color:#f92672">/</span>fe<span style="color:#f92672">/</span>gift<span style="color:#f92672">/</span>scripts<span style="color:#f92672">/</span>tcl<span style="color:#960050;background-color:#1e0010">#</span> Appendix
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> gift
-<span style="color:#f92672">-</span> <span style="color:#f92672">&lt;</span>your installation<span style="color:#f92672">&gt;</span><span style="color:#f92672">/</span><span style="color:#f92672">&lt;</span>OS<span style="color:#f92672">&gt;</span><span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>fe<span style="color:#f92672">/</span>gift<span style="color:#f92672">/</span>scripts<span style="color:#f92672">/</span>tcl<span style="color:#960050;background-color:#1e0010">#</span> Appendix
-
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> pre-route vs post-route timing correlation
-<span style="color:#f92672">-</span> due to via usage
-    <span style="color:#f92672">-</span> detail router use more vias than early global route
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setExtractRCMode <span style="color:#f92672">-</span>extraViasLengthFactor <span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">`</span>
-        <span style="color:#f92672">-</span>   insert a via every <span style="color:#ae81ff">10</span>x std cell height
-<span style="color:#f92672">-</span> due to layer choice
-    <span style="color:#f92672">-</span> global route prefer to use higher layer by default
-<span style="color:#f92672">-</span> due to SI
-    <span style="color:#f92672">-</span> spread wire to reduce SI impact
-    <span style="color:#f92672">-</span> large diff from pre-route to post-route is caused by SI on clock tree
-        <span style="color:#f92672">-</span> shield the trunk net of clock tree
-        <span style="color:#f92672">-</span> NDR <span style="color:#66d9ef">(</span>larger space<span style="color:#960050;background-color:#1e0010">,</span> larger width<span style="color:#66d9ef">)</span>
-        <span style="color:#f92672">-</span> gradually reduce clock uncertainty through the flow
-<span style="color:#f92672">-</span> due to routing topology
-    <span style="color:#f92672">-</span> avoid large fanout net
-        <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setOptMode <span style="color:#f92672">-</span>fixFanoutLoad true<span style="color:#960050;background-color:#1e0010">`</span>
-        <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>set_max_fanout N <span style="color:#66d9ef">[</span>current_design<span style="color:#66d9ef">]</span><span style="color:#960050;background-color:#1e0010">`</span>
-<span style="color:#f92672">-</span> due to RC extraction engine
-    <span style="color:#f92672">-</span> Ostrich: correlate RC extraction better
-<span style="color:#f92672">-</span> due to congestion
-    <span style="color:#f92672">-</span> detouring
-    <span style="color:#f92672">-</span> CTS: model clock wiring <span style="color:#f92672">in</span> pre-CTS stage
-        <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setRouteMode <span style="color:#f92672">-</span>earlyGlobalNumTracksPerClockWire<span style="color:#960050;background-color:#1e0010">`</span>
-        <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>setAttribute <span style="color:#f92672">-</span>net xxx <span style="color:#f92672">-</span>non_default_rule xxx <span style="color:#f92672">-</span>shield_net xxx<span style="color:#960050;background-color:#1e0010">`</span>
-        <span style="color:#f92672">-</span> define CCOPT settings before place_opt_design
-        <span style="color:#f92672">-</span> new feature: <span style="color:#960050;background-color:#1e0010">`</span>setDesignMode <span style="color:#f92672">-</span>earlyClockFlow true<span style="color:#960050;background-color:#1e0010">`</span>
-<span style="color:#f92672">-</span> due to setup issue
-    <span style="color:#f92672">-</span> SI impacts setup timing
-    <span style="color:#f92672">-</span> not completed analysis views
+<span style="color:#75715e">## pre-route vs post-route timing correlation
+</span><span style="color:#75715e"></span>- due to via usage
+    - detail router use more vias than early global route
+    - <span style="color:#960050;background-color:#1e0010">`</span>setExtractRCMode <span style="color:#f92672">-</span>extraViasLengthFactor <span style="color:#ae81ff">10</span><span style="color:#960050;background-color:#1e0010">`</span>
+        -   insert a via every <span style="color:#ae81ff">10</span>x std cell height
+- due to layer choice
+    - global route prefer to use higher layer by default
+- due to SI
+    - spread wire to reduce SI impact
+    - large diff from pre-route to post-route is caused by SI on clock tree
+        - shield the trunk net of clock tree
+        - NDR <span style="color:#66d9ef">(</span>larger space<span style="color:#960050;background-color:#1e0010">,</span> larger width<span style="color:#66d9ef">)</span>
+        - gradually reduce clock uncertainty through the flow
+- due to routing topology
+    - avoid large fanout net
+        - <span style="color:#960050;background-color:#1e0010">`</span>setOptMode <span style="color:#f92672">-</span>fixFanoutLoad true<span style="color:#960050;background-color:#1e0010">`</span>
+        - <span style="color:#960050;background-color:#1e0010">`</span>set_max_fanout N <span style="color:#66d9ef">[</span>current_design<span style="color:#66d9ef">]</span><span style="color:#960050;background-color:#1e0010">`</span>
+- due to RC extraction engine
+    - Ostrich: correlate RC extraction better
+- due to congestion
+    - detouring
+    - CTS: model clock wiring <span style="color:#f92672">in</span> pre-CTS stage
+        - <span style="color:#960050;background-color:#1e0010">`</span>setRouteMode <span style="color:#f92672">-</span>earlyGlobalNumTracksPerClockWire<span style="color:#960050;background-color:#1e0010">`</span>
+        - <span style="color:#960050;background-color:#1e0010">`</span>setAttribute <span style="color:#f92672">-</span>net xxx <span style="color:#f92672">-</span>non_default_rule xxx <span style="color:#f92672">-</span>shield_net xxx<span style="color:#960050;background-color:#1e0010">`</span>
+        - define CCOPT settings before place_opt_design
+        - new feature: <span style="color:#960050;background-color:#1e0010">`</span>setDesignMode <span style="color:#f92672">-</span>earlyClockFlow true<span style="color:#960050;background-color:#1e0010">`</span>
+- due to setup issue
+    - SI impacts setup timing
+    - not completed analysis views
     
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> SDC
+<span style="color:#75715e">## SDC
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">## OpenAccess interface
+</span><span style="color:#75715e"></span>- interoperability between Innovus and Virtuoso
+    - common database
+    - unified tech
+    - back and forth
+- top level integrator vs IP designer
+    - design intent <span style="color:#960050;background-color:#1e0010">=</span><span style="color:#f92672">&gt;</span> interoperable constraints
+        - differential pair
+        - shielding
+        - matched pair
+        - NDR
+        - blockage
+        - ...
+- analog to utilize NanoRoute
 
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> OpenAccess interface
-<span style="color:#f92672">-</span> interoperability between Innovus and Virtuoso
-    <span style="color:#f92672">-</span> common database
-    <span style="color:#f92672">-</span> unified tech
-    <span style="color:#f92672">-</span> back and forth
-<span style="color:#f92672">-</span> top level integrator vs IP designer
-    <span style="color:#f92672">-</span> design intent <span style="color:#960050;background-color:#1e0010">=</span><span style="color:#f92672">&gt;</span> interoperable constraints
-        <span style="color:#f92672">-</span> differential pair
-        <span style="color:#f92672">-</span> shielding
-        <span style="color:#f92672">-</span> matched pair
-        <span style="color:#f92672">-</span> NDR
-        <span style="color:#f92672">-</span> blockage
-        <span style="color:#f92672">-</span> ...
-<span style="color:#f92672">-</span> analog to utilize NanoRoute
-
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> pipeline register placement
-<span style="color:#f92672">-</span> long net: timing cannot be solved by buffer insertion<span style="color:#960050;background-color:#1e0010">,</span> need to pipeline it
-<span style="color:#f92672">-</span> flow
-    <span style="color:#f92672">-</span> floorplan
-    <span style="color:#f92672">-</span> determine if any long nets<span style="color:#f92672">/</span>groups that need pipeline
-    <span style="color:#f92672">-</span> modify RTL and re-synthesis
-<span style="color:#f92672">-</span> CMD
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>createPipelineNetGroup<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>modifyPipelineNetGroup<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>placePipeline<span style="color:#960050;background-color:#1e0010">`</span>
-    <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">`</span>reportPipeline<span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#75715e">## pipeline register placement
+</span><span style="color:#75715e"></span>- long net: timing cannot be solved by buffer insertion<span style="color:#960050;background-color:#1e0010">,</span> need to pipeline it
+- flow
+    - floorplan
+    - determine if any long nets<span style="color:#f92672">/</span>groups that need pipeline
+    - modify RTL and re-synthesis
+- CMD
+    - <span style="color:#960050;background-color:#1e0010">`</span>createPipelineNetGroup<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>modifyPipelineNetGroup<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>placePipeline<span style="color:#960050;background-color:#1e0010">`</span>
+    - <span style="color:#960050;background-color:#1e0010">`</span>reportPipeline<span style="color:#960050;background-color:#1e0010">`</span>
     
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#960050;background-color:#1e0010">#</span> post exam
-<span style="color:#ae81ff">1</span>. Q: Chemical and Mechanical polishing is mitigated by the addition of	____<span style="color:#f92672">?</span> A: Metal fill <span style="color:#66d9ef">(</span>not wire widening or multi-cut via<span style="color:#66d9ef">)</span>
-<span style="color:#ae81ff">2</span>. Q: Glitch noise has an impact on ____<span style="color:#f92672">?</span> A: Functionality <span style="color:#66d9ef">(</span>not delay or reliability<span style="color:#66d9ef">)</span>
-<span style="color:#ae81ff">3</span>. Q: The specifyJtag command can only be applied to JTAG cells. Right or wrong<span style="color:#f92672">?</span> A: Wrong
+<span style="color:#75715e">## post exam
+</span><span style="color:#75715e"></span>1. Q: Chemical and Mechanical polishing is mitigated by the addition of	____<span style="color:#f92672">?</span> A: Metal fill <span style="color:#66d9ef">(</span>not wire widening or multi-cut via<span style="color:#66d9ef">)</span>
+2. Q: Glitch noise has an impact on ____<span style="color:#f92672">?</span> A: Functionality <span style="color:#66d9ef">(</span>not delay or reliability<span style="color:#66d9ef">)</span>
+3. Q: The specifyJtag command can only be applied to JTAG cells. Right or wrong<span style="color:#f92672">?</span> A: Wrong
 </code></pre></div>
 		</div>
 	</article>
@@ -2014,14 +2006,7 @@ signoffTimeDesign <span style="color:#f92672">-</span>reportOnly <span style="co
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/industry/2017-03-23-deep-learning-in-siri/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Deep learning and Siri by Alex Acero @ Apple</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/flow/2017-04-18-case-study-clock-skew-control/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Case Study: Clock Skew Control</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -2031,7 +2016,7 @@ signoffTimeDesign <span style="color:#f92672">-</span>reportOnly <span style="co
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>Some of My Projects in Marvell - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,21 +66,18 @@
 			<h1 class="post__title">Some of My Projects in Marvell</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-08-01T00:00:00">2017-08-01</time>
-</div>
-</div>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-01T00:00:00Z">2017-08-01</time></div></div>
 		</header><div class="content post__content clearfix">
-			<h2 id="latchbased-ram-semicustom-macro-design-change">Latch-based RAM semi-custom macro design change</h2>
-<p>This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we'd like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction. (1) we have more &ldquo;read word lines&rdquo; than normal SRAM; (2) we only have 4 metal layers to use; (3) the height of standard cell was fixed. To increase the height would significantly help with this routing chaos.</p>
+			<h2 id="latch-based-ram-semi-custom-macro-design-change">Latch-based RAM semi-custom macro design change</h2>
+<p>This project was for some specific customer. We already have HPM version design from previous project, although there were still some improvements we&rsquo;d like to do. In LP version latch-based RAM, we wanted to use new floorplan which has smaller width and larger height. This would help the SoC team to achieve easier floorplan and better routability. And with old floorplan, the internal routing was the limitation, especially in horizontal direction. (1) we have more &ldquo;read word lines&rdquo; than normal SRAM; (2) we only have 4 metal layers to use; (3) the height of standard cell was fixed. To increase the height would significantly help with this routing chaos.</p>
 <p>However, to change the floorplan meant to change almost everything, including structure of bitcells and decoders, routing resource in both horizontal and vertial directions, clock tree, scan chains, and etc. We designed schematic with ECS, layout with Laker and Pyxis.</p>
-<p>Except for schematic and layout design for LP version, we still needed to run STA and power reliability analysis on both versions. But before, we didn't have mature flow with Nanotime (STA) and XA-RA (power reliability). So we had to setup and test both tools.</p>
+<p>Except for schematic and layout design for LP version, we still needed to run STA and power reliability analysis on both versions. But before, we didn&rsquo;t have mature flow with Nanotime (STA) and XA-RA (power reliability). So we had to setup and test both tools.</p>
 <p>My responsiblity in this project included: project management; floorplan design; schematic and layout design; voltage drop analysis</p>
 <h2 id="power-structure-plan-and-voltage-drop-early-analysis">Power structure plan and voltage drop early analysis</h2>
-<p>This project didn't take much of my bandwith, but it's on-and-off for several months because our target products have been delayed.</p>
-<p>It's not easy to predict the power consumption and geometry coordinates of blocks. I took data from previous project and did lots of communication with both front-end and back-end engineers about our new design's area and new floorplan. Thanks for the experience from previous project, it took much less time on this stage than expected.</p>
+<p>This project didn&rsquo;t take much of my bandwith, but it&rsquo;s on-and-off for several months because our target products have been delayed.</p>
+<p>It&rsquo;s not easy to predict the power consumption and geometry coordinates of blocks. I took data from previous project and did lots of communication with both front-end and back-end engineers about our new design&rsquo;s area and new floorplan. Thanks for the experience from previous project, it took much less time on this stage than expected.</p>
 <p>Although we have used Redhawk a lot for voltage drop analysis before, Excel2IR was a new tool for me. It took advantage of Redhawk and made the process of setup a rough design model faster and easier.</p>
-<p>Since it's not very easy and script-oriented to create power grids in Redhawk, I still used ICC to do the job. I wrote lots of proc of my own to help scripting, and the final design was all based on Tcl scripts.</p>
+<p>Since it&rsquo;s not very easy and script-oriented to create power grids in Redhawk, I still used ICC to do the job. I wrote lots of proc of my own to help scripting, and the final design was all based on Tcl scripts.</p>
 <p>Also I wrote a makefile to integrate ICC, Excel2IR and Redhawk together. It made the iteration faster.</p>
 
 		</div>
@@ -101,11 +96,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/project/2012-02-01-my-cec-huada-projects/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Some of My Projects in CEC Huada</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -115,7 +106,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

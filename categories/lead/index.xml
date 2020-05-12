@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lead on When Moore&#39;s Law ENDS</title>
+    <link>/categories/lead/</link>
+    <description>Recent content in lead on When Moore&#39;s Law ENDS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/lead/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FANG: for decision making</title>
+      <link>/blog/lead/2020-05-11-fang-for-decision-making/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/lead/2020-05-11-fang-for-decision-making/</guid>
+      <description>FANG Frame Problem statement &amp;amp; background
+Assumption Based on best info
+Non-goals Something NOT trying to solve
+Goals Something trying to solve
+Avoid  Too long of framing, not history lession Facts are not assumptions Goals/non-goals are for &amp;ldquo;solution&amp;rdquo; not &amp;ldquo;discussion&amp;rdquo;  Best Practice  FANG-only doc, stop short of proposals By taking away potential solutions helps converge on FANG first before solution  It takes aways the bias on potential solutions    </description>
+    </item>
+    
+    <item>
+      <title>How to become a multiplier?</title>
+      <link>/blog/lead/2020-02-17-how-to-become-a-multiplier/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/lead/2020-02-17-how-to-become-a-multiplier/</guid>
+      <description>From Cloning yourself isn&amp;rsquo;t an option by Camille Fournier
+ Everyone wants to have clones to help them with certain work.  But additive is linear improvements while multiplier is trying to achieve exponential improvements   Tech skills are foundamental, BUT  Availability bias: the more skilled a person is on a dimension, the more important they consider that activity to be. Be too afaid of being detached from tech is over exaggerated.</description>
+    </item>
+    
+    <item>
+      <title>Improve in engineering leadership?</title>
+      <link>/blog/lead/2020-02-17-improve-engineering-leadership/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/lead/2020-02-17-improve-engineering-leadership/</guid>
+      <description>From Self-evaluation and improvement in engineering leadership
+  How manage a remote/distributed teams?
+ Communication is the key.  TODO: setup regular communication channel.   Knowing the ppl you are working with, the methods of communication they prefer.    Peer support for growing as a leader?
+ It&amp;rsquo;s a lonely road, unlike engineering, there is not much sharing between peers. And different managers may have totally different problems.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ARMv8 Architecture - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">ARMv8 Architecture</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-03-18T00:00:00Z">2019-03-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<blockquote>
+<p>ARM online training note</p>
+</blockquote>
+<h1 id="1-introduction">1. Introduction</h1>
+<h2 id="what-is-an-architecture">What is an architecture?</h2>
+<ul>
+<li>Instruction set</li>
+<li>Exception model</li>
+<li>Memory model</li>
+<li>Debug</li>
+</ul>
+<h2 id="armv8">ARMv8</h2>
+<ul>
+<li>AArch32 vs AArch64
+<ul>
+<li>AArch32: backward compatible to ARMv7</li>
+<li>AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address</li>
+</ul>
+</li>
+</ul>
+<h3 id="priviledge-and-security-model">Priviledge and security model</h3>
+<p><img src="aarch64-priviledge-security-model.png" alt="AArch64 Priviledge and Security Model"></p>
+<ul>
+<li>4-level of privilege
+<ul>
+<li>EL0 &lt; EL1 &lt; EL2 &lt; EL3, larger the higher privilege</li>
+</ul>
+</li>
+<li>2 security modes</li>
+</ul>
+<h3 id="mixture-of-aarch32-and-aarch64">Mixture of AArch32 and AArch64</h3>
+<ul>
+<li>Only 64-bit OS can host a mix of 32-bit and 64-bit apps</li>
+<li>32-bit app can only be on lower EL level</li>
+</ul>
+<h1 id="2-isa">2. ISA</h1>
+<h2 id="register">Register</h2>
+<ul>
+<li>X0 to X30: 31 general purpose registers
+<ul>
+<li>W0 to W30 are their 32-bit form</li>
+<li>Zero register: XZR and WZR</li>
+</ul>
+</li>
+<li>V0 to V31: floating point, SIMD, crypto operations
+<ul>
+<li>Multiple view: B(8), H(16), S(32), D(64), Q(128)</li>
+</ul>
+</li>
+<li>System registers
+<ul>
+<li>MSR / MRS: move from/to system register to/from generator purpose register</li>
+</ul>
+</li>
+</ul>
+<h2 id="data-processing">Data processing</h2>
+<h2 id="flow-control">Flow control</h2>
+<ul>
+<li>ARM also have implicitly flag registers that are results of comparisons</li>
+</ul>
+<h2 id="pcs-proceduare-call-standard">PCS (proceduare call standard)</h2>
+<ul>
+<li>Parameter pass in: X0 - X7</li>
+<li>Return value: X0 - X1</li>
+<li>Must preserve: X19 - X29</li>
+<li>Can corrupt: X0 - X18</li>
+<li>Return address (LR): X30</li>
+</ul>
+<h2 id="load-and-store">Load and store</h2>
+<ul>
+<li><code>LDR / STR W0, [X1, #12]</code> (X1 is not changed)
+<ul>
+<li>Pre-index: <code>[X1, #12]!</code> (X1 is changed then used)</li>
+<li>Post-index: <code>[X1], #12</code> (X1 is used, then changed)</li>
+</ul>
+</li>
+</ul>
+<h2 id="floating-point">Floating point</h2>
+<h2 id="simd">SIMD</h2>
+<ul>
+<li>Lane = whole Vx register &amp; element</li>
+<li>Neon</li>
+</ul>
+<h2 id="vectors">Vectors</h2>
+<ul>
+<li><code>Vn.xy</code>
+<ul>
+<li>n = register number</li>
+<li>x = number of elements</li>
+<li>y = size of the elements (B/H/S/D/Q)</li>
+</ul>
+</li>
+<li>Total vector length  = 128-bit / 64-bit for instructions to work on a whole vector</li>
+<li>Special instructions work on individual elements</li>
+</ul>
+<h1 id="3-exception">3. Exception</h1>
+<ul>
+<li>Synchronous = exception</li>
+<li>Asynchronous = interrupt</li>
+</ul>
+<h2 id="exception-level-el">Exception level (EL)</h2>
+<h2 id="pstate--spsr">PSTATE &lt;=&gt; SPSR</h2>
+<p>PSTATE is the current state of the processor, and SPSR is the registers to save the PSTATE.</p>
+<p>Mapping AArch64 from/to AArch32 registers when moving from AArch32 to AArch64.</p>
+<h2 id="vector-table">Vector table</h2>
+<p>It contains <strong>instructions</strong> instead of addresses, typically for branching to higher level exception handling code. And each exception level has its own vector table and <em>stack pointer</em>.</p>
+<h2 id="stack-pointer">Stack pointer</h2>
+<p>Software can choose either current exception level stack pointer or SP_EL0. It&rsquo;s too avoid stack overflow.</p>
+<p>Normal OS goes into SP_EL0, and exception handling goes into SP_EL1</p>
+<h2 id="handling-exception">Handling exception</h2>
+<h3 id="sync">Sync</h3>
+<ul>
+<li>ESR (exception syndrome register)</li>
+<li>FAR (fault address register)</li>
+<li>ELR (exception link register)</li>
+</ul>
+<h3 id="async">Async</h3>
+<ul>
+<li>IRQ = non-secure interrupts</li>
+<li>FIQ = secure interrupts</li>
+<li>SErrors = system errors</li>
+</ul>
+<h3 id="sequence-of-handling-exception">Sequence of handling exception</h3>
+<ul>
+<li>Save PSTATE to SPSR, write PC to ELR</li>
+<li>Jump to vector table</li>
+<li>Jump to exception handler</li>
+<li>Execute exception handler</li>
+<li>ERET (exception return)
+<ul>
+<li>SPSR to PSTATE, jump to ELR</li>
+</ul>
+</li>
+</ul>
+<h3 id="routing">Routing</h3>
+<ul>
+<li>Exceptions routed to higher EL cannot be masked</li>
+<li>Exceptions routed to lower EL are always masked</li>
+<li>You can never loose priviledge by taking an exception</li>
+</ul>
+<h3 id="gic">GIC</h3>
+<p><img src="gic-diagram.png" alt="GIC-diagram"></p>
+<h1 id="3-memory-model">3. Memory Model</h1>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>Access permission
+<ul>
+<li>Read/write permissions</li>
+<li>Executable/non-executable</li>
+<li>Priviledge/unpriviledge</li>
+</ul>
+</li>
+<li>Memory types
+<ul>
+<li>Cachable/uncachable
+<ul>
+<li>Normally peripheral address is uncachable</li>
+</ul>
+</li>
+<li>Normal/device or faulting</li>
+</ul>
+</li>
+</ul>
+<h2 id="memory-management">Memory management</h2>
+<h3 id="page-table-entry">Page table entry</h3>
+<ul>
+<li>From virtual to physical address translation, as well as attributes for that address</li>
+<li>Some bits are for OS, such as dirty and accessed (PTE_YOUNG / PTE_OLD in Linux)</li>
+</ul>
+<h3 id="memory-types--normal">Memory types = normal</h3>
+<ul>
+<li>Optimization to normal memory: DRAM/SRAM/Flash/ROM/&hellip;
+<ul>
+<li>Reordering</li>
+<li>Merging</li>
+<li>Speculation</li>
+<li>Unaligned</li>
+</ul>
+</li>
+<li>either cacheable or non-cacheable are OK</li>
+</ul>
+<h3 id="memory-type--device">Memory type = device</h3>
+<ul>
+<li>Side effects</li>
+<li>Cannot do  speculative access</li>
+<li>Cannot be executable</li>
+<li>Attributes
+<ul>
+<li>Gathering?</li>
+<li>Re-ordering?</li>
+<li>Early ack?</li>
+</ul>
+</li>
+<li>Device type: stronger to weaker
+<ul>
+<li>GRE -&gt; nGRE -&gt; nGnRE -&gt; nGnRnE</li>
+<li>Can upgrade to a weaker type</li>
+</ul>
+</li>
+</ul>
+<h3 id="mmu-memory-management-unit">MMU (memory management unit)</h3>
+<ul>
+<li>Software defines the translation, MMU in charge of reading that table and provide the translation service to the core</li>
+<li>TLB (translation look-aside buffer) + PTW (page table walker)
+<ul>
+<li>TLB of most modern ARM cores also caches intermediate steps of translation to speed up the process</li>
+</ul>
+</li>
+<li>MMU is before the cache, so cache works with physical address and won&rsquo;t be affected by changes in address translation</li>
+</ul>
+<h3 id="virtual-address-space">Virtual address space</h3>
+<p>AArch64 uses 48-bit virtual address, and there are 2 of them. One for kernel (not avaible in EL2 and EL3), one for application. So there are 2 sets of translation tables, which are both in memory. TTBR is pointing to the translation table base.</p>
+<h3 id="translation-table-page-table">Translation table (page table)</h3>
+<ul>
+<li>3-level of tables</li>
+<li>3 different sizes of page
+<ul>
+<li>4KB, 16KB or 64KB</li>
+</ul>
+</li>
+</ul>
+<h3 id="translation-regimes">Translation regimes</h3>
+<ul>
+<li>EL3 secure monitor table</li>
+<li>EL2 hypervisor table</li>
+<li>EL1/EL0 goes through 2 stages of translation tables for virtualization</li>
+</ul>
+<p><img src="translation-regime.png" alt="Translation regimes"></p>
+<h3 id="secure-physical-address-spaces">Secure physical address spaces</h3>
+<ul>
+<li>Secure vs non-secure
+<ul>
+<li>Non-secure program in EL1/EL0 can only access non-secure physical address</li>
+<li>Secure EL1/EL0  programs can access both</li>
+</ul>
+</li>
+</ul>
+<h1 id="4-trustzone">4. TrustZone</h1>
+<h2 id="overview-1">Overview</h2>
+<p>Securityt is defending asserts from attacks. And it&rsquo;s impossible to avoid all kinds of attacks, just need to make sure the cost of attack is higher than the value of the assets.</p>
+<p>Trade-off is design complexity, power consumption, and even user experiences.</p>
+<ul>
+<li>confidentiality</li>
+<li>integrity (authentication)</li>
+<li>availability</li>
+</ul>
+<h3 id="priciple-of-least-privilege">Priciple of least privilege</h3>
+<p>Only the information and resource to its legitimate purpose.</p>
+<p>Separate trusted and untrusted softwares, and give them different privileges.</p>
+<h3 id="requirements-of-levels-of-trust">Requirements of levels of trust</h3>
+<ul>
+<li>Trusted execution state
+<ul>
+<li>Code, data, IO</li>
+<li>One possible solution: separated security processor which has its own memory</li>
+<li>TrustZone: use the same processor, but has 2 different modes
+<ul>
+<li>Separate the trusted software&rsquo;s execution state with that of untrusted software</li>
+<li>Memory is dynamically partitioned for security</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="trustzone-memory-space">TrustZone memory space</h3>
+<ul>
+<li>Separate trust zone and nontrust zone in memory
+<ul>
+<li>Need the memory controller to enforce the access permission for every access requests
+<ul>
+<li>AXI, ACE and CHI all support TrustZone memory access</li>
+</ul>
+</li>
+<li>Even with wrongly programmed MMU page tables, it still can protect the memory space</li>
+<li>Caches have its own security state field of each cache line, which is physical address indexed</li>
+</ul>
+</li>
+<li>Configure the memory space (including DRAM and IO)
+<ul>
+<li>Static config at synthesis time</li>
+<li>Dynamic config using security processor</li>
+<li>Usually using a mix of both above
+<ul>
+<li>Static for security processor&rsquo;s memory region</li>
+<li>Dynamic for IOs that let user application communicate with outside world</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="trustzone-and-exception-level">TrustZone and exception level</h3>
+<p><img src="trustzone-and-privilege.png" alt="image-20190325181243172"></p>
+<ul>
+<li>Every exception level has its own virtual address space
+<ul>
+<li>There are 6 different types of virtual address space in total</li>
+<li>MMU translate them into trust or non-trust physical memory zones</li>
+</ul>
+</li>
+</ul>
+<h3 id="tee-trust-execution-environment">TEE (trust execution environment)</h3>
+<ul>
+<li>TEE
+<ul>
+<li>Separated memory space for trusted OS, software and drivers, which runs at trusted EL1 and EL0.</li>
+</ul>
+</li>
+<li>Trap to EL3 to swap execution state between non-secure and TEE</li>
+</ul>
+<h3 id="chain-of-trust">Chain of Trust</h3>
+<ul>
+<li>Authentication with digital signature on every piece of software loaded in before execution</li>
+<li>Begins at BL0 in ROM</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>SystemVerilog for Design Note - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,18 +66,12 @@
 			<h1 class="post__title">SystemVerilog for Design Note</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-01-10T00:00:00">2017-01-10</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-01-10T00:00:00Z">2017-01-10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
 			<blockquote>
-<p>This is my reading note of book &ldquo;SystemVerilog for Design (2nd edition)&quot;. As a non-full-time RTL designer, it has opened my mind. But still, I'm sad about the antient tool that we are using to design hardware.</p>
+<p>This is my reading note of book &ldquo;SystemVerilog for Design (2nd edition)&quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&rsquo;m sad about the antient tool that we are using to design hardware.</p>
 </blockquote>
 <h1 id="chapter-2-systemverilog-declaration-spaces">Chapter 2: SystemVerilog Declaration Spaces</h1>
 <h2 id="package">Package</h2>
@@ -124,18 +116,18 @@
 <ul>
 <li>tasks and functions must be <code>automatic</code>
 <ul>
-<li>storage for automatic task/function is allocated each time it's called</li>
+<li>storage for automatic task/function is allocated each time it&rsquo;s called</li>
 </ul>
 </li>
 <li>cannot use <code>static</code> variables, which are supposed to be shared by all instances</li>
 </ul>
 </li>
 </ul>
-<h2 id="unit-compilationunit-declarations">$unit: compilation-unit declarations</h2>
+<h2 id="unit-compilation-unit-declarations">$unit: compilation-unit declarations</h2>
 <ul>
 <li>declaration space <strong>outside</strong> of package/module/interface/program
 <ul>
-<li>BUT it's <strong>not</strong> global</li>
+<li>BUT it&rsquo;s <strong>not</strong> global</li>
 </ul>
 </li>
 <li>if put variables and nets in $unit
@@ -159,14 +151,14 @@
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// filename: def.pkg
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">`ifdef</span> DEF_PKG
-<span style="color:#75715e">`define</span><span style="color:#75715e"> DEF_PKG</span><span style="color:#75715e">
+<span style="color:#75715e">`define DEF_PKG
 </span><span style="color:#75715e"></span>
 <span style="color:#f92672">package</span> def;
 <span style="color:#75715e">// ...
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">endpackage</span>
 <span style="color:#66d9ef">`endif</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// in every design or testbench file that need package &#34;def&#34;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">`include</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">def.pkg</span><span style="color:#e6db74">&#34;</span>
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">`include</span> <span style="color:#e6db74">&#34;def.pkg&#34;</span>
 </code></pre></div><ul>
 <li>identifier search rules</li>
 </ul>
@@ -200,7 +192,7 @@
 </ul>
 <h2 id="timing-units-and-precision">Timing units and precision</h2>
 <ul>
-<li>problem with Verilog's timescale directive: file order dependent</li>
+<li>problem with Verilog&rsquo;s timescale directive: file order dependent</li>
 <li>SystemVerilog improvements
 <ul>
 <li>time value with time units: 5ns, 3.2ps
@@ -224,7 +216,7 @@
 <li>defined in $unit</li>
 <li>simulator default</li>
 </ol>
-<h1 id="chapter-3-systemverilog-literal-values-and-builtin-data-types">Chapter 3: SystemVerilog Literal Values and Built-in Data Types</h1>
+<h1 id="chapter-3-systemverilog-literal-values-and-built-in-data-types">Chapter 3: SystemVerilog Literal Values and Built-in Data Types</h1>
 <h2 id="literal-value-enhancement">Literal value enhancement</h2>
 <ul>
 <li>Verilog tricks to fill vector with all ones
@@ -245,20 +237,20 @@
 <li>String</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// Verilog
-</span><span style="color:#75715e"></span><span style="color:#75715e">`define</span><span style="color:#75715e"> print(v) $display(&#34;variable v = %h&#34;, v)</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">`define print(v) $display(&#34;variable v = %h&#34;, v)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">`print</span>(data); <span style="color:#75715e">// = $display(&#34;variable v = %h&#34;, data);
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// SystemVerilog
-</span><span style="color:#75715e"></span><span style="color:#75715e">`define</span><span style="color:#75715e"> print(v) $display(`&#34;varaible v = %h`&#34;, v)</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">`define print(v) $display(`&#34;varaible v = %h`&#34;, v)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">`print</span>(data);  <span style="color:#75715e">// = $display(&#34;variable data = %h&#34;, data);
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// SystemVerilog: escape with double `
-</span><span style="color:#75715e"></span><span style="color:#75715e">`define</span><span style="color:#75715e"> print(v) $display(`&#34;varaible `\`&#34;v`\`&#34; = %h`&#34;, v)</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">`define print(v) $display(`&#34;varaible `\`&#34;v`\`&#34; = %h`&#34;, v)
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">`print</span>(data);  <span style="color:#75715e">// = $display(&#34;varaible \&#34;data\&#34; = %h&#34;, data);
 </span></code></pre></div><ul>
 <li>Construct identifier names: double back-tick w/o space will separate names that will allow 2 or more names to be replaced and form a new name.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">`define</span><span style="color:#75715e"> MY_NET(index) bit my_net``index``_bit;</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">`define MY_NET(index) bit my_net``index``_bit;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">`MY_NET</span>(<span style="color:#ae81ff">00</span>)  <span style="color:#75715e">// = bit my_net00_bit;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">`MY_NET</span>(<span style="color:#ae81ff">15</span>)  <span style="color:#75715e">// = bit my_net15_bit;
 </span></code></pre></div><h2 id="variables">Variables</h2>
@@ -333,7 +325,7 @@
 <ul>
 <li>Any number of <code>initial</code> or <code>always</code> blocks
 <ul>
-<li>NOTE: it's only for back-compatable with Verilog which is not really circuit behavior</li>
+<li>NOTE: it&rsquo;s only for back-compatable with Verilog which is not really circuit behavior</li>
 </ul>
 </li>
 <li>Single <code>always_comb/always_ff/always_latch</code> block</li>
@@ -405,7 +397,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="chapter-4-systemverilog-userdefined-and-enumerated">Chapter 4: SystemVerilog User-Defined and Enumerated</h1>
+<h1 id="chapter-4-systemverilog-user-defined-and-enumerated">Chapter 4: SystemVerilog User-Defined and Enumerated</h1>
 <h2 id="typedef-keyword"><code>typedef</code> keyword</h2>
 <p>Ex. <code>typedef int unsigned uint;</code></p>
 <ul>
@@ -452,7 +444,7 @@
 </span></code></pre></div><ul>
 <li>Label
 <ul>
-<li>Must be unique in naming scope, so it's required to add prefix to the label</li>
+<li>Must be unique in naming scope, so it&rsquo;s required to add prefix to the label</li>
 </ul>
 </li>
 <li>Values
@@ -478,7 +470,7 @@
 </li>
 <li>4-state could be Z or X
 <ul>
-<li>But the next lable        after Z or X should be given value explicitly (otherwise tools don't know how to increase value automatically)</li>
+<li>But the next lable        after Z or X should be given value explicitly (otherwise tools don&rsquo;t know how to increase value automatically)</li>
 </ul>
 </li>
 </ul>
@@ -508,8 +500,8 @@ state <span style="color:#f92672">=</span> next_state;
 foo <span style="color:#f92672">=</span> state <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;  
 state <span style="color:#f92672">=</span> foo <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// ILLEGAL  
 </span><span style="color:#75715e"></span>state <span style="color:#f92672">=</span> state <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// ILLEGAL  
-</span><span style="color:#75715e"></span>state<span style="color:#f92672">+</span><span style="color:#f92672">+</span>; <span style="color:#75715e">// ILLEGAL  
-</span><span style="color:#75715e"></span>next_state <span style="color:#f92672">+</span><span style="color:#f92672">=</span> state; <span style="color:#75715e">// ILLEGAL  
+</span><span style="color:#75715e"></span>state<span style="color:#f92672">++</span>; <span style="color:#75715e">// ILLEGAL  
+</span><span style="color:#75715e"></span>next_state <span style="color:#f92672">+=</span> state; <span style="color:#75715e">// ILLEGAL  
 </span></code></pre></div><ul>
 <li>Casting
 <ul>
@@ -572,7 +564,7 @@ state <span style="color:#f92672">=</span> foo <span style="color:#f92672">+</sp
 </li>
 <li>Packed vs. unpacked
 <ul>
-<li>By default, it's upacked</li>
+<li>By default, it&rsquo;s upacked</li>
 <li>Use <code>packed</code> keyword to defined packed structure
 <ul>
 <li>All members are stored as contiguous bits</li>
@@ -637,7 +629,7 @@ state <span style="color:#f92672">=</span> foo <span style="color:#f92672">+</sp
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#75715e">// example: represent packed struct in array of bytes  
 </span><span style="color:#75715e"></span>Union <span style="color:#66d9ef">packed</span> {  
     data_package_t packet; <span style="color:#75715e">// packed structure  
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">logic</span>[<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span><span style="color:#f92672">*</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">*</span><span style="color:#f92672">*</span>; <span style="color:#75715e">// packed array  
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">logic</span>[<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>] <span style="color:#f92672">**</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">**</span>; <span style="color:#75715e">// packed array  
 </span><span style="color:#75715e"></span>} datareg;  
 </code></pre></div><h2 id="array">Array</h2>
 <ul>
@@ -756,7 +748,7 @@ foreach(sum[i, j])
 <li>All these system functions are synthesizable</li>
 </ul>
 </li>
-<li>Dynamic types are covered in verification that's NOT synthesizable
+<li>Dynamic types are covered in verification that&rsquo;s NOT synthesizable
 <ul>
 <li>Dynamic arrays</li>
 <li>Associative arrays</li>
@@ -826,7 +818,7 @@ foreach(sum[i, j])
 </ul>
 </li>
 </ul>
-<h1 id="taskfunction"><code>task`/</code>function`</h1>
+<h1 id="taskfunction"><code>task</code>/<code>function</code></h1>
 <ul>
 <li>Inferred <code>begin … end</code></li>
 <li><code>return</code>
@@ -945,7 +937,7 @@ foreach(sum[i, j])
 </li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-verilog" data-lang="verilog"><span style="color:#66d9ef">case</span> (instruction) inside
-<span style="color:#ae81ff">4</span><span style="color:#ae81ff">&#39;b0</span><span style="color:#f92672">?</span><span style="color:#f92672">?</span><span style="color:#f92672">?</span><span style="color:#f92672">:</span> ...
+<span style="color:#ae81ff">4</span><span style="color:#ae81ff">&#39;b0</span><span style="color:#f92672">???:</span> ...
 <span style="color:#ae81ff">4</span><span style="color:#ae81ff">&#39;b1000</span>, <span style="color:#ae81ff">4</span><span style="color:#ae81ff">&#39;b1100</span><span style="color:#f92672">:</span> ...
 <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> ...
 <span style="color:#66d9ef">endcase</span>
@@ -979,7 +971,7 @@ foreach(sum[i, j])
 <li>Ex. <code>for (int i=0; I &lt;=15; i++)</code></li>
 <li>Prevent interference between for loops</li>
 <li>They are automatic type</li>
-<li>Doesn't exist outside <code>for</code> loop
+<li>Doesn&rsquo;t exist outside <code>for</code> loop
 <ul>
 <li>If want to be used after for loop, must be declared outside</li>
 </ul>
@@ -1040,7 +1032,7 @@ foreach(sum[i, j])
 <ul>
 <li>= full case</li>
 <li>Runtime check</li>
-<li>Notice: if it's not full case, latches can be inferred</li>
+<li>Notice: if it&rsquo;s not full case, latches can be inferred</li>
 </ul>
 </li>
 </ul>
@@ -1110,16 +1102,16 @@ foreach(sum[i, j])
 } state_bit;
 
 <span style="color:#75715e">// state register
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] {  RED     <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> R_BIT,
-                    GREEN   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> G_BIT,
-                    YELLOW  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> Y_BIT
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> <span style="color:#66d9ef">logic</span> [<span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] {  RED     <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;&lt;</span> R_BIT,
+                    GREEN   <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;&lt;</span> G_BIT,
+                    YELLOW  <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#ae81ff">&#39;b001</span> <span style="color:#f92672">&lt;&lt;</span> Y_BIT
 } state, next_state;
 
 <span style="color:#66d9ef">always_ff</span> @ (<span style="color:#66d9ef">posedge</span> clk, <span style="color:#66d9ef">negedge</span> rstb) <span style="color:#66d9ef">begin</span> <span style="color:#f92672">:</span> step_forward
 <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>rstb) <span style="color:#66d9ef">begin</span>
-    state <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> RED;
+    state <span style="color:#f92672">&lt;=</span> RED;
 <span style="color:#66d9ef">end</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">begin</span>
-    state <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> next_state;
+    state <span style="color:#f92672">&lt;=</span> next_state;
 <span style="color:#66d9ef">end</span>
 <span style="color:#66d9ef">end</span> <span style="color:#f92672">:</span> step_forward
 
@@ -1131,12 +1123,12 @@ unique <span style="color:#66d9ef">case</span> (<span style="color:#ae81ff">1</s
     <span style="color:#66d9ef">end</span>
 <span style="color:#66d9ef">end</span>
 state[G_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
-    <span style="color:#66d9ef">if</span> (green_downcnt <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
+    <span style="color:#66d9ef">if</span> (green_downcnt <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
         next_state <span style="color:#f92672">=</span> YELLOW;
     <span style="color:#66d9ef">end</span>
 <span style="color:#66d9ef">end</span>
 state[Y_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">begin</span>
-    <span style="color:#66d9ef">if</span> (yellow_downcnt <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
+    <span style="color:#66d9ef">if</span> (yellow_downcnt <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">begin</span>
         next_state <span style="color:#f92672">=</span> RED;
     <span style="color:#66d9ef">end</span>
 <span style="color:#66d9ef">end</span>
@@ -1226,7 +1218,7 @@ state[Y_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">beg
 <li>Can also access variable/constant/task/function in $unit</li>
 </ul>
 </li>
-<li>However, controversy with common moduel style that every module has it's own file
+<li>However, controversy with common moduel style that every module has it&rsquo;s own file
 <ul>
 <li>This kind of style is good for large designs; and good for utilizing VCS</li>
 <li>Use ``include` to keep the same style</li>
@@ -1305,7 +1297,7 @@ state[Y_BIT]<span style="color:#f92672">:</span> <span style="color:#66d9ef">beg
 </li>
 <li>SystemVerilog
 <ul>
-<li>The first port's direction could be optional, by default is <code>inout</code></li>
+<li>The first port&rsquo;s direction could be optional, by default is <code>inout</code></li>
 <li>Later on, direction could be optional, by default is the same with previous one</li>
 </ul>
 </li>
@@ -1360,7 +1352,7 @@ adder #(.DATA_TYPE(<span style="color:#66d9ef">int</span> <span style="color:#66
 </li>
 <li>Interface vs. module
 <ul>
-<li>Interface doesn't have hierarchy</li>
+<li>Interface doesn&rsquo;t have hierarchy</li>
 <li>Interface can be used as module port</li>
 <li>Interface can contain <code>modport</code> which can represent different usage env.
 How to declare an interface?</li>
@@ -1405,7 +1397,7 @@ How to use interface?</li>
 <li><code>.name</code> and <code>.*</code> can be used to connect interface</li>
 </ul>
 </li>
-<li>Referencing interface's signals
+<li>Referencing interface&rsquo;s signals
 <ul>
 <li>Use dot: &lt;port_name&gt;.&lt;internal_signal_name&gt;</li>
 </ul>
@@ -1551,10 +1543,10 @@ dual_port_ram mem ( .bus(bus.mem), .data_b(next_instruction), .<span style="colo
 <li>Exporting task/function are not synthesizable
 <ul>
 <li>Define task/function in module, then export it to interface, and use it in other modules</li>
-<li>Export from module's all instances
+<li>Export from module&rsquo;s all instances
 <ul>
 <li><code>extern forkjoin</code></li>
-<li>Useful when you want to broadcast signals, such ask counting one module's instances
+<li>Useful when you want to broadcast signals, such ask counting one module&rsquo;s instances
 Procedural blocks in interface</li>
 </ul>
 </li>
@@ -1580,7 +1572,7 @@ Reconfigurable interface</li>
 </span><span style="color:#75715e"></span>interface if_look_up_table;
 
 <span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">int</span> ADDR_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>;
-<span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">int</span> ADDR_RANGE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> ADDR_SIZE;
+<span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">int</span> ADDR_RANGE <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> ADDR_SIZE;
 <span style="color:#66d9ef">parameter</span> <span style="color:#66d9ef">type</span> DATA_TYPE <span style="color:#f92672">=</span> <span style="color:#66d9ef">logic</span>;  <span style="color:#75715e">// the bit-cell&#39;s type could be reconfigurable
 </span><span style="color:#75715e"></span>
 DATA_TYPE mem [<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>ADDR_RANGE<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
@@ -1642,14 +1634,7 @@ if_look_up_table #(.ADDR_SIZE(<span style="color:#ae81ff">8</span>), .DATA_TYPE(
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title"></p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/design/2017-01-18-generate-example/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Register-based SRAM Read Circuit RTL Example using &#34;generate&#34;</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -1659,7 +1644,7 @@ if_look_up_table #(.ADDR_SIZE(<span style="color:#ae81ff">8</span>), .DATA_TYPE(
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

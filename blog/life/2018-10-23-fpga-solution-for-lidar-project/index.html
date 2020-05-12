@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>FPGA Solution for LiDAR Project - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">FPGA Solution for LiDAR Project</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-10-23T00:00:00">2018-10-23</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/life/" rel="category">life</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-23T00:00:00Z">2018-10-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/life/" rel="category">life</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -97,26 +89,26 @@
 <ul>
 <li>FMC163 (<a href="https://www.abaco.com/products/fmc163-fpga-mezzanine-card">https://www.abaco.com/products/fmc163-fpga-mezzanine-card</a>)
 <ul>
-<li>1x 12-bit ADC, 4.0 GSPS at single channel, or 2GSPS at dual channel, LVDS (TI's ADC12D2000RF)</li>
-<li>1x 14-bit DAC, 5.7 GSPS, LVDS (ADI's AD9129)</li>
+<li>1x 12-bit ADC, 4.0 GSPS at single channel, or 2GSPS at dual channel, LVDS (TI&rsquo;s ADC12D2000RF)</li>
+<li>1x 14-bit DAC, 5.7 GSPS, LVDS (ADI&rsquo;s AD9129)</li>
 <li>Question: will it work with our backup dev boards?</li>
 </ul>
 </li>
 <li>AD-FMCDAQ2-EBZ (<a href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad-fmcdaq2-ebz.html">https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-ad-fmcdaq2-ebz.html</a>)
 <ul>
-<li>2x 14-bit ADC, 1.0 GSPS, JESD204B (ADI's AD9680)</li>
-<li>4x 16-bit DAC, 2.8 GSPS, JESD204B (ADI's AD9144)</li>
+<li>2x 14-bit ADC, 1.0 GSPS, JESD204B (ADI&rsquo;s AD9680)</li>
+<li>4x 16-bit DAC, 2.8 GSPS, JESD204B (ADI&rsquo;s AD9144)</li>
 <li>$1495, buy directly from ADI</li>
 </ul>
 </li>
 <li>EVAL-FMCDAQ3-EBZ (<a href="https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-fmcdaq3-ebz.html">https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/eval-fmcdaq3-ebz.html</a>)
 <ul>
-<li>2x 14-bit ADC, 1.25 GSPS, JESD204B (ADI's AD9680)
+<li>2x 14-bit ADC, 1.25 GSPS, JESD204B (ADI&rsquo;s AD9680)
 <ul>
-<li>Question: why the same device, here is 1.25G but it's 1.0G previously</li>
+<li>Question: why the same device, here is 1.25G but it&rsquo;s 1.0G previously</li>
 </ul>
 </li>
-<li>2x 16-bit DAC, 2.5 GSPS, JESD204B (ADI's AD9152)</li>
+<li>2x 16-bit DAC, 2.5 GSPS, JESD204B (ADI&rsquo;s AD9152)</li>
 <li>$1495, buy directly from ADI
 <ul>
 <li>ADI provides the whole package, including RTL for FPGA, dev board schematic and etc.</li>
@@ -126,7 +118,7 @@
 </li>
 <li>ADC12D1800RF Reference board (<a href="http://www.ti.com/tool/ADC12D1800RFRB?keyMatch=adc12d1800rfrb">http://www.ti.com/tool/ADC12D1800RFRB?keyMatch=adc12d1800rfrb</a>)
 <ul>
-<li>12-bit, dual 1.8 GSPS or single 3.6 GSPS, LVDS (TI's ADC12D1800RF)</li>
+<li>12-bit, dual 1.8 GSPS or single 3.6 GSPS, LVDS (TI&rsquo;s ADC12D1800RF)</li>
 <li>$2999, buy directly from TI</li>
 <li>It has a Xilinx Virtex-? on board, but I doubt it can be programmed</li>
 </ul>
@@ -151,14 +143,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/tool/2018-10-21-google-cloud-platform-tips/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">GCP (Google Cloud Platform)</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Case Study: Clock Divider with Synchronous Reset</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -168,7 +153,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>shortcut.py: A Command Line Script to Provide Macro - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">shortcut.py: A Command Line Script to Provide Macro</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-02-11T00:00:00">2019-02-11</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-11T00:00:00Z">2019-02-11</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -98,7 +90,7 @@ prj0
 prj0
 &gt; run
 vnc
-</code></pre></div><h3 id="autocorrection">Auto-correction</h3>
+</code></pre></div><h3 id="auto-correction">Auto-correction</h3>
 <p><code>shortcut.py</code> uses <code>difflib.get_close_matches</code> to auto-correct the alias.</p>
 <h2 id="configuration-files">Configuration files</h2>
 <ul>
@@ -124,13 +116,13 @@ cd /work/projects/design/master-branch/
 # vnc
 ssh -L 5901:remote-internal-server-name:5901 jw@remote-gateway-ip
 vncviewer remote-internal-server-name
-</code></pre><h2 id="howto">How-to</h2>
+</code></pre><h2 id="how-to">How-to</h2>
 <ol>
 <li>Download <a href="https://github.com/phdbreak99/config/blob/master/script/shortcut.py">shortcut.py</a> to <code>~/script/shortcut.py</code></li>
 <li>Create your own <code>~/.shortcut/*.cfg</code> file</li>
 <li>Add the following lines into your <code>.zshrc</code></li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">shortcut <span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">shortcut <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
     local cmd
     cmd<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>python3 ~/script/shortcut.py $@<span style="color:#66d9ef">)</span>
     eval <span style="color:#e6db74">${</span>cmd<span style="color:#e6db74">}</span>
@@ -154,14 +146,7 @@ alias run<span style="color:#f92672">=</span><span style="color:#e6db74">`</span
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2019-01-30-arm-big-little/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">ARM&#39;s big.LITTLE Architecture</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2019-03-11-interrupt-and-arm-gic/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Interrupts and ARM GIC Architecture</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -171,7 +156,7 @@ alias run<span style="color:#f92672">=</span><span style="color:#e6db74">`</span
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

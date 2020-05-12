@@ -6,10 +6,30 @@
     <description>Recent content in arch on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/arch/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ARM AMBA Protocl</title>
+      <link>/blog/arch/2019-03-26-amba-protocol/</link>
+      <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-03-26-amba-protocol/</guid>
+      <description>AMBA (ARM Advanced Microcontroller Bus Architecture)
+1. AXI  AXI protocol is a point-to-point protocol  So no matter what the network channels really use, as long as its ports comply AXI protocol, IP can be connected to them   Main features  Separate read/write channels  Improve bandwidth   Multiple outstanding requests No strict timing relationship between address and data phases Unaligned data transfer Out-of-order transaction completion Implicitly incremental address for burst transfer   Transfer vs transaction  Transfer is a handshake: valid/ready Transaction is composed of multiple transfers  Active transaction: already started but not finished.</description>
+    </item>
+    
+    <item>
+      <title>ARMv8 Architecture</title>
+      <link>/blog/arch/2019-03-18-armv8-architecture/</link>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-03-18-armv8-architecture/</guid>
+      <description>ARM online training note
+ 1. Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    Priviledge and security model  4-level of privilege  EL0 &amp;lt; EL1 &amp;lt; EL2 &amp;lt; EL3, larger the higher privilege   2 security modes  Mixture of AArch32 and AArch64  Only 64-bit OS can host a mix of 32-bit and 64-bit apps 32-bit app can only be on lower EL level  2.</description>
+    </item>
     
     <item>
       <title>Interrupts and ARM GIC Architecture</title>
@@ -28,7 +48,7 @@
       
       <guid>/blog/arch/2019-01-30-arm-big-little/</guid>
       <description>https://developer.arm.com/technologies/big-little
-big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&#39;s a particular adaption to mobile devices usage.</description>
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&amp;rsquo;s a particular adaption to mobile devices usage.</description>
     </item>
     
     <item>
@@ -47,7 +67,7 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
       
       <guid>/blog/arch/2019-01-03-hwacha-accelerator/</guid>
       <description>From the reading of this paper, &amp;ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&amp;rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
- We don&#39;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&#39;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&#39;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
+ We don&amp;rsquo;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&amp;rsquo;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&amp;rsquo;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
     </item>
     
     <item>
@@ -66,7 +86,7 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
       
       <guid>/blog/arch/2018-12-01-ariane-cpu/</guid>
       <description>Ariane Document
-Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&#39;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
+Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&amp;rsquo;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
   There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
     </item>
     

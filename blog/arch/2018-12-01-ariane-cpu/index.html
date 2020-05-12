@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>Ariane (PULP series high-performance core) - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">Ariane (PULP series high-performance core)</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-12-01T00:00:00">2018-12-01</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-12-01T00:00:00Z">2018-12-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -88,7 +80,7 @@
 <h3 id="fetch-stage">Fetch stage</h3>
 <ul>
 <li>
-<p>Its fetch stage doesn't have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.</p>
+<p>Its fetch stage doesn&rsquo;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.</p>
 </li>
 <li>
 <p>There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</p>
@@ -107,18 +99,18 @@
 <ul>
 <li>It puts the RVC decoding in the decode stage.
 <ul>
-<li>JW: this is better than what we had in ORV, in which I put the RVC decoding and realignment in IF stage, and made the critical path more critical than ever. That's a bad decision to be honest. I was given too little time to think about this timing problem when I was adding RVC support.</li>
+<li>JW: this is better than what we had in ORV, in which I put the RVC decoding and realignment in IF stage, and made the critical path more critical than ever. That&rsquo;s a bad decision to be honest. I was given too little time to think about this timing problem when I was adding RVC support.</li>
 </ul>
 </li>
 <li>The decoded info from this stage is very limited. It always seems like this stage is for RVC decoding only.
 <ul>
-<li>JW: It could be potentially merged with issue stage. I don't quite understand their design consideration here.</li>
+<li>JW: It could be potentially merged with issue stage. I don&rsquo;t quite understand their design consideration here.</li>
 </ul>
 </li>
 </ul>
 <h3 id="issue-stage">Issue stage</h3>
 <ul>
-<li>It waits for branches to be solved then issue predicted instructions into execution. It's definitely OK because all the branch instructions in RISC-V only needs 1-cycle to resolve in ALU, so it won't be any kind of performance loss.</li>
+<li>It waits for branches to be solved then issue predicted instructions into execution. It&rsquo;s definitely OK because all the branch instructions in RISC-V only needs 1-cycle to resolve in ALU, so it won&rsquo;t be any kind of performance loss.</li>
 </ul>
 <h3 id="execution-stage">Execution stage</h3>
 <ul>
@@ -126,7 +118,7 @@
 <li>Store operations are put into store buffer first, after going through MMU, to wait for commit. Multi-issue architecture makes store operations can be killed, therefore it cannot be write into D-Cache when issued.
 <ul>
 <li>Speculative buffer: used to store the non-committed instructions that could be potentially killed later</li>
-<li>Commit buffer: move the entry from speculative buffer into commit buffer as soon as it's committed at the commit stage</li>
+<li>Commit buffer: move the entry from speculative buffer into commit buffer as soon as it&rsquo;s committed at the commit stage</li>
 <li>Both buffers are working on physical address</li>
 </ul>
 </li>
@@ -146,7 +138,7 @@
 </li>
 </ul>
 <h2 id="plans">Plans</h2>
-<p>After reading through the architecture documents, I'm more and more curious about its implementation. I'll have to say that it really makes me rethink about my own design a lot. So my plan is to read through the whole project to learn from them.</p>
+<p>After reading through the architecture documents, I&rsquo;m more and more curious about its implementation. I&rsquo;ll have to say that it really makes me rethink about my own design a lot. So my plan is to read through the whole project to learn from them.</p>
 <p>Several good points of their project</p>
 <ul>
 <li>Support Verilator</li>
@@ -169,14 +161,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2018-12-01-network-on-chip/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Network-on-Chip Notes</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/industry/2018-12-04-riscv-summit-2018/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">RISC-V Summit 2018</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -186,7 +171,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

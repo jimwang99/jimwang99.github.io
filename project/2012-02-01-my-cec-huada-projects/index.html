@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>Some of My Projects in CEC Huada - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,12 +66,9 @@
 			<h1 class="post__title">Some of My Projects in CEC Huada</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2012-02-01T00:00:00">2012-02-01</time>
-</div>
-</div>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2012-02-01T00:00:00Z">2012-02-01</time></div></div>
 		</header><div class="content post__content clearfix">
-			<h1 id="ultrahighfrequency-rfid-design-and-low-power-optimization">Ultra-high-frequency RFID design and low power optimization</h1>
+			<h1 id="ultra-high-frequency-rfid-design-and-low-power-optimization">Ultra-high-frequency RFID design and low power optimization</h1>
 <p>Our team designed a UHF RFID product with TSMC 90nm process. My major responsibility was to reduce the power consumption to compete with world leading products. The whole RFID chip consumed about 10uW peak power.</p>
 <p>After ran power estimation and determined that the most energy consumed part was clock tree, due to input capacitance of flip-flops. I designed a new flip-flop with ultra-low input capacitance, which as only 4 clock transistors, using semi-dynamic technique. From post-layout simulation, the peak power is reduced by 10% to 15%, approximating the leading product on market. And this solution can be easily transferred to other chips and projects.</p>
 <p>To adapt this new DFF into design flow, I designed a set of Python scripts to (1) generate stimulus and netlist for HSPICE simulation; (2) gather data from HSPICE results, calculate and create Liberty timing file, because of lacking of automation tool.</p>
@@ -95,14 +90,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/project/2008-07-01-my-phd-projects/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Some of My Ph.D. Projects in Loongson, ICT, CAS</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/project/2017-08-01-my-marvell-projects/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Some of My Projects in Marvell</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -112,7 +100,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

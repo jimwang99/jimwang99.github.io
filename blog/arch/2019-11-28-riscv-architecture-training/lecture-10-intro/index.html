@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>[RISC-V Architecture Training] Introduction of RISC-V Open ISA - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">[RISC-V Architecture Training] Introduction of RISC-V Open ISA</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-11-27T00:00:00">2019-11-27</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -124,7 +116,7 @@
 <ul>
 <li>E.g. Alpha (DEC), SPARC (SUN), MIPS (now Wave), Power (IBM), ARM</li>
 </ul>
-<h2 id="what-is-risc1">What is RISC?</h2>
+<h2 id="what-is-risc-1">What is RISC?</h2>
 <ul>
 <li>John Hennessy &amp; David Patterson
 <ul>
@@ -139,8 +131,8 @@
 <p><img src="../image/arm-market-share-segments.png" alt="arm-market-share-segments"></p>
 <p>background-image: url(../image/money.jpg)</p>
 <h3 id="but-also-very-expensive">But also very expensive!</h3>
-<h2 id="arms-business-model-ip-licensing">ARM's business model: IP licensing</h2>
-<h3 id="arms-ip-ecosystem-cpucentric-customsoc-ip">ARM's IP eco-system: CPU-centric custom-SoC IP</h3>
+<h2 id="arms-business-model-ip-licensing">ARM&rsquo;s business model: IP licensing</h2>
+<h3 id="arms-ip-eco-system-cpu-centric-custom-soc-ip">ARM&rsquo;s IP eco-system: CPU-centric custom-SoC IP</h3>
 <p>CPU (Application/Real-time/eMbedded), GPU, DSP, fabric, cache, ISP, debug, etc.</p>
 <h3 id="license-fee--royalty">License fee + royalty</h3>
 <table>
@@ -183,25 +175,25 @@
 </li>
 <li>This license that allows you to implement your own ARM core. 10+ Millions?</li>
 </ul>
-<h2 id="riscv--open-source">RISC-V / open source</h2>
+<h2 id="risc-v--open-source">RISC-V / open source</h2>
 <h3 id="free-and-open-">Free and open !</h3>
 <ul>
 <li>No fee to use or modify</li>
 <li>Commercial usage
 <ul>
-<li>Don't need to open your modification or implementation</li>
+<li>Don&rsquo;t need to open your modification or implementation</li>
 </ul>
 </li>
 </ul>
 <h3 id="open-source-hardware">Open source hardware</h3>
-<h2 id="riscv--fundation">RISC-V / fundation</h2>
+<h2 id="risc-v--fundation">RISC-V / fundation</h2>
 <h3 id="httpwwwriscvorg"><a href="http://www.riscv.org">http://www.riscv.org</a></h3>
 <p><img src="../image/riscv-fundation-growth-history.png" alt="pic"></p>
-<h2 id="riscv--fundation1">RISC-V / fundation</h2>
+<h2 id="risc-v--fundation-1">RISC-V / fundation</h2>
 <p><img src="../image/riscv-fundation-platinum.png" alt="pic"></p>
 <p><a href="https://riscv.org/membership/?action=viewlistings">Full list of members</a></p>
-<h2 id="riscv--isa">RISC-V / ISA</h2>
-<h3 id="what-is-defined-and-not-defined-in-riscv-isa">What is defined and not defined in RISC-V ISA</h3>
+<h2 id="risc-v--isa">RISC-V / ISA</h2>
+<h3 id="what-is-defined-and-not-defined-in-risc-v-isa">What is defined and not defined in RISC-V ISA</h3>
 <h4 id="defined">Defined</h4>
 <ul>
 <li>Instruction set(s)</li>
@@ -220,7 +212,7 @@
 <li>Exception and interrupt</li>
 <li>Debug architecture</li>
 </ul>
-<h4 id="notdefined">Not-defined</h4>
+<h4 id="not-defined">Not-defined</h4>
 <ul>
 <li>Micro-architecture related details</li>
 <li>Implementation dependent details</li>
@@ -267,11 +259,11 @@
 <h2 id="nowadays--momentum-worldwide">Nowadays / momentum worldwide</h2>
 <h3 id="support-from-large-companies">Support from large companies</h3>
 <p><img src="../image/riscv-members.png" alt="pic"></p>
-<h3 id="obviously-thats-the-reason-we-are-here">Obviously, that's the reason we are here.</h3>
+<h3 id="obviously-thats-the-reason-we-are-here">Obviously, that&rsquo;s the reason we are here.</h3>
 <h2 id="ecosystem">Ecosystem</h2>
 <ul>
-<li>Different from traditional architecture that's owned/maintained by <strong>one company</strong>.</li>
-<li>It's more like Linux, owned by <strong>a fundation</strong>, maintained by <strong>a community</strong>.</li>
+<li>Different from traditional architecture that&rsquo;s owned/maintained by <strong>one company</strong>.</li>
+<li>It&rsquo;s more like Linux, owned by <strong>a fundation</strong>, maintained by <strong>a community</strong>.</li>
 </ul>
 <h3 id="commitee-and-work-groups">Commitee and Work groups</h3>
 <ul>
@@ -290,7 +282,7 @@
 <li>Marketing committee</li>
 </ul>
 <p><strong>Technical committee is open to everyone. Most of them have weekly meeting.</strong></p>
-<h2 id="ecosystem1">Ecosystem</h2>
+<h2 id="ecosystem-1">Ecosystem</h2>
 <h3 id="workshop--summit">Workshop &amp; summit</h3>
 <p>Up-coming/recent events:</p>
 <ul>
@@ -347,7 +339,7 @@
 <li>UltraSoC</li>
 </ul>
 <h2 id="ecosystem--hardware">Ecosystem / hardware</h2>
-<h3 id="open-source-hardware1">Open source hardware</h3>
+<h3 id="open-source-hardware-1">Open source hardware</h3>
 <ul>
 <li>
 <p>RocketChip</p>
@@ -387,7 +379,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="ecosystem--hardware1">Ecosystem / hardware</h2>
+<h2 id="ecosystem--hardware-1">Ecosystem / hardware</h2>
 <h3 id="commercial">Commercial</h3>
 <ul>
 <li>SiFive
@@ -416,7 +408,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="ecosystem--hardware2">Ecosystem / hardware</h2>
+<h2 id="ecosystem--hardware-2">Ecosystem / hardware</h2>
 <h3 id="others">Others</h3>
 <ul>
 <li>Google</li>
@@ -427,7 +419,7 @@
 </ul>
 <h2 id="ecosystem--chips-alliance">Ecosystem / CHIPS alliance</h2>
 <h3 id="a-project-hosted-by-the-linux-foundation">A project hosted by &ldquo;the Linux Foundation&rdquo;</h3>
-<h3 id="difference-vs-riscv-foundation">Difference vs RISC-V Foundation</h3>
+<h3 id="difference-vs-risc-v-foundation">Difference vs RISC-V Foundation</h3>
 <ul>
 <li>RISC-V is for ISA, not implementation</li>
 <li>CHIPS alliance hosts implementation around RISC-V</li>
@@ -482,12 +474,12 @@
 </li>
 </ul>
 <h2 id="ecosystem--openhw-group">Ecosystem / OpenHW group</h2>
-<h3 id="another-riscv-oriented-open-hardware-group">Another RISC-V oriented open hardware group</h3>
+<h3 id="another-risc-v-oriented-open-hardware-group">Another RISC-V oriented open hardware group</h3>
 <ul>
 <li>Similar to CHIPS alliance</li>
 </ul>
 <p><img src="../image/openhw-group.png" alt="pic"></p>
-<h3 id="open-source-riscv-cores">Open source RISC-V cores</h3>
+<h3 id="open-source-risc-v-cores">Open source RISC-V cores</h3>
 <ul>
 <li>PULP series CPU cores from ETH Zurich
 <ul>
@@ -506,21 +498,21 @@
 <li>Imperas: ISS (instruction set simulator)</li>
 <li>OneSpin: formal verification</li>
 </ul>
-<h2 id="ecosystem--riscv-in-china">Ecosystem / RISC-V in China</h2>
-<h3 id="riscv">中国RISC-V产业联盟</h3>
+<h2 id="ecosystem--risc-v-in-china">Ecosystem / RISC-V in China</h2>
+<h3 id="中国risc-v产业联盟">中国RISC-V产业联盟</h3>
 <p>CRVIC (China RISC-V Industry Consortium)</p>
 <ul>
 <li>上海市 + 企业</li>
 <li>Verisilicon</li>
 </ul>
-<h3 id="riscv1">中国开放指令生态(RISC-V)联盟</h3>
+<h3 id="中国开放指令生态risc-v联盟">中国开放指令生态(RISC-V)联盟</h3>
 <p>CRVA (China RISC-V Alliance)</p>
 <ul>
 <li>中科院计算所</li>
 <li>倪光南</li>
 </ul>
 <h2 id="resources">Resources</h2>
-<h3 id="riscv-github-httpsgithubcomriscv">RISC-V Github (<a href="https://github.com/riscv">https://github.com/riscv</a>)</h3>
+<h3 id="risc-v-github-httpsgithubcomriscv">RISC-V Github (<a href="https://github.com/riscv">https://github.com/riscv</a>)</h3>
 <ul>
 <li>Specification</li>
 <li>Toolchain</li>
@@ -550,7 +542,7 @@
 <li>Start from UCB as a student project</li>
 <li>Now widely supported by lots of companies worldwide</li>
 </ul>
-<h3 id="ecosystem2">Ecosystem</h3>
+<h3 id="ecosystem-2">Ecosystem</h3>
 <ul>
 <li>Software
 <ul>
@@ -581,14 +573,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[RISC-V Architecture Training] Privileged Architecture</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -598,7 +583,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>[RISC-V Architecture Training] Uncore - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">[RISC-V Architecture Training] Uncore</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-11-27T00:00:00">2019-11-27</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -110,7 +102,7 @@
 <li>For software &amp; timer interrupts</li>
 <li>Provide memory-mapped software/timer interrupt CSRs</li>
 </ul>
-<h2 id="plic-platformlevel-interrupt-controller">PLIC (platform-level interrupt controller)</h2>
+<h2 id="plic-platform-level-interrupt-controller-1">PLIC (platform-level interrupt controller)</h2>
 <h3 id="msi-vs-irq">MSI vs. IRQ</h3>
 <table>
 <thead>
@@ -130,7 +122,7 @@
 </tr>
 <tr>
 <td>Scalable, especially for morden large SoCs</td>
-<td>Don't scale well</td>
+<td>Don&rsquo;t scale well</td>
 </tr>
 <tr>
 <td>In-band access, easy for timing/clock/etc.</td>
@@ -139,7 +131,7 @@
 </tbody>
 </table>
 <p> </p>
-<h3 id="interrupt-controller-for-riscv-plic">Interrupt controller for RISC-V: PLIC</h3>
+<h3 id="interrupt-controller-for-risc-v-plic">Interrupt controller for RISC-V: PLIC</h3>
 <ul>
 <li>Simple &amp; easy to use</li>
 <li>IRQ-style interrupt aggregator</li>
@@ -189,7 +181,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="plic--softwarehardware-workflow">PLIC / software-hardware workflow</h2>
+<h2 id="plic--software-hardware-workflow">PLIC / software-hardware workflow</h2>
 <ol>
 <li>Signalled: IRQ from source to gateway</li>
 <li>Request: IRQ from gateway to core</li>
@@ -212,12 +204,12 @@
 <li>Memory-mapped CSR <code>msip</code> (machine-mode software interrupt pending)</li>
 </ul>
 <h2 id="clint--interrupt-handler">CLINT / interrupt handler</h2>
-<h3 id="timer-interrupt1">Timer interrupt</h3>
+<h3 id="timer-interrupt-1">Timer interrupt</h3>
 <ul>
 <li>Set timer: CPU read <code>mtime</code>, thenwrite <code>mtimecmp</code> with number larger than <code>mtime</code></li>
 <li>Claim: by writing <code>mtimecmp</code> with number smaller than <code>mtime</code> to disable/clear timer interrupt</li>
 </ul>
-<h3 id="software-interrupt1">Software interrupt</h3>
+<h3 id="software-interrupt-1">Software interrupt</h3>
 <ul>
 <li>Raise software interrupt: write memory-mapped CSR <code>msip</code></li>
 <li>Claim: clear <code>msip</code></li>
@@ -227,8 +219,8 @@
 <ul>
 <li>Non-ARM interconnect protocol
 <ul>
-<li>Cannot use ARM's open protocol: AMBA (CHI, ACE, AXI, AHB, APB)</li>
-<li>They are open, but fully controlled by ARM. Huge problem for ARM's rival.</li>
+<li>Cannot use ARM&rsquo;s open protocol: AMBA (CHI, ACE, AXI, AHB, APB)</li>
+<li>They are open, but fully controlled by ARM. Huge problem for ARM&rsquo;s rival.</li>
 </ul>
 </li>
 <li>Protocol framework to unify different usage scenarios
@@ -258,22 +250,22 @@
 <li>Support out-of-order design for better performance, while support ordering when needed</li>
 <li>Not always need 5 levels of priorities. Simple data transfer will only need 2</li>
 </ul>
-<h3 id="pointtopoint-masterslave-model">Point-to-point, master-slave model</h3>
+<h3 id="point-to-point-master-slave-model">Point-to-point, master-slave model</h3>
 <ul>
 <li>No race for ownership physically</li>
 </ul>
 <h2 id="tilelink--conformance-levels">TileLink / conformance levels</h2>
 <p>Corresponding to 3 usage scenarios</p>
-<h3 id="tlul-tilelink-uncached-lightweight">TL-UL (TileLink uncached light-weight)</h3>
+<h3 id="tl-ul-tilelink-uncached-light-weight">TL-UL (TileLink uncached light-weight)</h3>
 <ul>
 <li>Just read and write operations</li>
 </ul>
-<h3 id="tluh-tilelink-uncached-heavyweight">TL-UH (TileLink uncached heavy-weight)</h3>
+<h3 id="tl-uh-tilelink-uncached-heavy-weight">TL-UH (TileLink uncached heavy-weight)</h3>
 <ul>
 <li>Add burst, atomic support</li>
 <li>Add hint operations, such as prefetch</li>
 </ul>
-<h3 id="tlc-tilelink-cached">TL-C (TileLink cached)</h3>
+<h3 id="tl-c-tilelink-cached">TL-C (TileLink cached)</h3>
 <ul>
 <li>Add support to cache-coherent</li>
 </ul>
@@ -288,19 +280,19 @@
 <li>Channel has only one direction</li>
 <li>Physically independent</li>
 </ul>
-<h2 id="tilelink--tlul">TileLink / TL-UL</h2>
+<h2 id="tilelink--tl-ul">TileLink / TL-UL</h2>
 <ul>
 <li>Channel A: memory access request from master to slave</li>
 <li>Channel D: memory access response from slave to master</li>
 </ul>
 <p><img src="../image/tilelink-ul-operations.png" alt="pic"></p>
-<h2 id="tilelink--tluh">TileLink / TL-UH</h2>
+<h2 id="tilelink--tl-uh">TileLink / TL-UH</h2>
 <ul>
 <li>Arithmetic &amp; logical: atomic operation (read-modify-write)</li>
 <li>Hint: prefetch data with intent to read/write</li>
 </ul>
 <p><img src="../image/tilelink-uh-operations.png" alt="pic"></p>
-<h2 id="tilelink--tlc">TileLink / TL-C</h2>
+<h2 id="tilelink--tl-c">TileLink / TL-C</h2>
 <ul>
 <li>Acquire: master to slave
 <ul>
@@ -347,7 +339,7 @@
 <h2 id="tilelink--cache-coherency">TileLink / cache coherency</h2>
 <p>Hardware supported cache coherency will be discussed in later session</p>
 <h2 id="tilelink--products">TileLink / products</h2>
-<p>SiFive's CPU core complex is built on TileLink. So it's silicon proven.</p>
+<p>SiFive&rsquo;s CPU core complex is built on TileLink. So it&rsquo;s silicon proven.</p>
 <ul>
 <li>Crossbar, adapters, switch</li>
 <li>Snooping-based cache-coherent manager</li>
@@ -433,7 +425,7 @@
 <ul>
 <li>Abstract commands can be injected by debugger to direct CPU carrying out specific commands</li>
 <li>Access registers: GPR, CSR, FPR, etc.</li>
-<li>Quck access: quickly inject some commands for CPU to execute while it's still running</li>
+<li>Quck access: quickly inject some commands for CPU to execute while it&rsquo;s still running</li>
 <li>Access memory</li>
 </ul>
 <h2 id="debug--triggering">Debug / triggering</h2>
@@ -482,7 +474,7 @@
 <p> </p>
 <h3 id="discussion-what-is-in-your-pocket">Discussion: what is in your pocket?</h3>
 <h2 id="summary">Summary</h2>
-<p>Uncore includes blocks that support CPU core's functionality, but not peripheral.</p>
+<p>Uncore includes blocks that support CPU core&rsquo;s functionality, but not peripheral.</p>
 <p>.footnote[Note: ISA includes specs that defines software/hardware interface]</p>
 <h3 id="interrupt-controller">Interrupt controller</h3>
 <ul>
@@ -526,14 +518,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">ARM Training: Cortex Processor Behaviors</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[RISC-V Architecture Training] Schedule</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -543,7 +528,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

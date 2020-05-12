@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>Blogs - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="alternate" type="application/rss+xml" href="/blog/index.xml" title="When Moore's Law ENDS">
@@ -75,19 +73,135 @@
 	</div><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/note/2017-05-14-scala-first-look/" rel="bookmark">
+			Scala First Look
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-14T00:00:00Z">2017-05-14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Scala introduction course on LinkedIn. Not very useful, if not using it in real project.
+ introduction  short for Scalable language object-oriented + functional programming  everything is object  including numbers and functions does not include primitive data types   can pass/assign function: functional programming   seamless compatible with Java  runs on JVM, compile to JVM reuse Java libraries and types can call any Java code   REPL interactive shell  read, eval, print, loop    syntax  define: var (variable) vs val (value)  var defines variables that can be changed  but cannot change from one data type to another, ex.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/note/2017-05-05-genus-training/" rel="bookmark">
+			GENUS Training Notes
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T00:00:00Z">2017-05-05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		The following is my notes of GENUS training course on Cadence&rsquo;s training module
+ Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp; get_db legacy mode: set_attribute &amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&rsquo;s hier instances instances_seq: current module&rsquo;s sequential instances instances_cmb: current module&rsquo;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/industry/2017-04-30-snug-2017/" rel="bookmark">
+			SNUG Silicon Valley 2017 at Santa Clara Conventional Center
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-30T00:00:00Z">2017-04-30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Day 1 Morning  Paper from microsoft   Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&rsquo;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity  Panel: synthesis into the future   The disruption in advanced nodes (10nm/7nm)  Thermal: drives max freq; heating wires degreeds EM lifetime IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&rsquo;s specific attributes, such as thermal/IR to avoid analog/digital interference.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/tool/2018-11-01-wsl-tips/" rel="bookmark">
+			WSL (Windows Subsystem Linux) Tips
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-25T00:00:00Z">2017-04-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		To start gnome-terminal on WSL (Windows Subsystem for Linux) After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.
+To reinstall WSL you should do:
+&gt; lxrun /uninstall /full&gt; lxrun /installThen you will see
+&gt; lsb_release -aNo LSB modules are available.Distributor ID: UbuntuDescription: Ubuntu 16.04.2 LTSRelease: 16.04Codename: xenialSome X11 apps like xclocks works fine with Xming, but &ldquo;gnome-terminal&rdquo; still have some problem.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/tool/2017-04-24-install-python-offline/" rel="bookmark">
+			Install Python Offline
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-24T00:00:00Z">2017-04-24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		In general, things like Anaconda Server are designed to make this sort of workflow easier.
+Some suggested workarounds:
+ Reproduce your install on another machine with internet (save conda list &ndash;export to a file and conda install &ndash;file). Then use conda update on that machine to generate and download the packages. One tip that could be helpful is if you take several conda packages and tar them up into a flat tarball you can use conda to install that tarball and it will install all the packages.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/flow/2017-04-18-case-study-clock-skew-control/" rel="bookmark">
+			Case Study: Clock Skew Control
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-18T00:00:00Z">2017-04-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/flow/" rel="category">flow</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Question: how to control the clock skew between a group of clocks to be minimum, say less than 30ps, instead of utilizing useful skew? This case happens to our hard macros.
+A: in Innovus, use skew group
+set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock/NLVP_CKB } create_ccopt_skew_group \ -name min_skew_group \ -sources path/to/clock/source/CKB \ -sinks $min_skew_group \ -target_insertion_delay 0.500 \ -rank 1 -target_skew 0.000 set_ccopt_property constraints -skew_group min_skew_group ccopt 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/note/2017-04-01-innovus-training/" rel="bookmark">
+			INNOVUS Training Notes
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-01T00:00:00Z">2017-04-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		The following is my notes of INNOVUS training course on Cadence&rsquo;s training module
+ Module 02: overview  &ldquo;gift&rdquo; directory contains lots of useful scripts to help productivity Independent &ldquo;viewlog&rdquo; utility or &ldquo;Tools-&gt;Log Viewer&rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/industry/2017-03-23-deep-learning-in-siri/" rel="bookmark">
 			Deep learning and Siri by Alex Acero @ Apple
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-03-23T00:00:00">2017-03-23</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-03-23T00:00:00Z">2017-03-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
 	</span>
 </div></div>
 	</header>
@@ -104,13 +218,7 @@ Introduction to deep learning Improve on task T with respect to performance metr
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-03-21T00:00:00">2017-03-21</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-03-21T00:00:00Z">2017-03-21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
 	</span>
 </div></div>
 	</header>
@@ -130,13 +238,7 @@ Problems to think about when running works on GPU clusters memory is relatively 
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-03-21T00:00:00">2017-03-21</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-03-21T00:00:00Z">2017-03-21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ml/" rel="category">ML</a>
 	</span>
 </div></div>
 	</header>
@@ -147,181 +249,14 @@ GPU? Data movement between GPU and CPU is important
 infrastructure: spark/flink scheduler problem distributed file system
 Problems to think about when running works on GPU clusters memory is relatively small throughput, jobs are more than matrix math resource provisioning: how many resource we need? GPU/CPU/RAM GPU allocation per job Python &lt;-&gt; Java overhead, defeats the points of GPUs
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/industry/2017-02-21-ar-future/" rel="bookmark">
-			未来的AR应该是什么样子的？
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-02-21T00:00:00">2017-02-21</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		今天去参加一个AI的meetup，碰到了一个连续创业者。他介绍了自己正在做的事情：“改变现有的输入方式，不应该是人给机器输入指令，而应该是机器预测人的需求并作出相应的动作。”，这才是机器的未来。同时他提到输出界面应该AR（增强现实）这种类型的，而不应该是一个显示屏幕。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/industry/2017-01-20-deep-learning-for-image-and-video-processing/" rel="bookmark">
-			Note of &#34;Deep learning for image and video processing tutorial&#34;
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-01-21T00:00:00">2017-01-21</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		By Jon Shlens and George Toderici from Google Research @ 2017-01-20 Fri
-   History
-  Convolutional NN: old tech, why suddenly it works?
- Scale: 60M parameters      At least 60M +1 data point to fit these parameters
-  SIMD hardware (GPU)
-  Domain transfer
- Use trained CNN (with large data set) on some other applications with limited data set      CNN (convolutional neuron network)
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/industry/2017-01-21-smart-grid-revolution/" rel="bookmark">
-			智能用电的革命
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-01-21T00:00:00">2017-01-21</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		一场涉及普通消费者的智能用电革命正在悄然发生。加州政府近年来努力推动这项能源节约革命，在近三年来取得了快速的进步，得到了能源公司和电器制造商的广泛支持。
-Prosumer的概念 普通家庭以往是以单一的电力消费者出现的。但是近年来由于太阳能发电设备的推广力度不断加大，得到了大量消费者的欢迎和支持，催生了prosumer的概念，即producer + consumer。通过政府大力支持的贷款在自家屋顶安装太阳能板，并将发出的电力上网卖给电力公司，同时获得最低单价的用电费用。我的同事中就有不少安装了，或者正在考虑安装这样的设备，表明这样的project即使对于普通的三口或四口之家都是有利可图的。
-智能用电 电网消费有峰有谷，这样的波动由于各个小区域的消费习惯、天气变化等密切相关，而且往往变化迅速，即以分钟为单位反复变化。但是电网负载波动对于电网设备而言是有害的，所以电力公司有非常强烈的意愿通过某些技术手段来消弭这样的波动。这样就提出了“智能用电”的概念，也就是通过对普通的电器进行联网和远程自动控制，来调节小区域内部的用电波动。这样不仅能降低电网设备的负载，也能够有效利用能源，所以对于电力公司和政府决策者而言都是大有益处的。对于普通消费者而言，积极参与“智能用电”项目能够获得的利益来自于电力公司和政府政策补贴。
-举例说明，热水器和烘干机之类的设备是耗电量大户，但是往往对于时效性要求不是很高。如果能够加入特定的芯片进行联网控制其功率，取代恒定的大功率输出，就能够起到平衡电网负载波动的左右。代价可能仅仅是将原有的工作时间延长一些而已。再者就是目前越来越普及的电动车。对于普通使用者而言，充电时间远远大于使用时间。如果在足够的充电时间内自动选择电网负载最低的时段进行充电就能够获得最低的电价。
-另外的小事 加州一些城市的商业区或者大型shopping center开始自行安装一些电动车充电桩。这些充电桩在非高峰期（周末或者节假日）是免费的。这样就吸引一些开电动车的顾客来充电和消费。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/design/2017-01-18-generate-example/" rel="bookmark">
-			Register-based SRAM Read Circuit RTL Example using &#34;generate&#34;
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-01-18T00:00:00">2017-01-18</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/design/" rel="category">design</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Some parameterized example RTL code for register-based SRAM read circuit using &ldquo;generate&rdquo; feature
-parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [w-1:0] mem [d-1:0]; // FIFO memory array logic [d-1:0] rwl; // 1-hot read word line // read circuit using &quot;generate&quot; wire [w-1:0] word_or; genvar width, depth; generate for (width = 0; width &lt; w; width++) begin: rbit wire [d-1:0] bit_or; for (depth = 0; depth &lt; d; depth++) begin: rmux assign bit_or[depth] = mem[depth][width] &amp; rwl[depth]; end assign word_or[width] = |bit_or; end endgenerate reg [w-1:0] idout; always @ (negedge CKB) begin idout &lt;= word_or; end 
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/note/2017-01-10-systemverilog-for-design-note/" rel="bookmark">
-			SystemVerilog for Design Note
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-01-10T00:00:00">2017-01-10</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		This is my reading note of book &ldquo;SystemVerilog for Design (2nd edition)&quot;. As a non-full-time RTL designer, it has opened my mind. But still, I'm sad about the antient tool that we are using to design hardware.
- Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it's called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it's not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/flow/2017-01-09-case_study-scan-chain-problem-of-clock-generator-flip-flops/" rel="bookmark">
-			
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-01-09T00:00:00">2017-01-09</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/flow/" rel="category">flow</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		As shown in the schematic, we have some clock divider that divide root clock by half. While in scan mode, these flip-flops will be bypassed and treated as normal flip-flop that need to be inserted into the scan chain along with leaf flip-flops. But due to the nature of clock tree, clock divider will be in the upper stream and will have a much smaller clock insertion delay. Then it will cause large hold time violation from clock generator flip-flops to normal leaf flip-flops, and these violations cannot be fixed easily.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2016-12-31-brief-history-of-humankind-note/" rel="bookmark">
-			《人类简史》读书笔记
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2016-12-31T00:00:00">2016-12-31</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/life/" rel="category">life</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>对本书的评价：从理性客观中立的工科生思维出发，阐述事实，以科学的语言解释人类发展历程中的众多抉择和现象的成因。</p>
-	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/blog/page/4/">«</a>
-	<span class="pagination__item pagination__item--current">5/7</span>
+	<span class="pagination__item pagination__item--current">5/8</span>
 	<a class="pagination__item pagination__item--next btn" href="/blog/page/6/">»</a>
 </div>
-
 
 			</div>
 			
@@ -338,11 +273,11 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/list/">[RISC-V Architecture Training] Dec. 2019 verion: Full List</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/">[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/">[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/">[RISC-V Architecture Training] Introduction of RISC-V Open ISA</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/">[RISC-V Architecture Training] Privileged Architecture</a></li>
 		</ul>
 	</div>
 </div>
@@ -357,16 +292,19 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 				<a class="widget__link" href="/categories/design/">design</a>
 			</li>
 			<li class="widget__item">
+				<a class="widget__link" href="/categories/embedded/">embedded</a>
+			</li>
+			<li class="widget__item">
 				<a class="widget__link" href="/categories/flow/">flow</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/industry/">industry</a>
 			</li>
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/life/">life</a>
+				<a class="widget__link" href="/categories/lead/">lead</a>
 			</li>
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/low-power/">low-power</a>
+				<a class="widget__link" href="/categories/life/">life</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/ml/">ML</a>
@@ -398,6 +336,8 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 				<span>GitHub</span>
 			</a>
 		</div>
+
+		
 	</div>
 </div>
 </aside>
@@ -406,7 +346,7 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

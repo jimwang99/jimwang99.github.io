@@ -12,6 +12,41 @@
     
     
     <item>
+      <title>FANG: for decision making</title>
+      <link>/blog/lead/2020-05-11-fang-for-decision-making/</link>
+      <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/lead/2020-05-11-fang-for-decision-making/</guid>
+      <description>FANG Frame Problem statement &amp;amp; background
+Assumption Based on best info
+Non-goals Something NOT trying to solve
+Goals Something trying to solve
+Avoid  Too long of framing, not history lession Facts are not assumptions Goals/non-goals are for &amp;ldquo;solution&amp;rdquo; not &amp;ldquo;discussion&amp;rdquo;  Best Practice  FANG-only doc, stop short of proposals By taking away potential solutions helps converge on FANG first before solution  It takes aways the bias on potential solutions    </description>
+    </item>
+    
+    <item>
+      <title>How to become a multiplier?</title>
+      <link>/blog/lead/2020-02-17-how-to-become-a-multiplier/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/lead/2020-02-17-how-to-become-a-multiplier/</guid>
+      <description>From Cloning yourself isn&amp;rsquo;t an option by Camille Fournier
+ Everyone wants to have clones to help them with certain work.  But additive is linear improvements while multiplier is trying to achieve exponential improvements   Tech skills are foundamental, BUT  Availability bias: the more skilled a person is on a dimension, the more important they consider that activity to be. Be too afaid of being detached from tech is over exaggerated.</description>
+    </item>
+    
+    <item>
+      <title>Improve in engineering leadership?</title>
+      <link>/blog/lead/2020-02-17-improve-engineering-leadership/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/lead/2020-02-17-improve-engineering-leadership/</guid>
+      <description>From Self-evaluation and improvement in engineering leadership
+  How manage a remote/distributed teams?
+ Communication is the key.  TODO: setup regular communication channel.   Knowing the ppl you are working with, the methods of communication they prefer.    Peer support for growing as a leader?
+ It&amp;rsquo;s a lonely road, unlike engineering, there is not much sharing between peers. And different managers may have totally different problems.</description>
+    </item>
+    
+    <item>
       <title>[RISC-V Architecture Training] Dec. 2019 verion: Full List</title>
       <link>/blog/arch/2019-11-28-riscv-architecture-training/list/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
@@ -85,6 +120,16 @@ Uncore CPU core is fun, but uncore is the real work. Uncore / components  Cache 
     </item>
     
     <item>
+      <title>ARM AMBA Protocl</title>
+      <link>/blog/arch/2019-03-26-amba-protocol/</link>
+      <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-03-26-amba-protocol/</guid>
+      <description>AMBA (ARM Advanced Microcontroller Bus Architecture)
+1. AXI  AXI protocol is a point-to-point protocol  So no matter what the network channels really use, as long as its ports comply AXI protocol, IP can be connected to them   Main features  Separate read/write channels  Improve bandwidth   Multiple outstanding requests No strict timing relationship between address and data phases Unaligned data transfer Out-of-order transaction completion Implicitly incremental address for burst transfer   Transfer vs transaction  Transfer is a handshake: valid/ready Transaction is composed of multiple transfers  Active transaction: already started but not finished.</description>
+    </item>
+    
+    <item>
       <title>ARM Training: Cortex Processor Behaviors</title>
       <link>/blog/note/2019-03-18-cortex-processor-behaviors/</link>
       <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
@@ -92,6 +137,16 @@ Uncore CPU core is fun, but uncore is the real work. Uncore / components  Cache 
       <guid>/blog/note/2019-03-18-cortex-processor-behaviors/</guid>
       <description>Simple Sequential Execution Model After optimization, the result should be exactly the same with &amp;ldquo;simple sequential execution model&amp;rdquo;.
 Optimization: Instruction Fetching  Fetch multiple instructions from memory Branch  Predictive fetch and execution Branch caches Return stack  The &amp;ldquo;link register&amp;rdquo; value is pushed into the stack, and used/popped when return E.g. 4 entries of return stack, but my call stack is 5, then miss will happend. Then what to do?</description>
+    </item>
+    
+    <item>
+      <title>ARMv8 Architecture</title>
+      <link>/blog/arch/2019-03-18-armv8-architecture/</link>
+      <pubDate>Mon, 18 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2019-03-18-armv8-architecture/</guid>
+      <description>ARM online training note
+ 1. Introduction What is an architecture?  Instruction set Exception model Memory model Debug  ARMv8  AArch32 vs AArch64  AArch32: backward compatible to ARMv7 AArch64: fixed 32-bit instruction, new exception model, 64-bit virtual address    Priviledge and security model  4-level of privilege  EL0 &amp;lt; EL1 &amp;lt; EL2 &amp;lt; EL3, larger the higher privilege   2 security modes  Mixture of AArch32 and AArch64  Only 64-bit OS can host a mix of 32-bit and 64-bit apps 32-bit app can only be on lower EL level  2.</description>
     </item>
     
     <item>
@@ -121,7 +176,7 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
       
       <guid>/blog/arch/2019-01-30-arm-big-little/</guid>
       <description>https://developer.arm.com/technologies/big-little
-big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&#39;s a particular adaption to mobile devices usage.</description>
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&amp;rsquo;s a particular adaption to mobile devices usage.</description>
     </item>
     
     <item>
@@ -139,7 +194,7 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
       <pubDate>Tue, 29 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/life/2019-01-29-on-time-is-professional/</guid>
-      <description>Because I was job hunting recently, I&#39;ve got lots of appointments, either phone call or face-to-face. There are two HR&#39;s who gave me particularly deep impression, and they are on totally opposite end of professionalism.
+      <description>Because I was job hunting recently, I&amp;rsquo;ve got lots of appointments, either phone call or face-to-face. There are two HR&amp;rsquo;s who gave me particularly deep impression, and they are on totally opposite end of professionalism.
  A good example  Wheneven she wanted to arrange a phone call with me, she sent me emails in ahead to confirm time. Never call me directly without appointment. At the exact time of the appointment, ex.</description>
     </item>
     
@@ -171,13 +226,27 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
     </item>
     
     <item>
+      <title>Working with Device Tree (DOULOS)</title>
+      <link>/blog/embedded/2020-03-06-working-with-device-tree-doulos/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/embedded/2020-03-06-working-with-device-tree-doulos/</guid>
+      <description>Intro  Device tree: for non-discoverable hardware, included in BSP Source type  Old style: C code BSP, files compiled into the kernel New style: device-tree BSP -&amp;gt; device tree blob (load by boot loader)    Compilation In-tree vs. out-of-tree
+dtc command
+ convert .dts to .dtb, and backwards  Device tree syntax   devicetree.org
+  Nodes
+  Properties
+ Values    Root node = /</description>
+    </item>
+    
+    <item>
       <title>Static Site Generator</title>
       <link>/blog/tool/2019-01-19-static-site-generator/</link>
       <pubDate>Sat, 19 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/tool/2019-01-19-static-site-generator/</guid>
-      <description>Trying to find the perfect static site generator. Used to use Pelican, because it&#39;s written in Python. Also tried with Jekyll, the most popular candidate, because it&#39;s used by Github. Their common problems are
- Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&#39;t fit my understanding/requirement.  Now I&#39;m trying Hugo, which is written in Go, and it&#39;s really fast.</description>
+      <description>Trying to find the perfect static site generator. Used to use Pelican, because it&amp;rsquo;s written in Python. Also tried with Jekyll, the most popular candidate, because it&amp;rsquo;s used by Github. Their common problems are
+ Not intuitive enough. Seems like something programmer created for programmer. There are very restricted requirements of directory structure of the content. And they doesn&amp;rsquo;t fit my understanding/requirement.  Now I&amp;rsquo;m trying Hugo, which is written in Go, and it&amp;rsquo;s really fast.</description>
     </item>
     
     <item>
@@ -192,13 +261,24 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
     </item>
     
     <item>
+      <title>Hardware Security</title>
+      <link>/blog/industry/2019-01-07-hardware-security/</link>
+      <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/industry/2019-01-07-hardware-security/</guid>
+      <description>Keynote panel on RISC-V Summit 2018: opportunities and challenges in security for open source hardware   Complex systems tend to have bugs, so making it preparatory will make it more secure from attacks. But open source simple systems attract more eyes to review so that it becomes more and more secure over time.
+  Military and government customers want secret projects.
+  We need to change the way we design system</description>
+    </item>
+    
+    <item>
       <title>Huwcha Accelerator architecture</title>
       <link>/blog/arch/2019-01-03-hwacha-accelerator/</link>
       <pubDate>Thu, 03 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/arch/2019-01-03-hwacha-accelerator/</guid>
       <description>From the reading of this paper, &amp;ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&amp;rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
- We don&#39;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&#39;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&#39;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
+ We don&amp;rsquo;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&amp;rsquo;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&amp;ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&amp;rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&amp;rsquo;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?</description>
     </item>
     
     <item>
@@ -216,7 +296,7 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2018-12-07-systemc-tutorial/</guid>
-      <description>// Some simple example#include &amp;lt;systemc.h&amp;gt;SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	a;sc_in&amp;lt; sc_unit&amp;lt;8&amp;gt; &amp;gt;	b;sc_out&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	f;sc_in&amp;lt;bool&amp;gt;	clk;void func() {f.write( a.read() &amp;amp; b.read() );}SC_CTOR ( seq_and2 ) {SC_CTHREAD(func);sensitive &amp;lt;&amp;lt; clk.neg();}}Port &amp;amp; signal  Port  sc_in &amp;amp; sc_out .read() &amp;amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers</description>
+      <description>// Some simple example  #include &amp;lt;systemc.h&amp;gt; SC_MODULE (seq_and2 ) { // sequential AND2  sc_in&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	a; sc_in&amp;lt; sc_unit&amp;lt;8&amp;gt; &amp;gt;	b; sc_out&amp;lt; sc_uint&amp;lt;8&amp;gt; &amp;gt;	f; sc_in&amp;lt;bool&amp;gt;	clk; void func() { f.write( a.read() &amp;amp; b.read() ); } SC_CTOR ( seq_and2 ) { SC_CTHREAD(func); sensitive &amp;lt;&amp;lt; clk.neg(); } } Port &amp;amp; signal  Port  sc_in &amp;amp; sc_out .read() &amp;amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers</description>
     </item>
     
     <item>
@@ -225,8 +305,8 @@ Follow-up actions Find out what are your strength and weakness, using feedback a
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2018-12-04-riscv-summit-2018/</guid>
-      <description>My notes on RISC-V Summit 2018 at Santa Clara Conventional Center This year&#39;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.
-SiFive&#39;s biz model  Help customer to tape-out prototypes, and sell chips back to the customer.</description>
+      <description>My notes on RISC-V Summit 2018 at Santa Clara Conventional Center This year&amp;rsquo;s summit has many more participants than the last one, which means RISC-V is getting a lot of momentum around the world. Although most of the speeches are technology-detail-less propaganda thing, we still can find something useful out of it. And more importantly, talking to the engineers manning the booth is very interesting and information rich.
+SiFive&amp;rsquo;s biz model  Help customer to tape-out prototypes, and sell chips back to the customer.</description>
     </item>
     
     <item>
@@ -236,7 +316,7 @@ SiFive&#39;s biz model  Help customer to tape-out prototypes, and sell chips bac
       
       <guid>/blog/arch/2018-12-01-ariane-cpu/</guid>
       <description>Ariane Document
-Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&#39;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
+Architecture note PC gen stage  The fetching address for i-cache is always word-aligned.  Fetch stage   Its fetch stage doesn&amp;rsquo;t have much decoding work to do, only the necessary one to generate next PC. And it relies on its branch prediction to give out next PC.
   There is an internal FIFO with 2 entries to log the PC (and other meta-info) that was sent to i-cache, while waiting for its response.</description>
     </item>
     
@@ -258,7 +338,7 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
       <description>A piece of very precious memory
  Home &amp;ndash;&amp;gt; LEGOLAND   264 miles, 4 hours non-stop (with stop, 7:00AM to 12:00AM)
   Lunch at Wendy’s: 5821 Dennis McCarthy Dr, Lebec, CA 93243
- Wendy&#39;s is just another burger place. We ended up with Panda Express at the same rest area.    174 miles, 3 hours non-stop (with stop, 1:30PM to 4:30PM)
+ Wendy&amp;rsquo;s is just another burger place. We ended up with Panda Express at the same rest area.    174 miles, 3 hours non-stop (with stop, 1:30PM to 4:30PM)
   LEGOLAND Castle Hotel</description>
     </item>
     
@@ -329,7 +409,7 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&amp;#39;b00; end `end
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/blog/tool/2018-10-01-docker-tips/</guid>
-      <description>Dockerfile FROMubuntu:16.04COPY ./boot.sh /tmpCOPY ./hello.sh /tmpRUN /bin/bash /tmp/boot.shRUN /bin/bash /tmp/hello.shboot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wgetcd /tmpwget https://www.veripool.org/ftp/verilator-4.004.tgztar xf verilator*.tgzcd verilator*./configuremake # this step will take sometimemake installhello.sh cd /tmp/verilator*cd ./example/tracing_cmake# it will print out some log, and after finish it will generate a directory in the same directory named &amp;#34;logs&amp;#34; who needs to be saved after container exitDocker how-to notes create a docker image from Dockerfile docker build -t &amp;#34;$(name):$(tag)&amp;#34; .</description>
+      <description>Dockerfile FROMubuntu:16.04COPY ./boot.sh /tmpCOPY ./hello.sh /tmpRUN /bin/bash /tmp/boot.shRUN /bin/bash /tmp/hello.shboot.sh apt-get update; apt-get install -y make autoconf g++ flex bison wget cd /tmp wget https://www.veripool.org/ftp/verilator-4.004.tgz tar xf verilator*.tgz cd verilator* ./configure make # this step will take sometime make install hello.sh cd /tmp/verilator* cd ./example/tracing_c make # it will print out some log, and after finish it will generate a directory in the same directory named &amp;#34;logs&amp;#34; who needs to be saved after container exit Docker how-to notes create a docker image from Dockerfile docker build -t &amp;#34;$(name):$(tag)&amp;#34; .</description>
     </item>
     
     <item>
@@ -350,7 +430,7 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       
       <guid>/blog/note/2017-05-17-python-design-patterns-note/</guid>
       <description> The course is on Coursera
- understanding design patterns  what?  well-known solutions for recurring problems   why?  don&#39;t reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp;amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    </description>
+ understanding design patterns  what?  well-known solutions for recurring problems   why?  don&amp;rsquo;t reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp;amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    </description>
     </item>
     
     <item>
@@ -369,8 +449,8 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       <pubDate>Fri, 05 May 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-05-05-genus-training/</guid>
-      <description>The following is my notes of GENUS training course on Cadence&#39;s training module
- Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&#39;s hier instances instances_seq: current module&#39;s sequential instances instances_cmb: current module&#39;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.</description>
+      <description>The following is my notes of GENUS training course on Cadence&amp;rsquo;s training module
+ Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp;amp; get_db legacy mode: set_attribute &amp;amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&amp;rsquo;s hier instances instances_seq: current module&amp;rsquo;s sequential instances instances_cmb: current module&amp;rsquo;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.</description>
     </item>
     
     <item>
@@ -379,7 +459,7 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
       <pubDate>Sun, 30 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2017-04-30-snug-2017/</guid>
-      <description>Day 1 Morning  Paper from microsoft   Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&#39;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity  Panel: synthesis into the future   The disruption in advanced nodes (10nm/7nm)  Thermal: drives max freq; heating wires degreeds EM lifetime IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&#39;s specific attributes, such as thermal/IR to avoid analog/digital interference.</description>
+      <description>Day 1 Morning  Paper from microsoft   Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&amp;rsquo;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity  Panel: synthesis into the future   The disruption in advanced nodes (10nm/7nm)  Thermal: drives max freq; heating wires degreeds EM lifetime IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&amp;rsquo;s specific attributes, such as thermal/IR to avoid analog/digital interference.</description>
     </item>
     
     <item>
@@ -422,7 +502,7 @@ set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock
       <pubDate>Sat, 01 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-04-01-innovus-training/</guid>
-      <description>The following is my notes of INNOVUS training course on Cadence&#39;s training module
+      <description>The following is my notes of INNOVUS training course on Cadence&amp;rsquo;s training module
  Module 02: overview  &amp;ldquo;gift&amp;rdquo; directory contains lots of useful scripts to help productivity Independent &amp;ldquo;viewlog&amp;rdquo; utility or &amp;ldquo;Tools-&amp;gt;Log Viewer&amp;rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .</description>
     </item>
     
@@ -515,8 +595,8 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <pubDate>Tue, 10 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>/blog/note/2017-01-10-systemverilog-for-design-note/</guid>
-      <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&#39;m sad about the antient tool that we are using to design hardware.
- Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&#39;s called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&#39;s not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.</description>
+      <description>This is my reading note of book &amp;ldquo;SystemVerilog for Design (2nd edition)&amp;quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&amp;rsquo;m sad about the antient tool that we are using to design hardware.
+ Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&amp;rsquo;s called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&amp;rsquo;s not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.</description>
     </item>
     
     <item>
@@ -566,7 +646,7 @@ parameter d = 32; // FIFO depth parameter w = 64; // FIFO data bit-width logic [
       <pubDate>Sat, 06 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2016-08-06-observation-of-ic-industry/</guid>
-      <description>Recent consolidation progress is going so crazy, mostly because of the IC industry is becoming less and less profitable in every individual application fields. My perspective is that this is not just a consolidation of business itself, but a huge change of IC industry business model. There won&#39;t be so many application fields that needs different IC chips, no matter it&#39;s analog or digital. In analog world, more and more functionality will be replaced with digital as long as it can.</description>
+      <description>Recent consolidation progress is going so crazy, mostly because of the IC industry is becoming less and less profitable in every individual application fields. My perspective is that this is not just a consolidation of business itself, but a huge change of IC industry business model. There won&amp;rsquo;t be so many application fields that needs different IC chips, no matter it&amp;rsquo;s analog or digital. In analog world, more and more functionality will be replaced with digital as long as it can.</description>
     </item>
     
     <item>
@@ -633,7 +713,7 @@ Each element has a number of properties associated with it: a tag which is a str
       <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/life/2015-07-14-ask-remote-teams-to-create-daily-goals/</guid>
-      <description>More organizations are starting to adopt a remote work culture. But how do managers stay in sync with what their teams are doing when they can&#39;t see them? While it&#39;s important to define clear goals early on, you should let remote teams decide on the best paths to reach those goals. Rather than dictating each specific task, give them a vision to work on. Let them hold each other accountable, and ask them to assign themselves daily goals and provide weekly reports.</description>
+      <description>More organizations are starting to adopt a remote work culture. But how do managers stay in sync with what their teams are doing when they can&amp;rsquo;t see them? While it&amp;rsquo;s important to define clear goals early on, you should let remote teams decide on the best paths to reach those goals. Rather than dictating each specific task, give them a vision to work on. Let them hold each other accountable, and ask them to assign themselves daily goals and provide weekly reports.</description>
     </item>
     
     <item>
@@ -660,8 +740,8 @@ Each element has a number of properties associated with it: a tag which is a str
       <pubDate>Mon, 23 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>/blog/industry/2015-02-23-isscc-2015-evening-session/</guid>
-      <description>Bohr: moore&#39;s law for 50 years
- $mm^2$ is increasing since 130nm heterogeneous intergration: 3D chip is not a replacement of moore&#39;s law (quite opposite with Sehat) refocus on general purpose design    Hill: 21 century computer architecture
+      <description>Bohr: moore&amp;rsquo;s law for 50 years
+ $mm^2$ is increasing since 130nm heterogeneous intergration: 3D chip is not a replacement of moore&amp;rsquo;s law (quite opposite with Sehat) refocus on general purpose design    Hill: 21 century computer architecture
  21stcentruryarchitecturewhitepaper.pdf - instruction set is not going to be untouchable anymore - energy first - parallelism - specialization - cross-layout design - cross-cutting: break current layers with new interfaces - BREAK LAYERS - software bloat - PHP is 50x slower than BLAC - 3D stack - how to address thermal problem?</description>
     </item>
     
@@ -695,7 +775,7 @@ The topic about &amp;ldquo;present&amp;rdquo; was the first chapter I read the s
       
       <guid>/blog/flow/2014-06-06-my-experience-with-custom-digital-design/</guid>
       <description>Background This is the summary of my experience from project LBRAM in Marvell in the year of 2014.
-The first thing: discuss timing/area/power SPEC&#39;s in details Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC&#39;s, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC&#39;s even if they are not accurate.</description>
+The first thing: discuss timing/area/power SPEC&amp;rsquo;s in details Most of the time, because custom design takes lots of time, it often starts ahead of chips. At that time, the design SPEC&amp;rsquo;s, such as timing/area/power, are not clear. So try to discuss it with your supervisor or the project leader or your customer to define these SPEC&amp;rsquo;s even if they are not accurate.</description>
     </item>
     
     <item>
@@ -704,18 +784,6 @@ The first thing: discuss timing/area/power SPEC&#39;s in details Most of the tim
       <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
       
       <guid>/blog/design/2009-09-07-survey-of-low-power-design-chinese/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;低功耗设计的最根本驱动力是集成电路芯片的功耗随着工艺的进步不仅没有下降反而不断上涨。因为晶体管速度和集成度的上升速度超过了电路单次翻转所消耗能量的下降速度，所以单位面积芯片的功耗在迅速上升。而根据ITRS的预测，固定电源供电设备和移动设备中芯片的功耗发展趋势如图表 1所示。从中我们不难看出，各类芯片的各种功耗都在不断飞速上升，已经成为芯片设计者不容小觑的问题。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Survey of Low Power Design</title>
-      <link>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</link>
-      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/low-power/2009-09-07-survey-of-low-power-design-chinese/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;从2017年初的观点来看，这篇报告的部分内容过时了，但是整体结构还是比较适合的。希望今年有时间能够出一版更新的版本。&lt;/p&gt;
 &lt;/blockquote&gt;

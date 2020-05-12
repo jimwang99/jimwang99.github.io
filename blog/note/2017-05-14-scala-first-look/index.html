@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>Scala First Look - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">Scala First Look</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-05-14T00:00:00">2017-05-14</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-14T00:00:00Z">2017-05-14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -191,23 +183,23 @@
 <ul>
 <li>call by value vs call by name</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> something<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">def</span> something<span style="color:#f92672">()</span> <span style="color:#66d9ef">=</span> <span style="color:#f92672">{</span>
   <span style="color:#ae81ff">5</span> <span style="color:#75715e">// return value
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
 de callByValue<span style="color:#f92672">(</span>x<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=</span> <span style="color:#f92672">{</span>  <span style="color:#75715e">// something is run once, and pass return value &#34;5&#34; to x
 </span><span style="color:#75715e"></span>  println<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;x1 = &#34;</span> <span style="color:#f92672">+</span> x<span style="color:#f92672">)</span>
   println<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;x2 = &#34;</span> <span style="color:#f92672">+</span> x<span style="color:#f92672">)</span>
 <span style="color:#f92672">}</span>
-callByValue<span style="color:#f92672">(</span>something<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+callByValue<span style="color:#f92672">(</span>something<span style="color:#f92672">())</span>
 <span style="color:#66d9ef">def</span> callByName<span style="color:#f92672">(</span>x<span style="color:#66d9ef">:</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Int</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=</span> <span style="color:#f92672">{</span>
   println<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;x1 = &#34;</span> <span style="color:#f92672">+</span> x<span style="color:#f92672">)</span>  <span style="color:#75715e">// something ran once
 </span><span style="color:#75715e"></span>  println<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;x2 = &#34;</span> <span style="color:#f92672">+</span> x<span style="color:#f92672">)</span>  <span style="color:#75715e">// something ran again
 </span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
-callByName<span style="color:#f92672">(</span>something<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+callByName<span style="color:#f92672">(</span>something<span style="color:#f92672">())</span>
 </code></pre></div><ul>
 <li>anonymous function</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#f92672">(</span><span style="color:#f92672">(</span>x<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=&gt;</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">)</span><span style="color:#f92672">(</span><span style="color:#ae81ff">5</span><span style="color:#f92672">)</span>  <span style="color:#75715e">//&gt; res0: Int = 6
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#f92672">((</span>x<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">=&gt;</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">)(</span><span style="color:#ae81ff">5</span><span style="color:#f92672">)</span>  <span style="color:#75715e">//&gt; res0: Int = 6
 </span></code></pre></div><ul>
 <li>high order function</li>
 </ul>
@@ -265,14 +257,7 @@ callByName<span style="color:#f92672">(</span>something<span style="color:#f9267
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/note/2017-05-05-genus-training/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">GENUS Training Notes</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/note/2017-05-17-python-design-patterns-note/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Course Note of *Python: Design Patterns*</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -282,7 +267,7 @@ callByName<span style="color:#f92672">(</span>something<span style="color:#f9267
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

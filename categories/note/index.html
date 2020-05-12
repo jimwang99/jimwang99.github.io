@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>note - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="alternate" type="application/rss+xml" href="/categories/note/index.xml" title="When Moore's Law ENDS">
@@ -75,13 +73,7 @@
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-03-18T00:00:00">2019-03-18</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-03-18T00:00:00Z">2019-03-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
@@ -98,18 +90,12 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-12-07T00:00:00">2018-12-07</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-12-07T00:00:00Z">2018-12-07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		// Some simple example#include &lt;systemc.h&gt;SC_MODULE (seq_and2 ) { // sequential AND2 sc_in&lt; sc_uint&lt;8&gt; &gt;	a;sc_in&lt; sc_unit&lt;8&gt; &gt;	b;sc_out&lt; sc_uint&lt;8&gt; &gt;	f;sc_in&lt;bool&gt;	clk;void func() {f.write( a.read() &amp; b.read() );}SC_CTOR ( seq_and2 ) {SC_CTHREAD(func);sensitive &lt;&lt; clk.neg();}}Port &amp; signal  Port  sc_in &amp; sc_out .read() &amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers
+		// Some simple example  #include &lt;systemc.h&gt; SC_MODULE (seq_and2 ) { // sequential AND2  sc_in&lt; sc_uint&lt;8&gt; &gt;	a; sc_in&lt; sc_unit&lt;8&gt; &gt;	b; sc_out&lt; sc_uint&lt;8&gt; &gt;	f; sc_in&lt;bool&gt;	clk; void func() { f.write( a.read() &amp; b.read() ); } SC_CTOR ( seq_and2 ) { SC_CTHREAD(func); sensitive &lt;&lt; clk.neg(); } } Port &amp; signal  Port  sc_in &amp; sc_out .read() &amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -120,19 +106,13 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-05-17T00:00:00">2017-05-17</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-17T00:00:00Z">2017-05-17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		 The course is on Coursera
- understanding design patterns  what?  well-known solutions for recurring problems   why?  don't reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    
+ understanding design patterns  what?  well-known solutions for recurring problems   why?  don&rsquo;t reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -143,13 +123,7 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-05-14T00:00:00">2017-05-14</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-14T00:00:00Z">2017-05-14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
@@ -166,19 +140,13 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-05-05T00:00:00">2017-05-05</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T00:00:00Z">2017-05-05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		The following is my notes of GENUS training course on Cadence's training module
- Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp; get_db legacy mode: set_attribute &amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module's hier instances instances_seq: current module's sequential instances instances_cmb: current module's combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.
+		The following is my notes of GENUS training course on Cadence&rsquo;s training module
+ Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp; get_db legacy mode: set_attribute &amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&rsquo;s hier instances instances_seq: current module&rsquo;s sequential instances instances_cmb: current module&rsquo;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -189,18 +157,12 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-04-01T00:00:00">2017-04-01</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-01T00:00:00Z">2017-04-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		The following is my notes of INNOVUS training course on Cadence's training module
+		The following is my notes of INNOVUS training course on Cadence&rsquo;s training module
  Module 02: overview  &ldquo;gift&rdquo; directory contains lots of useful scripts to help productivity Independent &ldquo;viewlog&rdquo; utility or &ldquo;Tools-&gt;Log Viewer&rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .
 	</div>
 </article><article class="list__item post">
@@ -212,19 +174,13 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-01-10T00:00:00">2017-01-10</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-01-10T00:00:00Z">2017-01-10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		This is my reading note of book &ldquo;SystemVerilog for Design (2nd edition)&quot;. As a non-full-time RTL designer, it has opened my mind. But still, I'm sad about the antient tool that we are using to design hardware.
- Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it's called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it's not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.
+		This is my reading note of book &ldquo;SystemVerilog for Design (2nd edition)&quot;. As a non-full-time RTL designer, it has opened my mind. But still, I&rsquo;m sad about the antient tool that we are using to design hardware.
+ Chapter 2: SystemVerilog Declaration Spaces Package  Verilog shortage: no global declaration package ... endpackage  share user-defined type definitions across multiple modules independent of modules parameters cannot be redefined  in package, parameter is similar to localparam, cos in module localparam cannot be directly redefined while instantiation     referencing  :: the scope resolution operator  package_name::package_member   use import to import package into current space  import package_name::package_member  TIPS: importing an enumerated type definition will not import the labels automatically   import package_name::*  what is used will be imported     $unit declaration space   TIPS: synthesis guide  tasks and functions must be automatic  storage for automatic task/function is allocated each time it&rsquo;s called   cannot use static variables, which are supposed to be shared by all instances    $unit: compilation-unit declarations  declaration space outside of package/module/interface/program  BUT it&rsquo;s not global   if put variables and nets in $unit  source code order can affect the usage of a declaration external to the module   each compilation has one $unit  single-file compilation multiple-file compilation: source order is tricky   TIPS: coding guide  DONOT make any declarations in $unit space, only import packages into $unit ILLEGAL to import the same package more than once into the same $unit NOTE: donot work for global variables, static task/function    // filename: def.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -235,13 +191,7 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2015-10-20T00:00:00">2015-10-20</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-20T00:00:00Z">2015-10-20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
 	</span>
 </div></div>
 	</header>
@@ -267,11 +217,11 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/list/">[RISC-V Architecture Training] Dec. 2019 verion: Full List</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/">[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/">[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/">[RISC-V Architecture Training] Introduction of RISC-V Open ISA</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/">[RISC-V Architecture Training] Privileged Architecture</a></li>
 		</ul>
 	</div>
 </div>
@@ -286,16 +236,19 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 				<a class="widget__link" href="/categories/design/">design</a>
 			</li>
 			<li class="widget__item">
+				<a class="widget__link" href="/categories/embedded/">embedded</a>
+			</li>
+			<li class="widget__item">
 				<a class="widget__link" href="/categories/flow/">flow</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/industry/">industry</a>
 			</li>
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/life/">life</a>
+				<a class="widget__link" href="/categories/lead/">lead</a>
 			</li>
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/low-power/">low-power</a>
+				<a class="widget__link" href="/categories/life/">life</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/ml/">ML</a>
@@ -327,6 +280,8 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 				<span>GitHub</span>
 			</a>
 		</div>
+
+		
 	</div>
 </div>
 </aside>
@@ -335,7 +290,7 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>

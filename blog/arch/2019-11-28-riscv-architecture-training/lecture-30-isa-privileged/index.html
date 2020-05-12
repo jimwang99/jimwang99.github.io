@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-us">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,6 @@
 	<title>[RISC-V Architecture Training] Privileged Architecture - When Moore&#39;s Law ENDS</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-	
-	
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
@@ -68,13 +66,7 @@
 			<h1 class="post__title">[RISC-V Architecture Training] Privileged Architecture</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-11-27T00:00:00">2019-11-27</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -142,7 +134,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="privileged-architecture--software-stack-layers1">Privileged architecture / software stack layers</h2>
+<h2 id="privileged-architecture--software-stack-layers-1">Privileged architecture / software stack layers</h2>
 <p><img src="../image/privileged-arch-layers.png" alt="pic"></p>
 <table>
 <thead>
@@ -254,7 +246,7 @@
 </li>
 </ul>
 <p><img src="../image/virtual-memory-page-table.png" alt="pic"></p>
-<h2 id="virtual-memory--riscv">Virtual memory / RISC-V</h2>
+<h2 id="virtual-memory--risc-v">Virtual memory / RISC-V</h2>
 <ul>
 <li>Finest granularity of page size if 4KiB
 <ul>
@@ -270,7 +262,7 @@
 </li>
 <li>Hardware PTW (page-table walker)
 <ul>
-<li>PTW is mechanism to go through the page tables to find target virtual address's physical address</li>
+<li>PTW is mechanism to go through the page tables to find target virtual address&rsquo;s physical address</li>
 </ul>
 </li>
 <li>Software TLB (translation lookaside buffer) refill
@@ -331,7 +323,7 @@
 <p><img src="../image/virtual-memory-address-translation.png" alt="pic"></p>
 <h2 id="virtual-memory--page-replacement">Virtual memory / page replacement</h2>
 <ul>
-<li>Physical memory is not unlimited, when it's full, old page needs to be swapped out to external storage</li>
+<li>Physical memory is not unlimited, when it&rsquo;s full, old page needs to be swapped out to external storage</li>
 <li>In RISC-V page replacement is managed by software
 <ul>
 <li>When a page is used but its not currently in physical memory, raise &ldquo;page fault exception&rdquo; to involve software</li>
@@ -353,14 +345,14 @@
 <h2 id="virtual-memory--sv48">Virtual memory / SV48</h2>
 <p><img src="../image/virtual-memory-sv48.png" alt="pic"></p>
 <h2 id="pmp-physical-memory-protection">PMP (physical memory protection)</h2>
-<h3 id="why1">Why?</h3>
+<h3 id="why-1">Why?</h3>
 <ul>
 <li>If without full featured OS, virtual memory is not efficient.</li>
 <li>Embedded systems, with RTOS (real-time OS), still need memory protection to isolate user application from accessing kernel space</li>
 </ul>
 <h3 id="pmp-add-rwx-permissions-to-pmp-regions">PMP: add R/W/X permissions to PMP regions</h3>
 <ul>
-<li>By default, S/U mode doesn't have permission</li>
+<li>By default, S/U mode doesn&rsquo;t have permission</li>
 <li>Num of regions is up to 16, aligned to 2^N</li>
 <li>Higher priority than virtual memory protection
 <ul>
@@ -381,7 +373,7 @@
 <li>&hellip;</li>
 </ul>
 <p>Attributes can be programmable</p>
-<p>.footnote[Note: RocketChip doesn't support PMA]</p>
+<p>.footnote[Note: RocketChip doesn&rsquo;t support PMA]</p>
 <h2 id="interrupt-and-exception">Interrupt and exception</h2>
 <h3 id="difference">Difference?</h3>
 <ul>
@@ -525,14 +517,7 @@
 	</div>
 </div>
 
-<nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[RISC-V Architecture Training] Schedule</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[RISC-V Architecture Training] Introduction of RISC-V Open ISA</p></a>
-	</div>
-</nav>
+
 
 
 			</div>
@@ -542,7 +527,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Jim Wang.
+			&copy; 2020 Jim Wang.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 		</div>
 	</div>
