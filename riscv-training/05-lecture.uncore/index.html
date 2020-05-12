@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] Uncore - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] Uncore</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<p>&ndash;</p>
+<h2 id="uncore">Uncore</h2>
+<h3 id="cpu-core-is-fun-but-uncore-is-the-real-work">CPU core is fun, but uncore is the real work.</h3>
+<h2 id="uncore--components">Uncore / components</h2>
+<ul>
+<li>Cache (already discussed)</li>
+<li>Interrupt controller</li>
+<li>Network Fabric</li>
+<li>Debug</li>
+</ul>
+<p><img src="../image/uncore-diagram.png" alt="pic"></p>
+<h2 id="interrupt-recap">Interrupt recap</h2>
+<p>3 types of interrupts</p>
+<ul>
+<li>External: peripheral devices</li>
+<li>Software: inter-processor interrupt</li>
+<li>Timer: timely schedule tasks</li>
+</ul>
+<h3 id="plic-platform-level-interrupt-controller">PLIC (platform level interrupt controller)</h3>
+<ul>
+<li>For external interrupts</li>
+<li>Aggregation of multiple external interrupts
+<ul>
+<li>Provide enable/priority</li>
+</ul>
+</li>
+</ul>
+<h3 id="clint-core-level-interruptor">CLINT (core level interruptor)</h3>
+<ul>
+<li>For software &amp; timer interrupts</li>
+<li>Provide memory-mapped software/timer interrupt CSRs</li>
+</ul>
+<h2 id="plic-platform-level-interrupt-controller-1">PLIC (platform-level interrupt controller)</h2>
+<h3 id="msi-vs-irq">MSI vs. IRQ</h3>
+<table>
+<thead>
+<tr>
+<th>MSI (message signaled interrupt)</th>
+<th>IRQ (physical wired interrupt)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relatively newer</td>
+<td>Traditional and easy to understand</td>
+</tr>
+<tr>
+<td>More complex device and interrupt controller</td>
+<td>Simple to implement. Widely supported</td>
+</tr>
+<tr>
+<td>Scalable, especially for morden large SoCs</td>
+<td>Don&rsquo;t scale well</td>
+</tr>
+<tr>
+<td>In-band access, easy for timing/clock/etc.</td>
+<td>Out-of-band, nightmare for physical design if many</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="interrupt-controller-for-risc-v-plic">Interrupt controller for RISC-V: PLIC</h3>
+<ul>
+<li>Simple &amp; easy to use</li>
+<li>IRQ-style interrupt aggregator</li>
+<li>Support programmable priority and enable</li>
+<li>Support multiple source and multiple target</li>
+</ul>
+<h2 id="plic--function-diagram">PLIC / function diagram</h2>
+<p>IRQ-style interrupt aggregator that support <strong>enable/priority</strong> and <strong>claim/complete</strong> flow</p>
+<ul>
+<li>Function components
+<ul>
+<li>Gateway
+<ul>
+<li>Forward enabled interrupts</li>
+<li>Stop further interrupts if current one is not claimed</li>
+</ul>
+</li>
+<li>PLIC core
+<ul>
+<li>Order interrupts by their priority</li>
+<li>Filter interrupt with priority threshold</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/plic-diagram.png" alt="pic"></p>
+<h2 id="plic--configurations">PLIC / configurations</h2>
+<ul>
+<li>
+<p>Interrupt enable</p>
+<ul>
+<li>Every interrupt initiator has an enable bit</li>
+</ul>
+</li>
+<li>
+<p>Interrupt priority</p>
+<ul>
+<li>Every interrupt initiator has a priority level assigned. By default 8 levels, the larger the number the higher priority it has</li>
+<li>Level 0 is reserved for “never interrupt”</li>
+</ul>
+</li>
+<li>
+<p>Priority threshold</p>
+<ul>
+<li>Only interrupts have higher priorities will presented to target</li>
+</ul>
+</li>
+</ul>
+<h2 id="plic--software-hardware-workflow">PLIC / software-hardware workflow</h2>
+<ol>
+<li>Signalled: IRQ from source to gateway</li>
+<li>Request: IRQ from gateway to core</li>
+<li>Notification: IRQ assert from core to target</li>
+<li>Claim: memory read from target to core, start trap handler</li>
+<li>Response: IRQ deassert from core to target</li>
+<li>&hellip; (waiting for trap handler to finish)</li>
+<li>Complete: memory write from target to core</li>
+</ol>
+<p><img src="../image/plic-workflow.png" alt="pic"></p>
+<h2 id="plic--interrupt-handler">PLIC / interrupt handler</h2>
+<p><img src="../image/plic-interrup-handler.png" alt="pic"></p>
+<h2 id="clint">CLINT</h2>
+<h3 id="timer-interrupt">Timer interrupt</h3>
+<ul>
+<li>Memory-mapped CSR <code>mtime</code> and <code>mtimecmp</code></li>
+</ul>
+<h3 id="software-interrupt">Software interrupt</h3>
+<ul>
+<li>Memory-mapped CSR <code>msip</code> (machine-mode software interrupt pending)</li>
+</ul>
+<h2 id="clint--interrupt-handler">CLINT / interrupt handler</h2>
+<h3 id="timer-interrupt-1">Timer interrupt</h3>
+<ul>
+<li>Set timer: CPU read <code>mtime</code>, thenwrite <code>mtimecmp</code> with number larger than <code>mtime</code></li>
+<li>Claim: by writing <code>mtimecmp</code> with number smaller than <code>mtime</code> to disable/clear timer interrupt</li>
+</ul>
+<h3 id="software-interrupt-1">Software interrupt</h3>
+<ul>
+<li>Raise software interrupt: write memory-mapped CSR <code>msip</code></li>
+<li>Claim: clear <code>msip</code></li>
+</ul>
+<h2 id="tilelink">TileLink</h2>
+<h3 id="goal-of-tilelink">Goal of TileLink</h3>
+<ul>
+<li>Non-ARM interconnect protocol
+<ul>
+<li>Cannot use ARM&rsquo;s open protocol: AMBA (CHI, ACE, AXI, AHB, APB)</li>
+<li>They are open, but fully controlled by ARM. Huge problem for ARM&rsquo;s rival ememy</li>
+<li>Patent protection issue</li>
+</ul>
+</li>
+<li>Protocol framework to unify different usage scenarios
+<ul>
+<li>Clean slate, start from scratch, learn from priors</li>
+<li>Decouple message protocol from wire protocol
+<ul>
+<li>Even support off-chip connection</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Simple &amp; hardware-friendly</li>
+</ul>
+<p>TileLink is also developed inside UCB BAR.</p>
+<p>TileLink is not <strong>tied</strong> with RISC-V. RocketChip uses TileLink.</p>
+<h2 id="tilelink--overview">TileLink / overview</h2>
+<h3 id="different-usage-scenarios">Different usage scenarios</h3>
+<ul>
+<li>Point-to-point simple protocol for data transfer</li>
+<li>More complicated data transfer with burst, atomic support</li>
+<li>Cache-coherent hardware support</li>
+</ul>
+<h3 id="5-levels-of-prioritieschannels-a-b-c-d-e">5 levels of priorities/channels: A, B, C, D, E</h3>
+<ul>
+<li>Avoid deadlock: acknowledges have higher priority</li>
+<li>Support out-of-order design for better performance, while support ordering when needed</li>
+<li>Not always need 5 levels of priorities. Simple data transfer will only need 2</li>
+</ul>
+<h3 id="point-to-point-master-slave-model">Point-to-point, master-slave model</h3>
+<ul>
+<li>No race for ownership physically</li>
+</ul>
+<h2 id="tilelink--conformance-levels">TileLink / conformance levels</h2>
+<p>Corresponding to 3 usage scenarios</p>
+<h3 id="tl-ul-tilelink-uncached-light-weight">TL-UL (TileLink uncached light-weight)</h3>
+<ul>
+<li>Just read and write operations</li>
+</ul>
+<h3 id="tl-uh-tilelink-uncached-heavy-weight">TL-UH (TileLink uncached heavy-weight)</h3>
+<ul>
+<li>Add burst, atomic support</li>
+<li>Add hint operations, such as prefetch</li>
+</ul>
+<h3 id="tl-c-tilelink-cached">TL-C (TileLink cached)</h3>
+<ul>
+<li>Add support to cache-coherent</li>
+</ul>
+<h2 id="tilelink--channel-priorities">TileLink / channel priorities</h2>
+<h3 id="channel-a-b-c-d-e">Channel A, B, C, D, E</h3>
+<ul>
+<li>Each channel has its specified priority
+<ul>
+<li>In the order of \(A&lt;B&lt;C&lt;D&lt;E\)</li>
+</ul>
+</li>
+<li>Channel has only one direction</li>
+<li>Physically independent</li>
+</ul>
+<h2 id="tilelink--tl-ul">TileLink / TL-UL</h2>
+<ul>
+<li>Channel A: memory access request from master to slave</li>
+<li>Channel D: memory access response from slave to master</li>
+</ul>
+<p><img src="../image/tilelink-ul-operations.png" alt="pic"></p>
+<h2 id="tilelink--tl-uh">TileLink / TL-UH</h2>
+<ul>
+<li>Arithmetic &amp; logical: atomic operation (read-modify-write)</li>
+<li>Hint: prefetch data with intent to read/write</li>
+</ul>
+<p><img src="../image/tilelink-uh-operations.png" alt="pic"></p>
+<h2 id="tilelink--tl-c">TileLink / TL-C</h2>
+<ul>
+<li>Acquire: master to slave
+<ul>
+<li>To obtain cache block to make it local, or write permission of a cache block it already has</li>
+</ul>
+</li>
+<li>Grand: slave to master
+<ul>
+<li>As a response to acquire</li>
+</ul>
+</li>
+<li>Probe: slave to master
+<ul>
+<li>To query or modify the permission of cache</li>
+</ul>
+</li>
+<li>Release: master to slave
+<ul>
+<li>To downgrade its permission of a cache block</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/tilelink-c-operations.png" alt="pic"></p>
+<h2 id="tilelink--wire-protocol">TileLink / wire protocol</h2>
+<ul>
+<li>Physically independent channel for each priority (A/B/C/D/E)</li>
+<li>Ready-valid hand-shaking protocol
+<ul>
+<li>The waiting time could be arbitrary</li>
+</ul>
+</li>
+<li>Burst transmissions + serialization (variable bus width)
+<ul>
+<li>Between burst beats, only data field changes</li>
+<li>Size must align with 2^N, the size field is just the N</li>
+<li>Number of beats is calculated from size, no special indicator</li>
+</ul>
+</li>
+</ul>
+<h2 id="tilelink--memory-read-example">TileLink / memory read example</h2>
+<p><img src="../image/tilelink-memory-read-waveform.png" alt="pic"></p>
+<h2 id="tilelink--memory-write-example">TileLink / memory write example</h2>
+<p><img src="../image/tilelink-memory-write-waveform.png" alt="pic"></p>
+<h2 id="tilelink--cache-coherency">TileLink / cache coherency</h2>
+<p>Hardware supported cache coherency will be discussed in later session</p>
+<h2 id="tilelink--products">TileLink / products</h2>
+<p>SiFive&rsquo;s CPU core complex is built on TileLink. So it&rsquo;s silicon proven.</p>
+<ul>
+<li>Crossbar, adapters, switch</li>
+<li>Snooping-based cache-coherent manager</li>
+<li>Bridges to AMBA protocol</li>
+</ul>
+<p><a href="https://github.com/chipsalliance/rocket-chip/tree/master/src/main/scala/tilelink">https://github.com/chipsalliance/rocket-chip/tree/master/src/main/scala/tilelink</a></p>
+<p> </p>
+<p><strong>Problem? All in Chisel &hellip;</strong></p>
+<h2 id="debug--spec">Debug / spec</h2>
+<h3 id="what-is-debug-spec-for">What is debug spec for?</h3>
+<ul>
+<li>Debug software, either embedded or kernel</li>
+<li>Help with system bring up before any working CPU on the chip</li>
+<li>Standardize interface between software and hardware debugger</li>
+</ul>
+<h3 id="what-is-debug-spec-not-for">What is debug spec not for?</h3>
+<ul>
+<li>Find hardware bugs, but can help to narrow them down</li>
+</ul>
+<h3 id="3-parts-of-the-debug-system">3 parts of the debug system</h3>
+<ul>
+<li>Debugger software running on the host, like GDB or some GUI IDE</li>
+<li>Debugger hardware connecting host to target, e.g. TRACE32, J-Link</li>
+<li>Silicon block inside the target chip
+<ul>
+<li>Auto discovery; protocol translation; message passing; runtime control; cross-triggering; etc</li>
+</ul>
+</li>
+</ul>
+<h2 id="debug-spec">Debug spec</h2>
+<h3 id="principle">principle</h3>
+<ul>
+<li><strong>&ldquo;Software is King&rdquo;</strong>
+<ul>
+<li>Helping software (including kernel) debug is the primary goal</li>
+</ul>
+</li>
+<li>Decoupled from implemetation, both silicon and debugger</li>
+<li>Simple &amp; hardware friendly (again)</li>
+</ul>
+<h2 id="debug-spec--system-diagram">Debug spec / system diagram</h2>
+<p><img src="../image/debug-system-diagram.png" alt="pic"></p>
+<ul>
+<li>Need to distinguish
+<ul>
+<li>Inside / outside of the chip</li>
+<li>Software / hardware</li>
+</ul>
+</li>
+</ul>
+<h2 id="debug--components">Debug / components</h2>
+<h3 id="dtm-debug-transport-module">DTM (debug transport module)</h3>
+<ul>
+<li>General interface for different protocols, e.g. JTAG, SPI, USB, etc.</li>
+<li>Right now, only JTAG is defined, but SPI is also supported</li>
+</ul>
+<h3 id="dmi-debug-module-interface">DMI (debug module interface)</h3>
+<ul>
+<li>Interface bus between DTM and DM</li>
+<li>It is implemenataion dependent, can be TileLink or AMBA</li>
+</ul>
+<h3 id="dm-debug-module">DM (debug module)</h3>
+<ul>
+<li>The core of the debug silicon block</li>
+<li>Provides runtime control, abstract commands, function fabric access</li>
+</ul>
+<p><img src="../image/debug-system-diagram.png" alt="pic"></p>
+<h2 id="debug--function-of-debug-module">Debug / function of debug module</h2>
+<h3 id="reset-control">Reset control</h3>
+<ul>
+<li>Output a global reset signal, <code>ndmreset</code> (non-debug module reset)</li>
+<li>So that we can debug the first instruction out of reset</li>
+</ul>
+<h3 id="selecting-harts">Selecting harts</h3>
+<ul>
+<li>Debugger can select one or multiple harts to debug</li>
+</ul>
+<h3 id="run-control">Run control</h3>
+<ul>
+<li>Halt, resume, halt-on-reset, reset, single-step</li>
+</ul>
+<h3 id="abstract-commands">Abstract commands</h3>
+<ul>
+<li>Abstract commands can be injected by debugger to direct CPU carrying out specific commands</li>
+<li>Access registers: GPR, CSR, FPR, etc.</li>
+<li>Quck access: quickly inject some commands for CPU to execute while it&rsquo;s still running</li>
+<li>Access memory</li>
+</ul>
+<h2 id="debug--triggering">Debug / triggering</h2>
+<h3 id="how-to-go-into-debug-mode">How to go into debug mode?</h3>
+<ul>
+<li>Breakpoint
+<ul>
+<li>Hardware breakpoint</li>
+<li><code>EBREAK</code> instruction</li>
+</ul>
+</li>
+<li>Watchpoint
+<ul>
+<li>Watch data change in register</li>
+</ul>
+</li>
+<li>Cross-trigger
+<ul>
+<li>Other core encounters a breakpoint</li>
+<li>Other component hits certain condition</li>
+</ul>
+</li>
+</ul>
+<h2 id="debug--security">Debug / security</h2>
+<p>Another big topic in debug is <strong>security</strong>.</p>
+<ul>
+<li>Debug system is powerful, can access almost all the resource</li>
+<li>Big security loophole if left open after production phase</li>
+</ul>
+<h3 id="what-to-do">What to do?</h3>
+<ul>
+<li>Use fuse bit to disable debug after production phase</li>
+<li>Add authentication step before going into debug mode</li>
+</ul>
+<h2 id="debug--debugger">Debug / debugger</h2>
+<p>Software running on the host. No matter has GUI or not.</p>
+<h3 id="open-source-openocd--gdb">Open source: OpenOCD + GDB</h3>
+<ul>
+<li>Currently only support JTAG interface</li>
+<li>Support runtime control, abstract commands</li>
+<li>Support hardware breakpoints &amp; watchpoints</li>
+</ul>
+<h3 id="commercial">Commercial</h3>
+<ul>
+<li>Lauterbach: TRACE32</li>
+<li>Segger: J-Link</li>
+<li>UltraSoC: UltraDev2</li>
+</ul>
+<h2 id="debug--heterogenous-soc">Debug / heterogenous SoC</h2>
+<p> </p>
+<p> </p>
+<h3 id="discussion-what-is-in-your-pocket">Discussion: what is in your pocket?</h3>
+<h2 id="summary">Summary</h2>
+<p>Uncore includes blocks that support CPU core&rsquo;s functionality, but not peripheral.</p>
+<p>.footnote[Note: ISA includes specs that defines software/hardware interface]</p>
+<h3 id="interrupt-controller">Interrupt controller</h3>
+<ul>
+<li>3 types of interrupts
+<ul>
+<li>External/software/timer</li>
+</ul>
+</li>
+<li>PLIC: external interrupt aggregator</li>
+<li>CLINT: software/timer interrupt</li>
+<li>Software/hardware co-workflow</li>
+</ul>
+<h3 id="debug">Debug</h3>
+<ul>
+<li>Run-control and abstract command</li>
+<li>Decouple implementation of software/hardware, host/target</li>
+</ul>
+<h3 id="cache">Cache</h3>
+<ul>
+<li>No spec, implementation dependent</li>
+</ul>
+<h3 id="network-fabric">Network fabric</h3>
+<ul>
+<li>No spec, implementation dependent</li>
+<li>TileLink: not a part of RISC-V ISA spec</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

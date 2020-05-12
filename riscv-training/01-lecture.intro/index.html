@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] Introduction of RISC-V Open ISA - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] Introduction of RISC-V Open ISA</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="what-is-isa">What is ISA?</h2>
+<h3 id="contract-between-software-and-hardware">Contract between software and hardware.</h3>
+<p><img src="../image/isa-demo.png" alt="pic"></p>
+<h2 id="what-is-risc">What is RISC?</h2>
+<h3 id="reduced-instruction-set-computer">Reduced instruction set computer</h3>
+<ul>
+<li>Small set of simple/general instructions + load/store architecture
+<ul>
+<li>Optimize hardware to be simple and faster</li>
+<li>Software-centric design: rely on compiler + software</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>CISC</strong></th>
+<th><strong>RISC</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emphasis on hardware</td>
+<td>Emphasis on software</td>
+</tr>
+<tr>
+<td>Includes multi-clock complex instructions</td>
+<td>Single-clock, reduced instruction only</td>
+</tr>
+<tr>
+<td>Memory-to-memory: &ldquo;LOAD&rdquo; and &ldquo;STORE&rdquo; incorporated in instructions</td>
+<td>Register to register: &ldquo;LOAD&rdquo; and &ldquo;STORE&rdquo; are independent instructions</td>
+</tr>
+<tr>
+<td>Small code sizes, high cycles per second</td>
+<td>Low cycles per second, large code sizes</td>
+</tr>
+<tr>
+<td>Transistors used for storing complex instructions</td>
+<td>Spends more transistors on memory registers</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>E.g. Alpha (DEC), SPARC (SUN), MIPS (now Wave), Power (IBM), ARM</li>
+</ul>
+<h2 id="what-is-risc-1">What is RISC?</h2>
+<ul>
+<li>John Hennessy &amp; David Patterson
+<ul>
+<li>Authers of computer architecture bible &ldquo;Computer Architecture: A Quantitative Approach&rdquo; (for graduates)</li>
+<li>Also &ldquo;Computer Organization and Design&rdquo; (for undergraduates)</li>
+<li>Turing Award 2017</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/computer-architecture-book.png" alt="pic"></p>
+<h2 id="most-popular-risc-isa-arm">Most popular RISC ISA: ARM</h2>
+<p><img src="../image/arm-market-share-segments.png" alt="arm-market-share-segments"></p>
+<p>background-image: url(../image/money.jpg)</p>
+<h3 id="but-also-very-expensive">But also very expensive!</h3>
+<h2 id="arms-business-model-ip-licensing">ARM&rsquo;s business model: IP licensing</h2>
+<h3 id="arms-ip-eco-system-cpu-centric-custom-soc-ip">ARM&rsquo;s IP eco-system: CPU-centric custom-SoC IP</h3>
+<p>CPU (Application/Real-time/eMbedded), GPU, DSP, fabric, cache, ISP, debug, etc.</p>
+<h3 id="license-fee--royalty">License fee + royalty</h3>
+<table>
+<thead>
+<tr>
+<th>IP</th>
+<th>Royalty (% of chip cost)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARM7/9/11</td>
+<td>1.0% - 1.5%</td>
+</tr>
+<tr>
+<td>ARM Cortex A-series</td>
+<td>1.5% - 2.0%</td>
+</tr>
+<tr>
+<td>ARMv8 Based Cortex A-series</td>
+<td>2.0% and above</td>
+</tr>
+<tr>
+<td>Mali GPU</td>
+<td>0.75% - 1.25% adder</td>
+</tr>
+<tr>
+<td>Physical IP Package (POP)</td>
+<td>0.5% adder</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h3 id="architecture-license">Architecture license</h3>
+<ul>
+<li>Do you want to modify the RTL code?
+<ul>
+<li>Custom instruction; differentiation</li>
+</ul>
+</li>
+<li>This license that allows you to implement your own ARM core. 10+ Millions?</li>
+</ul>
+<h2 id="arms-reaction-to-risc-v-flexible-access">ARM&rsquo;s reaction to RISC-V: Flexible Access</h2>
+<h3 id="arm-techcon-in-oct-2020">ARM techcon in Oct. 2020</h3>
+<p><img src="../image/arm-flexible-access.png" alt="arm-flexbile-access.png"></p>
+<h4 id="custom-instruction-for-m-series-cpu">Custom instruction for M-series CPU</h4>
+<h2 id="risc-v--open-source">RISC-V / open source</h2>
+<h3 id="free-and-open-">Free and open !</h3>
+<ul>
+<li>No fee to use or modify</li>
+<li>Commercial usage
+<ul>
+<li>Don&rsquo;t need to open your modification or implementation</li>
+</ul>
+</li>
+</ul>
+<h3 id="open-source-hardware">Open source hardware</h3>
+<h2 id="risc-v--fundation">RISC-V / fundation</h2>
+<h3 id="httpwwwriscvorg"><a href="http://www.riscv.org">http://www.riscv.org</a></h3>
+<p><img src="../image/riscv-fundation-growth-history.png" alt="pic"></p>
+<h2 id="risc-v--fundation-1">RISC-V / fundation</h2>
+<p><img src="../image/riscv-fundation-platinum.png" alt="pic"></p>
+<p><a href="https://riscv.org/membership/?action=viewlistings">Full list of members</a></p>
+<h2 id="risc-v--isa">RISC-V / ISA</h2>
+<h3 id="what-is-defined-and-not-defined-in-risc-v-isa">What is defined and not defined in RISC-V ISA</h3>
+<h4 id="defined">Defined</h4>
+<ul>
+<li>Instruction set(s)</li>
+<li>Architecture states
+<ul>
+<li>GPR (general purpose register) + PC</li>
+</ul>
+</li>
+<li>CSR (control status register)</li>
+<li>ABI (application binary interface)
+<ul>
+<li>GPR convention</li>
+<li>Function/system call convention</li>
+</ul>
+</li>
+<li>Exception and interrupt</li>
+<li>Debug architecture</li>
+</ul>
+<h4 id="not-defined">Not-defined</h4>
+<ul>
+<li>Micro-architecture related details</li>
+<li>Implementation dependent details</li>
+<li>Even micro-architecture and implementation related instructions
+<ul>
+<li>Maybe in the future?</li>
+</ul>
+</li>
+</ul>
+<h2 id="history--uc-berkeley">History / UC Berkeley</h2>
+<h3 id="2010-at-uc-berkeley-bar">2010 at UC Berkeley BAR</h3>
+<p>UC Berkeley Architecture Research in Berkeley EECS department</p>
+<ul>
+<li>Birth place of RISC (reduced instruction set computer)</li>
+<li>Start as a teaching project</li>
+<li><a href="https://bar.eecs.berkeley.edu">https://bar.eecs.berkeley.edu</a></li>
+</ul>
+<h3 id="two-persons-david-patterson--krste-asanovic">Two persons: David Patterson &amp; Krste Asanovic</h3>
+<ul>
+<li>David Patterson
+<ul>
+<li>Turing Award 2017</li>
+<li>Contribution: RISC, RAID</li>
+<li>Vice Chair of the Board of the RISC-V Foundation</li>
+</ul>
+</li>
+<li>Krste Asanovic
+<ul>
+<li>Chairman of the Board of the RISC-V Foundation</li>
+<li>IEEE Fellow &amp; ACM Fellow</li>
+</ul>
+</li>
+</ul>
+<h2 id="history">History</h2>
+<h3 id="one-company-sifive-at-2015">One company: SiFive at 2015</h3>
+<ul>
+<li>Krste Asanovic (Prof. in UCB, Co-Founder &amp; Chief Architect)</li>
+<li>Yunsup Lee (Former student in UCB BAR, Co-Founder &amp; Chief Technology Officer)</li>
+<li>Andrew Waterman (Former student in UCB BAR, Co-Founder &amp; Chief Engineer)</li>
+</ul>
+<p> </p>
+<p> </p>
+<p><img src="../image/sifive-logo.png" alt="Image result for sifive"></p>
+<h2 id="nowadays--momentum-worldwide">Nowadays / momentum worldwide</h2>
+<h3 id="support-from-large-companies">Support from large companies</h3>
+<p><img src="../image/riscv-members.png" alt="pic"></p>
+<h3 id="obviously-thats-the-reason-we-are-here">Obviously, that&rsquo;s the reason we are here.</h3>
+<h2 id="ecosystem">Ecosystem</h2>
+<ul>
+<li>Different from traditional architecture that&rsquo;s owned/maintained by <strong>one company</strong>.</li>
+<li>It&rsquo;s more like Linux, owned by <strong>a fundation</strong>, maintained by <strong>a community</strong>.</li>
+</ul>
+<h3 id="commitee-and-work-groups">Commitee and Work groups</h3>
+<ul>
+<li>Technical committee
+<ul>
+<li>Base ISA</li>
+<li>Different extensions: BJPV&hellip;</li>
+<li>Fromal/debug/fast interrupt/memory model/&hellip;</li>
+</ul>
+</li>
+<li>Program committee (workshops)
+<ul>
+<li>Chennai / Shanghai</li>
+</ul>
+</li>
+<li>Marketing committee</li>
+</ul>
+<p><strong>Technical committee is open to everyone. Most of them have weekly meeting.</strong></p>
+<h2 id="ecosystem-1">Ecosystem</h2>
+<h3 id="workshop--summit">Workshop &amp; summit</h3>
+<p>Recent events:</p>
+<ul>
+<li>RISC-V Summit
+<ul>
+<li>2019/12/10-12 in San Jose, CA, US</li>
+</ul>
+</li>
+</ul>
+<h2 id="ecosystem--software">Ecosystem / software</h2>
+<h3 id="compiler">Compiler</h3>
+<ul>
+<li>GNU toolchain (more developed)
+<ul>
+<li>GCC, GDB, OpenOCD</li>
+</ul>
+</li>
+<li>LLVM (more promising)
+<ul>
+<li>Code optimization</li>
+<li>Auto vecterization</li>
+</ul>
+</li>
+</ul>
+<h3 id="os">OS</h3>
+<ul>
+<li>Linux: Fedora, Debian</li>
+<li>RTOS: FreeRTOS, Zephyr OS</li>
+</ul>
+<h3 id="simulator">Simulator</h3>
+<ul>
+<li>SPIKE: golden ISA simulator
+<ul>
+<li>Only for RISC-V</li>
+<li>Usually used as reference for HW design</li>
+</ul>
+</li>
+<li>QEMU: full-system simulator
+<ul>
+<li>Used for software stack development</li>
+</ul>
+</li>
+<li>Imperas ISS
+<ul>
+<li>Comercial</li>
+</ul>
+</li>
+</ul>
+<h3 id="debugger">Debugger</h3>
+<ul>
+<li>GDB + OpenOCD</li>
+<li>Lauterbach</li>
+<li>Segger</li>
+<li>UltraSoC</li>
+</ul>
+<h2 id="ecosystem--hardware">Ecosystem / hardware</h2>
+<h3 id="open-source-hardware-1">Open source hardware</h3>
+<ul>
+<li>
+<p><strong>RocketChip</strong></p>
+<ul>
+<li>The very first one from UCB</li>
+<li>Not only a CPU but an SoC generator</li>
+<li>Based on Chisel</li>
+<li>Now maintained by CHIPS Alliance</li>
+</ul>
+</li>
+<li>
+<p>LowRISC</p>
+<ul>
+<li>UK based company</li>
+<li>Early adopter</li>
+</ul>
+</li>
+<li>
+<p>BOOMv2</p>
+<ul>
+<li>Student project in UCB (out-of-order RISC-V)</li>
+<li>Now maintained by Esperanto</li>
+</ul>
+</li>
+<li>
+<p><strong>PULP</strong> (<a href="https://pulp-platform.org/">https://pulp-platform.org/</a>)</p>
+<ul>
+<li>From ETH Zurich University (Switzerland)</li>
+<li>Also a family of cores and full SoC system</li>
+<li>Based on SystemVerilog</li>
+</ul>
+</li>
+<li>
+<p>Swerv</p>
+<ul>
+<li>WesternDigital in-house RISC-V CPU</li>
+</ul>
+</li>
+</ul>
+<h2 id="ecosystem--hardware-1">Ecosystem / hardware</h2>
+<h3 id="commercial">Commercial</h3>
+<ul>
+<li>SiFive
+<ul>
+<li>A family of CPUs: 2/3/5/7 series</li>
+</ul>
+</li>
+<li>Andes
+<ul>
+<li>A Taiwan CPU company</li>
+</ul>
+</li>
+<li>Codasip
+<ul>
+<li>Start from Czech Republic</li>
+</ul>
+</li>
+<li>Esperanto
+<ul>
+<li>High-performance cores for AI application</li>
+</ul>
+</li>
+<li>UltraSoC
+<ul>
+<li>Debug solution provider</li>
+</ul>
+</li>
+</ul>
+<h2 id="ecosystem--hardware-2">Ecosystem / hardware</h2>
+<h3 id="others">Others</h3>
+<ul>
+<li>Google</li>
+<li>Microsoft</li>
+<li>Rambus</li>
+<li>Facebook</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="ecosystem--chips-alliance">Ecosystem / CHIPS alliance</h2>
+<h3 id="a-project-hosted-by-the-linux-foundation">A project hosted by &ldquo;the Linux Foundation&rdquo;</h3>
+<h3 id="difference-vs-risc-v-foundation">Difference vs RISC-V Foundation</h3>
+<ul>
+<li>RISC-V is for ISA, not implementation</li>
+<li>CHIPS alliance hosts open source implementations and tools around RISC-V</li>
+</ul>
+<p><img src="../image/chip-alliance-members.png" alt="pic"></p>
+<p>.footnote[Note: all bay area companies]</p>
+<p><a href="https://github.com/chipsalliance">https://github.com/chipsalliance</a></p>
+<h3 id="open-source-design">Open source design</h3>
+<ul>
+<li><strong>Chisel + FIRRTL</strong>
+<ul>
+<li>Agile design language and middleware</li>
+</ul>
+</li>
+<li>FuseSoC
+<ul>
+<li>Package (library) manager for hardware design</li>
+</ul>
+</li>
+</ul>
+<h3 id="open-source-toolchain">Open source toolchain</h3>
+<ul>
+<li><strong>Verilator</strong>
+<ul>
+<li>Translate SV RTL to C++, then compile and simulate</li>
+<li>Open source choice besides VCS(S)/Questa(M)/Xcelium(C)</li>
+</ul>
+</li>
+<li>Cocotb
+<ul>
+<li>Write testbench in Python</li>
+<li><a href="https://github.com/chipsalliance/tools-cocotb-verilator-build">https://github.com/chipsalliance/tools-cocotb-verilator-build</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="open-source-ips">Open source IPs</h3>
+<ul>
+<li>Rocket Chip
+<ul>
+<li>RISC-V CPU generator from Berkeley/SiFive; written in Chisel</li>
+</ul>
+</li>
+<li>SweRV
+<ul>
+<li>RISC-V CPU from Western Digital; written in SV</li>
+</ul>
+</li>
+<li>OmniXtend
+<ul>
+<li>Network based on TileLink; written in SV</li>
+</ul>
+</li>
+</ul>
+<h2 id="ecosystem--openhw-group">Ecosystem / OpenHW group</h2>
+<h3 id="another-risc-v-oriented-open-hardware-group">Another RISC-V oriented open hardware group</h3>
+<ul>
+<li>Similar to CHIPS alliance</li>
+</ul>
+<p><img src="../image/openhw-group.png" alt="pic"></p>
+<p>.footnote[Note: most of the in EU]</p>
+<h3 id="open-source-risc-v-cores">Open source RISC-V cores</h3>
+<ul>
+<li>PULP series CPU cores from ETH Zurich
+<ul>
+<li>Based on SystemVerilog</li>
+</ul>
+</li>
+</ul>
+<h3 id="commercial-soc-based-on-pulp-cores">Commercial SoC based on PULP cores</h3>
+<ul>
+<li>GreenWaves: multi-core RISC-V SoC for IoT applications</li>
+<li>NXP: BLE controller on RISC-V</li>
+</ul>
+<h3 id="commercial-toolchain">Commercial toolchain</h3>
+<ul>
+<li>Metrics: cloud-based simulator</li>
+<li>Imperas: ISS (instruction set simulator)</li>
+<li>OneSpin: formal verification</li>
+</ul>
+<h2 id="ecosystem--risc-v-in-china">Ecosystem / RISC-V in China</h2>
+<h3 id="中国risc-v产业联盟">中国RISC-V产业联盟</h3>
+<p>CRVIC (China RISC-V Industry Consortium)</p>
+<ul>
+<li>上海市 + 企业</li>
+<li>Verisilicon</li>
+</ul>
+<h3 id="中国开放指令生态risc-v联盟">中国开放指令生态(RISC-V)联盟</h3>
+<p>CRVA (China RISC-V Alliance)</p>
+<ul>
+<li>中科院计算所</li>
+<li>倪光南</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<h3 id="risc-v-github-httpsgithubcomriscv">RISC-V Github (<a href="https://github.com/riscv">https://github.com/riscv</a>)</h3>
+<ul>
+<li>Specification</li>
+<li>Toolchain</li>
+<li>Linux</li>
+</ul>
+<h3 id="discussion-groups-on-google-groups">Discussion groups on Google Groups</h3>
+<ul>
+<li><a href="https://groups.google.com/a/groups.riscv.org/forum/#!forum/hw-dev">Hardware Developer</a></li>
+<li><a href="https://groups.google.com/a/groups.riscv.org/forum/#!forum/sw-dev">Software Developer</a></li>
+<li><a href="https://groups.google.com/a/groups.riscv.org/forum/#!forum/isa-dev">ISA Developer</a></li>
+<li><a href="https://groups.google.com/a/groups.riscv.org/forum/#!forum/debug">Debug</a></li>
+</ul>
+<h2 id="summary">Summary</h2>
+<h3 id="open-isa">Open ISA</h3>
+<ul>
+<li>Free to use/modify</li>
+<li>Open source (like Linux)
+<ul>
+<li>Owned by RISC-V foundation</li>
+<li>Maintained by community</li>
+<li>Tech committees</li>
+</ul>
+</li>
+</ul>
+<h3 id="history--momentum">History &amp; momentum</h3>
+<ul>
+<li>Start from UCB as a student project</li>
+<li>Now widely supported by lots of companies worldwide</li>
+</ul>
+<h3 id="ecosystem-2">Ecosystem</h3>
+<ul>
+<li>Software
+<ul>
+<li>Open source compiler and simulator</li>
+<li>Commercial ISS and formal tool</li>
+</ul>
+</li>
+<li>Hardware
+<ul>
+<li>Both open source and commercial</li>
+</ul>
+</li>
+<li>RISC-V in China</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] Schedule - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] Schedule</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="schedule">Schedule</h2>
+<h3 id="2-day-x-8-hour">2-day x 8-hour</h3>
+<h3 id="step-by-step">Step-by-step</h3>
+<h3 id="lecture--demo--lab">Lecture + demo + lab</h3>
+<h2 id="schedule--day-1-morning">Schedule / Day 1 morning</h2>
+<ul>
+<li><strong>Schedule and self-introduction</strong></li>
+<li><strong>[Lecture] Introduction of RISC-V open ISA</strong>
+<ul>
+<li>History and current status of ecosystem</li>
+</ul>
+</li>
+<li><strong>[Lecture] RISC-V ISA: unprivileged spec</strong>
+<ul>
+<li>Basic RISC-V ISA: key concepts</li>
+</ul>
+</li>
+<li><strong>[Lab] Setup lab env</strong>
+<ul>
+<li>Quick introduction of lab env used in this course</li>
+</ul>
+</li>
+<li><em>==== Lunch break ====</em></li>
+</ul>
+<h2 id="schedule--day-1-afternnon">Schedule / Day 1 afternnon</h2>
+<ul>
+<li>
+<p><strong>[Demo] Compile assembly code and simulate on SPIKE</strong></p>
+<ul>
+<li>GNU toolchain, assembly code example, compile &amp; link, SPIKE simulator</li>
+</ul>
+</li>
+<li>
+<p><strong>[Lab] compile assembly code and simulate on SPIKE</strong></p>
+<ul>
+<li>Code your own assembly code, compile &amp; link, run simulation on SPIKE</li>
+</ul>
+</li>
+<li>
+<p><em>==== Tea break ====</em></p>
+</li>
+<li>
+<p><strong>[Lecture] RISC-V ISA: privileged spec</strong></p>
+<ul>
+<li>Privilege modes, exception &amp; interrupt, physical memory &amp; virtual memory</li>
+</ul>
+</li>
+<li>
+<p><strong>[Demo] C code with proxy kernel and front-end server</strong></p>
+<ul>
+<li>RISC-V sim env components, system call workflow, use PK to run &ldquo;hello world&rdquo; in SPIKE</li>
+</ul>
+</li>
+<li>
+<p><strong>[Lab] create new system call (optional)</strong></p>
+<ul>
+<li>Change FESVR and PK to add a new system call, write C code to call this system call</li>
+</ul>
+</li>
+</ul>
+<h2 id="schedule--day-2-morning">Schedule / Day 2 morning</h2>
+<ul>
+<li>
+<p><strong>[Lecture] CPU architecture with RISC-V examples</strong></p>
+<ul>
+<li>Basic concepts of CPU architecture, and some real RISC-V CPU examples</li>
+</ul>
+</li>
+<li>
+<p><strong>[Demo] verification suite</strong></p>
+<ul>
+<li>ISA tests and built-in-self-check, Torture: random code generator</li>
+</ul>
+</li>
+<li>
+<p><strong>[Demo] RocketChip generator</strong></p>
+<ul>
+<li>CPU architecture exploration with RocketChip generator</li>
+</ul>
+</li>
+<li>
+<p><strong>[Lab] generate new CPU with RocketChip</strong></p>
+<ul>
+<li>Configure RocketChip in Chisel to generator new CPU, and run benchmark</li>
+</ul>
+</li>
+<li>
+<p><em>==== Lunch break ====</em></p>
+</li>
+</ul>
+<h2 id="schedule--day-2-afternoon">Schedule / Day 2 Afternoon</h2>
+<ul>
+<li><strong>[Demo] Freedom IDE &amp; HiFive1 board</strong>
+<ul>
+<li>Quick example of SiFive&rsquo;s Freedom IDE, and debugging HiFive dev board</li>
+</ul>
+</li>
+<li><strong>[Lecture] Uncore components</strong>
+<ul>
+<li>TileLink, PLIC, CLINT, CLIC, debug, trace</li>
+</ul>
+</li>
+<li><strong>[Demo] create custom instruction</strong>
+<ul>
+<li>Select instruction encoding, change GCC to support new instruction</li>
+</ul>
+</li>
+<li><strong>[Lab] create custom instruction (optional)</strong>
+<ul>
+<li>Follow the example to create custom instruction for Sigmoid</li>
+</ul>
+</li>
+<li><em>==== Tea break ====</em></li>
+<li><strong>[Demo] QEMU full system emulator</strong>
+<ul>
+<li>Boot linux in QEMU</li>
+<li>Linux binary vs. newlib binary</li>
+</ul>
+</li>
+<li><strong>[Lab] compile C code on QEMU (optional)</strong>
+<ul>
+<li>Boot linux and compile C code</li>
+</ul>
+</li>
+</ul>
+<h2 id="self-introduction">Self-Introduction</h2>
+<h3 id="王-君-jim-wang">王 君 (Jim Wang)</h3>
+<p><a href="http://phdbreak99.github.io">http://phdbreak99.github.io</a></p>
+<p>本科：清华大学电子工程系</p>
+<p>博士：中科院计算所龙芯实验室</p>
+<p>工作：</p>
+<ul>
+<li>Samsung: senior design engineer</li>
+<li>Marvell: design manager</li>
+<li>Startup: founding engineer &amp; chief architect</li>
+<li>Some 404 company: SoC lead &amp; CPU IP DRI</li>
+</ul>
+<p>方向：</p>
+<ul>
+<li>CPU &amp; SoC architecture</li>
+<li>Software hardware co-design</li>
+</ul>
+<p><img src="../image/family.jpg" alt="pic"></p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

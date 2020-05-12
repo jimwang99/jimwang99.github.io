@@ -53,6 +53,13 @@
 				
 			</a>
 		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
 	</ul>
 </nav>
 
@@ -67,23 +74,126 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-11-28-riscv-architecture-training/list/" rel="bookmark">
-			[RISC-V Architecture Training] Dec. 2019 verion: Full List
+			<a href="/riscv-training/11-demo.compile/" rel="bookmark">
+			[RISC-V Architecture Training] @DEMO: Bare-metal assembly &amp; SPIKE simulator
 			</a>
 		</h3>
 		<div class="list__meta meta">
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-28T00:00:00Z">2019-11-28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		List of training content title: &ldquo;[RISC-V Architecture Training] Schedule&rdquo; title: &ldquo;[RISC-V Architecture Training] Introduction of RISC-V Open ISA&rdquo; title: &ldquo;[RISC-V Architecture Training] Basics &amp; Unprivileged Specification&rdquo; title: &ldquo;[RISC-V Architecture Training] Privileged Architecture&rdquo; title: &ldquo;[RISC-V Architecture Training] Computer Architecture with RISC-V Examples&rdquo; title: &ldquo;[RISC-V Architecture Training] Uncore&rdquo; 
+		General software stack Embedded system software stack What is newlib? https://en.wikipedia.org/wiki/Newlib
+ C standard library implementation for embedded system GCC port for non-Linux embedded system When lacking of full-blown OS, how to make a system call and how to use devices   Newlib code size will signaficant larger than Linux code size, because it includes the system calls that is already embedded inside Linux.
+ What is cross-compile? Cross-compiler
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/" rel="bookmark">
+			<a href="/riscv-training/16-demo.custom-inst/" rel="bookmark">
+			[RISC-V Architecture Training] @DEMO: Create custom instructions
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Custom instruction The most attractive feature of RISC-V  Extensibility Differentiation Software hardware co-design  Domain-specific applications      Example  Integer MAC (multiplication and accumulation) for matrix operation Multiple load/store fusion for smaller code footprint Customized vector operations tailored for your application    Custom instruction / Difficulties Most difficult thing is NOT in hardware, but in compiler  How to let compiler understand your intention and generate corresponding instructions For example, automatic vectorization is difficult with vector/SIMD instructions  The compiler has to understand the for loop, as well as the implemention details    @DEMO: new MAC instruction MAC = multiplication and accumulation  c += a * b  RD = RD + RS1 * RS2   Most common operations in matrix multiplication  How to handle Overflow?
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/riscv-training/15-demo.hifive1/" rel="bookmark">
+			[RISC-V Architecture Training] @DEMO: Freedom IDE &amp; HiFive1b board
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Freedom IDE Different targets    Targets Comments     qemu-sifive-e31 QEMU emulator for 32-bit E31 CPU   qemu-sifive-s51 QEMU emulator for 64-bit S51 CPU   freedom-e310-arty Arty FPGA platfrom   sifive-hifive-unleashed SiFive&rsquo;s HiFive Unleased board that support Linux   sifive-hifive1 SiFive&rsquo;s HiFive1 board   sifive-hifive1-revb SiFive&rsquo;s HiFive1-RevB board    Emulate on QEMU  QEMU is a full system emulator  Translate target instruction to host instruction Only functional (not trace accurate) but really fast It&rsquo;s good for software development, not for hardware debugging    @DEMO: qemu-sifive-e31-sifive-welcome QEMU emulator version 3.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/riscv-training/12-demo.syscall/" rel="bookmark">
+			[RISC-V Architecture Training] @DEMO: PK (proxy kernel) and FESVR (front-end server)
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		PK and FESVRV  PK (proxy kernel) &amp; FESVR (front-end server)  For debug and system bring up PK is an abstraction of kernel that provides system services through FESVR running on host     PK is running on target CPU, while FESVR is running on host computer  PK and FESVR / code example printf in modified version of spike *# Original spike &gt; cd ~/riscv-training/lab/22-lab.system-call &gt; spike .
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/riscv-training/17-demo.qemu/" rel="bookmark">
+			[RISC-V Architecture Training] @DEMO: QEMU full system emulator
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		QEMU  QEMU is a binary translating emulator  On-the-fly, translate RISC-V instruction to host CPU instruction (e.g. x86) Functional, not accurate; but really fast  Good for software debugging, not for hardware debuggin         Type Example Performance     Functional QEMU 100 million to &gt;1 billion instructions per second   Trace-accurate Spike 10 to 100 million instructions per second   Cycle-accurate Verilator/rocket-chip 10 to 100 thousand instructions per second    RISC-V boards  virt - priv v1.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/riscv-training/10-demo.setup-env/" rel="bookmark">
+			[RISC-V Architecture Training] @DEMO: Setup lab environment
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Install VMWare Player Create Ubuntu 16.04 from provided virtual machine Username = riscv Password = r5rocks Install Freedom Studio from SiFive https://www.sifive.com/boards They have Windows / Mac OS / Linux versions.
+@LAB Path in LAB VM
+/opt/FreedomStudio-2019-08-2-lin64 Setup shell environment export SIFIVE=/opt/FreedomStudio-2019-08-2-lin64/SiFive export RISCV=${SIFIVE}/riscv64-unknown-elf-gcc-8.3.0-2019.08.0 export QEMU=${SIFIVE}/riscv-qemu-4.1.0-2019.08.0 export PATH=${RISCV}/bin:${QEMU}/bin:${PATH} @LAB Above setup has been added into .bashrc
+@LAB: Hello world cd ~/riscv-training/lab/20-lab.setup-env make Here is the log:
+make hello.elf SRC_TYPE=c make[1]: Entering directory '/mnt/hgfs/riscv-training/lab/20-lab.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/riscv-training/13-demo.verif-suite/" rel="bookmark">
+			[RISC-V Architecture Training] @DEMO: Verification suite
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		riscv-tests https://github.com/riscv/
+ Unit tests based on assembly  Basic functionality of each RISC-V instructions and features defined in the spec Very good staring point to find basic implementation issues   Software BIST (built-in self test)  Compare architecture states with expected results Issue pass/fail signal to host machine   Official compliance tests  riscv-tests / TVM (test virtual machine)  Because RISC-V is very scalable, so it has many variants  E.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/riscv-training/02-lecture.isa-basic/" rel="bookmark">
 			[RISC-V Architecture Training] Basics &amp; Unprivileged Specification
 			</a>
 		</h3>
@@ -94,15 +204,14 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		RISC-V SPEC https://riscv.org/specifications (official version v1.10)
+		RISC-V SPEC https://riscv.org/specifications (official version v1.10 while version v2.0 under ratification)
 https://github.com/riscv/riscv-isa-manual (source code)
  User-level ISA (unpriviledged)  All the basic instructions, and extensions Memory model  Priviledged ISA  Priviledge level: M (machine), H (hypervisor), S (supervisor), U (user) CSR (control status register) Virtual-memory system  Debug &amp; Trace First impression: ISA subsets RISC-V is a family of ISAs Divided into several subsets: I, M, A, F, D, C, &hellip;
-  Domain-specific architecture (by David Patterson)
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/" rel="bookmark">
+			<a href="/riscv-training/04-lecture.cpu-arch/" rel="bookmark">
 			[RISC-V Architecture Training] Computer Architecture with RISC-V Examples
 			</a>
 		</h3>
@@ -116,13 +225,13 @@ https://github.com/riscv/riscv-isa-manual (source code)
 		Computer architecture basics  Pipeline / Parallelism / Cache Three ultimate mechanisms to imporve performance/power
 Computer architecture basics / pipeline IF = Instruction Fetch, ID = Instruction Decode, EX = Execute, MEM = Memory access, WB = Register write back).
 Computer architecture basics / pipeline @DEMO Pipeline simulator: https://github.com/mortbopet/Ripes
-Computer architecture basics / pipeline Motivation  Most of the work cannot be done at the same time. To use the logic more efficiently Less work per stage, higher clock frequency  Brings in problems: hazards  Data hazard  Dependency    mv	x1, x2 add	x4, x1, x3 sd	x4, 0(x5)  Control hazard  Jump and branch    addi	x1, x1, 1 subi	x2, x1, 100 bnez	x2, 0(x3) .
+Computer architecture basics / pipeline Motivation  Most of the work cannot be done at the same time. To use the logic more efficiently Less work per stage, higher clock frequency  Brings in problems: hazards  Data hazard  Dependency    mv x1, x2 add x4, x1, x3 sd x4, 0(x5)  Control hazard  Jump and branch    addi x1, x1, 1 subi x2, x1, 100 bnez x2, 0(x3) .
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/" rel="bookmark">
-			[RISC-V Architecture Training] Introduction of RISC-V Open ISA
+			<a href="/riscv-training/14-demo.rocketchip/" rel="bookmark">
+			[RISC-V Architecture Training] Demo 4: RocketChip generator
 			</a>
 		</h3>
 		<div class="list__meta meta">
@@ -132,63 +241,15 @@ Computer architecture basics / pipeline Motivation  Most of the work cannot be d
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		What is ISA? Contract between software and hardware. What is RISC? Reduced instruction set computer  Small set of simple/general instructions + load/store architecture  Optimize hardware to be simple and faster Software-centric design: rely on compiler + software       CISC RISC     Emphasis on hardware Emphasis on software   Includes multi-clock complex instructions Single-clock, reduced instruction only   Memory-to-memory: &ldquo;LOAD&rdquo; and &ldquo;STORE&rdquo; incorporated in instructions Register to register: &ldquo;LOAD&rdquo; and &ldquo;STORE&rdquo; are independent instructions   Small code sizes, high cycles per second Low cycles per second, large code sizes   Transistors used for storing complex instructions Spends more transistors on memory registers     E.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/" rel="bookmark">
-			[RISC-V Architecture Training] Privileged Architecture
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Privileged architecture Purpose of privileged architecture   To manage and protect shared resources
- Memory, IO devices, even cores    Also needs to decouple implementation details
- Handle unimplemented operations: software emulation Handle async events (interrupts): IO, timer, software Hypervisor support: 2-level address translation    Therefore, we have  4 privilege modes: U, S, H, M PMP/PMA (physical memory protection/attributes) Virtual memory Interrupts and exceptions And a bunch of CSRs to serve these functionality  Privileged architecture / software stack layers 4 different kinds of platforms    Platforms Modes Trust Memory protection     Embedded w/o protection (most MCUs) M All Non   Embedded w/ protection (RTOS scenario) M+U Application Physical memory protection   OS capable (Linux, and etc.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/" rel="bookmark">
-			[RISC-V Architecture Training] Schedule
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Momentum: 2018 RISC-V Summit Fun moment: anti-RISCV website by ARM Schedule 2-day x 8-hour Step-by-step Lecture + demo + DIY Schedule / Day 1 morning  Schedule and self-introduction Introduction of RISC-V open ISA  History and current status of ecosystem   RISC-V ISA: unprivileged spec  Basic RISC-V ISA: key concepts   DIY 0: setup course DIY env  Quick introduction of DIY env used in this course   Lunch break  Schedule / Day 1 afternnon   Demo 1: compile assembly code and simulate on SPIKE  GNU toolchain, assembly code example, compile &amp; link, SPIKE simulator    DIY 1: compile assembly code and simulate on SPIKE  Code your own assembly code, compile &amp; link, run simulation on SPIKE    Tea break
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/" rel="bookmark">
-			[RISC-V Architecture Training] Uncore
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		&ndash;
-Uncore CPU core is fun, but uncore is the real work. Uncore / components  Cache (already discussed) Interrupt controller Network Fabric Debug  Interrupt recap 3 types of interrupts
- External: peripheral devices Software: inter-processor interrupt Timer: timely schedule tasks  PLIC (platform level interrupt controller)  For external interrupts Aggregation of multiple external interrupts  Provide enable/priority    CLINT (core level interruptor)  For software &amp; timer interrupts Provide memory-mapped software/timer interrupt CSRs  PLIC (platform-level interrupt controller) MSI vs.
+		What is RocketChip generator?  RISC-V SoC generator from UC Berekeley Based on Chisel Highly parameterized  Cache configs Num of cores Type of cores (Rocket, BOOM, w/ FPU, RoCC accelerator) Num of ports (memory, system, peripheral)    What is RocketChip generator? / Setup Clone GIT repo git clone --recursive https://github.com/chipsalliance/rocket-chip.git export RISCV=/opt/riscv/rv64gc # need to use matching RISC-V toolchain export PATH=${RISCV}/bin;${PATH} Prerequisites Because RocketChip is using Chisel (a variant of Scala, based on Java), so we need to install JDK before using RocketChip generator.
 	</div>
 </article>
 </main>
 
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/2</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/riscv/page/2/">»</a>
+</div>
 
 			</div>
 			
@@ -208,8 +269,8 @@ Uncore CPU core is fun, but uncore is the real work. Uncore / components  Cache 
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/list/">[RISC-V Architecture Training] Dec. 2019 verion: Full List</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/">[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-26-amba-protocol/">ARM AMBA Protocl</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
 		</ul>
 	</div>
 </div>

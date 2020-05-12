@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] @DEMO: Freedom IDE &amp; HiFive1b board - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] @DEMO: Freedom IDE &amp; HiFive1b board</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="freedom-ide">Freedom IDE</h2>
+<p><img src="../image/freedom-ide-screenshot.png" alt="pic"></p>
+<h3 id="different-targets">Different targets</h3>
+<table>
+<thead>
+<tr>
+<th>Targets</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qemu-sifive-e31</td>
+<td>QEMU emulator for 32-bit E31 CPU</td>
+</tr>
+<tr>
+<td>qemu-sifive-s51</td>
+<td>QEMU emulator for 64-bit S51 CPU</td>
+</tr>
+<tr>
+<td>freedom-e310-arty</td>
+<td>Arty FPGA platfrom</td>
+</tr>
+<tr>
+<td>sifive-hifive-unleashed</td>
+<td>SiFive&rsquo;s HiFive Unleased board that support Linux</td>
+</tr>
+<tr>
+<td>sifive-hifive1</td>
+<td>SiFive&rsquo;s HiFive1 board</td>
+</tr>
+<tr>
+<td>sifive-hifive1-revb</td>
+<td>SiFive&rsquo;s HiFive1-RevB board</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../image/freedom-ide-target.png" alt="pic"></p>
+<h2 id="emulate-on-qemu">Emulate on QEMU</h2>
+<ul>
+<li>QEMU is a full system emulator
+<ul>
+<li>Translate target instruction to host instruction</li>
+<li>Only functional (not trace accurate) but really fast</li>
+<li>It&rsquo;s good for software development, not for hardware debugging</li>
+</ul>
+</li>
+</ul>
+<h3 id="demo-qemu-sifive-e31-sifive-welcome">@DEMO: qemu-sifive-e31-sifive-welcome</h3>
+<pre><code>QEMU emulator version 3.1.0 (SiFive QEMU 3.1.0-2019.05.1)
+Copyright (c) 2003-2018 Fabrice Bellard and the QEMU Project developers
+
+
+                  SIFIVE, INC.
+
+           5555555555555555555555555
+          5555                   5555
+         5555                     5555
+        5555                       5555
+       5555       5555555555555555555555
+      5555       555555555555555555555555
+     5555                             5555
+    5555                               5555
+   5555                                 5555
+  5555555555555555555555555555          55555
+   55555           555555555           55555
+     55555           55555           55555
+       55555           5           55555
+         55555                   55555
+           55555               55555
+             55555           55555
+               55555       55555
+                 55555   55555
+                   555555555
+                     55555
+                       5
+
+
+               Welcome to SiFive!
+
+</code></pre><h2 id="run-on-hifive1b-board">Run on HiFive1b board</h2>
+<ul>
+<li>HiFive1-revb board
+<ul>
+<li>Latest HiFive1 board with FE310</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/hifive1b-board.png" alt="pic"></p>
+<h3 id="demo-sifive-hifive1-revb-sifive-welcome">@DEMO: sifive-hifive1-revb-sifive-welcome</h3>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

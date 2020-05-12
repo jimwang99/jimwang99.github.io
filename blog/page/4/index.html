@@ -53,6 +53,13 @@
 				
 			</a>
 		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
 	</ul>
 </nav>
 
@@ -71,129 +78,6 @@
 </blockquote>
 
 	</div><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2018-11-10-family-trip-to-legoland/" rel="bookmark">
-			Family trip to LEGOLAND
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-11-10T00:00:00Z">2018-11-10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/life/" rel="category">life</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		A piece of very precious memory
- Home &ndash;&gt; LEGOLAND   264 miles, 4 hours non-stop (with stop, 7:00AM to 12:00AM)
-  Lunch at Wendy’s: 5821 Dennis McCarthy Dr, Lebec, CA 93243
- Wendy&rsquo;s is just another burger place. We ended up with Panda Express at the same rest area.    174 miles, 3 hours non-stop (with stop, 1:30PM to 4:30PM)
-  LEGOLAND Castle Hotel
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2018-11-01-cache-coherence/" rel="bookmark">
-			Cache Coherence Notes
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-11-01T00:00:00Z">2018-11-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Coherence mechanism Snooping Every cache maintain its own cache state. And when it needs to access a shared address space, it sends snooping messages to all the other caches to either update or invalidate them.
- Write invalidate: write operation will invalidate all the other shared copies. Others will have to read again from the next level of cache to use it again. Write update: write operation will give the written data to the shared copies and update them accordingly.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2018-11-01-cpu-architecture-notes/" rel="bookmark">
-			CPU Architecture Notes
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-11-01T00:00:00Z">2018-11-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Register renaming To eliminate the false and output data dependency by adding extra physical registers more than architectural registers.
- Read-after-write (RAW) is true data dependency Write-after-write (WAW) is output data dependency Write-after-read (WAR) is false data dependency  Superscalar Dynamically issue multiple instructions in each cycle to increase IPC.
- Normally need multi-port register files and ALU to avoid structural hazard. Can be in-order or out-of-order  Re-order buffer For out-of-order execution CPU architecture, results are put into re-order buffer waiting for commit.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2018-10-30-ok-lens-tips/" rel="bookmark">
-			OK镜使用和保养方法
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-30T00:00:00Z">2018-10-30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/life/" rel="category">life</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		1. 晚上睡前戴眼镜片  在使用“阿托品”之后至少两小时，以保证药物被吸收。 洗手，并且用厨房纸（不掉纸屑）擦干。 滴眼药水，润湿眼球。 灰色眼镜片是右眼的，GRAY has an R for RIGHT；蓝色眼镜片是左眼的，BLUE has an L for LEFT。 将眼药水注满眼镜片内部；低头，拉开上下眼帘；将眼镜慢慢地水平地放入。 确认眼镜片在眼球正中，否则可以闭眼后，用手指在眼帘外轻推调整。 确认没有大的可见气泡，否则会影响治疗效果。如果有小气泡，可以仰头滴入数滴眼药水，并闭眼转动眼球，将气泡挤出。可重复几次。如果没有明显效果，用洗盘将眼镜片取出，并重新放置。 确认两个眼镜片都放置成功以后，再分别滴一滴眼药水。 如果眼睛痒，可以轻轻按压，但切忌按揉。 如果镜片掉落在桌上或者地上，可以用BLINK药水清洗，同时用手指轻轻搓揉。  2. 早上取眼镜片  各滴一滴眼药水。 用洗盘将镜片取出。注意尽量吸取镜片下边缘，而不要吸取镜片中心，因为镜片中心更薄，容易损坏。如果感觉洗盘吸力不够，可以用厨房纸吸干。 分离洗盘和镜片的时候不要垂直方向硬拉，而要轻轻滑出来。 取完之后滴一滴眼药水。 之后将眼镜片放入ONE-SHOT存储盒，注意分清左右。 将ONE-SHOT药水倒入存储盒，到划线处。放置至少6个小时。如果前一晚未使用，也需要更换ONE-SHOT药水，并放置至少6个小时。 ONE-SHOT药水需要反应6小时之后才会无害，否则会刺激眼睛。它的主要成分是双氧水。  
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/design/2018-10-25-case-study-clock-divider-with-sync-reset/" rel="bookmark">
-			Case Study: Clock Divider with Synchronous Reset
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-25T00:00:00Z">2018-10-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/design/" rel="category">design</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		When using a counter to divide a clock, don’t reset the counter, especially when you are using synchronous reset. It will make the clock quiet while reset. And if it’s used along with sync reset, then those flip-flop won’t be reset at all.
-But if without reset, the counter will be &ldquo;X&rdquo; in simulation.
-logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif always_ff @ (posedge clk) begin cntr &lt;= cntr + 1; end 
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2018-10-23-fpga-solution-for-lidar-project/" rel="bookmark">
-			FPGA Solution for LiDAR Project
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-23T00:00:00Z">2018-10-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/life/" rel="category">life</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (https://www.xilinx.com/products/boards-and-kits/zcu111.html)
- Features:  XCZU28DR-2FFVG1517E: high-end RFSoC 12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)   Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product    FMC daughter board with high-speed ADC
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/tool/2018-10-21-google-cloud-platform-tips/" rel="bookmark">
-			GCP (Google Cloud Platform)
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-21T00:00:00Z">2018-10-21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Price of GCP Persistance Disk Can be used to put all the data/eda/os on it.
-    Price (per month) Price (per GB per month)     SSD 50GB $8.50 $0.17   SSD 1TB $174.08 $0.17   HDD 50GB $2.00 $0.04   HDD 200GB $8.00 $0.04   HDD 1TB $39.76 $0.04   Snapshot 50GB $1.30 $0.026    Always on instance (24x7) Can be used as working machine (support VNC) and NFS server
-	</div>
-</article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/blog/tool/2018-10-01-docker-tips/" rel="bookmark">
@@ -242,12 +126,134 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
 		 The course is on Coursera
  understanding design patterns  what?  well-known solutions for recurring problems   why?  don&rsquo;t reinvent wheels reuse best practices   characteristics  language neutral dynamic incomplete by design to promote customization   types  creational structual behavioral   OOP (object-oriented programming)  design pattern relies on OOP attributes + methods inheritence &amp; polymorphism   pattern context  participants and their rols quality attributes: nonfunctional requirements forces: various factors or trade-offs to consider consequences: side effects by decision makers   pattern language  name context problem solution related patterns    creational patterns factory  create and return object on the fly  flexibility of adding new classes   problem  uncertainties in types of objects runtime decision of types of objects    abstract facotry  a factory dynamically uses different factories to create objects on the fly problem  create a family of related objects at runtime   concepts  abstract factory concrete factory (the real factory used at runtime)    singleton  only one object from a class problem  cache information shared by multiple objects    
 	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/note/2017-05-14-scala-first-look/" rel="bookmark">
+			Scala First Look
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-14T00:00:00Z">2017-05-14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Scala introduction course on LinkedIn. Not very useful, if not using it in real project.
+ introduction  short for Scalable language object-oriented + functional programming  everything is object  including numbers and functions does not include primitive data types   can pass/assign function: functional programming   seamless compatible with Java  runs on JVM, compile to JVM reuse Java libraries and types can call any Java code   REPL interactive shell  read, eval, print, loop    syntax  define: var (variable) vs val (value)  var defines variables that can be changed  but cannot change from one data type to another, ex.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/note/2017-05-05-genus-training/" rel="bookmark">
+			GENUS Training Notes
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T00:00:00Z">2017-05-05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		The following is my notes of GENUS training course on Cadence&rsquo;s training module
+ Module 03: genus fundamentals common UI vs legacy mode  unified commands with Tempus common us: set_db &amp; get_db legacy mode: set_attribute &amp; get_attribute  .synth_init file: setup info, auto load when start legacy UI, can be skipped with -no_custom command line option    explore design hier in legacy UI  virtual directory structure  /: root dir  designs  top_module  instances_hier: current module&rsquo;s hier instances instances_seq: current module&rsquo;s sequential instances instances_cmb: current module&rsquo;s combinational instancs     libraries hdl_libraries flows   use find to locate objects  ex.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/industry/2017-04-30-snug-2017/" rel="bookmark">
+			SNUG Silicon Valley 2017 at Santa Clara Conventional Center
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-30T00:00:00Z">2017-04-30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/industry/" rel="category">industry</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Day 1 Morning  Paper from microsoft   Microsoft has a IC design team? Apparently it does. Grey code: even when metastability happends, it falls to adjecent states, instead of unknow states, it&rsquo;s acceptable in some cases. Data bus bridge (DBB) for low data throughput Async FIFO: more area, more complexity  Panel: synthesis into the future   The disruption in advanced nodes (10nm/7nm)  Thermal: drives max freq; heating wires degreeds EM lifetime IoT: analog-digital co-design; physical/electical context-aware synthesis (the tool need to be aware of the block&rsquo;s specific attributes, such as thermal/IR to avoid analog/digital interference.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/tool/2018-11-01-wsl-tips/" rel="bookmark">
+			WSL (Windows Subsystem Linux) Tips
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-25T00:00:00Z">2017-04-25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		To start gnome-terminal on WSL (Windows Subsystem for Linux) After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.
+To reinstall WSL you should do:
+&gt; lxrun /uninstall /full&gt; lxrun /installThen you will see
+&gt; lsb_release -aNo LSB modules are available.Distributor ID: UbuntuDescription: Ubuntu 16.04.2 LTSRelease: 16.04Codename: xenialSome X11 apps like xclocks works fine with Xming, but &ldquo;gnome-terminal&rdquo; still have some problem.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/tool/2017-04-24-install-python-offline/" rel="bookmark">
+			Install Python Offline
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-24T00:00:00Z">2017-04-24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		In general, things like Anaconda Server are designed to make this sort of workflow easier.
+Some suggested workarounds:
+ Reproduce your install on another machine with internet (save conda list &ndash;export to a file and conda install &ndash;file). Then use conda update on that machine to generate and download the packages. One tip that could be helpful is if you take several conda packages and tar them up into a flat tarball you can use conda to install that tarball and it will install all the packages.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/flow/2017-04-18-case-study-clock-skew-control/" rel="bookmark">
+			Case Study: Clock Skew Control
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-18T00:00:00Z">2017-04-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/flow/" rel="category">flow</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Question: how to control the clock skew between a group of clocks to be minimum, say less than 30ps, instead of utilizing useful skew? This case happens to our hard macros.
+A: in Innovus, use skew group
+set min_skew_group { path/to/clock/NLVB_CKB path/to/clock/NLVA_CKB path/to/clock/NLVP_CKB } create_ccopt_skew_group \ -name min_skew_group \ -sources path/to/clock/source/CKB \ -sinks $min_skew_group \ -target_insertion_delay 0.500 \ -rank 1 -target_skew 0.000 set_ccopt_property constraints -skew_group min_skew_group ccopt 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/blog/note/2017-04-01-innovus-training/" rel="bookmark">
+			INNOVUS Training Notes
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-01T00:00:00Z">2017-04-01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		The following is my notes of INNOVUS training course on Cadence&rsquo;s training module
+ Module 02: overview  &ldquo;gift&rdquo; directory contains lots of useful scripts to help productivity Independent &ldquo;viewlog&rdquo; utility or &ldquo;Tools-&gt;Log Viewer&rdquo; will start a GUI to help understand log files better. Batch mode: innovus -no_gui -init batch.tcl  win / win off to show/hide GUI    Module 03: import design Input  Netlist in Verilog Floorplan in DEF Clock tree spec auto gen from SDC Scan info in Tcl or DEF I/O info (pads or pins) GDS layer map (if want to dump GDS) Timing constraint in SDC Timing library in .
+	</div>
 </article>
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/blog/page/3/">«</a>
-	<span class="pagination__item pagination__item--current">4/8</span>
+	<span class="pagination__item pagination__item--current">4/7</span>
 	<a class="pagination__item pagination__item--next btn" href="/blog/page/5/">»</a>
 </div>
 
@@ -269,8 +275,8 @@ We used it in our 28nm TSMC HPC+ chip, after we carefully simulated it with HSPI
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/list/">[RISC-V Architecture Training] Dec. 2019 verion: Full List</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/">[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-26-amba-protocol/">ARM AMBA Protocl</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
 		</ul>
 	</div>
 </div>

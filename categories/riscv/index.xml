@@ -6,59 +6,128 @@
     <description>Recent content in riscv on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/riscv/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>[RISC-V Architecture Training] Dec. 2019 verion: Full List</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/list/</link>
-      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      <title>[RISC-V Architecture Training] @DEMO: Bare-metal assembly &amp; SPIKE simulator</title>
+      <link>/riscv-training/11-demo.compile/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/list/</guid>
-      <description>List of training content title: &amp;ldquo;[RISC-V Architecture Training] Schedule&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Introduction of RISC-V Open ISA&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Basics &amp;amp; Unprivileged Specification&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Privileged Architecture&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Computer Architecture with RISC-V Examples&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Uncore&amp;rdquo; </description>
+      <guid>/riscv-training/11-demo.compile/</guid>
+      <description>General software stack Embedded system software stack What is newlib? https://en.wikipedia.org/wiki/Newlib
+ C standard library implementation for embedded system GCC port for non-Linux embedded system When lacking of full-blown OS, how to make a system call and how to use devices   Newlib code size will signaficant larger than Linux code size, because it includes the system calls that is already embedded inside Linux.
+ What is cross-compile? Cross-compiler</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] @DEMO: Create custom instructions</title>
+      <link>/riscv-training/16-demo.custom-inst/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/riscv-training/16-demo.custom-inst/</guid>
+      <description>Custom instruction The most attractive feature of RISC-V  Extensibility Differentiation Software hardware co-design  Domain-specific applications      Example  Integer MAC (multiplication and accumulation) for matrix operation Multiple load/store fusion for smaller code footprint Customized vector operations tailored for your application    Custom instruction / Difficulties Most difficult thing is NOT in hardware, but in compiler  How to let compiler understand your intention and generate corresponding instructions For example, automatic vectorization is difficult with vector/SIMD instructions  The compiler has to understand the for loop, as well as the implemention details    @DEMO: new MAC instruction MAC = multiplication and accumulation  c += a * b  RD = RD + RS1 * RS2   Most common operations in matrix multiplication  How to handle Overflow?</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] @DEMO: Freedom IDE &amp; HiFive1b board</title>
+      <link>/riscv-training/15-demo.hifive1/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/riscv-training/15-demo.hifive1/</guid>
+      <description>Freedom IDE Different targets    Targets Comments     qemu-sifive-e31 QEMU emulator for 32-bit E31 CPU   qemu-sifive-s51 QEMU emulator for 64-bit S51 CPU   freedom-e310-arty Arty FPGA platfrom   sifive-hifive-unleashed SiFive&amp;rsquo;s HiFive Unleased board that support Linux   sifive-hifive1 SiFive&amp;rsquo;s HiFive1 board   sifive-hifive1-revb SiFive&amp;rsquo;s HiFive1-RevB board    Emulate on QEMU  QEMU is a full system emulator  Translate target instruction to host instruction Only functional (not trace accurate) but really fast It&amp;rsquo;s good for software development, not for hardware debugging    @DEMO: qemu-sifive-e31-sifive-welcome QEMU emulator version 3.</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] @DEMO: PK (proxy kernel) and FESVR (front-end server)</title>
+      <link>/riscv-training/12-demo.syscall/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/riscv-training/12-demo.syscall/</guid>
+      <description>PK and FESVRV  PK (proxy kernel) &amp;amp; FESVR (front-end server)  For debug and system bring up PK is an abstraction of kernel that provides system services through FESVR running on host     PK is running on target CPU, while FESVR is running on host computer  PK and FESVR / code example printf in modified version of spike *# Original spike &amp;gt; cd ~/riscv-training/lab/22-lab.system-call &amp;gt; spike .</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] @DEMO: QEMU full system emulator</title>
+      <link>/riscv-training/17-demo.qemu/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/riscv-training/17-demo.qemu/</guid>
+      <description>QEMU  QEMU is a binary translating emulator  On-the-fly, translate RISC-V instruction to host CPU instruction (e.g. x86) Functional, not accurate; but really fast  Good for software debugging, not for hardware debuggin         Type Example Performance     Functional QEMU 100 million to &amp;gt;1 billion instructions per second   Trace-accurate Spike 10 to 100 million instructions per second   Cycle-accurate Verilator/rocket-chip 10 to 100 thousand instructions per second    RISC-V boards  virt - priv v1.</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] @DEMO: Setup lab environment</title>
+      <link>/riscv-training/10-demo.setup-env/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/riscv-training/10-demo.setup-env/</guid>
+      <description>Install VMWare Player Create Ubuntu 16.04 from provided virtual machine Username = riscv Password = r5rocks Install Freedom Studio from SiFive https://www.sifive.com/boards They have Windows / Mac OS / Linux versions.
+@LAB Path in LAB VM
+/opt/FreedomStudio-2019-08-2-lin64 Setup shell environment export SIFIVE=/opt/FreedomStudio-2019-08-2-lin64/SiFive export RISCV=${SIFIVE}/riscv64-unknown-elf-gcc-8.3.0-2019.08.0 export QEMU=${SIFIVE}/riscv-qemu-4.1.0-2019.08.0 export PATH=${RISCV}/bin:${QEMU}/bin:${PATH} @LAB Above setup has been added into .bashrc
+@LAB: Hello world cd ~/riscv-training/lab/20-lab.setup-env make Here is the log:
+make hello.elf SRC_TYPE=c make[1]: Entering directory &#39;/mnt/hgfs/riscv-training/lab/20-lab.</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] @DEMO: Verification suite</title>
+      <link>/riscv-training/13-demo.verif-suite/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/riscv-training/13-demo.verif-suite/</guid>
+      <description>riscv-tests https://github.com/riscv/
+ Unit tests based on assembly  Basic functionality of each RISC-V instructions and features defined in the spec Very good staring point to find basic implementation issues   Software BIST (built-in self test)  Compare architecture states with expected results Issue pass/fail signal to host machine   Official compliance tests  riscv-tests / TVM (test virtual machine)  Because RISC-V is very scalable, so it has many variants  E.</description>
     </item>
     
     <item>
       <title>[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</link>
+      <link>/riscv-training/02-lecture.isa-basic/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</guid>
-      <description>RISC-V SPEC https://riscv.org/specifications (official version v1.10)
+      <guid>/riscv-training/02-lecture.isa-basic/</guid>
+      <description>RISC-V SPEC https://riscv.org/specifications (official version v1.10 while version v2.0 under ratification)
 https://github.com/riscv/riscv-isa-manual (source code)
- User-level ISA (unpriviledged)  All the basic instructions, and extensions Memory model  Priviledged ISA  Priviledge level: M (machine), H (hypervisor), S (supervisor), U (user) CSR (control status register) Virtual-memory system  Debug &amp;amp; Trace First impression: ISA subsets RISC-V is a family of ISAs Divided into several subsets: I, M, A, F, D, C, &amp;hellip;
-  Domain-specific architecture (by David Patterson)</description>
+ User-level ISA (unpriviledged)  All the basic instructions, and extensions Memory model  Priviledged ISA  Priviledge level: M (machine), H (hypervisor), S (supervisor), U (user) CSR (control status register) Virtual-memory system  Debug &amp;amp; Trace First impression: ISA subsets RISC-V is a family of ISAs Divided into several subsets: I, M, A, F, D, C, &amp;hellip;</description>
     </item>
     
     <item>
       <title>[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</link>
+      <link>/riscv-training/04-lecture.cpu-arch/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</guid>
+      <guid>/riscv-training/04-lecture.cpu-arch/</guid>
       <description>Computer architecture basics  Pipeline / Parallelism / Cache Three ultimate mechanisms to imporve performance/power
 Computer architecture basics / pipeline IF = Instruction Fetch, ID = Instruction Decode, EX = Execute, MEM = Memory access, WB = Register write back).
 Computer architecture basics / pipeline @DEMO Pipeline simulator: https://github.com/mortbopet/Ripes
-Computer architecture basics / pipeline Motivation  Most of the work cannot be done at the same time. To use the logic more efficiently Less work per stage, higher clock frequency  Brings in problems: hazards  Data hazard  Dependency    mv	x1, x2 add	x4, x1, x3 sd	x4, 0(x5)  Control hazard  Jump and branch    addi	x1, x1, 1 subi	x2, x1, 100 bnez	x2, 0(x3) .</description>
+Computer architecture basics / pipeline Motivation  Most of the work cannot be done at the same time. To use the logic more efficiently Less work per stage, higher clock frequency  Brings in problems: hazards  Data hazard  Dependency    mv x1, x2 add x4, x1, x3 sd x4, 0(x5)  Control hazard  Jump and branch    addi x1, x1, 1 subi x2, x1, 100 bnez x2, 0(x3) .</description>
+    </item>
+    
+    <item>
+      <title>[RISC-V Architecture Training] Demo 4: RocketChip generator</title>
+      <link>/riscv-training/14-demo.rocketchip/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/riscv-training/14-demo.rocketchip/</guid>
+      <description>What is RocketChip generator?  RISC-V SoC generator from UC Berekeley Based on Chisel Highly parameterized  Cache configs Num of cores Type of cores (Rocket, BOOM, w/ FPU, RoCC accelerator) Num of ports (memory, system, peripheral)    What is RocketChip generator? / Setup Clone GIT repo git clone --recursive https://github.com/chipsalliance/rocket-chip.git export RISCV=/opt/riscv/rv64gc # need to use matching RISC-V toolchain export PATH=${RISCV}/bin;${PATH} Prerequisites Because RocketChip is using Chisel (a variant of Scala, based on Java), so we need to install JDK before using RocketChip generator.</description>
     </item>
     
     <item>
       <title>[RISC-V Architecture Training] Introduction of RISC-V Open ISA</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</link>
+      <link>/riscv-training/01-lecture.intro/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</guid>
+      <guid>/riscv-training/01-lecture.intro/</guid>
       <description>What is ISA? Contract between software and hardware. What is RISC? Reduced instruction set computer  Small set of simple/general instructions + load/store architecture  Optimize hardware to be simple and faster Software-centric design: rely on compiler + software       CISC RISC     Emphasis on hardware Emphasis on software   Includes multi-clock complex instructions Single-clock, reduced instruction only   Memory-to-memory: &amp;ldquo;LOAD&amp;rdquo; and &amp;ldquo;STORE&amp;rdquo; incorporated in instructions Register to register: &amp;ldquo;LOAD&amp;rdquo; and &amp;ldquo;STORE&amp;rdquo; are independent instructions   Small code sizes, high cycles per second Low cycles per second, large code sizes   Transistors used for storing complex instructions Spends more transistors on memory registers     E.</description>
     </item>
     
     <item>
       <title>[RISC-V Architecture Training] Privileged Architecture</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</link>
+      <link>/riscv-training/03-lecture.isa-privileged/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</guid>
+      <guid>/riscv-training/03-lecture.isa-privileged/</guid>
       <description>Privileged architecture Purpose of privileged architecture   To manage and protect shared resources
  Memory, IO devices, even cores    Also needs to decouple implementation details
  Handle unimplemented operations: software emulation Handle async events (interrupts): IO, timer, software Hypervisor support: 2-level address translation    Therefore, we have  4 privilege modes: U, S, H, M PMP/PMA (physical memory protection/attributes) Virtual memory Interrupts and exceptions And a bunch of CSRs to serve these functionality  Privileged architecture / software stack layers 4 different kinds of platforms    Platforms Modes Trust Memory protection     Embedded w/o protection (most MCUs) M All Non   Embedded w/ protection (RTOS scenario) M+U Application Physical memory protection   OS capable (Linux, and etc.</description>
@@ -66,22 +135,31 @@ Computer architecture basics / pipeline Motivation  Most of the work cannot be d
     
     <item>
       <title>[RISC-V Architecture Training] Schedule</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</link>
+      <link>/riscv-training/00-schedule/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</guid>
-      <description>Momentum: 2018 RISC-V Summit Fun moment: anti-RISCV website by ARM Schedule 2-day x 8-hour Step-by-step Lecture + demo + DIY Schedule / Day 1 morning  Schedule and self-introduction Introduction of RISC-V open ISA  History and current status of ecosystem   RISC-V ISA: unprivileged spec  Basic RISC-V ISA: key concepts   DIY 0: setup course DIY env  Quick introduction of DIY env used in this course   Lunch break  Schedule / Day 1 afternnon   Demo 1: compile assembly code and simulate on SPIKE  GNU toolchain, assembly code example, compile &amp;amp; link, SPIKE simulator    DIY 1: compile assembly code and simulate on SPIKE  Code your own assembly code, compile &amp;amp; link, run simulation on SPIKE    Tea break</description>
+      <guid>/riscv-training/00-schedule/</guid>
+      <description>Schedule 2-day x 8-hour Step-by-step Lecture + demo + lab Schedule / Day 1 morning  Schedule and self-introduction [Lecture] Introduction of RISC-V open ISA  History and current status of ecosystem   [Lecture] RISC-V ISA: unprivileged spec  Basic RISC-V ISA: key concepts   [Lab] Setup lab env  Quick introduction of lab env used in this course   ==== Lunch break ====  Schedule / Day 1 afternnon   [Demo] Compile assembly code and simulate on SPIKE</description>
     </item>
     
     <item>
       <title>[RISC-V Architecture Training] Uncore</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</link>
+      <link>/riscv-training/05-lecture.uncore/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</guid>
+      <guid>/riscv-training/05-lecture.uncore/</guid>
       <description>&amp;ndash;
 Uncore CPU core is fun, but uncore is the real work. Uncore / components  Cache (already discussed) Interrupt controller Network Fabric Debug  Interrupt recap 3 types of interrupts
  External: peripheral devices Software: inter-processor interrupt Timer: timely schedule tasks  PLIC (platform level interrupt controller)  For external interrupts Aggregation of multiple external interrupts  Provide enable/priority    CLINT (core level interruptor)  For software &amp;amp; timer interrupts Provide memory-mapped software/timer interrupt CSRs  PLIC (platform-level interrupt controller) MSI vs.</description>
+    </item>
+    
+    <item>
+      <title>Note of RISC-V Vector ISA Spec v0.6</title>
+      <link>/blog/riscv/2018-12-15-riscv-v-spec/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/riscv/2018-12-15-riscv-v-spec/</guid>
+      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
     </item>
     
   </channel>

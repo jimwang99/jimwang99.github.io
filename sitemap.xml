@@ -28,42 +28,82 @@
   </url>
   
   <url>
-    <loc>/blog/arch/2019-11-28-riscv-architecture-training/list/</loc>
+    <loc>/riscv-training/</loc>
     <lastmod>2019-11-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/11-demo.compile/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/16-demo.custom-inst/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/15-demo.hifive1/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/12-demo.syscall/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/17-demo.qemu/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/10-demo.setup-env/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/13-demo.verif-suite/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/02-lecture.isa-basic/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/04-lecture.cpu-arch/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/14-demo.rocketchip/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/01-lecture.intro/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/03-lecture.isa-privileged/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/00-schedule/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/riscv-training/05-lecture.uncore/</loc>
+    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/riscv/</loc>
-    <lastmod>2019-11-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</loc>
-    <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</loc>
     <lastmod>2019-11-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -178,7 +218,7 @@
   </url>
   
   <url>
-    <loc>/blog/arch/2018-12-15-riscv-v-spec/</loc>
+    <loc>/blog/riscv/2018-12-15-riscv-v-spec/</loc>
     <lastmod>2018-12-15T00:00:00+00:00</lastmod>
   </url>
   

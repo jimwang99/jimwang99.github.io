@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] Demo 4: RocketChip generator - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] Demo 4: RocketChip generator</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="what-is-rocketchip-generator">What is RocketChip generator?</h2>
+<ul>
+<li>RISC-V <strong>SoC</strong> generator from UC Berekeley</li>
+<li>Based on Chisel</li>
+<li>Highly parameterized
+<ul>
+<li>Cache configs</li>
+<li>Num of cores</li>
+<li>Type of cores (Rocket, BOOM, w/ FPU, RoCC accelerator)</li>
+<li>Num of ports (memory, system, peripheral)</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/rocketchip-diagram.png" alt="pic"></p>
+<h2 id="what-is-rocketchip-generator--setup">What is RocketChip generator? / Setup</h2>
+<h3 id="clone-git-repo">Clone GIT repo</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone --recursive https://github.com/chipsalliance/rocket-chip.git
+export RISCV<span style="color:#f92672">=</span>/opt/riscv/rv64gc  <span style="color:#75715e"># need to use matching RISC-V toolchain</span>
+export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin;<span style="color:#e6db74">${</span>PATH<span style="color:#e6db74">}</span>
+</code></pre></div><h3 id="prerequisites">Prerequisites</h3>
+<p>Because RocketChip is using Chisel (a variant of Scala, based on Java), so we need to install JDK before using RocketChip generator.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">apt install -y default-jdk
+</code></pre></div><h2 id="what-is-rocketchip-generator--chisel">What is RocketChip generator? / Chisel</h2>
+<h3 id="rocketchip-is-written-in-chisel">RocketChip is written in Chisel</h3>
+<ul>
+<li>Open-source hardware construction language
+<ul>
+<li>Highly parameterized generator</li>
+<li>Hierarchical + object oriented + functional construction</li>
+<li>Generates Verilog and C model
+<ul>
+<li>Not HLS (high-level synthesis)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Based on Scala
+<ul>
+<li>Functional programming</li>
+<li>Strong static type system</li>
+<li>Compiled to Java bytecode</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>If UCB had decided to use SystemVerilog + Python, RocketChip and its ECO system might be much more popular.</p>
+</blockquote>
+<h2 id="generate-cpu-with-rocketchip-generator">Generate CPU with RocketChip generator</h2>
+<h3 id="demo-compile-and-generate-c-based-emulator">@DEMO: Compile and generate C-based emulator</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd emulator
+make
+
+ls emulator-freechips.rocketchip.system-*
+</code></pre></div><h3 id="demo-compile-and-generator-verilog">@DEMO: Compile and generator Verilog</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd vsim
+make verilog
+
+cd generated-src
+ls freechips.rocketchip.system.*.v
+</code></pre></div><blockquote>
+<p>The generated Verilog is human unreadable. A huge problem while debug.</p>
+</blockquote>
+<h3 id="demo-simulate-riscv-tests-with-c-based-emulator">@DEMO: Simulate riscv-tests with C-based emulator</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make -j4 run                    <span style="color:#75715e"># run all tests</span>
+make output/dhrystone.riscv.out <span style="color:#75715e"># run specific test</span>
+</code></pre></div><h3 id="check-simulation-result">Check simulation result</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># find the passed ones</span>
+grep PASSED output/*.out
+<span style="color:#75715e"># find the failed ones</span>
+grep FAILED output/*.out
+</code></pre></div><h2 id="cpu-architecture-exploration-with-rocketchip">CPU architecture exploration with RocketChip</h2>
+<h3 id="demo-two-configration-files">@DEMO: Two configration files</h3>
+<pre><code>~/riscv-git/rocket-chip/src/main/scala/system/Configs.scala
+~/riscv-git/rocket-chip/src/main/scala/subsystem/Configs.scala
+</code></pre><h3 id="what-you-can-change">What you can change</h3>
+<ul>
+<li>Core
+<ul>
+<li>32-bit or 64-bit</li>
+<li>With or without FPU</li>
+<li>With or without virtual memory</li>
+<li>With or without BTB</li>
+<li>Multiplier-divider cycles</li>
+</ul>
+</li>
+<li>L1 cache (I$ &amp; D$)
+<ul>
+<li>Num of sets</li>
+<li>Block size (set size)</li>
+<li>Ways</li>
+<li>Num of MSHR</li>
+<li>Num of TLB entries</li>
+</ul>
+</li>
+<li>Cross clock domain
+<ul>
+<li>Sync or async</li>
+</ul>
+</li>
+</ul>
+<h2 id="cpu-architecture-exploration--example">CPU architecture exploration / example</h2>
+<h3 id="d-cache--of-ways-vs-dhrystone-performance">D-Cache: # of ways vs. Dhrystone performance</h3>
+<ul>
+<li>
+<p>D-Cache parameters</p>
+<ul>
+<li>Same D$ size = 16KiB</li>
+<li>Number of ways: 16, 8, 4, 2</li>
+</ul>
+</li>
+<li>
+<p>Use Dhyrstone as benchmark</p>
+</li>
+<li>
+<p><code>class DCacheParams</code> defined in
+<code>~/riscv-git/rocket-chip/src/main/scala/rocket/HellaCache.scala</code></p>
+</li>
+<li>
+<p>New classes of <code>WithNDCWay16Cores</code>, <code>WithNDCWay8Cores</code> and <code>WithNDCWay2Cores</code> in <code>~/riscv-git/rocket-chip/src/main/scala/subsystem/Configs.scala</code></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Num of ways</th>
+<th>Microseconds for one run through Dhrystone</th>
+<th>Dhrystones per Second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DCWay2Config</td>
+<td>2</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>DefaultConfig</td>
+<td>4</td>
+<td>483</td>
+<td>2069</td>
+</tr>
+<tr>
+<td>DCWay8Config</td>
+<td>8</td>
+<td>483</td>
+<td>2061</td>
+</tr>
+<tr>
+<td>DCWay16Config</td>
+<td>16</td>
+<td>485</td>
+<td>2060</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h4 id="ways-size-must-be-equal-or-smaller-than-page-size-4kib">Ways size MUST be equal or smaller than page size (4KiB)</h4>
+<ul>
+<li>To use virtual-index in cache
+<ul>
+<li>Parallel Cache and TLB access</li>
+</ul>
+</li>
+</ul>
+<h2 id="debug-software-on-rocketchip-with-gdb">Debug software on RocketChip with GDB</h2>
+<h3 id="generate-emulator-with-debug-feature">Generate emulator with debug feature</h3>
+<p>New config with JTAG DTM (debug transport module)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JtagConfig</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Config</span><span style="color:#f92672">(</span>
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WithJtagDTMSystem</span> <span style="color:#f92672">++</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">WithNBigCores</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span> <span style="color:#f92672">++</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BaseConfig</span><span style="color:#f92672">)</span>
+</code></pre></div><p>Generate C emulator with JTAG DTM</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd emulator
+make CONFIG<span style="color:#f92672">=</span>JtagConfig
+</code></pre></div><h3 id="launch-emulator">Launch emulator</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./emulator-freechips.rocketchip.system-JtagConfig +jtag_rbb_enable<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> --rbb-port<span style="color:#f92672">=</span><span style="color:#ae81ff">9823</span> hello.elf
+</code></pre></div><h3 id="launch-openocd">Launch OpenOCD</h3>
+<pre><code># cemulator.cfg
+interface remote_bitbang
+remote_bitbang_host localhost
+remote_bitbang_port 9823
+
+set _CHIPNAME riscv
+jtag newtap $_CHIPNAME cpu -irlen 5
+
+set _TARGETNAME $_CHIPNAME.cpu
+target create $_TARGETNAME riscv -chain-position $_TARGETNAME
+
+gdb_report_data_abort enable
+
+init
+halt
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; <span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/openocd -f ./cemulator.cfg
+Open On-Chip Debugger 0.10.0+dev-00112-g3c1c6e0 <span style="color:#f92672">(</span>2018-04-12-10:40<span style="color:#f92672">)</span>
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+Warn : Adapter driver <span style="color:#e6db74">&#39;remote_bitbang&#39;</span> did not declare which transports it allows; assuming legacy JTAG-only
+Info : only one transport option; autoselect <span style="color:#e6db74">&#39;jtag&#39;</span>
+Info : Initializing remote_bitbang driver
+Info : Connecting to localhost:9823
+Info : remote_bitbang driver initialized
+Info : This adapter doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t support configurable speed
+Info : JTAG tap: riscv.cpu tap/device found: 0x00000001 <span style="color:#f92672">(</span>mfg: 0x000 <span style="color:#f92672">(</span>&lt;invalid&gt;<span style="color:#f92672">)</span>, part: 0x0000, ver: 0x0<span style="color:#f92672">)</span>
+Info : datacount<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> progbufsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>
+Info : Disabling abstract command reads from CSRs.
+Info : Disabling abstract command writes to CSRs.
+Info : <span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> Found <span style="color:#ae81ff">1</span> triggers
+Info : Examined RISC-V core; found <span style="color:#ae81ff">1</span> harts
+Info :  hart 0: XLEN<span style="color:#f92672">=</span>64, <span style="color:#ae81ff">1</span> triggers
+Info : Listening on port <span style="color:#ae81ff">3333</span> <span style="color:#66d9ef">for</span> gdb connections
+Info : Listening on port <span style="color:#ae81ff">6666</span> <span style="color:#66d9ef">for</span> tcl connections
+Info : Listening on port <span style="color:#ae81ff">4444</span> <span style="color:#66d9ef">for</span> telnet connections
+</code></pre></div><h3 id="launch-gdb">Launch GDB</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; <span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/riscv64-unknown-elf-gdb hello.elf
+GNU gdb <span style="color:#f92672">(</span>GDB<span style="color:#f92672">)</span> 8.0.50.20170724-git
+Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> <span style="color:#ae81ff">2017</span> Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version <span style="color:#ae81ff">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type <span style="color:#e6db74">&#34;show copying&#34;</span>
+and <span style="color:#e6db74">&#34;show warranty&#34;</span> <span style="color:#66d9ef">for</span> details.
+This GDB was configured as <span style="color:#e6db74">&#34;--host=x86_64-pc-linux-gnu --target=riscv64-unknown-elf&#34;</span>.
+Type <span style="color:#e6db74">&#34;show configuration&#34;</span> <span style="color:#66d9ef">for</span> configuration details.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+Find the GDB manual and other documentation resources online at:
+&lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+For help, type <span style="color:#e6db74">&#34;help&#34;</span>.
+Type <span style="color:#e6db74">&#34;apropos word&#34;</span> to search <span style="color:#66d9ef">for</span> commands related to <span style="color:#e6db74">&#34;word&#34;</span>...
+Reading symbols from ./proj1.out...done.
+<span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span>
+</code></pre></div><blockquote>
+<p>Warning: GDB running on C emulator is super slow</p>
+</blockquote>
+<h2 id="sifive-core-designer">SiFive Core designer</h2>
+<p><a href="http://www.sifive.com">www.sifive.com</a></p>
+<p><img src="../image/sifive-core-designer.png" alt="pic"></p>
+<p>.footnote[Reminder: screenshots]</p>
+<h2 id="lab-rocketchip-architecture-exploration">@LAB: RocketChip architecture exploration</h2>
+<h3 id="change-the-size-of-i-cache">Change the size of I-Cache</h3>
+<h3 id="run-riscv-tests-to-verify-the-design-is-correct">Run riscv-tests to verify the design is correct</h3>
+<h3 id="run-different-benchmark-programs-to-see-performance-change">Run different benchmark programs to see performance change</h3>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

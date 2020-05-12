@@ -47,79 +47,6 @@ Avoid  Too long of framing, not history lession Facts are not assumptions Goals/
     </item>
     
     <item>
-      <title>[RISC-V Architecture Training] Dec. 2019 verion: Full List</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/list/</link>
-      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/list/</guid>
-      <description>List of training content title: &amp;ldquo;[RISC-V Architecture Training] Schedule&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Introduction of RISC-V Open ISA&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Basics &amp;amp; Unprivileged Specification&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Privileged Architecture&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Computer Architecture with RISC-V Examples&amp;rdquo; title: &amp;ldquo;[RISC-V Architecture Training] Uncore&amp;rdquo; </description>
-    </item>
-    
-    <item>
-      <title>[RISC-V Architecture Training] Basics &amp; Unprivileged Specification</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/</guid>
-      <description>RISC-V SPEC https://riscv.org/specifications (official version v1.10)
-https://github.com/riscv/riscv-isa-manual (source code)
- User-level ISA (unpriviledged)  All the basic instructions, and extensions Memory model  Priviledged ISA  Priviledge level: M (machine), H (hypervisor), S (supervisor), U (user) CSR (control status register) Virtual-memory system  Debug &amp;amp; Trace First impression: ISA subsets RISC-V is a family of ISAs Divided into several subsets: I, M, A, F, D, C, &amp;hellip;
-  Domain-specific architecture (by David Patterson)</description>
-    </item>
-    
-    <item>
-      <title>[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/</guid>
-      <description>Computer architecture basics  Pipeline / Parallelism / Cache Three ultimate mechanisms to imporve performance/power
-Computer architecture basics / pipeline IF = Instruction Fetch, ID = Instruction Decode, EX = Execute, MEM = Memory access, WB = Register write back).
-Computer architecture basics / pipeline @DEMO Pipeline simulator: https://github.com/mortbopet/Ripes
-Computer architecture basics / pipeline Motivation  Most of the work cannot be done at the same time. To use the logic more efficiently Less work per stage, higher clock frequency  Brings in problems: hazards  Data hazard  Dependency    mv	x1, x2 add	x4, x1, x3 sd	x4, 0(x5)  Control hazard  Jump and branch    addi	x1, x1, 1 subi	x2, x1, 100 bnez	x2, 0(x3) .</description>
-    </item>
-    
-    <item>
-      <title>[RISC-V Architecture Training] Introduction of RISC-V Open ISA</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/</guid>
-      <description>What is ISA? Contract between software and hardware. What is RISC? Reduced instruction set computer  Small set of simple/general instructions + load/store architecture  Optimize hardware to be simple and faster Software-centric design: rely on compiler + software       CISC RISC     Emphasis on hardware Emphasis on software   Includes multi-clock complex instructions Single-clock, reduced instruction only   Memory-to-memory: &amp;ldquo;LOAD&amp;rdquo; and &amp;ldquo;STORE&amp;rdquo; incorporated in instructions Register to register: &amp;ldquo;LOAD&amp;rdquo; and &amp;ldquo;STORE&amp;rdquo; are independent instructions   Small code sizes, high cycles per second Low cycles per second, large code sizes   Transistors used for storing complex instructions Spends more transistors on memory registers     E.</description>
-    </item>
-    
-    <item>
-      <title>[RISC-V Architecture Training] Privileged Architecture</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/</guid>
-      <description>Privileged architecture Purpose of privileged architecture   To manage and protect shared resources
- Memory, IO devices, even cores    Also needs to decouple implementation details
- Handle unimplemented operations: software emulation Handle async events (interrupts): IO, timer, software Hypervisor support: 2-level address translation    Therefore, we have  4 privilege modes: U, S, H, M PMP/PMA (physical memory protection/attributes) Virtual memory Interrupts and exceptions And a bunch of CSRs to serve these functionality  Privileged architecture / software stack layers 4 different kinds of platforms    Platforms Modes Trust Memory protection     Embedded w/o protection (most MCUs) M All Non   Embedded w/ protection (RTOS scenario) M+U Application Physical memory protection   OS capable (Linux, and etc.</description>
-    </item>
-    
-    <item>
-      <title>[RISC-V Architecture Training] Schedule</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-00-schedule/</guid>
-      <description>Momentum: 2018 RISC-V Summit Fun moment: anti-RISCV website by ARM Schedule 2-day x 8-hour Step-by-step Lecture + demo + DIY Schedule / Day 1 morning  Schedule and self-introduction Introduction of RISC-V open ISA  History and current status of ecosystem   RISC-V ISA: unprivileged spec  Basic RISC-V ISA: key concepts   DIY 0: setup course DIY env  Quick introduction of DIY env used in this course   Lunch break  Schedule / Day 1 afternnon   Demo 1: compile assembly code and simulate on SPIKE  GNU toolchain, assembly code example, compile &amp;amp; link, SPIKE simulator    DIY 1: compile assembly code and simulate on SPIKE  Code your own assembly code, compile &amp;amp; link, run simulation on SPIKE    Tea break</description>
-    </item>
-    
-    <item>
-      <title>[RISC-V Architecture Training] Uncore</title>
-      <link>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/</guid>
-      <description>&amp;ndash;
-Uncore CPU core is fun, but uncore is the real work. Uncore / components  Cache (already discussed) Interrupt controller Network Fabric Debug  Interrupt recap 3 types of interrupts
- External: peripheral devices Software: inter-processor interrupt Timer: timely schedule tasks  PLIC (platform level interrupt controller)  For external interrupts Aggregation of multiple external interrupts  Provide enable/priority    CLINT (core level interruptor)  For software &amp;amp; timer interrupts Provide memory-mapped software/timer interrupt CSRs  PLIC (platform-level interrupt controller) MSI vs.</description>
-    </item>
-    
-    <item>
       <title>ARM AMBA Protocl</title>
       <link>/blog/arch/2019-03-26-amba-protocol/</link>
       <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
@@ -283,10 +210,10 @@ dtc command
     
     <item>
       <title>Note of RISC-V Vector ISA Spec v0.6</title>
-      <link>/blog/arch/2018-12-15-riscv-v-spec/</link>
+      <link>/blog/riscv/2018-12-15-riscv-v-spec/</link>
       <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/arch/2018-12-15-riscv-v-spec/</guid>
+      <guid>/blog/riscv/2018-12-15-riscv-v-spec/</guid>
       <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
     </item>
     

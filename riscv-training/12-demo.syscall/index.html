@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] @DEMO: PK (proxy kernel) and FESVR (front-end server) - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] @DEMO: PK (proxy kernel) and FESVR (front-end server)</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="pk-and-fesvrv">PK and FESVRV</h2>
+<ul>
+<li>PK (proxy kernel) &amp; FESVR (front-end server)
+<ul>
+<li>For debug and system bring up</li>
+<li>PK is an abstraction of kernel that provides system services through FESVR running on host</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/riscv-pk-fesvr.png" alt="pic"></p>
+<ul>
+<li>PK is running on target CPU, while FESVR is running on host computer</li>
+</ul>
+<p><img src="../image/fesvr-diagram.png" alt="pic"></p>
+<h2 id="pk-and-fesvr--code-example">PK and FESVR / code example</h2>
+<h3 id="printf-in-modified-version-of-spike"><code>printf</code> in modified version of <code>spike</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">*# Original spike
+&gt; cd ~/riscv-training/lab/22-lab.system-call
+&gt; spike ../pk hello.elf
+bbl loader
+Hello world!
+
+*# Modified spike <span style="color:#f92672">(</span>print out all system call<span style="color:#f92672">)</span>
+&gt; cd ~/riscv-training/lab/22-lab.system-call
+&gt; ~/riscv-git/riscv-tools/riscv-isa-sim/build/spike ../pk hello.elf
+bbl loader
+fesvr::sys_getmainvars <span style="color:#f92672">(</span>0x 8000d860 <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+fesvr::sys_openat <span style="color:#f92672">(</span>0x ffffffffffffff9c 8000d8b5 a <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+fesvr::sys_pread <span style="color:#f92672">(</span>0x <span style="color:#ae81ff">3</span> 8000d600 <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+...
+fesvr::sys_pread <span style="color:#f92672">(</span>0x <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">80830000</span> <span style="color:#ae81ff">1000</span> a000 <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+fesvr::sys_fstat <span style="color:#f92672">(</span>0x <span style="color:#ae81ff">1</span> 80024df0 <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+fesvr::sys_pread <span style="color:#f92672">(</span>0x <span style="color:#ae81ff">3</span> 8082c000 <span style="color:#ae81ff">1000</span> <span style="color:#ae81ff">6000</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+fesvr::sys_write <span style="color:#f92672">(</span>0x <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">80834230</span> d <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+Hello world!
+fesvr::sys_exit <span style="color:#f92672">(</span>0x <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> 0<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="pk-and-fesvr--system-call">PK and FESVR / system call</h2>
+<h3 id="tohost-and-fromhost"><code>tohost</code> and <code>fromhost</code></h3>
+<ul>
+<li>Memory location: shared knowledge between PK and FESVR</li>
+<li>Both are 32-bit size, that can be read/write with single access</li>
+<li>Follow producer-consumer model
+<ul>
+<li><code>tohost</code> is written by PK, cleared by FESVR</li>
+<li><code>fromhost</code> is written by FESVR, cleared by PK</li>
+</ul>
+</li>
+</ul>
+<h3 id="magicmem"><code>magicmem</code></h3>
+<ul>
+<li><code>tohost</code> and <code>fromhost</code> are too small to communicate real data structure. They only store the address of <code>magicmem</code></li>
+<li>Syscall type, arguments and return values are stored in <code>magicmem</code></li>
+</ul>
+<h3 id="syscall-entry-point-in-pk">Syscall entry point in PK</h3>
+<p><code>~/riscv-git/riscv-tools/riscv-pk/pk/syscall.c</code></p>
+<h3 id="syscall-handler-in-fesvr">Syscall handler in FESVR</h3>
+<p><code>~/riscv-git/riscv-tools/riscv-isa-sim/fesvr/syscall.cc</code></p>
+<h2 id="pk-and-fesvr--system-call-workflow">PK and FESVR / system call workflow</h2>
+<blockquote>
+<p>Please remember, this is for debugging hardware and system bring-up, sometimes co-processor running enviroment. And it&rsquo;s good for understanding application/kernel interaction.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Target side (PK on RISC-V)</th>
+<th>Host side (FESVR on x86)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User-level code: <code>ecall</code> and trap into PK</td>
+<td></td>
+</tr>
+<tr>
+<td>Write syscall arguments into <strong>magicmem</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Write address of <strong>magicmem</strong> into <strong>tohost</strong></td>
+<td>Looping: read <strong>tohost</strong> until it&rsquo;s non-0</td>
+</tr>
+<tr>
+<td></td>
+<td>Read <strong>magicmem</strong></td>
+</tr>
+<tr>
+<td>Looping: read <strong>tohost</strong> until it&rsquo;s 0</td>
+<td>Write 0 to <strong>tohost</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>Deal with syscall. Write return values into <strong>magicmem</strong></td>
+</tr>
+<tr>
+<td>Looping: read <strong>fromhost</strong> until it&rsquo;s non-0</td>
+<td>Write address of <strong>magicmem</strong> into <strong>fromhost</strong></td>
+</tr>
+<tr>
+<td>Read <strong>magicmem</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Write 0 to <strong>fromhost</strong></td>
+<td>Looping: read <strong>fromhost</strong> until it&rsquo;s 0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pk-and-fesvr--verification-exit">PK and FESVR / verification exit</h2>
+<h3 id="another-very-useful-scenario">Another very useful scenario</h3>
+<ul>
+<li>To pass exit code in verification. It&rsquo;s embedded inside the <code>riscv-tests</code> verification suite.</li>
+<li><code>RVTEST_PASS</code> and <code>RVTEST_FAIL</code> in <code>~/riscv-git/riscv-tools/riscv-tests/env/p/riscv_test.h</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define RVTEST_PASS                                                     \
+</span><span style="color:#75715e">        fence;                                                          \
+</span><span style="color:#75715e">        li TESTNUM, 1;                                                  \
+</span><span style="color:#75715e">        ecall
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define TESTNUM gp
+</span><span style="color:#75715e">#define RVTEST_FAIL                                                     \
+</span><span style="color:#75715e">        fence;                                                          \
+</span><span style="color:#75715e">1:      beqz TESTNUM, 1b;                                               \
+</span><span style="color:#75715e">        sll TESTNUM, TESTNUM, 1;                                        \
+</span><span style="color:#75715e">        or TESTNUM, TESTNUM, 1;                                         \
+</span><span style="color:#75715e">        ecall
+</span></code></pre></div><h2 id="lab-new-system-call">@LAB: new system call</h2>
+<h3 id="add-new-system-call-to-synchronize-system-time-between-target-and-host">Add new system call to synchronize system time between target and host</h3>
+<p>Read CSR of <code>mtime</code> to get system time on RISC-V CPU</p>
+<p>Need to use assembly code to get <code>mtime</code></p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

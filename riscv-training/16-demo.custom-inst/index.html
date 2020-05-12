@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] @DEMO: Create custom instructions - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] @DEMO: Create custom instructions</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="custom-instruction">Custom instruction</h2>
+<h3 id="the-most-attractive-feature-of-risc-v">The most attractive feature of RISC-V</h3>
+<ul>
+<li>Extensibility</li>
+<li>Differentiation</li>
+<li>Software hardware co-design
+<ul>
+<li>Domain-specific applications</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<ul>
+<li>Example
+<ul>
+<li>Integer MAC (multiplication and accumulation) for matrix operation</li>
+<li>Multiple load/store fusion for smaller code footprint</li>
+<li>Customized vector operations tailored for your application</li>
+</ul>
+</li>
+</ul>
+<h2 id="custom-instruction--difficulties">Custom instruction / Difficulties</h2>
+<h3 id="most-difficult-thing-is-not-in-hardware-but-in-compiler">Most difficult thing is NOT in hardware, but in compiler</h3>
+<ul>
+<li>How to let compiler understand your intention and generate corresponding instructions</li>
+<li>For example, automatic vectorization is difficult with vector/SIMD instructions
+<ul>
+<li>The compiler has to understand the <code>for</code> loop, as well as the implemention details</li>
+</ul>
+</li>
+</ul>
+<h2 id="demo-new-mac-instruction">@DEMO: new MAC instruction</h2>
+<h3 id="mac--multiplication-and-accumulation">MAC = multiplication and accumulation</h3>
+<ul>
+<li><code>c += a * b</code>
+<ul>
+<li><code>RD = RD + RS1 * RS2</code></li>
+</ul>
+</li>
+<li>Most common operations in matrix multiplication</li>
+</ul>
+<h3 id="how-to-handle-overflow">How to handle Overflow?</h3>
+<ul>
+<li>Use separate instructions to read out higher/lower parts
+<ul>
+<li>Just like <code>mul</code> and <code>mulh</code></li>
+</ul>
+</li>
+<li>Use implicitly defined register pair to store result.
+<ul>
+<li>If <code>RD == t0</code>, then <code>{t0, t1} = {t0, t1} + RS1 * RS2</code></li>
+</ul>
+</li>
+<li>Use implicit dedicated register to store result
+<ul>
+<li>Need extra command to move in/out of this implicit dedicate register</li>
+</ul>
+</li>
+<li>Simple ignore overflow bits, just other mechanism to detect overflow
+<ul>
+<li>Just like <code>add</code> and <code>sub</code></li>
+<li>Choose this approach in this demo</li>
+</ul>
+</li>
+</ul>
+<h2 id="demo--select-instruction-encoding">@DEMO / Select instruction encoding</h2>
+<h3 id="which-format">Which format?</h3>
+<p><img src="../image/instruction-formats.png" alt="pic"></p>
+<ul>
+<li>Type R: because we need all <code>rd</code>, <code>rs1</code> and <code>rs2</code> while no immediate number</li>
+</ul>
+<h2 id="demo--select-instruction-encoding-1">@DEMO / Select instruction encoding</h2>
+<h3 id="which-opcode">Which opcode?</h3>
+<p><img src="../image/opcode-map.png" alt="pic"></p>
+<ul>
+<li>
+<p>We can use custom-0: <code>inst[6:2] = 0b00010 = 0x02</code> while <code>inst[1:0] = 0b11</code> as always for 32-bit instruction</p>
+</li>
+<li>
+<p><code>funct3 = 0b000</code> and <code>funct7 = 0b0000000</code></p>
+</li>
+</ul>
+<h2 id="demo--gnu-toolchain-support">@DEMO / GNU toolchain support</h2>
+<h3 id="how-to-use-new-instruction">How to use new instruction?</h3>
+<ol>
+<li>Write binary code directly
+<ul>
+<li>Very hard to use/debug</li>
+<li>Quick and dirty</li>
+</ul>
+</li>
+<li>Write embedded assembly code (GNU toolchain: binutils)
+<ul>
+<li>Easier to use, manual/full control</li>
+<li>Still not very obvious</li>
+</ul>
+</li>
+<li>Compiler automatically pickup the routine (GNU toolchain: GCC)
+<ul>
+<li>Easy to use but hard to control</li>
+<li>Compiler is not that intelligent</li>
+</ul>
+</li>
+</ol>
+<h2 id="demo--binutils">@DEMO / Binutils</h2>
+<p>We need Binutils to support assembly code</p>
+<h3 id="1-generate-opcodes">1. Generate opcodes</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; cd ~/riscv-git/riscv-tools/riscv-opcodes
+</code></pre></div><p>Add the following line to <code>opcodes.custom</code></p>
+<pre><code># R-type
+custom0.madd.s    rd rs1 rs2 rs3    26..25=0 14..12=0 6..2=0x02 1..0=3
+</code></pre><p>Generate opcode:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; cat opcodes-custom | ./parse-opcodes -c | grep CUSTOM0
+<span style="color:#75715e">#define MATCH_CUSTOM0_MADD_S 0xb</span>
+<span style="color:#75715e">#define MASK_CUSTOM0_MADD_S  0x600707f</span>
+DECLARE_INSN<span style="color:#f92672">(</span>custom0_madd_s, MATCH_CUSTOM0_MADD_S, MASK_CUSTOM0_MADD_S<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="demo--binutils-1">@DEMO / Binutils</h2>
+<h3 id="2-add-opcode-to-binutils">2. Add opcode to binutils</h3>
+<ul>
+<li>
+<p>Add previously generated opcode lines to <code>~/riscv-git/riscv-gnu-toolchain/riscv-binutils/include/opcode/riscv-opc.h</code></p>
+</li>
+<li>
+<p>Add the following line to <code>const struct riscv_opcode riscv_opcodes[]</code> in <code>~/riscv-git/riscv-gnu-toolchain/riscv-binutils/opcodes/riscv-opc.c</code></p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">{<span style="color:#e6db74">&#34;custom0.madd.s&#34;</span>, <span style="color:#ae81ff">0</span>, {<span style="color:#e6db74">&#34;I&#34;</span>, <span style="color:#ae81ff">0</span>}, <span style="color:#e6db74">&#34;d,s,t,r&#34;</span>,  MATCH_CUSTOM0_MADD_S, MASK_CUSTOM0_MADD_S, match_opcode, <span style="color:#ae81ff">0</span> },
+</code></pre></div><p>Here lower case <code>d,s,t,r</code> means GPR registers as destination, source, target, register3.</p>
+<p>.footnote[This is the only integer instruction that has 4 operands: 3 inputs and 1 output]</p>
+<h2 id="demo--binutils-2">@DEMO / Binutils</h2>
+<h3 id="2-add-opcode-to-binutils-1">2. Add opcode to binutils</h3>
+<ul>
+<li>Default compiler only support <code>d,s,t</code> as GPR registers for integer operation</li>
+<li>Add support for <code>'r'</code> in <code>print_insn_args</code> in file <code>~/riscv-git/riscv-gnu-toolchain/riscv-binutils/opcodes/riscv-dis.c</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">for</span> (; <span style="color:#f92672">*</span>d <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;\0&#39;</span>; d<span style="color:#f92672">++</span>) {
+    <span style="color:#66d9ef">switch</span> (<span style="color:#f92672">*</span>d) {
+    ...
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;r&#39;</span><span style="color:#f92672">:</span>
+            print (info<span style="color:#f92672">-&gt;</span>stream, <span style="color:#e6db74">&#34;%s&#34;</span>, riscv_gpr_names[EXTRACT_OPERAND (RS3, l)]);
+            <span style="color:#66d9ef">break</span>;
+     ...
+</code></pre></div><h2 id="demo--binutils-3">@DEMO / Binutils</h2>
+<h3 id="recompile-gnu-toolchain">recompile gnu-toolchain</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">&gt; cd ~/riscv-git/riscv-gnu-toolchain
+&gt; mkdir build-rv64i-custom-newlib
+&gt; cd $_
+&gt; ../configure  --prefix<span style="color:#f92672">=</span>/opt/riscv/rv64i-custom    <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>                --with-arch<span style="color:#f92672">=</span>rv64i                   <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>                --with-abi<span style="color:#f92672">=</span>lp64
+&gt; make -j6 | tee log
+</code></pre></div><h2 id="lab-try-it-out-with-new-gcc-assembler">@LAB: Try it out with new GCC assembler</h2>
+<pre><code>// ~/riscv-training/lab/26-lab.custom-inst/test-asm.c
+include &lt;stdio.h&gt;
+
+int main(void) {
+    int a, b, c;
+    a = 5;
+    b = 2;
+    c = 0;
+
+    asm volatile
+        (
+*        &quot;custom0.madd.s  %[z], %[a], %[b], %[c]\n\t&quot;
+         : [z] &quot;=r&quot; (c)
+         : [a] &quot;r&quot; (a), [b] &quot;r&quot; (b), [c] &quot;r&quot; (c)
+        );
+
+    if ( c != 10.0 ){
+        printf(&quot;@FAIL\n&quot;);
+        return 1;
+    }
+
+    printf(&quot;@PASS\n&quot;);
+
+    return 0;
+}
+</code></pre><h3 id="with-old-gcc">With old GCC</h3>
+<pre><code>&gt; cd ~/riscv-training/lab/26-lab.custom-inst
+&gt; make test-asm
+*/opt/FreedomStudio-2019-08-2-lin64/SiFive/riscv64-unknown-elf-gcc-8.3.0-2019.08.0/bin/riscv64-unknown-elf-gcc  test-asm.c -o test-asm.elf
+test-asm.c: Assembler messages:
+*test-asm.c:9: Error: unrecognized opcode `custom0.madd.s a5,a5,a4,a3'
+*../make.compile.in:13: recipe for target 'test-asm.elf' failed
+make[1]: *** [test-asm.elf] Error 1
+make[1]: Leaving directory '/mnt/hgfs/riscv-training/lab/26-lab.custom-inst'
+makefile:11: recipe for target 'test-asm' failed
+make: *** [test-asm] Error 2
+</code></pre><h3 id="with-new-gcc">With new GCC</h3>
+<pre><code>&gt; make test-asm-correct
+*/opt/riscv/rv64i-custom/bin/riscv64-unknown-elf-gcc  test-asm.c -o test-asm.elf
+make[2]: Leaving directory '/mnt/hgfs/riscv-training/lab/26-lab.custom-inst'
+make test-asm.elf.dump
+make[2]: Entering directory '/mnt/hgfs/riscv-training/lab/26-lab.custom-inst'
+/opt/riscv/rv64i-custom/bin/riscv64-unknown-elf-objdump -d test-asm.elf &gt; test-asm.elf.dump
+make[2]: Leaving directory '/mnt/hgfs/riscv-training/lab/26-lab.custom-inst'
+make[1]: Leaving directory '/mnt/hgfs/riscv-training/lab/26-lab.custom-inst'
+</code></pre><h2 id="demo--spike">@DEMO / SPIKE</h2>
+<p>Need to add corresponding custom instruction support in SPIKE as golden reference</p>
+<h3 id="regenerate-encodingh">Regenerate <code>encoding.h</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd ~/riscv-git/riscv-tools/riscv-opcodes
+cp encoding.h new-encoding.h
+cat opcodes opcodes-rvc-pseudo opcodes-rvc opcodes-custom | ./parse-opcodes -c &gt;&gt; new-encoding.h
+
+<span style="color:#75715e"># this time we can use the whole file</span>
+cp new-encoding.h ~/riscv-git/riscv-tools/riscv-isa-sim/riscv/encoding.h
+cp new-encoding.h ~/riscv-git/riscv-tools/riscv-isa-sim/fesvr/encoding.h
+</code></pre></div><h3 id="new-instruction-heading-file">New instruction heading file</h3>
+<p>Create instruction behavior heading file for new MAC instruction</p>
+<p><code>~/riscv-git/riscv-tools/riscv-isa-sim/riscv/insns/custom0_madd_s.h</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// filename: custom0_madd_s.h
+</span><span style="color:#75715e"></span>require_extension(<span style="color:#e6db74">&#39;I&#39;</span>);
+WRITE_RD(sext_xlen(RS1 <span style="color:#f92672">*</span> RS2 <span style="color:#f92672">+</span> RS3));
+</code></pre></div><p>To support using <code>RS3</code> as the 3rd source register, we need to change <code>~/riscv-git/riscv-tools/riscv-isa-sim/riscv/decode.h</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define RS1 READ_REG(insn.rs1())
+</span><span style="color:#75715e">#define RS2 READ_REG(insn.rs2())
+</span><span style="color:#75715e">#define RS3 READ_REG(insn.rs3())
+</span></code></pre></div><h3 id="add-new-instruction-to-riscv_insn_list-inside-file">Add new instruction to <code>riscv_insn_list</code> inside file:</h3>
+<p><code>~/riscv-git/riscv-tools/riscv-isa-sim/riscv/riscv.mk.in</code></p>
+<h3 id="add-to-spike-disassember">Add to SPIKE disassember</h3>
+<p>So that it can be correctly disassemble new instruction</p>
+<p><code>~/riscv-git/riscv-tools/riscv-isa-sim/spike_main/disasm.cc</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// new xrs3 argument to support 3rd source register in MAC
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#f92672">:</span> public arg_t {
+  std<span style="color:#f92672">::</span>string to_string(insn_t insn) <span style="color:#66d9ef">const</span> {
+    <span style="color:#66d9ef">return</span> xpr_name[insn.rs3()];
+  }
+} xrs3;
+
+disassembler_t<span style="color:#f92672">::</span>disassembler_t(<span style="color:#66d9ef">int</span> xlen)
+{
+    ...
+    <span style="color:#75715e">#define DEFINE_RTYPE(code) DISASM_INSN(#code, code, 0, {&amp;xrd, &amp;xrs1, &amp;xrs2})
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// to support 3rd source register
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define DEFINE_R3TYPE(code) DISASM_INSN(#code, code, 0, {&amp;xrd, &amp;xrs1, &amp;xrs2, &amp;xrs3})
+</span><span style="color:#75715e"></span>    ...
+    DEFINE_RTYPE(add);
+    DEFINE_R3TYPE(custom0_madd_s); <span style="color:#75715e">// MAC
+</span><span style="color:#75715e"></span>    ...
+}
+</code></pre></div><h3 id="compile-spike">Compile SPIKE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd ~/riscv-git/riscv-tools
+source ~/docker/dev/riscv.sh/rv64i-custom.sh
+./build-spike-only.sh
+</code></pre></div><h3 id="try-it-out-with-old-spike">Try it out with old SPIKE</h3>
+<pre><code>/opt/FreedomStudio-2019-08-2-lin64/SiFive/riscv64-unknown-elf-gcc-8.3.0-2019.08.0/bin/spike \
+    /opt/FreedomStudio-2019-08-2-lin64/SiFive/riscv64-unknown-elf-gcc-8.3.0-2019.08.0/riscv64-unknown-elf/bin/pk \
+    test-asm.elf | tee test-asm.spike.log
+bbl loader
+z  0000000000000000 ra 000000000001010c sp 000000007f7e9b30 gp 00000000000150d8
+tp 0000000000000000 t0 00000000000103fc t1 000000000000000f t2 0000000000000000
+s0 000000007f7e9b50 s1 0000000000000000 a0 0000000000000001 a1 000000007f7e9b58
+a2 0000000000000000 a3 0000000000000000 a4 0000000000000002 a5 0000000000000005
+a6 000000000000001f a7 0000000000000000 s2 0000000000000000 s3 0000000000000000
+s4 0000000000000000 s5 0000000000000000 s6 0000000000000000 s7 0000000000000000
+s8 0000000000000000 s9 0000000000000000 sA 0000000000000000 sB 0000000000000000
+t3 0000000000000000 t4 0000000000000000 t5 0000000000000000 t6 0000000000000000
+pc 0000000000010228 va 0000000068e7f78b insn       68e7f78b sr 8000000200046020
+*An illegal instruction was executed!
+</code></pre><h3 id="try-it-out-with-new-spike">Try it out with new SPIKE</h3>
+<pre><code>/opt/riscv/rv64i-custom/bin/spike \
+    /opt/riscv/rv64i-custom/riscv64-unknown-elf/bin/pk test-asm.elf | tee test-asm.spike.log
+bbl loader
+fesvr::sys_getmainvars (0x 8000d640 800 0 0 0 0 0)
+fesvr::sys_openat (0x ffffffffffffff9c 8000d69b d 0 0 0 0)
+fesvr::sys_pread (0x 3 8000cfd0 40 0 0 0 0)
+fesvr::sys_pread (0x 3 8000d240 70 40 0 0 0)
+fesvr::sys_pread (0x 3 8082a000 1000 3000 0 0 0)
+fesvr::sys_pread (0x 3 8082b000 850 4000 0 0 0)
+fesvr::sys_pread (0x 3 80826000 1000 0 0 0 0)
+fesvr::sys_pread (0x 3 80829000 898 3000 0 0 0)
+fesvr::sys_pread (0x 3 80828000 1000 2000 0 0 0)
+fesvr::sys_fstat (0x 1 80024df0 0 0 0 0 0)
+fesvr::sys_pread (0x 3 80827000 1000 1000 0 0 0)
+fesvr::sys_close (0x 3 0 0 0 0 0 0)
+fesvr::sys_write (0x 1 8082b8f0 6 0 0 0 0)
+*@PASS
+fesvr::sys_exit (0x 0 0 0 0 0 0 0)
+</code></pre><h2 id="demo--gcc">@DEMO / GCC</h2>
+<p>Only use assembly is not enough, we need GCC to automatically generate new instruction from C code</p>
+<h3 id="define-new-instruction">Define new instruction</h3>
+<p><code>~/riscv-git/riscv-gnu-toolchain/riscv-gcc/gcc/config/riscv/riscv.md</code></p>
+<pre><code>;; custom0.madd.s
+(define_insn &quot;fmasi4&quot;
+  [(set (match_operand:SI             0 &quot;register_operand&quot; &quot;=r&quot;)
+        (fma:SI   (match_operand:SI   1 &quot;register_operand&quot; &quot; r&quot;)
+                  (match_operand:SI   2 &quot;register_operand&quot; &quot; r&quot;)
+                  (match_operand:SI   3 &quot;register_operand&quot; &quot; r&quot;)))]
+  &quot;TARGET_64BIT&quot;
+  &quot;custom0.madd.s\t%0,%1,%2,%3&quot;
+  [(set_attr &quot;type&quot; &quot;imadd&quot;)
+   (set_attr &quot;mode&quot; &quot;SI&quot;)]
+)
+</code></pre><h3 id="define-new-instruction-1">Define new instruction</h3>
+<ul>
+<li><code>fmasi4</code> is the standard function name
+<ul>
+<li><code>fma</code> = multiply add fusion</li>
+<li><code>si</code> is the <em>mode</em> (in the doc, it&rsquo;s abbreviated as <em>m</em>). <code>si</code> means full-word integer</li>
+<li><code>4</code> means 4 operands, 3 on the right hand side, 1 on the left</li>
+<li>More definition can be found at <a href="https://gcc.gnu.org/onlinedocs/gccint/Standard-Names.html">https://gcc.gnu.org/onlinedocs/gccint/Standard-Names.html</a></li>
+</ul>
+</li>
+<li><code>custom0.madd.s\t%0,%1,%2,%3</code> is the abstraction of assembly code</li>
+</ul>
+<p>Reference at <a href="./pdf/Introduction-to-Machine-Description-in-GCC.pdf">Introduction to Machine Description</a></p>
+<h3 id="recompile-gcc">Recompile GCC</h3>
+<pre><code>&gt; cd ~/riscv-git/riscv-gnu-toolchain; mkdir build-rv64i-custom-newlib; cd $_
+&gt; ../configure --prefix=/opt/riscv/rv64i-custom --with-arch=rv64i --with-abi=lp64
+&gt; make -j6 | tee log
+</code></pre><h3 id="source-code">Source code</h3>
+<p><code>~/riscv-git/riscv-training/26-lab.custom-inst/custom-inst-gcc.c</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">    sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    <span style="color:#66d9ef">for</span> (i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">4</span>; i<span style="color:#f92672">++</span>) {
+        a <span style="color:#f92672">=</span> byte_matrix_a[x][i];
+        b <span style="color:#f92672">=</span> byte_matrix_b[i][y];
+<span style="color:#f92672">*</span>       sum <span style="color:#f92672">+=</span> a <span style="color:#f92672">*</span> b;
+    }
+</code></pre></div><h3 id="try-it-out-without-gcc-support">Try it out without GCC support</h3>
+<h4 id="compile">Compile</h4>
+<pre><code>/opt/FreedomStudio-2019-08-2-lin64/SiFive/riscv64-unknown-elf-gcc-8.3.0-2019.08.0/bin/riscv64-unknown-elf-gcc \
+    custom-inst-gcc.c -o custom-inst-gcc.elf &gt; custom-inst-gcc.elf.dump
+/opt/FreedomStudio-2019-08-2-lin64/SiFive/riscv64-unknown-elf-gcc-8.3.0-2019.08.0/bin/riscv64-unknown-elf-objdump \
+    -d custom-inst-gcc.elf &gt; custom-inst-gcc.elf.dump
+</code></pre><h4 id="spike-still-pass">SPIKE still pass</h4>
+<pre><code>/opt/FreedomStudio-2019-08-2-lin64/SiFive/riscv64-unknown-elf-gcc-8.3.0-2019.08.0/bin/spike \
+    /opt/FreedomStudio-2019-08-2-lin64/SiFive/riscv64-unknown-elf-gcc-8.3.0-2019.08.0/riscv64-unknown-elf/bin/pk \
+    custom-inst-gcc.elf | tee custom-inst-gcc.spike.log
+bbl loader
+@PASS
+</code></pre><h3 id="try-it-out-with-gcc-support">Try it out with GCC support</h3>
+<h4 id="compile-1">Compile</h4>
+<pre><code>/opt/riscv/rv64i-custom/bin/riscv64-unknown-elf-gcc  custom-inst-gcc.c -o custom-inst-gcc.elf
+</code></pre><h4 id="spike">SPIKE</h4>
+<pre><code>/opt/riscv/rv64i-custom/bin/spike /opt/riscv/rv64i-custom/riscv64-unknown-elf/bin/pk custom-inst-gcc.elf | tee custom-inst-gcc.spike.log
+bbl loader
+dfesvr::sys_getmainvars (0x 8000d640 800 0 0 0 0 0)
+fesvr::sys_openat (0x ffffffffffffff9c 8000d69b 14 0 0 0 0)
+fesvr::sys_pread (0x 3 8000cfd0 40 0 0 0 0)
+fesvr::sys_pread (0x 3 8000d240 70 40 0 0 0)
+fesvr::sys_pread (0x 3 80839000 1000 12000 0 0 0)
+fesvr::sys_pread (0x 3 8083a000 490 13000 0 0 0)
+fesvr::sys_pread (0x 3 80826000 1000 0 0 0 0)
+fesvr::sys_pread (0x 3 80829000 1000 3000 0 0 0)
+fesvr::sys_pread (0x 3 80837000 1000 11000 0 0 0)
+fesvr::sys_pread (0x 3 8082a000 1000 4000 0 0 0)
+fesvr::sys_pread (0x 3 8082d000 1000 7000 0 0 0)
+fesvr::sys_pread (0x 3 80833000 1000 d000 0 0 0)
+fesvr::sys_pread (0x 3 80835000 1000 f000 0 0 0)
+fesvr::sys_fstat (0x 1 80024df0 0 0 0 0 0)
+fesvr::sys_pread (0x 3 8082e000 1000 8000 0 0 0)
+fesvr::sys_pread (0x 3 8082f000 1000 9000 0 0 0)
+fesvr::sys_write (0x 1 8083a570 6 0 0 0 0)
+@PASS
+fesvr::sys_exit (0x 0 0 0 0 0 0 0)
+</code></pre><h3 id="compare-the-deassembled-code">Compare the deassembled code</h3>
+<pre><code>&gt; grep custom0.madd.s correct/custom-inst-gcc.elf.dump
+    10e8c:       494b748b                custom0.madd.s  s1,s6,s4,s1
+    11364:       79bb7d8b                custom0.madd.s  s11,s6,s11,a5
+    12fb0:       b0e7f78b                custom0.madd.s  a5,a5,a4,s6
+    14b6c:       48e7f48b                custom0.madd.s  s1,a5,a4,s1
+    16b04:       80f5f58b                custom0.madd.s  a1,a1,a5,a6
+...
+&gt; grep custom0.madd.s correct/custom-inst-gcc.elf.dump | wc -l
+       22
+&gt; grep custom0.madd.s wrong/custom-inst-gcc.elf.dump | wc -l
+       0
+</code></pre><h2 id="lab-custom-instruction">@LAB: custom instruction</h2>
+<h3 id="create-custom-instruction-to-implement-sigmoid">Create custom instruction to implement Sigmoid</h3>
+<p>$$S(x)=1/(1+e^{-x})=e/(e^x+1)$$</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

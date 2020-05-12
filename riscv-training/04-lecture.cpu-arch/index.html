@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] Computer Architecture with RISC-V Examples - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] Computer Architecture with RISC-V Examples</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="computer-architecture-basics">Computer architecture basics</h2>
+<p> </p>
+<h3 id="pipeline----parallelism----cache">Pipeline  /  Parallelism  /  Cache</h3>
+<p>Three ultimate mechanisms to imporve performance/power</p>
+<h2 id="computer-architecture-basics--pipeline">Computer architecture basics / pipeline</h2>
+<p><img src="../image/arch-pipeline.png" alt="pic"></p>
+<p>IF = Instruction Fetch, ID = Instruction Decode, EX = Execute, MEM = Memory access, WB = Register write back).</p>
+<h2 id="computer-architecture-basics--pipeline-1">Computer architecture basics / pipeline</h2>
+<h3 id="demo">@DEMO</h3>
+<p>Pipeline simulator: <a href="https://github.com/mortbopet/Ripes">https://github.com/mortbopet/Ripes</a></p>
+<h2 id="computer-architecture-basics--pipeline-2">Computer architecture basics / pipeline</h2>
+<h3 id="motivation">Motivation</h3>
+<ul>
+<li>Most of the work <strong>cannot</strong> be done at the same time.</li>
+<li>To use the logic more efficiently</li>
+<li>Less work per stage, higher clock frequency</li>
+</ul>
+<h3 id="brings-in-problems-hazards">Brings in problems: hazards</h3>
+<ul>
+<li>Data hazard
+<ul>
+<li>Dependency</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-assembly" data-lang="assembly">mv      x1, x2
+add     x4, x1, x3
+sd      x4, 0(x5)
+</code></pre><ul>
+<li>Control hazard
+<ul>
+<li>Jump and branch</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-assembly" data-lang="assembly">addi    x1, x1, 1
+subi    x2, x1, 100
+bnez    x2, 0(x3)
+</code></pre><p>.co-4[</p>
+<ul>
+<li>Structure hazard
+<ul>
+<li>Multi-cycle multiplier</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-assembly" data-lang="assembly">mul     x1, x2, x3
+mul     x4, x5, x6
+mul     x7, x8, x9
+</code></pre><h2 id="computer-architecture-basics--pipeline-3">Computer architecture basics / pipeline</h2>
+<h3 id="other-considerations">Other considerations</h3>
+<ul>
+<li>Exception and interrupt
+<ul>
+<li>Flush pipeline</li>
+</ul>
+</li>
+<li>Atomic operations</li>
+<li>&hellip;</li>
+</ul>
+<h3 id="improvements">Improvements</h3>
+<ul>
+<li>Deeper pipeline
+<ul>
+<li>Higher frequence, higher power</li>
+<li>Mostly for CISC machines</li>
+</ul>
+</li>
+<li>Branch prediction
+<ul>
+<li>Reduce branch penalty</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<h4 id="branch-prediction">Branch prediction</h4>
+<ul>
+<li>
+<p>BTB (branch target buffer)</p>
+<ul>
+<li>Store the target PC</li>
+</ul>
+</li>
+<li>
+<p>BHT (branch history table)</p>
+<ul>
+<li>Store taken or non-taken history</li>
+</ul>
+</li>
+<li>
+<p>RAS (return address stack)</p>
+<ul>
+<li>Call stack history address</li>
+</ul>
+</li>
+<li>
+<p><strong>Flush if prediction is wrong. Waste power</strong></p>
+</li>
+</ul>
+<h2 id="computer-architecture-basics--parallelism">Computer architecture basics / parallelism</h2>
+<h3 id="parallelism">Parallelism</h3>
+<h4 id="ilp-instruction-level-parallelism--tlp-thread-level-parallelism">ILP (instruction-level parallelism) &amp; TLP (thread-level parallelism)</h4>
+<ul>
+<li>Multi-issue</li>
+<li>SMT (simultaneous multi-threading)</li>
+<li>VLIW (very long instruction word)</li>
+<li>SIMD (single instruction multiple data)</li>
+<li>Out-of-order</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="computer-architecture-basics--parallelism-1">Computer architecture basics / parallelism</h2>
+<h3 id="multi-issue-aka-superscala">Multi-issue (a.k.a superscala)</h3>
+<ul>
+<li>Issue multiple instructions parallelly to reuse <strong>CPU resource</strong>
+<ul>
+<li>With minimum extra control logic to reuse execution logic</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/arch-superscala.png" alt="pic"></p>
+<h2 id="computer-architecture-basics--parallelism-2">Computer Architecture Basics / parallelism</h2>
+<h3 id="vliw-very-long-instruction-word">VLIW (very long instruction word)</h3>
+<ul>
+<li>Compiler defined parallelism to reuse CPU resource</li>
+<li>Pack mutiple instructions into one long instruction</li>
+</ul>
+<p><img src="../image/arch-vliw.png" alt="pic"></p>
+<h2 id="computer-architecture-basics--parallelism-3">Computer architecture basics / parallelism</h2>
+<h3 id="simd-single-instruction-multiple-data">SIMD (single instruction multiple data)</h3>
+<ul>
+<li>Vectorization
+<ul>
+<li>Graphics &amp; <strong>machine learning</strong></li>
+</ul>
+</li>
+<li>Large register file becomes bottleneck</li>
+</ul>
+<p><img src="../image/arch-simd.png" alt="pic"></p>
+<h2 id="computer-architecture-basics--parallelism-4">Computer architecture basics / parallelism</h2>
+<h3 id="ooo-out-of-order">OOO (out-of-order)</h3>
+<ul>
+<li>Issue instructions not following the program order to resolve dependencies</li>
+<li>Register renaming, reorder buffer, etc&hellip;</li>
+<li>Transparent to software</li>
+</ul>
+<h4 id="example">Example</h4>
+<pre><code class="language-assembly" data-lang="assembly">addi    x1, x1, 1
+ld      x2, 0(x1)       # if cache miss, will be slow
+add     x3, x3, 4
+ld      x4, 0(x3)       # if cache miss, will be slow
+mul     x5, x5, x6      # multi-cycle operations
+</code></pre><ul>
+<li>But these slow operations don&rsquo;t have dependency with each other
+<ul>
+<li>Therefore we can issue <code>mul</code> while waiting for the first <code>ld</code></li>
+<li>But commit in order</li>
+</ul>
+</li>
+</ul>
+<h2 id="computer-architecture-basics--parallelism-5">Computer architecture basics / parallelism</h2>
+<h3 id="smt-simultaneous-multi-threading">SMT (simultaneous multi-threading)</h3>
+<ul>
+<li>Different from <strong>temporal multi-threading (aka super-threading)</strong>.</li>
+<li>Different program/thread reuse CPU resource
+<ul>
+<li>Usually separated register files and CSRs, but use common execution units, cache and TLB</li>
+<li>RISC-V hart (hardware thread)</li>
+</ul>
+</li>
+<li>Need compiler/OS&rsquo;s help to explore thread-level parallelism</li>
+</ul>
+<h2 id="computer-architecture-basics--cache">Computer architecture basics / cache</h2>
+<h3 id="main-memory-dram-dynamic-random-access-memory">Main memory: DRAM (dynamic random-access memory)</h3>
+<ul>
+<li>
+<p>Dynamic vs. static</p>
+<ul>
+<li>One-bit = one capacitor + one resistor
+<ul>
+<li>The capacitor needs periodical rewrites (refresh) to keep its data. So it&rsquo;s called <em>dynamic</em></li>
+<li>Much smaller in size; volatile (lose power lose data)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Parallel read/write a whole row</p>
+<ul>
+<li>Use SRAM as buffer to speed up random access</li>
+</ul>
+</li>
+<li>
+<p>Rank: another level of parallelism</p>
+<ul>
+<li>A set of DRAM chips with the same chip select</li>
+</ul>
+</li>
+<li>
+<p>SDRAM (synchronous DRAM)</p>
+<ul>
+<li>With clock: DDR (double data rate)</li>
+</ul>
+</li>
+<li>
+<p>Bandwidth</p>
+<ul>
+<li>LPDDR4-3200 MT/s * 16-bit/channel * 2-channel = 12.8 GB/s</li>
+<li>DDR5-6400 MT/s, total 64GB/s</li>
+</ul>
+</li>
+<li>
+<p>The access time</p>
+<ul>
+<li><strong>~100ns</strong>: too long for modern pipeline</li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<p>Hierarchical cache is created to improve the <strong>latency and throughput</strong> for memory access.</p>
+<h2 id="computer-architecture-basics--cache-1">Computer architecture basics / cache</h2>
+<h3 id="what-is-cache">What is cache?</h3>
+<p><img src="../image/arch-cache-tag.png" alt="pic"></p>
+<ul>
+<li>Index and tag
+<ul>
+<li>Assuming total memory has 16-entry of data, address is 4-bit. But cache has only 4-entry of data, its address (called index) is 2-bit. Then we need to save the other 2-bit as tag in the cache.</li>
+</ul>
+</li>
+</ul>
+<h2 id="computer-architecture-basics--cache-2">Computer architecture basics / cache</h2>
+<h3 id="cache-types">Cache types</h3>
+<ul>
+<li>Direct mapped cache
+<ul>
+<li>Fixed position given the address</li>
+</ul>
+</li>
+<li>Fully associated cache
+<ul>
+<li>Cache entry can go anywhere, need to compare every entries to find a match</li>
+</ul>
+</li>
+<li>Way associated cache
+<ul>
+<li>Given address can go into different ways</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/arch-cache-way.png" alt="pic"></p>
+<h2 id="computer-architecture-basics--cache-3">Computer architecture basics / cache</h2>
+<h3 id="problems">Problems</h3>
+<ul>
+<li>Cache coherence
+<ul>
+<li>Copies of data in the whole system</li>
+<li>Read is OK, but write causes coherency problem</li>
+</ul>
+</li>
+<li>Self-modification code in Harvard architecture
+<ul>
+<li>Need a special instruction to invalidate instruction cache</li>
+</ul>
+</li>
+</ul>
+<h2 id="rocketchip">RocketChip</h2>
+<h3 id="cpu-complex-generator-from-ucb">CPU complex generator from UCB</h3>
+<h3 id="the-very-first-risc-v-cpu">The very first RISC-V CPU</h3>
+<h2 id="rocketchip--core">RocketChip / core</h2>
+<h3 id="open-source-written-in-chisel-highly-configurable">Open source. Written in Chisel. Highly configurable!</h3>
+<ul>
+<li>5-stage pipeline</li>
+<li>In-order single-issue</li>
+<li>Branch prediction
+<ul>
+<li>BTB (branch target buffer)</li>
+<li>BHT (branch history table)</li>
+<li>RAS (return address stack)</li>
+</ul>
+</li>
+<li>MMU (memory management unit)</li>
+<li>Non-blocking data cache</li>
+<li>Floating-point unit</li>
+</ul>
+<p><img src="../image/cpu-arch-rocket-pipeline.png" alt="pic"></p>
+<h2 id="rocket-chip--generator">Rocket Chip / generator</h2>
+<h3 id="beyond-a-cpu-core">Beyond a CPU core</h3>
+<ul>
+<li>Network fabric + cache + IOs</li>
+<li>Configuration + automatic generation</li>
+</ul>
+<h3 id="based-on-rocket-chip-generator-sifive-builds-up-its-35-series-cpus">Based on Rocket Chip Generator, SiFive builds up its 3/5 series CPUs.</h3>
+<p>.footnote[!(The Rocket Chip Generator (techical report from UCB/EECS))[https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-17.pdf]]</p>
+<h2 id="sifive-coredesigner">SiFive CoreDesigner</h2>
+<h3 id="demo-1">@DEMO</h3>
+<p>Snapshots from SiFive</p>
+<h2 id="boom-berkeley-out-of-oder-machine">BOOM (Berkeley out-of-oder machine)</h2>
+<p><img src="../image/boom-pipeline.png" alt="pic"></p>
+<h3 id="based-on-rochet-chip-generator">Based on Rochet Chip Generator</h3>
+<ul>
+<li>From the same UCB department</li>
+<li>Out-of-order</li>
+<li>Superscalar: multi-issue and can be configured</li>
+</ul>
+<h2 id="boom--regfile-challenges">BOOM / regfile challenges</h2>
+<h3 id="multi-issue-architectures-bottleneck-is-the-register-file">Multi-issue architecture&rsquo;s bottleneck is the register file</h3>
+<ul>
+<li>Number of ports blows up the size
+<ul>
+<li>4-issue = 4-write + 8-read ports</li>
+</ul>
+</li>
+<li>Congestion in physical design</li>
+</ul>
+<p>.footnote[!(BOOM v2: an open-source out-of-order RISC-V core (techical report from UCB/EECS))[https://www2.eecs.berkeley.edu/Pubs/TechRpts/2017/EECS-2017-157.pdf]]</p>
+<h2 id="ariane-pulp-from-eth-zurich">Ariane (PULP from ETH Zurich)</h2>
+<p><img src="../image/ariane-diagram.png" alt="pic"></p>
+<h2 id="ariane">Ariane</h2>
+<h3 id="fetch-stage">Fetch stage</h3>
+<ul>
+<li>Branch prediction
+<ul>
+<li>BHT + RAS + BTB</li>
+</ul>
+</li>
+<li>FIFO to hold the info goes into I$
+<ul>
+<li>To decouple the delay of I$</li>
+</ul>
+</li>
+<li>FIFO to the next stage
+<ul>
+<li>To decouple front-end and back-end</li>
+</ul>
+</li>
+</ul>
+<h3 id="decode-stage">Decode stage</h3>
+<ul>
+<li>Includes RVC (compressed instruction) decoding</li>
+</ul>
+<h3 id="issue-stage">Issue stage</h3>
+<ul>
+<li>Resolve branch</li>
+<li>Keep scoreboard</li>
+</ul>
+<h2 id="ariane-1">Ariane</h2>
+<h3 id="execution-stage">Execution stage</h3>
+<ul>
+<li>Store buffer
+<ul>
+<li>Speculative vs. commit</li>
+</ul>
+</li>
+<li>CSR buffer
+<ul>
+<li>For speculative operation</li>
+</ul>
+</li>
+</ul>
+<h3 id="commit-stage">Commit stage</h3>
+<ul>
+<li>Golden rule: no other pipeline stage is allowed to update the architecture state under any circumstances.</li>
+</ul>
+<h2 id="computer-architecture-advanced-topics">Computer architecture advanced topics</h2>
+<p> </p>
+<h3 id="cache-coherence">Cache coherence</h3>
+<h2 id="cache-coherence-1">Cache coherence</h2>
+<h3 id="what-is-the-problem">What is the problem?</h3>
+<ul>
+<li>2 CPUs are trying to access to the same memory address
+<ul>
+<li>Both of them have cache</li>
+</ul>
+</li>
+<li>CPU-0 read, modify; then CPU-1 read, modify
+<ul>
+<li>With cache, CPU-1 won&rsquo;t read the latest data that CPU-0 produced</li>
+<li>Because the lasted copy is in CPU-0&rsquo;s cache</li>
+</ul>
+</li>
+</ul>
+<h3 id="software-vs-hardware">Software vs. hardware</h3>
+<ul>
+<li>Software managed coherency
+<ul>
+<li>What needs to be done?
+<ul>
+<li>Clean or flush dirty data, and invalidate old data</li>
+</ul>
+</li>
+<li>Challenges
+<ul>
+<li>Software complexity
+<ul>
+<li>Hard to debug multiple CPU system
+<ul>
+<li>Cache clearning and invalidation must be done at the right time, and coordinates between multiple masters</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Performance and power
+<ul>
+<li>How to work out which data needs to be maintained?</li>
+<li>And if it has more dirty data, software coherency takes longer to clearn and invalidate than hardware coherency</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="hardware-managed-coherency">Hardware managed coherency</h3>
+<ul>
+<li>Snooping
+<ul>
+<li>Every cache maintain its own cache state (shared or not)</li>
+<li>When need to write to a shared cache, tell other caches
+<ul>
+<li>Snooping message</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Directory
+<ul>
+<li>Centralized directory: cache state</li>
+<li>All requests go through the directory</li>
+</ul>
+</li>
+<li>Modern design: a combined snooping and directory
+<ul>
+<li>Local snooping, global directory</li>
+</ul>
+</li>
+</ul>
+<h4 id="write-options">Write options</h4>
+<ul>
+<li>Write invalidate</li>
+<li>Write update</li>
+</ul>
+<h4 id="snoop-filter">Snoop filter</h4>
+<ul>
+<li>A directory to hold local cache info, to filter out snoop message</li>
+</ul>
+<h4 id="status-of-the-cache-block">Status of the cache block</h4>
+<ul>
+<li>MSI (modified/shared/invalid)</li>
+<li>MESI (add exclusive)</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<h3 id="cpu-pipeline">CPU pipeline</h3>
+<ul>
+<li>IF/ID/EX/MEM/WB</li>
+<li>Data/control/structure hazards</li>
+</ul>
+<h3 id="use-parallelism-to-improve-performance">Use parallelism to improve performance</h3>
+<ul>
+<li>Multi-issue</li>
+<li>VLIW/SIMD</li>
+<li>OOO</li>
+<li>SMT</li>
+</ul>
+<h3 id="use-cache-to-improve-memory-access-latency-and-bandwidth">Use cache to improve memory access latency and bandwidth</h3>
+<h3 id="rocketchip-1">RocketChip</h3>
+<ul>
+<li>Text-book 5-stage pipeline</li>
+<li>SiFive CoreDesigner</li>
+</ul>
+<h3 id="boomv2">BOOMv2</h3>
+<ul>
+<li>Berkeley out-of-order machine</li>
+</ul>
+<h3 id="ariane-2">Ariane</h3>
+<ul>
+<li>Modern pipeline design</li>
+<li>SystemVerilog</li>
+</ul>
+<h3 id="cache-coherency">Cache coherency</h3>
+<ul>
+<li>Software vs. hardware</li>
+<li>Hardware: snooping vs. directory</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

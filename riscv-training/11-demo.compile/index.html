@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] @DEMO: Bare-metal assembly &amp; SPIKE simulator - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] @DEMO: Bare-metal assembly &amp; SPIKE simulator</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="general-software-stack">General software stack</h2>
+<p><img src="../image/riscv-software-stack.png" alt="pic"></p>
+<h2 id="embedded-system-software-stack">Embedded system software stack</h2>
+<h3 id="what-is-newlib">What is newlib?</h3>
+<p><a href="https://en.wikipedia.org/wiki/Newlib">https://en.wikipedia.org/wiki/Newlib</a></p>
+<ul>
+<li>C standard library implementation for <strong>embedded system</strong></li>
+<li>GCC port for non-Linux embedded system</li>
+<li>When lacking of full-blown OS, how to <strong>make a system call</strong> and how to <strong>use devices</strong></li>
+</ul>
+<blockquote>
+<p>Newlib code size will signaficant larger than Linux code size, because it includes the system calls that is already embedded inside Linux.</p>
+</blockquote>
+<h3 id="what-is-cross-compile">What is cross-compile?</h3>
+<p>Cross-compiler</p>
+<ul>
+<li>A compiler capable of creating executable code for a platform other than the one on which the compiler is running</li>
+<li>In our case: RISC-V compiler running on top of x86</li>
+</ul>
+<h2 id="setup-gnu-toolchain-for-risc-v">Setup GNU toolchain for RISC-V</h2>
+<h3 id="2-options">2 options</h3>
+<ol>
+<li>Build from scratch</li>
+<li>Download pre-built version from SiFive (or other vendors)</li>
+</ol>
+<blockquote>
+<p>Here we choose option 1, because it&rsquo;s more useful in the future. You probably need to choose your own instruction subsets.</p>
+</blockquote>
+<h3 id="1-download-source">1. Download source</h3>
+<ul>
+<li>Community version GNU toolchain on Github: <a href="https://github.com/riscv/riscv-gnu-toolchain">https://github.com/riscv/riscv-gnu-toolchain</a>
+<ul>
+<li>riscv-gcc</li>
+<li>riscv-gdb</li>
+<li>riscv-glibc</li>
+<li>riscv-binutil</li>
+<li>riscv-newlib</li>
+<li>riscv-dejagnu</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/riscv/riscv-gnu-toolchain --recursive
+</code></pre></div><h3 id="2-install-prerequisites">2. Install prerequisites</h3>
+<p>Ubuntu 16.04</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install -y autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
+sudo apt-get install -y build-essential zlib1g-dev pkg-config libglib2.0-dev binutils-dev libboost-all-dev autoconf libtool libssl-dev libpixman-1-dev libpython-dev python-pip python-capstone virtualenv expect
+sudo apt-get install -y autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev libusb-1.0-0-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpat-dev
+</code></pre></div><h3 id="3-compile--install">3. Compile &amp; install</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone --recursive https://github.com/riscv/riscv-gnu-toolchain
+    <span style="color:#75715e"># this will take a long time to download</span>
+
+cd riscv-gnu-toolchain; mkdir build; cd build
+
+../configure --prefix<span style="color:#f92672">=</span>/opt/riscv --with-arch<span style="color:#f92672">=</span>rv64gc --with-abi<span style="color:#f92672">=</span>ilp64d
+    <span style="color:#75715e"># --with-arch=rv64gc defines target architecture is rv64gc (64-bit IMACFD extentions support)</span>
+    <span style="color:#75715e"># option example: rv64imac (64-bit IMAC extenstions support)</span>
+    <span style="color:#75715e"># --with-abi=ilp64d defines target ABI (applicaiton binary interface)</span>
+    <span style="color:#75715e"># &#34;d&#34; means hard-float</span>
+    <span style="color:#75715e"># option example: ilp64 (64-bit soft float)</span>
+
+make newlib -j4 <span style="color:#75715e"># compile &amp; install</span>
+make report-newlib <span style="color:#75715e"># run DejaGnu test suite (super slow)</span>
+</code></pre></div><h3 id="toolchain-directory-content">Toolchain directory content</h3>
+<p><img src="../image/riscv-gnu-toolchain-bin-files.png" alt="pic"></p>
+<h2 id="assembly--programmers-handbook">Assembly / programmer&rsquo;s handbook</h2>
+<p><em>Please refer to handouts: <strong>RISC-V Reference Card</strong></em></p>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>ABI Name</th>
+<th>Saver</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x0</td>
+<td>zero</td>
+<td></td>
+<td>Hard-wired zero</td>
+</tr>
+<tr>
+<td>x1</td>
+<td>ra</td>
+<td>Caller</td>
+<td>Return address</td>
+</tr>
+<tr>
+<td>x2</td>
+<td>sp</td>
+<td><strong>Callee</strong></td>
+<td>Stack pointer</td>
+</tr>
+<tr>
+<td>x3</td>
+<td>gp</td>
+<td></td>
+<td>Global pointer</td>
+</tr>
+<tr>
+<td>x4</td>
+<td>tp</td>
+<td></td>
+<td>Thread pointer</td>
+</tr>
+<tr>
+<td>x5-7 &amp; x28-31</td>
+<td>t0-6</td>
+<td>Caller</td>
+<td>Temporaries</td>
+</tr>
+<tr>
+<td>x8-9 &amp; x18-27</td>
+<td>s0-11</td>
+<td><strong>Callee</strong></td>
+<td>Saved registers</td>
+</tr>
+<tr>
+<td>x10-17</td>
+<td>a0-7</td>
+<td>Caller</td>
+<td>Function arguments / return value</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p>Separation of saved registers and temporary registers makes it possible to reduce 32 registers to 16 registers in E extension</p>
+<h2 id="assembly--what-is-abi">Assembly / what is ABI?</h2>
+<p>ABI (application binary interface) includes:</p>
+<ul>
+<li>Instruction set</li>
+<li>Calling convention
+<ul>
+<li>Function&rsquo;s argument passing and return value retrieving
+<ul>
+<li>Stack vs. registers</li>
+<li>If stack, which parameter is pushed first?</li>
+<li>If register, which registers are used for what?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>How to make system calls to operating system
+<ul>
+<li>More details in our next DEMO</li>
+</ul>
+</li>
+</ul>
+<h3 id="assembly--ra-return-address">Assembly / <code>ra</code> return address</h3>
+<ul>
+<li><code>ecall</code>: <code>ra &lt;= PC + 4</code></li>
+<li><code>ret</code>: jump back to <code>ra</code> (<code>PC &lt;= ra</code>)</li>
+</ul>
+<h2 id="assembly--sp-stack-pointer">Assembly / <code>sp</code> stack pointer</h2>
+<p>When goes into function call, save registers to stack</p>
+<pre><code>00000000000114da &lt;_realloc_r&gt;:
+*   114da:       715d                    addi    sp,sp,-80      # reserve 80-byte space on stack
+    114dc:       f84a                    sd      s2,48(sp)      # push s2
+    114de:       e486                    sd      ra,72(sp)      # push ra
+    114e0:       e0a2                    sd      s0,64(sp)      # push s0
+    114e2:       fc26                    sd      s1,56(sp)      # push s1
+    114e4:       f44e                    sd      s3,40(sp)      # push s3
+...                                                             # push s4 ~ s7
+    114ee:       e062                    sd      s8,0(sp)       # push s8
+...                                                             # function
+    115e0:       60a6                    ld      ra,72(sp)      # pop ra
+    115e2:       6406                    ld      s0,64(sp)      # pop s0
+    115e4:       854a                    mv      a0,s2
+    115e6:       74e2                    ld      s1,56(sp)      # pop s1
+...                                                             # pop s2 ~ s7
+    115f4:       6c02                    ld      s8,0(sp)       # pop s8
+*   115f6:       6161                    addi    sp,sp,80       # release 80-byte space on stack
+    115f8:       8082                    ret                    # return
+</code></pre><h2 id="assembly--gp-global-pointer">Assembly / <code>gp</code> global pointer</h2>
+<p><code>gp</code> = global pointer = pointer to global variables</p>
+<ul>
+<li>GP is pointing at the center of <code>.data</code> section that allows program to index to any global variables easily without the need to <code>auipc</code> every time</li>
+</ul>
+<h3 id="example-c-program-uses-global-variables">Example: C program uses global variables</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">/* Global Variables: */</span>
+Boolean         Bool_Glob;
+<span style="color:#66d9ef">char</span>            Ch_1_Glob,
+                Ch_2_Glob;
+Proc_4 () <span style="color:#75715e">/* without parameters */</span> {
+  Boolean Bool_Loc;
+  Bool_Loc <span style="color:#f92672">=</span> Ch_1_Glob <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;A&#39;</span>;
+  Bool_Glob <span style="color:#f92672">=</span> Bool_Loc <span style="color:#f92672">|</span> Bool_Glob;
+  Ch_2_Glob <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;B&#39;</span>;
+} <span style="color:#75715e">/* Proc_4 */</span>
+</code></pre></div><h3 id="asm-disabled-gp">ASM disabled GP</h3>
+<pre><code class="language-assembly" data-lang="assembly">0000000040400826 &lt;Proc_4&gt;:
+*   40400826:   3fc00797                auipc   a5,0x3fc00
+    4040082a:   f777c783                lbu     a5,-137(a5) # 8000079d &lt;Ch_1_Glob&gt;
+*   4040082e:   3fc00717                auipc   a4,0x3fc00
+    40400832:   f7272703                lw      a4,-142(a4) # 800007a0 &lt;Bool_Glob&gt;
+    40400836:   fbf78793                addi    a5,a5,-65
+    4040083a:   0017b793                seqz    a5,a5
+    4040083e:   8fd9                    or      a5,a5,a4
+*   40400840:   3fc00717                auipc   a4,0x3fc00
+    40400844:   f6f72023                sw      a5,-160(a4) # 800007a0 &lt;Bool_Glob&gt;
+*   40400848:   3fc00797                auipc   a5,0x3fc00
+    4040084c:   04200713                li      a4,66
+    40400850:   f4e78a23                sb      a4,-172(a5) # 8000079c &lt;Ch_2_Glob&gt;
+    40400854:   8082                    ret
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#ae81ff">00000000400003f</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;</span>Proc_4<span style="color:#f92672">&gt;:</span>
+    <span style="color:#ae81ff">400003f</span><span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>   <span style="color:#ae81ff">8651</span>c783                lbu     a5,<span style="color:#f92672">-</span><span style="color:#ae81ff">1947</span>(gp) <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#ae81ff">80001f</span>bd <span style="color:#f92672">&lt;</span>Ch_1_Glob<span style="color:#f92672">&gt;</span>
+    <span style="color:#ae81ff">400003f</span><span style="color:#ae81ff">4</span><span style="color:#f92672">:</span>   <span style="color:#ae81ff">8681</span>a703                lw      a4,<span style="color:#f92672">-</span><span style="color:#ae81ff">1944</span>(gp) <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#ae81ff">80001f</span>c0 <span style="color:#f92672">&lt;</span>Bool_Glob<span style="color:#f92672">&gt;</span>
+    <span style="color:#ae81ff">400003f</span><span style="color:#ae81ff">8</span><span style="color:#f92672">:</span>   fbf78793                addi    a5,a5,<span style="color:#f92672">-</span><span style="color:#ae81ff">65</span>
+    <span style="color:#ae81ff">400003f</span>c:   <span style="color:#ae81ff">0017</span>b793                seqz    a5,a5
+    <span style="color:#ae81ff">40000400</span><span style="color:#f92672">:</span>   <span style="color:#ae81ff">00e7</span>e7b3                or      a5,a5,a4
+    <span style="color:#ae81ff">40000404</span><span style="color:#f92672">:</span>   <span style="color:#ae81ff">86f</span><span style="color:#ae81ff">1</span>a423                sw      a5,<span style="color:#f92672">-</span><span style="color:#ae81ff">1944</span>(gp) <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#ae81ff">80001f</span>c0 <span style="color:#f92672">&lt;</span>Bool_Glob<span style="color:#f92672">&gt;</span>
+    <span style="color:#ae81ff">40000408</span><span style="color:#f92672">:</span>   <span style="color:#ae81ff">04200713</span>                li      a4,<span style="color:#ae81ff">66</span>
+    <span style="color:#ae81ff">4000040</span>c:   <span style="color:#ae81ff">86e18223</span>                sb      a4,<span style="color:#f92672">-</span><span style="color:#ae81ff">1948</span>(gp) <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#ae81ff">80001f</span>bc <span style="color:#f92672">&lt;</span>Ch_2_Glob<span style="color:#f92672">&gt;</span>
+    <span style="color:#ae81ff">40000410</span><span style="color:#f92672">:</span>   <span style="color:#ae81ff">0000</span><span style="color:#ae81ff">8067</span>                ret
+</code></pre></div><h2 id="assembly--tp-thread-pointer">Assembly / <code>tp</code> thread pointer</h2>
+<p><code>tp</code> (thread pointer) is a pointer to thread-level global variables (aka thread-local storage)</p>
+<h2 id="assembly--code-example">Assembly / code example</h2>
+<h3 id="demo">@DEMO</h3>
+<ul>
+<li>Directory <code>~/riscv-training/lab/21-lab.compile</code>
+<ul>
+<li>Source code <code>example-asm.s</code> and <code>example-c.s</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="function-of-example-asms">Function of <code>example-asm.s</code></h4>
+<ul>
+<li>4x4 Matrix multiplication, and result checking against Excel</li>
+<li>Use 2-level function calls to do the job
+<ul>
+<li>Demostrate calling convention by passing argument and return value via registers <code>a*</code></li>
+<li>Save registers <code>s*</code> to stack before using them</li>
+</ul>
+</li>
+</ul>
+<h4 id="compare-with-example-cc-with-the-same-functionality">Compare with <code>example-c.c</code> with the same functionality</h4>
+<ul>
+<li>Assembly code is much harder to write and debug for normal functionality</li>
+<li>Assembly code&rsquo;s binary size is smaller (6624 bytes vs. 6000 bytes)</li>
+</ul>
+<h2 id="assembly--what-is-linker-script">Assembly / what is linker script?</h2>
+<ul>
+<li>Describe how the sections in the input files should be mapped into the outpufile</li>
+<li>Control the memory layout of the output file</li>
+</ul>
+<h3 id="entry-point">Entry point</h3>
+<ul>
+<li>The first instruction to execute in the problem</li>
+</ul>
+<h3 id="common-section">Common section</h3>
+<ul>
+<li><code>.text</code>: actual machine instructions</li>
+<li><code>.data</code>: static data in your code</li>
+<li><code>.bss</code>: uninitialized global or static variables, will be initialized to zero during startup
+<ul>
+<li><code>.noinit</code>: part of bss but will not be initialized to zero</li>
+</ul>
+</li>
+</ul>
+<h2 id="assembly--compile-assembly">Assembly / compile assembly</h2>
+<h3 id="compile---link---objdump">Compile -&gt; link -&gt; objdump</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># assemble</span>
+<span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/riscv64-unknown-elf-as example-asm.s -o example-asm.o
+<span style="color:#75715e"># link</span>
+<span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/riscv64-unknown-elf-ld -T linker-asm.ld example-asm.o -o example-asm.elf
+<span style="color:#75715e"># object dump</span>
+<span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/riscv64-unknown-elf-objdump -D example-asm.elf &gt; example-asm.elf.dump
+</code></pre></div><h3 id="linker-script">Linker script</h3>
+<pre><code class="language-bsp" data-lang="bsp">SECTIONS
+{
+    . = 0x10000;
+    .text : { *(.text) }
+    .data : { *(.data) }
+}
+
+ENTRY (_start)
+</code></pre><ul>
+<li>Both code and data start from <code>0x0001_0000</code></li>
+<li><code>_start</code> is the entry point label</li>
+</ul>
+<h2 id="assembly--compile-c-code">Assembly / compile C code</h2>
+<h3 id="compile-bare-metal-c-program">Compile bare-metal C program</h3>
+<pre><code># compile
+${RISCV}/bin/riscv64-unknown-elf-gcc example-c.c -o example-c.elf
+# object dump
+${RISCV}/bin/riscv64-unknown-elf-objdump -D example-c.elf &gt; example-c.elf.dump
+</code></pre><h2 id="assembly--asm-vs-c">Assembly / ASM vs. C</h2>
+<h3 id="development-effort">Development effort</h3>
+<p>Myself</p>
+<ul>
+<li>2 hours in ASM</li>
+<li>2 mins in C</li>
+</ul>
+<h3 id="size-of-the-code">Size of the code</h3>
+<p>With <code>printf</code></p>
+<pre><code>riscv@riscv:~/riscv-training/lab/21-lab.compile$ ll *.elf
+-rwxr-xr-x 1 1380539737 1876110778   6000 Dec  7 17:07 example-asm.elf*
+-rwxr-xr-x 1 1380539737 1876110778 138792 Dec  7 17:18 example-c.elf*
+</code></pre><p>Without <code>printf</code> and turn on <code>-Os</code>: 107.2%</p>
+<pre><code>-rwxr-xr-x 1 1380539737 1876110778 6000 Dec  7 17:30 example-asm.elf*
+-rwxr-xr-x 1 1380539737 1876110778 6432 Dec  7 17:30 example-c.elf*
+</code></pre><h2 id="spike">SPIKE</h2>
+<ul>
+<li>SPIKE: official ISS (instruction set simulator) of RISC-V
+<ul>
+<li>GDB-like TUI (text-based user interface)</li>
+<li>Support single step execution / breakpoint / watchpoint</li>
+<li>XSPIKE: open a separate terminal (in GUI mode) to capture the <code>printf</code> output</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-invoke-spike">How to invoke SPIKE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># run SPIKE in direct mode</span>
+&gt; <span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/spike target.elf
+
+<span style="color:#75715e"># run SPIKE in interactive debug mode: -d</span>
+&gt; <span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/spike -d target.elf
+
+<span style="color:#75715e"># run SPIKE with log dumping: -l</span>
+&gt; <span style="color:#e6db74">${</span>RISCV<span style="color:#e6db74">}</span>/bin/spike -l target.elf 2&gt;&amp;<span style="color:#ae81ff">1</span> | less
+</code></pre></div><h3 id="spike-interactive-debug-mode">SPIKE interactive debug mode</h3>
+<ul>
+<li><code>: pc 0</code>: show current PC in core 0</li>
+<li><code>: reg 0 a0</code>: show content of register <code>a0</code> in core 0</li>
+<li><code>: mem 2020</code>: show content of memory at <code>0x2020</code></li>
+<li><code>: until pc 0 80000000</code>: stop when PC hits <code>0x8000_0000</code></li>
+</ul>
+<p>More commands type <code>help</code> under interactive debug mode</p>
+<blockquote>
+<p>Note: don&rsquo;t forget the &ldquo;0&rdquo; for core 0</p>
+</blockquote>
+<h3 id="demo-1">@DEMO</h3>
+<ul>
+<li>Run SPIKE in direct mode</li>
+<li>Run SPIKE in interactive debug mode
+<ul>
+<li>Show register/memory content</li>
+<li>Set breakpoint</li>
+</ul>
+</li>
+<li>Run SPIKE with log dumping</li>
+</ul>
+<p>.footnote[Next session: LAB]</p>
+<h2 id="lab-factorial-in-assembly">@LAB: factorial in assembly</h2>
+<h3 id="use-assembly-to-implement-factorial-function">Use assembly to implement factorial function</h3>
+<h3 id="n--n--n-1--n-2----2--1"><code>n! = n * (n-1) * (n-2) * ... * 2 * 1</code></h3>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

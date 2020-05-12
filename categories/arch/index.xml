@@ -71,15 +71,6 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
     </item>
     
     <item>
-      <title>Note of RISC-V Vector ISA Spec v0.6</title>
-      <link>/blog/arch/2018-12-15-riscv-v-spec/</link>
-      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/arch/2018-12-15-riscv-v-spec/</guid>
-      <description>Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?</description>
-    </item>
-    
-    <item>
       <title>Ariane (PULP series high-performance core)</title>
       <link>/blog/arch/2018-12-01-ariane-cpu/</link>
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] @DEMO: QEMU full system emulator - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] @DEMO: QEMU full system emulator</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="qemu">QEMU</h2>
+<ul>
+<li>QEMU is a <strong>binary translating emulator</strong>
+<ul>
+<li>On-the-fly, translate RISC-V instruction to host CPU instruction (e.g. x86)</li>
+<li>Functional, not accurate; but really fast
+<ul>
+<li>Good for software debugging, not for hardware debuggin</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+<th>Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional</td>
+<td>QEMU</td>
+<td>100 million to &gt;1 billion instructions per second</td>
+</tr>
+<tr>
+<td>Trace-accurate</td>
+<td>Spike</td>
+<td>10 to 100 million instructions per second</td>
+</tr>
+<tr>
+<td>Cycle-accurate</td>
+<td>Verilator/rocket-chip</td>
+<td>10 to 100 thousand instructions per second</td>
+</tr>
+</tbody>
+</table>
+<h3 id="risc-v-boards">RISC-V boards</h3>
+<ul>
+<li><code>virt</code> - priv v1.10 (16550A UART, virtio-net, virtio-block and device-tree)</li>
+<li><code>spike_v1.9</code> - priv v1.9.1 (HTIF and config-string)</li>
+<li><code>spike_v1.10</code> - priv v1.10 (HTIF and device-tree)</li>
+<li><code>sifive_e300</code> - priv v1.10 (SiFiveUART, HiFive1 compatible)</li>
+<li><code>sifive_u500</code> - priv v1.10 (SiFiveUART and device-tree)</li>
+</ul>
+<h3 id="virtio-board">VirtIO board</h3>
+<ul>
+<li>Implements VirtIO MMIO (memory mapped IO)</li>
+<li>Supports VirtIO block devices, network devices, and UART
+<ul>
+<li>Full system with storage, neworking</li>
+<li>Use PLIC as interrupt controller</li>
+</ul>
+</li>
+<li>Can boot Busybear Linux</li>
+<li>Can boot Fedora Linux</li>
+</ul>
+<h2 id="install-qemu">Install QEMU</h2>
+<h3 id="install-prerequisites">Install prerequisites</h3>
+<p>Need newer version GCC, so just installed gcc-8</p>
+<pre><code>apt-get install software-properties-common
+add-apt-repository ppa:ubuntu-toolchain-r/test
+apt-get update
+apt-get install gcc-8 g++-8
+</code></pre><h3 id="compile-qemu-from-source">Compile QEMU from source</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://git.qemu.org/git/qemu.git
+git submodule update --init --recursive
+
+cd qemu
+./configure --target-list<span style="color:#f92672">=</span>riscv64-softmmu <span style="color:#f92672">&amp;&amp;</span> make
+</code></pre></div><h2 id="run-freedom-e-sdk-on-qemu">Run Freedom-E-SDK on QEMU</h2>
+<blockquote>
+<p>Run examples from Freedom IDE</p>
+</blockquote>
+<h2 id="boot-64-bit-fedora-on-qemu">Boot 64-bit Fedora on QEMU</h2>
+<h3 id="download-fedora-64-bit-image-for-risc-v">Download Fedora 64-bit image for RISC-V</h3>
+<pre><code>mkdir disk-images &amp;&amp; cd disk-images
+wget https://fedorapeople.org/groups/risc-v/disk-images/stage4-disk.img.xz
+xzdec -d stage4-disk.img.xz &gt; stage4-disk.img
+
+# Berkeley bootloader
+wget https://fedorapeople.org/groups/risc-v/disk-images/bbl
+</code></pre><h3 id="boot-linux-riscv-gitqemurun-qemush">Boot Linux <code>~/riscv-git/qemu/run-qemu.sh</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./riscv64-softmmu/qemu-system-riscv64 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -nographic <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -machine virt <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -smp <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m 2G <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -kernel ./disk-images/bbl <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -object rng-random,filename<span style="color:#f92672">=</span>/dev/urandom,id<span style="color:#f92672">=</span>rng0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -device virtio-rng-device,rng<span style="color:#f92672">=</span>rng0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -append <span style="color:#e6db74">&#34;console=ttyS0 ro root=/dev/vda&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -device virtio-blk-device,drive<span style="color:#f92672">=</span>hd0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -drive file<span style="color:#f92672">=</span>./disk-images/stage4-disk.img,format<span style="color:#f92672">=</span>raw,id<span style="color:#f92672">=</span>hd0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -device virtio-net-device,netdev<span style="color:#f92672">=</span>usernet <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -netdev user,id<span style="color:#f92672">=</span>usernet,hostfwd<span style="color:#f92672">=</span>tcp::10000-:22
+</code></pre></div><pre><code>Login: root
+Password: riscv
+</code></pre><h3 id="uname"><code>uname</code></h3>
+<pre><code>[root@stage4 ~]# uname -a
+Linux stage4.fedoraproject.org 4.19.0-rc8 #1 SMP Wed Oct 17 15:11:25 UTC 2018 riscv64 riscv64 riscv64 GNU/Linux
+[root@stage4 ~]# cat /proc/cpuinfo
+hart    : 0
+isa     : rv64imafdcsu
+mmu     : sv48
+
+hart    : 1
+isa     : rv64imafdcsu
+mmu     : sv48
+
+hart    : 2
+isa     : rv64imafdcsu
+mmu     : sv48
+
+hart    : 3
+isa     : rv64imafdcsu
+mmu     : sv48
+</code></pre><h3 id="hello-world">Hello world</h3>
+<pre><code>[root@stage4 ~]# cat hello.c
+#include &lt;stdio.h&gt;
+
+int main(void) {
+        printf(&quot;Hello world!\n&quot;);
+}
+[root@stage4 ~]# gcc hello.c -o hello
+[root@stage4 ~]# ./hello
+Hello world!
+</code></pre><h4 id="size-difference">Size difference</h4>
+<ul>
+<li>In QEMU (with Linux)</li>
+</ul>
+<pre><code>-rwxr-xr-x 1 root root 7936 Jul  5 05:39 hello
+</code></pre><ul>
+<li>With newlib</li>
+</ul>
+<pre><code>-rwxr-xr-x  1 jimw  1876110778     20880 Jul 22 09:07 hello.elf
+</code></pre><ul>
+<li>2.63x in size, because Linux version binary doesn&rsquo;t include system call functions</li>
+</ul>
+<h3 id="python">Python</h3>
+<pre><code>[root@stage4 ~]# python3
+Python 3.6.4 (default, Mar 20 2018, 00:39:12)
+[GCC 7.3.1 20180303 (Red Hat 7.3.1-5)] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; os.uname()
+posix.uname_result(sysname='Linux', nodename='stage4.fedoraproject.org', release='4.19.0-rc8', version='#1 SMP Wed Oct 17 15:11:25 UTC 2018', machine='riscv64')
+&gt;&gt;&gt; exit()
+
+</code></pre>
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

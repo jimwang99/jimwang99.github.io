@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[RISC-V Architecture Training] @DEMO: Verification suite - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[RISC-V Architecture Training] @DEMO: Verification suite</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-27T00:00:00Z">2019-11-27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<h2 id="riscv-tests">riscv-tests</h2>
+<p><a href="https://github.com/riscv/">https://github.com/riscv/</a></p>
+<ul>
+<li>Unit tests based on assembly
+<ul>
+<li>Basic functionality of each RISC-V instructions and features defined in the spec</li>
+<li>Very good staring point to find basic implementation issues</li>
+</ul>
+</li>
+<li>Software BIST (built-in self test)
+<ul>
+<li>Compare architecture states with expected results</li>
+<li>Issue pass/fail signal to host machine</li>
+</ul>
+</li>
+<li>Official compliance tests</li>
+</ul>
+<h2 id="riscv-tests--tvm-test-virtual-machine">riscv-tests / TVM (test virtual machine)</h2>
+<ul>
+<li>Because RISC-V is very scalable, so it has many variants
+<ul>
+<li>E.g. 32-bit vs 64-bit, different ISA subsets support, different privilege levels support</li>
+</ul>
+</li>
+</ul>
+<h3 id="use-different-tvm-to-define-risc-v-variants">Use different TVM to define RISC-V variants</h3>
+<ul>
+<li>Registers (GPR, FPR) and instruction sets</li>
+<li>Memory access pattern</li>
+<li>How to enter/exit test program</li>
+<li>How to do input/output in test program</li>
+</ul>
+<h3 id="some-available-tvm">Some available TVM</h3>
+<table>
+<thead>
+<tr>
+<th>TVM Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rv32ui</code></td>
+<td>RV32 user-level, integer only</td>
+</tr>
+<tr>
+<td><code>rv32si</code></td>
+<td>RV32 supervisor-level, integer only</td>
+</tr>
+<tr>
+<td><code>rv32mi</code></td>
+<td>RV32 machine-level, integer only</td>
+</tr>
+<tr>
+<td><code>rv64ui</code></td>
+<td>RV64 user-level, integer only</td>
+</tr>
+<tr>
+<td><code>rv64uf</code></td>
+<td>RV64 user-level, integer and floating-point</td>
+</tr>
+<tr>
+<td><code>rv64uv</code></td>
+<td>RV64 user-level, integer, floating-point, and vector</td>
+</tr>
+<tr>
+<td><code>rv64si</code></td>
+<td>RV64 supervisor-level, integer only</td>
+</tr>
+<tr>
+<td><code>rv64sv</code></td>
+<td>RV64 supervisor-level, integer and vector</td>
+</tr>
+</tbody>
+</table>
+<h2 id="riscv-tests--target-environments">riscv-tests / target environments</h2>
+<ul>
+<li>Despite of TVM, there is also <strong>target environment</strong> that defines <strong>implementation</strong> related factors
+<ul>
+<li>Virtual memory</li>
+<li>Multi-core</li>
+<li>Time interrupt</li>
+</ul>
+</li>
+<li>Target environments</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Target Environment Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p</code></td>
+<td>virtual memory is disabled, only core 0 boots up</td>
+</tr>
+<tr>
+<td><code>pm</code></td>
+<td>virtual memory is disabled, all cores boot up</td>
+</tr>
+<tr>
+<td><code>pt</code></td>
+<td>virtual memory is disabled, timer interrupt fires every 100 cycles</td>
+</tr>
+<tr>
+<td><code>v</code></td>
+<td>virtual memory is enabled</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>p</code> is the mostly used and supported</li>
+</ul>
+<h2 id="riscv-tests--how-to-use-tvm">riscv-tests / how to use TVM?</h2>
+<ul>
+<li>Select the correct target enviroment according to your implemenation</li>
+<li>Pick all the TVMs that fits your implemenation</li>
+<li>E.g. 32-bit bare-metal MCU that supports IM
+<ul>
+<li><code>rv32mi-p-*</code> &amp; <code>rv32ui-p-*</code> &amp; <code>rv32um-p-*</code></li>
+</ul>
+</li>
+<li>E.g. 64-bit full-blown single-core AP that supports IMACFD and Linux
+<ul>
+<li><code>rv64mi-p-*</code> &amp; <code>rv64ui-v-*</code> &amp; <code>rv64um-v-*</code> &amp; <code>rv64uf-v-*</code> &amp; <code>rv64ud-v-*</code> &amp; <code>rv64ua-v-*</code> &amp; <code>rv64uc-v-*</code> &amp; <code>rv64si-p-*</code></li>
+</ul>
+</li>
+</ul>
+<p> </p>
+<p>.center[As we can see, <strong>riscv-tests are also scalable</strong>]</p>
+<h2 id="riscv-tests--demo">riscv-tests / demo</h2>
+<ul>
+<li>ISA test source code for target env <code>p</code>
+<ul>
+<li>Source code: <code>~/riscv-git/riscv-tools/riscv-tests/isa/rv64ui/addi.S</code></li>
+<li>Header file: <code>~/riscv-git/riscv-tools/riscv-tests/env/p/riscv_test.h</code>
+<ul>
+<li>And linker script: <code>~/riscv-git/riscv-tools/riscv-tests/env/p/link.ld</code></li>
+</ul>
+</li>
+<li>Objdump: <code>~/docker/riscv/riscv-tools/riscv-tests/isa/rv64ui-p-addi.dump</code></li>
+</ul>
+</li>
+<li>ISA test source code for target env <code>v</code> (with virtual memory)
+<ul>
+<li>Header file: <code>~/riscv-git/riscv-tools/riscv-tests/env/v/riscv_test.h</code>
+<ul>
+<li>Entry assembly: <code>~/riscv-git/riscv-tools/riscv-tests/env/v/entry.S</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="riscv-torture">riscv-torture</h2>
+<p><a href="https://github.com/ucb-bar/riscv-torture">https://github.com/ucb-bar/riscv-torture</a></p>
+<ul>
+<li>Random test generator from UC Berkeley
+<ul>
+<li>Generate random instruction sequences</li>
+<li>Use SPIKE simulator to generate golden reference architecture states</li>
+<li>Automatic compare, then determine pass/fail</li>
+</ul>
+</li>
+<li>Pros &amp; cons
+<ul>
+<li>Support selecting ISA extension and instruction</li>
+<li>Written in Scala (slow and poor compatibility), need internet connection</li>
+<li>The program structure is too simple
+<ul>
+<li>Lack of complicated program sequence verification</li>
+</ul>
+</li>
+<li>Lack of switching between privilege modes</li>
+<li>Has not updated for a very long time</li>
+</ul>
+</li>
+</ul>
+<h2 id="riscv-dv">riscv-dv</h2>
+<p><a href="https://github.com/google/riscv-dv">https://github.com/google/riscv-dv</a></p>
+<ul>
+<li>Open-source instruction generator from Google</li>
+<li>Based on SystemVerilog and UVM
+<ul>
+<li>Industry standard verification language and framework
+<ul>
+<li>Other engineers can understand and extend</li>
+<li><strong>It&rsquo;s not a one-man project</strong></li>
+</ul>
+</li>
+<li>Support SV based coverage</li>
+</ul>
+</li>
+<li>Use SPIKE simulator as golden reference</li>
+</ul>
+<h2 id="riscv-dv--simulation-flow">riscv-dv / simulation flow</h2>
+<p><img src="../image/riscv-dv-sim-diagram.png" alt="pic"></p>
+<h2 id="riscv-dv--interesting-features">riscv-dv / interesting features</h2>
+<h3 id="randomize-everything">Randomize everything</h3>
+<ul>
+<li>
+<p>3 levels of randomness</p>
+<ul>
+<li>Instrution-level
+<ul>
+<li>Cover all instructions</li>
+</ul>
+</li>
+<li>Sequence-level
+<ul>
+<li>Instruction orders and dependencies</li>
+</ul>
+</li>
+<li>Program-level
+<ul>
+<li>Privileged modes switching, page table, system calls</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Difficulties</p>
+<ul>
+<li>Branch/jump
+<ul>
+<li>Valid target?</li>
+<li>Avoid infinite loop</li>
+</ul>
+</li>
+<li>Load/store
+<ul>
+<li>Valid base address</li>
+<li>Extra instruction to setup base address</li>
+</ul>
+</li>
+<li>CSR access
+<ul>
+<li>Most CSRs have implications, cannot be randomly changed</li>
+<li>Some CSRs are implementation-specific, so not 100% match SPIKE behavior</li>
+</ul>
+</li>
+<li>Call stack
+<ul>
+<li>Randomly generated function calls can easily form infinite loop</li>
+</ul>
+</li>
+<li>Page table
+<ul>
+<li>Exception injection</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="architecture-aware">Architecture aware</h3>
+<ul>
+<li>Need to know certain level of implementation/architecture details to target specific corner cases</li>
+<li>E.g.
+<ul>
+<li>Branch prediction</li>
+<li>TLB</li>
+<li>Cache</li>
+<li>Multi-issue</li>
+</ul>
+</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>Why? Because this is usually the bottleneck when use FPGA to emulate CPU.</li>
+</ul>
+<h2 id="riscv-dv-1">riscv-dv</h2>
+<h3 id="generator-flow">Generator flow</h3>
+<p><img src="../image/riscv-dv-steps.png" alt="pic"></p>
+<h3 id="memory-map">memory map</h3>
+<p><img src="../image/riscv-dv-mem-map.png" alt="pic"></p>
+<h2 id="riscv-dv--limitations">riscv-dv / limitations</h2>
+<ul>
+<li>Only support RV64IMC &amp; RV32IMC
+<ul>
+<li>Lack of various ISA subsets support</li>
+</ul>
+</li>
+<li>Only support commercial RTL simulator</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>
