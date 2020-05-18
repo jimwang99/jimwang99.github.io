@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>IO Coherence - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">IO Coherence</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-05-18T00:00:00Z">2020-05-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<p>Cache coherence between CPUs are most explained in textbooks, but IO coherence is not well understood. Recently I&rsquo;m involved in architecture discussion about IO coherence, and found this paper, &ldquo;Maintaining I/O Data Coherence in Embedded Multicore Systems&rdquo; by Thomas B. Berg 2009, very useful coming to explain what is IO coherence and how to implement it in embedded system.</p>
+<h1 id="io-coherence">I/O Coherence</h1>
+<h2 id="producer-consumer-model">Producer-consumer model</h2>
+<p>Most mechanisms for passing data between IO device and CPU, either CPU -&gt; IO or IO -&gt; CPU, use the classic producer-cosumer model.</p>
+<h3 id="what">What?</h3>
+<ul>
+<li>Producer writes data to memory</li>
+<li>Producer sets a flag to notify consumer
+<ul>
+<li>Write memory or raise interrupt</li>
+</ul>
+</li>
+<li>Consumer recognizes the flag
+<ul>
+<li>Pull memory or serve interrupt</li>
+</ul>
+</li>
+<li>Consumer read data from memroy</li>
+</ul>
+<h3 id="how">How?</h3>
+<ul>
+<li><strong>Consistency</strong>
+<ul>
+<li>WAW: consumer observes write of data and write of flag in correct order</li>
+</ul>
+</li>
+<li><strong>Coherency</strong>
+<ul>
+<li>RAW: cosumer read must get correct/latest data from producer</li>
+</ul>
+</li>
+</ul>
+<h3 id="therefore">Therefore</h3>
+<p>**IO  = consistency &amp; coherency of data passed between IO device and CPUs</p>
+<h1 id="software-io-coherence">Software IO Coherence</h1>
+<p><img src="image-20200518105054003.png" alt="img"></p>
+<h2 id="cpu---io">CPU -&gt; IO</h2>
+<h3 id="how-1">How?</h3>
+<ol>
+<li>CPU writes data to memory (cached)</li>
+<li>[CRITICAL] CPU makes that data visible to IO device
+<ol>
+<li>Use uncached or write-through memory type
+<ol>
+<li>More traffic (need hardware support for write-gathering)</li>
+</ol>
+</li>
+<li>Flush cache then fence (memory synchronization)
+<ol>
+<li>Hard to manage between multiple CPU cores. (e.g. OS managed process may migrate from one core to another and leave residual in both L1 cache)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>CPU sets a flag</li>
+<li>IO device regonizes that flag</li>
+<li>IO device reads the data from memory</li>
+</ol>
+<h2 id="io---cpu">IO -&gt; CPU</h2>
+<ul>
+<li>The process is almost the same</li>
+<li>Because the IO device is lack of intelligence, so CPU has to guarantee that &ldquo;data has arrived to memory before it reads&rdquo;
+<ul>
+<li>Tricks: CPU can send a read register command to device, if device follows the PCI ordering rules, it will guarantee that read is finished after write reaches its destination.</li>
+</ul>
+</li>
+</ul>
+<h1 id="hardware-io-coherence">Hardware IO Coherence</h1>
+<p><img src="image-20200518105133895.png" alt="img"></p>
+<p>As shown in the figure above, IO coherence is achieved by hardware &ldquo;coherence manager&rdquo; that manges accesses from both CPU and IO device. Since hardware manages the coherency, there will be software overhead.</p>
+<p>However, if there is last-level cache, (optional L2 in the above figure), avoid polluting that cache is an issue. Large amount of IO data will crowd out existing cache lines. By marking non-shared IO data to bypass cache, we can solve this issue.</p>
+<h1 id="impovement">Impovement</h1>
+<h2 id="use-scratchpad-on-chip-memory-instead-of-dram">Use scratchpad on-chip memory instead of DRAM</h2>
+<ul>
+<li>Software managed approach</li>
+<li>Use high speed on-chip SRAM as scratchpad to store data will increase the bandwidth dramatically.</li>
+</ul>
+<h2 id="hybrid-architecture">Hybrid architecture</h2>
+<ul>
+<li>Use IOMMU to combine software / sratchpad / hardware all together, and select different method according to different use case
+<ul>
+<li>Software overhead of managing this IOMMU can be significant</li>
+</ul>
+</li>
+<li>High-bandwidth data that isn&rsquo;t processed by a core could use a sideband path to memory
+<ul>
+<li>To avoid coherence manager</li>
+</ul>
+</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

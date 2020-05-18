@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>IO Coherence</title>
+      <link>/blog/arch/2020-05-18-io-coherence/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/arch/2020-05-18-io-coherence/</guid>
+      <description>Cache coherence between CPUs are most explained in textbooks, but IO coherence is not well understood. Recently I&amp;rsquo;m involved in architecture discussion about IO coherence, and found this paper, &amp;ldquo;Maintaining I/O Data Coherence in Embedded Multicore Systems&amp;rdquo; by Thomas B. Berg 2009, very useful coming to explain what is IO coherence and how to implement it in embedded system.
+I/O Coherence Producer-consumer model Most mechanisms for passing data between IO device and CPU, either CPU -&amp;gt; IO or IO -&amp;gt; CPU, use the classic producer-cosumer model.</description>
+    </item>
+    
+    <item>
       <title>FANG: for decision making</title>
       <link>/blog/lead/2020-05-11-fang-for-decision-making/</link>
       <pubDate>Mon, 11 May 2020 00:00:00 +0000</pubDate>

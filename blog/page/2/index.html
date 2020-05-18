@@ -80,6 +80,22 @@
 	</div><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/" rel="bookmark">
+			Re-discover Hardware Security in Modern SoC
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-01-30T00:00:00Z">2019-01-30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		There is a big difference between how I used to understand hardware security and state-of-the-art security supported by hardware software co-design, after I watched some video talking about SEP (Security Enclave Processor) by Apple. It’s a key component in current iPhone to protect user data and password from being observed in any kind of hacking, including traditional side channel attack such as DPA (Dynamic Power Attack), debug channel attack, normal network attack, and etc.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/life/2019-01-29-on-time-is-professional/" rel="bookmark">
 			On Time Is Professional
 			</a>
@@ -242,22 +258,6 @@ dtc command
 	<div class="content list__excerpt post__content clearfix">
 		Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/note/2018-12-07-systemc-tutorial/" rel="bookmark">
-			SystemC Tutorial
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-12-07T00:00:00Z">2018-12-07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		// Some simple example  #include &lt;systemc.h&gt; SC_MODULE (seq_and2 ) { // sequential AND2  sc_in&lt; sc_uint&lt;8&gt; &gt;	a; sc_in&lt; sc_unit&lt;8&gt; &gt;	b; sc_out&lt; sc_uint&lt;8&gt; &gt;	f; sc_in&lt;bool&gt;	clk; void func() { f.write( a.read() &amp; b.read() ); } SC_CTOR ( seq_and2 ) { SC_CTHREAD(func); sensitive &lt;&lt; clk.neg(); } } Port &amp; signal  Port  sc_in &amp; sc_out .read() &amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers
-	</div>
 </article>
 </main>
 
@@ -282,11 +282,11 @@ dtc command
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2020-05-18-io-coherence/">IO Coherence</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-26-amba-protocol/">ARM AMBA Protocl</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
 		</ul>
 	</div>
 </div>

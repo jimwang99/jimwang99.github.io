@@ -6,10 +6,19 @@
     <description>Recent content in Categories on When Moore&#39;s Law ENDS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>arch</title>
+      <link>/categories/arch/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/arch/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>lead</title>
@@ -26,15 +35,6 @@
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/categories/riscv/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>arch</title>
-      <link>/categories/arch/</link>
-      <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/arch/</guid>
       <description></description>
     </item>
     

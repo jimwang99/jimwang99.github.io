@@ -80,6 +80,22 @@
 	</div><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/note/2018-12-07-systemc-tutorial/" rel="bookmark">
+			SystemC Tutorial
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-12-07T00:00:00Z">2018-12-07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/note/" rel="category">note</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		// Some simple example  #include &lt;systemc.h&gt; SC_MODULE (seq_and2 ) { // sequential AND2  sc_in&lt; sc_uint&lt;8&gt; &gt;	a; sc_in&lt; sc_unit&lt;8&gt; &gt;	b; sc_out&lt; sc_uint&lt;8&gt; &gt;	f; sc_in&lt;bool&gt;	clk; void func() { f.write( a.read() &amp; b.read() ); } SC_CTOR ( seq_and2 ) { SC_CTHREAD(func); sensitive &lt;&lt; clk.neg(); } } Port &amp; signal  Port  sc_in &amp; sc_out .read() &amp; .write() functions   Signal  sc_signal    Threads  SC_METHOD()  Just like always_comb in Verilog, but you have to list the sensitive list   SC_THREAD()  Not commonly used Behavior like initial in Verilog   SC_CTHREAD(function name, clock sensitive)  Most commonly used Only sensitive to clock edge, just like always_ff in Verilog Not limited to one cycle   sensitive keyword to define the sensitive list  Datatypes   Integers
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/industry/2018-12-04-riscv-summit-2018/" rel="bookmark">
 			RISC-V Summit 2018
 			</a>
@@ -234,23 +250,6 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif a
 		1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (https://www.xilinx.com/products/boards-and-kits/zcu111.html)
  Features:  XCZU28DR-2FFVG1517E: high-end RFSoC 12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)   Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product    FMC daughter board with high-speed ADC
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/tool/2018-10-21-google-cloud-platform-tips/" rel="bookmark">
-			GCP (Google Cloud Platform)
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-21T00:00:00Z">2018-10-21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Price of GCP Persistance Disk Can be used to put all the data/eda/os on it.
-    Price (per month) Price (per GB per month)     SSD 50GB $8.50 $0.17   SSD 1TB $174.08 $0.17   HDD 50GB $2.00 $0.04   HDD 200GB $8.00 $0.04   HDD 1TB $39.76 $0.04   Snapshot 50GB $1.30 $0.026    Always on instance (24x7) Can be used as working machine (support VNC) and NFS server
-	</div>
 </article>
 </main>
 
@@ -275,11 +274,11 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif a
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2020-05-18-io-coherence/">IO Coherence</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-26-amba-protocol/">ARM AMBA Protocl</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
 		</ul>
 	</div>
 </div>

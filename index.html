@@ -114,6 +114,23 @@
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/arch/2020-05-18-io-coherence/" rel="bookmark">
+			IO Coherence
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-05-18T00:00:00Z">2020-05-18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Cache coherence between CPUs are most explained in textbooks, but IO coherence is not well understood. Recently I&rsquo;m involved in architecture discussion about IO coherence, and found this paper, &ldquo;Maintaining I/O Data Coherence in Embedded Multicore Systems&rdquo; by Thomas B. Berg 2009, very useful coming to explain what is IO coherence and how to implement it in embedded system.
+I/O Coherence Producer-consumer model Most mechanisms for passing data between IO device and CPU, either CPU -&gt; IO or IO -&gt; CPU, use the classic producer-cosumer model.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/lead/2020-05-11-fang-for-decision-making/" rel="bookmark">
 			FANG: for decision making
 			</a>
@@ -269,22 +286,6 @@ Optimization: Instruction Fetching  Fetch multiple instructions from memory Bran
 		https://developer.arm.com/technologies/big-little
 big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&rsquo;s a particular adaption to mobile devices usage.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/" rel="bookmark">
-			Re-discover Hardware Security in Modern SoC
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-01-30T00:00:00Z">2019-01-30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		There is a big difference between how I used to understand hardware security and state-of-the-art security supported by hardware software co-design, after I watched some video talking about SEP (Security Enclave Processor) by Apple. It’s a key component in current iPhone to protect user data and password from being observed in any kind of hacking, including traditional side channel attack such as DPA (Dynamic Power Attack), debug channel attack, normal network attack, and etc.
-	</div>
 </article>
 </main>
 
@@ -307,11 +308,11 @@ big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combine
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/arch/2020-05-18-io-coherence/">IO Coherence</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-26-amba-protocol/">ARM AMBA Protocl</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/note/2019-03-18-cortex-processor-behaviors/">ARM Training: Cortex Processor Behaviors</a></li>
 		</ul>
 	</div>
 </div>
