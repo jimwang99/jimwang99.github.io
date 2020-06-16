@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/categories/arch/</loc>
-    <lastmod>2020-05-18T00:00:00+00:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>/blog/tool/2020-06-15-generator-status/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/tool/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/arch/</loc>
     <lastmod>2020-05-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -144,11 +154,6 @@
   
   <url>
     <loc>/blog/tool/2019-02-11-shortcut-dot-py/</loc>
-    <lastmod>2019-02-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/tool/</loc>
     <lastmod>2019-02-11T00:00:00+00:00</lastmod>
   </url>
   

@@ -80,6 +80,22 @@
 	</div><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/riscv/2018-12-15-riscv-v-spec/" rel="bookmark">
+			Note of RISC-V Vector ISA Spec v0.6
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-12-15T00:00:00Z">2018-12-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/note/2018-12-07-systemc-tutorial/" rel="bookmark">
 			SystemC Tutorial
 			</a>
@@ -233,23 +249,6 @@ Architecture note PC gen stage  The fetching address for i-cache is always word-
 But if without reset, the counter will be &ldquo;X&rdquo; in simulation.
 logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif always_ff @ (posedge clk) begin cntr &lt;= cntr + 1; end 
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/life/2018-10-23-fpga-solution-for-lidar-project/" rel="bookmark">
-			FPGA Solution for LiDAR Project
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-23T00:00:00Z">2018-10-23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/life/" rel="category">life</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (https://www.xilinx.com/products/boards-and-kits/zcu111.html)
- Features:  XCZU28DR-2FFVG1517E: high-end RFSoC 12-bit 4GSPS ADC x8, 14-bit 6.5GSPS DAC x8 (all RFSoC has the same type of ADC/DAC, no higher speed ones)   Pros: 1-stop with everything we need for bench-top demo Cons: expensive $9K, need secondary solution for backup; overkill for second step product    FMC daughter board with high-speed ADC
-	</div>
 </article>
 </main>
 
@@ -274,11 +273,11 @@ logic [1:0] cntr; `ifndef SYNTHESIS initial begin cntr = 2&#39;b00; end `endif a
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/tool/2020-06-15-generator-status/">Status of current HDL generator</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2020-05-18-io-coherence/">IO Coherence</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-26-amba-protocol/">ARM AMBA Protocl</a></li>
 		</ul>
 	</div>
 </div>

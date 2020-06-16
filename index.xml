@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Status of current HDL generator</title>
+      <link>/blog/tool/2020-06-15-generator-status/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tool/2020-06-15-generator-status/</guid>
+      <description>Recently, I&amp;rsquo;m trying out different HDL generator languages and tools, because
+ Chisel is used heavily inside SiFive, and they have developed amount of IPs including very complicated CPUs, and a very well maintained community (mainly students from Berkeley) Many other IP companies are using their type of HDL generator to generate RTL  Such as ARM and Cadence. ARM&amp;rsquo;s CPU is delivered as a very well parameterized Verilog file along with a set of scripts that can take your configuration file can generate RTL/testbench/IPXACT/&amp;hellip; accordingly in less than a minute.</description>
+    </item>
+    
+    <item>
       <title>IO Coherence</title>
       <link>/blog/arch/2020-05-18-io-coherence/</link>
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>

@@ -114,6 +114,23 @@
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/blog/arch/2019-01-30-arm-big-little/" rel="bookmark">
+			ARM&#39;s big.LITTLE Architecture
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-01-30T00:00:00Z">2019-01-30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/arch/" rel="category">arch</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		https://developer.arm.com/technologies/big-little
+big.LITTLE is a practical example of SMP (Symmetric Multiprocessing). It combines high performance CPU cores and low power CPU cores in the same chip, connected using cache coherent interconnect, to achieve high peak performance within thermal bounds of the system when intense computational power is needed, as well as maximum energy efficiency when the device is in light usage mode most of the time. It&rsquo;s a particular adaption to mobile devices usage.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/blog/arch/2019-01-30-rediscover-hardware-security-in-modern-soc/" rel="bookmark">
 			Re-discover Hardware Security in Modern SoC
 			</a>
@@ -276,22 +293,6 @@ dtc command
 		From the reading of this paper, &ldquo;The Hwacha Microarchitecture Manual, Version 3.8.1&rdquo;, I found out that our Pygmy ES1 architecture is almost the same idea, just not as fancy.
  We don&rsquo;t have cache coherency, because we operate on unified physical memory space The vector execution unit is not as fancy, just useless multithreading, no systolic The prefetch is supposed to be done by DMA engine that is manually controlled by software  System architecture  The vector accelerator only has L1 I$, no D$  Don&rsquo;t need to maintain cache coherency Lots of vector registers, 512 in total, each is 64x2x4=512-bit Wide bus connection to L2$, to provide higher bandwidth   Uncached TileLink between L1 I$ (both scalar processor and vector processors) and L2$ Cached TileLink between L1 D$ (only in scalar processor)  L2$ maintains directory bits, which determines the states of corresponding cache line (JW: maybe something like MESI bits)   Operations of L2$, supported by TileLink protocol (&ldquo;Productive Design of Extensible On-Chip Memory Hierarchies&rdquo;)  Sub-cache-block accesses Data prefetch requests  Read from DDR, don&rsquo;t need to send back to the requester   Atomic memory operations  ALU inside L2 cache banks      Decoupling  Access/execute decoupling Decoupled vector arch Cache refill/access decoupling  Vector Command Queue (VCMDQ)  Instruction fetch is handled by scalar processor, and then sent to VCMDQ  There is explicity defined start vf and stop vstop instructions that flags the begin and end of vector instructions  JW: why is that necessary?
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/blog/riscv/2018-12-15-riscv-v-spec/" rel="bookmark">
-			Note of RISC-V Vector ISA Spec v0.6
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-12-15T00:00:00Z">2018-12-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/riscv/" rel="category">riscv</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Vector regfile  32 of them, v0 to v31 Each is VLEN bits Each can be divided into several elements  The max element width is ELEN CSR vsew maps to SEW (standard element width) controls their width dynamically CSR vl controls the number of elements to operate on for vector instructions   Packing of shorter vector  when SEW is smaller than ELEN, multiple SEW will be packed into one ELEN unit  Following little-endian rule   ELEN units are packed into VLEN register also  Following little-endiam rule     Storage of longer vector  If operand longer than SEW is needed, then  Even-numbered vector register holds the even-numbered elements Odd-numbered vector register holds the odd-numberred elements WHY?
-	</div>
 </article>
 </main>
 
@@ -315,11 +316,11 @@ dtc command
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blog/tool/2020-06-15-generator-status/">Status of current HDL generator</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/arch/2020-05-18-io-coherence/">IO Coherence</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-05-11-fang-for-decision-making/">FANG: for decision making</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-how-to-become-a-multiplier/">How to become a multiplier?</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blog/lead/2020-02-17-improve-engineering-leadership/">Improve in engineering leadership?</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blog/arch/2019-03-26-amba-protocol/">ARM AMBA Protocl</a></li>
 		</ul>
 	</div>
 </div>

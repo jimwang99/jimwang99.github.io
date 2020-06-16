@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Status of current HDL generator - When Moore&#39;s Law ENDS</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="When Moore&#39;s Law ENDS" rel="home">
+				<div class="logo__title">When Moore&#39;s Law ENDS</div>
+				<div class="logo__tagline">A chip designer&#39;s personal blog</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">
+				
+				<span class="menu__text">About Me</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/project/">
+				
+				<span class="menu__text">My Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/blog/">
+				
+				<span class="menu__text">Blog</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/riscv-training/">
+				
+				<span class="menu__text">RISC-V Arch Training</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Status of current HDL generator</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-06-15T00:00:00Z">2020-06-15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/tool/" rel="category">tool</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<p>Recently, I&rsquo;m trying out different HDL generator languages and tools, because</p>
+<ol>
+<li>Chisel is used heavily inside SiFive, and they have developed amount of IPs including very complicated CPUs, and a very well maintained community (mainly students from Berkeley)</li>
+<li>Many other IP companies are using their type of HDL generator to generate RTL
+<ol>
+<li>Such as ARM and Cadence. ARM&rsquo;s CPU is delivered as a very well parameterized Verilog file along with a set of scripts that can take your configuration file can generate RTL/testbench/IPXACT/&hellip; accordingly in less than a minute.</li>
+</ol>
+</li>
+<li>HDL generator is pushed inside our team in FB, and believed to be the future of hardware design because of boost of productivity</li>
+</ol>
+<p>The productivity boost of generator is coming from</p>
+<ul>
+<li>It&rsquo;s more efficient way to describe hardware
+<ul>
+<li>Maybe not true for some of the tools and languages</li>
+</ul>
+</li>
+<li>The design is more flexible in parameterization, and can be used to satisfy different requirements from customers, either external or internal</li>
+<li>The generator can generate all kinds of collaterals, not only RTL
+<ul>
+<li>The collaterals include address map header files for verification and software development, testbench, IPXACT for IP delivery</li>
+</ul>
+</li>
+<li>Quicker turn-around-time if any feature requirement changes
+<ul>
+<li>E.g. if we need to add an extra APB port to the NoC to support a secondary UART device, normal design will at least take couple of days to revise the RTL/testbench, and another couple days to debug and run regression. But with generator, generating takes 1 mins, running regression will take another couple of hours.</li>
+<li>However this advantage of generator does not come free, because you need to design for APB interface in the first place, and tried it with different configurations to make sure adding a APB port is always working fine.</li>
+</ul>
+</li>
+</ul>
+<h2 id="comparison-of-current-generator-tools">Comparison of current generator tools</h2>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Tool</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chisel (based on Scala)</td>
+<td>FIRRTL</td>
+<td>- Used by SiFive and already have successful projects<!-- raw HTML omitted -->- Google is also supporting Chisel</td>
+<td>- Using scala with weird extension, and its syntax is far different from SV/HDL or C. So hard to learn<!-- raw HTML omitted -->- Alleged to be not friendly with Verification<!-- raw HTML omitted -->- Generating netlist-like RTL with very minimum readibility</td>
+</tr>
+<tr>
+<td>Magma (based on Python)</td>
+<td>FIRRTL</td>
+<td>- Based on Python and can use fancy Python supported features<!-- raw HTML omitted -->- Support by Facebook</td>
+<td>- Still evolving and under development, so it&rsquo;s missing lots of features<!-- raw HTML omitted -->- The documentation is really really bad</td>
+</tr>
+<tr>
+<td>MyHDL (based on Python)</td>
+<td>Itself</td>
+<td>- Based on Python, so easy to learn<!-- raw HTML omitted -->- Very close to SV</td>
+<td>- Use AST analysis to compile into Verilog, which means any Python syntax that&rsquo;s not supported will be not able to convert into Verilog. **So it&rsquo;s pretty much writing Verilog RTL in Python **, even without SystemVerilog support.</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Maybe there are a lot of others, but I&rsquo;ve only tried the above 3, which are the most popular ones available in public domain.</p>
+<p>Another idea is to use Jinja2 type of template language mixing with SystemVerilog to improve the parameterization support of the latter.</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Jim Wang avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Jim Wang</span>
+	</div>
+	<div class="authorbox__description">
+		Chip designer
+	</div>
+</div>
+
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Jim Wang.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>
