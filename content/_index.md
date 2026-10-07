@@ -1,10 +1,22 @@
 ---
 title: "Home"
-description: "Jim Wang's personal blog."
+description: "When Moore's Law Ends: notes on technology, work, and life."
 ---
 
-# Welcome
+# When Moore's Law Ends
 
-This is my personal blog. I share notes, ideas, and things I learn here.
+Notes on chip design, computer architecture, machine learning, work, and life.
 
-Browse the [posts](/posts/) or read more [about me](/about/).
+Browse [all posts](/posts/) or choose a topic:
+
+- [Algorithms](/posts/algorithms/)
+- [Architecture](/posts/architecture/)
+- [Chip Design](/posts/chip-design/)
+- [Industry](/posts/industry/)
+- [Leadership](/posts/leadership/)
+- [Life](/posts/life/)
+- [Machine Learning](/posts/machine-learning/)
+- [Notes](/posts/notes/)
+- [Projects](/posts/projects/)
+- [Thoughts](/posts/thoughts/)
+- [Tools](/posts/tools/)

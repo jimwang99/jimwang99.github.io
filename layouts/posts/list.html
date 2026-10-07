@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article class="markdown book-article">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+</article>
+{{ range (.Paginate .RegularPagesRecursive.ByDate.Reverse).Pages }}
+<article class="book-post markdown">
+  <h2><a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a></h2>
+  <div class="book-post-container flex gap">
+    <div>
+      {{ partial "docs/post-meta" . }}
+      <div class="book-post-content markdown-inner">{{ .Summary | plainify | truncate 220 }}</div>
+    </div>
+  </div>
+</article>
+{{ end }}
+{{ end }}
+
+{{ define "footer" }}
+  {{ partial "docs/pagination.html" . }}
+{{ end }}

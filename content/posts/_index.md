@@ -1,4 +1,8 @@
 ---
 title: "Posts"
-description: "All posts on Jim Wang's blog."
+description: "Articles and notes grouped by topic."
+aliases:
+  - /blog/
 ---
+
+Browse all posts below, or choose a topic from the sidebar.

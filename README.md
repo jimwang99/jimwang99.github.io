@@ -16,10 +16,14 @@ Open `http://localhost:1313/`. The `-D` flag includes draft posts in the preview
 ## Write a post
 
 ```sh
-hugo new content posts/my-new-post.md
+hugo new content posts/architecture/my-new-post.md
 ```
 
-Edit the Markdown file under `content/posts/`. Set `draft: false` when it is ready to publish. Edit `content/_index.md` and `content/about.md` to personalize the site.
+Edit the Markdown file under `content/posts/`. Set `draft: false` when it is ready to publish. Each topic has an `_index.md` file that controls its sidebar label. Edit `content/_index.md` and `content/about.md` to personalize the site.
+
+## Imported articles
+
+Earlier articles are grouped by topic under `content/posts/`. The source was the local Obsidian Publish folder, and `scripts/import_legacy_blog.py` converted its links and copied available media from local backups. Re-running the script replaces the imported topic pages, so make later edits to those pages directly unless you intend to import them again.
 
 ## Publish
 
