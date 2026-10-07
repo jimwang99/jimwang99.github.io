@@ -1,0 +1,19 @@
+baseURL = 'https://jimwang99.github.io/'
+languageCode = 'en-us'
+title = "Jim Wang's Blog"
+theme = 'hugo-book'
+
+[params]
+  BookSection = 'posts'
+  BookTheme = 'auto'
+  BookComments = false
+
+[[menu.before]]
+  name = 'Posts'
+  pageRef = '/posts/'
+  weight = 1
+
+[[menu.after]]
+  name = 'About'
+  pageRef = '/about/'
+  weight = 1
