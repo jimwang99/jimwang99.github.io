@@ -1,4 +1,4 @@
-# Jim Wang's Blog
+# When Moore's Law Ends
 
 This is a personal blog built with [Hugo](https://gohugo.io/) and the [Book theme](https://github.com/alex-shpak/hugo-book). GitHub Actions publishes it to GitHub Pages.
 

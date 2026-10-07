@@ -1,6 +1,6 @@
 baseURL = 'https://jimwang99.github.io/'
 languageCode = 'en-us'
-title = "Jim Wang's Blog"
+title = "When Moore's Law Ends"
 theme = 'hugo-book'
 
 [params]
