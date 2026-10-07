@@ -2,6 +2,8 @@
 title: "Understanding LLaMA2 Part 5 Training with TinyStories"
 ---
 
+{{< katex />}}
+
 #software #ai #llm #open-source
 
 [🦙 Understanding LLaMA2 Part 1 Model Architecture](/posts/machine-learning/understanding-llama2-part-1-model-architecture/)

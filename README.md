@@ -23,7 +23,7 @@ Edit the Markdown file under `content/posts/`. Set `draft: false` when it is rea
 
 ## Imported articles
 
-Earlier articles are grouped by topic under `content/posts/`. A series can have its own nested section, such as `content/posts/architecture/risc-v-architecture-training/`. The source was the local Obsidian Publish folder, and `scripts/import_legacy_blog.py` converted its links and copied available media from local backups. Re-running the script replaces the imported topic pages, so make later edits to those pages directly unless you intend to import them again.
+Earlier articles are grouped by topic under `content/posts/`. A series can have its own nested section, such as `content/posts/architecture/risc-v-architecture-training/`. The articles came from the local Obsidian Publish folder, with images recovered from local backups. Edit the Markdown pages directly.
 
 ## Publish
 

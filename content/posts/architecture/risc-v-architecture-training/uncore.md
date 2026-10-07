@@ -6,6 +6,8 @@ aliases:
   - "/posts/architecture/risc-v-architecture-training-uncore/"
 ---
 
+{{< katex />}}
+
 –
 
 ## Uncore
@@ -180,7 +182,7 @@ Corresponding to 3 usage scenarios
 ### Channel A, B, C, D, E
 
 * Each channel has its specified priority
-  + In the order of \(A<B<C<D<E\)
+  + In the order of \\(A<B<C<D<E\\)
 * Channel has only one direction
 * Physically independent
 

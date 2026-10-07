@@ -5,6 +5,8 @@ aliases:
   - "/blog/industry/2015-02-23-isscc-2015-evening-session/"
 ---
 
+{{< katex />}}
+
 * Bohr: moore’s law for 50 years
 
   + $mm^2$ is increasing since 130nm
