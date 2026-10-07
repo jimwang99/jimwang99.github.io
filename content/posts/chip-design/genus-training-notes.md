@@ -4,6 +4,7 @@ date: 2017-05-05
 aliases:
   - "/blog/note/2017-05-05-genus-training/"
   - "/blog/tutorial/2017-05-05-genus-training/"
+  - "/posts/notes/genus-training-notes/"
 ---
 
 > The following is my notes of GENUS training course on Cadence's training module

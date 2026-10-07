@@ -1,6 +1,6 @@
 ---
 title: "Thoughts"
-weight: 10
+weight: 8
 bookCollapseSection: true
 ---
 

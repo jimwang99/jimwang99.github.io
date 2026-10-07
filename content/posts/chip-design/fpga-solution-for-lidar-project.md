@@ -3,6 +3,7 @@ title: "FPGA Solution for LiDAR Project"
 date: 2018-10-23
 aliases:
   - "/blog/life/2018-10-23-fpga-solution-for-lidar-project/"
+  - "/posts/life/fpga-solution-for-lidar-project/"
 ---
 
 * 1-stop solution: Zynq UltraScale+ RFSoC ZCU111 Evaluation Kit (<https://www.xilinx.com/products/boards-and-kits/zcu111.html>)

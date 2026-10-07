@@ -1,5 +1,5 @@
 ---
-title: "🦙 Understanding LLaMA2 Part 5 Training with TinyStories"
+title: "Understanding LLaMA2 Part 5 Training with TinyStories"
 ---
 
 #software #ai #llm #open-source

@@ -1,5 +1,5 @@
 ---
-title: "💡 My Tactics with Research Projects"
+title: "My Tactics with Research Projects"
 ---
 
 Research projects often come with a lot of unknowns. Many engineers find this unsettling because it’s less straightforward than math or digital realm. However, I think we should welcome these uncertainties. They reflect the real challenges of real-world task and provide a chance to showcase our capability, making our work more engaging and lively.

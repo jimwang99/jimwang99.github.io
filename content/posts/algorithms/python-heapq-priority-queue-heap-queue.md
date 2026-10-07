@@ -1,5 +1,5 @@
 ---
-title: "🧰 Python `heapq` Priority queue (heap queue)"
+title: "Python `heapq` Priority queue (heap queue)"
 ---
 
 # Attributes

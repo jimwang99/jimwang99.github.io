@@ -4,6 +4,7 @@ date: 2017-04-01
 aliases:
   - "/blog/note/2017-04-01-innovus-training/"
   - "/blog/tutorial/2017-04-01-innovus-training/"
+  - "/posts/notes/innovus-training-notes/"
 ---
 
 > The following is my notes of INNOVUS training course on Cadence's training module

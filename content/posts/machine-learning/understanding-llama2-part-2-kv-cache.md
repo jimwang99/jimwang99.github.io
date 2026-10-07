@@ -1,5 +1,5 @@
 ---
-title: "🦙 Understanding LLaMA2 Part 2 KV Cache"
+title: "Understanding LLaMA2 Part 2 KV Cache"
 ---
 
 #software #ai #llm #open-source

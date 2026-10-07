@@ -1,5 +1,5 @@
 ---
-title: "📱 Run ML Models Use Qualcomm SNPE Part 2 `torchvision.models.resnext50`"
+title: "Run ML Models Use Qualcomm SNPE Part 2 `torchvision.models.resnext50`"
 ---
 
 #software #accelerator #ai #on-device #WIP

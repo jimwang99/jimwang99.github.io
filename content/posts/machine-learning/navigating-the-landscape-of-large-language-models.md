@@ -1,5 +1,5 @@
 ---
-title: "📝 Navigating the Landscape of Large Language Models"
+title: "Navigating the Landscape of Large Language Models"
 ---
 
 > Here is my notes from [JPMorgan's "Eye on Market" 2024 April issue](https://privatebank.jpmorgan.com/content/dam/jpm-wm-aem/global/cwm/en/insights/eye-on-the-market/good-bad-ugly-jpmwm.pdf)

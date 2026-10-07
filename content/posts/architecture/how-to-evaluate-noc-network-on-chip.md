@@ -1,5 +1,5 @@
 ---
-title: "📝 How to Evaluate NoC (Network-on-Chip)?"
+title: "How to Evaluate NoC (Network-on-Chip)?"
 ---
 
 Modern SoCs heavily relies on NoC to connect interfaces and storage to compute. As the ML models grow larger and larger, the data delivery ability becomes more and more important to overall system performance.

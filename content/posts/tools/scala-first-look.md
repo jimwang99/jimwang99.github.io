@@ -4,6 +4,7 @@ date: 2017-05-14
 aliases:
   - "/blog/note/2017-05-14-scala-first-look/"
   - "/blog/tutorial/2017-05-14-scala-first-look/"
+  - "/posts/notes/scala-first-look/"
 ---
 
 > Scala introduction course on LinkedIn. Not very useful, if not using it in real project.

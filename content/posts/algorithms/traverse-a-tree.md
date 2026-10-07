@@ -1,5 +1,5 @@
 ---
-title: "🧰 Traverse a tree"
+title: "Traverse a tree"
 ---
 
 **DFS (depth first search)**

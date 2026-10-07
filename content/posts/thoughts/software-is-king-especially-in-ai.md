@@ -1,5 +1,5 @@
 ---
-title: "💡 Software is King, Especially in AI"
+title: "Software is King, Especially in AI"
 ---
 
 # "Software is king"

@@ -1,5 +1,5 @@
 ---
-title: "💬 DeepSeek"
+title: "DeepSeek"
 ---
 
 DeepSeek has created a huge wave of discussion and panic in the market.

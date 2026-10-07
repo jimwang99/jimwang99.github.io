@@ -1,8 +1,9 @@
 ---
-title: "[RISC-V Architecture Training] Uncore"
+title: "Uncore"
 date: 2019-11-27
 aliases:
   - "/blog/arch/2019-11-28-riscv-architecture-training/lecture-50-uncore/"
+  - "/posts/architecture/risc-v-architecture-training-uncore/"
 ---
 
 –

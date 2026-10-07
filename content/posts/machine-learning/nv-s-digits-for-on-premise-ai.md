@@ -1,5 +1,5 @@
 ---
-title: "💬 NV's DIGITS for On-Premise AI"
+title: "NV's DIGITS for On-Premise AI"
 ---
 
 **TL;DR**

@@ -1,8 +1,9 @@
 ---
-title: "[RISC-V Architecture Training] Privileged Architecture"
+title: "Privileged Architecture"
 date: 2019-11-27
 aliases:
   - "/blog/arch/2019-11-28-riscv-architecture-training/lecture-30-isa-privileged/"
+  - "/posts/architecture/risc-v-architecture-training-privileged-architecture/"
 ---
 
 ## Privileged architecture

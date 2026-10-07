@@ -1,5 +1,5 @@
 ---
-title: "📱 Run ML Models Use Qualcomm SNPE Part 1 Canned Example"
+title: "Run ML Models Use Qualcomm SNPE Part 1 Canned Example"
 ---
 
 #software #accelerator #ai #on-device

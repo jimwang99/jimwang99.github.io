@@ -1,5 +1,5 @@
 ---
-title: "🌟AI-Acceleration"
+title: "AI-Acceleration"
 ---
 
 ## Not Found

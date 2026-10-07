@@ -1,5 +1,5 @@
 ---
-title: "💡 System Performance of Edge AI Applications is Beyond Models"
+title: "System Performance of Edge AI Applications is Beyond Models"
 ---
 
 After working on enabling use-cases for edge AI accelerator for more than 2 years now, here is some of my thinking about system performance.

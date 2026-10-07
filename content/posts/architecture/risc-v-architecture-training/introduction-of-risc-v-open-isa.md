@@ -1,8 +1,9 @@
 ---
-title: "[RISC-V Architecture Training] Introduction of RISC-V Open ISA"
+title: "Introduction of RISC-V Open ISA"
 date: 2019-11-27
 aliases:
   - "/blog/arch/2019-11-28-riscv-architecture-training/lecture-10-intro/"
+  - "/posts/architecture/risc-v-architecture-training-introduction-of-risc-v-open-isa/"
 ---
 
 ## What is ISA?

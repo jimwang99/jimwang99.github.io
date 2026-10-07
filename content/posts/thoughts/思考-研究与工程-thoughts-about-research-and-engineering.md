@@ -1,5 +1,5 @@
 ---
-title: "💡 思考：研究与工程(Thoughts about Research and Engineering)"
+title: "思考：研究与工程(Thoughts about Research and Engineering)"
 ---
 
 在一个尚处于快速发展和迭代的领域，例如AI，由于各种新方向的不确定性，研究和工程常常很难互相配合甚至互相纠结掣肘。从而导致，要么工程实现犹犹豫豫、方向摇摆不定；要么研究做得差，无法做到引领方向、开拓新领域的作用。

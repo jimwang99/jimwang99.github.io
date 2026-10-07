@@ -1,5 +1,5 @@
 ---
-title: "🦙 Understanding LLaMA2 Part 1 Model Architecture"
+title: "Understanding LLaMA2 Part 1 Model Architecture"
 ---
 
 #software #ai #llm #open-source

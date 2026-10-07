@@ -1,5 +1,5 @@
 ---
-title: "🦙 Understanding LLaMA2 Part 6 Positional Encoding"
+title: "Understanding LLaMA2 Part 6 Positional Encoding"
 ---
 
 #software #ai #llm #open-source

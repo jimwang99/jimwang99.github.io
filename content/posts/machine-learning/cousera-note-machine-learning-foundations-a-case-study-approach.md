@@ -5,6 +5,7 @@ aliases:
   - "/blog/machine-learning/2015-10-20-machine-learning-foundations-coursera/"
   - "/blog/ml/2015-10-20-machine-learning-foundations-coursera/"
   - "/blog/note/2015-10-20-machine-learning-foundations-coursera/"
+  - "/posts/notes/cousera-note-machine-learning-foundations-a-case-study-approach/"
 ---
 
 * 1 Week1: Welcome

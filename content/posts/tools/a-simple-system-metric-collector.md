@@ -1,5 +1,5 @@
 ---
-title: "🚧 A simple system metric collector"
+title: "A simple system metric collector"
 ---
 
 https://github.com/jimwang99/jimon

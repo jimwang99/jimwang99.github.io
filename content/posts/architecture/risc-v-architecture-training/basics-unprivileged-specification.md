@@ -1,8 +1,9 @@
 ---
-title: "[RISC-V Architecture Training] Basics & Unprivileged Specification"
+title: "Basics & Unprivileged Specification"
 date: 2019-11-27
 aliases:
   - "/blog/arch/2019-11-28-riscv-architecture-training/lecture-20-isa-basic/"
+  - "/posts/architecture/risc-v-architecture-training-basics-unprivileged-specification/"
 ---
 
 ## RISC-V SPEC

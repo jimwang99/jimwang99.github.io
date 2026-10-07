@@ -1,5 +1,5 @@
 ---
-title: "🦑 Ceph on Raspberry Pi (1) Create Storage Cluster"
+title: "Ceph on Raspberry Pi (1) Create Storage Cluster"
 ---
 
 Trying to follow this tutorial to create a Ceph distributed storage system in my home lab, because I'm sick of the NFS performance of my Synology NAS.

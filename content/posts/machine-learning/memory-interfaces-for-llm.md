@@ -1,5 +1,5 @@
 ---
-title: "📝 Memory Interfaces for LLM"
+title: "Memory Interfaces for LLM"
 ---
 
 LLM is a memory bound problem. This inspired me to look at different memory technologies. In this article, I'm going to summarize my research these days, especially about HBM and its impact on AI applications.

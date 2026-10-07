@@ -1,8 +1,9 @@
 ---
-title: "[RISC-V Architecture Training] Computer Architecture with RISC-V Examples"
+title: "Computer Architecture with RISC-V Examples"
 date: 2019-11-27
 aliases:
   - "/blog/arch/2019-11-28-riscv-architecture-training/lecture-40-cpu-arch/"
+  - "/posts/architecture/risc-v-architecture-training-computer-architecture-with-risc-v-examples/"
 ---
 
 ## Computer architecture basics

@@ -1,5 +1,5 @@
 ---
-title: "🧰 Traverse a graph"
+title: "Traverse a graph"
 ---
 
 1. Mark all nodes as not visited.

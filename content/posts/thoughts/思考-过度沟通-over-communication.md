@@ -1,5 +1,5 @@
 ---
-title: "💡 思考：过度沟通（Over-Communication）"
+title: "思考：过度沟通（Over-Communication）"
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-title: "📝 ML System Architecture (1) System Level Parallelization"
+title: "ML System Architecture (1) System Level Parallelization"
 ---
 
 To optimize the efficiency of training or executing an ML model, whether implemented locally on a device or hosted in the cloud, parallelization plays a critical role, akin to other computational challenges.

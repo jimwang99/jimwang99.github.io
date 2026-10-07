@@ -16,7 +16,5 @@ Browse [all posts](/posts/) or choose a topic:
 - [Leadership](/posts/leadership/)
 - [Life](/posts/life/)
 - [Machine Learning](/posts/machine-learning/)
-- [Notes](/posts/notes/)
-- [Projects](/posts/projects/)
 - [Thoughts](/posts/thoughts/)
 - [Tools](/posts/tools/)

@@ -1,5 +1,5 @@
 ---
-title: "🦙 Understanding LLaMA2 Part 4 ExecuTorch Runtime"
+title: "Understanding LLaMA2 Part 4 ExecuTorch Runtime"
 ---
 
 #software #ai #llm #open-source

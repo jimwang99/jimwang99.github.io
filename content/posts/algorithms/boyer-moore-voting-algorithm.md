@@ -1,5 +1,5 @@
 ---
-title: "🧰 Boyer-Moore Voting Algorithm"
+title: "Boyer-Moore Voting Algorithm"
 ---
 
 #note #learn-with-chatgpt #algorithm

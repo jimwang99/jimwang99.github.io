@@ -1,5 +1,7 @@
 ---
-title: "🚧 Chisel3 Systolic Array Generator"
+title: "Chisel3 Systolic Array Generator"
+aliases:
+  - "/posts/projects/chisel3-systolic-array-generator/"
 ---
 
 #hardware #accelerator #chisel #open-source

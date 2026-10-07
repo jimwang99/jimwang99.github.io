@@ -4,6 +4,7 @@ date: 2017-05-17
 aliases:
   - "/blog/note/2017-05-17-python-design-patterns-note/"
   - "/blog/tutorial/2017-05-17-python-design-patterns-note/"
+  - "/posts/notes/course-note-of-python-design-patterns/"
 ---
 
 > The course is on Coursera

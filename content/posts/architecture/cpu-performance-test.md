@@ -1,5 +1,5 @@
 ---
-title: "🚧 CPU Performance Test"
+title: "CPU Performance Test"
 ---
 
 # Background

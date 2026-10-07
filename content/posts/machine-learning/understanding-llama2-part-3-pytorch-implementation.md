@@ -1,5 +1,5 @@
 ---
-title: "🦙 Understanding LLaMA2 Part 3 PyTorch Implementation"
+title: "Understanding LLaMA2 Part 3 PyTorch Implementation"
 ---
 
 #software #ai #llm #open-source

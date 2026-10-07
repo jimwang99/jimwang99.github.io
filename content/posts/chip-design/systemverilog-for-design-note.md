@@ -4,6 +4,7 @@ date: 2017-01-10
 aliases:
   - "/blog/note/2017-01-10-systemverilog-for-design-note/"
   - "/blog/tutorial/2017-01-10-systemverilog-for-design-note/"
+  - "/posts/notes/systemverilog-for-design-note/"
 ---
 
 > This is my reading note of book “SystemVerilog for Design (2nd edition)". As a non-full-time RTL designer, it has opened my mind. But still, I'm sad about the antient tool that we are using to design hardware.

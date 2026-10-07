@@ -1,5 +1,5 @@
 ---
-title: "🦑 Ceph on Raspberry Pi (2) Create Block Device"
+title: "Ceph on Raspberry Pi (2) Create Block Device"
 ---
 
 Taking my home lab Ceph distributed storage system on Raspberry Pi to the next level: make it useful by creating a block device interface so that Linux system can mount it and use it.

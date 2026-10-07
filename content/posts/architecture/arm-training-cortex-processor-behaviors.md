@@ -3,6 +3,7 @@ title: "ARM Training Cortex Processor Behaviors"
 date: 2019-03-18
 aliases:
   - "/blog/note/2019-03-18-cortex-processor-behaviors/"
+  - "/posts/notes/arm-training-cortex-processor-behaviors/"
 ---
 
 ## Simple Sequential Execution Model

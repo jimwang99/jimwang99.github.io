@@ -17,8 +17,25 @@ WIKI = re.compile(r"(!?)\[\[([^]]+)\]\]")
 IMAGE = re.compile(r"!\[([^]]*)\]\(([^)]+)\)")
 LINK = re.compile(r"(?<!!)\[([^]]+)\]\(([^)]+)\)")
 DATE = re.compile(r"^(\d{4}-\d{2}-\d{2})\s+(.+)$")
+LEADING_EMOJI = re.compile(
+    r"^[\U0001F000-\U0001FAFF\u2600-\u27BF\uFE0F\u200D\U0001F3FB-\U0001F3FF]+\s*"
+)
 FENCE = re.compile(r"^\s*(`{3,}|~{3,})")
 MEDIA_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg", ".pdf"}
+EXCLUDED_TITLES = {"中国科技公司见闻一例", "Give notice to OURS"}
+TRAINING_PREFIX = "[RISC-V Architecture Training] "
+TOPIC_OVERRIDES = {
+    "ARM Training Cortex Processor Behaviors": "architecture",
+    "Chisel3 Systolic Array Generator": "chip-design",
+    "[Cousera Note] Machine Learning Foundations A Case Study Approach": "machine-learning",
+    "Course Note of Python Design Patterns": "tools",
+    "FPGA Solution for LiDAR Project": "chip-design",
+    "GENUS Training Notes": "chip-design",
+    "INNOVUS Training Notes": "chip-design",
+    "Scala First Look": "tools",
+    "SystemC Tutorial": "chip-design",
+    "SystemVerilog for Design Note": "chip-design",
+}
 TRAINING_LINKS = {
     "lecture-00-schedule/index.html": "2019-11-27 [RISC-V Architecture Training] Schedule",
     "lecture-10-intro/index.html": "2019-11-27 [RISC-V Architecture Training] Introduction of RISC-V Open ISA",
@@ -62,6 +79,7 @@ def choose_media(name, inventory):
 
 
 def front_matter(title, date=None, aliases=()):
+    title = LEADING_EMOJI.sub("", title)
     lines = ["---", f"title: {json.dumps(title, ensure_ascii=False)}"]
     if date:
         lines.append(f"date: {date}")
@@ -110,14 +128,24 @@ def old_url_aliases(old_site, files):
 
 
 def import_blog(source, destination, media_roots, old_site=None):
-    files = sorted(path for path in source.rglob("*.md") if path.parent != source)
+    files = sorted(
+        path
+        for path in source.rglob("*.md")
+        if path.parent != source and split_name(path)[1] not in EXCLUDED_TITLES
+    )
     aliases, unmatched_old_urls = old_url_aliases(old_site, files)
     site_map = {}
     output_map = {}
     for path in files:
         date, title = split_name(path)
-        topic = slugify(path.parent.name)
-        slug = slugify(title)
+        topic = TOPIC_OVERRIDES.get(
+            LEADING_EMOJI.sub("", title), slugify(path.parent.name)
+        )
+        if topic == "architecture" and title.startswith(TRAINING_PREFIX):
+            topic += "/risc-v-architecture-training"
+            slug = slugify(title.removeprefix(TRAINING_PREFIX))
+        else:
+            slug = slugify(title)
         if not slug:
             raise ValueError(f"No usable slug: {path}")
         output = destination / "content" / "posts" / topic / f"{slug}.md"
@@ -151,6 +179,14 @@ def import_blog(source, destination, media_roots, old_site=None):
 
     for source_page, output in output_map.items():
         date, title = split_name(source_page)
+        page_aliases = list(aliases[source_page])
+        old_topic = slugify(source_page.parent.name)
+        new_topic = output.relative_to(destination / "content" / "posts").parts[0]
+        if old_topic != new_topic:
+            page_aliases.append(f"/posts/{old_topic}/{slugify(title)}/")
+        if title.startswith(TRAINING_PREFIX):
+            page_aliases.append(f"/posts/architecture/{slugify(title)}/")
+            title = title.removeprefix(TRAINING_PREFIX)
         text = source_page.read_text(encoding="utf-8")
         converted = []
         fence_marker = None
@@ -232,17 +268,34 @@ def import_blog(source, destination, media_roots, old_site=None):
 
         output.parent.mkdir(parents=True, exist_ok=True)
         body = "\n".join(line.rstrip() for line in "".join(converted).splitlines()).rstrip() + "\n"
-        output.write_text(front_matter(title, date, aliases[source_page]) + body, encoding="utf-8")
+        output.write_text(front_matter(title, date, page_aliases) + body, encoding="utf-8")
 
-    for weight, topic in enumerate(sorted({path.parent.name for path in files}), start=1):
-        output = destination / "content" / "posts" / slugify(topic) / "_index.md"
-        title = topic.replace("-", " ")
+    topics = {
+        path.relative_to(destination / "content" / "posts").parts[0]
+        for path in output_map.values()
+    }
+    for weight, topic in enumerate(sorted(topics), start=1):
+        output = destination / "content" / "posts" / topic / "_index.md"
+        title = topic.replace("-", " ").title()
         output.write_text(
             front_matter(title)
             .replace("---\n\n", f"weight: {weight}\nbookCollapseSection: true\n---\n\n", 1)
             + f"Browse the {title} posts.\n",
             encoding="utf-8",
         )
+
+    training_section = (
+        destination
+        / "content"
+        / "posts"
+        / "architecture"
+        / "risc-v-architecture-training"
+        / "_index.md"
+    )
+    training_section.write_text(
+        '---\ntitle: "RISC-V Architecture Training"\nweight: 1\nbookCollapseSection: true\n---\n\nBrowse the RISC-V Architecture Training posts.\n',
+        encoding="utf-8",
+    )
 
     return len(files), missing_media, unresolved_links, unmatched_old_urls, sum(map(len, aliases.values()))
 

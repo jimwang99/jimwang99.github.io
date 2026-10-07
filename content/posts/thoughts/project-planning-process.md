@@ -1,5 +1,5 @@
 ---
-title: "💡 Project Planning Process"
+title: "Project Planning Process"
 ---
 
 **1. Have a Vision:** Without a clear vision outlining the final goals, how can we measure our progress? And it's essential to clearly communicate this vision with all team members.

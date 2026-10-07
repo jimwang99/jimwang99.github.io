@@ -3,7 +3,12 @@
   <h1>{{ .Title }}</h1>
   {{ .Content }}
 </article>
-{{ range (.Paginate .RegularPagesRecursive.ByDate.Reverse).Pages }}
+{{ $undated := false }}
+{{ range .RegularPagesRecursive.ByDate.Reverse }}
+{{ if and .Date.IsZero (not $undated) }}
+<h2 id="posts-without-dates">Posts without dates</h2>
+{{ $undated = true }}
+{{ end }}
 <article class="book-post markdown">
   <h2><a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a></h2>
   <div class="book-post-container flex gap">
@@ -14,8 +19,4 @@
   </div>
 </article>
 {{ end }}
-{{ end }}
-
-{{ define "footer" }}
-  {{ partial "docs/pagination.html" . }}
 {{ end }}

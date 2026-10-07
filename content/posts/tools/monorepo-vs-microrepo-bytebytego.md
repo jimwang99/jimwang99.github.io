@@ -1,5 +1,5 @@
 ---
-title: "🔖 Monorepo vs. Microrepo (ByteByteGo)"
+title: "Monorepo vs. Microrepo (ByteByteGo)"
 ---
 
 > All the credit goes to ByteByteGo.com

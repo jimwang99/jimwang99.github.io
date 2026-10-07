@@ -4,6 +4,7 @@ date: 2018-12-07
 aliases:
   - "/blog/note/2018-12-07-systemc-tutorial/"
   - "/blog/tutorial/2018-12-07-systemc-tutorial/"
+  - "/posts/notes/systemc-tutorial/"
 ---
 
 ```
