@@ -17,16 +17,16 @@ aliases:
   + 21stcentruryarchitecturewhitepaper.pdf - instruction set is not going to be untouchable anymore - energy first - parallelism - specialization - cross-layout design - cross-cutting: break current layers with new interfaces - BREAK LAYERS - software bloat - PHP is 50x slower than BLAC - 3D stack - how to address thermal problem? the power is reduced by 3D stacking
 * 1.3 Madden
 
-  + - cost per added layer is also increasing - IO bandwidth requirements grow by >2.2x / generation - 3D stacking!!! - stack different tech allows I/O to disappear - breaking the Tyranny of defect density: small area , low cost
+  + cost per added layer is also increasing - IO bandwidth requirements grow by >2.2x / generation - 3D stacking!!! - stack different tech allows I/O to disappear - breaking the Tyranny of defect density: small area , low cost
 * 1.4 Sun (TSMC)
 
-  + - Future of semiconductor: MEB, EUV - EUV got delayed because of cost - challenges: non-scalale or incompatible specialty features - 3Dx3D - energy efficient chip scaling - new computer architecture - EUV has a bit break these days, good news to scalling down further more
+  + Future of semiconductor: MEB, EUV - EUV got delayed because of cost - challenges: non-scalale or incompatible specialty features - 3Dx3D - energy efficient chip scaling - new computer architecture - EUV has a bit break these days, good news to scalling down further more
 * 1.5 Yeap
 
-  + - mobile soc - cost is the most important - 28nm is the sweet spot - time to yield » effective die cost: defects, variation, leakage - too busy 1-D scaling: 4~2 years to 1.5yr/node - no time to be creative - need to harvest the values of sweet nodes - enhanced 28nm for utlra low power wearable and IoT
+  + mobile soc - cost is the most important - 28nm is the sweet spot - time to yield » effective die cost: defects, variation, leakage - too busy 1-D scaling: 4~2 years to 1.5yr/node - no time to be creative - need to harvest the values of sweet nodes - enhanced 28nm for utlra low power wearable and IoT
 * 1.6 De Boeck
 
-  + - maximizing functionality and reducing power cost effectively, with application focus - application drive tech scaling - beyond CMOS devices - inter-core wiring
+  + maximizing functionality and reducing power cost effectively, with application focus - application drive tech scaling - beyond CMOS devices - inter-core wiring
 * 1.7 Question: Why always cost, how about performance of transistors while scaling down?
 
   + Answer: market has changes. interconnect bottleneck is hard to achieve with higher freq. And power as well. Consumer end, power > performance.

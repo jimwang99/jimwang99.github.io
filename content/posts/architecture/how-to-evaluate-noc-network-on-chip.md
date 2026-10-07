@@ -11,31 +11,31 @@ Before we start we shall define the following common ground of terminologies:
 
 ![osi-noc-layers](/legacy-media/osi-noc-layers.png)
 
-# Latency
+## Latency
 
 The most easy to understand metric is latency, which measures the period of time a data packet travels from source to destination. It's measured by micro-seconds (us).
 
-# Throughput
+## Throughput
 
 Measured by bytes per second (Bps), throughput evaluates the capability of data delivery of NoC. It's an important metric especially for large data transfer.
 
-# Energy efficiency
+## Energy efficiency
 
 Measured by pica-joules per byte (pJ/B), energy efficiency indicates how much energy is required to transfer data from source to destination. It's extreme important for battery powered devices, like mobile phones, but also important for power attached devices because of heat dissipation.
 
-# QoS (quality of service)
+## QoS (quality of service)
 
 Among all the traffics in the network, not all sources and destinations are created equally. Some sources and tasks shall have higher priority, for example CPU instruction fetches, because they are more important to the system performance or security. To guarantee QoS, software and hardware need to be co-designed to improve overall performance.
 
-# Scalability
+## Scalability
 
 As more sources become active or more data are transferred, the NoC becomes more congestive. Scalability metric measures the decay of latency and throughput when congestion happens.
 
-# Fault-tolerance
+## Fault-tolerance
 
 Complicated NoC topology and use-cases can lead to live-lock or dead-lock. Dead-lock must be eliminated at design stage, but live-lock could happen when certain extreme situation occurs. Some other situation like FIFO overflow can also cause faults. NoC design must be fault-tolerant in these situations.
 
-# Security
+## Security
 
 Modern SoCs handles different tasks on the same chip to get better integration and cost efficiency. But it also means high-secure data are transferred along with non-secure data in the same NoC sometimes. NoC shall be able to support this kind of mixture of secure and non-secure data, while allow sources and destinations to carry out security enforcement mechanisms.
 

@@ -27,9 +27,9 @@ The productivity boost of generator is coming from
 
 | Language | Tool | Pros | Cons |
 | --- | --- | --- | --- |
-| Chisel (based on Scala) | FIRRTL | - Used by SiFive and already have successful projects- Google is also supporting Chisel | - Using scala with weird extension, and its syntax is far different from SV/HDL or C. So hard to learn- Alleged to be not friendly with Verification- Generating netlist-like RTL with very minimum readibility |
-| Magma (based on Python) | FIRRTL | - Based on Python and can use fancy Python supported features- Support by Facebook | - Still evolving and under development, so it’s missing lots of features- The documentation is really really bad |
-| MyHDL (based on Python) | Itself | - Based on Python, so easy to learn- Very close to SV | - Use AST analysis to compile into Verilog, which means any Python syntax that’s not supported will be not able to convert into Verilog. \*\*So it’s pretty much writing Verilog RTL in Python \*\*, even without SystemVerilog support. |
+| Chisel (based on Scala) | FIRRTL | Used by SiFive and already have successful projects · Google is also supporting Chisel | Using scala with weird extension, and its syntax is far different from SV/HDL or C. So hard to learn · Alleged to be not friendly with Verification · Generating netlist-like RTL with very minimum readibility |
+| Magma (based on Python) | FIRRTL | Based on Python and can use fancy Python supported features · Support by Facebook | Still evolving and under development, so it’s missing lots of features · The documentation is really really bad |
+| MyHDL (based on Python) | Itself | Based on Python, so easy to learn · Very close to SV | Use AST analysis to compile into Verilog, which means any Python syntax that’s not supported will be not able to convert into Verilog. **So it’s pretty much writing Verilog RTL in Python**, even without SystemVerilog support. |
 | … |  |  |  |
 
 Maybe there are a lot of others, but I’ve only tried the above 3, which are the most popular ones available in public domain.

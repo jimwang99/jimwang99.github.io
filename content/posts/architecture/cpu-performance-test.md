@@ -2,7 +2,7 @@
 title: "CPU Performance Test"
 ---
 
-# Background
+## Background
 
 i7-12700K = Intel Core i7-12700K (8 big cores each has 2 threads, 4 little cores each has 1 thread) running at 5GHz
 rpi4 = Raspberry Pi 4 Rev B, with 4x Cortex-A72 running at 1.8GHz (Broadcom BCM2711)
@@ -11,7 +11,7 @@ am69 = TI AM69 starter kit, with 8x Cortex-A72 running at 2.0GHz (TI AM69)
 lpi4a = LiCheePi 4A, with 4x RISC-V RV64GCV running at 1.85GHz (Alibaba TH1520)
 - I've tried to use both open-source GCC and T-Head's own GCC with `-mcpu=c920` support. Latter gives slightly better result.
 
-# Summary
+## Summary
 
 |                              | i7-12700K     | rpi4 (A72)  | rpi5 (A76)   | am69 (A72)   | lpi4a (RV64GCV)            |
 | ---------------------------- | ------------- | ----------- | ------------ | ------------ | -------------------------- |
@@ -24,9 +24,9 @@ lpi4a = LiCheePi 4A, with 4x RISC-V RV64GCV running at 1.85GHz (Alibaba TH1520)
 | SPEC CPU 2017 Integer        | 10.0 (5.7x)   | 1.74 (1.0x) |              |              |                            |
 | SPEC CPU 2017 Floating-Point | 21.3 (11.7x)  | 1.82 (1.0x) |              |              |                            |
 
-# SPEC CPU 2017 (intspeed)
+## SPEC CPU 2017 (intspeed)
 
-## i7-12700K
+### i7-12700K
 ```
                        Estimated                       Estimated
                  Base     Base        Base        Peak     Peak        Peak
@@ -57,7 +57,7 @@ Benchmarks      Threads  Run Time     Ratio      Threads  Run Time     Ratio
  Est. SPECspeed(R)2017_int_peak                                           10.0
 ```
 
-## rpi4
+### rpi4
 ```
                        Estimated                       Estimated
                  Base     Base        Base        Peak     Peak        Peak
@@ -87,9 +87,9 @@ Benchmarks      Threads  Run Time     Ratio      Threads  Run Time     Ratio
  Est. SPECspeed(R)2017_int_base         1.56
  Est. SPECspeed(R)2017_int_peak                                          1.74
 ```
-# SPEC CPU 2017 (fpspeed)
+## SPEC CPU 2017 (fpspeed)
 
-## i7-12700K
+### i7-12700K
 ```
                        Estimated                       Estimated
                  Base     Base        Base        Peak     Peak        Peak
@@ -120,7 +120,7 @@ Benchmarks      Threads  Run Time     Ratio      Threads  Run Time     Ratio
  Est. SPECspeed(R)2017_fp_peak                                            21.3
 ```
 
-## rpi4
+### rpi4
 
 ```
                            CPU2017 License: A000A                                   Test date: Mar-2024
@@ -156,8 +156,8 @@ Benchmarks      Threads  Run Time     Ratio      Threads  Run Time     Ratio
  Est. SPECspeed(R)2017_fp_peak                                           1.82
 ```
 
-# CoreMark
-## i7-12700K
+## CoreMark
+### i7-12700K
 ```
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -178,7 +178,7 @@ Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 44385.264092 / GCC11.4.0 -O2 -DPERFORMANCE_RUN=1  -lrt / Heap
 ```
 
-## rpi4
+### rpi4
 ```
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -199,7 +199,7 @@ Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 9819.675058 / GCC9.4.0 -O2 -DPERFORMANCE_RUN=1  -lrt / Heap
 ```
 
-## rpi5
+### rpi5
 ```
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -220,7 +220,7 @@ Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 17664.723547 / GCC13.2.0 -O2 -DPERFORMANCE_RUN=1  -lrt / Heap
 ```
 
-## am69
+### am69
 ```
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -241,7 +241,7 @@ Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 11002.310485 / GCC11.4.0 -O2 -DPERFORMANCE_RUN=1  -lrt / Heap
 ```
 
-## lpi4a
+### lpi4a
 ```
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -261,9 +261,9 @@ seedcrc          : 0xe9f5
 Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 8555.650618 / GCC13.2.0 -O2 -DPERFORMANCE_RUN=1  -lrt / Heap
 ```
-# CoreMark-Pro
+## CoreMark-Pro
 
-## i7-12700K
+### i7-12700K
 ```
 WORKLOAD RESULTS TABLE
 
@@ -287,7 +287,7 @@ Mark Name                                        MultiCore SingleCore    Scaling
 CoreMark-PRO                                      78968.75   10054.14       7.85
 ```
 
-## rpi4
+### rpi4
 ```
 WORKLOAD RESULTS TABLE
 
@@ -311,7 +311,7 @@ Mark Name                                        MultiCore SingleCore    Scaling
 CoreMark-PRO                                       4939.42    2241.89       2.20
 ```
 
-## rpi5
+### rpi5
 ```
 WORKLOAD RESULTS TABLE
 
@@ -335,7 +335,7 @@ Mark Name                                        MultiCore SingleCore    Scaling
 CoreMark-PRO                                      12746.27    5044.04       2.53
 ```
 
-## am69
+### am69
 ```
 WORKLOAD RESULTS TABLE
 
@@ -359,7 +359,7 @@ Mark Name                                        MultiCore SingleCore    Scaling
 CoreMark-PRO                                      14102.14    2550.47       5.53
 ```
 
-## lpi4a
+### lpi4a
 ```
 WORKLOAD RESULTS TABLE
 
@@ -382,8 +382,8 @@ Mark Name                                        MultiCore SingleCore    Scaling
 ----------------------------------------------- ---------- ---------- ----------
 CoreMark-PRO                                       4547.26    1571.90       2.89
 ```
-# Ceph Perf (ceph_perf_local)
-## i7-12700K
+## Ceph Perf (ceph_perf_local)
+### i7-12700K
 ```
 root@22752a5b7c8d:~/ceph/ceph.git/build/bin# ./ceph_perf_local
 atomic_int_cmp               3.94ns    atomic_t::compare_and_swap
@@ -426,7 +426,7 @@ vector_push_pop              0.55ns    Push and pop a std::vector
 ceph_clock_now              11.51ns    ceph_clock_now function
 ```
 
-## rpi4
+### rpi4
 ```
 atomic_int_cmp              18.39ns    atomic_t::compare_and_swap
 atomic_int_inc              15.03ns    atomic_t::inc
@@ -467,9 +467,9 @@ throw_exception_call         8.07us    Throw an Exception in a function call
 vector_push_pop              1.49ns    Push and pop a std::vector
 ceph_clock_now              42.88ns    ceph_clock_now function
 ```
-# Ceph Perf (ceph_perf_objectstore)
+## Ceph Perf (ceph_perf_objectstore)
 
-## i7-12700K
+### i7-12700K
 ```
 root@22752a5b7c8d:~/ceph/ceph.git/build/bin# ./ceph_perf_objectstore 1000
 args: [1000]
@@ -483,7 +483,7 @@ args: [1000]
  Total rados op 1000 run time 2746us.
 ```
 
-## rpi4
+### rpi4
 ```
 root@ceph0d:/mnt/usb1# ~/ceph/build/bin/ceph_perf_objectstore 1000
 args: [1000]

@@ -5,7 +5,7 @@ aliases:
   - "/blog/industry/2017-04-30-snug-2017/"
 ---
 
-# Day 1 Morning
+## Day 1 Morning
 
 1. Paper from microsoft
 
@@ -27,7 +27,7 @@ aliases:
 * Blind clock gating for big blocks is not very good for IR drop, because it will create large power/ground noise. Instead, use smaller cores to go continuously is a better choice other than using large powerful cores working on and off.
 * My take-aways: future EDA will merge front-end and back-end. The flow will be unified, as well as the interface and engines. It will require engineers to know better for the whole flow. It fits my understanding of full stack engineer.
 
-# Day 1 Afternoon
+## Day 1 Afternoon
 
 1. Paper from Broadcom about DSP ungrouping
 
@@ -47,7 +47,7 @@ aliases:
 * Virtual classes, parameters, interfaces and etc to make RTL design more configurable. The author did some research abour work-arounds and what is synthesizable with current DC and VCS.
 * Afterwards, I had a very interesting talk with the author and some other audiences. One important thing the others mentioned is that even 99% of the tools support one feature, and if the other 1% is not will kill the whole schedule. And they were beaten up a lot by other designers or front-back-end engineers because they use advanced coding techiques from SystemVerilog in their RTL. Some guy from Qualcomm mentioned that he was forbidden to use even parameters in his block. So it seems that there are not strong willing to switch from Verilog to SystemVerilog, especially from management level because nobody want to take risks in exchange of some configurability. That actually leads to my question to them that if anybody sees any performance improvements by using SystemVerilog. The author mentioned that using “for” loops instead of multiple “assign” will help the compiler to understand design intent and somehow improved the performance in one case.
 
-# Day 2 Morning
+## Day 2 Morning
 
 1. Nanotime used in NVIDIA (Robert)
 

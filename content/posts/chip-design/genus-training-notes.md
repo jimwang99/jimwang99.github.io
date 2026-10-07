@@ -9,16 +9,16 @@ aliases:
 
 > The following is my notes of GENUS training course on Cadence's training module
 
-# Module 03: genus fundamentals
+## Module 03: genus fundamentals
 
-## common UI vs legacy mode
+### common UI vs legacy mode
 
 * unified commands with Tempus
 * common us: `set_db` & `get_db`
 * legacy mode: `set_attribute` & `get_attribute`
   + `.synth_init` file: setup info, auto load when start legacy UI, can be skipped with `-no_custom` command line option
 
-## explore design hier in legacy UI
+### explore design hier in legacy UI
 
 * virtual directory structure
   + `/`: root dir
@@ -38,7 +38,7 @@ aliases:
 * navigate UNIX disk
   + `lpwd`, `lcd`, `lls`
 
-## attributes
+### attributes
 
 * `set_attribute <attr_name> <value> <object>`
 * `get_attribute <attr_name> <object>`
@@ -50,16 +50,16 @@ aliases:
   + `set_attribute -h`: reports writable attr
 * attr are dependent on the stage of synthesis flow
 
-## input and output
+### input and output
 
 * input: RTL + constraint + library + power intent + physical
 * output: netlist + LEC dofile + ATPG, scanDEF + constraints + physical design input files
 
-## template script
+### template script
 
 * `write_template`
 
-## flow
+### flow
 
 1. setup libraries
 
@@ -213,26 +213,26 @@ aliases:
 * `write_sdc > filename`
 * `write_design -innovus`
 
-## command help
+### command help
 
 * `setenv MANPATH $CDN_SYNTH_ROOT/share/synth/man` to view man pages from UNIX shell
 
-# Module 04: datapath
+## Module 04: datapath
 
-## datapath info in virtual file system
+### datapath info in virtual file system
 
 * /hdl\_libraries/
   + /hdl\_libraries/CW (chipware)
   + /hdl\_libraries/DW (designware)
 
-## datapath operation
+### datapath operation
 
 * architecture selection
 * sharing and speculation (unsharing)
 * carry-save arithmetic (CSA)
 * …
 
-## datapath directives
+### datapath directives
 
 * CSA
   + `set_attr dp_csa {inherited|basic|none} <design>`
@@ -247,7 +247,7 @@ aliases:
 * ChipWare (CW)
   + also maps DesignWare components in RTL to CW
 
-## opt in syn\_generic
+### opt in syn\_generic
 
 * constant propagation
 * resource sharing
@@ -270,24 +270,24 @@ assign t = {16{s}} ^ b;
 assign y = a + t + s;
 ```
 
-## report
+### report
 
 * `set_attr hdl_track_filename_row_col true /` before `read_hdl`
 * `report_dp` after every stages: elaboration/syn\_gen/syn\_map/syn\_opt to track datapath components changes
 
-# Module 05: debug design scenarios
+## Module 05: debug design scenarios
 
-## problem with sdc
+### problem with sdc
 
 * check the log file for errors and warnings
 * check constraint consistency by `check_timing_intent -verbose` before synthesis
 
-## path grouping
+### path grouping
 
 * cost group: opt cost groups simultaneously according to their weight, to minimize their WNS for each group
 * path group -> cost group
 
-## tighten/relax constraint
+### tighten/relax constraint
 
 * emphasize some paths in opt without impacting output SDC
 * `path_adjust -from <obj> -to <obj> -delay <delta_slack_ps>`
@@ -296,21 +296,21 @@ assign y = a + t + s;
 * use `rm [find /des* -exceptions pa_*]` before report timing to get normal timing reports
   + the adjustment will be in the timing report if not removed
 
-## bottom-up design flow
+### bottom-up design flow
 
 * promote submodule
   + `create_derived_design` promote submodule to top-level module
 
-# Module 06: physical synthesis
+## Module 06: physical synthesis
 
-## why?
+### why?
 
 * for synthesis: all wires of fanout=n are the same
 * for physical: each wire is unique
   + 80% to 90% of wires are local, the rest are big problems
 * old tricks don't work: over-constraint
 
-## how?
+### how?
 
 * incremental congestion prevetion
 * structural datapath
@@ -319,16 +319,16 @@ assign y = a + t + s;
   + def file: must define die size; macro locations, fences/guides/regions are better to have (impact timing)
 * genus vs innovus: 5% timing & wirelength diff
 
-## spatial flow
+### spatial flow
 
 * if backend is going to run full place\_opt, instead of `place_opt -incr` with genus-physical outputs as inputs, then no need to waste time on the final syn\_opt stage
 * use `syn_opt -spatial` instead of `syn_opt -physical`
 
-## PAM (physical-aware mapping) & PAS (physical-aware structuring)
+### PAM (physical-aware mapping) & PAS (physical-aware structuring)
 
 * automatically turned on with `-physical`
 
-## useful attributes
+### useful attributes
 
 * `invs_enable_useful_skew`
 * `phys_ignore_nets`
@@ -345,12 +345,12 @@ assign y = a + t + s;
 * `invs_gzip_interface_file`
 * `invs_temp_dir`
 
-## correlation between genus-phys and invs
+### correlation between genus-phys and invs
 
 * ensure NDR and layer-promotion info is passed to innvous
 * assure wirelength has good correlation
 
-## early stage physical analysis
+### early stage physical analysis
 
 * at generic physical synthesis stage
 * why?
@@ -359,15 +359,15 @@ assign y = a + t + s;
   + floor plan constraints
   + timing debug with gui
 
-## check placement legality
+### check placement legality
 
 * `check_placement`
 
-## edit floorplan in Genus GUI
+### edit floorplan in Genus GUI
 
 * go into edit mode
 
-## report
+### report
 
 * `write_report`
   + wrote QoS statistics
@@ -376,7 +376,7 @@ assign y = a + t + s;
 * `write_snapshot`
   + design database and reports
 
-## FAQ
+### FAQ
 
 * recommended flow
   + after synthesis with physical, `write_design -innovus`
@@ -387,19 +387,19 @@ assign y = a + t + s;
 * is it possible to do CTS in genus?
   + No. but simple CTS will be enabled in coming versions
 
-## debug with common ui
+### debug with common ui
 
 * timing debug
   + timing -> debug timing
   + diff path groups histogram
   + highlight violating path
 
-# Module 07: low power opt
+## Module 07: low power opt
 
 * low power opt impacts timing a lot
   + trade-off
 
-## flow
+### flow
 
 * enable clock gating
 * annotate switching activities with TCF/SAIF/VCD
@@ -408,11 +408,11 @@ assign y = a + t + s;
 * synthesis with clock gating insertion/power opt
 * analyze
 
-## multi-Vth lib
+### multi-Vth lib
 
 * low VT on timing critical path, high VT on non-critical path
 
-## clock gating
+### clock gating
 
 * `set attr lp_insert_clock_taing true /`
 * specify clock gating cell
@@ -423,16 +423,16 @@ assign y = a + t + s;
 * common enable: `lp_clock_gating_extract_common_enable`
 * clock gating for sync reset
 
-## backannotate switching activity
+### backannotate switching activity
 
 * `read_tcf` (toggle count format)
 * `read_saif` (converted to TCF internally)
 * `read_vcd`
 * manipulate activity with `lp_toggle_*` attr
 
-## Joules: RTL power estimation
+### Joules: RTL power estimation
 
-## effort
+### effort
 
 * `leakage_power_effort` attr
   + {none | low | high}
@@ -443,7 +443,7 @@ assign y = a + t + s;
     - normally, weight is close to 1
   + POPT-501
 
-## report
+### report
 
 * `report_clock_gating`
 * `report_power`
@@ -452,14 +452,14 @@ assign y = a + t + s;
   + `lp_default_toggle_rate`
   + `lp_default_probability`
 
-## useful attr
+### useful attr
 
 * `lp_clock_gating_exceptions_aware`
 * `declone/share/split/merge_clock_gate`
 
-# Module 08: design for test
+## Module 08: design for test
 
-## flow
+### flow
 
 * setup DFT rule, and check
   + shift enable
@@ -478,11 +478,11 @@ assign y = a + t + s;
 * connect scan chains
 * incremental opt
 
-## DFT in virtual file structure
+### DFT in virtual file structure
 
 * /designs/dft
 
-## DFT constraint
+### DFT constraint
 
 * 2 scan styles: controlled by `dft_scan_style` attr
 
@@ -511,7 +511,7 @@ assign y = a + t + s;
   + `dft_min_number_of_scan_chains`
   + `dft_max_length_of_scan_chains`
 
-## DFT rule check
+### DFT rule check
 
 * uncontrollable clock nets
 * uncontrollable async set/reset nets
@@ -526,7 +526,7 @@ assign y = a + t + s;
 * `analyze_atpg_testability`
   + run Modus
 
-## add DFT logic
+### add DFT logic
 
 * `insert_dft *`
 * identify shift register to save area (auto done)
@@ -535,11 +535,11 @@ assign y = a + t + s;
   + `set_scan_equivalent`: one-to-one correspondence between non-scan and scan flop lib cells
   + `replace_scan`
 
-## connect scan chains
+### connect scan chains
 
 * `connect_scan_chains`
 
-## report and output
+### report and output
 
 * `report_scan_chains`
 * `report_scan_setup`
@@ -547,7 +547,7 @@ assign y = a + t + s;
 * `write_dft_atpg*`: interface to ATPG tool
 * `write_dft_abstract_model`
 
-## bottom-up scan flow
+### bottom-up scan flow
 
 * block level
   + create block level chains
@@ -557,9 +557,9 @@ assign y = a + t + s;
   + `read_dft_abstract_model`
   + `connect_scan_chains`
 
-# Module 09: LEC
+## Module 09: LEC
 
-## guidance to address formal verification challenge
+### guidance to address formal verification challenge
 
 * challenges
   + datapath arch
@@ -568,18 +568,18 @@ assign y = a + t + s;
   + phase inversion
 * long run-time, werid mismatch
 
-## recommended 2-step verification
+### recommended 2-step verification
 
 * 1st-step: synthesis with preserved datapath modules/hier, restrict certain opt, min ungrouping, and output intermediate gate netlist
 * 2nd-step: incremental synthesis with additional opt and ungrouping, and output final gate netlist
 * compare: RTL vs intermediate netlist, then intermediate netlist vs final netlist
 
-## cmd
+### cmd
 
 * `write_lec_script -revised_design inter.v`
 * `write_lec_script -revised_design final.v -golden_design inter.v`
 
-## attr affects formal verification
+### attr affects formal verification
 
 * datapath: `dp_*`
 * boundary opt
@@ -587,7 +587,7 @@ assign y = a + t + s;
 * retime
 * `wlec_*`
 
-## in LEC
+### in LEC
 
 * `analyze datapath`: to analyze datapath modules
 * `analyze abort -compare -thread 4`: multithreading abort resolving
@@ -595,9 +595,9 @@ assign y = a + t + s;
   + improve quality
   + `analyze datapath -module xxx`
 
-# Module 10: interface
+## Module 10: interface
 
-## netlist
+### netlist
 
 * possible modifications
   + bit blasted port/constants
@@ -607,19 +607,19 @@ assign y = a + t + s;
   + remove assign statement (not needed in INVS)
     - `set_attr remove_assigns true /`
 
-# Appendix
+## Appendix
 
-## retiming
+### retiming
 
 * `set_attr retime true [find / -subd xxx]`
 * `retime -prepare -min_delay -effort high [find / -subd xxx]` before `syn_gen`
 
-## advanced low-power flow
+### advanced low-power flow
 
 * CPF
 * MSMV
 
-## common ui
+### common ui
 
 * attr
   + set attr: `set_db <attr_name> <value> <object>`
@@ -662,7 +662,7 @@ for {set i 0} {$i <= 100} {incr i 5} {
   + `init_design -skip_sdc_read`
   + `syn_gen/map/opt`
 
-## clipper flow
+### clipper flow
 
 * block level physical synthesis <-> unit level physical synthesis
   + unit level cannot understand block level's congestion and physical context issues
@@ -672,6 +672,4 @@ for {set i 0} {$i <= 100} {incr i 5} {
     - block boundary must be preserved (remember, genus is very aggressive about optimizing)
   + `read_clip` at lower level
 
-# Advanced Synthesis
-
-##
+## Advanced Synthesis

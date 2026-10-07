@@ -5,31 +5,31 @@ aliases:
   - "/blog/lead/2020-05-11-fang-for-decision-making/"
 ---
 
-# FANG
+## FANG
 
-## Frame
+### Frame
 
 Problem statement & background
 
-## Assumption
+### Assumption
 
 Based on best info
 
-## Non-goals
+### Non-goals
 
 Something NOT trying to solve
 
-## Goals
+### Goals
 
 Something trying to solve
 
-# Avoid
+## Avoid
 
 * Too long of framing, not history lession
 * Facts are not assumptions
 * Goals/non-goals are for “solution” not “discussion”
 
-# Best Practice
+## Best Practice
 
 * FANG-only doc, stop short of proposals
 * By taking away potential solutions helps converge on FANG first before solution

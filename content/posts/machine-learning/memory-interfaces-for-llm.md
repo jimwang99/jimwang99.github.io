@@ -4,35 +4,35 @@ title: "Memory Interfaces for LLM"
 
 LLM is a memory bound problem. This inspired me to look at different memory technologies. In this article, I'm going to summarize my research these days, especially about HBM and its impact on AI applications.
 
-# History
+## History
 
 Before we dive deep into SOTA (state of the art) memory interfaces, we need to understand the history briefly.
 
-## SDRAM (early 1990s)
+### SDRAM (early 1990s)
 - SDRAM = Synchronous Dynamic Random-Access Memory
 - Comparing to DRAM chips before it, it added clock signals to make the interface synchronous (again)
 
-## DDR (late 1990s - nowadays)
+### DDR (late 1990s - nowadays)
 - DDR = Double Data Rate Synchronous Dynamic Random-Access Memory
 - Comparing to SDRAM chips, it uses both the rising and falling edges of the clock to transmit data. Thus, doubled the data rate
 - Latest DDR standard is DDR5-7200, whose highest transfer rate is 7200 MT/s
-## LPDDR
+### LPDDR
 - Low-power version DDR, made specially for mobile devices
     - LPDDR SDRAMs use lower bit-width (16 or 32 bits, versus 64-bit in DDR)
     - They also use DVS (dynamic voltage scaling) to save power
 - Latest LPDDR standard is LPDDR5, whose transfer rate is 6400 MT/s
-## GDDR
+### GDDR
 - High-bandwidth version DDR, made specially for GPUs
 - Latest GDDR standard is GDDR6W, whose transfer rate is 22 GT/s
 
-## HBM
+### HBM
 - HBM = High Bandwidth Memory
 - Comparing to normal DDR's normal DIMM or SODIMM package, HBM utilizes MCM (multi-chip module) packaging technology and 3D IC stacking technology, to achieve better bandwidth and power consumption comparing to all the other memory technologies
 - The latest HBM3E can achieve 9.2Gbps per pin, with 1024 IO pins, single HBM3E chip can achieve 1.2TB/s
 
-# Technology details
+## Technology details
 
-## HBM
+### HBM
 There are 2 key technologies that enables HBM:
 - MCM packaging
 - IC stacking with TSV (through-silicon vias)
@@ -47,7 +47,7 @@ Because MCM is expanding the layout of chips on the PCB, it's also called 2.5D p
 
 As we can see, with HBM technology, the interconnect from core silicon to DRAM silicon is shorter in length and higher in density. Therefore it can achieve 1024-bit parallel data interface, comparing to 16 to 32-bit in DDR interfaces. Because the data interface is wider, it can use slower clock frequency to save power and reduce signal integrity issues.
 
-# Comparison
+## Comparison
 
 **HBM** has higher bandwidth with the same real-estate and much lower power consumption, because the wider signal bus travels shorter paths in a lower frequency. But it requires an addition silicon interposer, which drives the cost a lot higher. The cost includes the engineering effort and manufacture complexity. Thanks to its relatively low frequency, its signal integrity challenge is lower than GDDR. Since it's still "new" technology as of 2013, the engineering cost to enable it is high. Therefore, HBM is suitable for cutting edge technology, such as AI and block-chain, which requires high performance and is less cost sensitive.
 
@@ -64,7 +64,7 @@ As we can see, with HBM technology, the interconnect from core silicon to DRAM s
 | DDR | Medium | Medium | Medium | Low | Low | Cloud / Consumer |
 | LPDDR | Low | Lowest | Medium | Medium | Medium | Mobile |
 
-# Impact on AI
+## Impact on AI
 
 AI model inferences require very high memory bandwidth, especially with Transformer which is the core building blocks of LLM (large language model) and ViT (vision transformer) models.
 

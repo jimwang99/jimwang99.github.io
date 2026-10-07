@@ -2,7 +2,7 @@
 title: "Software is King, Especially in AI"
 ---
 
-# "Software is king"
+## "Software is king"
 
 It's a hard statement to make, as a veteran hardware engineer. Lots of pride and ego to swallow. However, it's truly based on my observations in the industry. Allow me to reason it with the following arguments:
 
@@ -22,7 +22,7 @@ In a hardware majority company or team, like traditional IC design houses, decis
 
 This tough reality often sends the situation downhill, and software becomes the absolute bottleneck. The throne in this situation is a hot spot.
 
-# Especially in AI
+## Especially in AI
 
 Why do I say it's even more seriously in AI domain?
 
@@ -38,6 +38,6 @@ However, hardware simply cannot catch up. The cycle to build and deploy a hardwa
 
 Mathematically, AI is complex in software but simple in hardware, because the atomic operation in deep-learning models is MAC (multiplication-addition-accumulation). The complexity comes from the total number of MACs we need to do. How to run them fast and with less power is the question keeps most AI engineers up in the night.
 
-# My Answer
+## My Answer
 
 My answer, as a veteran hardware engineer, is to develop myself into system-level position, to understand both software and hardware

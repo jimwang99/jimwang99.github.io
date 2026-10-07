@@ -5,14 +5,14 @@ aliases:
   - "/blog/embedded/2020-03-06-working-with-device-tree-doulos/"
 ---
 
-# Intro
+## Intro
 
 * Device tree: for non-discoverable hardware, included in BSP
 * Source type
   + Old style: C code BSP, files compiled into the kernel
   + New style: device-tree BSP -> device tree blob (load by boot loader)
 
-# Compilation
+## Compilation
 
 In-tree vs. out-of-tree
 
@@ -20,7 +20,7 @@ In-tree vs. out-of-tree
 
 * convert .dts to .dtb, and backwards
 
-# Device tree syntax
+## Device tree syntax
 
 * devicetree.org
 * Nodes
@@ -62,13 +62,13 @@ In-tree vs. out-of-tree
     - `interrupts`
     - `interrupt-names` (optional)
 
-# Parsing the device tree
+## Parsing the device tree
 
 * `device_driver` defines `compatible`
 * **Unified device proerty interface**
 
-# Device tree overlays
+## Device tree overlays
 
-# Other description language
+## Other description language
 
 * Kernel v5.0 support YAML as well

@@ -4,7 +4,7 @@ title: "System Performance of Edge AI Applications is Beyond Models"
 
 After working on enabling use-cases for edge AI accelerator for more than 2 years now, here is some of my thinking about system performance.
 
-# Thoughts: Much More Beyond Model
+## Thoughts: Much More Beyond Model
 
  One of the biggest challenges we've been facing is how to improve overall system performance. (While the other is how to quickly enable a model from CPU / GPU backend to custom AI accelerator backend.)
 
@@ -24,21 +24,21 @@ According to my observation, system performance of edge AI has the following att
 
 Lots of effort has been focusing on optimizing the model itself, for performance (accuracy and etc.) and performance (latency and power). However, less focused on optimizing the overall performances as a whole system.
 
-## Real-life example
+### Real-life example
 
 One real-life example: in many of our use-cases over 60% to 80% of the end-to-end latency comes from software stacks above model inference, in some extreme case this number goes above 90%. As you can imagine how much time will be spent on data transfer / memory copy / IPC and post-processing when a high resolution image captured from an embedded camera has to be tiled and transferred back-and-forth over PCIe while being controlled by Android OS and post-processed by software running on GPU.
 
-## Project management and politics
+### Project management and politics
 
 Another very important factor is more about project management and politics. An end-to-end use-case usually involves many subsystems that are created / managed by different teams and most likely under different VPs. Every one of them cares about their own subsystems and have their own priorities. The first challenge is not to come up with a technical solution, but to persuade everyone to recognize "end-to-end performance IS a top-priority problem that needs to be fixed". And every steps afterwards are projects of their own: define optimization metrics and targets; define budgets for each components; system modeling; system integration and etc. After all these, we can finally reach to the stage of system performance optimization.
 
-## System View
+### System View
 
 To understand the overall performance of edge AI applications, it's pretty important to establish a system view. It requires you to take a step back and zoom out, to see different components of software and hardware as a system without any bias. Unfortunately this is not easy. Sometimes due to the background of one person, either from hardware or software; sometimes due to their personal favorites of different components.
 
 It's also important to involve experts from different domains into the discussion, so that all aspects are covered and they can provide insights from different angles.
 
-## Data-driven decision making
+### Data-driven decision making
 
 To mitigate all these difficulties, one of the weapon I always use is "data-drive decision making". When you have data, the decision making process can converge much faster. It's hard to find any engineers that would ignore real data either from a modeling system or a prototype, although they may challenge your methods to get those data or they may have different interpretations of the same data.
 
@@ -49,11 +49,11 @@ To get data, you will need:
     2. A set of profiling methods built into your model or prototype.
 
 
-# Practice: Profiling and Optimization
+## Practice: Profiling and Optimization
 
 In this section, I'm going to discuss the practices of profiling and optimizing latency, throughput and power of a system.
 
-## Latency
+### Latency
 
 Latency is probably the easiest to profile among all three.
 
@@ -82,7 +82,7 @@ To optimize latency, you could consider:
 - Parallelization
     - Run different parts of the model on different execution engine can improve latency, but will require software support for synchronization. E.g. future and await support in PyTorch.
 
-## Throughput
+### Throughput
 
 Throughput is usually measured from the end user's point of view, ie. frame per second for a video conference call application.
 
@@ -94,7 +94,7 @@ To optimize throughput, you could consider:
 - Context switch
     - QoS (quality of service) is another important metric to measure system throughput, and it cares more about the latency of high priority tasks than low priority ones. System needs to support saving context of running low priority task, and restoring its context after high priority task is finished.
 
-## Power
+### Power
 
 The power-related metric shall be considered from three separate angles, max current, TDP (thermal design power) and total energy.
 - Max current means the maximum transition current the hardware draws, and is limited by the transition current that can be provided by PMIC (power management IC) and power supply mechanism. Higher the max current is required, more expensive PMIC you will need.

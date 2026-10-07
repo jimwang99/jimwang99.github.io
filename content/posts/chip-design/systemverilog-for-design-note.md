@@ -9,9 +9,9 @@ aliases:
 
 > This is my reading note of book “SystemVerilog for Design (2nd edition)". As a non-full-time RTL designer, it has opened my mind. But still, I'm sad about the antient tool that we are using to design hardware.
 
-# Chapter 2: SystemVerilog Declaration Spaces
+## Chapter 2: SystemVerilog Declaration Spaces
 
-## Package
+### Package
 
 * Verilog shortage: no global declaration
 * `package ... endpackage`
@@ -33,7 +33,7 @@ aliases:
     - storage for automatic task/function is allocated each time it's called
   + cannot use `static` variables, which are supposed to be shared by all instances
 
-## $unit: compilation-unit declarations
+### $unit: compilation-unit declarations
 
 * declaration space **outside** of package/module/interface/program
   + BUT it's **not** global
@@ -76,13 +76,13 @@ endpackage
   + use packages instead of $unit
   + external task/function must be automatic
 
-## Named/unnamed statement blocks
+### Named/unnamed statement blocks
 
 * local variables in named blocks can be accessed hierarchically
 * local variables in unnamed blocks (added in SV) has no hierarchical path
   + protecting from external, cross-module referencing
 
-## Timing units and precision
+### Timing units and precision
 
 * problem with Verilog's timescale directive: file order dependent
 * SystemVerilog improvements
@@ -98,9 +98,9 @@ endpackage
 4. defined in $unit
 5. simulator default
 
-# Chapter 3: SystemVerilog Literal Values and Built-in Data Types
+## Chapter 3: SystemVerilog Literal Values and Built-in Data Types
 
-## Literal value enhancement
+### Literal value enhancement
 
 * Verilog tricks to fill vector with all ones
   + `data = ~0; // one's complement`
@@ -109,7 +109,7 @@ endpackage
   + `data = '1; // all 1's`
   + `data = 'z; // all z's`
 
-## DEFINE enhancement
+### DEFINE enhancement
 
 * String
 
@@ -135,7 +135,7 @@ endpackage
 `MY_NET(15)  // = bit my_net15_bit;
 ```
 
-## Variables
+### Variables
 
 * Type
   + Net: “wire” keyword, only 4-state
@@ -212,7 +212,7 @@ wire reg [31:0] busD; // ILLEGAL
     - Static variables are only initialized once
     - Automatic variables are initialized each call
 
-## Constants
+### Constants
 
 * Verilog
   + `parameter`: can be redefined when instantiation
@@ -221,9 +221,9 @@ wire reg [31:0] busD; // ILLEGAL
 * SystemVerilog: C-like const keyword
   + `const int N = 5;`
 
-# Chapter 4: SystemVerilog User-Defined and Enumerated
+## Chapter 4: SystemVerilog User-Defined and Enumerated
 
-## `typedef` keyword
+### `typedef` keyword
 
 Ex. `typedef int unsigned uint;`
 
@@ -233,7 +233,7 @@ Ex. `typedef int unsigned uint;`
 * Naming convention
   + End with `_t`, the same as C
 
-## Enumerated types
+### Enumerated types
 
 * Verilog vs SystemVerilog
   + Verilog: use constants to represent enumerated types
@@ -257,7 +257,7 @@ enum {RESET, WAIT[2], WORK[3: 5], CLEAN[3: 0]} state;
 * Values
   + Default to be “int” and start from 0
   + Can be specified explicitly
-  + - One-hot, one-code, Johnson-count, Gray-code, etc.
+  + One-hot, one-code, Johnson-count, Gray-code, etc.
   + Must be unique
 * Types
   + Default to be `int`
@@ -296,9 +296,9 @@ next_state += state; // ILLEGAL
     - If current value is not a valid value defined, next/prev return the first element
     - `*.next/prev` will wrap around
 
-# Chapter 5: SystemVerilog Arrays, Structures and Unions
+## Chapter 5: SystemVerilog Arrays, Structures and Unions
 
-## Struct
+### Struct
 
 * Struct vs. array
   + Array: collection of elements with the same type and size; reference by index
@@ -324,14 +324,14 @@ next_state += state; // ILLEGAL
     - Then members can be reference as vector with bit/range position.
     - Can only contain integral values (not real or shortreal)
     - `signed` or `unsigned`
-    - * Treat the **whole vector** of packed structure as singed/unsinged
+    - Treat the **whole vector** of packed structure as singed/unsinged
       * Each member can still be signed/unsigned independently
 * Passing struct through module/interface ports and task/function argument
   + NOTE: when passing **unpacked** struct, both sides should have exactly the same type, while anonymous struct declared in 2 diff modules, even if with the same names/members, are not the same type of struct
 * Synthesis guide
   + Both unpacked and packed struct are synthesizable
 
-## Union
+### Union
 
 * Union is a single storage element that can have multiple representation
   + Ex. One 8-bit data can either be signed or unsigned with diff configuration
@@ -355,14 +355,14 @@ Union packed {
 } datareg;
 ```
 
-## Array
+### Array
 
 * Unpacked arrays
   + Verilog limitation: restrict access to arrays to just one element of the array at at time
     - SystemVerilog refer Verilog style array as unpacked arrays
     - Elements are stored independently, just grouped under the same array name
   + SystemVerilog improvement: reference the entire/slice of an array
-  + - A slice is one or more contiguously numbered elements within one dimension of an array
+  + A slice is one or more contiguously numbered elements within one dimension of an array
     - Assignment of this type: left-hand & right-hand should have identical layout and types
   + Simplified declarations
     - `logic [31:0] data [1024]; // logic [31:0] data [0:1023]`
@@ -421,9 +421,9 @@ foreach(sum[i, j])
   + Sparse arrays
   + Strings (character arrays)
 
-# Chapter 6: SystemVerilog Procedural Blocks, Tasks and Functions
+## Chapter 6: SystemVerilog Procedural Blocks, Tasks and Functions
 
-# `always` procedual block
+## `always` procedual block
 
 * Verilog limitation
   + `always` could be combinational or latched or sequential
@@ -450,7 +450,7 @@ foreach(sum[i, j])
     - Every signal in the sensitivity list must be qualified with `posedge` or `negedge`
     - Event control must be from sensitivity list
 
-# `` task`/ ``function`
+## `` task`/ ``function`
 
 * Inferred `begin … end`
 * `return`
@@ -489,9 +489,9 @@ foreach(sum[i, j])
   + `endfunction : <function_name>`
 * Empty task/function as place holder
 
-# Chapter 7 SystemVerilog Procedural Statements
+## Chapter 7 SystemVerilog Procedural Statements
 
-## New opeators
+### New opeators
 
 * `++` & `--` operators
   + `i++` is post-increment, while `++i` is pre-increment
@@ -522,7 +522,7 @@ endcase
 
 * Synthesizable: right hand operand must be constant expressions
 
-## Operand enhancement
+### Operand enhancement
 
 * Type casting
   + In Verilog, there is no explicit type casting method
@@ -533,7 +533,7 @@ endcase
   + `signed'(expression)`
   + `unsinged'(expression)`
 
-### Enhanced `for` loops
+#### Enhanced `for` loops
 
 * Local variables within `for` loop
   + Ex. `for (int i=0; I <=15; i++)`
@@ -546,32 +546,32 @@ endcase
 * Named procedual blocks, to access local variables
   + But variable within `for` loop cannot be accessed hierarchically, must be declared outside `for` loop inside named procedual block
 
-### `do … while` loops
+#### `do … while` loops
 
 * A while loop might not execute at all
 * Synthesizable: statically determine how many times a loop will execute
 
-### `foreach` loops
+#### `foreach` loops
 
 * To interate elements of single- and multi-dimentional arrays
 
-### `break`, `continue`, `return`
+#### `break`, `continue`, `return`
 
 * C-style jump statements, to replace old `disable` statement
 * More intuitive and concise
 
-### Enhanced block names
+#### Enhanced block names
 
 * Named `end` to paire with named `begin`
 * For readability
 
-### Statement lables
+#### Statement lables
 
 * For readability
 * :
 * Illegal to have both label and name
 
-### Enhanced `case`
+#### Enhanced `case`
 
 * `unique case`
   + = parallel case + full case
@@ -584,7 +584,7 @@ endcase
   + Runtime check
   + Notice: if it's not full case, latches can be inferred
 
-### Enhanced `if ... else`
+#### Enhanced `if ... else`
 
 * `unique if ... else`
   + The order of the decisions is not important
@@ -592,11 +592,11 @@ endcase
 * `priority if ... else`
   + Clearly defined design intent
 
-# Chapter 8: Modeling Finite State Machines with SystemVerilog
+## Chapter 8: Modeling Finite State Machines with SystemVerilog
 
 This chapter gives some simple example of FSM code featuring SystemVerilog new keywords, such as `enum`, `always_comb`, `always_ff`, `unique case`.
 
-## Modeling FSM with `enum`
+### Modeling FSM with `enum`
 
 * 3 blocks to model an FSM
   + Incrementing state
@@ -696,16 +696,16 @@ endmodule
   2-state type in FSM
 * The idea is dangerous, because 2-state type variables initialize to logic 0 instead of logic X before applying reset. So it’s not how real circuit behave.
 
-# Chapter 9: SystemVerilog Design Hierarchy
+## Chapter 9: SystemVerilog Design Hierarchy
 
-## Module prototypes: extern
+### Module prototypes: extern
 
 * Similar to C-Style \*.h head file
   + More convenient: no duplicate port definition needed
   + Can be defined in one file, then ``include` to other files
 * No necessarily
 
-## Named ending statements
+### Named ending statements
 
 * `endmodule : <module_name>`
 * Also apply for others
@@ -715,7 +715,7 @@ endmodule
   + `function … endfunction`
   + `begin … end`
 
-## Nested module
+### Nested module
 
 * Verilog limitations
   + Module names are global
@@ -730,7 +730,7 @@ endmodule
   + This kind of style is good for large designs; and good for utilizing VCS
   + Use ``include` to keep the same style
 
-## Simplify module instance
+### Simplify module instance
 
 * Named port connection is good for documenting the design intent, but too verbose
 * `.name` connection
@@ -739,7 +739,7 @@ endmodule
   + Matches all cases that port\_name equals to net\_name
 * These simplification also apply to function/task
 
-## Net aliasing
+### Net aliasing
 
 * `alias` statement
   + `alias clk = clock = ck; // can be multiple aliases together`
@@ -752,20 +752,20 @@ endmodule
 * Alias with `.name` and `.*` is powerful
   + On top-level module, even if the local net\_name is different from the port\_name of its instances, we can still use `alias` to make them the same and use `.*`
 
-## Passing values through module ports
+### Passing values through module ports
 
 * SystemVerilog removes most port restrictions, except the following two
   + Varaible can have only one single source
   + Unpacked types must be identical
     - Declared using the same `typedef` definition
 
-## Reference ports `ref`
+### Reference ports `ref`
 
 * Reference the hierarchical source directly
   + Warning: one variable can be written from multiple source
 * NOT synthesizable
 
-## Enhanced port declaration
+### Enhanced port declaration
 
 * Verilog-2001
   + Port list =
@@ -774,7 +774,7 @@ endmodule
   + The first port's direction could be optional, by default is `inout`
   + Later on, direction could be optional, by default is the same with previous one
 
-## Parameterized types
+### Parameterized types
 
 * Net, variable of a module could be parameterized
 
@@ -795,9 +795,9 @@ adder #(.DATA_TYPE(int unsigned)) uint_adder( /* ... */ );
 endmodule : top
 ```
 
-# Chapter 10: SystemVerilog Interfaces
+## Chapter 10: SystemVerilog Interfaces
 
-## Concepts
+### Concepts
 
 * How Verilog models connects between blocks
   + Directly on physical connections in actual hardware level
@@ -838,9 +838,9 @@ endmodule : top
   + ILLEGAL leave an interface port unconnected
   + `.name` and `.*` can be used to connect interface
 * Referencing interface's signals
-  + Use dot: <port\_name>.<internal\_signal\_name>
+  + Use dot: `<port_name>.<internal_signal_name>`
 
-## Modport
+### Modport
 
 * Differnet views of interface
   + Ex. a interrupt sub-signal could be input to CPU, but output to peripheral modules
@@ -934,7 +934,7 @@ test_generator test_gen ( .bus(bus), .* );
 endmodule
 ```
 
-## Task/function in interface
+### Task/function in interface
 
 * Implement the details of communication protocol
   + Written once, shared by all modules connected using the same interface
@@ -942,7 +942,7 @@ endmodule
 * `import` when defining `modport`
   + Either use the name only, or the full prototype
     - Latter is useful when task is defined somewhere else
-* Access using <interface\_port\_name>.<method\_name>
+* Access using `<interface_port_name>.<method_name>`
 * Task/function must be automatic to be synthesizable
 * Exporting task/function are not synthesizable
   + Define task/function in module, then export it to interface, and use it in other modules
@@ -958,7 +958,7 @@ endmodule
 * Generate statement
   + The same as modules
 
-# Chapter 11: A Complete Design Modeled with SystemVerilog
+## Chapter 11: A Complete Design Modeled with SystemVerilog
 
 Interesting part: how to implement a latch-based LUT with SystemVerilog interface
 

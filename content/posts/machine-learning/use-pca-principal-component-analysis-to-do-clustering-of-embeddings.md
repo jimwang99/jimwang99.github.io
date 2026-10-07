@@ -11,11 +11,11 @@ However, if we directly use the output of the face verification model, the cosin
 
 Today I'm going to discuss PCA (principle component analysis) using eigenvectors and eigenvalues, which can help to reduce noise of the output vector from face verification model and makes binary decision more accurate.
 
-# PCA
+## PCA
 
 PCA aims to transform a dataset with many features (or dimensions) into a smaller set of uncorrelated features, called principal components, that capture the most variance in the data. In our example, we don't reduce the dimension but instead use PCA to capture the most variance in the data.
 
-## Create covariance matrix
+### Create covariance matrix
 
 ```Python
 import numpy as np
@@ -28,7 +28,7 @@ vector -= np.mean(vector)
 covariance_matrix = np.dot(vector, vector.T) / vector.shape[0]
 ```
 
-## Calculate eigenvectors and eigenvalues
+### Calculate eigenvectors and eigenvalues
 
 ```Python
 eigenvalues, eigenvectors = np.linalg.eigh(covariance_matrix)
@@ -37,7 +37,7 @@ top_eigenvector = eigenvector[-1]
 
 After getting input vector's top eigenvector, you can directly use it to calculate cosine distances from other top eigenvectors.
 
-# Why Eigenvectors Are Important
+## Why Eigenvectors Are Important
 
 - **Eigenvectors define directions of maximum variance:** Eigenvectors identify and represent the directions in which the data varies the most.
 - **Eigenvectors provide uncorrelated features:** The projection onto eigenvectors results in uncorrelated features, making further analysis easier and more accurate.

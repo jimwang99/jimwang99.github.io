@@ -4,7 +4,7 @@ title: "Ceph on Raspberry Pi (2) Create Block Device"
 
 Taking my home lab Ceph distributed storage system on Raspberry Pi to the next level: make it useful by creating a block device interface so that Linux system can mount it and use it.
 
-# Enable client
+## Enable client
 
 1. Install Ceph package on client
 ```
@@ -19,9 +19,9 @@ sudo ceph auth get-or-create client.fs
 
 3. Copy generated config file and keyring file from admin host to client. Config file is at `/etc/ceph/ceph.conf`, keyring file is at `/etc/ceph/ceph.client.admin.keyring`
 
-# Create Ceph block device
+## Create Ceph block device
 
-## Create pool for RBD (RADOS Block Device)
+### Create pool for RBD (RADOS Block Device)
 
 On admin host:
 ```
@@ -57,7 +57,7 @@ $ sudo rbd pool init rbd_replica
 $ sudo rbd pool init rbd_erasure
 ```
 
-## Remove a pool (CAREFUL)
+### Remove a pool (CAREFUL)
 
 Removing a pool by default is not allow because it can cause unrecoverable data loss. Therefore you need to turn on the flag manually first.
 ```
@@ -77,7 +77,7 @@ sudo ceph config set mon mon_allow_pool_delete false
 ```
 
 
-## Create block device image
+### Create block device image
 
 Create a block device `foo` by putting metadata on `rbd_replica` and data on `rbd_erasure`
 ```
@@ -131,7 +131,7 @@ rbd image 'bar':
         modify_timestamp: Sun Mar 24 10:47:16 2024
 ```
 
-# Mount block device on client
+## Mount block device on client
 
 After config file and keyring file are copied over to client, now we can see rbd images on client:
 ```
@@ -140,7 +140,7 @@ bar
 foo
 ```
 
-## Map
+### Map
 
 Map RDB device on client
 ```
@@ -159,7 +159,7 @@ rbd0        252:0    0    16G  0 disk
 rbd1        252:16   0     4G  0 disk
 ```
 
-## Format
+### Format
 
 Format both RDB block device with xfs
 ```
@@ -192,7 +192,7 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 Discarding blocks...Done.
 ```
 
-## Mount
+### Mount
 
 ```
 sudo mkdir /mnt/foo
@@ -201,26 +201,26 @@ sudo mkdir /mnt/bar
 sudo mount /dev/rbd0 /mnt/bar
 ```
 
-# Performance test
+## Performance test
 
 I'm using `fio`'s predefined workload to test IO performance.
 
 > https://github.com/axboe/fio
 
 
-## Install `fio`
+### Install `fio`
 ```
 sudo apt install fio
 ```
 
-## Run fio
+### Run fio
 ```
 cd /mnt/foo
 fio --profile=tiobench
 cd /mnt/bar
 fio --profile=tiobench
 ```
-## Performance of erasure-coded RBD
+### Performance of erasure-coded RBD
 ```
   Run status group 0 (all jobs):
   WRITE: bw=174KiB/s (179kB/s), 174KiB/s-174KiB/s (179kB/s-179kB/s), io=31.0MiB (32.5MB), run=182028-182028msec
@@ -238,10 +238,10 @@ Disk stats (read/write):
   rbd0: ios=15794/15910, merge=0/4, ticks=31386/374423, in_queue=405809, util=46.18%
 ```
 
-### CPU and memory usage
+#### CPU and memory usage
 15%~20% of CPU and 2.5%~5.0% of memory per OSD on Raspberry Pi 4
 
-## Performance of 3-replication RBD
+### Performance of 3-replication RBD
 ```
 Run status group 0 (all jobs):
   WRITE: bw=274KiB/s (281kB/s), 274KiB/s-274KiB/s (281kB/s-281kB/s), io=31.0MiB (32.5MB), run=115858-115858msec
@@ -259,12 +259,12 @@ Disk stats (read/write):
   rbd1: ios=15814/15900, merge=0/4, ticks=14051/233277, in_queue=247327, util=52.92%
 ```
 
-### CPU and memory usage
+#### CPU and memory usage
 10~15% of CPU and 2.5~3.0% of memory per OSD on Raspberry Pi 4
 
-## Reference
+### Reference
 
-### Macbook Air
+#### Macbook Air
 ```
 Run status group 0 (all jobs):
   WRITE: bw=381MiB/s (399MB/s), 381MiB/s-381MiB/s (399MB/s-399MB/s), io=12.9MiB (13.6MB), run=34-34msec
@@ -279,7 +279,7 @@ Run status group 3 (all jobs):
    READ: bw=47.4MiB/s (49.7MB/s), 47.4MiB/s-47.4MiB/s (49.7MB/s-49.7MB/s), io=12.9MiB (13.6MB), run=273-273msec
 ```
 
-### Synology NFSv4
+#### Synology NFSv4
 ```
 Run status group 0 (all jobs):
   WRITE: bw=5272KiB/s (5398kB/s), 5272KiB/s-5272KiB/s (5398kB/s-5398kB/s), io=12.9MiB (13.6MB), run=2513-2513msec
@@ -294,7 +294,7 @@ Run status group 3 (all jobs):
    READ: bw=14.4MiB/s (15.1MB/s), 14.4MiB/s-14.4MiB/s (15.1MB/s-15.1MB/s), io=12.9MiB (13.6MB), run=896-896msec
 ```
 
-### USB3.0 thumb drive on Macbook Air
+#### USB3.0 thumb drive on Macbook Air
 ```
 Run status group 0 (all jobs):
   WRITE: bw=25.8MiB/s (27.0MB/s), 25.8MiB/s-25.8MiB/s (27.0MB/s-27.0MB/s), io=12.9MiB (13.6MB), run=502-502msec

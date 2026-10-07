@@ -7,7 +7,7 @@ aliases:
 
 AMBA (ARM Advanced Microcontroller Bus Architecture)
 
-# 1. AXI
+## 1. AXI
 
 * AXI protocol is a **point-to-point** protocol
   + So no matter what the network channels really use, as long as its ports comply AXI protocol, IP can be connected to them

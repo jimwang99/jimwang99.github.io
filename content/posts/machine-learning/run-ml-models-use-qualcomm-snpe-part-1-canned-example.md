@@ -9,12 +9,12 @@ title: "Run ML Models Use Qualcomm SNPE Part 1 Canned Example"
 In this tutorial we assume that Qualcomm SNPE has been successfully installed use QPM. Follow "Qualcomm Package Manager 1.0" -> "AI stack" -> "Neural Processing SDK" and install.
 
 After installation, you can find its latest documentation at `$SNPE_ROOT/docs/SNPE/html/general/index.html`. I'm using Ubuntu 20.04 on WSL2 on Windows 11.
-# Setup environment
+## Setup environment
 
 1. Follow the **Setup** Chapter of the document to install necessary tools and Python packages.
 2. If you just want to quickly run this example, you can skip the following details
 
-## Python packages
+### Python packages
 I strongly recommend to use `conda` to manage your Python virtual env, since SNPE suggest to use a particular Python version.
 ```
 conda create -n xrbench python=3.8
@@ -23,10 +23,10 @@ conda activate xrbench
 
 Then follow the **Setup** chapter to install the necessary Python packages.
 
-## Environment variables
+### Environment variables
 We need to set a list of environment variables to specify the location of target tools, you can find the details in this [makefile](https://github.com/jimwang99/xrbench-snapdragon/blob/main/inception_v3/makefile)
 
-## Companion git repo
+### Companion git repo
 I've consolidated all the commands and scripts used in this serial of tutorials in a GitHub repo at [xrbench-snapdragon](https://github.com/jimwang99/xrbench-snapdragon), so download it and analyze the makefiles and python scripts in this repo will make your life easier.
 
 Later commands assumes that you've already got this repo cloned.
@@ -36,7 +36,7 @@ git clone https://github.com/jimwang99/xrbench-snapdragon.git
 cd xrbench-snapdragon/inception_v3
 ```
 
-# Prepare model
+## Prepare model
 
 Extract model assets use `${SNPE_ROOT}/examples/Models/inception_v3/scripts/setup_inceptionv3.py`, with the companion git repo, you can do:
 ```
@@ -49,7 +49,7 @@ The detailed command is `python3 /opt/qcom/aistack/snpe/2.14.2.230905/examples/M
 
 > NOTE: we are using `sm8450` as the SoC type because we are targeting Galaxy S22. If you are using Galaxy S23, change it to `sm8550` instead.
 
-## Test it on host
+### Test it on host
 After assets is downloaded, you can simply test it on the host machine.
 ```
 make test_model_on_host
@@ -84,7 +84,7 @@ Classification results
 /opt/qcom/aistack/snpe/2.14.2.230905/examples/Models/inception_v3/data/cropped/notice_sign.raw 0.170401 459 brass
 ```
 
-# Connect device on WSL
+## Connect device on WSL
 
 > NONE: If you are using native Linux machine, please skip this section.
 > Alternatively, you can choose to use ADB from windows directly
@@ -111,13 +111,13 @@ usbipd wsl attach --busid 1-23
 - Troubleshooting
     - If you get `usbip: error: Attach Request for 1-23 failed - Device busy (exported)`, kill your `adb.exe` process on you windows machine and try again
 
-## Alternative for WSL
+### Alternative for WSL
 Use ADB.exe from Windows directly, since Windows installed ADB is a CLI tool that can be called from WSL.
 - Install Windows version Android studio
 - Find `adb.exe` in your `/mnt/c/Users/${WINDOWS_USER_NAME}/AppData/Local/Android/Sdk/platform-tools/adb.exe`
 - Make a symbolic link to your path directory, such as `/home/${USER}/.local/bin`
 
-## Test connection
+### Test connection
 ```
 adb devices
 ```
@@ -128,7 +128,7 @@ List of devices attached
 R3CT60H611X     device
 ```
 
-# Prepare device
+## Prepare device
 
 ```
 make prepare_device
@@ -139,7 +139,7 @@ This step copies the following files to device:
 - Cross-compiled libraries
 - Model artifacts and input images
 
-# Validate device
+## Validate device
 
 ```
 make validate_device
@@ -198,11 +198,11 @@ PF_VALIDATOR: DEBUG: Calling PlatformValidator->GetCoreVersion
 Core Version of the runtime DSP: Hexagon Architecture V69
 ```
 
-# Run model on device
+## Run model on device
 
 ![run-model-with-snpe-net-run](/legacy-media/run-model-with-snpe-net-run.png)
 
-## Run model on CPU/GPU/DSP
+### Run model on CPU/GPU/DSP
 
 ```
 make run_model_on_device_cpu
@@ -227,7 +227,7 @@ cropped/notice_sign.raw
 Successfully executed!
 ```
 
-## Benchmark model on CPU/GPU/DSP
+### Benchmark model on CPU/GPU/DSP
 
 ```
 make benchmark_model_on_device

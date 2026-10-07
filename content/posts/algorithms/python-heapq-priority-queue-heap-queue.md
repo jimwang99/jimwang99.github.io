@@ -2,10 +2,10 @@
 title: "Python `heapq` Priority queue (heap queue)"
 ---
 
-# Attributes
+## Attributes
 - "Min heap", where index 0 is the smallest item
 
-# APIs
+## APIs
 - `heapq.heapify(iterable) -> None`: Create a heap queue **in-place**
 - `heapq.heappush(heap, item) -> None`: Add a new item
 - `heapq.heappop(heap) -> T`: Pop the smallest item

@@ -1,15 +1,10 @@
 ---
 title: "Understanding LLaMA2 Part 1 Model Architecture"
+aliases:
+  - "/posts/machine-learning/understanding-llama2-part-1-model-architecture/"
 ---
 
 #software #ai #llm #open-source
-
-[🦙 Understanding LLaMA2 Part 1 Model Architecture](/posts/machine-learning/understanding-llama2-part-1-model-architecture/)
-[🦙 Understanding LLaMA2 Part 2 KV Cache](/posts/machine-learning/understanding-llama2-part-2-kv-cache/)
-[🦙 Understanding LLaMA2 Part 3 PyTorch Implementation](/posts/machine-learning/understanding-llama2-part-3-pytorch-implementation/)
-[🦙 Understanding LLaMA2 Part 4 ExecuTorch Runtime](/posts/machine-learning/understanding-llama2-part-4-executorch-runtime/)
-[🦙 Understanding LLaMA2 Part 5 Training with TinyStories](/posts/machine-learning/understanding-llama2-part-5-training-with-tinystories/)
-
 
 Here I'm capturing the details of llama's model architecture use PlantUML component diagram, using the following 2 GitHub repos as references
 - https://github.com/facebookresearch/llama/blob/main/llama/model.py
@@ -31,8 +26,3 @@ NOTE: this architecture diagram doesn't include KV cache support, which will be 
 You can find the source of this diagram at https://github.com/jimwang99/understanding-llama2/blob/main/model.puml
 
 ![llama2_architecture](/legacy-media/llama2_architecture.png)
-
-[🦙 Understanding LLaMA2 Part 1 Model Architecture](/posts/machine-learning/understanding-llama2-part-1-model-architecture/)
-[🦙 Understanding LLaMA2 Part 2 KV Cache](/posts/machine-learning/understanding-llama2-part-2-kv-cache/)
-[🦙 Understanding LLaMA2 Part 3 PyTorch Implementation](/posts/machine-learning/understanding-llama2-part-3-pytorch-implementation/)
-[🦙 Understanding LLaMA2 Part 4 ExecuTorch Runtime](/posts/machine-learning/understanding-llama2-part-4-executorch-runtime/)

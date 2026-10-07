@@ -4,19 +4,19 @@ title: "Ceph on Raspberry Pi (1) Create Storage Cluster"
 
 Trying to follow this tutorial to create a Ceph distributed storage system in my home lab, because I'm sick of the NFS performance of my Synology NAS.
 https://ceph.io/en/news/blog/2022/install-ceph-in-a-raspberrypi-4-cluster/
-# Prepare
+## Prepare
 
-## Prepare Ubuntu 20.04
+### Prepare Ubuntu 20.04
 Download ubuntu server 20.04 for Raspberry Pi (arm64 architecture)
 ```
 sudo apt install -y python3 systemd docker.io chrony lvm2 cephadm ceph-common
 ```
 
-## Prepare USB storage
+### Prepare USB storage
 
-# Install Ceph use `cephadm`
+## Install Ceph use `cephadm`
 
-## `bootstrap` on the admin host
+### `bootstrap` on the admin host
 
 > On admin host
 
@@ -25,9 +25,9 @@ Here my admin host's IP address is 192.168.68.65
 sudo cephadm bootstrap --mon-ip 192.168.68.65
 ```
 
-# Add more hosts
+## Add more hosts
 
-## Enable SSH access use root account
+### Enable SSH access use root account
 
 > On additional hosts
 
@@ -51,7 +51,7 @@ PermitRootLogin yes
 sudo systemctl restart sshd
 ```
 
-## Copy SSH key from admin host
+### Copy SSH key from admin host
 
 > On admin host
 
@@ -68,7 +68,7 @@ ssh-copy-id -f -i /etc/ceph/ceph.pub root@192.168.68.67
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@192.168.68.68
 ```
 
-## Add more hosts
+### Add more hosts
 
 > On admin host
 
@@ -94,7 +94,7 @@ ceph0b  192.168.68.66
 ceph0c  192.168.68.67
 ceph0d  192.168.68.68
 ```
-# Prepare storage
+## Prepare storage
 
 I've got 2x 128GB USB drives for each of my Raspberry Pi 4 machine. They came with formatted exFAT file system. To get it ready for Ceph, we need to remove those partitions.
 
@@ -106,7 +106,7 @@ sudo fdisk /dev/sda
 
 Then use `d` and `w` to remove all file system the disk. NOTE: be sure to enter the right device name.
 
-## Useful commands
+### Useful commands
 
 ```
 lsblk # list information about block devices
@@ -145,7 +145,7 @@ sdb           8:16   1 119.5G  0 disk
 sudo dd if=/dev/zero of=/dev/sda bs=4M status=progress
 ```
 
-## Check storage
+### Check storage
 
 ```
 sudo cephadm shell ceph-volume inventory
@@ -159,7 +159,7 @@ Device Path               Size         rotates available Model name
 /dev/mmcblk0              58.94 GB     False   False
 ```
 
-# Add OSD
+## Add OSD
 
 > On admin host
 

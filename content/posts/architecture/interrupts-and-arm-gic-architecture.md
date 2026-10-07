@@ -9,7 +9,7 @@ Reference
 
 * [Interrupt](https://en.m.wikipedia.org/w/index.php?title=Interrupt)
 
-# Categorization
+## Categorization
 
 * Hardware vs. Software
   + Hardware: usually caused by peripheral or other processors
@@ -33,7 +33,7 @@ Reference
   + Message-signaled interrupts (or message-based interrupt as in ARM’s term)
     - Supported by PCI 2.2 and PCI-Express
 
-# MSI (Message Signaled Interrupts)
+## MSI (Message Signaled Interrupts)
 
 * Triggerred by write to a memory address
 * Can be converted from/to physical interrupt
@@ -48,13 +48,13 @@ Reference
   + Not compatible with devices that need physical interrupts
   + Need software support
 
-# Performance issue
+## Performance issue
 
 * Livelocks
 
-# ARM GIC
+## ARM GIC
 
-## Categories
+### Categories
 
 | LPI (locality-specific peripheral interrupt) | PPI (private peripheral interrupt) | SPI (shared peripheral interrupt) | SGI (software generated interrupt) |
 | --- | --- | --- | --- |
@@ -65,7 +65,7 @@ Reference
 
 **Q: if need deactivation, then there has to be some ackknowledge mechanisms. what are they???**
 
-## Interrupt handling
+### Interrupt handling
 
 * States
   + LPI: inactive –> pending -(recognized)-> inactive
@@ -79,7 +79,7 @@ Reference
     - Targeting multi-PE, but handled by only one of them
     - Depends on implementation
 
-## Interrupt signals and data structure
+### Interrupt signals and data structure
 
 * INTID (interrupt identifier)
   + If no LPI, 10-bit (compatible with earlier version GIC architecture)
@@ -88,7 +88,7 @@ Reference
   + ???
 * ???
 
-## Hardware components
+### Hardware components
 
 ![block-diagram-of-gic-600](/legacy-media/block-diagram-of-gic-600.png)
 

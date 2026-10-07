@@ -3,7 +3,7 @@ title: "WSL (Windows Subsystem Linux) Tips"
 date: 2017-04-25
 ---
 
-# To start gnome-terminal on WSL (Windows Subsystem for Linux)
+## To start gnome-terminal on WSL (Windows Subsystem for Linux)
 
 After upgrade to Windows 10 Creators Update, reinstall WSL will have Ubuntu 16.04.2 LTS on Windows.
 
@@ -42,13 +42,13 @@ But after 2 years of enduring the overheating and fast battery drainage, I’ll 
 
 Nowadays, Windows comes with WSL (Windows subsystem Linux). It gives you the ability to run native Linux program within a virtual machine liked environment on Windows machine. Although Microsoft claims that it’s not for X programs, some hackers indeed made X work for WSL. But with integration with native Windows filesystem, X is not that critical anymore, because anyway I cannot run real EDA tools on WSL. So it’s only for development which means VIM and Python would be enough.
 
-## WSL terminal
+### WSL terminal
 
 [WSL terminal](https://github.com/goreliu/wsl-terminal) is a very useful tool for using WSL. It comes with a mintty and one very useful setting: add “open wsl terminal here” to your right click menu. However the native color themes are not good. What I chose is to match all my other tools’ ]“Dracula” theme](<https://draculatheme.com/>)
 
 Another problem that worth mentioning is the directory color of Windows filesystem. Because of the default permission, every directories in /mnt/c or /mnt/d are 777. So they are displayed as **green background plus gray foreground** font, which is very hard to recognize. The way to fix it is to put `export LS_COLORS='ow=01;36;40` in the `.zshrc` to change the color output of `ls` command. One drawback is this cannot change the color for zsh auto-completion.
 
-## Copy to Windows clipboard
+### Copy to Windows clipboard
 
 ```
 cat $FILE | clip.exe
