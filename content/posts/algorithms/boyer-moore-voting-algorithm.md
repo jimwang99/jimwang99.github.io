@@ -1,5 +1,7 @@
 ---
 title: "Boyer-Moore Voting Algorithm"
+date: 2024-06-22
+date_estimated: true
 ---
 
 #note #learn-with-chatgpt #algorithm

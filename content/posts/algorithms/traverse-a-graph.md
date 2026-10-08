@@ -1,5 +1,7 @@
 ---
 title: "Traverse a graph"
+date: 2024-06-08
+date_estimated: true
 ---
 
 1. Mark all nodes as not visited.

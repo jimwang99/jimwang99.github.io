@@ -1,5 +1,7 @@
 ---
 title: "Understanding LLaMA2 Part 5 Training with TinyStories"
+date: 2024-06-01
+date_estimated: true
 aliases:
   - "/posts/machine-learning/understanding-llama2-part-5-training-with-tinystories/"
 ---

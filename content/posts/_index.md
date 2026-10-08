@@ -7,4 +7,4 @@ aliases:
   - /posts/projects/
 ---
 
-All posts are listed below. Jump to [posts without dates](#posts-without-dates), or choose a topic from the sidebar.
+All posts are listed below. Choose a topic from the sidebar. Dates marked "estimated" are approximate dates assigned to migrated notes that had no original date.

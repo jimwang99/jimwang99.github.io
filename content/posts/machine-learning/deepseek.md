@@ -1,5 +1,7 @@
 ---
 title: "DeepSeek"
+date: 2025-02-01
+date_estimated: true
 ---
 
 DeepSeek has created a huge wave of discussion and panic in the market.

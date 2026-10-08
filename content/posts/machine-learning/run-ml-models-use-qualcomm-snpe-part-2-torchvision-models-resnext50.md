@@ -1,5 +1,7 @@
 ---
 title: "Run ML Models Use Qualcomm SNPE Part 2 `torchvision.models.resnext50`"
+date: 2024-06-15
+date_estimated: true
 ---
 
 #software #accelerator #ai #on-device #WIP

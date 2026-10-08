@@ -1,5 +1,7 @@
 ---
 title: "A simple system metric collector"
+date: 2024-05-24
+date_estimated: true
 ---
 
 https://github.com/jimwang99/jimon

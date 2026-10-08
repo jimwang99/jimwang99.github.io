@@ -1,5 +1,7 @@
 ---
 title: "Software is King, Especially in AI"
+date: 2024-12-15
+date_estimated: true
 ---
 
 ## "Software is king"

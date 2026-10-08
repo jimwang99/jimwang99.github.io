@@ -1,5 +1,7 @@
 ---
 title: "CPU Performance Test"
+date: 2024-09-30
+date_estimated: true
 ---
 
 ## Background

@@ -1,5 +1,7 @@
 ---
 title: "Use PCA (Principal Component Analysis) to do Clustering of Embeddings"
+date: 2024-04-15
+date_estimated: true
 ---
 
 Let's consider a face recognition system, where we've got facial images from a list of known persons and the system input is a camera image. We need to figure out if there are people in this camera image from our list of known persons or not.

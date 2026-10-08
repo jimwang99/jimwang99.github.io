@@ -1,5 +1,7 @@
 ---
 title: "Understanding LLaMA2 Part 3 PyTorch Implementation"
+date: 2024-01-15
+date_estimated: true
 aliases:
   - "/posts/machine-learning/understanding-llama2-part-3-pytorch-implementation/"
 ---

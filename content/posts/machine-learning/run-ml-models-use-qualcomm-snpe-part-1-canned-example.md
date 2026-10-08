@@ -1,5 +1,7 @@
 ---
 title: "Run ML Models Use Qualcomm SNPE Part 1 Canned Example"
+date: 2024-06-01
+date_estimated: true
 ---
 
 #software #accelerator #ai #on-device
