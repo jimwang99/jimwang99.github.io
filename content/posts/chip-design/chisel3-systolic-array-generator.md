@@ -1,7 +1,6 @@
 ---
 title: "Chisel3 Systolic Array Generator"
 date: 2024-02-20
-date_estimated: true
 aliases:
   - "/posts/projects/chisel3-systolic-array-generator/"
 ---

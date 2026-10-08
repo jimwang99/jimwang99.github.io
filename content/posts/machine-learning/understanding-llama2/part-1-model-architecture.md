@@ -1,7 +1,6 @@
 ---
 title: "Understanding LLaMA2 Part 1 Model Architecture"
 date: 2023-10-15
-date_estimated: true
 aliases:
   - "/posts/machine-learning/understanding-llama2-part-1-model-architecture/"
 ---

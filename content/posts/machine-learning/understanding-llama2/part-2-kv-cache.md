@@ -1,7 +1,6 @@
 ---
 title: "Understanding LLaMA2 Part 2 KV Cache"
 date: 2023-10-22
-date_estimated: true
 aliases:
   - "/posts/machine-learning/understanding-llama2-part-2-kv-cache/"
 ---

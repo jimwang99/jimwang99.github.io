@@ -1,7 +1,6 @@
 ---
 title: "Python `heapq` Priority queue (heap queue)"
 date: 2024-06-15
-date_estimated: true
 ---
 
 ## Attributes

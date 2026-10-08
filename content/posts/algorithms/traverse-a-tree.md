@@ -1,7 +1,6 @@
 ---
 title: "Traverse a tree"
 date: 2024-06-01
-date_estimated: true
 ---
 
 **DFS (depth first search)**

@@ -1,7 +1,6 @@
 ---
 title: "Project Planning Process"
 date: 2025-05-20
-date_estimated: true
 ---
 
 **1. Have a Vision:** Without a clear vision outlining the final goals, how can we measure our progress? And it's essential to clearly communicate this vision with all team members.

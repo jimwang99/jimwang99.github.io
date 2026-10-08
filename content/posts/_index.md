@@ -7,4 +7,4 @@ aliases:
   - /posts/projects/
 ---
 
-All posts are listed below. Choose a topic from the sidebar. Dates marked "estimated" are approximate dates assigned to migrated notes that had no original date.
+All posts are listed below. Choose a topic from the sidebar.

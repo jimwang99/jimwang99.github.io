@@ -1,7 +1,6 @@
 ---
 title: "System Performance of Edge AI Applications is Beyond Models"
 date: 2024-10-15
-date_estimated: true
 ---
 
 After working on enabling use-cases for edge AI accelerator for more than 2 years now, here is some of my thinking about system performance.

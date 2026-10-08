@@ -1,7 +1,6 @@
 ---
 title: "Ceph on Raspberry Pi (2) Create Block Device"
 date: 2024-05-17
-date_estimated: true
 ---
 
 Taking my home lab Ceph distributed storage system on Raspberry Pi to the next level: make it useful by creating a block device interface so that Linux system can mount it and use it.
