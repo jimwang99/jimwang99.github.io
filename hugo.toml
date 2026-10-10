@@ -2,6 +2,7 @@ baseURL = 'https://jimwang99.github.io/'
 languageCode = 'en-us'
 title = "When Moore's Law Ends"
 theme = 'hugo-book'
+ignoreFiles = ['-(wechat|linkedin)\.md$']
 
 [params]
   BookSection = 'posts'

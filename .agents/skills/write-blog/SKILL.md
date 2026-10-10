@@ -11,7 +11,7 @@ This package implements the user-provided `handoff.md`, which calls the proposed
 
 ## Read the references
 
-- Read [style-notes.md](references/style-notes.md) before analyzing or editing. It distills the handoff and five canonical posts available in this repository.
+- Read [style-notes.md](references/style-notes.md) before analyzing or editing. It distills the handoff, canonical posts, and Jim's reviewed WeChat writing; use the reviewed example to calibrate voice, paragraph structure, and judgment scope.
 - Consult [examples.md](references/examples.md) for the phase boundary, epistemic distinctions, technical Chinese, and short source excerpts.
 - Use [acceptance-cases.md](tests/acceptance-cases.md) when evaluating or changing this skill. These are behavioral evaluation cases, not an automated test suite.
 
@@ -30,7 +30,13 @@ Users can invoke `$write-blog` with natural-language instructions:
 
 These are instructions to the agent, not installed CLI commands or slash commands. Do not claim a `/jim-write` executable exists.
 
-When unspecified, use the input language, blog platform, and the mode best supported by the material. English LinkedIn and Chinese WeChat are typical defaults when the input gives no language preference; follow any explicit language request. Do not translate silently if the input clearly establishes another language. Do not ask a preference question when a reasonable default permits analysis.
+Use the input language for analysis and the reasoning mode best supported by the material. For drafting or rewriting a publication package, default to an English blog, Chinese WeChat article, and English LinkedIn post. An explicit platform, language, or cleanup-only request sets a narrower scope. Keep the approved argument and evidence consistent across versions.
+
+## Interview in batches
+
+Ask missing questions in short, numbered batches grouped by purpose, such as the claim and audience, experiment conditions, or results and intended scope. Ask related independent questions together; use a separate follow-up only when it depends on an earlier answer.
+
+Include only questions whose answers would materially change the next step. Reuse supplied facts, accept partial answers, and keep nonessential gaps explicit while continuing useful work. At the Phase 1 checkpoint, combine angle selection with any essential remaining questions. Once the angle is approved, continue without repeating that selection.
 
 ## Phase 1: Extract the argument
 
@@ -39,7 +45,7 @@ Raw notes, transcripts, experiment logs, or incomplete thoughts receive analysis
 1. Identify the main claim already present in the material. If it is unclear, identify the candidate claim and label the ambiguity. Do not supply an opinion of your own as Jim's.
 2. Build an internal evidence ledger. Distinguish fact, measurement, observation, interpretation, judgment, and hypothesis. Record source, scope, uncertainty, and experimental conditions when available.
 3. Identify the dominant constraint or conflict. Reconstruct the causal chain using the source's reasoning. Mark an inferred connection as tentative; do not invent causality or a mechanism.
-4. Surface missing controls, inconsistent figures, unverified assumptions, and scope mismatches. Missing evidence stays missing. Ask only targeted questions needed for the next step; analysis can proceed with explicit gaps.
+4. Surface missing controls, inconsistent figures, unverified assumptions, and scope mismatches. Missing evidence stays missing. Use the batched interview guidance for questions needed for the next step; analysis can proceed with explicit gaps.
 5. Offer three distinct angles grounded in the same material. If the material cannot support three, offer fewer and explain why. Do not manufacture a thesis to fill a template.
 
 Return the following sections in the working language:
@@ -81,6 +87,8 @@ Then stop and invite Jim to select or modify an angle. This checkpoint is explic
 ## Phase 2: Draft the selected argument
 
 Use the approved angle, available evidence, requested platform, and reasoning mode. If new material changes the approved thesis, expose the change rather than silently choosing a different thesis.
+
+Follow Jim's reviewed writing: concise titles that state the point, concrete actions and component roles, and paragraphs that keep a comparison or causal chain together. Use natural technical Chinese with a brief inline gloss where it helps the audience. Preserve the scope of his stated judgment, including a bounded extension to similar tasks, while distinguishing it from measured results.
 
 ### Opinion / thought mode
 
@@ -126,7 +134,7 @@ Return the cleaned article or note. Keep material editorial questions separate f
 ## Fidelity rules
 
 - Do not invent opinions, evidence, measurements, motivations, experiences, conclusions, quotations, or citations.
-- Facts need a traceable source; a source's claim is not automatically a verified fact. Measurements are reported results under stated conditions, not independently reproduced results unless actually reproduced.
+- Facts need a traceable source; a source's claim is not automatically a verified fact. Measurements are reported results under stated conditions, not independently reproduced results unless actually reproduced. Cite original experiment material or relevant external sources; an earlier AI draft is derivative prose, not independent evidence. Keep editorial provenance notes outside the article and preserve required source attribution.
 - Preserve model, hardware, quantization, context length, inference framework/version, decoding method, batch size, before/after values, units, assumptions, and measurement method whenever supplied and relevant. Missing fields must not be filled by guessing.
 - Distinguish prefill, decode throughput, end-to-end latency, and other metrics. Do not silently compare incompatible workloads or calculate a speedup across unmatched conditions. Derived figures must show their basis and be labeled derived.
 - Conflicting numbers remain visible until resolved. Corrections and prior angle choices in the conversation take precedence over stale notes; flag unresolved contradictions.
@@ -143,10 +151,10 @@ The default deliverable is text. Write a repository post only when the user asks
 For this Hugo repository:
 
 1. Inspect the repository instructions, `README.md`, `archetypes/posts.md`, relevant topic `_index.md`, and a nearby post. Check for existing changes and preserve user work.
-2. Place posts under `content/posts/<topic>/<slug>.md`, following the existing topic structure. Do not create an extra topic or rewrite existing posts without need.
+2. Place posts under `content/posts/<topic>/<slug>.md`, following the existing topic structure. Save requested WeChat and LinkedIn files beside the blog as `<slug>-wechat.md` and `<slug>-linkedin.md`, following the exclusion convention in `README.md` and `hugo.toml`. Do not create an extra topic or rewrite existing posts without need.
 3. Follow `archetypes/posts.md` front matter: `title`, `date`, and `draft: true` for a new unpublished post. Use an explicitly supplied date, otherwise the current user-local date. Do not fabricate publication history or imported aliases. Preserve an existing post's metadata during cleanup unless asked to change it.
 4. Use repository-supported image paths, code fences, and Markdown. Verify newly referenced local assets exist; do not invent diagrams or image files. Keep editorial TODOs out of publishable prose.
 5. Run a draft-inclusive Hugo build (`hugo -D --minify`) when saving a draft; a build without `-D` may skip the edited page. In this cloud environment, the pinned executable is `/workspace/.cloud-tools/hugo-0.148.2/hugo` if it is not on `PATH`. If unavailable, consult the publishing workflow for the version and report any unverified build.
-6. Confirm the edited page appears in output and inspect tracked/untracked changes. Report file paths and validation results accurately.
+6. Confirm the edited blog page appears in output and platform adaptations are absent from generated pages, feeds, and search. Inspect tracked/untracked changes and report file paths and validation results accurately.
 
 Changing `draft: false`, committing, pushing, or publishing requires the user's applicable instruction. Platform adaptation produces text, not automatic posting to an external service.

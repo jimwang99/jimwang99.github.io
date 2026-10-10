@@ -2,7 +2,7 @@
 
 ## Source and scope
 
-This guide distills the user-provided `handoff.md` and five canonical articles read from the existing checkout. Local Markdown avoids a network dependency at skill runtime. Samples show reasoning and voice; their technical claims are not automatically current facts, and they must not supply opinions for unrelated new articles.
+This guide distills the user-provided `handoff.md`, canonical articles, and Jim's reviewed WeChat article in the existing checkout. Local Markdown avoids a network dependency at skill runtime. Samples show reasoning and voice; their technical claims are not automatically current facts, and they must not supply opinions for unrelated new articles.
 
 | Sample | Repository source | Pattern to learn |
 | --- | --- | --- |
@@ -11,8 +11,24 @@ This guide distills the user-provided `handoff.md` and five canonical articles r
 | Over-communication | [思考：过度沟通](../../../../content/posts/thoughts/思考-过度沟通-over-communication.md) | Connect specific human limitations to concrete practices such as pre-reading time, checklists, and documentation ownership. |
 | Huwcha Accelerator Architecture | [Huwcha Accelerator architecture](../../../../content/posts/architecture/huwcha-accelerator-architecture.md) | Dense hierarchical architecture notes, quantitative details, inline skepticism, and unanswered questions. |
 | Software Is King, Especially in AI | [Software is King, Especially in AI](../../../../content/posts/thoughts/software-is-king-especially-in-ai.md) | State a strong personal thesis, explain system-level tradeoffs, and derive a personal engineering judgment. |
+| Reviewed WeChat article | [端侧 coding agent 变得可用](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode-wechat.md) | Direct titles, concrete workflow actions, cohesive paragraphs, and a bounded judgment about similar tasks. |
 
 Public versions use `https://jimwang99.github.io/posts/` plus the topic and filename stem with a trailing slash. The repository preserves the title spelling “Huwcha”; the cited architecture manual is Hwacha. Do not silently rename historical paths.
+
+The reviewed WeChat adaptation is a local style reference excluded from Hugo output; the public URL convention does not apply to it.
+
+## Calibration from Jim's reviewed WeChat article
+
+Use the [reviewed article](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode-wechat.md) to interpret these choices. Learn the writing decisions rather than copying its topic, measurements, or incidental spacing.
+
+- **State the point in the title.** Jim shortened the title to “端侧 coding agent 变得可用”. Prefer a concise subject and judgment when supported; a case-study subtitle or question is optional.
+- **Preserve the author's judgment scope.** Jim changed “对这个任务” to “对类似任务” and bounded the conclusion to programming tasks similar in scale to MNIST training. Keep that extension as his engineering judgment, alongside the open question about larger tasks. Measured observations retain their actual scope.
+- **Name the work.** His additions include search, debugging, and comments in the code-quality assessment. Preserve concrete actions supplied by Jim instead of reducing them to a generic claim that the workflow succeeded.
+- **Explain component roles.** “使用 DFlash2 做 speculative decoding” describes a tool's relationship to a method. Preserve such relationships instead of presenting an implementation and its method as independent changes.
+- **Keep a complete thought together.** Jim joined the earlier and current setups in a comparison paragraph, and connected tool use, completion, and manual inspection in a fuller paragraph. Break paragraphs when the reasoning changes; sentence count is not the criterion.
+- **Use English terms with selective help.** “Context (上下文)” adds a brief gloss while retaining terms such as agent, debug, and tool-calling schema. Choose a gloss when it helps this audience; avoid translating every technical term.
+- **Make caveats causal and concrete.** “前一次运行因为过热退出导致没有完成，因此也不能直接用整个任务的耗时计算加速比” explains why the comparison is limited. Preserve the reason with the limitation.
+- **Keep source handling useful to the reader.** Jim removed repeated footnotes pointing to an earlier draft of the same article. Retain genuine evidence and required citations, and keep editorial provenance outside the prose. This edit is not a general instruction to remove citations.
 
 ## Reasoning over imitation
 

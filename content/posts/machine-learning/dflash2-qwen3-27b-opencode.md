@@ -1,31 +1,20 @@
 ---
-title: "DFlash2+Qwen3-27B+OpenCode: When a Local Coding Agent Becomes Usable"
+title: "DFlash2 + Qwen3-27B + OpenCode: When a Local Coding Agent Became Usable for My Workflow"
 date: 2026-10-07
 draft: false
 ---
 
-At roughly 7–8 tokens/s, my usual coding-agent example task took hours. With DFlash2 and speculative decoding in the new stack, it finished within half an hour. OpenCode’s integration with Qwen3’s tool-calling schema also reduced friction: web search and shell tools worked well, with only one failed attempt.
+DFlash2 + Qwen3-27B + OpenCode made a local coding-agent workflow practical for me. On my usual MNIST task, the agent prepared the environment, wrote and ran a training script, and reported the results within half an hour.[^observations] I could get useful work out of the local agent during the time I had available.
 
-Those two changes made this local setup practical for the task.
+## The task
 
-## Key points
+I asked the agent to write a Python script to train an MNIST model from scratch, using `uv` to manage Python dependencies. The prompt left it responsible for downloading the dataset, installing PyTorch, writing the script, running and monitoring training, handling errors if they occurred, and reporting the results.
 
-- **DFlash2 and speculative decoding made the local coding agent fast enough to use.** Generation reached roughly 30+ tokens/s with long context and 50–60 with shorter contexts. The entire task finished within half an hour.
-- **OpenCode’s integration with Qwen3’s tool-calling schema reduced friction.** The agent could use web search and shell tools to carry the workflow through to completion.
+This gives me a practical way to observe the whole workflow. Environment setup, generated code, tool execution, and training all have to work together.
 
-## Coding-agent example task
+## Generation speed through the session
 
-My usual coding-agent example task is to write a Python script to train an MNIST model from scratch, using `uv` to manage Python dependencies.
-
-The prompt is simple. It leaves the agent responsible for figuring out how to download the dataset, install PyTorch with `uv`, write the script, run training, monitor execution, handle errors if they occur, and report the results.
-
-That gives me a practical way to observe the whole agent workflow. The environment setup, generated code, tool execution, and training process all have to work together.
-
-## Speed changed the outcome
-
-My previous attempt used Claude Code + Ollama + Qwen3-27B on the same machine. Generation started at about 10 tokens/s and dropped to roughly 5 tokens/s as the context grew. That run failed overnight because of overheating.
-
-This time, I used DFlash2 and speculative decoding with Qwen3-27B, driven by OpenCode. The generation rates I observed were:
+My previous attempt used Claude Code + Ollama + Qwen3-27B on the same machine. It ran for hours and eventually failed overnight because of overheating. This time, I used DFlash2 and speculative decoding with Qwen3-27B, driven by OpenCode. These were my approximate observations during the sessions:[^observations]
 
 | Setup | Condition | Approximate generation rate |
 | --- | --- | --- |
@@ -34,16 +23,16 @@ This time, I used DFlash2 and speculative decoding with Qwen3-27B, driven by Ope
 | DFlash2 + Qwen3-27B + OpenCode | Shorter context | 50–60 tokens/s |
 | DFlash2 + Qwen3-27B + OpenCode | Long context | 30+ tokens/s |
 
-These are rough observations from the complete setups. I have not measured the separate contributions of each component.
+Long-context performance matters here because code, commands, tool outputs, and previous decisions accumulate as the agent works. It needs to keep generating while inspecting results and deciding what to do next. Slow generation adds waiting throughout that process.
 
-The long-context performance matters for an agent. Code, commands, tool outputs, and previous decisions accumulate during the session. Slow generation adds waiting across successive steps, including later steps when the agent needs to inspect results and decide what to do next.
+These observations compare complete setups. I have not measured the separate contributions of DFlash2, speculative decoding, or OpenCode. The earlier run also ended in a thermal failure, so the elapsed times do not establish an end-to-end speedup.
 
-At roughly 7–8 tokens/s, this process took hours. With the new setup, the MNIST workflow finished within half an hour. That difference changed whether I could get useful work out of the local agent during the time I had available.
+## Tool use and the result
 
-## Tool integration helped it finish
+I found OpenCode’s integration with Qwen3’s tool-calling schema smoother in this run. Web search and shell tools worked well, with only one failed attempt.[^observations] They let the agent obtain information, prepare the environment, run training, and inspect the output as it worked through the task.
 
-I also found OpenCode’s integration with Qwen3’s tool-calling schema less frictional. Web search and shell tools worked well, with only one failed attempt.
+The agent completed the workflow and reported the results. I manually inspected the final Python script and found its coding style and quality high.
 
-For this task, those tools were part of the execution path. The agent needed to obtain information, prepare the Python environment, run the training script, and inspect its output. Working tool calls let it act on its decisions and continue through the job.
+For this MNIST task, faster generation and working tool integration made the local setup useful within the time I had available. Whether it can do that consistently on larger coding tasks remains an open question.
 
-It completed the entire process and reported the results. I manually inspected the final Python script and found its coding style and quality high.
+[^observations]: Completion time, generation rates, the thermal failure, and the failed-attempt count come from my [original experiment write-up](https://github.com/jimwang99/jimwang99.github.io/blob/69fd3fb699291587f0d438c534d16b86b659fcb9/content/posts/machine-learning/dflash2-qwen3-27b-opencode.md). They are observations from these runs; I did not isolate the effects of individual components.

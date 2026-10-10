@@ -21,6 +21,8 @@ hugo new content posts/architecture/my-new-post.md
 
 Edit the Markdown file under `content/posts/`. Set `draft: false` when it is ready to publish. Each topic has an `_index.md` file that controls its sidebar label. Edit `content/_index.md` and `content/about.md` to personalize the site.
 
+Keep platform adaptations beside the blog post as `<slug>-wechat.md` and `<slug>-linkedin.md`. Hugo excludes these files from site builds, including previews with `-D`.
+
 ## Imported articles
 
 Earlier articles are grouped by topic under `content/posts/`. A series can have its own nested section, such as `content/posts/architecture/risc-v-architecture-training/`. The articles came from the local Obsidian Publish folder, with images recovered from local backups. Edit the Markdown pages directly.

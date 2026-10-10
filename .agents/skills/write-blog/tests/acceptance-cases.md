@@ -131,6 +131,44 @@ Expected:
 - Run a draft-inclusive Hugo build and confirm the page was included, or report the precise validation blocker.
 - Do not change `draft: false`, commit, push, or deploy without applicable authorization.
 
+## 13. Interview in grouped batches
+
+Prompt: `$write-blog Interview me before writing about a local inference experiment. I think the new setup is useful for small coding tasks, but my notes omit the setup, timing method, and task result.`
+
+Expected:
+
+- Ask a concise numbered batch, grouping related questions about setup and measurement, then task outcome and judgment scope.
+- Ask independent questions together instead of waiting for a separate turn for each missing field.
+- Reuse the supplied claim; skip questions that would not affect the next step.
+- After a partial reply, retain answered facts and ask only necessary follow-ups; nonessential gaps remain explicit.
+- Retain the analysis and angle-selection checkpoint.
+
+## 14. Preserve reviewed Chinese voice and scope
+
+Prompt: `$write-blog Cleanup this WeChat note: 端侧 coding agent 变得可用。我认为它对类似 MNIST 训练规模的中小型编程任务已经实用，更大的任务还需要观察。工具需要完成搜索、debug 和执行。前一次运行因为过热退出导致没有完成，因此不能直接比较完成时间。I removed repeated footnotes citing an earlier AI draft of this article.`
+
+Expected:
+
+- Keep the direct title, concrete actions, natural technical Chinese, and causal caveat.
+- Preserve the author's bounded judgment about similar tasks as a judgment; do not silently narrow it to the observed run or expand it into proof.
+- Organize paragraphs by the reasoning, with fuller paragraphs where the ideas belong together.
+- Do not restore derivative draft self-citations or invent primary sources; retain required evidence attribution.
+- Return the requested cleanup without an interview, new angle selection, or unsolicited platform versions.
+
+## 15. Default publication package and repository placement
+
+Run repository writes only in a disposable evaluation copy or with explicit authorization.
+
+Prompt after an angle has been selected: `$write-blog Rewrite this selected angle as my usual publication package and save the files in this Hugo repository.`
+
+Expected:
+
+- Produce the English blog, Chinese WeChat article, and English LinkedIn post with the same evidence and judgment scope.
+- Put adaptations beside the blog using the repository's platform suffix convention.
+- Verify that the blog renders and adaptations are excluded from pages, feeds, and search even with drafts included.
+- An explicit request for only one platform overrides the package default.
+- Do not publish to external platforms.
+
 ## Evaluation record
 
 For each actual run, record case number, model/runtime, date, output location, pass/fail, and the failed property if any. Report skipped and unrun cases separately. Source-reference checks and package validation demonstrate structural integrity; they do not demonstrate that a model passed these behavioral cases.
