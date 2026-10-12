@@ -2,6 +2,8 @@
 
 These are manual behavioral evaluation cases for a model with this skill loaded. They are not executed by a Markdown or schema check. Run independent cases in fresh conversations; retain history only for the multi-turn cases. Record the actual outputs and verdicts before claiming behavioral tests pass.
 
+Prompts use the Codex form `$write-blog`; in Claude Code, run them as `/write-blog`.
+
 A case passes only when all expected properties hold. Any invented measurement, source, or Jim opinion is a failure. A full draft in a first analysis response without explicit authorization is a failure. The prompts below are synthetic fixtures, not facts about Jim's experiments.
 
 ## 1. Prevent overclaiming

@@ -19,7 +19,7 @@ Reference articles establish writing patterns, not evidence for a new article. P
 
 ## Choose the operation
 
-Users can invoke `$write-blog` with natural-language instructions:
+Invoke the skill by name, `$write-blog` in Codex or `/write-blog` in Claude Code, followed by natural-language instructions. Either agent can also load it from a matching request:
 
 - `Analyze these notes` — Phase 1 only.
 - `Draft angle 2 for the blog` — Phase 2 followed by Phase 3.
@@ -28,7 +28,7 @@ Users can invoke `$write-blog` with natural-language instructions:
 - `Clean up this draft` — Phase 3 only; preserve its argument.
 - `Technical note` or `Opinion` — chooses the reasoning mode, not permission to skip Phase 1 on raw material.
 
-These are instructions to the agent, not installed CLI commands or slash commands. Do not claim a `/jim-write` executable exists.
+These operations are phrasings handled inside this one skill, not separate commands.
 
 Use the input language for analysis and the reasoning mode best supported by the material. For drafting or rewriting a publication package, default to an English blog, Chinese WeChat article, and English LinkedIn post. An explicit platform, language, or cleanup-only request sets a narrower scope. Keep the approved argument and evidence consistent across versions.
 
@@ -146,7 +146,7 @@ Return the cleaned article or note. Keep material editorial questions separate f
 
 ## Repository delivery
 
-The default deliverable is text. Write a repository post only when the user asks for a file or repository edit. Use the existing checkout; cloud tasks are already isolated, so do not create a Git worktree unless explicitly requested.
+The default deliverable is text. Write a repository post only when the user asks for a file or repository edit. Work in the current checkout; create a Git worktree only when the user asks for one.
 
 For this Hugo repository:
 
@@ -154,7 +154,7 @@ For this Hugo repository:
 2. Place posts under `content/posts/<topic>/<slug>.md`, following the existing topic structure. Save requested WeChat and LinkedIn files beside the blog as `<slug>-wechat.md` and `<slug>-linkedin.md`, following the exclusion convention in `README.md` and `hugo.toml`. Do not create an extra topic or rewrite existing posts without need.
 3. Follow `archetypes/posts.md` front matter: `title`, `date`, and `draft: true` for a new unpublished post. Use an explicitly supplied date, otherwise the current user-local date. Do not fabricate publication history or imported aliases. Preserve an existing post's metadata during cleanup unless asked to change it.
 4. Use repository-supported image paths, code fences, and Markdown. Verify newly referenced local assets exist; do not invent diagrams or image files. Keep editorial TODOs out of publishable prose.
-5. Run a draft-inclusive Hugo build (`hugo -D --minify`) when saving a draft; a build without `-D` may skip the edited page. In this cloud environment, the pinned executable is `/workspace/.cloud-tools/hugo-0.148.2/hugo` if it is not on `PATH`. If unavailable, consult the publishing workflow for the version and report any unverified build.
+5. Run a draft-inclusive Hugo build (`hugo -D --minify`) when saving a draft; a build without `-D` may skip the edited page. If `hugo` is not on `PATH`, find the Hugo Extended version pinned in `.github/workflows/hugo.yml`; in Codex cloud, it is installed at `/workspace/.cloud-tools/hugo-0.148.2/hugo`. If no matching build is available, report the build as unverified.
 6. Confirm the edited blog page appears in output and platform adaptations are absent from generated pages, feeds, and search. Inspect tracked/untracked changes and report file paths and validation results accurately.
 
 Changing `draft: false`, committing, pushing, or publishing requires the user's applicable instruction. Platform adaptation produces text, not automatic posting to an external service.
