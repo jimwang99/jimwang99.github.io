@@ -29,8 +29,9 @@ The checker is at [scripts/check_docx.py](scripts/check_docx.py). It produces JS
 
 Required representation for this workflow:
 
-- Inline formulas are editable text in ordinary paragraphs, with readable linear notation such as `g_i`, `e^(g_(i-1) - g_i)`, and `vec(A)_m`. Preserve primes, indices, powers, operators, grouping, and vector meaning. Raw LaTeX commands and native Word equations are not acceptable substitutes.
+- Inline formulas are editable Word text runs with real superscript and subscript formatting. Nested scripts use smaller text and adjusted baselines so an index inside an exponent remains distinct. Preserve primes, indices, powers, operators, grouping, and vector meaning; readable `vec(A)` and parenthesized fraction notation remain acceptable. Check each formula bookmark against its manifest run text, vertical alignment, size, and position. Raw LaTeX commands, flattened caret/underscore notation, inline pictures, and native Word equation objects do not satisfy this workflow.
 - Inline code is editable text. Check punctuation, spacing, and code font treatment.
+- Markdown blockquotes retain their text, bold emphasis, and links with paragraph background shading: a leading `注意` uses pale red (`FDE9E7`), `笔者` uses pale yellow (`FFF4CC`), and other quotes use light gray (`F2F3F5`). Match the visible prefix even when it is bold. Apply the color across all paragraphs of that quote and check it against `quoteParagraphs` in the manifest.
 - Display formulas and code blocks are embedded PNGs in separate paragraphs. Keep code highlighting and indentation. Any image mixed with prose in a paragraph fails this review, even when its OOXML element is named `wp:inline`; standalone block pictures may use that element too.
 - Source hashes, editable text, inline conversion records, image count, and image relationships agree with the manifest. No image relies on an external URL.
 
@@ -40,12 +41,12 @@ Use the documents skill's managed `render_docx.py` when available and open every
 
 Without the managed renderer, use an installed local DOCX-to-PDF renderer such as LibreOffice, followed by a PDF-to-PNG tool such as Poppler. Verify Chinese fonts before judging the pages. If no renderer or image viewer is available, finish structural checks and report visual review as incomplete; do not declare the DOCX ready.
 
-Check Chinese glyphs; inline formula meaning and readability; mid-word breaks in variables and formula tokens; complete equations; code indentation and wrapping; bold text, links, lists, headings, and source order; image clipping; overlaps; and page breaks. Compare each inline formula's `source` and `text` in the manifest, especially compound subscripts, powers, and vector accents. Structural checks alone do not prove visual or mathematical fidelity.
+Check Chinese glyphs; inline formula meaning and readability; mid-word breaks in variables and formula tokens; complete equations; code indentation and wrapping; bold text, links, lists, headings, and source order; image clipping; overlaps; and page breaks. Compare each inline formula's `source`, `text`, and `runs` in the manifest, especially compound subscripts, nested powers, and vector accents. Check that script text remains readable and does not collide with the baseline or adjacent lines. Quote shading must cover the paragraph and keep sufficient contrast with text. Structural checks alone do not prove visual or mathematical fidelity.
 
 Fix export defects in the exporter, regenerate from the approved source, and repeat the failed checks plus the page inspection. Keep the Markdown unchanged for representation fixes.
 
 ## 4. Report and deliver
 
-Report structural/content checks, visual review, and WeChat transfer separately. A local pass requires both content comparison and inspection of every page; report remaining issues or missing evidence precisely. WeChat paste, save, reopen, and phone preview remain unverified until actually tested. The skill does not publish a WeChat post.
+Report structural/content checks, visual review, and WeChat transfer separately. A local pass requires both content comparison and inspection of every page; report remaining issues or missing evidence precisely. WeChat paste, save, reopen, and phone preview remain unverified until actually tested, including retention of superscripts, subscripts, nested baselines, and paragraph background colors. The skill does not publish a WeChat post.
 
 Store the verified DOCX, manifest, and backup block PNGs in `exports/<source-stem>/`; keep `_work/` previews and builds ignored. Commit and push under the user's applicable authorization. GitHub is the storage destination; no Google Drive connection is part of this workflow.

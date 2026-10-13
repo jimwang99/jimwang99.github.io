@@ -1,4 +1,4 @@
-"""Verify and finalize the DOCX package with text-only inline content."""
+"""Verify and finalize the DOCX package with editable inline content."""
 
 from pathlib import Path
 import hashlib
@@ -35,7 +35,7 @@ def finish(draft, manifest_path, output):
             if ''.join(paragraph.xpath('.//w:t/text()', namespaces=namespaces)).strip():
                 raise ValueError('Image occurs inside a text paragraph')
         if document.findall(".//m:oMath", namespaces):
-            raise ValueError("Native Word math remains; use plain inline text or display PNG")
+            raise ValueError("Native Word math remains; use formatted inline text or display PNG")
         media = [name for name in source.namelist() if name.startswith("word/media/") and not name.endswith('/')]
         if any(not name.endswith('.png') for name in media):
             raise ValueError("A non-PNG image was embedded")

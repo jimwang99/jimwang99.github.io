@@ -31,7 +31,7 @@ Earlier articles are grouped by topic under `content/posts/`. A series can have 
 
 ## Export for WeChat
 
-Export a blog page as DOCX with editable prose, inline formulas, and inline code. Inline formulas use readable text such as `g_i`, `e^(g_(i - 1) - g_i)`, and `vec(A)_m`. Display formulas and code blocks become embedded PNGs; code blocks retain syntax highlighting. The exporter uses Hugo's existing math and shortcode rendering and does not change the Markdown source.
+Export a blog page as DOCX with editable prose, inline formulas, and inline code. Inline formulas use Word superscript and subscript formatting; nested scripts use smaller text with adjusted baselines. Display formulas and code blocks become embedded PNGs; code blocks retain syntax highlighting. Markdown quotes beginning with `注意` get a pale red paragraph background, `笔者` gets pale yellow, and other quotes get light gray. The exporter uses Hugo's existing math and shortcode rendering and does not change the Markdown source.
 
 **Review comes first:** finish and validate the Markdown, then give it to Jim for human review. Run the exporter only after Jim approves that version. Angle selection or an instruction to draft does not approve the resulting Markdown. If the Markdown changes after approval, return the revised version for review before exporting again.
 
@@ -47,7 +47,7 @@ GitHub is the storage location; no Google Drive connection or upload is needed. 
 
 ### Required DOCX review
 
-After export and before delivery or GitHub storage, run [review-wechat-docx](.agents/skills/review-wechat-docx/SKILL.md). It checks editable inline content, standalone PNGs, source and text hashes, and image relationships, then requires inspection of every rendered page. It records local review separately from the actual WeChat transfer test.
+After export and before delivery or GitHub storage, run [review-wechat-docx](.agents/skills/review-wechat-docx/SKILL.md). It checks editable inline content and its script formatting, quote background colors, standalone PNGs, source and text hashes, and image relationships, then requires inspection of every rendered page. It records local review separately from the actual WeChat transfer test, including whether WeChat retains superscripts, subscripts, and paragraph shading.
 
 - **Codex:** `$review-wechat-docx exports/<source-stem>/<source-stem>.docx`
 - **Claude Code:** `/review-wechat-docx exports/<source-stem>/<source-stem>.docx`

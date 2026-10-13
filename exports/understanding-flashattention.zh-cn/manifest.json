@@ -1,7 +1,7 @@
 {
   "source": "content/posts/machine-learning/understanding-flashattention.zh-cn.md",
   "sourceSha256": "8b517ea4a1a5aa099ee3ad5cd277608c7a5528726a052943ff733da6c318e629",
-  "editableTextSha256": "cf75235f650d0836c3da8c206c306d06bd7bb6970e9549a7c4780a1740df3a80",
+  "editableTextSha256": "bc77ce49739cbc17340b4bb3e61c0254787a3844f383d0a2ab91c46fbff5a174",
   "title": "理解 FlashAttention",
   "permalink": "https://jimwang99.github.io/zh-cn/posts/machine-learning/understanding-flashattention/",
   "counts": {
@@ -15,243 +15,645 @@
   "inlineText": [
     {
       "kind": "inline-math",
+      "id": "inline-math-1",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-2",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-3",
       "source": "e^x",
-      "text": "e^x"
+      "text": "ex",
+      "runs": [
+        {
+          "text": "e"
+        },
+        {
+          "text": "x",
+          "superScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-4",
       "source": "e^x",
-      "text": "e^x"
+      "text": "ex",
+      "runs": [
+        {
+          "text": "e"
+        },
+        {
+          "text": "x",
+          "superScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-5",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-6",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-7",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-8",
       "source": "G",
-      "text": "G"
+      "text": "G",
+      "runs": [
+        {
+          "text": "G"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-9",
       "source": "S",
-      "text": "S"
+      "text": "S",
+      "runs": [
+        {
+          "text": "S"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-10",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-11",
       "source": "g_i",
-      "text": "g_i"
+      "text": "gi",
+      "runs": [
+        {
+          "text": "g"
+        },
+        {
+          "text": "i",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-12",
       "source": "i",
-      "text": "i"
+      "text": "i",
+      "runs": [
+        {
+          "text": "i"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-13",
       "source": "s_i",
-      "text": "s_i"
+      "text": "si",
+      "runs": [
+        {
+          "text": "s"
+        },
+        {
+          "text": "i",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-14",
       "source": "S",
-      "text": "S"
+      "text": "S",
+      "runs": [
+        {
+          "text": "S"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-15",
       "source": "s_N",
-      "text": "s_N"
+      "text": "sN",
+      "runs": [
+        {
+          "text": "s"
+        },
+        {
+          "text": "N",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-16",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-17",
       "source": "G",
-      "text": "G"
+      "text": "G",
+      "runs": [
+        {
+          "text": "G"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-18",
       "source": "S",
-      "text": "S"
+      "text": "S",
+      "runs": [
+        {
+          "text": "S"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-19",
       "source": "g",
-      "text": "g"
+      "text": "g",
+      "runs": [
+        {
+          "text": "g"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-20",
       "source": "m",
-      "text": "m"
+      "text": "m",
+      "runs": [
+        {
+          "text": "m"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-21",
       "source": "s",
-      "text": "s"
+      "text": "s",
+      "runs": [
+        {
+          "text": "s"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-22",
       "source": "S",
-      "text": "S"
+      "text": "S",
+      "runs": [
+        {
+          "text": "S"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-23",
       "source": "e^{g_{i-1}-g_i}",
-      "text": "e^(g_(i - 1) - g_i)"
+      "text": "egi - 1 - gi",
+      "runs": [
+        {
+          "text": "e"
+        },
+        {
+          "text": "g",
+          "superScript": true
+        },
+        {
+          "text": "i - 1",
+          "position": "5",
+          "size": 12
+        },
+        {
+          "text": " - g",
+          "superScript": true
+        },
+        {
+          "text": "i",
+          "position": "5",
+          "size": 12
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-24",
       "source": "s_i",
-      "text": "s_i"
+      "text": "si",
+      "runs": [
+        {
+          "text": "s"
+        },
+        {
+          "text": "i",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-25",
       "source": "s_N",
-      "text": "s_N"
+      "text": "sN",
+      "runs": [
+        {
+          "text": "s"
+        },
+        {
+          "text": "N",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-26",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-27",
       "source": "\\mathbb{X}",
-      "text": "X"
+      "text": "X",
+      "runs": [
+        {
+          "text": "X"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-28",
       "source": "x",
-      "text": "x"
+      "text": "x",
+      "runs": [
+        {
+          "text": "x"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-29",
       "source": "\\mathbb{Y}",
-      "text": "Y"
+      "text": "Y",
+      "runs": [
+        {
+          "text": "Y"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-30",
       "source": "y",
-      "text": "y"
+      "text": "y",
+      "runs": [
+        {
+          "text": "y"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-31",
       "source": "s",
-      "text": "s"
+      "text": "s",
+      "runs": [
+        {
+          "text": "s"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-32",
       "source": "\\mathbb{A}",
-      "text": "A"
+      "text": "A",
+      "runs": [
+        {
+          "text": "A"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-33",
       "source": "\\mathbb{Y} \\cdot \\mathbb{V}",
-      "text": "Y ⋅ V"
+      "text": "Y ⋅ V",
+      "runs": [
+        {
+          "text": "Y ⋅ V"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-34",
       "source": "\\mathbb{V}[m,:]",
-      "text": "V[m,:]"
+      "text": "V[m,:]",
+      "runs": [
+        {
+          "text": "V[m,:]"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-35",
       "source": "\\vec{A}_m",
-      "text": "vec(A)_m"
+      "text": "vec(A)m",
+      "runs": [
+        {
+          "text": "vec(A)"
+        },
+        {
+          "text": "m",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-36",
       "source": "y_m",
-      "text": "y_m"
+      "text": "ym",
+      "runs": [
+        {
+          "text": "y"
+        },
+        {
+          "text": "m",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-37",
       "source": "y_m",
-      "text": "y_m"
+      "text": "ym",
+      "runs": [
+        {
+          "text": "y"
+        },
+        {
+          "text": "m",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-38",
       "source": "\\mathbb{Y}[n,m]",
-      "text": "Y[n,m]"
+      "text": "Y[n,m]",
+      "runs": [
+        {
+          "text": "Y[n,m]"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-39",
       "source": "\\vec{V}_m = \\mathbb{V}[m,:]",
-      "text": "vec(V)_m = V[m,:]"
+      "text": "vec(V)m = V[m,:]",
+      "runs": [
+        {
+          "text": "vec(V)"
+        },
+        {
+          "text": "m",
+          "subScript": true
+        },
+        {
+          "text": " = V[m,:]"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-40",
       "source": "g_M",
-      "text": "g_M"
+      "text": "gM",
+      "runs": [
+        {
+          "text": "g"
+        },
+        {
+          "text": "M",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-41",
       "source": "s_M",
-      "text": "s_M"
+      "text": "sM",
+      "runs": [
+        {
+          "text": "s"
+        },
+        {
+          "text": "M",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-42",
       "source": "\\vec{A}_M",
-      "text": "vec(A)_M"
+      "text": "vec(A)M",
+      "runs": [
+        {
+          "text": "vec(A)"
+        },
+        {
+          "text": "M",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-43",
       "source": " \\vec{A}_m = f(\\vec{A}_{m-1}) ",
-      "text": "vec(A)_m = f(vec(A)_(m - 1))"
+      "text": "vec(A)m = f(vec(A)m - 1)",
+      "runs": [
+        {
+          "text": "vec(A)"
+        },
+        {
+          "text": "m",
+          "subScript": true
+        },
+        {
+          "text": " = f(vec(A)"
+        },
+        {
+          "text": "m - 1",
+          "subScript": true
+        },
+        {
+          "text": ")"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-44",
       "source": " \\vec{A}'_m ",
-      "text": "vec(A)'_m"
+      "text": "vec(A)′m",
+      "runs": [
+        {
+          "text": "vec(A)′"
+        },
+        {
+          "text": "m",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-45",
       "source": " \\vec{A}'_M = \\vec{A}_M ",
-      "text": "vec(A)'_M = vec(A)_M"
+      "text": "vec(A)′M = vec(A)M",
+      "runs": [
+        {
+          "text": "vec(A)′"
+        },
+        {
+          "text": "M",
+          "subScript": true
+        },
+        {
+          "text": " = vec(A)"
+        },
+        {
+          "text": "M",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-46",
       "source": "m = M",
-      "text": "m = M"
+      "text": "m = M",
+      "runs": [
+        {
+          "text": "m = M"
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-47",
       "source": "\\vec{A}_M",
-      "text": "vec(A)_M"
+      "text": "vec(A)M",
+      "runs": [
+        {
+          "text": "vec(A)"
+        },
+        {
+          "text": "M",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-math",
+      "id": "inline-math-48",
       "source": " \\vec{A}'_m ",
-      "text": "vec(A)'_m"
+      "text": "vec(A)′m",
+      "runs": [
+        {
+          "text": "vec(A)′"
+        },
+        {
+          "text": "m",
+          "subScript": true
+        }
+      ]
     },
     {
       "kind": "inline-code",
@@ -327,6 +729,23 @@
       "kind": "inline-code",
       "source": "for m in range(M)",
       "text": "for m in range(M)"
+    }
+  ],
+  "quoteParagraphs": [
+    {
+      "kind": "author",
+      "fill": "FFF4CC",
+      "text": "笔者：这种做法让我想起了 dynamic programming。"
+    },
+    {
+      "kind": "warning",
+      "fill": "FDE9E7",
+      "text": "注意：在 LLM 里，batch_size 和 num_head 这两个维度只是在重复独立的 attention 计算。对其中每一个计算来说，N 和 M 取决于序列长度，是运行时才知道的动态变量（runtime dynamic variable）；D 是 head_dim，编译时就确定了（compile-time static variable）。这一点对性能优化非常重要。"
+    },
+    {
+      "kind": "author",
+      "fill": "FFF4CC",
+      "text": "笔者：整个推导的核心只有一个思路：只要最终结果正确，中间结果可以换一种含义。Online softmax 用它处理分母，FlashAttention 再把它用到输出上。"
     }
   ],
   "assets": [

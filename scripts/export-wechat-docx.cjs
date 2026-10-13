@@ -12,13 +12,22 @@ const repo = path.resolve(__dirname, '..');
 const runtime = process.env.CODEX_DOCUMENT_RUNTIME || path.join(os.homedir(), '.cache/codex-runtimes/codex-primary-runtime');
 const packages = path.join(runtime, 'dependencies/node/node_modules');
 const { chromium } = require(path.join(packages, 'playwright'));
-const mathMLToText = require('./mathml-to-text.cjs');
+const mathMLToRuns = require('./mathml-to-runs.cjs');
 const docx = require(path.join(packages, 'docx'));
 const { Document, Paragraph, TextRun, ImageRun, ExternalHyperlink, Packer, HeadingLevel,
-  AlignmentType, Table, TableRow, TableCell, WidthType, LevelFormat } = docx;
+  AlignmentType, Table, TableRow, TableCell, WidthType, LevelFormat, Bookmark } = docx;
 const python = path.join(runtime, 'dependencies/python/bin/python3');
 const skill = path.join(runtime, 'plugins/openai-primary-runtime/plugins/documents/skills/documents');
 const CONTENT_WIDTH = 640;
+const editableText = node => node.text ?? (node.children || []).map(editableText).join('');
+
+function mathRunOptions(run) {
+  if (run.scripts.length === 0) return { text: run.text };
+  if (run.scripts.length === 1) return { text: run.text, [run.scripts[0] === 'sub' ? 'subScript' : 'superScript']: true };
+  // OOXML positions are signed half-points; docx writes the value verbatim.
+  const position = Math.round(run.scripts.reduce((offset, kind, depth) => offset + (kind === 'sup' ? 8 : -4) * 0.72 ** depth, 0));
+  return { text: run.text, position: String(position), size: Math.max(12, Math.round(24 * 0.72 ** run.scripts.length)) };
+}
 
 function csvRows(text) {
   const rows = [];
@@ -90,7 +99,7 @@ async function renderArticle(site, url, output) {
       #export-article .export-code { width: ${CONTENT_WIDTH}px; padding: 0; background: #272822; }
       #export-article code:not(pre code) { font: 14px/1.25 Menlo, monospace; color: #202020; background: #f1f3f5; padding: 2px 3px; }
     ` });
-    await page.addScriptTag({ content: `window.mathMLToText = ${mathMLToText.toString()};` });
+    await page.addScriptTag({ content: `window.mathMLToRuns = ${mathMLToRuns.toString()};` });
     const { counts, inlineText } = await page.evaluate(() => {
       const root = document.querySelector('#export-article');
       const displays = [...root.querySelectorAll('.katex-display')];
@@ -104,10 +113,15 @@ async function renderArticle(site, url, output) {
         const source = node.querySelector('annotation[encoding="application/x-tex"]')?.textContent;
         const math = node.querySelector('.katex-mathml math');
         if (!math) throw new Error(`Inline formula lacks MathML: ${source}`);
-        const text = window.mathMLToText(math);
+        const runs = window.mathMLToRuns(math);
+        const text = runs.map(run => run.text).join('');
         if (!text) throw new Error(`Inline formula became empty: ${source}`);
-        inlineText.push({ kind: 'inline-math', source, text });
-        node.replaceWith(document.createTextNode(text));
+        const id = `inline-math-${inlineText.length + 1}`;
+        inlineText.push({ kind: 'inline-math', id, source, text, runs });
+        const replacement = document.createElement('span');
+        replacement.dataset.exportInlineMath = id;
+        replacement.textContent = text;
+        node.replaceWith(replacement);
       }
       for (const node of codes) {
         inlineText.push({ kind: 'inline-code', source: node.textContent, text: node.textContent });
@@ -178,9 +192,18 @@ async function renderArticle(site, url, output) {
 
 function makeDocument(article, output, title) {
   const assets = new Map(article.assets.map(asset => [asset.id, asset]));
+  const math = new Map(article.inlineText.filter(item => item.kind === 'inline-math').map(item => {
+    item.runs = item.runs.map(mathRunOptions);
+    return [item.id, item];
+  }));
+  article.quoteParagraphs = [];
   const font = { ascii: 'Arial', hAnsi: 'Arial', eastAsia: 'Heiti SC' };
   function inline(node, style = {}) {
     if (node.text !== undefined) return node.text ? [new TextRun({ text: node.text, ...style })] : [];
+    if (node.attrs?.['data-export-inline-math']) {
+      const formula = math.get(node.attrs['data-export-inline-math']);
+      return [new Bookmark({ id: formula.id, children: formula.runs.map(run => new TextRun({ ...style, ...run })) })];
+    }
     if (node.tag === 'img') {
       const asset = assets.get(node.attrs['data-export-asset']);
       if (!asset) throw new Error('Image lacks an embedded asset');
@@ -205,15 +228,19 @@ function makeDocument(article, output, title) {
     const result = [];
     let pending = [];
     function paragraphContext() {
-      const { list, ...options } = context;
+      const { list, quoteKind, ...options } = context;
       if (list && !list.used) {
         options.numbering = { reference: list.reference, level: 0 };
         list.used = true;
       }
       return options;
     }
+    function paragraph(nodes, options = {}) {
+      if (context.quoteKind) article.quoteParagraphs.push({ kind: context.quoteKind, fill: context.shading.fill, text: nodes.map(editableText).join('') });
+      return new Paragraph({ ...paragraphContext(), children: nodes.flatMap(node => inline(node)), ...options });
+    }
     function flush() {
-      if (pending.some(node => node.tag || node.text?.trim())) result.push(new Paragraph({ children: pending.flatMap(node => inline(node)), ...paragraphContext() }));
+      if (pending.some(node => node.tag || node.text?.trim())) result.push(paragraph(pending));
       pending = [];
     }
     for (const node of nodes) {
@@ -222,9 +249,7 @@ function makeDocument(article, output, title) {
         flush();
         const imageKind = node.attrs['data-image-block'];
         const heading = /^h[1-6]$/.test(node.tag) ? Number(node.tag[1]) : null;
-        result.push(new Paragraph({
-          ...paragraphContext(),
-          children: node.children.flatMap(child => inline(child)),
+        result.push(paragraph(node.children, {
           ...(heading ? { heading: HeadingLevel[`HEADING_${Math.max(1, heading - 1)}`], keepNext: true } : {}),
           ...(imageKind ? { alignment: imageKind === 'display-math' ? AlignmentType.CENTER : AlignmentType.LEFT, spacing: { before: 100, after: 180 }, keepLines: true } : {}),
         }));
@@ -236,7 +261,10 @@ function makeDocument(article, output, title) {
           result.push(...blocks(item.children, { ...context, list: { reference, used: false } }));
         }
       } else if (node.tag === 'blockquote') {
-        flush(); result.push(...blocks(node.children, { ...context, indent: { left: 280, right: 160 } }));
+        const text = editableText(node).trimStart();
+        const quoteKind = text.startsWith('注意') ? 'warning' : text.startsWith('笔者') ? 'author' : 'default';
+        const fill = { warning: 'FDE9E7', author: 'FFF4CC', default: 'F2F3F5' }[quoteKind];
+        flush(); result.push(...blocks(node.children, { ...context, quoteKind, shading: { fill }, indent: { left: 280, right: 160 }, spacing: { before: 160, after: 160 }, keepLines: true }));
       } else if (node.tag === 'table') {
         flush();
         const rows = [];
@@ -295,9 +323,8 @@ async function main() {
   const document = makeDocument(article, output, metadata.title);
   const draft = path.join(output, '_work/draft.docx');
   fs.writeFileSync(draft, await Packer.toBuffer(document));
-  const editableText = node => node.text ?? (node.children || []).map(editableText).join('');
   const textDigest = crypto.createHash('sha256').update((metadata.title + editableText(article.tree)).replace(/\s/g, '')).digest('hex');
-  const manifest = { source: relative, sourceSha256: digest, editableTextSha256: textDigest, title: metadata.title, permalink: metadata.permalink, counts: article.counts, inlineText: article.inlineText, assets: article.assets };
+  const manifest = { source: relative, sourceSha256: digest, editableTextSha256: textDigest, title: metadata.title, permalink: metadata.permalink, counts: article.counts, inlineText: article.inlineText, quoteParagraphs: article.quoteParagraphs, assets: article.assets };
   const manifestPath = path.join(output, 'manifest.json');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   fs.writeFileSync(path.join(output, '_work/article.json'), JSON.stringify(article.tree, null, 2));

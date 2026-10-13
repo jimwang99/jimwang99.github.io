@@ -23,6 +23,63 @@ def compact(text):
     return re.sub(r'\s', '', text)
 
 
+def check_formatting(document, manifest, errors):
+    formulas = {}
+    active = None
+    for node in document.iter():
+        if node.tag == f"{{{NS['w']}}}bookmarkStart" and node.get(f"{{{NS['w']}}}name", '').startswith('inline-math-'):
+            name = node.get(f"{{{NS['w']}}}name")
+            active = (name, node.get(f"{{{NS['w']}}}id"))
+            formulas[name] = []
+        elif active and node.tag == f"{{{NS['w']}}}bookmarkEnd" and node.get(f"{{{NS['w']}}}id") == active[1]:
+            active = None
+        elif active and node.tag == f"{{{NS['w']}}}r":
+            run = {'text': ''.join(item.text or '' for item in node.findall('.//w:t', NS))}
+            for tag, key in [('position', 'position'), ('sz', 'size')]:
+                value = node.find(f'w:rPr/w:{tag}', NS)
+                if value is not None:
+                    run[key] = value.get(f"{{{NS['w']}}}val")
+            align = node.find('w:rPr/w:vertAlign', NS)
+            if align is not None:
+                run['alignment'] = align.get(f"{{{NS['w']}}}val")
+            formulas[active[0]].append(run)
+    for item in manifest.get('inlineText', []):
+        if item['kind'] != 'inline-math':
+            continue
+        if 'runs' not in item or 'id' not in item:
+            errors.append(f"Inline math lacks rich-text metadata; re-export: {item['source']}")
+            continue
+        expected = []
+        for run in item['runs']:
+            value = {'text': run['text']}
+            for key in ['position', 'size']:
+                if key in run:
+                    value[key] = str(run[key])
+            if run.get('subScript'):
+                value['alignment'] = 'subscript'
+            if run.get('superScript'):
+                value['alignment'] = 'superscript'
+            expected.append(value)
+        if formulas.get(item['id']) != expected:
+            errors.append(f"Inline math text or script formatting differs: {item['source']}")
+    fills = {'warning': 'FDE9E7', 'author': 'FFF4CC', 'default': 'F2F3F5'}
+    expected_quotes = []
+    if 'quoteParagraphs' not in manifest:
+        errors.append('Quote formatting metadata missing; re-export')
+    for item in manifest.get('quoteParagraphs', []):
+        if item['fill'] != fills.get(item['kind']):
+            errors.append(f"Wrong quote color for {item['kind']}")
+        expected_quotes.append((compact(item['text']), item['fill']))
+    actual_quotes = []
+    for paragraph in document.findall('.//w:p', NS):
+        shading = paragraph.find('w:pPr/w:shd', NS)
+        if shading is not None:
+            text = ''.join(item.text or '' for item in paragraph.findall('.//w:t', NS))
+            actual_quotes.append((compact(text), shading.get(f"{{{NS['w']}}}fill")))
+    if actual_quotes != expected_quotes:
+        errors.append('Quote text or paragraph background differs from the manifest')
+
+
 def check(docx, manifest_path=None, source_path=None):
     errors = []
     pending = []
@@ -51,6 +108,7 @@ def check(docx, manifest_path=None, source_path=None):
 
     manifest = json.loads(Path(manifest_path).read_text()) if manifest_path else None
     if manifest:
+        check_formatting(document, manifest, errors)
         if hashlib.sha256(compact(text).encode()).hexdigest() != manifest['editableTextSha256']:
             errors.append('Editable text differs from the exported source text')
         if len(pictures) != manifest['counts']['total']:
