@@ -11,13 +11,13 @@ This guide distills the user-provided `handoff.md`, canonical articles, and Jim'
 | Over-communication | [思考：过度沟通](../../../../content/posts/thoughts/思考-过度沟通-over-communication.md) | Connect specific human limitations to concrete practices such as pre-reading time, checklists, and documentation ownership. |
 | Huwcha Accelerator Architecture | [Huwcha Accelerator architecture](../../../../content/posts/architecture/huwcha-accelerator-architecture.md) | Dense hierarchical architecture notes, quantitative details, inline skepticism, and unanswered questions. |
 | Software Is King, Especially in AI | [Software is King, Especially in AI](../../../../content/posts/thoughts/software-is-king-especially-in-ai.md) | State a strong personal thesis, explain system-level tradeoffs, and derive a personal engineering judgment. |
-| Reviewed Chinese article | [端侧 coding agent 变得可用](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode.zh-cn.md) | Direct titles, concrete workflow actions, cohesive paragraphs, and a bounded judgment about similar tasks. |
+| Reviewed Chinese article | [端侧 coding agent 变得可用](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode-when-a-local-coding-agent-became-usable-for-my-workflow.zh-cn.md) | Direct titles, concrete workflow actions, cohesive paragraphs, and a bounded judgment about similar tasks. |
 
 English public versions use `https://jimwang99.github.io/posts/<topic>/<slug>/`; Chinese translations use `/zh-cn/posts/<topic>/<slug>/`. Hugo removes the `.en` and `.zh-cn` language suffixes from URLs. The repository preserves the title spelling “Huwcha”; the cited architecture manual is Hwacha. Do not silently rename historical paths.
 
 ## Calibration from Jim's reviewed Chinese article
 
-Use the [reviewed article](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode.zh-cn.md) to interpret these choices. Learn the writing decisions rather than copying its topic, measurements, or incidental spacing.
+Use the [reviewed article](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode-when-a-local-coding-agent-became-usable-for-my-workflow.zh-cn.md) to interpret these choices. Learn the writing decisions rather than copying its topic, measurements, or incidental spacing.
 
 - **State the point in the title.** Jim shortened the title to “端侧 coding agent 变得可用”. Prefer a concise subject and judgment when supported; a case-study subtitle or question is optional.
 - **Preserve the author's judgment scope.** Jim changed “对这个任务” to “对类似任务” and bounded the conclusion to programming tasks similar in scale to MNIST training. Keep that extension as his engineering judgment, alongside the open question about larger tasks. Measured observations retain their actual scope.
