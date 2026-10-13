@@ -23,7 +23,7 @@ Use lowercase, hyphenated names for new English slugs. Preserve existing publish
 
 Write each Markdown paragraph on one source line. Keep table and code-block line breaks. Escape literal dollar signs as `\$`. Match existing indentation: spaces in templates and YAML, with nested markup indented consistently. No formatter or linter is configured.
 
-Save full translations beside each other as `<slug>.en.md` and `<slug>.zh-cn.md`. Matching topic and slug link them through Hugo's language menu. English URLs stay unchanged; Chinese URLs start with `/zh-cn/`. Put the short English summary in `## TL;DR`; omit standalone social copies by default.
+Save full translations beside each other as `<slug>.en.md` and `<slug>.zh-cn.md`. Matching topic and slug link them through Hugo's language menu. English URLs stay unchanged; Chinese URLs start with `/zh-cn/`. Put the short English summary in `## TL;DR` and its Chinese counterpart in `## 概要`; omit standalone social copies by default.
 
 ## Validation
 

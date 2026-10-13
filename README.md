@@ -23,7 +23,7 @@ Edit the Markdown file under `content/posts/`. Set `draft: false` when it is rea
 
 Write English and Chinese versions beside each other as `<slug>.en.md` and `<slug>.zh-cn.md`, with front matter in each file. Keep the same topic and slug so [Hugo recognizes them as translations](https://gohugo.io/content-management/multilingual/). The Book theme's language menu links to the other version; each language's post list contains only its own version.
 
-English URLs stay at `/posts/<topic>/<slug>/`; Chinese URLs use `/zh-cn/posts/<topic>/<slug>/`. For example, `my-new-post.en.md` and `my-new-post.zh-cn.md` belong to the same article. Both are full blog versions. Put the short English summary in a `## TL;DR` section near the beginning of the English post. The default package has no separate WeChat or LinkedIn file. Existing posts without a language suffix remain in the default English site.
+English URLs stay at `/posts/<topic>/<slug>/`; Chinese URLs use `/zh-cn/posts/<topic>/<slug>/`. For example, `my-new-post.en.md` and `my-new-post.zh-cn.md` belong to the same article. Both are full blog versions. Put the short English summary in a `## TL;DR` section near the beginning of the English post, and its Chinese counterpart in a `## 概要` section near the beginning of the Chinese post. The default package has no separate WeChat or LinkedIn file. Existing posts without a language suffix remain in the default English site.
 
 ## Imported articles
 

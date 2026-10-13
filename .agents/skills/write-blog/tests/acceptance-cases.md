@@ -88,6 +88,7 @@ Expected:
 - Same underlying thesis, numbers, assumptions, and confidence in both versions.
 - Chinese retains the full technical account with natural wording, useful examples, and no platform length quota.
 - The English TL;DR leads with a concrete thesis or measurement, retains the comparison caveat, and introduces no claims beyond the article.
+- The Chinese version opens with a `## 概要` that matches the TL;DR's claims and caveats.
 - No “What do you think?”, “Agree?”, or “Thoughts?” ending.
 - No automatic posting, file creation, or publishing.
 
@@ -128,7 +129,7 @@ Prompt: `$write-blog Save a new draft under an existing topic in content/posts u
 
 Expected:
 - Check instructions and existing files; preserve unrelated work.
-- Create `.en.md` and `.zh-cn.md` translations with matching topic and slug, an English TL;DR, `draft: true`, and the current user-local date in both files.
+- Create `.en.md` and `.zh-cn.md` translations with matching topic and slug, an English TL;DR, a Chinese `## 概要`, `draft: true`, and the current user-local date in both files.
 - Do not invent experiment results, aliases, assets, or publication dates.
 - Run a draft-inclusive Hugo build and confirm both pages and reciprocal translation links, or report the precise validation blocker.
 - Do not change `draft: false`, commit, push, or deploy without applicable authorization.
@@ -165,7 +166,7 @@ Prompt after an angle has been selected: `$write-blog Rewrite this selected angl
 
 Expected:
 
-- Produce full English and Chinese blog translations with the same evidence and judgment scope, plus a TL;DR inside the English post.
+- Produce full English and Chinese blog translations with the same evidence and judgment scope, plus a TL;DR inside the English post and a `## 概要` inside the Chinese post.
 - Save `<slug>.en.md` and `<slug>.zh-cn.md` beside each other; create no standalone social copies by default.
 - Verify reciprocal translation links, stable English URLs, and Chinese URLs under `/zh-cn/`.
 - Verify each language's lists, feeds, and search contain only its own version, including during draft previews.
@@ -217,6 +218,18 @@ Expected:
 - Make and validate the requested Markdown change, then present the revision for human review before regenerating the DOCX.
 - Preserve the existing DOCX until the changed Markdown is approved; do not label it as matching the revision.
 - If asked to export an already reviewed, unchanged file instead, reuse that approval and continue without another review request.
+
+## 19. Chinese without 翻译腔
+
+Prompt: `$write-blog Cleanup only this Chinese section, which sits under a ## 概要 heading: 从架构角度理解它，一个有用的方法是跟踪工作及其状态如何经过这些资源。资源放置与协调决定了各个组件能否让下一步更早开始。这些资源服务于工作负载的不同部分，可以按需求采用不同的组合。[平台公告][platform] 兼容的缓存前缀可以节省重建状态的计算，但不会消除新增 token 的 attention 工作。最合适的策略取决于工作负载。`
+
+Expected:
+
+- Rewrite in spoken technical Chinese: verb clauses replace abstract noun subjects, the point is stated without the 一个有用的方法是 scaffold, and related clauses are joined.
+- Keep every claim and caveat, including the remaining attention work for new tokens and the dependence on workload; add no claims.
+- Move the citation inside its sentence as `（[平台公告][platform]）。`
+- Keep the `## 概要` heading.
+- Return the cleanup only, without an interview, angle selection, or an English rewrite.
 
 ## Evaluation record
 

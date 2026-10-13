@@ -2,7 +2,7 @@
 
 ## Source and scope
 
-This guide distills the user-provided `handoff.md`, canonical articles, and Jim's reviewed Chinese article in the existing checkout. Local Markdown avoids a network dependency at skill runtime. Samples show reasoning and voice; their technical claims are not automatically current facts, and they must not supply opinions for unrelated new articles.
+This guide distills the user-provided `handoff.md`, canonical articles, and Jim's reviewed Chinese articles in the existing checkout. Local Markdown avoids a network dependency at skill runtime. Samples show reasoning and voice; their technical claims are not automatically current facts, and they must not supply opinions for unrelated new articles.
 
 | Sample | Repository source | Pattern to learn |
 | --- | --- | --- |
@@ -12,6 +12,7 @@ This guide distills the user-provided `handoff.md`, canonical articles, and Jim'
 | Huwcha Accelerator Architecture | [Huwcha Accelerator architecture](../../../../content/posts/architecture/huwcha-accelerator-architecture.md) | Dense hierarchical architecture notes, quantitative details, inline skepticism, and unanswered questions. |
 | Software Is King, Especially in AI | [Software is King, Especially in AI](../../../../content/posts/thoughts/software-is-king-especially-in-ai.md) | State a strong personal thesis, explain system-level tradeoffs, and derive a personal engineering judgment. |
 | Reviewed Chinese article | [端侧 coding agent 变得可用](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode-when-a-local-coding-agent-became-usable-for-my-workflow.zh-cn.md) | Direct titles, concrete workflow actions, cohesive paragraphs, and a bounded judgment about similar tasks. |
+| Reviewed Chinese derivation | [理解 FlashAttention](../../../../content/posts/machine-learning/understanding-flashattention.zh-cn.md); Jim's edits are in commit `9cb6711` | Conversational explanation, glossed terms, bold key results, `笔者：` asides, and open questions as a numbered list. |
 
 English public versions use `https://jimwang99.github.io/posts/<topic>/<slug>/`; Chinese translations use `/zh-cn/posts/<topic>/<slug>/`. Hugo removes the `.en` and `.zh-cn` language suffixes from URLs. The repository preserves the title spelling “Huwcha”; the cited architecture manual is Hwacha. Do not silently rename historical paths.
 
@@ -47,6 +48,28 @@ Natural first-person forms include 我认为, 我的理解是, 我更关心的�
 Chinese-English mixing is normal when it improves precision. Do not mechanically translate system architecture, compiler, runtime, speculative decoding, KV cache, bandwidth, throughput, prefill, decode, quantization, ownership, or tech lead. Keep metric names consistent with the source.
 
 Functional headings include 为什么？, 怎么做？, System architecture, Decoupling, Why does this matter?, My Answer, and Experiment Setup. Avoid ceremonial headings such as 一个新时代正在到来, 不容忽视的巨大变化, 重新想象未来, and 写在最后.
+
+## Chinese without 翻译腔
+
+The Chinese version is Jim explaining the same argument in Chinese, not a sentence-by-sentence translation of the English. AI drafts drift into 翻译腔: Chinese that reads smoothly only when mapped back to English. Write each paragraph from its meaning, then revise it against these patterns. Keep every claim, number, caveat, and citation; the pass changes wording, not content.
+
+| Write | 翻译腔 draft | Jim-style Chinese |
+| --- | --- | --- |
+| Verbs and 怎么/能不能 clauses carry the idea | 资源放置与协调决定了各个组件能否让下一步更早开始。 | 资源怎么放置、怎么协调，决定了它们能不能让下一步更早开始。 |
+| The point, stated directly | 从架构角度理解它，一个有用的方法是跟踪工作及其状态如何经过这些资源。 | 理解这套架构，最有用的办法是跟着“工作”和它的“状态”在这些资源之间走一遍。 |
+| One thought per sentence, clauses joined by commas and colons | 这些是系统的组成单元。各类资源的比例可以变化，一个请求也不必使用所有资源。 | 这些都是积木：各类资源的比例可以调整，一个请求也不一定用到全部资源。 |
+| Spoken technical register | 兼容的缓存前缀可以节省重建状态的计算，但不会消除新增 token 的 attention 工作。 | 兼容的缓存前缀可以省掉重建这部分状态的计算，但新 token 的 attention 计算还是要做。 |
+| Citations inside the sentence, before 。 | `……可以按需求采用不同的组合。[Vera Rubin 平台公告][platform]` | `……可以按需要配比（[Vera Rubin 平台公告][platform]）。` |
+| Each caveat beside the claim it limits, phrased as speech | 共享存储增加了一种放置选择，最合适的策略取决于工作负载。 | 共享存储多提供了一个放状态的地方，哪种策略最好，还是要看工作负载。 |
+
+Jim's reviewed Chinese posts show these habits:
+
+- Gloss a term on first use in full-width parentheses, as in `tiling（分块）` and `Context（上下文）`; a coined Chinese name can carry its English source instead.
+- Explain the way he talks through a derivation: 可以这么理解, 如果用 Python 来表示的话, 这里我们解释一下. Use a question heading such as 如何理解？ when the section answers that question.
+- Bold the one or two sentences that carry the conclusion. When bold text ends with Chinese punctuation, put a space or line end after the closing `**`; Goldmark otherwise renders the asterisks literally.
+- Put Jim's sourced personal asides in a `> 笔者：` quote, and list open questions as a numbered list.
+
+The pass is done when a reader never has to rebuild the English sentence to follow a paragraph, every citation sits inside its sentence, and the Chinese still carries every claim and caveat of the English.
 
 ## Epistemic distinctions
 
@@ -87,4 +110,4 @@ This is semantic editing, not a blind string blacklist. Preserve literal quotati
 
 ## Bilingual blog and TL;DR
 
-English and Chinese are full blog translations with no fixed length limit. Preserve the same technical account, including useful derivations, examples, measurements, and limitations. Chinese wording should read naturally and retain Jim's paragraph structure and judgment scope. The English TL;DR summarizes the main idea and strongest evidence while retaining material caveats; it adds no new claims. The default deliverable is the bilingual article, with the summary inside EN.
+English and Chinese are full blog translations with no fixed length limit. Preserve the same technical account, including useful derivations, examples, measurements, and limitations. Chinese wording follows the 翻译腔 guidance above and retains Jim's paragraph structure and judgment scope. The English TL;DR summarizes the main idea and strongest evidence while retaining material caveats; it adds no new claims. The Chinese `## 概要` is its counterpart, held to the same rules. The default deliverable is the bilingual article, with the TL;DR inside EN and the 概要 inside CN.

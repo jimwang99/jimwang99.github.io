@@ -1,6 +1,6 @@
 ---
 name: write-blog
-description: Turn Jim's technical notes, experiments, and voice transcripts into English and Chinese blog translations with an English TL;DR, or technical notes, while preserving his reasoning and judgments. Use for argument extraction, opinion pieces, architecture notes, translation, or Jim-style cleanup. Analyze raw material and propose angles before drafting.
+description: Turn Jim's technical notes, experiments, and voice transcripts into English and Chinese blog translations with an English TL;DR and Chinese 概要, or technical notes, while preserving his reasoning and judgments. Use for argument extraction, opinion pieces, architecture notes, translation, or Jim-style cleanup. Analyze raw material and propose angles before drafting.
 ---
 
 # Write blog
@@ -30,7 +30,7 @@ Invoke the skill by name, `$write-blog` in Codex or `/write-blog` in Claude Code
 
 These operations are phrasings handled inside this one skill, not separate commands.
 
-Use the input language for analysis and the reasoning mode best supported by the material. For drafting or rewriting a publication package, default to full English (EN) and Chinese (CN) blog translations, with a `## TL;DR` section near the beginning of the English version. Keep the approved argument, technical detail, evidence, and judgment scope consistent across languages. An explicit language, platform, or cleanup-only request sets a narrower scope; standalone social copies are produced only when requested.
+Use the input language for analysis and the reasoning mode best supported by the material. For drafting or rewriting a publication package, default to full English (EN) and Chinese (CN) blog translations, with a `## TL;DR` section near the beginning of the English version and a `## 概要` section near the beginning of the Chinese version. Keep the approved argument, technical detail, evidence, and judgment scope consistent across languages. An explicit language, platform, or cleanup-only request sets a narrower scope; standalone social copies are produced only when requested.
 
 ## Interview in batches
 
@@ -88,7 +88,7 @@ Then stop and invite Jim to select or modify an angle. This checkpoint is explic
 
 Use the approved angle, available evidence, requested platform, and reasoning mode. If new material changes the approved thesis, expose the change rather than silently choosing a different thesis.
 
-Follow Jim's reviewed writing: concise titles that state the point, concrete actions and component roles, and paragraphs that keep a comparison or causal chain together. Use natural technical Chinese with a brief inline gloss where it helps the audience. Preserve the scope of his stated judgment, including a bounded extension to similar tasks, while distinguishing it from measured results.
+Follow Jim's reviewed writing: concise titles that state the point, concrete actions and component roles, and paragraphs that keep a comparison or causal chain together. Write the Chinese version as Jim explaining the argument in Chinese: compose each paragraph from its meaning, following the 翻译腔 guidance in the style notes. Preserve the scope of his stated judgment, including a bounded extension to similar tasks, while distinguishing it from measured results.
 
 ### Opinion / thought mode
 
@@ -107,10 +107,11 @@ Keep hierarchical bullets, equations, code, and personal technical comments when
 | Version | Default target | Editing priority |
 | --- | --- | --- |
 | English blog (EN) | No fixed length | Complete argument and technical detail; diagrams, equations, and code when useful. |
-| Chinese blog (CN) | No fixed length | Full translation with natural technical Chinese; preserve the mechanism, evidence, caveats, and useful examples. |
+| Chinese blog (CN) | No fixed length | Full translation in Jim's technical Chinese, free of 翻译腔; preserve the mechanism, evidence, caveats, citations, and useful examples. |
 | English TL;DR | Concise section within EN | Lead with the main claim or observation; retain the strongest evidence and material uncertainty. |
+| Chinese `## 概要` | Concise section within CN | The Chinese counterpart of the TL;DR: same main claim, evidence, and uncertainty. |
 
-User length and language constraints take priority. Translate meaning naturally while keeping the same numbers, assumptions, and confidence. A TL;DR adds no claims beyond the full article. A real unresolved technical question is acceptable; engagement bait is not.
+User length and language constraints take priority. Translate meaning naturally while keeping the same numbers, assumptions, and confidence. A TL;DR or 概要 adds no claims beyond the full article. A real unresolved technical question is acceptable; engagement bait is not.
 
 ## Phase 3: Jim-style cleanup
 
@@ -126,10 +127,11 @@ Review the draft before returning it:
 8. Can anything be deleted without losing reasoning?
 9. Are uncertainty, conflicting evidence, and unresolved questions still visible?
 10. Does the ending offer a supported technical judgment or an honest open question?
+11. For Chinese text: does every paragraph read as Chinese first? Run the 翻译腔 pass in the style notes until its completion condition holds.
 
 Aim to cut roughly 20–30% of a padded draft when meaning is unchanged. This is not a quota: never remove measurements, caveats, reasoning, or useful technical detail to hit it. A concise or dense source may need little reduction.
 
-Return the cleaned article or note. Keep material editorial questions separate from the article, briefly, only when needed. Do not attach the checklist or analysis by default. For a cleanup-only request, return the revised text and flag any substantive uncertainty that editing cannot resolve.
+Return the cleaned article or note. Keep material editorial questions separate from the article, briefly, only when needed. Do not attach the checklist or analysis by default. For a cleanup-only request, return the revised text and flag any substantive uncertainty that editing cannot resolve. Cleanup rewrites wording and keeps the article's sections, including a Chinese `## 概要`.
 
 ## Phase 4: Human review before DOCX export
 
