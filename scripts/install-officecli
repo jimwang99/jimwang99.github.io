@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+"""Install the pinned OfficeCLI release in this repository, with checksum verification."""
+import hashlib
+import logging
+import platform
+from pathlib import Path
+import tempfile
+import urllib.request
+
+VERSION = "1.0.157"
+CHECKSUMS = {
+    "mac-arm64": "0dae0990a9cc29688a5d54469f984c34e5b15ab6bbd194a0ffdc571bb9040124",
+    "mac-x64": "178c1e9ebaf44c24d2b4b359064a5dea6eb7b2f539809871a3de1c09599dff9f",
+    "linux-arm64": "60db926c8a1371984b9e99622a834777befb02b6f73d0f3fff914ffcc2760d2f",
+    "linux-x64": "f8eefe88dbfa7464bee421e5421efe57fc26bc3180b30e56eef58594c8245c94",
+}
+
+
+def main():
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    system = {"Darwin": "mac", "Linux": "linux"}.get(platform.system())
+    arch = {"arm64": "arm64", "aarch64": "arm64", "x86_64": "x64", "AMD64": "x64"}.get(platform.machine())
+    target = f"{system}-{arch}"
+    if target not in CHECKSUMS:
+        raise SystemExit("This installer supports macOS and glibc Linux on ARM64/x64.")
+    expected = CHECKSUMS[target]
+    destination = Path(__file__).resolve().parent.parent / ".tools/officecli/officecli"
+    if destination.exists() and hashlib.sha256(destination.read_bytes()).hexdigest() == expected:
+        logging.info("OfficeCLI %s already installed: %s", VERSION, destination)
+        return
+    url = f"https://github.com/iOfficeAI/OfficeCLI/releases/download/v{VERSION}/officecli-{target}"
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    logging.info("Downloading OfficeCLI %s for %s", VERSION, target)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=destination.parent, delete=False) as output:
+            temporary = Path(output.name)
+            digest = hashlib.sha256()
+            with urllib.request.urlopen(url, timeout=60) as response:
+                while chunk := response.read(1024 * 1024):
+                    digest.update(chunk)
+                    output.write(chunk)
+        if digest.hexdigest() != expected:
+            raise SystemExit("OfficeCLI checksum mismatch; installation aborted.")
+        temporary.chmod(0o755)
+        temporary.replace(destination)
+        logging.info("Installed %s", destination)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+if __name__ == "__main__":
+    main()

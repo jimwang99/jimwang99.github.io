@@ -1,4 +1,6 @@
 {
+  "exporter": "officecli",
+  "officecliVersion": "1.0.157",
   "source": "content/posts/machine-learning/understanding-flashattention.zh-cn.md",
   "sourceSha256": "8b517ea4a1a5aa099ee3ad5cd277608c7a5528726a052943ff733da6c318e629",
   "editableTextSha256": "bc77ce49739cbc17340b4bb3e61c0254787a3844f383d0a2ab91c46fbff5a174",

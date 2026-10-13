@@ -11,7 +11,7 @@ Review the exported document without rewriting the approved Markdown. Run this s
 
 Use `$review-wechat-docx <path-to-docx>` in Codex or `/review-wechat-docx <path-to-docx>` in Claude Code. The canonical skill lives in `.agents/skills/review-wechat-docx/`; `.claude/skills/review-wechat-docx` links to it. Maintain the canonical files only.
 
-Run commands from the repository root. Structural checks need only Python's standard library; use `python3` or the available Python runtime. Rendering needs a local DOCX renderer and a way to view page images. Follow the active environment's document instructions when available. Do not assume a Codex plugin, API, or Google Drive connection is available in Claude Code.
+Run commands from the repository root. Structural checks need only Python's standard library; use `python3` or the available Python runtime. Use the shared [officecli](../officecli/SKILL.md) skill for DOCX creation, validation, and rendering; use an image viewer to inspect its page PNGs. Do not assume a Codex plugin, API, or Google Drive connection is available in Claude Code.
 
 ## 1. Establish the source
 
@@ -19,9 +19,10 @@ Identify the DOCX, reviewed Markdown, and exporter `manifest.json`. Reuse existi
 
 ## 2. Check the file structure
 
-Run the bundled checker:
+Run OfficeCLI schema validation and the bundled content checker. Both must pass:
 
 ```sh
+scripts/officecli validate article.docx --json
 python3 .agents/skills/review-wechat-docx/scripts/check_docx.py article.docx --manifest manifest.json --source article.zh-cn.md
 ```
 
@@ -37,9 +38,9 @@ Required representation for this workflow:
 
 ## 3. Render and inspect every page
 
-Use the documents skill's managed `render_docx.py` when available and open every generated page PNG. This repository's [exporter `--render` option](../../../README.md#export-for-wechat) uses that renderer with the local Chinese font configuration; either agent can run the command when its dependencies are installed. Reuse current previews only when they match the DOCX being reviewed. Regenerate previews after a document change.
+Use OfficeCLI's HTML renderer and inspect every page PNG. The repository's [exporter `--render` option](../../../README.md#export-for-wechat) generates `document.html` and `page-N.png` in `_work/preview/` through OfficeCLI. It corrects stranded headings with DOCX page breaks, queries the HTML paginator for the page count, and captures every page through OfficeCLI. The exporter also handles the pinned renderer's first-page pagination shortcut. Both agents use the same commands and renderer. Keep previews local and ignored.
 
-Without the managed renderer, use an installed local DOCX-to-PDF renderer such as LibreOffice, followed by a PDF-to-PNG tool such as Poppler. Verify Chinese fonts before judging the pages. If no renderer or image viewer is available, finish structural checks and report visual review as incomplete; do not declare the DOCX ready.
+Reuse previews only when they match the DOCX being reviewed; regenerate them after a document change. For a targeted inspection, use `scripts/officecli view article.docx html -o preview.html`; use the exporter for the complete PNG set. If OfficeCLI, a supported browser, or an image viewer is missing, finish structural checks and report visual review as incomplete; do not declare the DOCX ready.
 
 Check Chinese glyphs; inline formula meaning and readability; mid-word breaks in variables and formula tokens; complete equations; code indentation and wrapping; bold text, links, lists, headings, and source order; image clipping; overlaps; and page breaks. Compare each inline formula's `source`, `text`, and `runs` in the manifest, especially compound subscripts, nested powers, and vector accents. Check that script text remains readable and does not collide with the baseline or adjacent lines. Quote shading must cover the paragraph and keep sufficient contrast with text. Structural checks alone do not prove visual or mathematical fidelity.
 

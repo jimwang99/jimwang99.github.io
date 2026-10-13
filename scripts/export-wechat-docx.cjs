@@ -13,18 +13,15 @@ const runtime = process.env.CODEX_DOCUMENT_RUNTIME || path.join(os.homedir(), '.
 const packages = path.join(runtime, 'dependencies/node/node_modules');
 const { chromium } = require(path.join(packages, 'playwright'));
 const mathMLToRuns = require('./mathml-to-runs.cjs');
-const docx = require(path.join(packages, 'docx'));
-const { Document, Paragraph, TextRun, ImageRun, ExternalHyperlink, Packer, HeadingLevel,
-  AlignmentType, Table, TableRow, TableCell, WidthType, LevelFormat, Bookmark } = docx;
+const { createDocument, renderDocument } = require('./officecli-docx.cjs');
 const python = path.join(runtime, 'dependencies/python/bin/python3');
-const skill = path.join(runtime, 'plugins/openai-primary-runtime/plugins/documents/skills/documents');
 const CONTENT_WIDTH = 640;
 const editableText = node => node.text ?? (node.children || []).map(editableText).join('');
 
 function mathRunOptions(run) {
   if (run.scripts.length === 0) return { text: run.text };
   if (run.scripts.length === 1) return { text: run.text, [run.scripts[0] === 'sub' ? 'subScript' : 'superScript']: true };
-  // OOXML positions are signed half-points; docx writes the value verbatim.
+  // OOXML positions are signed half-points.
   const position = Math.round(run.scripts.reduce((offset, kind, depth) => offset + (kind === 'sup' ? 8 : -4) * 0.72 ** depth, 0));
   return { text: run.text, position: String(position), size: Math.max(12, Math.round(24 * 0.72 ** run.scripts.length)) };
 }
@@ -190,114 +187,6 @@ async function renderArticle(site, url, output) {
   } finally { await browser.close(); }
 }
 
-function makeDocument(article, output, title) {
-  const assets = new Map(article.assets.map(asset => [asset.id, asset]));
-  const math = new Map(article.inlineText.filter(item => item.kind === 'inline-math').map(item => {
-    item.runs = item.runs.map(mathRunOptions);
-    return [item.id, item];
-  }));
-  article.quoteParagraphs = [];
-  const font = { ascii: 'Arial', hAnsi: 'Arial', eastAsia: 'Heiti SC' };
-  function inline(node, style = {}) {
-    if (node.text !== undefined) return node.text ? [new TextRun({ text: node.text, ...style })] : [];
-    if (node.attrs?.['data-export-inline-math']) {
-      const formula = math.get(node.attrs['data-export-inline-math']);
-      return [new Bookmark({ id: formula.id, children: formula.runs.map(run => new TextRun({ ...style, ...run })) })];
-    }
-    if (node.tag === 'img') {
-      const asset = assets.get(node.attrs['data-export-asset']);
-      if (!asset) throw new Error('Image lacks an embedded asset');
-      const scale = Math.min(1, CONTENT_WIDTH / asset.width, 840 / asset.height);
-      asset.displayScale = scale;
-      return [new ImageRun({ type: 'png', data: fs.readFileSync(path.join(output, asset.file)), transformation: { width: asset.width * scale, height: asset.height * scale }, altText: { name: asset.id, title: asset.kind, description: asset.source } })];
-    }
-    if (node.tag === 'br') return [new TextRun({ break: 1 })];
-    if (node.tag === 'strong' || node.tag === 'b') style = { ...style, bold: true };
-    if (node.tag === 'em' || node.tag === 'i') style = { ...style, italics: true };
-    if (node.tag === 'del' || node.tag === 's') style = { ...style, strike: true };
-    if (node.tag === 'code') style = { ...style, font: { ascii: 'Menlo', hAnsi: 'Menlo', eastAsia: 'Heiti SC' }, size: 22, shading: { fill: 'F1F3F5' } };
-    const children = (node.children || []).flatMap(child => inline(child, style));
-    if (node.tag === 'a' && node.attrs.href && !node.attrs.href.startsWith('#')) {
-      const link = new URL(node.attrs.href, article.permalink).href;
-      return [new ExternalHyperlink({ link, children: (node.children || []).flatMap(child => inline(child, { ...style, color: '1756A9', underline: {} })) })];
-    }
-    return children;
-  }
-  const numbering = [];
-  function blocks(nodes, context = {}) {
-    const result = [];
-    let pending = [];
-    function paragraphContext() {
-      const { list, quoteKind, ...options } = context;
-      if (list && !list.used) {
-        options.numbering = { reference: list.reference, level: 0 };
-        list.used = true;
-      }
-      return options;
-    }
-    function paragraph(nodes, options = {}) {
-      if (context.quoteKind) article.quoteParagraphs.push({ kind: context.quoteKind, fill: context.shading.fill, text: nodes.map(editableText).join('') });
-      return new Paragraph({ ...paragraphContext(), children: nodes.flatMap(node => inline(node)), ...options });
-    }
-    function flush() {
-      if (pending.some(node => node.tag || node.text?.trim())) result.push(paragraph(pending));
-      pending = [];
-    }
-    for (const node of nodes) {
-      if (node.text !== undefined) { if (node.text.trim()) pending.push(node); continue; }
-      if (node.tag === 'p' || /^h[1-6]$/.test(node.tag)) {
-        flush();
-        const imageKind = node.attrs['data-image-block'];
-        const heading = /^h[1-6]$/.test(node.tag) ? Number(node.tag[1]) : null;
-        result.push(paragraph(node.children, {
-          ...(heading ? { heading: HeadingLevel[`HEADING_${Math.max(1, heading - 1)}`], keepNext: true } : {}),
-          ...(imageKind ? { alignment: imageKind === 'display-math' ? AlignmentType.CENTER : AlignmentType.LEFT, spacing: { before: 100, after: 180 }, keepLines: true } : {}),
-        }));
-      } else if (node.tag === 'ul' || node.tag === 'ol') {
-        flush();
-        const reference = `list-${numbering.length}`;
-        numbering.push({ reference, levels: [{ level: 0, format: node.tag === 'ol' ? LevelFormat.DECIMAL : LevelFormat.BULLET, text: node.tag === 'ol' ? '%1.' : '•', alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 360, hanging: 280 } } } }] });
-        for (const item of node.children.filter(child => child.tag === 'li')) {
-          result.push(...blocks(item.children, { ...context, list: { reference, used: false } }));
-        }
-      } else if (node.tag === 'blockquote') {
-        const text = editableText(node).trimStart();
-        const quoteKind = text.startsWith('注意') ? 'warning' : text.startsWith('笔者') ? 'author' : 'default';
-        const fill = { warning: 'FDE9E7', author: 'FFF4CC', default: 'F2F3F5' }[quoteKind];
-        flush(); result.push(...blocks(node.children, { ...context, quoteKind, shading: { fill }, indent: { left: 280, right: 160 }, spacing: { before: 160, after: 160 }, keepLines: true }));
-      } else if (node.tag === 'table') {
-        flush();
-        const rows = [];
-        function collectRows(parent) {
-          if (parent.tag === 'tr') rows.push(parent);
-          else (parent.children || []).forEach(collectRows);
-        }
-        collectRows(node);
-        result.push(new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, rows: rows.map(row => new TableRow({ children: row.children.filter(cell => ['td', 'th'].includes(cell.tag)).map(cell => new TableCell({ children: blocks(cell.children), margins: { top: 80, bottom: 80, left: 100, right: 100 } })) })) }));
-      } else if (['div', 'section'].includes(node.tag) || (node.tag === 'span' && node.children.some(child => child.tag === 'p'))) {
-        flush(); result.push(...blocks(node.children, context));
-      } else if (['script', 'style', 'link', 'hr'].includes(node.tag)) {
-        continue;
-      } else pending.push(node);
-    }
-    flush(); return result;
-  }
-  const paragraphs = blocks(article.tree.children);
-  return new Document({
-    creator: 'Jim Wang', title, description: 'Article with editable inline math and code, and PNG display equations and code blocks',
-    styles: { default: {
-      // docx emits w:wordWrap=0 for true, preventing Latin words from splitting.
-      document: { run: { font, size: 24, color: '171717', language: { value: 'en-US', eastAsia: 'zh-CN' } }, paragraph: { spacing: { after: 160, line: 300 }, widowControl: true, wordWrap: true } },
-      title: { run: { font, size: 40, bold: true, color: '000000' }, paragraph: { spacing: { before: 0, after: 240 }, keepNext: true } },
-      heading1: { run: { font, size: 30, bold: true, color: '000000' }, paragraph: { spacing: { before: 280, after: 140 }, keepNext: true } },
-      heading2: { run: { font, size: 26, bold: true, color: '000000' }, paragraph: { spacing: { before: 200, after: 100 }, keepNext: true } },
-      heading3: { run: { font, size: 24, bold: true, color: '000000' }, paragraph: { keepNext: true } },
-    } },
-    numbering: { config: numbering },
-    sections: [{ properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1000, bottom: 1000, left: 1100, right: 1100 } } }, children: [new Paragraph({ heading: HeadingLevel.TITLE, text: title }), ...paragraphs] }],
-  });
-}
-
 async function main() {
   const { values, positionals } = parseArgs({ allowPositionals: true, options: { output: { type: 'string', short: 'o' }, render: { type: 'boolean' }, help: { type: 'boolean', short: 'h' } } });
   if (values.help || positionals.length !== 1) {
@@ -320,38 +209,25 @@ async function main() {
   execFileSync('hugo', ['--buildDrafts', '--buildFuture', '--buildExpired', '--destination', site, '--baseURL', 'http://export.invalid/', '--quiet'], { cwd: repo, stdio: 'inherit' });
   const article = await renderArticle(site, new URL(metadata.permalink).pathname, output);
   article.permalink = metadata.permalink;
-  const document = makeDocument(article, output, metadata.title);
+  for (const item of article.inlineText) if (item.kind === 'inline-math') item.runs = item.runs.map(mathRunOptions);
   const draft = path.join(output, '_work/draft.docx');
-  fs.writeFileSync(draft, await Packer.toBuffer(document));
+  createDocument(article, output, metadata.title, draft);
+  if (values.render) await renderDocument(draft, path.join(output, '_work/preview'), chromium);
   const textDigest = crypto.createHash('sha256').update((metadata.title + editableText(article.tree)).replace(/\s/g, '')).digest('hex');
-  const manifest = { source: relative, sourceSha256: digest, editableTextSha256: textDigest, title: metadata.title, permalink: metadata.permalink, counts: article.counts, inlineText: article.inlineText, quoteParagraphs: article.quoteParagraphs, assets: article.assets };
+  const manifest = { exporter: 'officecli', officecliVersion: execFileSync(path.join(__dirname, 'officecli'), ['--version'], { encoding: 'utf8' }).trim(), source: relative, sourceSha256: digest, editableTextSha256: textDigest, title: metadata.title, permalink: metadata.permalink, counts: article.counts, inlineText: article.inlineText, quoteParagraphs: article.quoteParagraphs, assets: article.assets };
   const manifestPath = path.join(output, 'manifest.json');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   fs.writeFileSync(path.join(output, '_work/article.json'), JSON.stringify(article.tree, null, 2));
   const final = path.join(output, stem + '.docx');
-  const positioned = path.join(output, '_work/positioned.docx');
-  execFileSync(python, [path.join(__dirname, 'finish-wechat-docx.py'), draft, manifestPath, positioned], { stdio: 'inherit' });
-  execFileSync(python, [path.join(skill, 'scripts/google_docs_title_sanitize.py'), positioned, '--out', final], { stdio: 'inherit' });
-  execFileSync(python, [path.join(skill, 'scripts/google_docs_title_sanitize.py'), final, '--check'], { stdio: 'inherit' });
+  execFileSync(python, [path.join(repo, '.agents/skills/review-wechat-docx/scripts/check_docx.py'), draft, '--manifest', manifestPath, '--source', source], { stdio: 'inherit' });
   if (crypto.createHash('sha256').update(fs.readFileSync(source)).digest('hex') !== digest) throw new Error('Source changed during export');
+  fs.copyFileSync(draft, final);
   const currentAssets = new Set(article.assets.map(asset => path.basename(asset.file)));
   for (const name of fs.readdirSync(path.join(output, 'assets'))) {
     if (/^asset-\d+\.png$/.test(name) && !currentAssets.has(name)) fs.unlinkSync(path.join(output, 'assets', name));
   }
   log(`DOCX: ${final}`);
   log(`Embedded images: ${article.counts.total}; source unchanged.`);
-  if (values.render) {
-    const env = { ...process.env };
-    if (process.platform === 'darwin') {
-      // The bundled headless renderer needs explicit access to macOS CJK fonts.
-      const resources = path.join(runtime, 'dependencies/native/libreoffice-headless/libreoffice/LibreOfficeDev.app/Contents/Resources');
-      const escape = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
-      const config = path.join(output, '_work/fonts.conf');
-      fs.writeFileSync(config, `<?xml version="1.0"?><fontconfig><dir>/System/Library/Fonts</dir><dir>${escape(resources)}/fonts/truetype</dir><include>${escape(resources)}/fontconfig/conf.d</include><cachedir>${escape(output)}/_work/font-cache</cachedir></fontconfig>`);
-      env.FONTCONFIG_FILE = config;
-    }
-    execFileSync(python, [path.join(skill, 'render_docx.py'), final, '--output_dir', path.join(output, '_work/preview'), '--emit_pdf'], { env, stdio: 'inherit' });
-  }
 }
 
 main().catch(error => { process.stderr.write(`${error.stack}\n`); process.exitCode = 1; });

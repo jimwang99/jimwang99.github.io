@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+binary="${OFFICECLI_BIN:-$repo/.tools/officecli/officecli}"
+if [[ ! -x "$binary" ]]; then
+  echo 'OfficeCLI is missing. Run: scripts/install-officecli' >&2
+  exit 1
+fi
+# Each batch saves before the independent content checker or renderer reads it.
+export OFFICECLI_NO_AUTO_RESIDENT=1
+exec "$binary" "$@"

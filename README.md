@@ -36,25 +36,29 @@ Export a blog page as DOCX with editable prose, inline formulas, and inline code
 **Review comes first:** finish and validate the Markdown, then give it to Jim for human review. Run the exporter only after Jim approves that version. Angle selection or an instruction to draft does not approve the resulting Markdown. If the Markdown changes after approval, return the revised version for review before exporting again.
 
 ```sh
+scripts/install-officecli
 scripts/export-wechat-docx content/posts/machine-learning/understanding-flashattention.zh-cn.md --render
 ```
 
-This local workflow needs Hugo, Chrome, and the Codex document runtime at `~/.cache/codex-runtimes/codex-primary-runtime`. The runtime supplies Node, Python, Playwright, the DOCX library, and LibreOffice. Set `CODEX_DOCUMENT_RUNTIME` for a different runtime location or `WECHAT_CHROMIUM` for a different Chromium executable. Both Codex and Claude Code can run the command when these local dependencies are installed. It currently targets this Mac setup; it is not part of the publishing workflow.
+This local workflow uses Hugo and Chrome for article assets, [OfficeCLI](https://github.com/iOfficeAI/OfficeCLI/releases/tag/v1.0.157) for DOCX creation and rendering, and the Codex document runtime at `~/.cache/codex-runtimes/codex-primary-runtime` for Node, Python, and Playwright. `scripts/install-officecli` installs the pinned binary under ignored `.tools/officecli/` and verifies its checksum. Run OfficeCLI commands through `scripts/officecli`; no global installation is needed. Set `CODEX_DOCUMENT_RUNTIME` for a different runtime location or `WECHAT_CHROMIUM` for the article browser. OfficeCLI's screenshot renderer also needs an installed browser it supports, such as Chrome. Both Codex and Claude Code can run this local workflow; it is not part of site publishing.
 
-The DOCX is saved under `exports/<source-stem>/`, beside an `assets/` directory of backup PNGs and `manifest.json` with source hashes and image metadata. `--output <directory>` changes the destination. `--render` adds page previews under `_work/preview/`; inspect every page before use, especially long formulas and code blocks. Commit the final DOCX, manifest, and backup PNGs to GitHub with the reviewed Markdown. Temporary builds and previews under `_work/` remain ignored. The `exports/` directory stays outside Hugo content and static assets, so it does not create blog pages or site downloads.
+The official [OfficeCLI skill](.agents/skills/officecli/SKILL.md) is installed in `.agents/skills/officecli/`, with `.claude/skills/officecli` linking to it. Use `$officecli` in Codex or `/officecli` in Claude Code.
+
+The DOCX is saved under `exports/<source-stem>/`, beside an `assets/` directory of backup PNGs and `manifest.json` with source hashes and image metadata. `--output <directory>` changes the destination. `--render` uses OfficeCLI to create `document.html` and a PNG for each page under `_work/preview/`; inspect every page before use, especially long formulas and code blocks. Commit the final DOCX, manifest, and backup PNGs to GitHub with the reviewed Markdown. Temporary builds and previews under `_work/` remain ignored. The `exports/` directory stays outside Hugo content and static assets, so it does not create blog pages or site downloads.
 
 GitHub is the storage location; no Google Drive connection or upload is needed. Download the DOCX from the repository when preparing a WeChat post. Verify images after saving, reopening, and viewing the WeChat draft on a phone; this transfer still needs manual verification. Keep `assets/` available if an image needs uploading separately. Remote article images are not fetched by the exporter.
 
 ### Required DOCX review
 
-After export and before delivery or GitHub storage, run [review-wechat-docx](.agents/skills/review-wechat-docx/SKILL.md). It checks editable inline content and its script formatting, quote background colors, standalone PNGs, source and text hashes, and image relationships, then requires inspection of every rendered page. It records local review separately from the actual WeChat transfer test, including whether WeChat retains superscripts, subscripts, and paragraph shading.
+After export and before delivery or GitHub storage, run [review-wechat-docx](.agents/skills/review-wechat-docx/SKILL.md). It requires OfficeCLI schema validation and checks editable inline content and its script formatting, quote background colors, standalone PNGs, source and text hashes, and image relationships, then requires inspection of every rendered page. It records local review separately from the actual WeChat transfer test, including whether WeChat retains superscripts, subscripts, and paragraph shading.
 
 - **Codex:** `$review-wechat-docx exports/<source-stem>/<source-stem>.docx`
 - **Claude Code:** `/review-wechat-docx exports/<source-stem>/<source-stem>.docx`
 
-Claude Code loads the project skill through `.claude/skills/review-wechat-docx`, a symlink to the canonical `.agents/skills/review-wechat-docx` directory. Maintain the shared files there. This uses Claude Code's [project skill layout and invocation](https://code.claude.com/docs/en/skills). The checker needs only Python's standard library; without a document renderer, visual review remains incomplete.
+Claude Code loads the project skill through `.claude/skills/review-wechat-docx`, a symlink to the canonical `.agents/skills/review-wechat-docx` directory. Maintain the shared files there. This uses Claude Code's [project skill layout and invocation](https://code.claude.com/docs/en/skills). The checker needs only Python's standard library; without OfficeCLI page previews and image inspection, visual review remains incomplete.
 
 ```sh
+scripts/officecli validate exports/understanding-flashattention.zh-cn/understanding-flashattention.zh-cn.docx --json
 python3 .agents/skills/review-wechat-docx/scripts/check_docx.py \
   exports/understanding-flashattention.zh-cn/understanding-flashattention.zh-cn.docx \
   --manifest exports/understanding-flashattention.zh-cn/manifest.json \

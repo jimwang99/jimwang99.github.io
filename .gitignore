@@ -2,6 +2,7 @@
 /resources/_gen/
 /.hugo_build.lock
 /.runs/
+/.tools/officecli/
 /exports/*
 !/exports/*/
 /exports/*/*
