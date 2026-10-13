@@ -226,6 +226,7 @@ Prompt: `$write-blog Cleanup only this Chinese section, which sits under a ## �
 Expected:
 
 - Rewrite in spoken technical Chinese: verb clauses replace abstract noun subjects, the point is stated without the 一个有用的方法是 scaffold, and related clauses are joined.
+- Keep the two concepts the reader follows in English, workload and state, in place of the vague 工作 and 状态.
 - Keep every claim and caveat, including the remaining attention work for new tokens and the dependence on workload; add no claims.
 - Move the citation inside its sentence as `（[平台公告][platform]）。`
 - Keep the `## 概要` heading.
@@ -241,7 +242,8 @@ Expected:
 
 - Look at every figure and select the representative ones that show the structures and mechanisms this article explains; leave the deferred topics' figures for later articles.
 - Place each figure after the paragraph it supports, with an italic caption giving what it shows, what it omits, and its source title and pages or link.
-- Use English and Chinese figure variants where they exist, with captions of the same content in both posts.
+- Use English and Chinese figure variants where they exist, with captions of the same content in both posts. Chinese labels keep terms of art such as prefill, decode, and agent in English.
+- Every label displays at 13 px or larger at the blog's content width; a figure too wide for that is redrawn with the same blocks and arrows.
 - Store the images under `static/images/<slug>/` and confirm they render on both language pages.
 - Do not reference image files that do not exist or attribute a redrawn diagram to the vendor.
 

@@ -94,9 +94,11 @@ Follow Jim's reviewed writing: concise titles that state the point, concrete act
 
 Figures are a core part of Jim's articles. When the source material has figures (research reports, papers, vendor decks, blogs, documentation), select the important, representative ones: each shows the structure, mechanism, or data that its section explains. Look at every candidate image before choosing it and confirm that its content matches the paragraph it will support. Figures for topics the article defers belong to the later articles.
 
-Place each figure right after the paragraph it supports, followed by an italic caption that states what the figure shows, what it omits or does not establish, and its source: a link, or the talk or paper title with page numbers. Use a figure's language variant when one exists, and give both captions the same content. When no source figure fits and a picture would carry the reasoning, draw one with Mermaid or a diagram skill; reference only image files that exist.
+Place each figure right after the paragraph it supports, followed by an italic caption that states what the figure shows, what it omits or does not establish, and its source: a link, or the talk or paper title with page numbers. Use a figure's language variant when one exists; its Chinese labels follow the terms-of-art rule, so relabel a variant that translates them. Give both captions the same content. When no source figure fits and a picture would carry the reasoning, draw one with Mermaid or a diagram skill; reference only image files that exist.
 
-Store figures under `static/images/<slug>/`, referenced as `/images/<slug>/<file>`, so both language pages and the DOCX exporter (which does not fetch remote images) can load them. Name language variants `<name>.en.<ext>` and `<name>.zh-cn.<ext>`.
+Every label must be readable at the blog's content width, about 736 px: the smallest text displays at 13 px or larger. Redraw a figure whose text shrinks below that, with a layout that fits the column, such as a 2 × 2 loop or a vertical stack, and keep its blocks, arrows, and labels.
+
+Store figures under `static/images/<slug>/`, referenced as `/images/<slug>/<file>`, so both language pages and the DOCX exporter (which does not fetch remote images) can load them. Name language variants `<name>.en.<ext>` and `<name>.zh-cn.<ext>`. Keep the script that draws redrawn figures in `scripts/figures/<slug>.py`.
 
 ### Opinion / thought mode
 
@@ -163,7 +165,7 @@ Store the final DOCX, `manifest.json`, and backup PNGs under `exports/<source-st
 - Conflicting numbers remain visible until resolved. Corrections and prior angle choices in the conversation take precedence over stale notes; flag unresolved contradictions.
 - If an experiment reinforces a previous view, say that; do not narrate it as a new discovery or broad proof.
 - Use first person for Jim's sourced reasoning. Avoid fake humility, invented anecdotes, and the agent's own preferences presented as Jim's.
-- Keep natural technical Chinese with English terms where clearer: compiler, runtime, speculative decoding, KV cache, bandwidth, throughput, prefill, decode, quantization, ownership, tech lead.
+- In Chinese text, keep terms of art in English, including headings, tables, and figure labels; the style notes' 翻译腔 section defines them.
 - Use functional headings. Dense paragraphs are fine when they advance one argument. No marketing, SEO, viral-title optimization, or forced popular-science exposition.
 - Remove generic AI openings, fake excitement, motivational endings, repetitive recaps, and decorative three-part phrasing. See the phrase list in the style notes.
 

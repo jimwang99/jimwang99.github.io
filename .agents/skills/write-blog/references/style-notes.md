@@ -45,7 +45,7 @@ Write as an experienced system architect addressing technically competent reader
 
 Natural first-person forms include 我认为, 我的理解是, 我更关心的是, 我不认为, 一个问题是, 这里比较有意思, 我原来的判断是, and 这次实验进一步加强了这个判断. Use them when the source contains the relevant perspective; do not add certainty merely to sound assertive.
 
-Chinese-English mixing is normal when it improves precision. Do not mechanically translate system architecture, compiler, runtime, speculative decoding, KV cache, bandwidth, throughput, prefill, decode, quantization, ownership, or tech lead. Keep metric names consistent with the source.
+Chinese-English mixing is normal when it improves precision; the terms-of-art rule under Chinese without 翻译腔 says which words stay in English. Keep metric names consistent with the source.
 
 Functional headings include 为什么？, 怎么做？, System architecture, Decoupling, Why does this matter?, My Answer, and Experiment Setup. Avoid ceremonial headings such as 一个新时代正在到来, 不容忽视的巨大变化, 重新想象未来, and 写在最后.
 
@@ -56,20 +56,23 @@ The Chinese version is Jim explaining the same argument in Chinese, not a senten
 | Write | 翻译腔 draft | Jim-style Chinese |
 | --- | --- | --- |
 | Verbs and 怎么/能不能 clauses carry the idea | 资源放置与协调决定了各个组件能否让下一步更早开始。 | 资源怎么放置、怎么协调，决定了它们能不能让下一步更早开始。 |
-| The point, stated directly | 从架构角度理解它，一个有用的方法是跟踪工作及其状态如何经过这些资源。 | 理解这套架构，最有用的办法是跟着“工作”和它的“状态”在这些资源之间走一遍。 |
+| The point, stated directly | 从架构角度理解它，一个有用的方法是跟踪工作及其状态如何经过这些资源。 | 理解这套架构，最有用的办法是跟着“workload”和它的“state”在这些资源之间走一遍。 |
+| Terms of art in English | 智能体循环；预填充与解码；推理工作进程 | Agent 循环；prefill 与 decode；推理 worker |
 | One thought per sentence, clauses joined by commas and colons | 这些是系统的组成单元。各类资源的比例可以变化，一个请求也不必使用所有资源。 | 这些都是积木：各类资源的比例可以调整，一个请求也不一定用到全部资源。 |
 | Spoken technical register | 兼容的缓存前缀可以节省重建状态的计算，但不会消除新增 token 的 attention 工作。 | 兼容的缓存前缀可以省掉重建这部分状态的计算，但新 token 的 attention 计算还是要做。 |
 | Citations inside the sentence, before 。 | `……可以按需求采用不同的组合。[Vera Rubin 平台公告][platform]` | `……可以按需要配比（[Vera Rubin 平台公告][platform]）。` |
 | Each caveat beside the claim it limits, phrased as speech | 共享存储增加了一种放置选择，最合适的策略取决于工作负载。 | 共享存储多提供了一个放状态的地方，哪种策略最好，还是要看工作负载。 |
 
+**Terms of art stay in English.** A term of art is a word Chinese engineers already say in English: agent, worker, runtime, compiler, prefill, decode, attention, KV cache, speculative decoding, bandwidth, throughput, quantization, ownership, tech lead, and product or feature names such as Scale-up and NVLink Switch. Its Chinese rendering (智能体, 预填充, 推理工作进程) is unfamiliar, so the reader has to translate it back to English to understand it. Write terms of art in English in prose, headings, tables, and figure labels. A key concept that a paragraph asks the reader to follow also stays in English when the everyday Chinese word is too vague for it: Jim's edit of the AI factory 概要 replaced “工作” and “状态” with “workload” and “state”. Use Chinese where the everyday Chinese word carries the meaning, such as 内存, 以太网, 调度, and 工作负载.
+
 Jim's reviewed Chinese posts show these habits:
 
-- Gloss a term on first use in full-width parentheses, as in `tiling（分块）` and `Context（上下文）`; a coined Chinese name can carry its English source instead.
+- Gloss a term on first use in full-width parentheses when this audience may not know it, as in `tiling（分块）` and `Context（上下文）`; the English term stays the main word after that. A coined Chinese name can carry its English source instead.
 - Explain the way he talks through a derivation: 可以这么理解, 如果用 Python 来表示的话, 这里我们解释一下. Use a question heading such as 如何理解？ when the section answers that question.
 - Bold the one or two sentences that carry the conclusion. When bold text ends with Chinese punctuation, put a space or line end after the closing `**`; Goldmark otherwise renders the asterisks literally.
 - Put Jim's sourced personal asides in a `> 笔者：` quote, and list open questions as a numbered list.
 
-The pass is done when a reader never has to rebuild the English sentence to follow a paragraph, every citation sits inside its sentence, and the Chinese still carries every claim and caveat of the English.
+The pass is done when a reader never has to rebuild the English sentence or term to follow a paragraph, every citation sits inside its sentence, and the Chinese still carries every claim and caveat of the English.
 
 ## Epistemic distinctions
 
