@@ -31,7 +31,7 @@ Earlier articles are grouped by topic under `content/posts/`. A series can have 
 
 ## Export for WeChat
 
-Export a blog page as DOCX with editable prose and embedded PNG images for formulas, code blocks, and inline code. Code images retain syntax highlighting. The exporter uses Hugo's existing math and shortcode rendering and does not change the Markdown source.
+Export a blog page as DOCX with editable prose, inline formulas, and inline code. Inline formulas use readable text such as `g_i`, `e^(g_(i - 1) - g_i)`, and `vec(A)_m`. Display formulas and code blocks become embedded PNGs; code blocks retain syntax highlighting. The exporter uses Hugo's existing math and shortcode rendering and does not change the Markdown source.
 
 **Review comes first:** finish and validate the Markdown, then give it to Jim for human review. Run the exporter only after Jim approves that version. Angle selection or an instruction to draft does not approve the resulting Markdown. If the Markdown changes after approval, return the revised version for review before exporting again.
 
@@ -39,11 +39,27 @@ Export a blog page as DOCX with editable prose and embedded PNG images for formu
 scripts/export-wechat-docx content/posts/machine-learning/understanding-flashattention.zh-cn.md --render
 ```
 
-This local workflow needs Hugo, Chrome, and the Codex document runtime at `~/.cache/codex-runtimes/codex-primary-runtime`. The runtime supplies Node, Python, Playwright, Sharp, the DOCX library, and LibreOffice. Set `CODEX_DOCUMENT_RUNTIME` for a different runtime location or `WECHAT_CHROMIUM` for a different Chromium executable. It currently targets this Mac setup; it is not part of the publishing workflow.
+This local workflow needs Hugo, Chrome, and the Codex document runtime at `~/.cache/codex-runtimes/codex-primary-runtime`. The runtime supplies Node, Python, Playwright, the DOCX library, and LibreOffice. Set `CODEX_DOCUMENT_RUNTIME` for a different runtime location or `WECHAT_CHROMIUM` for a different Chromium executable. Both Codex and Claude Code can run the command when these local dependencies are installed. It currently targets this Mac setup; it is not part of the publishing workflow.
 
 The DOCX is saved under `exports/<source-stem>/`, beside an `assets/` directory of backup PNGs and `manifest.json` with source hashes and image metadata. `--output <directory>` changes the destination. `--render` adds page previews under `_work/preview/`; inspect every page before use, especially long formulas and code blocks. Commit the final DOCX, manifest, and backup PNGs to GitHub with the reviewed Markdown. Temporary builds and previews under `_work/` remain ignored. The `exports/` directory stays outside Hugo content and static assets, so it does not create blog pages or site downloads.
 
 GitHub is the storage location; no Google Drive connection or upload is needed. Download the DOCX from the repository when preparing a WeChat post. Verify images after saving, reopening, and viewing the WeChat draft on a phone; this transfer still needs manual verification. Keep `assets/` available if an image needs uploading separately. Remote article images are not fetched by the exporter.
+
+### Required DOCX review
+
+After export and before delivery or GitHub storage, run [review-wechat-docx](.agents/skills/review-wechat-docx/SKILL.md). It checks editable inline content, standalone PNGs, source and text hashes, and image relationships, then requires inspection of every rendered page. It records local review separately from the actual WeChat transfer test.
+
+- **Codex:** `$review-wechat-docx exports/<source-stem>/<source-stem>.docx`
+- **Claude Code:** `/review-wechat-docx exports/<source-stem>/<source-stem>.docx`
+
+Claude Code loads the project skill through `.claude/skills/review-wechat-docx`, a symlink to the canonical `.agents/skills/review-wechat-docx` directory. Maintain the shared files there. This uses Claude Code's [project skill layout and invocation](https://code.claude.com/docs/en/skills). The checker needs only Python's standard library; without a document renderer, visual review remains incomplete.
+
+```sh
+python3 .agents/skills/review-wechat-docx/scripts/check_docx.py \
+  exports/understanding-flashattention.zh-cn/understanding-flashattention.zh-cn.docx \
+  --manifest exports/understanding-flashattention.zh-cn/manifest.json \
+  --source content/posts/machine-learning/understanding-flashattention.zh-cn.md
+```
 
 ## Publish
 

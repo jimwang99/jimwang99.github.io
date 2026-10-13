@@ -1,4 +1,4 @@
-"""Align inline images to their measured baseline and verify the DOCX package."""
+"""Verify and finalize the DOCX package with text-only inline content."""
 
 from pathlib import Path
 import hashlib
@@ -29,19 +29,13 @@ def finish(draft, manifest_path, output):
         if len(pictures) != manifest["counts"]["total"]:
             raise ValueError("Image occurrence count differs from rendered content")
         for picture in pictures:
-            asset = assets[picture.get("name")]
-            if not asset["kind"].startswith("inline-"):
-                continue
-            run = picture.xpath("ancestor::w:r", namespaces=namespaces)[0]
-            properties = run.find("w:rPr", namespaces)
-            if properties is None:
-                properties = etree.Element(f"{{{namespaces['w']}}}rPr")
-                run.insert(0, properties)
-            position = etree.SubElement(properties, f"{{{namespaces['w']}}}position")
-            # OOXML positions are half-points; browser geometry uses CSS pixels.
-            position.set(f"{{{namespaces['w']}}}val", str(-round(asset["depth"] * 1.5)))
+            if assets[picture.get('name')]['kind'].startswith('inline-'):
+                raise ValueError('Inline content must be editable text')
+            paragraph = picture.xpath('ancestor::w:p', namespaces=namespaces)[-1]
+            if ''.join(paragraph.xpath('.//w:t/text()', namespaces=namespaces)).strip():
+                raise ValueError('Image occurs inside a text paragraph')
         if document.findall(".//m:oMath", namespaces):
-            raise ValueError("Native math remains in an image-only export")
+            raise ValueError("Native Word math remains; use plain inline text or display PNG")
         media = [name for name in source.namelist() if name.startswith("word/media/") and not name.endswith('/')]
         if any(not name.endswith('.png') for name in media):
             raise ValueError("A non-PNG image was embedded")

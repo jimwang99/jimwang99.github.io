@@ -12,7 +12,7 @@ const repo = path.resolve(__dirname, '..');
 const runtime = process.env.CODEX_DOCUMENT_RUNTIME || path.join(os.homedir(), '.cache/codex-runtimes/codex-primary-runtime');
 const packages = path.join(runtime, 'dependencies/node/node_modules');
 const { chromium } = require(path.join(packages, 'playwright'));
-const sharp = require(path.join(packages, 'sharp'));
+const mathMLToText = require('./mathml-to-text.cjs');
 const docx = require(path.join(packages, 'docx'));
 const { Document, Paragraph, TextRun, ImageRun, ExternalHyperlink, Packer, HeadingLevel,
   AlignmentType, Table, TableRow, TableCell, WidthType, LevelFormat } = docx;
@@ -90,7 +90,8 @@ async function renderArticle(site, url, output) {
       #export-article .export-code { width: ${CONTENT_WIDTH}px; padding: 0; background: #272822; }
       #export-article code:not(pre code) { font: 14px/1.25 Menlo, monospace; color: #202020; background: #f1f3f5; padding: 2px 3px; }
     ` });
-    const counts = await page.evaluate(() => {
+    await page.addScriptTag({ content: `window.mathMLToText = ${mathMLToText.toString()};` });
+    const { counts, inlineText } = await page.evaluate(() => {
       const root = document.querySelector('#export-article');
       const displays = [...root.querySelectorAll('.katex-display')];
       const inlines = [...root.querySelectorAll('.katex')].filter(node => !node.closest('.katex-display'));
@@ -98,7 +99,21 @@ async function renderArticle(site, url, output) {
       const codes = [...root.querySelectorAll('code')].filter(node => !node.closest('pre'));
       const originals = [...root.querySelectorAll('img')];
       if (originals.some(node => !node.complete || !node.naturalWidth)) throw new Error('An article image is missing; use a local image before export');
-      for (const [kind, nodes] of [['display-math', displays], ['inline-math', inlines], ['code-block', blocks], ['inline-code', codes], ['image', originals]]) {
+      const inlineText = [];
+      for (const node of inlines) {
+        const source = node.querySelector('annotation[encoding="application/x-tex"]')?.textContent;
+        const math = node.querySelector('.katex-mathml math');
+        if (!math) throw new Error(`Inline formula lacks MathML: ${source}`);
+        const text = window.mathMLToText(math);
+        if (!text) throw new Error(`Inline formula became empty: ${source}`);
+        inlineText.push({ kind: 'inline-math', source, text });
+        node.replaceWith(document.createTextNode(text));
+      }
+      for (const node of codes) {
+        inlineText.push({ kind: 'inline-code', source: node.textContent, text: node.textContent });
+        node.dataset.exportInlineCode = 'true';
+      }
+      for (const [kind, nodes] of [['display-math', displays], ['code-block', blocks], ['image', originals]]) {
         for (const node of nodes) {
           const wrapper = document.createElement('span');
           const block = kind === 'display-math' || kind === 'code-block' || kind === 'image';
@@ -110,7 +125,7 @@ async function renderArticle(site, url, output) {
       }
       const targets = [...root.querySelectorAll('.export-capture')];
       targets.forEach((node, index) => { node.dataset.asset = `asset-${String(index + 1).padStart(3, '0')}`; });
-      return { displayMath: displays.length, inlineMath: inlines.length, codeBlocks: blocks.length, inlineCode: codes.length, originalImages: originals.length, total: targets.length };
+      return { counts: { displayMath: displays.length, inlineMathText: inlines.length, codeBlocks: blocks.length, inlineCodeText: codes.length, originalImages: originals.length, total: targets.length }, inlineText };
     });
     await page.evaluate(() => document.fonts.ready);
     const assets = [];
@@ -119,24 +134,10 @@ async function renderArticle(site, url, output) {
       const target = page.locator(`[data-asset="${id}"]`);
       const measurement = await target.evaluate(node => {
         const box = node.getBoundingClientRect();
-        const marker = document.createElement('span');
-        marker.style.cssText = 'display:inline-block;width:0;height:0;padding:0;vertical-align:baseline';
-        node.after(marker);
-        const depth = Math.max(0, box.bottom - marker.getBoundingClientRect().top);
-        marker.remove();
-        return { kind: node.dataset.kind, source: node.dataset.source, width: box.width, height: box.height, depth };
+        return { kind: node.dataset.kind, source: node.dataset.source, width: box.width, height: box.height };
       });
       const filename = `${id}.png`;
-      let png = await target.screenshot({ animations: 'disabled', style: `#export-article * { visibility: hidden !important; } #export-article [data-asset="${id}"], #export-article [data-asset="${id}"] * { visibility: visible !important; }` });
-      if (measurement.kind.startsWith('inline-')) {
-        const original = await sharp(png).metadata();
-        const trimmed = await sharp(png).trim({ background: '#ffffff', threshold: 10 }).toBuffer({ resolveWithObject: true });
-        const removedBottom = original.height + trimmed.info.trimOffsetTop - trimmed.info.height;
-        png = await sharp(trimmed.data).extend({ top: 2, bottom: 2, left: 2, right: 2, background: '#ffffff' }).png().toBuffer();
-        measurement.depth = Math.max(0, measurement.depth - removedBottom / 3 + 2 / 3);
-        measurement.width = (trimmed.info.width + 4) / 3;
-        measurement.height = (trimmed.info.height + 4) / 3;
-      }
+      const png = await target.screenshot({ animations: 'disabled', style: `#export-article * { visibility: hidden !important; } #export-article [data-asset="${id}"], #export-article [data-asset="${id}"] * { visibility: visible !important; }` });
       fs.writeFileSync(path.join(output, 'assets', filename), png);
       const asset = { id, file: `assets/${filename}`, ...measurement };
       assets.push(asset);
@@ -165,13 +166,13 @@ async function renderArticle(site, url, output) {
         return { tag: node.tagName.toLowerCase(), attrs: Object.fromEntries([...node.attributes].map(a => [a.name, a.value])), children: [...node.childNodes].map(serialize).filter(Boolean) };
       }
       const root = document.querySelector('#export-article');
-      if (root.querySelector('.katex, pre, code')) throw new Error('Unconverted math or code remains');
+      if (root.querySelector('.katex, pre, code:not([data-export-inline-code])')) throw new Error('Unconverted math or code remains');
       root.querySelectorAll('span').forEach(node => {
         if (node.querySelector('p[data-image-block]')) node.replaceWith(...node.childNodes);
       });
       return serialize(root);
     });
-    return { ...before, counts, assets, tree };
+    return { ...before, counts, inlineText, assets, tree };
   } finally { await browser.close(); }
 }
 
@@ -191,6 +192,7 @@ function makeDocument(article, output, title) {
     if (node.tag === 'strong' || node.tag === 'b') style = { ...style, bold: true };
     if (node.tag === 'em' || node.tag === 'i') style = { ...style, italics: true };
     if (node.tag === 'del' || node.tag === 's') style = { ...style, strike: true };
+    if (node.tag === 'code') style = { ...style, font: { ascii: 'Menlo', hAnsi: 'Menlo', eastAsia: 'Heiti SC' }, size: 22, shading: { fill: 'F1F3F5' } };
     const children = (node.children || []).flatMap(child => inline(child, style));
     if (node.tag === 'a' && node.attrs.href && !node.attrs.href.startsWith('#')) {
       const link = new URL(node.attrs.href, article.permalink).href;
@@ -254,9 +256,10 @@ function makeDocument(article, output, title) {
   }
   const paragraphs = blocks(article.tree.children);
   return new Document({
-    creator: 'Jim Wang', title, description: 'Article with equations and code embedded as PNG images',
+    creator: 'Jim Wang', title, description: 'Article with editable inline math and code, and PNG display equations and code blocks',
     styles: { default: {
-      document: { run: { font, size: 24, color: '171717', language: { value: 'zh-CN', eastAsia: 'zh-CN' } }, paragraph: { spacing: { after: 160, line: 300 }, widowControl: true, wordWrap: false } },
+      // docx emits w:wordWrap=0 for true, preventing Latin words from splitting.
+      document: { run: { font, size: 24, color: '171717', language: { value: 'en-US', eastAsia: 'zh-CN' } }, paragraph: { spacing: { after: 160, line: 300 }, widowControl: true, wordWrap: true } },
       title: { run: { font, size: 40, bold: true, color: '000000' }, paragraph: { spacing: { before: 0, after: 240 }, keepNext: true } },
       heading1: { run: { font, size: 30, bold: true, color: '000000' }, paragraph: { spacing: { before: 280, after: 140 }, keepNext: true } },
       heading2: { run: { font, size: 26, bold: true, color: '000000' }, paragraph: { spacing: { before: 200, after: 100 }, keepNext: true } },
@@ -294,7 +297,7 @@ async function main() {
   fs.writeFileSync(draft, await Packer.toBuffer(document));
   const editableText = node => node.text ?? (node.children || []).map(editableText).join('');
   const textDigest = crypto.createHash('sha256').update((metadata.title + editableText(article.tree)).replace(/\s/g, '')).digest('hex');
-  const manifest = { source: relative, sourceSha256: digest, editableTextSha256: textDigest, title: metadata.title, permalink: metadata.permalink, counts: article.counts, assets: article.assets };
+  const manifest = { source: relative, sourceSha256: digest, editableTextSha256: textDigest, title: metadata.title, permalink: metadata.permalink, counts: article.counts, inlineText: article.inlineText, assets: article.assets };
   const manifestPath = path.join(output, 'manifest.json');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   fs.writeFileSync(path.join(output, '_work/article.json'), JSON.stringify(article.tree, null, 2));
@@ -304,6 +307,10 @@ async function main() {
   execFileSync(python, [path.join(skill, 'scripts/google_docs_title_sanitize.py'), positioned, '--out', final], { stdio: 'inherit' });
   execFileSync(python, [path.join(skill, 'scripts/google_docs_title_sanitize.py'), final, '--check'], { stdio: 'inherit' });
   if (crypto.createHash('sha256').update(fs.readFileSync(source)).digest('hex') !== digest) throw new Error('Source changed during export');
+  const currentAssets = new Set(article.assets.map(asset => path.basename(asset.file)));
+  for (const name of fs.readdirSync(path.join(output, 'assets'))) {
+    if (/^asset-\d+\.png$/.test(name) && !currentAssets.has(name)) fs.unlinkSync(path.join(output, 'assets', name));
+  }
   log(`DOCX: ${final}`);
   log(`Embedded images: ${article.counts.total}; source unchanged.`);
   if (values.render) {
