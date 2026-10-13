@@ -2,7 +2,7 @@
 
 ## Source and scope
 
-This guide distills the user-provided `handoff.md`, canonical articles, and Jim's reviewed WeChat article in the existing checkout. Local Markdown avoids a network dependency at skill runtime. Samples show reasoning and voice; their technical claims are not automatically current facts, and they must not supply opinions for unrelated new articles.
+This guide distills the user-provided `handoff.md`, canonical articles, and Jim's reviewed Chinese article in the existing checkout. Local Markdown avoids a network dependency at skill runtime. Samples show reasoning and voice; their technical claims are not automatically current facts, and they must not supply opinions for unrelated new articles.
 
 | Sample | Repository source | Pattern to learn |
 | --- | --- | --- |
@@ -11,15 +11,13 @@ This guide distills the user-provided `handoff.md`, canonical articles, and Jim'
 | Over-communication | [思考：过度沟通](../../../../content/posts/thoughts/思考-过度沟通-over-communication.md) | Connect specific human limitations to concrete practices such as pre-reading time, checklists, and documentation ownership. |
 | Huwcha Accelerator Architecture | [Huwcha Accelerator architecture](../../../../content/posts/architecture/huwcha-accelerator-architecture.md) | Dense hierarchical architecture notes, quantitative details, inline skepticism, and unanswered questions. |
 | Software Is King, Especially in AI | [Software is King, Especially in AI](../../../../content/posts/thoughts/software-is-king-especially-in-ai.md) | State a strong personal thesis, explain system-level tradeoffs, and derive a personal engineering judgment. |
-| Reviewed WeChat article | [端侧 coding agent 变得可用](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode-wechat.md) | Direct titles, concrete workflow actions, cohesive paragraphs, and a bounded judgment about similar tasks. |
+| Reviewed Chinese article | [端侧 coding agent 变得可用](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode.zh-cn.md) | Direct titles, concrete workflow actions, cohesive paragraphs, and a bounded judgment about similar tasks. |
 
-Public versions use `https://jimwang99.github.io/posts/` plus the topic and filename stem with a trailing slash. The repository preserves the title spelling “Huwcha”; the cited architecture manual is Hwacha. Do not silently rename historical paths.
+English public versions use `https://jimwang99.github.io/posts/<topic>/<slug>/`; Chinese translations use `/zh-cn/posts/<topic>/<slug>/`. Hugo removes the `.en` and `.zh-cn` language suffixes from URLs. The repository preserves the title spelling “Huwcha”; the cited architecture manual is Hwacha. Do not silently rename historical paths.
 
-The reviewed WeChat adaptation is a local style reference excluded from Hugo output; the public URL convention does not apply to it.
+## Calibration from Jim's reviewed Chinese article
 
-## Calibration from Jim's reviewed WeChat article
-
-Use the [reviewed article](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode-wechat.md) to interpret these choices. Learn the writing decisions rather than copying its topic, measurements, or incidental spacing.
+Use the [reviewed article](../../../../content/posts/machine-learning/dflash2-qwen3-27b-opencode.zh-cn.md) to interpret these choices. Learn the writing decisions rather than copying its topic, measurements, or incidental spacing.
 
 - **State the point in the title.** Jim shortened the title to “端侧 coding agent 变得可用”. Prefer a concise subject and judgment when supported; a case-study subtitle or question is optional.
 - **Preserve the author's judgment scope.** Jim changed “对这个任务” to “对类似任务” and bounded the conclusion to programming tasks similar in scale to MNIST training. Keep that extension as his engineering judgment, alongside the open question about larger tasks. Measured observations retain their actual scope.
@@ -87,6 +85,6 @@ Also remove fake excitement, clickbait, empty transition paragraphs, inspiration
 
 This is semantic editing, not a blind string blacklist. Preserve literal quotations or a discussion of a term when needed. Historical samples occasionally contain general openings, emphatic phrasing, or recap headings. Follow the handoff's explicit editing preferences instead of copying every historical surface feature.
 
-## Platform adaptation
+## Bilingual blog and TL;DR
 
-The blog is the canonical technical account with no fixed length limit. WeChat typically targets 1,200–2,500 Chinese characters and can add necessary context without becoming popular science. LinkedIn typically targets 200–500 English words, one central idea, and the strongest evidence. These are defaults, not permission to remove a material caveat or change a measurement.
+English and Chinese are full blog translations with no fixed length limit. Preserve the same technical account, including useful derivations, examples, measurements, and limitations. Chinese wording should read naturally and retain Jim's paragraph structure and judgment scope. The English TL;DR summarizes the main idea and strongest evidence while retaining material caveats; it adds no new claims. The default deliverable is the bilingual article, with the summary inside EN.

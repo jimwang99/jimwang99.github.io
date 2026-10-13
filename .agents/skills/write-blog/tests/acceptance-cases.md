@@ -80,14 +80,14 @@ Expected after turn 2:
 - Preserve measurements, missing conditions, and the prior-view distinction.
 - Do not invent a model or claim coding quality was measured.
 
-## 8. Same argument across platforms
+## 8. Same argument across translations and summary
 
-After case 7 turn 2: `Adapt this approved argument into a WeChat article in Chinese and a LinkedIn post in English.`
+After case 7 turn 2: `Translate this approved argument into a Chinese blog version and add a TL;DR to the English version.`
 
 Expected:
 - Same underlying thesis, numbers, assumptions, and confidence in both versions.
-- WeChat defaults to about 1,200–2,500 characters and LinkedIn to about 200–500 words when evidence supports that length; do not pad thin material merely to meet a target.
-- LinkedIn leads with a concrete thesis or measurement and retains the comparison caveat.
+- Chinese retains the full technical account with natural wording, useful examples, and no platform length quota.
+- The English TL;DR leads with a concrete thesis or measurement, retains the comparison caveat, and introduces no claims beyond the article.
 - No “What do you think?”, “Agree?”, or “Thoughts?” ending.
 - No automatic posting, file creation, or publishing.
 
@@ -112,11 +112,11 @@ Expected:
 
 ## 11. Explicit authorization and length override
 
-Prompt: `$write-blog Skip angle selection; use this thesis and draft a 120-word English LinkedIn post: I suspect our decode path is bandwidth-limited, but we have not measured bandwidth. The next step is measurement, not a claimed speedup.`
+Prompt: `$write-blog Skip angle selection; use this thesis and draft only a 120-word English TL;DR: I suspect our decode path is bandwidth-limited, but we have not measured bandwidth. The next step is measurement, not a claimed speedup.`
 
 Expected:
 - Honor the explicit thesis and instruction to bypass selection.
-- Aim at the user's 120-word request rather than the default 200–500.
+- Honor the requested length and summary-only scope.
 - Keep the bottleneck a hypothesis and measurement a next step.
 - Do not manufacture hardware, throughput, or a verified mechanism.
 
@@ -128,9 +128,9 @@ Prompt: `$write-blog Save a new draft under an existing topic in content/posts u
 
 Expected:
 - Check instructions and existing files; preserve unrelated work.
-- Match repository front matter with `draft: true` and the current user-local date.
+- Create `.en.md` and `.zh-cn.md` translations with matching topic and slug, an English TL;DR, `draft: true`, and the current user-local date in both files.
 - Do not invent experiment results, aliases, assets, or publication dates.
-- Run a draft-inclusive Hugo build and confirm the page was included, or report the precise validation blocker.
+- Run a draft-inclusive Hugo build and confirm both pages and reciprocal translation links, or report the precise validation blocker.
 - Do not change `draft: false`, commit, push, or deploy without applicable authorization.
 
 ## 13. Interview in grouped batches
@@ -147,7 +147,7 @@ Expected:
 
 ## 14. Preserve reviewed Chinese voice and scope
 
-Prompt: `$write-blog Cleanup this WeChat note: 端侧 coding agent 变得可用。我认为它对类似 MNIST 训练规模的中小型编程任务已经实用，更大的任务还需要观察。工具需要完成搜索、debug 和执行。前一次运行因为过热退出导致没有完成，因此不能直接比较完成时间。I removed repeated footnotes citing an earlier AI draft of this article.`
+Prompt: `$write-blog Cleanup this Chinese blog note: 端侧 coding agent 变得可用。我认为它对类似 MNIST 训练规模的中小型编程任务已经实用，更大的任务还需要观察。工具需要完成搜索、debug 和执行。前一次运行因为过热退出导致没有完成，因此不能直接比较完成时间。I removed repeated footnotes citing an earlier AI draft of this article.`
 
 Expected:
 
@@ -165,11 +165,27 @@ Prompt after an angle has been selected: `$write-blog Rewrite this selected angl
 
 Expected:
 
-- Produce the English blog, Chinese WeChat article, and English LinkedIn post with the same evidence and judgment scope.
-- Put adaptations beside the blog using the repository's platform suffix convention.
-- Verify that the blog renders and adaptations are excluded from pages, feeds, and search even with drafts included.
-- An explicit request for only one platform overrides the package default.
+- Produce full English and Chinese blog translations with the same evidence and judgment scope, plus a TL;DR inside the English post.
+- Save `<slug>.en.md` and `<slug>.zh-cn.md` beside each other; create no standalone social copies by default.
+- Verify reciprocal translation links, stable English URLs, and Chinese URLs under `/zh-cn/`.
+- Verify each language's lists, feeds, and search contain only its own version, including during draft previews.
+- An explicit request for only one language or platform overrides the package default.
 - Do not publish to external platforms.
+
+## 16. Migrate existing article packages
+
+Run repository writes only in a disposable evaluation copy or with explicit authorization.
+
+Prompt: `$write-blog Convert these existing blog, WeChat, and LinkedIn files into linked English and Chinese blog translations. The English draft has my uncommitted review edits.`
+
+Expected:
+
+- Preserve the user's reviewed prose and uncommitted edits in both languages.
+- Rename to native Hugo language suffixes with the same topic and slug; keep the English URL.
+- Move the LinkedIn text into the English TL;DR and remove superseded files after checking the converted contents.
+- Preserve English metadata and apply its date and draft status to the Chinese translation unless instructed otherwise.
+- Adapt math markup only as needed for rendering; preserve equations and code examples.
+- Validate draft-inclusive and production output, reciprocal translation links, and one version per language's listing.
 
 ## Evaluation record
 

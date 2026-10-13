@@ -1,6 +1,6 @@
 ---
 name: write-blog
-description: Turn Jim's technical notes, experiments, and voice transcripts into blog posts, WeChat articles, LinkedIn posts, or technical notes while preserving his reasoning and judgments. Use for argument extraction, opinion pieces, architecture notes, platform adaptation, or Jim-style cleanup. Analyze raw material and propose angles before drafting.
+description: Turn Jim's technical notes, experiments, and voice transcripts into English and Chinese blog translations with an English TL;DR, or technical notes, while preserving his reasoning and judgments. Use for argument extraction, opinion pieces, architecture notes, translation, or Jim-style cleanup. Analyze raw material and propose angles before drafting.
 ---
 
 # Write blog
@@ -11,7 +11,7 @@ This package implements the user-provided `handoff.md`, which calls the proposed
 
 ## Read the references
 
-- Read [style-notes.md](references/style-notes.md) before analyzing or editing. It distills the handoff, canonical posts, and Jim's reviewed WeChat writing; use the reviewed example to calibrate voice, paragraph structure, and judgment scope.
+- Read [style-notes.md](references/style-notes.md) before analyzing or editing. It distills the handoff, canonical posts, and Jim's reviewed Chinese writing; use the reviewed example to calibrate voice, paragraph structure, and judgment scope.
 - Consult [examples.md](references/examples.md) for the phase boundary, epistemic distinctions, technical Chinese, and short source excerpts.
 - Use [acceptance-cases.md](tests/acceptance-cases.md) when evaluating or changing this skill. These are behavioral evaluation cases, not an automated test suite.
 
@@ -23,14 +23,14 @@ Invoke the skill by name, `$write-blog` in Codex or `/write-blog` in Claude Code
 
 - `Analyze these notes` — Phase 1 only.
 - `Draft angle 2 for the blog` — Phase 2 followed by Phase 3.
-- `Use this thesis and write a WeChat article` — an explicitly selected angle; draft and clean up.
-- `Adapt this approved blog draft for LinkedIn` — preserve its core argument and adapt it.
+- `Use this thesis and write a Chinese blog post` — an explicitly selected angle; draft and clean up.
+- `Add an English TL;DR to this approved blog draft` — summarize its core argument, evidence, and limits.
 - `Clean up this draft` — Phase 3 only; preserve its argument.
 - `Technical note` or `Opinion` — chooses the reasoning mode, not permission to skip Phase 1 on raw material.
 
 These operations are phrasings handled inside this one skill, not separate commands.
 
-Use the input language for analysis and the reasoning mode best supported by the material. For drafting or rewriting a publication package, default to an English blog, Chinese WeChat article, and English LinkedIn post. An explicit platform, language, or cleanup-only request sets a narrower scope. Keep the approved argument and evidence consistent across versions.
+Use the input language for analysis and the reasoning mode best supported by the material. For drafting or rewriting a publication package, default to full English (EN) and Chinese (CN) blog translations, with a `## TL;DR` section near the beginning of the English version. Keep the approved argument, technical detail, evidence, and judgment scope consistent across languages. An explicit language, platform, or cleanup-only request sets a narrower scope; standalone social copies are produced only when requested.
 
 ## Interview in batches
 
@@ -102,15 +102,15 @@ Useful structure: setup → observation → architecture/mechanism → what is i
 
 Keep hierarchical bullets, equations, code, and personal technical comments when they are clearer than narrative. Preserve questions such as “This only works if…”, “I'm not convinced that…”, and “My current guess is…” at their original confidence level. Do not fill gaps with invented findings.
 
-### Platform modes
+### Publication versions
 
-| Platform | Default target | Editing priority |
+| Version | Default target | Editing priority |
 | --- | --- | --- |
-| Blog | No fixed length | Canonical argument, technical completeness, long-term reference value; diagrams, equations, and code when useful. |
-| WeChat / 公众号 | About 1,200–2,500 Chinese characters | Preserve the mechanism and evidence; add context only when readers need it; retain technical density and natural Chinese. |
-| LinkedIn | About 200–500 English words | One idea; lead with a concrete observation, number, or thesis; retain the strongest evidence and relevant uncertainty. |
+| English blog (EN) | No fixed length | Complete argument and technical detail; diagrams, equations, and code when useful. |
+| Chinese blog (CN) | No fixed length | Full translation with natural technical Chinese; preserve the mechanism, evidence, caveats, and useful examples. |
+| English TL;DR | Concise section within EN | Lead with the main claim or observation; retain the strongest evidence and material uncertainty. |
 
-Targets are flexible; user length and language constraints take priority. For multiple platforms, adapt the same argument and ledger without changing the numbers, assumptions, or confidence. A real unresolved technical question is acceptable; engagement bait is not.
+User length and language constraints take priority. Translate meaning naturally while keeping the same numbers, assumptions, and confidence. A TL;DR adds no claims beyond the full article. A real unresolved technical question is acceptable; engagement bait is not.
 
 ## Phase 3: Jim-style cleanup
 
@@ -151,10 +151,12 @@ The default deliverable is text. Write a repository post only when the user asks
 For this Hugo repository:
 
 1. Inspect the repository instructions, `README.md`, `archetypes/posts.md`, relevant topic `_index.md`, and a nearby post. Check for existing changes and preserve user work.
-2. Place posts under `content/posts/<topic>/<slug>.md`, following the existing topic structure. Save requested WeChat and LinkedIn files beside the blog as `<slug>-wechat.md` and `<slug>-linkedin.md`, following the exclusion convention in `README.md` and `hugo.toml`. Do not create an extra topic or rewrite existing posts without need.
-3. Follow `archetypes/posts.md` front matter: `title`, `date`, and `draft: true` for a new unpublished post. Use an explicitly supplied date, otherwise the current user-local date. Do not fabricate publication history or imported aliases. Preserve an existing post's metadata during cleanup unless asked to change it.
-4. Use repository-supported image paths, code fences, and Markdown. Verify newly referenced local assets exist; do not invent diagrams or image files. Keep editorial TODOs out of publishable prose.
+2. Place translations together under `content/posts/<topic>/` as `<slug>.en.md` and `<slug>.zh-cn.md`, with the same language-neutral slug. These native Hugo suffixes link the versions automatically; CN is the editorial label and `zh-cn` is the configured language code. Follow `README.md` and `hugo.toml`; use a shared `translationKey` only when basenames must differ. Keep existing English URLs during migration.
+3. Give each version front matter from `archetypes/posts.md`: a translated `title`, `date`, and `draft: true` for a new unpublished post. Use an explicitly supplied date, otherwise the current user-local date. Preserve existing metadata during cleanup; when converting an existing Chinese adaptation into a blog translation, use the paired post's date and publication status unless instructed otherwise. Do not fabricate publication history or aliases.
+4. Use repository-supported image paths, code fences, and Markdown. Use `katex` fences for display math and the theme's `katex` shortcode for inline formulas when Markdown alters their primes or subscripts. Verify newly referenced local assets exist; do not invent diagrams or image files. Keep editorial TODOs out of publishable prose.
 5. Run a draft-inclusive Hugo build (`hugo -D --minify`) when saving a draft; a build without `-D` may skip the edited page. If `hugo` is not on `PATH`, find the Hugo Extended version pinned in `.github/workflows/hugo.yml`; in Codex cloud, it is installed at `/workspace/.cloud-tools/hugo-0.148.2/hugo`. If no matching build is available, report the build as unverified.
-6. Confirm the edited blog page appears in output and platform adaptations are absent from generated pages, feeds, and search. Inspect tracked/untracked changes and report file paths and validation results accurately.
+6. Confirm both language pages render with reciprocal translation links and only their own language's version in lists, feeds, and search. Check the English URL and Chinese `/zh-cn/` URL, equations, and code blocks. Run a production build when changing publication status or multilingual configuration to check draft exclusion. Inspect tracked/untracked changes and report file paths and validation results accurately.
+
+When migrating the former blog/WeChat/LinkedIn package, preserve reviewed article text and user edits, convert the Chinese file to the CN blog translation, and move the LinkedIn text into the English TL;DR. Remove the superseded files after verifying the converted contents. Adapt math delimiters to the theme's supported rendering without changing the equations.
 
 Changing `draft: false`, committing, pushing, or publishing requires the user's applicable instruction. Platform adaptation produces text, not automatic posting to an external service.

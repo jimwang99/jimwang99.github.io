@@ -1,4 +1,8 @@
-# 理解 FlashAttention
+---
+title: "理解 FlashAttention"
+date: 2026-10-09
+draft: false
+---
 
 Softmax 是 Transformer 里很重要的一环。它本身的计算量不大，但由于数学上的数据依赖，按原始方法计算需要把数据完整读三遍，会耗费大量时间。
 
@@ -12,9 +16,9 @@ Nvidia 的 paper “[Online normalizer calculation for softmax](https://arxiv.or
 
 首先，softmax 作用在一维 vector  $x$ 上，而不是多维 tensor。
 
-$$
+```katex
 \mathrm{softmax}(\vec{x})_i = \frac{e^{x_i}}{\sum_{j=1}^{N} e^{x_j}}
-$$
+```
 
 计算分两步：（1）算出每个 $x$ 的 $e^x$ 并加起来；（2）做除法。
 
@@ -22,9 +26,9 @@ $$
 
 但 $e^x$ 增长很快，$x$ 稍大一点就容易溢出，用 float16 甚至更低精度时更明显。所以通常先把每个 $x$ 减去最大值，这就是 safe softmax：
 
-$$
+```katex
 \mathrm{softmax}(\vec{x})_i = \frac{e^{x_i - \max(\vec{x})}}{\sum_{j=1}^{N} e^{x_j - \max(\vec{x})}}
-$$
+```
 
 分子和分母乘的是同一个因子，结果不变。减完以后指数都不大于 0，只要 $x$ 是有限值，就不会溢出。
 
@@ -52,10 +56,10 @@ softmax_x = [math.exp(x - max_x) / sum_ex for x in vec_x]
 
 假设我们构造两个数组 $G$ 和 $S$，长度和 $x$ 一样：
 
-$$
+```katex
 g_i = \max(x_1, \dots, x_i), \qquad
 s_i = \sum_{j=1}^{i} e^{x_j - g_i}
-$$
+```
 
 也就是说，$g_i$ 是到第 $i$ 个元素为止的最大值，$s_i$ 是一个**类似** softmax 分母的和。**$S$ 里的数除了最后一个，都和 softmax 第二步求出的和不一样；但读到最后一个时，$s_N$ 正好等于 softmax 的分母。** 所以只要按顺序读一遍 $x$，同时算出 $G$ 和 $S$，就完成了步骤（1）和（2）。
 
@@ -65,22 +69,22 @@ $$
 
 $S$ 可以递推计算：
 
-$$
+```katex
 \begin{aligned}
 s_1 &= 1, \\
 s_i &= s_{i-1} \times e^{g_{i-1} - g_i} + e^{x_i - g_i}.
 \end{aligned}
-$$
+```
 
 每当最大值变大，旧的和要先乘上 $e^{g_{i-1}-g_i}$，换算到新的最大值下，再加上新的一项。展开一下就能证明，递推出来的 $s_i$ 符合上面的定义，所以 $s_N$ 就是 softmax 的分母：
 
-$$
+```katex
 \begin{aligned}
 s_i &= e^{g_{i-1} - g_i} \sum_{j=1}^{i-1} e^{x_j - g_{i-1}} + e^{x_i - g_i} \\
 &= \sum_{j=1}^{i-1} e^{x_j - g_i} + e^{x_i - g_i} \\
 &= \sum_{j=1}^{i} e^{x_j - g_i}.
 \end{aligned}
-$$
+```
 
 如果用 Python 来表示的话：
 
@@ -100,9 +104,9 @@ assert g_prev == max_x and math.isclose(s_prev, sum_ex)
 
 ## Attention 的数学表达
 
-$$
+```katex
 \mathbb{A} = \mathrm{softmax}\left(\mathrm{mask}\left(\frac{\mathbb{Q} \cdot \mathbb{K}^T}{\sqrt{D}}\right)\right) \cdot \mathbb{V}
-$$
+```
 
 其中 A、Q、K、V 都是二维矩阵，shape 依次是 `[N, D]`、`[N, D]`、`[M, D]`、`[M, D]`，D 是 head_dim。完整序列的 self-attention 里 `N == M`；decode 一个 token 时 `N = 1`，而 M 包含 KV cache 里的历史。`mask()` 用来实现 causal mask 等各种 masking，它是 element-wise 操作，不影响后面的推导，所以先略过，文章最后再讲需要注意的地方。
 
@@ -114,9 +118,9 @@ $$
 
 简化以后，再用 X 和 Y 表示中间变量，attention 可以写成：
 
-$$
+```katex
 \mathrm{softmax}(\mathbb{Q} \cdot \mathbb{K}^T) \cdot \mathbb{V} = \mathrm{softmax}(\mathbb{X}) \cdot \mathbb{V} = \mathbb{Y} \cdot \mathbb{V} = \mathbb{A}
-$$
+```
 
 用 $\mathbb{X}$ 和 $x$ 表示 softmax 的输入，和前面统一；用 $\mathbb{Y}$ 和 $y$ 表示 softmax 的结果（可惜 $s$ 已经被用了）；用 $\mathbb{A}$ 表示 attention 的结果。
 
@@ -130,31 +134,31 @@ $$
 
 完全套用 online softmax 的做法。为了不混淆，用 `n`、`m`、`d` 分别表示 N、M、D 三个维度上的下标：
 
-$$
+```katex
 x_{n,m} = \mathbb{X}[n,m] = \mathbb{Q}[n,:] \cdot \mathbb{K}^T[:,m]
-$$
+```
 
 矩阵 X 的 shape 是 `[N, M]`，但 softmax 只作用在它的 inner dimension 上，outer dimension 只是重复同样的循环。所以简单起见，只看 X 的一行。`n` 是外循环 `for n in range(N)` 的变量，`m` 是内循环 `for m in range(M)` 的变量：
 
-$$
+```katex
 \begin{aligned}
 x_m &= \mathbb{Q}[n,:] \cdot \mathbb{K}^T[:,m], \\
 g_m &= \max(g_{m-1}, x_m), \\
 s_m &= s_{m-1} \times e^{g_{m-1} - g_m} + e^{x_m - g_m}.
 \end{aligned}
-$$
+```
 
 ### 循环（2）
 
 把类似的思路用在 $\mathbb{Y} \cdot \mathbb{V}$ 上，可以得到：
 
-$$
+```katex
 \begin{aligned}
 y_m &= \frac{e^{x_m - g_M}}{s_M}, \\
 \vec{A}_0 &= \vec{0}, \\
 \vec{A}_m &= \vec{A}_{m-1} + y_m \times \mathbb{V}[m,:].
 \end{aligned}
-$$
+```
 
 这里 $\mathbb{V}[m,:]$ 是长度为 D 的一行，所以 $\vec{A}_m$ 算的是一个 vector，而不是 scalar。这样做的好处是每个 $y_m$ 用完就可以丢掉，而且这个写法正好引出后面的 FlashAttention。
 
@@ -164,9 +168,9 @@ $$
 
 这里我们解释一下原理细节。先看一个普通的矩阵乘法：
 
-$$
+```katex
 \mathbb{A}[n,d] = \mathbb{Y}[n,:] \cdot \mathbb{V}[:,d] = \sum_{m=1}^{M} \mathbb{Y}[n,m] \times \mathbb{V}[m,d]
-$$
+```
 
 ```python
 M, D = 6, 4
@@ -194,40 +198,40 @@ assert matrix_a2 == matrix_a
 
 对应的数学表达变成了是：
 
-$$
+```katex
 \mathbb{A}[n,:] = \sum_{m=1}^{M} \mathbb{Y}[n,m] \times \mathbb{V}[m,:]
-$$
+```
 
 循环（2）里的 $y_m$ 就是第 n 行的 $\mathbb{Y}[n,m]$。记 $\vec{V}_m = \mathbb{V}[m,:]$，那么：
 
-$$
+```katex
 \mathbb{A}[n,:] = \vec{A}_M = \sum_{m=1}^{M} y_m \times \vec{V}_m = \sum_{m=1}^{M} \frac{e^{x_m - g_M}}{s_M} \times \vec{V}_m
-$$
+```
 
 ## 优化循环（2）：消除数据依赖、提高并行度
 
-上述的循环（2）还有一个问题：它要等循环（1）跑完，拿到最终的 $g_M$ 和 $s_M$ 才能开始。这就形成了典型的数据依赖，会影响并行度、拖慢运行效率。我们可以用 online softmax 同样的思路，把 $\vec{A}_M$ 的计算也改成递推 $\vec{A}_m = f(\vec{A}_{m-1})$。做法是构造一个新的 $\vec{A}'_m$ 来去掉这个数据依赖。我们只需要保证它的最后一个单元与目标一致即可， $\vec{A}'_M = \vec{A}_M$，不需要中间过程也相等。
+上述的循环（2）还有一个问题：它要等循环（1）跑完，拿到最终的 $g_M$ 和 $s_M$ 才能开始。这就形成了典型的数据依赖，会影响并行度、拖慢运行效率。我们可以用 online softmax 同样的思路，把 $\vec{A}_M$ 的计算也改成递推 {{< katex >}}\vec{A}_m = f(\vec{A}_{m-1}){{< /katex >}}。做法是构造一个新的 {{< katex >}}\vec{A}'_m{{< /katex >}} 来去掉这个数据依赖。我们只需要保证它的最后一个单元与目标一致即可， {{< katex >}}\vec{A}'_M = \vec{A}_M{{< /katex >}}，不需要中间过程也相等。
 
-$$
+```katex
 \vec{A}'_m = \sum_{i=1}^{m} \frac{e^{x_i - g_m}}{s_m} \times \vec{V}_i
-$$
+```
 
 当 $m = M$ 时：
 
-$$
+```katex
 \vec{A}'_M = \sum_{i=1}^{M} \frac{e^{x_i - g_M}}{s_M} \times \vec{V}_i = \vec{A}_M
-$$
+```
 
-和上面的 $\vec{A}_M$ 对比，看上去只是把 m 换成 i、把 M 换成 m。但 $\vec{A}'_m$ 的意思变了：它是只看前 m 个 key 时的 attention 结果。这样就可以用递推来算，不用把中间矩阵写到内存里（avoid materializing the matrix）。
+和上面的 $\vec{A}_M$ 对比，看上去只是把 m 换成 i、把 M 换成 m。但 {{< katex >}}\vec{A}'_m{{< /katex >}} 的意思变了：它是只看前 m 个 key 时的 attention 结果。这样就可以用递推来算，不用把中间矩阵写到内存里（avoid materializing the matrix）。
 
 展开后得到：
 
-$$
+```katex
 \begin{aligned}
 \vec{A}'_1 &= \frac{e^{x_1 - g_1}}{s_1} \times \vec{V}_1 = \vec{V}_1, \\
 \vec{A}'_m &= \vec{A}'_{m-1} \times \frac{s_{m-1} \times e^{g_{m-1} - g_m}}{s_m} + \frac{e^{x_m - g_m}}{s_m} \times \vec{V}_m.
 \end{aligned}
-$$
+```
 
 这其实就是 [FlashAttention §3.1](https://arxiv.org/html/2205.14135#S3.SS1) 里按 block 做 rescaling 的方法，只不过这里每次只处理一个 key。
 
@@ -237,36 +241,36 @@ $$
 
 **1. Score**
 
-$$
+```katex
 \mathbb{X}[n,m] = \mathbb{Q}[n,:] \cdot \mathbb{K}^T[:,m]
-$$
+```
 
 **2. Max**
 
-$$
+```katex
 \begin{aligned}
 \mathbb{G}[n,1] &= \mathbb{X}[n,1], \\
 \mathbb{G}[n,m] &= \max(\mathbb{G}[n,m-1], \mathbb{X}[n,m]).
 \end{aligned}
-$$
+```
 
 **3. Sum**
 
-$$
+```katex
 \begin{aligned}
 \mathbb{S}[n,1] &= 1, \\
 \mathbb{S}[n,m] &= \mathbb{S}[n,m-1] \times e^{\mathbb{G}[n,m-1] - \mathbb{G}[n,m]} + e^{\mathbb{X}[n,m] - \mathbb{G}[n,m]}.
 \end{aligned}
-$$
+```
 
 **4. Attention**
 
-$$
+```katex
 \begin{aligned}
 \mathbb{A}_1[n,:] &= \frac{e^{\mathbb{X}[n,1] - \mathbb{G}[n,1]}}{\mathbb{S}[n,1]} \times \mathbb{V}[1,:], \\
 \mathbb{A}_m[n,:] &= \mathbb{A}_{m-1}[n,:] \times \frac{\mathbb{S}[n,m-1] \times e^{\mathbb{G}[n,m-1] - \mathbb{G}[n,m]}}{\mathbb{S}[n,m]} + \frac{e^{\mathbb{X}[n,m] - \mathbb{G}[n,m]}}{\mathbb{S}[n,m]} \times \mathbb{V}[m,:].
 \end{aligned}
-$$
+```
 
 用 Python 表示（不含 scaling 和 masking）：
 

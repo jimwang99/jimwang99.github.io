@@ -2,7 +2,29 @@ baseURL = 'https://jimwang99.github.io/'
 languageCode = 'en-us'
 title = "When Moore's Law Ends"
 theme = 'hugo-book'
-ignoreFiles = ['-(wechat|linkedin)\.md$']
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+
+[languages.en]
+  languageCode = 'en-us'
+  languageName = 'English'
+  weight = 1
+
+[languages.zh-cn]
+  languageCode = 'zh-CN'
+  languageName = '中文'
+  weight = 2
+  hasCJKLanguage = true
+
+[[languages.zh-cn.menu.before]]
+  name = '文章'
+  pageRef = '/posts/'
+  weight = 1
+
+[[languages.zh-cn.menu.after]]
+  name = '关于作者（英文）'
+  url = '/about/'
+  weight = 1
 
 [params]
   BookSection = 'posts'

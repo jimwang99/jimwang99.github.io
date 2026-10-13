@@ -1,4 +1,8 @@
-# 端侧 coding agent 变得可用
+---
+title: "端侧 coding agent 变得可用"
+date: 2026-10-07
+draft: false
+---
 
 这次用 DFlash2 + Qwen3-27B + OpenCode 跑完 MNIST 任务后，我觉得这套本地 coding agent 对类似任务已经实用了。它完成了环境准备、脚本编写、模型训练和结果汇报，整个过程在半小时内结束。这样的等待时间，对我来说已经可以接受。
 

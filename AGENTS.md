@@ -13,7 +13,7 @@ Use the Hugo Extended version pinned in [the deployment workflow](.github/workfl
 
 - `git submodule update --init --recursive` initializes the theme.
 - `hugo server -D` starts a local preview with drafts.
-- `hugo new content posts/architecture/my-post.md` creates a post from the archetype.
+- `hugo new content posts/architecture/my-post.en.md` creates an English post from the archetype.
 - `hugo -D --minify` builds the site, including drafts, into `public/`.
 - `hugo --minify` builds the production site without drafts.
 
@@ -23,11 +23,11 @@ Use lowercase, hyphenated names for new English slugs. Preserve existing publish
 
 Write each Markdown paragraph on one source line. Keep table and code-block line breaks. Escape literal dollar signs as `\$`. Match existing indentation: spaces in templates and YAML, with nested markup indented consistently. No formatter or linter is configured.
 
-Save adaptations beside their blog post as `<slug>-wechat.md` and `<slug>-linkedin.md`; Hugo excludes these suffixes, including during draft previews.
+Save full translations beside each other as `<slug>.en.md` and `<slug>.zh-cn.md`. Matching topic and slug link them through Hugo's language menu. English URLs stay unchanged; Chinese URLs start with `/zh-cn/`. Put the short English summary in `## TL;DR`; omit standalone social copies by default.
 
 ## Validation
 
-No automated test runner or coverage threshold is configured. For content or template changes, run the draft-inclusive build and inspect the affected page, links, images, and navigation. Confirm adaptations stay absent from pages, feeds, and search. Run `git diff --check` for whitespace errors. Keep generated `public/` and `resources/_gen/` output untracked.
+No automated test runner or coverage threshold is configured. For content or template changes, run the draft-inclusive build and inspect affected pages, links, images, and navigation. Check reciprocal translation links and one version per language in lists, feeds, and search. Run `git diff --check` for whitespace errors. Keep generated `public/` and `resources/_gen/` output untracked.
 
 ## Commits and Pull Requests
 
