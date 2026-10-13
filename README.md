@@ -33,15 +33,17 @@ Earlier articles are grouped by topic under `content/posts/`. A series can have 
 
 Export a blog page as DOCX with editable prose and embedded PNG images for formulas, code blocks, and inline code. Code images retain syntax highlighting. The exporter uses Hugo's existing math and shortcode rendering and does not change the Markdown source.
 
+**Review comes first:** finish and validate the Markdown, then give it to Jim for human review. Run the exporter only after Jim approves that version. Angle selection or an instruction to draft does not approve the resulting Markdown. If the Markdown changes after approval, return the revised version for review before exporting again.
+
 ```sh
 scripts/export-wechat-docx content/posts/machine-learning/understanding-flashattention.zh-cn.md --render
 ```
 
 This local workflow needs Hugo, Chrome, and the Codex document runtime at `~/.cache/codex-runtimes/codex-primary-runtime`. The runtime supplies Node, Python, Playwright, Sharp, the DOCX library, and LibreOffice. Set `CODEX_DOCUMENT_RUNTIME` for a different runtime location or `WECHAT_CHROMIUM` for a different Chromium executable. It currently targets this Mac setup; it is not part of the publishing workflow.
 
-The DOCX is saved under `exports/<source-stem>/`, beside an `assets/` directory of backup PNGs and `manifest.json` with source hashes and image metadata. `--output <directory>` changes the destination. `--render` adds page previews under `_work/preview/`; inspect every page before use, especially long formulas and code blocks. Export files are ignored by Git and excluded from the blog.
+The DOCX is saved under `exports/<source-stem>/`, beside an `assets/` directory of backup PNGs and `manifest.json` with source hashes and image metadata. `--output <directory>` changes the destination. `--render` adds page previews under `_work/preview/`; inspect every page before use, especially long formulas and code blocks. Commit the final DOCX, manifest, and backup PNGs to GitHub with the reviewed Markdown. Temporary builds and previews under `_work/` remain ignored. The `exports/` directory stays outside Hugo content and static assets, so it does not create blog pages or site downloads.
 
-Upload the DOCX to Google Drive and open it in Google Docs. Check the imported layout, then paste into a WeChat draft and verify images after saving, reopening, and viewing on a phone. This last transfer still needs manual verification; keep `assets/` available if an image needs uploading separately. Remote article images are not fetched by the exporter.
+GitHub is the storage location; no Google Drive connection or upload is needed. Download the DOCX from the repository when preparing a WeChat post. Verify images after saving, reopening, and viewing the WeChat draft on a phone; this transfer still needs manual verification. Keep `assets/` available if an image needs uploading separately. Remote article images are not fetched by the exporter.
 
 ## Publish
 

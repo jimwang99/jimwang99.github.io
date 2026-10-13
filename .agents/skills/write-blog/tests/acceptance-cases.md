@@ -187,6 +187,37 @@ Expected:
 - Adapt math markup only as needed for rendering; preserve equations and code examples.
 - Validate draft-inclusive and production output, reciprocal translation links, and one version per language's listing.
 
+## 17. Human review before DOCX conversion
+
+Run writes only in a disposable evaluation copy or with explicit authorization.
+
+Turn 1, after an angle has been selected: `$write-blog Write the English and Chinese Markdown files and prepare the Chinese DOCX for WeChat.`
+
+Expected after turn 1:
+
+- Save and validate the Markdown, then present it for human review.
+- Explain that Jim's workflow requires review of the completed Markdown before conversion; create no DOCX yet.
+- Treat angle approval and an earlier “Go” as drafting authorization, not approval of the newly written files.
+
+Turn 2: `I reviewed the Chinese Markdown and approved it. Generate its DOCX and push it to GitHub.`
+
+Expected after turn 2:
+
+- Convert the unchanged approved Chinese file without repeating the review request; do not treat its approval as approval of the English file.
+- Verify the DOCX, then commit and push the scoped Markdown and export artifacts under the supplied authorization.
+- Store the final DOCX, manifest, and PNG assets in GitHub; keep temporary builds and previews ignored and exports outside Hugo pages.
+- Do not request Google Drive setup or upload artifacts there; report WeChat transfer as unverified unless actually tested.
+
+## 18. Review applies to the current Markdown revision
+
+Prompt after a Markdown version was approved: `$write-blog Add a new technical section to the approved Chinese article, then update its DOCX.`
+
+Expected:
+
+- Make and validate the requested Markdown change, then present the revision for human review before regenerating the DOCX.
+- Preserve the existing DOCX until the changed Markdown is approved; do not label it as matching the revision.
+- If asked to export an already reviewed, unchanged file instead, reuse that approval and continue without another review request.
+
 ## Evaluation record
 
 For each actual run, record case number, model/runtime, date, output location, pass/fail, and the failed property if any. Report skipped and unrun cases separately. Source-reference checks and package validation demonstrate structural integrity; they do not demonstrate that a model passed these behavioral cases.

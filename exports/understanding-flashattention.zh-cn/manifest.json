@@ -1,0 +1,907 @@
+{
+  "source": "content/posts/machine-learning/understanding-flashattention.zh-cn.md",
+  "sourceSha256": "8b517ea4a1a5aa099ee3ad5cd277608c7a5528726a052943ff733da6c318e629",
+  "editableTextSha256": "f53db21605d3167d0d21d236ae9b22a2ad7922dda499806b66c9dfabaa587a22",
+  "title": "理解 FlashAttention",
+  "permalink": "https://jimwang99.github.io/zh-cn/posts/machine-learning/understanding-flashattention/",
+  "counts": {
+    "displayMath": 20,
+    "inlineMath": 48,
+    "codeBlocks": 6,
+    "inlineCode": 15,
+    "originalImages": 0,
+    "total": 89
+  },
+  "assets": [
+    {
+      "id": "asset-001",
+      "file": "assets/asset-001.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-002",
+      "file": "assets/asset-002.png",
+      "kind": "display-math",
+      "source": " \\mathrm{softmax}(\\vec{x})_i = \\frac{e^{x_i}}{\\sum_{j=1}^{N} e^{x_j}} ",
+      "width": 184.4375,
+      "height": 64.0625,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-003",
+      "file": "assets/asset-003.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-004",
+      "file": "assets/asset-004.png",
+      "kind": "inline-math",
+      "source": "e^x",
+      "width": 14.666666666666666,
+      "height": 13,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-005",
+      "file": "assets/asset-005.png",
+      "kind": "inline-math",
+      "source": "e^x",
+      "width": 14.666666666666666,
+      "height": 13,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-006",
+      "file": "assets/asset-006.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-007",
+      "file": "assets/asset-007.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-008",
+      "file": "assets/asset-008.png",
+      "kind": "display-math",
+      "source": " \\mathrm{softmax}(\\vec{x})_i = \\frac{e^{x_i - \\max(\\vec{x})}}{\\sum_{j=1}^{N} e^{x_j - \\max(\\vec{x})}} ",
+      "width": 230.921875,
+      "height": 67.78125,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-009",
+      "file": "assets/asset-009.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-010",
+      "file": "assets/asset-010.png",
+      "kind": "code-block",
+      "source": "import math\nimport random\n\nN = 8\nvec_x = [random.random() for _ in range(N)]\n# 1st pass\nmax_x = max(vec_x)\n# 2nd pass\nsum_ex = sum(math.exp(x - max_x) for x in vec_x)\n# 3rd pass\nsoftmax_x = [math.exp(x - max_x) / sum_ex for x in vec_x]",
+      "width": 640,
+      "height": 259,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-011",
+      "file": "assets/asset-011.png",
+      "kind": "inline-math",
+      "source": "G",
+      "width": 13.333333333333334,
+      "height": 13.666666666666666,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-012",
+      "file": "assets/asset-012.png",
+      "kind": "inline-math",
+      "source": "S",
+      "width": 11.333333333333334,
+      "height": 13.666666666666666,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-013",
+      "file": "assets/asset-013.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-014",
+      "file": "assets/asset-014.png",
+      "kind": "display-math",
+      "source": " g_i = \\max(x_1, \\dots, x_i), \\qquad\ns_i = \\sum_{j=1}^{i} e^{x_j - g_i} ",
+      "width": 299.25,
+      "height": 73.65625,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-015",
+      "file": "assets/asset-015.png",
+      "kind": "inline-math",
+      "source": "g_i",
+      "width": 12.666666666666666,
+      "height": 12.333333333333334,
+      "depth": 3.3020833333333335,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-016",
+      "file": "assets/asset-016.png",
+      "kind": "inline-math",
+      "source": "i",
+      "width": 6,
+      "height": 12.666666666666666,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-017",
+      "file": "assets/asset-017.png",
+      "kind": "inline-math",
+      "source": "s_i",
+      "width": 12,
+      "height": 12,
+      "depth": 2.9687499999999996,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-018",
+      "file": "assets/asset-018.png",
+      "kind": "inline-math",
+      "source": "S",
+      "width": 11.333333333333334,
+      "height": 13.666666666666666,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-019",
+      "file": "assets/asset-019.png",
+      "kind": "inline-math",
+      "source": "s_N",
+      "width": 18.666666666666668,
+      "height": 11.666666666666666,
+      "depth": 2.6354166666666665,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-020",
+      "file": "assets/asset-020.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-021",
+      "file": "assets/asset-021.png",
+      "kind": "inline-math",
+      "source": "G",
+      "width": 13.333333333333334,
+      "height": 13.666666666666666,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-022",
+      "file": "assets/asset-022.png",
+      "kind": "inline-math",
+      "source": "S",
+      "width": 11.333333333333334,
+      "height": 13.666666666666666,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-023",
+      "file": "assets/asset-023.png",
+      "kind": "inline-math",
+      "source": "g",
+      "width": 9.333333333333334,
+      "height": 12.333333333333334,
+      "depth": 4.302083333333334,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-024",
+      "file": "assets/asset-024.png",
+      "kind": "inline-math",
+      "source": "m",
+      "width": 15.333333333333334,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-025",
+      "file": "assets/asset-025.png",
+      "kind": "inline-math",
+      "source": "s",
+      "width": 7.666666666666667,
+      "height": 9,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-026",
+      "file": "assets/asset-026.png",
+      "kind": "inline-math",
+      "source": "S",
+      "width": 11.333333333333334,
+      "height": 13.333333333333334,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-027",
+      "file": "assets/asset-027.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\ns_1 &= 1, \\\\\ns_i &= s_{i-1} \\times e^{g_{i-1} - g_i} + e^{x_i - g_i}.\n\\end{aligned} ",
+      "width": 205.640625,
+      "height": 69.90625,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-028",
+      "file": "assets/asset-028.png",
+      "kind": "inline-math",
+      "source": "e^{g_{i-1}-g_i}",
+      "width": 45.666666666666664,
+      "height": 13,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-029",
+      "file": "assets/asset-029.png",
+      "kind": "inline-math",
+      "source": "s_i",
+      "width": 11.666666666666666,
+      "height": 12,
+      "depth": 2.9687499999999996,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-030",
+      "file": "assets/asset-030.png",
+      "kind": "inline-math",
+      "source": "s_N",
+      "width": 18.666666666666668,
+      "height": 11.666666666666666,
+      "depth": 2.6354166666666665,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-031",
+      "file": "assets/asset-031.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\ns_i &= e^{g_{i-1} - g_i} \\sum_{j=1}^{i-1} e^{x_j - g_{i-1}} + e^{x_i - g_i} \\\\\n&= \\sum_{j=1}^{i-1} e^{x_j - g_i} + e^{x_i - g_i} \\\\\n&= \\sum_{j=1}^{i} e^{x_j - g_i}.\n\\end{aligned} ",
+      "width": 229.859375,
+      "height": 195.984375,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-032",
+      "file": "assets/asset-032.png",
+      "kind": "code-block",
+      "source": "s_prev = 1.0  # s_{i-1}\ng_prev = vec_x[0]  # g_{i-1}\nfor i in range(1, N):  # starting from the 2nd element\n    x = vec_x[i]  # read x\n    g = max(g_prev, x)  # g_i\n    s = s_prev * math.exp(g_prev - g) + math.exp(x - g)  # s_i\n    s_prev, g_prev = s, g  # save as s_{i-1} and g_{i-1}\n\nassert g_prev == max_x and math.isclose(s_prev, sum_ex)",
+      "width": 640,
+      "height": 217,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-033",
+      "file": "assets/asset-033.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-034",
+      "file": "assets/asset-034.png",
+      "kind": "display-math",
+      "source": " \\mathbb{A} = \\mathrm{softmax}\\left(\\mathrm{mask}\\left(\\frac{\\mathbb{Q} \\cdot \\mathbb{K}^T}{\\sqrt{D}}\\right)\\right) \\cdot \\mathbb{V} ",
+      "width": 270.84375,
+      "height": 61.0625,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-035",
+      "file": "assets/asset-035.png",
+      "kind": "inline-code",
+      "source": "[N, D]",
+      "width": 57.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-036",
+      "file": "assets/asset-036.png",
+      "kind": "inline-code",
+      "source": "[N, D]",
+      "width": 58.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-037",
+      "file": "assets/asset-037.png",
+      "kind": "inline-code",
+      "source": "[M, D]",
+      "width": 58.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-038",
+      "file": "assets/asset-038.png",
+      "kind": "inline-code",
+      "source": "[M, D]",
+      "width": 58.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-039",
+      "file": "assets/asset-039.png",
+      "kind": "inline-code",
+      "source": "N == M",
+      "width": 58.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-040",
+      "file": "assets/asset-040.png",
+      "kind": "inline-code",
+      "source": "N = 1",
+      "width": 49.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-041",
+      "file": "assets/asset-041.png",
+      "kind": "inline-code",
+      "source": "mask()",
+      "width": 57.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-042",
+      "file": "assets/asset-042.png",
+      "kind": "display-math",
+      "source": " \\mathrm{softmax}(\\mathbb{Q} \\cdot \\mathbb{K}^T) \\cdot \\mathbb{V} = \\mathrm{softmax}(\\mathbb{X}) \\cdot \\mathbb{V} = \\mathbb{Y} \\cdot \\mathbb{V} = \\mathbb{A} ",
+      "width": 374.609375,
+      "height": 40.796875,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-043",
+      "file": "assets/asset-043.png",
+      "kind": "inline-math",
+      "source": "\\mathbb{X}",
+      "width": 12.666666666666666,
+      "height": 13,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-044",
+      "file": "assets/asset-044.png",
+      "kind": "inline-math",
+      "source": "x",
+      "width": 9.666666666666666,
+      "height": 9,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-045",
+      "file": "assets/asset-045.png",
+      "kind": "inline-math",
+      "source": "\\mathbb{Y}",
+      "width": 12.666666666666666,
+      "height": 13,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-046",
+      "file": "assets/asset-046.png",
+      "kind": "inline-math",
+      "source": "y",
+      "width": 9.333333333333334,
+      "height": 12.333333333333334,
+      "depth": 3.3020833333333335,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-047",
+      "file": "assets/asset-047.png",
+      "kind": "inline-math",
+      "source": "s",
+      "width": 7.666666666666667,
+      "height": 9,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-048",
+      "file": "assets/asset-048.png",
+      "kind": "inline-math",
+      "source": "\\mathbb{A}",
+      "width": 12.333333333333334,
+      "height": 13,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-049",
+      "file": "assets/asset-049.png",
+      "kind": "inline-code",
+      "source": "n",
+      "width": 15.333333333333334,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-050",
+      "file": "assets/asset-050.png",
+      "kind": "inline-code",
+      "source": "m",
+      "width": 15.333333333333334,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-051",
+      "file": "assets/asset-051.png",
+      "kind": "inline-code",
+      "source": "d",
+      "width": 16.333333333333332,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-052",
+      "file": "assets/asset-052.png",
+      "kind": "display-math",
+      "source": " x_{n,m} = \\mathbb{X}[n,m] = \\mathbb{Q}[n,:] \\cdot \\mathbb{K}^T[:,m] ",
+      "width": 256.765625,
+      "height": 41.796875,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-053",
+      "file": "assets/asset-053.png",
+      "kind": "inline-code",
+      "source": "[N, M]",
+      "width": 57.333333333333336,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-054",
+      "file": "assets/asset-054.png",
+      "kind": "inline-code",
+      "source": "n",
+      "width": 15.333333333333334,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-055",
+      "file": "assets/asset-055.png",
+      "kind": "inline-code",
+      "source": "for n in range(N)",
+      "width": 150.33333333333334,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-056",
+      "file": "assets/asset-056.png",
+      "kind": "inline-code",
+      "source": "m",
+      "width": 15.333333333333334,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-057",
+      "file": "assets/asset-057.png",
+      "kind": "inline-code",
+      "source": "for m in range(M)",
+      "width": 150.33333333333334,
+      "height": 21.333333333333332,
+      "depth": 5.166666666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-058",
+      "file": "assets/asset-058.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\nx_m &= \\mathbb{Q}[n,:] \\cdot \\mathbb{K}^T[:,m], \\\\\ng_m &= \\max(g_{m-1}, x_m), \\\\\ns_m &= s_{m-1} \\times e^{g_{m-1} - g_m} + e^{x_m - g_m}.\n\\end{aligned} ",
+      "width": 235.71875,
+      "height": 95.71875,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-059",
+      "file": "assets/asset-059.png",
+      "kind": "inline-math",
+      "source": "\\mathbb{Y} \\cdot \\mathbb{V}",
+      "width": 37.333333333333336,
+      "height": 13.333333333333334,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-060",
+      "file": "assets/asset-060.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\ny_m &= \\frac{e^{x_m - g_M}}{s_M}, \\\\\n\\vec{A}_0 &= \\vec{0}, \\\\\n\\vec{A}_m &= \\vec{A}_{m-1} + y_m \\times \\mathbb{V}[m,:].\n\\end{aligned} ",
+      "width": 210.484375,
+      "height": 117.125,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-061",
+      "file": "assets/asset-061.png",
+      "kind": "inline-math",
+      "source": "\\mathbb{V}[m,:]",
+      "width": 49.333333333333336,
+      "height": 18.333333333333332,
+      "depth": 4.96875,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-062",
+      "file": "assets/asset-062.png",
+      "kind": "inline-math",
+      "source": "\\vec{A}_m",
+      "width": 23.333333333333332,
+      "height": 19.333333333333332,
+      "depth": 2.9687499999999996,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-063",
+      "file": "assets/asset-063.png",
+      "kind": "inline-math",
+      "source": "y_m",
+      "width": 19.333333333333332,
+      "height": 12.333333333333334,
+      "depth": 4.302083333333334,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-064",
+      "file": "assets/asset-064.png",
+      "kind": "display-math",
+      "source": " \\mathbb{A}[n,d] = \\mathbb{Y}[n,:] \\cdot \\mathbb{V}[:,d] = \\sum_{m=1}^{M} \\mathbb{Y}[n,m] \\times \\mathbb{V}[m,d] ",
+      "width": 356.390625,
+      "height": 71.5,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-065",
+      "file": "assets/asset-065.png",
+      "kind": "code-block",
+      "source": "M, D = 6, 4\nmatrix_y = [[random.random() for _ in range(M)] for _ in range(N)]\nmatrix_v = [[random.random() for _ in range(D)] for _ in range(M)]\n\nmatrix_a = [[0.0] * D for _ in range(N)]\nfor n in range(N):\n    for d in range(D):\n        for m in range(M):\n            matrix_a[n][d] += matrix_y[n][m] * matrix_v[m][d]",
+      "width": 640,
+      "height": 217,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-066",
+      "file": "assets/asset-066.png",
+      "kind": "code-block",
+      "source": "matrix_a2 = [[0.0] * D for _ in range(N)]\nfor n in range(N):\n    for m in range(M):\n        for d in range(D):\n            matrix_a2[n][d] += matrix_y[n][m] * matrix_v[m][d]\n\nassert matrix_a2 == matrix_a",
+      "width": 640,
+      "height": 175,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-067",
+      "file": "assets/asset-067.png",
+      "kind": "display-math",
+      "source": " \\mathbb{A}[n,:] = \\sum_{m=1}^{M} \\mathbb{Y}[n,m] \\times \\mathbb{V}[m,:] ",
+      "width": 230.6875,
+      "height": 71.5,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-068",
+      "file": "assets/asset-068.png",
+      "kind": "inline-math",
+      "source": "y_m",
+      "width": 19.333333333333332,
+      "height": 12.333333333333334,
+      "depth": 4.302083333333334,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-069",
+      "file": "assets/asset-069.png",
+      "kind": "inline-math",
+      "source": "\\mathbb{Y}[n,m]",
+      "width": 52.333333333333336,
+      "height": 18.333333333333332,
+      "depth": 4.96875,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-070",
+      "file": "assets/asset-070.png",
+      "kind": "inline-math",
+      "source": "\\vec{V}_m = \\mathbb{V}[m,:]",
+      "width": 91.66666666666667,
+      "height": 21.333333333333332,
+      "depth": 4.96875,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-071",
+      "file": "assets/asset-071.png",
+      "kind": "display-math",
+      "source": " \\mathbb{A}[n,:] = \\vec{A}_M = \\sum_{m=1}^{M} y_m \\times \\vec{V}_m = \\sum_{m=1}^{M} \\frac{e^{x_m - g_M}}{s_M} \\times \\vec{V}_m ",
+      "width": 358.5625,
+      "height": 71.5,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-072",
+      "file": "assets/asset-072.png",
+      "kind": "inline-math",
+      "source": "g_M",
+      "width": 21.333333333333332,
+      "height": 12.333333333333334,
+      "depth": 3.3020833333333335,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-073",
+      "file": "assets/asset-073.png",
+      "kind": "inline-math",
+      "source": "s_M",
+      "width": 20.333333333333332,
+      "height": 11.666666666666666,
+      "depth": 2.6354166666666665,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-074",
+      "file": "assets/asset-074.png",
+      "kind": "inline-math",
+      "source": "\\vec{A}_M",
+      "width": 25.333333333333332,
+      "height": 19,
+      "depth": 2.6354166666666665,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-075",
+      "file": "assets/asset-075.png",
+      "kind": "inline-math",
+      "source": " \\vec{A}_m = f(\\vec{A}_{m-1}) ",
+      "width": 106.66666666666667,
+      "height": 21.333333333333332,
+      "depth": 4.96875,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-076",
+      "file": "assets/asset-076.png",
+      "kind": "inline-math",
+      "source": " \\vec{A}'_m ",
+      "width": 23.666666666666668,
+      "height": 21.333333333333332,
+      "depth": 4.96875,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-077",
+      "file": "assets/asset-077.png",
+      "kind": "inline-math",
+      "source": " \\vec{A}'_M = \\vec{A}_M ",
+      "width": 73.66666666666667,
+      "height": 22,
+      "depth": 4.635416666666667,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-078",
+      "file": "assets/asset-078.png",
+      "kind": "display-math",
+      "source": " \\vec{A}'_m = \\sum_{i=1}^{m} \\frac{e^{x_i - g_m}}{s_m} \\times \\vec{V}_i ",
+      "width": 165.109375,
+      "height": 68.734375,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-079",
+      "file": "assets/asset-079.png",
+      "kind": "inline-math",
+      "source": "m = M",
+      "width": 55.333333333333336,
+      "height": 13.333333333333334,
+      "depth": 0.9687500000000006,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-080",
+      "file": "assets/asset-080.png",
+      "kind": "display-math",
+      "source": " \\vec{A}'_M = \\sum_{i=1}^{M} \\frac{e^{x_i - g_M}}{s_M} \\times \\vec{V}_i = \\vec{A}_M ",
+      "width": 217.15625,
+      "height": 71.671875,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-081",
+      "file": "assets/asset-081.png",
+      "kind": "inline-math",
+      "source": "\\vec{A}_M",
+      "width": 25.333333333333332,
+      "height": 20,
+      "depth": 2.6354166666666665,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-082",
+      "file": "assets/asset-082.png",
+      "kind": "inline-math",
+      "source": " \\vec{A}'_m ",
+      "width": 23.333333333333332,
+      "height": 22.333333333333332,
+      "depth": 4.96875,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-083",
+      "file": "assets/asset-083.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\n\\vec{A}'_1 &= \\frac{e^{x_1 - g_1}}{s_1} \\times \\vec{V}_1 = \\vec{V}_1, \\\\\n\\vec{A}'_m &= \\vec{A}'_{m-1} \\times \\frac{s_{m-1} \\times e^{g_{m-1} - g_m}}{s_m} + \\frac{e^{x_m - g_m}}{s_m} \\times \\vec{V}_m.\n\\end{aligned} ",
+      "width": 346.46875,
+      "height": 106,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-084",
+      "file": "assets/asset-084.png",
+      "kind": "display-math",
+      "source": " \\mathbb{X}[n,m] = \\mathbb{Q}[n,:] \\cdot \\mathbb{K}^T[:,m] ",
+      "width": 203.765625,
+      "height": 41.796875,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-085",
+      "file": "assets/asset-085.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\n\\mathbb{G}[n,1] &= \\mathbb{X}[n,1], \\\\\n\\mathbb{G}[n,m] &= \\max(\\mathbb{G}[n,m-1], \\mathbb{X}[n,m]).\n\\end{aligned} ",
+      "width": 280.640625,
+      "height": 69.90625,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-086",
+      "file": "assets/asset-086.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\n\\mathbb{S}[n,1] &= 1, \\\\\n\\mathbb{S}[n,m] &= \\mathbb{S}[n,m-1] \\times e^{\\mathbb{G}[n,m-1] - \\mathbb{G}[n,m]} + e^{\\mathbb{X}[n,m] - \\mathbb{G}[n,m]}.\n\\end{aligned} ",
+      "width": 402.921875,
+      "height": 71.546875,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-087",
+      "file": "assets/asset-087.png",
+      "kind": "display-math",
+      "source": " \\begin{aligned}\n\\mathbb{A}_1[n,:] &= \\frac{e^{\\mathbb{X}[n,1] - \\mathbb{G}[n,1]}}{\\mathbb{S}[n,1]} \\times \\mathbb{V}[1,:], \\\\\n\\mathbb{A}_m[n,:] &= \\mathbb{A}_{m-1}[n,:] \\times \\frac{\\mathbb{S}[n,m-1] \\times e^{\\mathbb{G}[n,m-1] - \\mathbb{G}[n,m]}}{\\mathbb{S}[n,m]} + \\frac{e^{\\mathbb{X}[n,m] - \\mathbb{G}[n,m]}}{\\mathbb{S}[n,m]} \\times \\mathbb{V}[m,:].\n\\end{aligned} ",
+      "width": 578.125,
+      "height": 113.203125,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-088",
+      "file": "assets/asset-088.png",
+      "kind": "code-block",
+      "source": "matrix_q = [[random.random() for _ in range(D)] for _ in range(N)]\nmatrix_k = [[random.random() for _ in range(D)] for _ in range(M)]\nmatrix_v = [[random.random() for _ in range(D)] for _ in range(M)]\nmatrix_a = [[0.0] * D for _ in range(N)]\n\nfor n in range(N):\n    for m in range(M):\n        x = 0.0\n        for d in range(D):\n            x += matrix_q[n][d] * matrix_k[m][d]\n\n        g = max(g_prev, x) if m > 0 else x\n        e = math.exp(x - g) if m > 0 else 1.0\n        s = s_prev * math.exp(g_prev - g) + e if m > 0 else 1.0\n\n        for d in range(D):\n            if m > 0:\n                matrix_a[n][d] = (matrix_a[n][d] * s_prev * math.exp(g_prev - g) + e * matrix_v[m][d]) / s\n            else:\n                matrix_a[n][d] = e * matrix_v[0][d] / s\n        g_prev = g\n        s_prev = s",
+      "width": 640,
+      "height": 511,
+      "depth": 0,
+      "displayScale": 1
+    },
+    {
+      "id": "asset-089",
+      "file": "assets/asset-089.png",
+      "kind": "code-block",
+      "source": "for n in range(N):\n    scores = [sum(q * k for q, k in zip(matrix_q[n], key)) for key in matrix_k]\n    max_x = max(scores)\n    sum_ex = sum(math.exp(x - max_x) for x in scores)\n    for d in range(D):\n        expected = sum(math.exp(x - max_x) / sum_ex * matrix_v[m][d] for m, x in enumerate(scores))\n        assert math.isclose(matrix_a[n][d], expected)",
+      "width": 640,
+      "height": 217,
+      "depth": 0,
+      "displayScale": 1
+    }
+  ]
+}

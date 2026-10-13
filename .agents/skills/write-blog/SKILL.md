@@ -131,6 +131,18 @@ Aim to cut roughly 20–30% of a padded draft when meaning is unchanged. This is
 
 Return the cleaned article or note. Keep material editorial questions separate from the article, briefly, only when needed. Do not attach the checklist or analysis by default. For a cleanup-only request, return the revised text and flag any substantive uncertainty that editing cannot resolve.
 
+## Phase 4: Human review before DOCX export
+
+When DOCX export is in scope, first deliver the completed Markdown for Jim's review, after cleanup and repository validation. Stop before conversion until Jim explicitly confirms that he has reviewed and approved the current Markdown version. This human review checkpoint is required by Jim's workflow; explain that reason when handing over the files.
+
+Angle selection, permission to draft, and the agent's own cleanup do not satisfy this checkpoint. Apply Jim's review edits and present the revised Markdown for approval. Approval applies to the identified files at their current revision: reuse an existing explicit review confirmation when the content is unchanged; if the Markdown changes afterward, return it for review before exporting again. Text-only requests end with the Markdown deliverable.
+
+## Phase 5: Export and store the reviewed article
+
+After human review is complete and DOCX export is requested, use the repository's [export command and environment instructions](../../../README.md#export-for-wechat). Convert the reviewed source without rewriting it. Preserve editable prose and embedded PNG formulas and code, render the DOCX, and inspect every page before delivery; use the documents skill when available.
+
+Store the final DOCX, `manifest.json`, and backup PNGs under `exports/<source-stem>/` in GitHub alongside the versioned Markdown. Keep `_work/` builds and previews ignored, and keep exports outside Hugo content and static directories. GitHub is the storage destination; do not request a Google Drive connection or upload these artifacts there. Commit and push only under the user's applicable authorization. Report local export verification separately from any untested WeChat paste behavior.
+
 ## Fidelity rules
 
 - Do not invent opinions, evidence, measurements, motivations, experiences, conclusions, quotations, or citations.

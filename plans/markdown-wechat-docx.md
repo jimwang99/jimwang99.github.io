@@ -1,8 +1,8 @@
 # Markdown 文章导出为微信兼容 DOCX
 
-**状态：** 已实现本地导出命令，并生成 FlashAttention 中文 DOCX 样稿。已渲染并逐页检查中文、行内公式、高亮代码和分页；图片嵌入与正文完整性校验通过。公式、代码块和行内代码均嵌入为 PNG，正文保持可编辑。Google Drive 尚未连接；Google Docs 导入及微信实际粘贴结果仍待验证。
+**状态：** 已实现本地导出命令，并生成 FlashAttention 中文 DOCX 样稿。已渲染并逐页检查中文、行内公式、高亮代码和分页；图片嵌入与正文完整性校验通过。Jim 已认可样稿。按最新要求，文件存入 GitHub；Google Drive 不参与流程。微信实际粘贴结果仍待验证。
 
-**目标：** 继续维护博客 Markdown，自动导出正文可编辑、公式和代码为 PNG 图片的 DOCX，供 Google Docs 编辑及微信公众号排版使用。这里将“上传到 Google”理解为上传 Google Drive 后用 Google Docs 打开或转换。
+**目标：** 继续维护博客 Markdown，先完成人工审阅，再导出正文可编辑、公式和代码为 PNG 图片的 DOCX，保存到 GitHub，供微信公众号排版使用。
 
 ## ✅ 建议
 
@@ -25,18 +25,22 @@ mpMath 说明的是 SVG 路线，因此“微信公式只能用 PNG”不适用�
 
 ```mermaid
 flowchart TD
-    A[博客 Markdown] --> B[本地 Hugo 渲染文章]
+    A[生成并校验博客 Markdown] --> R[Jim 人工审阅并确认当前版本]
+    R --> B[本地 Hugo 渲染文章]
     B --> C[公式和高亮代码逐项生成 PNG]
     C --> D[正文与内嵌图片组成 DOCX]
-    D --> E[Google Drive 和 Google Docs]
-    E --> F[微信草稿与手机预览验证]
+    D --> Q[渲染 DOCX 并逐页检查]
+    Q --> E[提交到 GitHub]
+    E --> F[下载并验证微信草稿与手机预览]
 ```
+
+**人工审阅是必需步骤。** 先交付 Markdown，等待 Jim 确认当前版本后才能导出 DOCX。选定角度或同意开始写作不等于审阅完成。已有明确审阅确认且内容未变时直接继续；审阅后又改动 Markdown，则先交付修订稿供再次审阅。
 
 1. **复用现有渲染。** [FlashAttention 中文稿](../content/posts/machine-learning/understanding-flashattention.zh-cn.md) 同时包含 `katex` 代码围栏、行内数学分隔符和 Hugo `katex` shortcode。建议先在本地通过 Hugo 处理，再提取文章正文；这样可以复用现有 KaTeX 和代码高亮，避免重新解释 shortcode。仅生成导出副本。
 2. **逐项截图。** 等待公式排版和字体加载完成，按公式、代码块或行内代码的实际边界生成 PNG。独立公式只截取最外层数学容器，避免把其中的行内数学重复导出。Playwright 支持对单个元素截图；KaTeX 自身输出 HTML，需要浏览器渲染后再得到 PNG。[Playwright 元素截图](https://playwright.dev/docs/screenshots)、[KaTeX API](https://katex.org/docs/api)
 3. **替换并组装。** 将正文中的目标元素替换为本地图片，保留行内或独立段落的位置；提取正文时去掉网站导航、目录和标题锚点。已实现版本将文档树交给 `docx` 库，明确设置中文字体、标题和段距；图片嵌入文件，不依赖外部链接。导出后校验正文文本哈希及 PNG 图片数量。
 4. **保留备用图片。** DOCX 是主要交付文件，PNG 素材目录可作为微信粘贴缺图时的备用上传素材。图片里保存原公式或代码的替代文本，原 Markdown 继续作为可编辑来源。
-5. **导入 Google。** 将 DOCX 上传 Google Drive 后用 Google Docs 打开；如需原生 Google 文档，再执行转换。直接编辑 Office 文件和转换成 Google Docs 是不同操作。[Google Office 文件说明](https://support.google.com/docs/answer/6055139?hl=en)、[Google Drive 上传说明](https://support.google.com/drive/answer/2424368?hl=en)
+5. **保存到 GitHub。** 将审阅后的 Markdown、最终 DOCX、图片清单和备用 PNG 纳入版本管理。导出目录位于 Hugo 内容目录之外，不生成额外博客页面；内部构建文件与预览保持忽略。提交和推送遵循用户的现有授权。
 
 如果以后需要处理博客以外的 Markdown，可以改用 Pandoc AST 预处理：将 `Math`、`CodeBlock` 和 `Code` 节点替换为 `Image`，并先规范化 Hugo 专用语法。代码图片也可使用 Pygments 的 PNG formatter；当前仓库优先复用已经存在的渲染结果。[Pandoc Lua filters](https://pandoc.org/lua-filters.html)、[Pygments 图片输出](https://pygments.org/docs/formatters/#ImageFormatter)
 
@@ -44,8 +48,8 @@ flowchart TD
 
 1. **内容完整。** DOCX 中所有公式和代码均为内嵌 PNG，正文仍可编辑；不遗留 shortcode、未渲染 LaTeX 或错误提示。代码只做高亮，不执行。
 2. **图片清晰。** 高分辨率渲染后按正文尺寸嵌入。检查行内公式的基线和行高；检查长公式和代码的完整边界，避免截断或缩到无法阅读。过长代码按完整代码行分图；必要的公式分行保留原数学含义。
-3. **文档排版。** 渲染 DOCX 并逐页检查中文、图片、段落和分页；再检查 Google Docs 导入后的图片大小及行内位置。
-4. **微信实际链路。** 将样稿粘贴到微信草稿，保存后重新打开，再看手机预览。Google 支持 DOCX 导入不等于保证微信会接收并持久保存剪贴板中的每张图片；这一步必须实际验证。若缺图，使用备用 PNG 手动上传，或另行实现微信图片上传与 HTML 导出。
+3. **文档排版。** 渲染 DOCX 并逐页检查中文、图片、段落和分页。
+4. **微信实际链路。** 从 GitHub 下载样稿，粘贴到微信草稿，保存后重新打开，再看手机预览。需要实际确认微信会接收并保存剪贴板中的图片。若缺图，使用备用 PNG 手动上传，或另行实现微信图片上传与 HTML 导出。
 
 ## ▶️ 运行已实现的流程
 
@@ -57,4 +61,4 @@ scripts/export-wechat-docx content/posts/machine-learning/understanding-flashatt
 
 已解决预览工具的中文字体配置、KaTeX 样式保留、行内图片留白及正文完整性校验。此命令仅处理本仓库的 Hugo 文章；不下载外部图片。特别长的公式或代码仍需检查预览，目前未实现任意长代码的自动分图。
 
-**下一步：** 连接 Google Drive 后导入样稿，检查导入后的行内位置和图片尺寸，再完成微信草稿保存、重新打开及手机预览验收。
+**下一步：** 从 GitHub 下载已确认的样稿，完成微信草稿保存、重新打开及手机预览验收。后续文章均先审阅 Markdown，再导出 DOCX。

@@ -2,4 +2,11 @@
 /resources/_gen/
 /.hugo_build.lock
 /.runs/
-/exports/
+/exports/*
+!/exports/*/
+/exports/*/*
+!/exports/*/*.docx
+!/exports/*/manifest.json
+!/exports/*/assets/
+/exports/*/assets/*
+!/exports/*/assets/*.png
