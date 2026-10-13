@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+runtime="${CODEX_DOCUMENT_RUNTIME:-$HOME/.cache/codex-runtimes/codex-primary-runtime}"
+node_bin="$runtime/dependencies/node/bin/node"
+if [[ ! -x "$node_bin" ]]; then
+  echo "Codex document runtime not found. Set CODEX_DOCUMENT_RUNTIME to its directory." >&2
+  exit 1
+fi
+export CODEX_DOCUMENT_RUNTIME="$runtime"
+exec "$node_bin" "$(dirname "$0")/export-wechat-docx.cjs" "$@"

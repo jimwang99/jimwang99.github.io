@@ -29,6 +29,20 @@ English URLs stay at `/posts/<topic>/<slug>/`; Chinese URLs use `/zh-cn/posts/<t
 
 Earlier articles are grouped by topic under `content/posts/`. A series can have its own nested section, such as `content/posts/architecture/risc-v-architecture-training/`. The articles came from the local Obsidian Publish folder, with images recovered from local backups. Edit the Markdown pages directly.
 
+## Export for WeChat
+
+Export a blog page as DOCX with editable prose and embedded PNG images for formulas, code blocks, and inline code. Code images retain syntax highlighting. The exporter uses Hugo's existing math and shortcode rendering and does not change the Markdown source.
+
+```sh
+scripts/export-wechat-docx content/posts/machine-learning/understanding-flashattention.zh-cn.md --render
+```
+
+This local workflow needs Hugo, Chrome, and the Codex document runtime at `~/.cache/codex-runtimes/codex-primary-runtime`. The runtime supplies Node, Python, Playwright, Sharp, the DOCX library, and LibreOffice. Set `CODEX_DOCUMENT_RUNTIME` for a different runtime location or `WECHAT_CHROMIUM` for a different Chromium executable. It currently targets this Mac setup; it is not part of the publishing workflow.
+
+The DOCX is saved under `exports/<source-stem>/`, beside an `assets/` directory of backup PNGs and `manifest.json` with source hashes and image metadata. `--output <directory>` changes the destination. `--render` adds page previews under `_work/preview/`; inspect every page before use, especially long formulas and code blocks. Export files are ignored by Git and excluded from the blog.
+
+Upload the DOCX to Google Drive and open it in Google Docs. Check the imported layout, then paste into a WeChat draft and verify images after saving, reopening, and viewing on a phone. This last transfer still needs manual verification; keep `assets/` available if an image needs uploading separately. Remote article images are not fetched by the exporter.
+
 ## Publish
 
 In the repository's **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**. Push changes to `main`; the workflow builds and publishes the site at `https://jimwang99.github.io/`.
