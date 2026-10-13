@@ -56,14 +56,14 @@ The Chinese version is Jim explaining the same argument in Chinese, not a senten
 | Write | 翻译腔 draft | Jim-style Chinese |
 | --- | --- | --- |
 | Verbs and 怎么/能不能 clauses carry the idea | 资源放置与协调决定了各个组件能否让下一步更早开始。 | 资源怎么放置、怎么协调，决定了它们能不能让下一步更早开始。 |
-| The point, stated directly | 从架构角度理解它，一个有用的方法是跟踪工作及其状态如何经过这些资源。 | 理解这套架构，最有用的办法是跟着“workload”和它的“state”在这些资源之间走一遍。 |
+| The point, stated directly | 从架构角度理解它，一个有用的方法是跟踪工作及其状态如何经过这些资源。 | 理解这套架构，最有用的办法是跟着“工作负载”和它的“state”在这些资源之间走一遍。 |
 | Terms of art in English | 智能体循环；预填充与解码；推理工作进程 | Agent 循环；prefill 与 decode；推理 worker |
 | One thought per sentence, clauses joined by commas and colons | 这些是系统的组成单元。各类资源的比例可以变化，一个请求也不必使用所有资源。 | 这些都是积木：各类资源的比例可以调整，一个请求也不一定用到全部资源。 |
 | Spoken technical register | 兼容的缓存前缀可以节省重建状态的计算，但不会消除新增 token 的 attention 工作。 | 兼容的缓存前缀可以省掉重建这部分状态的计算，但新 token 的 attention 计算还是要做。 |
 | Citations inside the sentence, before 。 | `……可以按需求采用不同的组合。[Vera Rubin 平台公告][platform]` | `……可以按需要配比（[Vera Rubin 平台公告][platform]）。` |
 | Each caveat beside the claim it limits, phrased as speech | 共享存储增加了一种放置选择，最合适的策略取决于工作负载。 | 共享存储多提供了一个放状态的地方，哪种策略最好，还是要看工作负载。 |
 
-**Terms of art stay in English.** A term of art is a word Chinese engineers already say in English: agent, worker, runtime, compiler, prefill, decode, attention, KV cache, speculative decoding, bandwidth, throughput, quantization, ownership, tech lead, and product or feature names such as Scale-up and NVLink Switch. Its Chinese rendering (智能体, 预填充, 推理工作进程) is unfamiliar, so the reader has to translate it back to English to understand it. Write terms of art in English in prose, headings, tables, and figure labels. A key concept that a paragraph asks the reader to follow also stays in English when the everyday Chinese word is too vague for it: Jim's edit of the AI factory 概要 replaced “工作” and “状态” with “workload” and “state”. Use Chinese where the everyday Chinese word carries the meaning, such as 内存, 以太网, 调度, and 工作负载.
+**Terms of art stay in English.** A term of art is a word Chinese engineers already say in English: agent, worker, runtime, compiler, prefill, decode, attention, KV cache, speculative decoding, bandwidth, throughput, quantization, ownership, tech lead, and product or feature names such as Scale-up and NVLink Switch. Its Chinese rendering (智能体, 预填充, 推理工作进程) is unfamiliar, so the reader has to translate it back to English to understand it. Write terms of art in English in prose, headings, tables, and figure labels. Use Chinese where the everyday Chinese word carries the meaning, such as 内存, 以太网, 调度, and 工作负载; Jim chose 工作负载 over workload for the whole AI factory article. Replace a vague Chinese word with the precise term, Chinese or English: in the same article's 概要, Jim replaced “工作” with “工作负载” and “状态” with “state”.
 
 Jim's reviewed Chinese posts show these habits:
 

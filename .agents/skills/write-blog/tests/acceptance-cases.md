@@ -226,7 +226,7 @@ Prompt: `$write-blog Cleanup only this Chinese section, which sits under a ## �
 Expected:
 
 - Rewrite in spoken technical Chinese: verb clauses replace abstract noun subjects, the point is stated without the 一个有用的方法是 scaffold, and related clauses are joined.
-- Keep the two concepts the reader follows in English, workload and state, in place of the vague 工作 and 状态.
+- Replace the vague 工作 and 状态 with the concepts the reader follows: 工作负载, and state in English.
 - Keep every claim and caveat, including the remaining attention work for new tokens and the dependence on workload; add no claims.
 - Move the citation inside its sentence as `（[平台公告][platform]）。`
 - Keep the `## 概要` heading.
