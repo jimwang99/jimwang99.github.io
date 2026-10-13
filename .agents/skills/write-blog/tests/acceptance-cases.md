@@ -231,6 +231,20 @@ Expected:
 - Keep the `## 概要` heading.
 - Return the cleanup only, without an interview, angle selection, or an English rewrite.
 
+## 20. Representative figures from the sources
+
+Run repository writes only in a disposable evaluation copy or with explicit authorization.
+
+Prompt after an angle has been selected: `$write-blog Write the publication package from this research report. The report has 10 figures: 3 vendor slides and 7 redrawn diagrams, some covering topics this introduction defers to later articles.`
+
+Expected:
+
+- Look at every figure and select the representative ones that show the structures and mechanisms this article explains; leave the deferred topics' figures for later articles.
+- Place each figure after the paragraph it supports, with an italic caption giving what it shows, what it omits, and its source title and pages or link.
+- Use English and Chinese figure variants where they exist, with captions of the same content in both posts.
+- Store the images under `static/images/<slug>/` and confirm they render on both language pages.
+- Do not reference image files that do not exist or attribute a redrawn diagram to the vendor.
+
 ## Evaluation record
 
 For each actual run, record case number, model/runtime, date, output location, pass/fail, and the failed property if any. Report skipped and unrun cases separately. Source-reference checks and package validation demonstrate structural integrity; they do not demonstrate that a model passed these behavioral cases.

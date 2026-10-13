@@ -3,7 +3,7 @@
 ## Project Structure
 
 - `content/posts/<topic>/` contains Markdown posts; `_index.md` files define topic sections. Homepage and author content live in `content/_index.md` and `content/about.md`.
-- `static/legacy-media/` holds imported images; reference them as `/legacy-media/<filename>`. `assets/katex.json` configures math rendering.
+- `static/legacy-media/` holds imported images; reference them as `/legacy-media/<filename>`. New posts keep their figures in `static/images/<slug>/`, referenced as `/images/<slug>/<file>`. `assets/katex.json` configures math rendering.
 - `layouts/` contains template overrides. `themes/hugo-book/` is a pinned Git submodule.
 - `archetypes/posts.md` defines new-post front matter; `hugo.toml` controls site configuration.
 

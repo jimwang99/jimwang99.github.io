@@ -90,6 +90,14 @@ Use the approved angle, available evidence, requested platform, and reasoning mo
 
 Follow Jim's reviewed writing: concise titles that state the point, concrete actions and component roles, and paragraphs that keep a comparison or causal chain together. Write the Chinese version as Jim explaining the argument in Chinese: compose each paragraph from its meaning, following the 翻译腔 guidance in the style notes. Preserve the scope of his stated judgment, including a bounded extension to similar tasks, while distinguishing it from measured results.
 
+### Figures
+
+Figures are a core part of Jim's articles. When the source material has figures (research reports, papers, vendor decks, blogs, documentation), select the important, representative ones: each shows the structure, mechanism, or data that its section explains. Look at every candidate image before choosing it and confirm that its content matches the paragraph it will support. Figures for topics the article defers belong to the later articles.
+
+Place each figure right after the paragraph it supports, followed by an italic caption that states what the figure shows, what it omits or does not establish, and its source: a link, or the talk or paper title with page numbers. Use a figure's language variant when one exists, and give both captions the same content. When no source figure fits and a picture would carry the reasoning, draw one with Mermaid or a diagram skill; reference only image files that exist.
+
+Store figures under `static/images/<slug>/`, referenced as `/images/<slug>/<file>`, so both language pages and the DOCX exporter (which does not fetch remote images) can load them. Name language variants `<name>.en.<ext>` and `<name>.zh-cn.<ext>`.
+
 ### Opinion / thought mode
 
 Useful reasoning shape: observation → central conflict or bottleneck → mechanism → alternatives → implications → judgment.
@@ -128,6 +136,7 @@ Review the draft before returning it:
 9. Are uncertainty, conflicting evidence, and unresolved questions still visible?
 10. Does the ending offer a supported technical judgment or an honest open question?
 11. For Chinese text: does every paragraph read as Chinese first? Run the 翻译腔 pass in the style notes until its completion condition holds.
+12. Do figures show the article's key structures and mechanisms? When revising an article whose sources have representative figures it lacks, add them following Figures in Phase 2.
 
 Aim to cut roughly 20–30% of a padded draft when meaning is unchanged. This is not a quota: never remove measurements, caveats, reasoning, or useful technical detail to hit it. A concise or dense source may need little reduction.
 
@@ -167,7 +176,7 @@ For this Hugo repository:
 1. Inspect the repository instructions, `README.md`, `archetypes/posts.md`, relevant topic `_index.md`, and a nearby post. Check for existing changes and preserve user work.
 2. Place translations together under `content/posts/<topic>/` as `<slug>.en.md` and `<slug>.zh-cn.md`, with the same language-neutral slug. These native Hugo suffixes link the versions automatically; CN is the editorial label and `zh-cn` is the configured language code. Follow `README.md` and `hugo.toml`; use a shared `translationKey` only when basenames must differ. Keep existing English URLs during migration.
 3. Give each version front matter from `archetypes/posts.md`: a translated `title`, `date`, and `draft: true` for a new unpublished post. Use an explicitly supplied date, otherwise the current user-local date. Preserve existing metadata during cleanup; when converting an existing Chinese adaptation into a blog translation, use the paired post's date and publication status unless instructed otherwise. Do not fabricate publication history or aliases.
-4. Use repository-supported image paths, code fences, and Markdown. Use `katex` fences for display math and the theme's `katex` shortcode for inline formulas when Markdown alters their primes or subscripts. Verify newly referenced local assets exist; do not invent diagrams or image files. Keep editorial TODOs out of publishable prose.
+4. Use repository-supported image paths, code fences, and Markdown. Use `katex` fences for display math and the theme's `katex` shortcode for inline formulas when Markdown alters their primes or subscripts. Verify that every referenced image exists and renders on both language pages. Keep editorial TODOs out of publishable prose.
 5. Run a draft-inclusive Hugo build (`hugo -D --minify`) when saving a draft; a build without `-D` may skip the edited page. If `hugo` is not on `PATH`, find the Hugo Extended version pinned in `.github/workflows/hugo.yml`; in Codex cloud, it is installed at `/workspace/.cloud-tools/hugo-0.148.2/hugo`. If no matching build is available, report the build as unverified.
 6. Confirm both language pages render with reciprocal translation links and only their own language's version in lists, feeds, and search. Check the English URL and Chinese `/zh-cn/` URL, equations, and code blocks. Run a production build when changing publication status or multilingual configuration to check draft exclusion. Inspect tracked/untracked changes and report file paths and validation results accurately.
 
